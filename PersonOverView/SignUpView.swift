@@ -29,6 +29,7 @@ struct SignUpView : View {
                     Image("CloudKit")
                         .resizable()
                         .frame(width: 30, height: 30, alignment: .center)
+                        .clipShape(Circle())
                     Text("Sign Up CloudKit")
                         .font(.largeTitle)
                         .multilineTextAlignment(.center)
@@ -40,7 +41,7 @@ struct SignUpView : View {
                 .padding(15)
                 
                 VStack (alignment: .leading) {
-                    InputTextField(heading: "eMail address", placeHolder: "Enter your email address", value: $newItem.password)
+                    InputTextField(heading: "eMail address", placeHolder: "Enter your email address", value: $newItem.email)
                 }
                 .padding(15)
                 
@@ -55,7 +56,7 @@ struct SignUpView : View {
                 
                 VStack {
                     Button(action: {
-                        if !self.newItem.name.isEmpty {
+                        if !self.newItem.name.isEmpty, !self.newItem.email.isEmpty, !self.newItem.password.isEmpty {
                             let newItem = UserElement(name: self.newItem.name,
                                                       email: self.newItem.email,
                                                       password: self.newItem.password)
@@ -70,6 +71,8 @@ struct SignUpView : View {
                                     self.message = err.localizedDescription
                                 }
                             }
+                        } else {
+                            self.message = "Name, eMail or password cannot be empty." 
                         }
                         self.show.toggle()
                     }) {

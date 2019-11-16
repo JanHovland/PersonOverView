@@ -30,6 +30,7 @@ struct SignInView : View {
                     Image("CloudKit")
                         .resizable()
                         .frame(width: 30, height: 30, alignment: .center)
+                        .clipShape(Circle())
                     Text("Sign In CloudKit")
                         .font(.largeTitle)
                         .multilineTextAlignment(.center)
@@ -41,7 +42,7 @@ struct SignInView : View {
                 .padding(15)
                 
                 VStack (alignment: .leading) {
-                    InputTextField(heading: "Password",      placeHolder: "Enter your password",      value: $password)
+                    InputTextField(heading: "Password", placeHolder: "Enter your password", value: $password)
                 }
                 .padding(15)
                 
