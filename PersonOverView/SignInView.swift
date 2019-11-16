@@ -9,6 +9,10 @@
 //  Block comment : Ctrl + Cmd + / (on number pad)
 //  Indent        : Ctrl + Cmd + * (on number pad)
 
+//  Bug in 13.2 and 13.3 (17C5038a)  see: https://forums.developer.apple.com/thread/124757
+//  similar issue. I have a "normal" NavigationLink for my details view and going back to the list view causes the same crash as mentioned.
+//  All used to work well with ios 13.1 (iPhone and iPad), after upgrading to ios 13.2, the crash occurs.
+
 import SwiftUI
 
 struct SignInView : View {
