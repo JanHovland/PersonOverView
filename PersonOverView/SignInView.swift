@@ -36,7 +36,7 @@ struct SignInView : View {
                         .clipShape(Circle())
                     Text("Sign In CloudKit")
                         .font(.largeTitle)
-                        // .multilineTextAlignment(.center)
+                    // .multilineTextAlignment(.center)
                 }.padding(40)
                 
                 VStack (alignment: .leading) {
@@ -65,18 +65,11 @@ struct SignInView : View {
                             switch result {
                             case .success(let newItem):
                                 self.userElements.user.append(newItem)
-                                print("Successfully fetched user's name")
+                                self.message = "Successfully fetched user's data"
                             case .failure(let err):
-                                print(err.localizedDescription)
+                                self.message = err.localizedDescription
                             }
                         }
-                        
-                        
-                        //                        if CheckUser(eMail: self.email, password: self.password) {
-                        //                            self.message = "OK"
-                        //                        } else {
-                        //                            self.message = "Wrong"
-                        //                        }
                         self.show.toggle()
                     }) {
                         Text("Login")
