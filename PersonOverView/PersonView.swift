@@ -31,14 +31,14 @@ struct PersonView : View {
         NavigationView {
             Form {
                 
-                InputTextField(heading: "First name",   placeHolder: "Enter the first name",    value: $firstName)
-                InputTextField(heading: "Last name",    placeHolder: "Enter the last name",     value: $lastName)
-                InputTextField(heading: "eMail",        placeHolder: "Enter the email address", value: $personEmail)
-                InputTextField(heading: "Address",      placeHolder: "Enter the address",       value: $address)
-                InputTextField(heading: "Phone Number", placeHolder: "Enter the phone number",  value: $phoneNumber)
+                InputTextField(secure: false, heading: "First name",   placeHolder: "Enter the first name",    value: $firstName)
+                InputTextField(secure: false, heading: "Last name",    placeHolder: "Enter the last name",     value: $lastName)
+                InputTextField(secure: false, heading: "eMail",        placeHolder: "Enter the email address", value: $personEmail)
+                InputTextField(secure: false, heading: "Address",      placeHolder: "Enter the address",       value: $address)
+                InputTextField(secure: false, heading: "Phone Number", placeHolder: "Enter the phone number",  value: $phoneNumber)
                 
                 HStack {
-                    InputTextField(heading: "City", placeHolder: "Enter the city", value: $city)
+                    InputTextField(secure: false, heading: "City", placeHolder: "Enter the city", value: $city)
                     Image(systemName: "magnifyingglass")
                         .resizable()
                         .frame(width: 20, height: 20, alignment: .center)
@@ -49,7 +49,7 @@ struct PersonView : View {
                         .font(.title)
                 }
                 
-                InputTextField(heading: "Municipality", placeHolder: "Enter the municipality",  value: $municipality)
+                InputTextField(secure: false, heading: "Municipality", placeHolder: "Enter the municipality",  value: $municipality)
                 
                 DatePicker(
                     selection: $dateOfBirth,

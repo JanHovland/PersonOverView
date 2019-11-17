@@ -36,19 +36,20 @@ struct SignUpView : View {
                 }
                 
                 VStack (alignment: .leading) {
-                    InputTextField(heading: "Enter your name", placeHolder: "Enter your name", value: $newItem.name)
-                        .autocapitalization(.sentences)
+                    InputTextField(secure: false, heading: "Enter your name", placeHolder: "Enter your name", value: $newItem.name)
+                        .autocapitalization(.words)
                 }
                 .padding(15)
                 
                 VStack (alignment: .leading) {
-                    InputTextField(heading: "eMail address", placeHolder: "Enter your email address", value: $newItem.email)
+                    InputTextField(secure: false, heading: "eMail address", placeHolder: "Enter your email address", value: $newItem.email)
                         .keyboardType(.emailAddress)
+                        .autocapitalization(.none)
                 }
                 .padding(15)
                 
                 VStack (alignment: .leading) {
-                    InputTextField(heading: "Password", placeHolder: "Enter your password", value: $newItem.password)
+                    InputTextField(secure: true, heading: "Password", placeHolder: "Enter your password", value: $newItem.password)
                 }
                 .padding(15)
                 
@@ -82,7 +83,8 @@ struct SignUpView : View {
                             .padding(15)
                     }
                 }
-                Spacer(minLength: 40)
+                
+                Spacer(minLength: 70)
             }
             .alert(isPresented: $show) {
                 return Alert(title: Text(self.message))

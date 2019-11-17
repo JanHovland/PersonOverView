@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct InputTextField: View {
+    var secure: Bool
     var heading: String
     var placeHolder: String
     @Binding var value: String
@@ -18,9 +19,17 @@ struct InputTextField: View {
             VStack (alignment: .leading) {
                 Text(heading)
                     .padding(-5)
-                TextField(placeHolder, text: $value)
-                    .padding(-7)
-                    .padding(.horizontal, 15)
+                    .font(.caption)
+                    .foregroundColor(.accentColor)
+                if secure {
+                    SecureField(placeHolder, text: $value)
+                        .padding(-7)
+                        .padding(.horizontal, 15)
+                } else {
+                    TextField(placeHolder, text: $value)
+                        .padding(-7)
+                        .padding(.horizontal, 15)
+                }
             }
         }
     }

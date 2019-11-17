@@ -36,17 +36,18 @@ struct SignInView : View {
                         .clipShape(Circle())
                     Text("Sign In CloudKit")
                         .font(.largeTitle)
-                        .multilineTextAlignment(.center)
+                        // .multilineTextAlignment(.center)
                 }.padding(40)
                 
                 VStack (alignment: .leading) {
-                    InputTextField(heading: "eMail address", placeHolder: "Enter your email address", value: $email)
+                    InputTextField(secure: false, heading: "eMail address", placeHolder: "Enter your email address", value: $email)
                         .keyboardType(.emailAddress)
+                        .autocapitalization(.none)
                 }
                 .padding(15)
                 
                 VStack (alignment: .leading) {
-                    InputTextField(heading: "Password", placeHolder: "Enter your password", value: $password)
+                    InputTextField(secure: true, heading: "Password", placeHolder: "Enter your password", value: $password)
                 }
                 .padding(15)
                 
@@ -91,9 +92,9 @@ struct SignInView : View {
                         self.selection = 4
                     }) {
                         Text("Sign Up")
-                    } .padding(15)
+                    } .padding(30)
                 }
-                Spacer(minLength: 20)
+                Spacer(minLength: 50)
             }
             .alert(isPresented: $show) {
                 return Alert(title: Text(self.message))
