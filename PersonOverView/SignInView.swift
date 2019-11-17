@@ -71,6 +71,7 @@ struct SignInView : View {
                             case .success(let newItem):
                                 self.userElements.user.append(newItem)
                                 self.message = "Successfully fetched user's data"
+                                // UITabBar.appearance().isHidden = false
                             case .failure(let err):
                                 self.message = err.localizedDescription
                                 self.show.toggle()

@@ -46,6 +46,10 @@ struct PersonOverView: View {
                 .tag(2)
             
         }
+        .onAppear() {
+            // Hides the TabBar
+            // UITabBar.appearance().isHidden = true
+        }
     }
 }
 
