@@ -17,7 +17,7 @@ import SwiftUI
 
 struct SignInView : View {
     
-    @State private var email: String = ""
+    @State private var email: String = "jan.hovland@lyse.net"
     @State private var password: String = ""
     @State private var selection: Int? = nil
     @State private var show: Bool = false
@@ -36,7 +36,6 @@ struct SignInView : View {
                         .clipShape(Circle())
                     Text("Sign In CloudKit")
                         .font(.largeTitle)
-                    // .multilineTextAlignment(.center)
                 }.padding(40)
                 
                 VStack (alignment: .leading) {
@@ -57,20 +56,32 @@ struct SignInView : View {
                 
                 HStack {
                     Button(action: {
-                        // Check if the user is authorized
                         
-                        // let predicate = true // ("name == \("Jan Hovland")")
+                        // Check if the user exists
                         
-                        CloudKitUser.fetchUser { (result) in
+                        let email = self.email
+                        let password = self.password
+                        let predicate = NSPredicate(format: "email == %@ AND password == %@", email, password)
+
+                        self.message = ""
+                        self.show = false
+                        
+                        CloudKitUser.fetchUser(predicate: predicate) { (result) in
                             switch result {
                             case .success(let newItem):
                                 self.userElements.user.append(newItem)
                                 self.message = "Successfully fetched user's data"
                             case .failure(let err):
                                 self.message = err.localizedDescription
+                                self.show.toggle()
                             }
                         }
-                        self.show.toggle()
+                        if self.message.count == 0 {
+                            self.message = "User does not exist"
+                           self.show.toggle()
+                        }
+                        
+                        // self.show.toggle()
                     }) {
                         Text("Login")
                     }.padding(15)

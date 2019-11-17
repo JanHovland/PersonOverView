@@ -74,12 +74,12 @@ struct CloudKitUser {
     
     // MARK: - fetching from CloudKit
     // static func fetchUser(predicate: Int, completion: @escaping (Result<UserElement, Error>) -> ()) {
-    static func fetchUser(completion: @escaping (Result<UserElement, Error>) -> ()) {
-        let pred = NSPredicate(value: true)
+    static func fetchUser(predicate:  NSPredicate, completion: @escaping (Result<UserElement, Error>) -> ()) {
+        // let pred = NSPredicate(value: true)
         // let pred = NSPredicate(value: predicate) // "name == %@", "Python")
         
         let sort = NSSortDescriptor(key: "creationDate", ascending: false)
-        let query = CKQuery(recordType: RecordType.User, predicate: pred)
+        let query = CKQuery(recordType: RecordType.User, predicate: predicate)
         query.sortDescriptors = [sort]
         
         let operation = CKQueryOperation(query: query)
@@ -89,8 +89,6 @@ struct CloudKitUser {
         operation.recordFetchedBlock = { record in
             DispatchQueue.main.async {
                 let recordID = record.recordID
-                print("\(recordID)")
-                
                 
                 guard let name = record["name"] as? String else { return }
                 print("\(name)")
