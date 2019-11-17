@@ -29,7 +29,7 @@ struct CloudKitUser {
     }
     
     // MARK: - saving to CloudKit
-    static func saveUser(item: UserElement, completion: @escaping (Result<UserElement, Error>) -> ()) {
+        static func saveUser(item: UserElement, completion: @escaping (Result<UserElement, Error>) -> ()) {
         let itemRecord = CKRecord(recordType: RecordType.User)
         itemRecord["name"] = item.name as CKRecordValue
         itemRecord["email"] = item.email as CKRecordValue
@@ -73,8 +73,10 @@ struct CloudKitUser {
     }
     
     // MARK: - fetching from CloudKit
-    static func fetchUsers(completion: @escaping (Result<UserElement, Error>) -> ()) {
-        let pred = NSPredicate(format: "name == %@", "Python")
+    // static func fetchUser(predicate: Int, completion: @escaping (Result<UserElement, Error>) -> ()) {
+    static func fetchUser(completion: @escaping (Result<UserElement, Error>) -> ()) {
+        let pred = NSPredicate(value: true)
+        // let pred = NSPredicate(value: predicate) // "name == %@", "Python")
         
         let sort = NSSortDescriptor(key: "creationDate", ascending: false)
         let query = CKQuery(recordType: RecordType.User, predicate: pred)

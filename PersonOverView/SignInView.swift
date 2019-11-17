@@ -22,6 +22,9 @@ struct SignInView : View {
     @State private var selection: Int? = nil
     @State private var show: Bool = false
     @State private var message: String = ""
+    @State private var newItem = UserElement(name: "", email: "", password: "")
+    
+    @EnvironmentObject var userElements: UserElements
     
     var body: some View {
         NavigationView {
@@ -38,6 +41,7 @@ struct SignInView : View {
                 
                 VStack (alignment: .leading) {
                     InputTextField(heading: "eMail address", placeHolder: "Enter your email address", value: $email)
+                        .keyboardType(.emailAddress)
                 }
                 .padding(15)
                 
@@ -53,11 +57,25 @@ struct SignInView : View {
                 HStack {
                     Button(action: {
                         // Check if the user is authorized
-                        if CheckUser(eMail: self.email, password: self.password) {
-                            self.message = "OK"
-                        } else {
-                            self.message = "Wrong"
+                        
+                        // let predicate = true // ("name == \("Jan Hovland")")
+                        
+                        CloudKitUser.fetchUser { (result) in
+                            switch result {
+                            case .success(let newItem):
+                                self.userElements.user.append(newItem)
+                                print("Successfully fetched user's name")
+                            case .failure(let err):
+                                print(err.localizedDescription)
+                            }
                         }
+                        
+                        
+                        //                        if CheckUser(eMail: self.email, password: self.password) {
+                        //                            self.message = "OK"
+                        //                        } else {
+                        //                            self.message = "Wrong"
+                        //                        }
                         self.show.toggle()
                     }) {
                         Text("Login")

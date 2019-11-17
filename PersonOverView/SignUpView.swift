@@ -37,11 +37,13 @@ struct SignUpView : View {
                 
                 VStack (alignment: .leading) {
                     InputTextField(heading: "Enter your name", placeHolder: "Enter your name", value: $newItem.name)
+                        .autocapitalization(.sentences)
                 }
                 .padding(15)
                 
                 VStack (alignment: .leading) {
                     InputTextField(heading: "eMail address", placeHolder: "Enter your email address", value: $newItem.email)
+                        .keyboardType(.emailAddress)
                 }
                 .padding(15)
                 
@@ -72,7 +74,7 @@ struct SignUpView : View {
                                 }
                             }
                         } else {
-                            self.message = "Name, eMail or password cannot be empty." 
+                            self.message = "Name, eMail or password cannot be empty."
                         }
                         self.show.toggle()
                     }) {
