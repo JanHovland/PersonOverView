@@ -15,6 +15,8 @@ import SwiftUI
 struct PersonOverView: View {
     @State private var selection = 0
  
+    var a: Int = 0
+    
     var body: some View {
         TabView(selection: $selection){
             
@@ -48,7 +50,9 @@ struct PersonOverView: View {
         }
         .onAppear() {
             // Hides the main TabBar
-            // UITabBar.appearance().isHidden = true
+            if self.a == 0 {
+                UITabBar.appearance().isHidden = true
+            }
         }
     }
 }
