@@ -12,12 +12,14 @@
 
 import SwiftUI
 
+
 struct PersonOverView: View {
+    
     @State private var selection = 0
- 
-    var a: Int = 0
+    @EnvironmentObject var settings: UserSettings
     
     var body: some View {
+        
         TabView(selection: $selection){
             
            SignInView()
@@ -50,17 +52,12 @@ struct PersonOverView: View {
         }
         .onAppear() {
             // Hides the main TabBar
-            if self.a == 0 {
-                UITabBar.appearance().isHidden = true
-            }
+             UITabBar.appearance().isHidden = self.settings.hideTabBar
         }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        PersonOverView()
-    }
+class UserSettings: ObservableObject {
+    @Published var hideTabBar: Bool = true
 }
-
 

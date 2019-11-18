@@ -24,6 +24,8 @@ struct SignInView : View {
     @State private var message: String = ""
     @State private var newItem = UserElement(name: "", email: "", password: "")
     
+    @EnvironmentObject var settings: UserSettings
+    
     @EnvironmentObject var userElements: UserElements
     
     var body: some View {
@@ -69,20 +71,17 @@ struct SignInView : View {
                         CloudKitUser.fetchUser(predicate: predicate) { (result) in
                             switch result {
                             case .success(let newItem):
+                                // Set hideTabBar to false,
+                                // but the tabbar in PersonOverView.swift is not updated.
+                                self.settings.hideTabBar = false
                                 self.userElements.user.append(newItem)
                                 self.message = "Successfully fetched user's data"
-                                // UITabBar.appearance().isHidden = false
+                                self.show.toggle()
                             case .failure(let err):
                                 self.message = err.localizedDescription
                                 self.show.toggle()
                             }
                         }
-                        if self.message.count == 0 {
-                            self.message = "User does not exist"
-                           self.show.toggle()
-                        }
-                        
-                        // self.show.toggle()
                     }) {
                         Text("Login")
                     }.padding(15)
@@ -107,4 +106,5 @@ struct SignInView : View {
         }
     }
 }
+
 

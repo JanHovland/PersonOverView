@@ -26,8 +26,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
         // let contentView = ContentView().environment(\.managedObjectContext, context)
         
-        let contentView = PersonOverView().environmentObject(UserElements())
-
+        let contentView = PersonOverView().environmentObject(UserElements()).environmentObject(UserSettings())
+        
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
@@ -36,7 +36,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
             window.rootViewController = UIHostingController(rootView:
                 
-                contentView.environmentObject(UserElements()))
+                contentView.environmentObject(UserElements()).environmentObject(UserSettings()))
             
                 // Adding another XxxxElements
                 // contentView.environmentObject(ListElements()).environmentObject(XxxxElements()))
