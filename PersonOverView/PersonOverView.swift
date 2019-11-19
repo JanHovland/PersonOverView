@@ -19,9 +19,7 @@ struct PersonOverView: View {
     @EnvironmentObject var settings: UserSettings
     
     var body: some View {
-        
         TabView(selection: $selection){
-            
            SignInView()
                .tabItem {
                     VStack {
@@ -30,7 +28,6 @@ struct PersonOverView: View {
                     }
                }
                .tag(0)
-            
             SettingsView()
                 .tabItem {
                     VStack {
@@ -39,7 +36,6 @@ struct PersonOverView: View {
                     }
                 }
                 .tag(1)
-            
             PersonView()
                 .tabItem {
                     VStack {
@@ -48,16 +44,12 @@ struct PersonOverView: View {
                     }
                 }
                 .tag(2)
-            
-        }
-        .onAppear() {
-            // Hides the main TabBar
-             UITabBar.appearance().isHidden = self.settings.hideTabBar
         }
     }
 }
 
 class UserSettings: ObservableObject {
-    @Published var hideTabBar: Bool = true
+    @Published var hideTabBar: Bool = false
 }
+
 

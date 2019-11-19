@@ -73,7 +73,7 @@ struct SignInView : View {
                             case .success(let newItem):
                                 // Set hideTabBar to false,
                                 // but the tabbar in PersonOverView.swift is not updated.
-                                self.settings.hideTabBar = false
+                                // self.settings.hideTabBar = false
                                 self.userElements.user.append(newItem)
                                 self.message = "Successfully fetched user's data"
                                 self.show.toggle()
