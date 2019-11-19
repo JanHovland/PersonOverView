@@ -21,56 +21,54 @@ struct PersonView : View {
     @State var phoneNumber: String = ""
     @State var city: String = ""
     @State var municipality: String = ""
-    
     @State var gender = 0
-    var genders = ["Man", "Woman"]
-    
     @State var dateOfBirth = Date()
+    
+    @EnvironmentObject var settings: UserSettings
+    
+    var genders = ["Man", "Woman"]
     
     var body: some View {
         NavigationView {
-            Form {
-                
-                InputTextField(secure: false, heading: "First name",   placeHolder: "Enter the first name",    value: $firstName)
-                InputTextField(secure: false, heading: "Last name",    placeHolder: "Enter the last name",     value: $lastName)
-                InputTextField(secure: false, heading: "eMail",        placeHolder: "Enter the email address", value: $personEmail)
-                InputTextField(secure: false, heading: "Address",      placeHolder: "Enter the address",       value: $address)
-                InputTextField(secure: false, heading: "Phone Number", placeHolder: "Enter the phone number",  value: $phoneNumber)
-                
-                HStack {
-                    InputTextField(secure: false, heading: "City", placeHolder: "Enter the city", value: $city)
-                    Image(systemName: "magnifyingglass")
-                        .resizable()
-                        .frame(width: 20, height: 20, alignment: .center)
-                        .foregroundColor(.blue)
-                        // .font(Font.system(.title).bold())
-                        // .font(Font.system(.headline))
-                        // .font(Font.system(.title))
-                        .font(.title)
+            VStack {
+                if settings.hideTabBar {
+                    NavigationLink(destination: SignInView()) {
+                        Text(settings.textMessage)
+                    }
+                } else {
+                    Form {
+                        InputTextField(secure: false, heading: "First name",   placeHolder: "Enter your first name",    value: $firstName)
+                        InputTextField(secure: false, heading: "Last name",    placeHolder: "Enter your last name",     value: $lastName)
+                        InputTextField(secure: false, heading: "eMail",        placeHolder: "Enter your email address", value: $personEmail)
+                        InputTextField(secure: false, heading: "Address",      placeHolder: "Enter your address",       value: $address)
+                        InputTextField(secure: false, heading: "Phone Number", placeHolder: "Enter your phone number",  value: $phoneNumber)
+                        HStack {
+                            InputTextField(secure: false, heading: "City", placeHolder: "Enter the city", value: $city)
+                            Image(systemName: "magnifyingglass")
+                                .resizable()
+                                .frame(width: 40, height: 40, alignment: .center)
+                                .foregroundColor(.blue)
+                                .font(.title)
+                        }
+                        InputTextField(secure: false, heading: "Municipality", placeHolder: "Enter your municipality",  value: $municipality)
+                        DatePicker(
+                            selection: $dateOfBirth,
+                            in: ...Date(),
+                            displayedComponents: [.date],
+                            label: {
+                                Text("Date of birth")
+                                    .font(.footnote)
+                                    .padding(-5)
+                        })
+                        // Returning an integer 0 == "Man" 1 == "Women
+                        InputGender(heading: "Gender ", genders: genders, value: $gender)
+                    }
+                    .navigationBarTitle(Text("Personal information"), displayMode: .inline)
                 }
-                
-                InputTextField(secure: false, heading: "Municipality", placeHolder: "Enter the municipality",  value: $municipality)
-                
-                DatePicker(
-                    selection: $dateOfBirth,
-                    in: ...Date(),
-                    displayedComponents: [.date],
-                    label: {
-                        Text("Date of birth")
-                            .font(.footnote)
-                            .padding(-5)
-                }
-                )
-                
-                // Returning an inteher 0 == "Man" 1 == "Women
-                InputGender(heading: "Gender ", genders: genders, value: $gender)
-                
             }
-            .navigationBarTitle(Text("Personal information"), displayMode: .inline)
-            
         }
-            // Removes all separators below in the List view
-            .listStyle(GroupedListStyle())
+        // Removes all separators below in the List view
+        .listStyle(GroupedListStyle())
     }
 }
 

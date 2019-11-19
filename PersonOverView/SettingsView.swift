@@ -17,18 +17,17 @@ struct SettingsView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                if settings.hideTabBar {
-                    NavigationLink(destination: SignInView()) {
-                        Text("You are not logged in")
-                    }
-                } else {
-                    Text("Settings")
-                        .font(.title)
+            if settings.hideTabBar {
+                NavigationLink(destination: SignInView()) {
+                    Text(settings.textMessage)
                 }
+            } else {
+                Text("Settings")
+                    .font(.title)
             }
         }
     }
 }
+
 
 

@@ -50,6 +50,8 @@ struct PersonOverView: View {
 
 class UserSettings: ObservableObject {
     @Published var hideTabBar: Bool = true
+    @Published var textMessage: String = "Not Signed In, return to Sign In Screen."
+    
 }
 
 
