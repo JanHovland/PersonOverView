@@ -49,7 +49,7 @@ struct PersonOverView: View {
 }
 
 class UserSettings: ObservableObject {
-    @Published var hideTabBar: Bool = false
+    @Published var hideTabBar: Bool = true
 }
 
 
