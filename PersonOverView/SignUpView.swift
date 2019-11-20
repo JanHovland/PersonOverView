@@ -23,72 +23,65 @@ struct SignUpView : View {
     @EnvironmentObject var userElements: UserElements
     
     var body: some View {
-        NavigationView {
-            VStack (alignment: .center) {
-                HStack {
-                    Image("CloudKit")
-                        .resizable()
-                        .frame(width: 30, height: 30, alignment: .center)
-                        .clipShape(Circle())
-                    Text("Sign Up CloudKit")
-                        .font(.largeTitle)
-                        .multilineTextAlignment(.center)
-                }
-                
-                VStack (alignment: .leading) {
-                    InputTextField(secure: false, heading: "Enter your name", placeHolder: "Enter your name", value: $newItem.name)
-                        .autocapitalization(.words)
-                }
-                .padding(15)
-                
-                VStack (alignment: .leading) {
-                    InputTextField(secure: false, heading: "eMail address", placeHolder: "Enter your email address", value: $newItem.email)
-                        .keyboardType(.emailAddress)
-                        .autocapitalization(.none)
-                }
-                .padding(15)
-                
-                VStack (alignment: .leading) {
-                    InputTextField(secure: true, heading: "Password", placeHolder: "Enter your password", value: $newItem.password)
-                }
-                .padding(15)
-                
-                Text("Password must be at least 8 characters long")
-                    .font(.footnote)
-                    .foregroundColor(.red)
-                
-                VStack {
-                    Button(action: {
-                        if !self.newItem.name.isEmpty, !self.newItem.email.isEmpty, !self.newItem.password.isEmpty {
-                            let newItem = UserElement(name: self.newItem.name,
-                                                      email: self.newItem.email,
-                                                      password: self.newItem.password)
-                            // MARK: - saving to CloudKit
-                            CloudKitUser.saveUser(item: newItem) { (result) in
-                                switch result {
-                                case .success(let newItem):
-                                    self.userElements.user.insert(newItem, at: 0)
-                                    self.message = "Successfully added user"
-                                case .failure(let err):
-                                    print(err.localizedDescription)
-                                    self.message = err.localizedDescription
-                                }
-                            }
-                        } else {
-                            self.message = "Name, eMail or password cannot be empty."
-                        }
-                        self.show.toggle()
-                    }) {
-                        Text("Sign up")
-                            .padding(15)
-                    }
-                }
-                
-                Spacer(minLength: 70)
+        VStack (alignment: .center) {
+            HStack {
+                Image("CloudKit")
+                    .resizable()
+                    .frame(width: 20, height: 20, alignment: .center)
+                    .clipShape(Circle())
+                Text("Sign Up CloudKit")
+                    .font(.headline)
+                    .multilineTextAlignment(.center)
             }
-            .alert(isPresented: $show) {
-                return Alert(title: Text(self.message))
+            VStack (alignment: .leading) {
+                InputTextField(secure: false, heading: "Enter your name", placeHolder: "Enter your name", value: $newItem.name)
+                    .autocapitalization(.words)
+            }
+            .padding(10)
+            VStack (alignment: .leading) {
+                InputTextField(secure: false, heading: "eMail address", placeHolder: "Enter your email address", value: $newItem.email)
+                    .keyboardType(.emailAddress)
+                    .autocapitalization(.none)
+            }
+            .padding(10)
+            VStack (alignment: .leading) {
+                InputTextField(secure: true, heading: "Password", placeHolder: "Enter your password", value: $newItem.password)
+            }
+            .padding(10)
+            Text("Password must be at least 8 characters long")
+                .font(.footnote)
+                .foregroundColor(.red)
+            VStack {
+                Button(action: {
+                    if self.newItem.name.count > 0, self.newItem.email.count > 0, self.newItem.password.count > 0 {
+                        let newItem = UserElement(name: self.newItem.name,
+                                                  email: self.newItem.email,
+                                                  password: self.newItem.password)
+                        // MARK: - saving to CloudKit
+                        CloudKitUser.saveUser(item: newItem) { (result) in
+                            switch result {
+                            case .success(let newItem):
+                                self.userElements.user.insert(newItem, at: 0)
+                                self.message = "Successfully added user"
+                            case .failure(let err):
+                                print(err.localizedDescription)
+                                self.message = err.localizedDescription
+                            }
+                        }
+                    } else {
+                        self.message = "Name, eMail or Password must all contain a value."
+                    }
+                    self.show.toggle()
+                }) {
+                    Text("Sign up")
+                        .padding(55)
+                }
             }
         }
+        .alert(isPresented: $show) {
+            return Alert(title: Text(self.message))
+        }
+        
     }
 }
+

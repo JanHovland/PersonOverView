@@ -16,11 +16,16 @@ struct SettingsView: View {
     @EnvironmentObject var settings: UserSettings
     
     var body: some View {
-        NavigationView {
+        VStack {
             if settings.hideTabBar {
-                NavigationLink(destination: SignInView()) {
-                    Text(settings.textMessage)
-                }
+                
+                toSignInView()
+                
+//                NavigationView {
+//                    NavigationLink(destination: SignInView()) {
+//                        Text(settings.textMessage)
+//                    }
+//                }
             } else {
                 Text("Settings")
                     .font(.title)
@@ -29,5 +34,11 @@ struct SettingsView: View {
     }
 }
 
+func toSignInView() -> some View {
+    SignInView()
+}
 
+func toSignUpView() -> some View {
+    SignUpView()
+}
 

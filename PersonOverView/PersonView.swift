@@ -29,12 +29,13 @@ struct PersonView : View {
     var genders = ["Man", "Woman"]
     
     var body: some View {
-        NavigationView {
+        // NavigationView {
             VStack {
                 if settings.hideTabBar {
-                    NavigationLink(destination: SignInView()) {
-                        Text(settings.textMessage)
-                    }
+                    toSignInView()
+//                    NavigationLink(destination: SignInView()) {
+//                        Text(settings.textMessage)
+//                    }
                 } else {
                     Form {
                         InputTextField(secure: false, heading: "First name",   placeHolder: "Enter your first name",    value: $firstName)
@@ -63,10 +64,10 @@ struct PersonView : View {
                         // Returning an integer 0 == "Man" 1 == "Women
                         InputGender(heading: "Gender ", genders: genders, value: $gender)
                     }
-                    .navigationBarTitle(Text("Personal information"), displayMode: .inline)
+                    // .navigationBarTitle(Text("Personal information"), displayMode: .inline)
                 }
             }
-        }
+        // }
         // Removes all separators below in the List view
         .listStyle(GroupedListStyle())
     }

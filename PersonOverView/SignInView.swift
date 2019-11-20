@@ -17,63 +17,56 @@ import SwiftUI
 
 struct SignInView : View {
     
-    @State private var email: String = "jan.hovland@lyse.net"
+    @State private var name: String = ""
+    @State private var email: String = ""
     @State private var password: String = ""
-    @State private var selection: Int? = nil
     @State private var show: Bool = false
     @State private var message: String = ""
     @State private var newItem = UserElement(name: "", email: "", password: "")
     
-    @EnvironmentObject var settings: UserSettings
-    
     @EnvironmentObject var userElements: UserElements
     
     var body: some View {
-        NavigationView {
-            VStack (alignment: .center) {
-                HStack {
-                    Image("CloudKit")
-                        .resizable()
-                        .frame(width: 30, height: 30, alignment: .center)
-                        .clipShape(Circle())
-                    Text("Sign In CloudKit")
-                        .font(.largeTitle)
-                }.padding(40)
-                
-                VStack (alignment: .leading) {
-                    InputTextField(secure: false, heading: "eMail address", placeHolder: "Enter your email address", value: $email)
-                        .keyboardType(.emailAddress)
-                        .autocapitalization(.none)
-                }
-                .padding(15)
-                
-                VStack (alignment: .leading) {
-                    InputTextField(secure: true, heading: "Password", placeHolder: "Enter your password", value: $password)
-                }
-                .padding(15)
-                
-                Text("Password must be at least 8 characters long")
-                    .font(.footnote)
-                    .foregroundColor(.red)
-                
-                HStack {
-                    Button(action: {
-                        
+        VStack (alignment: .center) {
+            HStack {
+                Image("CloudKit")
+                    .resizable()
+                    .frame(width: 20, height: 20, alignment: .center)
+                    .clipShape(Circle())
+                Text("Sign In CloudKit")
+                    .font(.headline)
+                    .multilineTextAlignment(.center)
+            }
+            VStack (alignment: .leading) {
+                InputTextField(secure: false, heading: "Enter your name", placeHolder: "Enter your name", value: $newItem.name)
+                    .autocapitalization(.words)
+            }
+            .padding(10)
+            VStack (alignment: .leading) {
+                InputTextField(secure: false, heading: "eMail address", placeHolder: "Enter your email address", value: $newItem.email)
+                    .keyboardType(.emailAddress)
+                    .autocapitalization(.none)
+            }
+            .padding(10)
+            VStack (alignment: .leading) {
+                InputTextField(secure: true, heading: "Password", placeHolder: "Enter your password", value: $newItem.password)
+            }
+            .padding(10)
+            Text("Password must be at least 8 characters long")
+                .font(.footnote)
+                .foregroundColor(.red)
+            VStack {
+                Button(action: {
+                    if self.newItem.email.count > 0, self.newItem.password.count > 0 {
                         // Check if the user exists
-                        
-                        let email = self.email
-                        let password = self.password
+                        let email = self.newItem.email
+                        let password = self.newItem.password
                         let predicate = NSPredicate(format: "email == %@ AND password == %@", email, password)
-
                         self.message = ""
                         self.show = false
-                        
                         CloudKitUser.fetchUser(predicate: predicate) { (result) in
                             switch result {
                             case .success(let newItem):
-                                // Set hideTabBar to false,
-                                // but the tabbar in PersonOverView.swift is not updated.
-                                // self.settings.hideTabBar = false
                                 self.userElements.user.append(newItem)
                                 self.message = "Successfully fetched user's data"
                                 self.show.toggle()
@@ -82,29 +75,18 @@ struct SignInView : View {
                                 self.show.toggle()
                             }
                         }
-                    }) {
-                        Text("Login")
-                    }.padding(15)
-                    
-                    Spacer(minLength: 15)
-                    
-                    NavigationLink(destination: SignUpView(), tag: 4, selection: self.$selection) {
-                        Text("")
+                    } else {
+                        self.message = "Both eMail and Password must have a value"
+                        self.show.toggle()
                     }
-                    Text("No account?")
-                    Button(action: {
-                        self.selection = 4
-                    }) {
-                        Text("Sign Up")
-                    } .padding(30)
+                }) {
+                    Text("Sign In")
+                        .padding(55)
                 }
-                Spacer(minLength: 50)
             }
-            .alert(isPresented: $show) {
-                return Alert(title: Text(self.message))
-            }
+        }
+        .alert(isPresented: $show) {
+            return Alert(title: Text(self.message))
         }
     }
 }
-
-

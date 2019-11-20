@@ -28,6 +28,14 @@ struct PersonOverView: View {
                     }
                }
                .tag(0)
+            SignUpView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "arrow.right.to.line.alt")
+                        Text("SignUp")
+                    }
+                }
+                .tag(1)
             SettingsView()
                 .tabItem {
                     VStack {
@@ -35,7 +43,7 @@ struct PersonOverView: View {
                         Text("Settings")
                     }
                 }
-                .tag(1)
+                .tag(2)
             PersonView()
                 .tabItem {
                     VStack {
@@ -43,7 +51,7 @@ struct PersonOverView: View {
                         Text("Personas")
                     }
                 }
-                .tag(2)
+                .tag(3)
         }
     }
 }
