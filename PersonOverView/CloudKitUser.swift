@@ -73,10 +73,7 @@ struct CloudKitUser {
     }
     
     // MARK: - fetching from CloudKit
-    // static func fetchUser(predicate: Int, completion: @escaping (Result<UserElement, Error>) -> ()) {
     static func fetchUser(predicate:  NSPredicate, completion: @escaping (Result<UserElement, Error>) -> ()) {
-        // let pred = NSPredicate(value: true)
-        // let pred = NSPredicate(value: predicate) // "name == %@", "Python")
         
         let sort = NSSortDescriptor(key: "creationDate", ascending: false)
         let query = CKQuery(recordType: RecordType.User, predicate: predicate)

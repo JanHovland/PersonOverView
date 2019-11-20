@@ -70,6 +70,9 @@ struct SignInView : View {
                         // Check if the user exists
                         let email = self.newItem.email
                         let password = self.newItem.password
+                        
+                        // Check different predicates at :   https://nspredicate.xyz
+                        
                         let predicate = NSPredicate(format: "email == %@ AND password == %@", email, password)
                         self.message = ""
                         self.show = false
@@ -79,6 +82,9 @@ struct SignInView : View {
                                 self.userElements.user.append(newItem)
                                 self.message = "Successfully fetched user's data"
                                 self.settings.hideTabBar = false
+                                self.newItem.name = newItem.name
+                                self.newItem.email = newItem.email
+                                self.newItem.password = newItem.password
                                 self.show.toggle()
                             case .failure(let err):
                                 self.message = err.localizedDescription
