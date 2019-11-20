@@ -8,6 +8,6 @@
 
 import SwiftUI
 
-func toSignInView() -> some View {
+func ToSignInView() -> some View {
     SignInView()
 }

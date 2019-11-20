@@ -31,7 +31,7 @@ struct PersonView : View {
     var body: some View {
         VStack {
             if settings.hideTabBar {
-                toSignInView()
+                ToSignInView()
             } else {
                 Form {
                     InputTextField(secure: false, heading: "First name",   placeHolder: "Enter your first name",    value: $firstName)
