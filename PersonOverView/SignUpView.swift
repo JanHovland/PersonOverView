@@ -21,6 +21,7 @@ struct SignUpView : View {
     @State private var newItem = UserElement(name: "", email: "", password: "")
     
     @EnvironmentObject var userElements: UserElements
+    @EnvironmentObject var settings: UserSettings
     
     var body: some View {
         VStack (alignment: .center) {
@@ -50,7 +51,15 @@ struct SignUpView : View {
             .padding(10)
             Text("Password must be at least 8 characters long")
                 .font(.footnote)
-                .foregroundColor(.red)
+                .foregroundColor(.blue)
+            if settings.hideTabBar {
+                Text(self.settings.hideMessage)
+                    .font(.footnote)
+                    .foregroundColor(.red)
+                    .padding(10)
+            } else {
+                Text("")
+            }
             VStack {
                 Button(action: {
                     if self.newItem.name.count > 0, self.newItem.email.count > 0, self.newItem.password.count > 0 {
@@ -74,7 +83,7 @@ struct SignUpView : View {
                     self.show.toggle()
                 }) {
                     Text("Sign up")
-                        .padding(55)
+                        .padding(45)
                 }
             }
         }

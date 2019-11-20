@@ -48,7 +48,7 @@ struct PersonOverView: View {
                 .tabItem {
                     VStack {
                         Image(systemName: "person.crop.circle")
-                        Text("Personas")
+                        Text("Persons")
                     }
                 }
                 .tag(3)
@@ -58,7 +58,7 @@ struct PersonOverView: View {
 
 class UserSettings: ObservableObject {
     @Published var hideTabBar: Bool = true
-    @Published var textMessage: String = "Not Signed In, return to Sign In Screen."
+    @Published var hideMessage: String = "Not Signed In, tabs for Settings and Persons are unavailable."
     
 }
 

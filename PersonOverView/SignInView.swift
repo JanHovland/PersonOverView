@@ -25,6 +25,7 @@ struct SignInView : View {
     @State private var newItem = UserElement(name: "", email: "", password: "")
     
     @EnvironmentObject var userElements: UserElements
+    @EnvironmentObject var settings: UserSettings
     
     var body: some View {
         VStack (alignment: .center) {
@@ -54,7 +55,15 @@ struct SignInView : View {
             .padding(10)
             Text("Password must be at least 8 characters long")
                 .font(.footnote)
-                .foregroundColor(.red)
+                .foregroundColor(.blue)
+            if settings.hideTabBar {
+                Text(self.settings.hideMessage)
+                    .font(.footnote)
+                    .foregroundColor(.red)
+                    .padding(10)
+            } else {
+                Text("")
+            }
             VStack {
                 Button(action: {
                     if self.newItem.email.count > 0, self.newItem.password.count > 0 {
@@ -69,6 +78,7 @@ struct SignInView : View {
                             case .success(let newItem):
                                 self.userElements.user.append(newItem)
                                 self.message = "Successfully fetched user's data"
+                                self.settings.hideTabBar = false
                                 self.show.toggle()
                             case .failure(let err):
                                 self.message = err.localizedDescription
@@ -81,7 +91,7 @@ struct SignInView : View {
                     }
                 }) {
                     Text("Sign In")
-                        .padding(55)
+                        .padding(45)
                 }
             }
         }
