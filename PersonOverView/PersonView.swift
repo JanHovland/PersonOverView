@@ -43,7 +43,7 @@ struct PersonView : View {
                         InputTextField(secure: false, heading: "City", placeHolder: "Enter the city", value: $city)
                         Image(systemName: "magnifyingglass")
                             .resizable()
-                            .frame(width: 40, height: 40, alignment: .center)
+                            .frame(width: 20, height: 20, alignment: .center)
                             .foregroundColor(.blue)
                             .font(.title)
                     }
