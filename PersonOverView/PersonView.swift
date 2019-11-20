@@ -34,20 +34,20 @@ struct PersonView : View {
                 ToSignInView()
             } else {
                 Form {
-                    InputTextField(secure: false, heading: "First name",   placeHolder: "Enter your first name",    value: $firstName)
-                    InputTextField(secure: false, heading: "Last name",    placeHolder: "Enter your last name",     value: $lastName)
-                    InputTextField(secure: false, heading: "eMail",        placeHolder: "Enter your email address", value: $personEmail)
-                    InputTextField(secure: false, heading: "Address",      placeHolder: "Enter your address",       value: $address)
-                    InputTextField(secure: false, heading: "Phone Number", placeHolder: "Enter your phone number",  value: $phoneNumber)
+                    InputTextField(disabled: false, secure: false, heading: "First name",   placeHolder: "Enter your first name",    value: $firstName)
+                    InputTextField(disabled: false, secure: false, heading: "Last name",    placeHolder: "Enter your last name",     value: $lastName)
+                    InputTextField(disabled: false, secure: false, heading: "eMail",        placeHolder: "Enter your email address", value: $personEmail)
+                    InputTextField(disabled: false, secure: false, heading: "Address",      placeHolder: "Enter your address",       value: $address)
+                    InputTextField(disabled: false, secure: false, heading: "Phone Number", placeHolder: "Enter your phone number",  value: $phoneNumber)
                     HStack {
-                        InputTextField(secure: false, heading: "City", placeHolder: "Enter the city", value: $city)
+                        InputTextField(disabled: false, secure: false, heading: "City", placeHolder: "Enter the city", value: $city)
                         Image(systemName: "magnifyingglass")
                             .resizable()
                             .frame(width: 20, height: 20, alignment: .center)
                             .foregroundColor(.blue)
                             .font(.title)
                     }
-                    InputTextField(secure: false, heading: "Municipality", placeHolder: "Enter your municipality",  value: $municipality)
+                    InputTextField(disabled: false, secure: false, heading: "Municipality", placeHolder: "Enter your municipality",  value: $municipality)
                     DatePicker(
                         selection: $dateOfBirth,
                         in: ...Date(),

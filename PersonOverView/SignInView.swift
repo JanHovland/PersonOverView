@@ -39,23 +39,23 @@ struct SignInView : View {
                     .multilineTextAlignment(.center)
             }
             VStack (alignment: .leading) {
-                InputTextField(secure: false, heading: "Enter your name", placeHolder: "Enter your name", value: $newItem.name)
+                InputTextField(disabled: true, secure: false, heading: "Your name", placeHolder: "Disabled field", value: $newItem.name)
                     .autocapitalization(.words)
             }
             .padding(10)
             VStack (alignment: .leading) {
-                InputTextField(secure: false, heading: "eMail address", placeHolder: "Enter your email address", value: $newItem.email)
+                InputTextField(disabled: false, secure: false, heading: "eMail address", placeHolder: "Enter your email address", value: $newItem.email)
                     .keyboardType(.emailAddress)
                     .autocapitalization(.none)
             }
             .padding(10)
             VStack (alignment: .leading) {
-                InputTextField(secure: true, heading: "Password", placeHolder: "Enter your password", value: $newItem.password)
+                InputTextField(disabled: false, secure: true, heading: "Password", placeHolder: "Enter your password", value: $newItem.password)
             }
             .padding(10)
-            Text("Password must be at least 8 characters long")
-                .font(.footnote)
-                .foregroundColor(.blue)
+//            Text("Password must be at least 8 characters long")
+//                .font(.footnote)
+//                .foregroundColor(.blue)
             if settings.hideTabBar {
                 Text(self.settings.hideMessage)
                     .font(.footnote)
@@ -72,8 +72,10 @@ struct SignInView : View {
                         let password = self.newItem.password
                         
                         // Check different predicates at :   https://nspredicate.xyz
-                        
+                        // %@ : an object (eg: String, date etc), whereas %i will be substituted with an integer.
+
                         let predicate = NSPredicate(format: "email == %@ AND password == %@", email, password)
+                        
                         self.message = ""
                         self.show = false
                         CloudKitUser.fetchUser(predicate: predicate) { (result) in
@@ -91,7 +93,8 @@ struct SignInView : View {
                                 self.show.toggle()
                             }
                         }
-                    } else {
+                    }
+                    else {
                         self.message = "Both eMail and Password must have a value"
                         self.show.toggle()
                     }
