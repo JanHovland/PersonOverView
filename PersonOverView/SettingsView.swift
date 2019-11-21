@@ -8,6 +8,7 @@
 
 //  Block comment : Ctrl + Cmd + / (on number pad)
 //  Indent        : Ctrl + Cmd + * (on number pad)
+
 import SwiftUI
 
 struct SettingsView: View {
@@ -18,7 +19,6 @@ struct SettingsView: View {
         VStack {
             if settings.hideTabBar {
                 toSignInView()
-                
 //                NavigationView {
 //                    NavigationLink(destination: SignInView()) {
 //                        Text(settings.textMessage)
