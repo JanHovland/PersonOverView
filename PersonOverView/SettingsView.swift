@@ -13,7 +13,7 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @EnvironmentObject var settings: UserSettings
+    @EnvironmentObject var settings: UserSettings //
     
     var body: some View {
         VStack {
