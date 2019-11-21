@@ -25,7 +25,7 @@
 		DB302B8F237EF43400076D10 /* CloudKitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B8E237EF43400076D10 /* CloudKitUser.swift */; };
 		DB302B93237FDD8600076D10 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB302B92237FDD8600076D10 /* CloudKit.framework */; };
 		DBD509572385614700D524EA /* ToSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD509562385614700D524EA /* ToSignInView.swift */; };
-		DBD50959238561AF00D524EA /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD50958238561AF00D524EA /* SettingsView.swift */; };
+		DBDDEB4A2386910700DD82B3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDDEB492386910700DD82B3 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,7 +50,7 @@
 		DB302B90237FDD7200076D10 /* PersonOverView.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonOverView.entitlements; sourceTree = "<group>"; };
 		DB302B92237FDD8600076D10 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		DBD509562385614700D524EA /* ToSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToSignInView.swift; sourceTree = "<group>"; };
-		DBD50958238561AF00D524EA /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = "../../../Library/Mobile Documents/com~apple~CloudDocs/.Trash/SettingsView.swift"; sourceTree = "<group>"; };
+		DBDDEB492386910700DD82B3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +98,7 @@
 				DB302B70237EF02300076D10 /* PersonOverView.swift */,
 				DB302B8A237EF33100076D10 /* PersonView.swift */,
 				DB302B6B237EF02300076D10 /* SceneDelegate.swift */,
-				DBD50958238561AF00D524EA /* SettingsView.swift */,
+				DBDDEB492386910700DD82B3 /* SettingsView.swift */,
 				DB302B84237EF27400076D10 /* SignInView.swift */,
 				DB302B86237EF2A700076D10 /* SignUpView.swift */,
 				DBD509562385614700D524EA /* ToSignInView.swift */,
@@ -196,7 +196,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBD50959238561AF00D524EA /* SettingsView.swift in Sources */,
+				DBDDEB4A2386910700DD82B3 /* SettingsView.swift in Sources */,
 				DB302B6F237EF02300076D10 /* PersonOverView.xcdatamodeld in Sources */,
 				DB302B6A237EF02300076D10 /* AppDelegate.swift in Sources */,
 				DB302B71237EF02300076D10 /* PersonOverView.swift in Sources */,
