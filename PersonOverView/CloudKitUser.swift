@@ -187,5 +187,4 @@ struct CloudKitUser {
         }
     }
     
- }
-
+}

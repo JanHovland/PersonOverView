@@ -28,22 +28,24 @@ struct InputTextField: View {
                         SecureField(placeHolder, text: $value)
                             .padding(-7)
                             .padding(.horizontal, 15)
-                            .disabled(true)
+                            .disabled(false)
                     } else {
                         TextField(placeHolder, text: $value)
                             .padding(-7)
                             .padding(.horizontal, 15)
-                            .disabled(true)
+                            .disabled(false)
                     }
                 } else {
                     if secure {
                         SecureField(placeHolder, text: $value)
                             .padding(-7)
                             .padding(.horizontal, 15)
+                            .disabled(false)
                     } else {
                         TextField(placeHolder, text: $value)
                             .padding(-7)
                             .padding(.horizontal, 15)
+                            .disabled(false)
                     }
                 }
             }

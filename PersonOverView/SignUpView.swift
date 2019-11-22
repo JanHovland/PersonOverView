@@ -49,9 +49,9 @@ struct SignUpView : View {
                 InputTextField(disabled: false, secure: true, heading: "Password", placeHolder: "Enter your password", value: $newItem.password)
             }
             .padding(10)
-//            Text("Password must be at least 8 characters long")
-//                .font(.footnote)
-//                .foregroundColor(.blue)
+            //            Text("Password must be at least 8 characters long")
+            //                .font(.footnote)
+            //                .foregroundColor(.blue)
             if settings.hideTabBar {
                 Text(self.settings.hideMessage)
                     .font(.footnote)
@@ -64,41 +64,21 @@ struct SignUpView : View {
                 Button(action: {
                     if self.newItem.name.count > 0, self.newItem.email.count > 0, self.newItem.password.count > 0 {
                         
-// ------->>>>>>>>>>>>>>>>>>>>> Check if the user already exists...
-                        
-                        let email = self.newItem.email
-                        let password = self.newItem.password
-                        let predicate = NSPredicate(format: "email == %@ AND password == %@", email, password)
-                        CloudKitUser.fetchUser(predicate: predicate) { (result) in
+                        let newItem = UserElement(name: self.newItem.name,
+                                                  email: self.newItem.email,
+                                                  password: self.newItem.password)
+                        // MARK: - saving to CloudKit
+                        CloudKitUser.saveUser(item: newItem) { (result) in
                             switch result {
                             case .success(let newItem):
-                                self.userElements.user.append(newItem)
-                                self.message = "Successfully fetched user's data"
-                                self.newItem.name = newItem.name
-                                self.newItem.email = newItem.email
-                                self.newItem.password = newItem.password
+                                self.userElements.user.insert(newItem, at: 0)
+                                self.message = "Successfully added user"
                             case .failure(let err):
+                                print(err.localizedDescription)
                                 self.message = err.localizedDescription
                             }
                         }
                         
-                        if self.message != "Successfully fetched user's data" {
-                        
-                            let newItem = UserElement(name: self.newItem.name,
-                                                      email: self.newItem.email,
-                                                      password: self.newItem.password)
-                            // MARK: - saving to CloudKit
-                            CloudKitUser.saveUser(item: newItem) { (result) in
-                                switch result {
-                                case .success(let newItem):
-                                    self.userElements.user.insert(newItem, at: 0)
-                                    self.message = "Successfully added user"
-                                case .failure(let err):
-                                    print(err.localizedDescription)
-                                    self.message = err.localizedDescription
-                                }
-                            }
-                        }
                     } else {
                         self.message = "Name, eMail or Password must all contain a value."
                     }
