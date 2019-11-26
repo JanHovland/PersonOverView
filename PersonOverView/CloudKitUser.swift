@@ -73,7 +73,7 @@ struct CloudKitUser {
     }
     
     // MARK: - fetching from CloudKit
-    static func fetchUser(predicate:  NSPredicate, completion: @escaping (Result<UserElement, Error>) -> ()) {
+    static func fetchUser(predicate:  NSPredicate, completion: @escaping (Result<UserElement, Error>, Bool) -> ()) {
         
         let sort = NSSortDescriptor(key: "creationDate", ascending: false)
         let query = CKQuery(recordType: RecordType.User, predicate: predicate)
@@ -98,14 +98,14 @@ struct CloudKitUser {
                                               name: name,
                                               email: email,
                                               password: password)
-                completion(.success(userElement))
+                completion(.success(userElement), true)
             }
         }
         
         operation.queryCompletionBlock = { ( _, err) in
             DispatchQueue.main.async {
                 if let err = err {
-                    completion(.failure(err))
+                    completion(.failure(err),false)
                     return
                 }
             }

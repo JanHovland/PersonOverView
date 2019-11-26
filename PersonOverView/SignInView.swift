@@ -78,12 +78,15 @@ struct SignInView : View {
                         
                         self.message = ""
                         self.show = false
-                        CloudKitUser.fetchUser(predicate: predicate) { (result) in
+                        
+                        // self.settings.hideTabBar = false
+                        
+                        CloudKitUser.fetchUser(predicate: predicate) { (result,Status ) in
                             switch result {
                             case .success(let newItem):
                                 self.userElements.user.append(newItem)
                                 self.message = "Successfully fetched user's data"
-                                self.settings.hideTabBar = false
+                                self.settings.hideTabBar = Status
                                 self.newItem.name = newItem.name
                                 self.newItem.email = newItem.email
                                 self.newItem.password = newItem.password
@@ -93,11 +96,16 @@ struct SignInView : View {
                                 self.show.toggle()
                             }
                         }
+                        
+                       print("hideTabBar #1 = \(self.settings.hideTabBar)")
                     }
                     else {
                         self.message = "Both eMail and Password must have a value"
                         self.show.toggle()
                     }
+                    
+                    print("hideTabBar #2 = \(self.settings.hideTabBar)")
+                    
                 }) {
                     Text("Sign In")
                         .padding(45)
