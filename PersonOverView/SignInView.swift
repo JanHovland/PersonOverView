@@ -91,18 +91,18 @@ struct SignInView : View {
                                     self.newItem.name = newItem.name
                                     self.newItem.email = newItem.email
                                     self.newItem.password = newItem.password
-                                    self.show.toggle()
+                                    // self.show.toggle()
                                 case .failure(let err):
                                     self.message = err.localizedDescription
-                                    self.show.toggle()
+                                    // self.show.toggle()
                                 }
                             }
-
                             if self.message.count == 0 {
                                self.message = "No user has email: \(email)"
-                               self.show.toggle()
+                               // self.show.toggle()
                             }
-
+                            //
+                            self.show.toggle()
                         }
                         else {
                             self.message = "Both eMail and Password must have a value"
