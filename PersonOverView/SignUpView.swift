@@ -66,37 +66,26 @@ struct SignUpView : View {
                 Button(action: {
                     if self.newItem.name.count > 0, self.newItem.email.count > 0, self.newItem.password.count > 0 {
                         
-//                        let newItem = UserElement(name: self.newItem.name,
-//                                                  email: self.newItem.email,
-//                                                  password: self.newItem.password)
-//
-//                        let predicate = NSPredicate(format: "email == %@ AND password == %@",
-//                                                    self.email,
-//                                                    self.password)
-
                         CloudKitUser.doesUserExist(name: self.newItem.name,
-                                                     email: self.newItem.email) { (result) in
+                                                   email: self.newItem.email) { (result) in
                             if result == false {
-                                self.message = "This user does not exists"
-                                //create new record here
+                                // MARK: - saving to CloudKit
+                                CloudKitUser.saveUser(item: self.newItem) { (result) in
+                                    switch result {
+                                    case .success(let newItem):
+                                        self.userElements.user.insert(newItem, at: 0)
+                                        self.message = "Successfully added user \(self.newItem.name)"
+                                    case .failure(let err):
+                                        print(err.localizedDescription)
+                                        self.message = err.localizedDescription
+                                    }
+                                }
+
                             } else {
-                                self.message = "This user exists"
+                                self.message = "The user: \(self.newItem.name) already exists"
                             }
                         }
-
-                        // MARK: - saving to CloudKit
-                        //                        CloudKitUser.saveUser(item: newItem) { (result) in
-                        //                            switch result {
-                        //                            case .success(let newItem):
-                        //                                self.userElements.user.insert(newItem, at: 0)
-                        //                                self.message = "Successfully added user"
-                        //                            case .failure(let err):
-                        //                                print(err.localizedDescription)
-                        //                                self.message = err.localizedDescription
-                        //                            }
-                        //                        }
-                        
-                    } else {
+                   } else {
                         self.message = "Name, eMail or Password must all contain a value."
                     }
                     self.show.toggle()
