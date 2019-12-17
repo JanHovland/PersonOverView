@@ -97,14 +97,12 @@ struct CloudKitUser {
         operation.recordFetchedBlock = { record in
             DispatchQueue.main.async {
                 let recordID = record.recordID
-                
                 guard let name = record["name"] as? String else { return }
                 print("\(name)")
                 guard let email = record["email"] as? String else { return }
                 print("\(email)")
                 guard let password = record["password"] as? String else { return }
                 print("\(password)")
-                
                 let userElement = UserElement(recordID: recordID,
                                               name: name,
                                               email: email,
