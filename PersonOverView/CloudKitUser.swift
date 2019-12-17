@@ -71,9 +71,29 @@ struct CloudKitUser {
             }
         }
     }
-    
+    // MARK: - check if the user record exists
+    static func doesRecordExist(email:  String, completion: @escaping (Bool) -> ()) {
+        var result = false
+        let predicate = NSPredicate(format: "email == %@" , email)
+        let query = CKQuery(recordType: RecordType.User, predicate: predicate)
+        DispatchQueue.main.async {
+            CKContainer.default().privateCloudDatabase.perform(query, inZoneWith: nil, completionHandler: { (results, er) in
+                DispatchQueue.main.async {
+                    if results != nil {
+                        // print(results!.count)
+                        if results!.count >= 1 {
+                            // print(results!.count)
+                            result = true
+                        }
+                    }
+                    completion(result)
+                }
+            })
+        }
+    }
+
     // MARK: - fetching from CloudKit
-    static func fetchUser(predicate:  NSPredicate, completion: @escaping (Result<UserElement, Error>, Bool) -> ()) {
+    static func fetchUser(predicate:  NSPredicate, completion: @escaping (Result<UserElement, Error>) -> ()) {
         
         let sort = NSSortDescriptor(key: "creationDate", ascending: false)
         let query = CKQuery(recordType: RecordType.User, predicate: predicate)
@@ -98,14 +118,14 @@ struct CloudKitUser {
                                               name: name,
                                               email: email,
                                               password: password)
-                completion(.success(userElement), true)
+                completion(.success(userElement))
             }
         }
         
         operation.queryCompletionBlock = { ( _, err) in
             DispatchQueue.main.async {
                 if let err = err {
-                    completion(.failure(err),false)
+                    completion(.failure(err))
                     return
                 }
             }
@@ -186,5 +206,39 @@ struct CloudKitUser {
             }
         }
     }
-    
+
+
+
+
 }
+
+/*
+
+ func doesRecordExist(inRecordType: String, withField: String, equalTo: String, _ completion: @escaping (Bool) -> ()) {
+     print(withField,equalTo)
+     var result = false
+
+     let predicate = NSPredicate(format: "\(withField) == %@", equalTo)
+     let query = CKQuery(recordType: inRecordType, predicate: predicate)
+     publicDatabase.perform(query, inZoneWith: nil, completionHandler: {results, er in
+
+         if results != nil {
+             print(results!.count)
+             if results?.count == 1 {
+                 print(results!.count)
+                 result = true
+             }
+         }
+     })
+     completion(result)
+ }
+
+ doesRecordExist(inRecordType: String, withField: String, equalTo: String) { (result) in
+     if result == false {
+    //create new record here
+     }
+ }
+
+
+
+ */

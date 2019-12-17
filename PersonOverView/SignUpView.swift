@@ -10,6 +10,8 @@
 //  Indent        : Ctrl + Cmd + * (on number pad)
 
 import SwiftUI
+import CloudKit
+
 
 struct SignUpView : View {
     
@@ -22,7 +24,7 @@ struct SignUpView : View {
     
     @EnvironmentObject var userElements: UserElements
     @EnvironmentObject var settings: UserSettings
-    
+
     var body: some View {
         VStack (alignment: .center) {
             HStack {
@@ -64,20 +66,36 @@ struct SignUpView : View {
                 Button(action: {
                     if self.newItem.name.count > 0, self.newItem.email.count > 0, self.newItem.password.count > 0 {
                         
-                        let newItem = UserElement(name: self.newItem.name,
-                                                  email: self.newItem.email,
-                                                  password: self.newItem.password)
-                        // MARK: - saving to CloudKit
-                        CloudKitUser.saveUser(item: newItem) { (result) in
-                            switch result {
-                            case .success(let newItem):
-                                self.userElements.user.insert(newItem, at: 0)
-                                self.message = "Successfully added user"
-                            case .failure(let err):
-                                print(err.localizedDescription)
-                                self.message = err.localizedDescription
+                        //                        let newItem = UserElement(name: self.newItem.name,
+                        //                                                  email: self.newItem.email,
+                        //                                                  password: self.newItem.password)
+
+                        //                        let predicate = NSPredicate(format: "email == %@ AND password == %@",
+                        //                                                    self.email,
+                        //                                                    self.password)
+
+                        CloudKitUser.doesRecordExist(email: "qi") { (result) in
+                            // print("result \(result)")
+
+                            if result == false {
+                                print("Ukjent record")
+                                //create new record here
+                            } else {
+                                print("Finnes fra før")
                             }
                         }
+
+                        // MARK: - saving to CloudKit
+                        //                        CloudKitUser.saveUser(item: newItem) { (result) in
+                        //                            switch result {
+                        //                            case .success(let newItem):
+                        //                                self.userElements.user.insert(newItem, at: 0)
+                        //                                self.message = "Successfully added user"
+                        //                            case .failure(let err):
+                        //                                print(err.localizedDescription)
+                        //                                self.message = err.localizedDescription
+                        //                            }
+                        //                        }
                         
                     } else {
                         self.message = "Name, eMail or Password must all contain a value."

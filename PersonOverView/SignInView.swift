@@ -81,12 +81,11 @@ struct SignInView : View {
                         
                         // self.settings.hideTabBar = false
                         
-                        CloudKitUser.fetchUser(predicate: predicate) { (result,Status ) in
+                        CloudKitUser.fetchUser(predicate: predicate) { (result) in
                             switch result {
                             case .success(let newItem):
                                 self.userElements.user.append(newItem)
                                 self.message = "Successfully fetched user's data"
-                                self.settings.hideTabBar = Status
                                 self.newItem.name = newItem.name
                                 self.newItem.email = newItem.email
                                 self.newItem.password = newItem.password
