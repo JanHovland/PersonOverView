@@ -13,26 +13,12 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @EnvironmentObject var settings: UserSettings //
-    
     var body: some View {
         VStack {
-            if settings.hideTabBar {
-                toSignInView()
-//                NavigationView {
-//                    NavigationLink(destination: SignInView()) {
-//                        Text(settings.textMessage)
-//                    }
-//                }
-            } else {
-                Text("Settings")
-                    .font(.title)
-            }
+            Text("Settings")
+                .font(.title)
         }
     }
 }
 
-func toSignInView() -> some View {
-    SignInView()
-}
 

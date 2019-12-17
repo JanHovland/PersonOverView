@@ -16,10 +16,9 @@ import SwiftUI
 struct PersonOverView: View {
     
     @State private var selection = 0
-    @EnvironmentObject var settings: UserSettings
-    
+
     var body: some View {
-        TabView(selection: $selection){
+        TabView {
            SignInView()
                .tabItem {
                     VStack {
@@ -32,7 +31,7 @@ struct PersonOverView: View {
                 .tabItem {
                     VStack {
                         Image(systemName: "arrow.right.to.line.alt")
-                        Text("SignUp")
+                        Text("Sign Up")
                     }
                 }
                 .tag(1)
@@ -55,11 +54,4 @@ struct PersonOverView: View {
         }
     }
 }
-
-class UserSettings: ObservableObject {
-    @Published var hideTabBar: Bool = true
-    @Published var hideMessage: String = "Not Signed In, tabs for Settings and Persons are unavailable."
-    
-}
-
 

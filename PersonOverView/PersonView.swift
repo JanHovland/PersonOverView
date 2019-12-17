@@ -24,46 +24,41 @@ struct PersonView : View {
     @State var gender = 0
     @State var dateOfBirth = Date()
     
-    @EnvironmentObject var settings: UserSettings
-    
     var genders = ["Man", "Woman"]
     
     var body: some View {
         VStack {
-            if settings.hideTabBar {
-                ToSignInView()
-            } else {
-                Form {
-                    InputTextField(disabled: false, secure: false, heading: "First name",   placeHolder: "Enter your first name",    value: $firstName)
-                    InputTextField(disabled: false, secure: false, heading: "Last name",    placeHolder: "Enter your last name",     value: $lastName)
-                    InputTextField(disabled: false, secure: false, heading: "eMail",        placeHolder: "Enter your email address", value: $personEmail)
-                    InputTextField(disabled: false, secure: false, heading: "Address",      placeHolder: "Enter your address",       value: $address)
-                    InputTextField(disabled: false, secure: false, heading: "Phone Number", placeHolder: "Enter your phone number",  value: $phoneNumber)
-                    HStack {
-                        InputTextField(disabled: false, secure: false, heading: "City", placeHolder: "Enter the city", value: $city)
-                        Image(systemName: "magnifyingglass")
-                            .resizable()
-                            .frame(width: 20, height: 20, alignment: .center)
-                            .foregroundColor(.blue)
-                            .font(.title)
-                    }
-                    InputTextField(disabled: false, secure: false, heading: "Municipality", placeHolder: "Enter your municipality",  value: $municipality)
-                    DatePicker(
-                        selection: $dateOfBirth,
-                        in: ...Date(),
-                        displayedComponents: [.date],
-                        label: {
-                            Text("Date of birth")
-                                .font(.footnote)
-                                .padding(-5)
-                    })
-                    // Returning an integer 0 == "Man" 1 == "Women
-                    InputGender(heading: "Gender ", genders: genders, value: $gender)
+            Form {
+                InputTextField(secure: false, heading: "First name",   placeHolder: "Enter your first name",    value: $firstName)
+                InputTextField(secure: false, heading: "Last name",    placeHolder: "Enter your last name",     value: $lastName)
+                InputTextField(secure: false, heading: "eMail",        placeHolder: "Enter your email address", value: $personEmail)
+                InputTextField(secure: false, heading: "Address",      placeHolder: "Enter your address",       value: $address)
+                InputTextField(secure: false, heading: "Phone Number", placeHolder: "Enter your phone number",  value: $phoneNumber)
+                HStack {
+                    InputTextField(secure: false, heading: "City", placeHolder: "Enter the city", value: $city)
+                    Image(systemName: "magnifyingglass")
+                        .resizable()
+                        .frame(width: 20, height: 20, alignment: .center)
+                        .foregroundColor(.blue)
+                        .font(.title)
                 }
+                InputTextField(secure: false, heading: "Municipality", placeHolder: "Enter your municipality",  value: $municipality)
+                DatePicker(
+                    selection: $dateOfBirth,
+                    in: ...Date(),
+                    displayedComponents: [.date],
+                    label: {
+                        Text("Date of birth")
+                            .font(.footnote)
+                            .padding(-5)
+                })
+                // Returning an integer 0 == "Man" 1 == "Women
+                InputGender(heading: "Gender ", genders: genders, value: $gender)
             }
+
         }
-        // Removes all separators below in the List view
-        .listStyle(GroupedListStyle())
+            // Removes all separators below in the List view
+            .listStyle(GroupedListStyle())
     }
 }
 

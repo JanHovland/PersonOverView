@@ -12,7 +12,6 @@
 import SwiftUI
 import CloudKit
 
-
 struct SignUpView : View {
     
     @State private var name: String = ""
@@ -23,82 +22,119 @@ struct SignUpView : View {
     @State private var newItem = UserElement(name: "", email: "", password: "")
     
     @EnvironmentObject var userElements: UserElements
-    @EnvironmentObject var settings: UserSettings
 
     var body: some View {
-        VStack (alignment: .center) {
-            HStack {
+        Form {
+            VStack (alignment: .center) {
+                Spacer(minLength: 30)
                 Image("CloudKit")
                     .resizable()
-                    .frame(width: 20, height: 20, alignment: .center)
+                    .frame(width: 50, height: 50, alignment: .center)
                     .clipShape(Circle())
+                Spacer(minLength: 30)
                 Text("Sign Up CloudKit")
                     .font(.headline)
                     .multilineTextAlignment(.center)
-            }
-            VStack (alignment: .leading) {
-                InputTextField(disabled: false, secure: false, heading: "Enter your name", placeHolder: "Enter your name", value: $newItem.name)
-                    .autocapitalization(.words)
-            }
-            .padding(10)
-            VStack (alignment: .leading) {
-                InputTextField(disabled: false, secure: false, heading: "eMail address", placeHolder: "Enter your email address", value: $newItem.email)
-                    .keyboardType(.emailAddress)
-                    .autocapitalization(.none)
-            }
-            .padding(10)
-            VStack (alignment: .leading) {
-                InputTextField(disabled: false, secure: true, heading: "Password", placeHolder: "Enter your password", value: $newItem.password)
-            }
-            .padding(10)
-            //            Text("Password must be at least 8 characters long")
-            //                .font(.footnote)
-            //                .foregroundColor(.blue)
-            if settings.hideTabBar {
-                Text(self.settings.hideMessage)
-                    .font(.footnote)
-                    .foregroundColor(.red)
-                    .padding(10)
-            } else {
-                Text("")
-            }
-            VStack {
-                Button(action: {
-                    if self.newItem.name.count > 0, self.newItem.email.count > 0, self.newItem.password.count > 0 {
-                        
-                        CloudKitUser.doesUserExist(name: self.newItem.name,
-                                                   email: self.newItem.email) { (result) in
-                            if result == false {
-                                // MARK: - saving to CloudKit
-                                CloudKitUser.saveUser(item: self.newItem) { (result) in
-                                    switch result {
-                                    case .success(let newItem):
-                                        self.userElements.user.insert(newItem, at: 0)
-                                        self.message = "Successfully added user \(self.newItem.name)"
-                                    case .failure(let err):
-                                        print(err.localizedDescription)
-                                        self.message = err.localizedDescription
-                                    }
-                                }
 
-                            } else {
-                                self.message = "The user: \(self.newItem.name) already exists"
+                Spacer(minLength: 30)
+                VStack {
+                    InputTextField(secure: false,
+                                   heading: "Your name",
+                                   placeHolder: "Enter your name",
+                                   value: $newItem.name)
+                       .autocapitalization(.words)
+
+                    Spacer(minLength: 30)
+
+                    InputTextField(secure: false,
+                                   heading: "eMail address",
+                                   placeHolder: "Enter your email address",
+                                   value: $newItem.email)
+                        .keyboardType(.emailAddress)
+                        .autocapitalization(.none)
+
+                    Spacer(minLength: 30)
+
+                    InputTextField(secure: true,
+                                   heading: "Password",
+                                   placeHolder: "Enter your Enter your password",
+                                   value: $newItem.password)
+                        .keyboardType(.emailAddress)
+                        .autocapitalization(.none)
+
+                    Spacer(minLength: 30)
+
+                }
+                .padding(10)
+
+                VStack {
+                    Button(action: {
+                        if self.newItem.name.count > 0, self.newItem.email.count > 0, self.newItem.password.count > 0 {
+
+                            CloudKitUser.doesUserExist(name: self.newItem.name,
+                                                       email: self.newItem.email) { (result) in
+                                                        if result == false {
+                                                            // MARK: - saving to CloudKit
+                                                            CloudKitUser.saveUser(item: self.newItem) { (result) in
+                                                                switch result {
+                                                                case .success(let newItem):
+                                                                    self.userElements.user.insert(newItem, at: 0)
+                                                                    self.message = "Successfully added user \(self.newItem.name)"
+                                                                case .failure(let err):
+                                                                    print(err.localizedDescription)
+                                                                    self.message = err.localizedDescription
+                                                                }
+                                                            }
+
+                                                        } else {
+                                                            self.message = "The user: \(self.newItem.name) already exists"
+                                                        }
                             }
+                        } else {
+                            self.message = "Name, eMail or Password must all contain a value."
                         }
-                   } else {
-                        self.message = "Name, eMail or Password must all contain a value."
+                        self.show.toggle()
+                    }) {
+                        Text("Sign up")
+                            .padding(10)
                     }
-                    self.show.toggle()
-                }) {
-                    Text("Sign up")
-                        .padding(45)
                 }
             }
+            // MARK: - Endre logikk slik at message ikke vises dersom message = nil
+            .alert(isPresented: $show) {
+                return Alert(title: Text(self.message))
+            }
         }
-        // MARK: - endre logikk slik at message ikke vises dersom message = nil
-        .alert(isPresented: $show) {
-            return Alert(title: Text(self.message))
+
+    }
+    
+}
+
+struct FormField: View {
+    var fieldName = ""
+    @Binding var fieldValue: String
+
+    var isSecure = false
+
+    var body: some View {
+
+        VStack {
+            if isSecure {
+                SecureField(fieldName, text: $fieldValue)
+                    .font(.system(size: 20, weight: .semibold, design: .rounded))
+                    .padding(.horizontal)
+
+            } else {
+                TextField(fieldName, text: $fieldValue)
+                    .font(.system(size: 20, weight: .semibold, design: .rounded))
+                    .padding(.horizontal)
+            }
+
+            Divider()
+                .frame(height: 1)
+                .background(Color(red: 240/255, green: 240/255, blue: 240/255))
+                .padding(.horizontal)
+
         }
     }
 }
-

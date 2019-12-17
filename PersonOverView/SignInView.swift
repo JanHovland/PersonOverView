@@ -25,94 +25,100 @@ struct SignInView : View {
     @State private var newItem = UserElement(name: "", email: "", password: "")
     
     @EnvironmentObject var userElements: UserElements
-    @EnvironmentObject var settings: UserSettings
-    
+
     var body: some View {
-        VStack (alignment: .center) {
-            HStack {
+        Form {
+            VStack (alignment: .center) {
+                Spacer(minLength: 30)
                 Image("CloudKit")
                     .resizable()
-                    .frame(width: 20, height: 20, alignment: .center)
+                    .frame(width: 50, height: 50, alignment: .center)
                     .clipShape(Circle())
+                Spacer(minLength: 30)
                 Text("Sign In CloudKit")
                     .font(.headline)
                     .multilineTextAlignment(.center)
-            }
-            VStack (alignment: .leading) {
-                InputTextField(disabled: true, secure: false, heading: "Your name", placeHolder: "Disabled field", value: $newItem.name)
-                    .autocapitalization(.words)
-            }
-            .padding(10)
-            VStack (alignment: .leading) {
-                InputTextField(disabled: false, secure: false, heading: "eMail address", placeHolder: "Enter your email address", value: $newItem.email)
-                    .keyboardType(.emailAddress)
-                    .autocapitalization(.none)
-            }
-            .padding(10)
-            VStack (alignment: .leading) {
-                InputTextField(disabled: false, secure: true, heading: "Password", placeHolder: "Enter your password", value: $newItem.password)
-            }
-            .padding(10)
-//            Text("Password must be at least 8 characters long")
-//                .font(.footnote)
-//                .foregroundColor(.blue)
-            if settings.hideTabBar {
-                Text(self.settings.hideMessage)
-                    .font(.footnote)
-                    .foregroundColor(.red)
-                    .padding(10)
-            } else {
-                Text("")
-            }
-            VStack {
-                Button(action: {
-                    if self.newItem.email.count > 0, self.newItem.password.count > 0 {
-                        // Check if the user exists
-                        let email = self.newItem.email
-                        let password = self.newItem.password
-                        
-                        // Check different predicates at :   https://nspredicate.xyz
-                        // %@ : an object (eg: String, date etc), whereas %i will be substituted with an integer.
+                Spacer(minLength: 30)
+                VStack {
+                    InputTextField(secure: false,
+                                   heading: "Your name",
+                                   placeHolder: "Enter your name",
+                                   value: $newItem.name)
+                       .autocapitalization(.words)
 
-                        let predicate = NSPredicate(format: "email == %@ AND password == %@", email, password)
-                        
-                        self.message = ""
-                        self.show = false
-                        
-                        // self.settings.hideTabBar = false
-                        
-                        CloudKitUser.fetchUser(predicate: predicate) { (result) in
-                            switch result {
-                            case .success(let newItem):
-                                self.userElements.user.append(newItem)
-                                self.message = "Successfully fetched user's data"
-                                self.newItem.name = newItem.name
-                                self.newItem.email = newItem.email
-                                self.newItem.password = newItem.password
-                                self.show.toggle()
-                            case .failure(let err):
-                                self.message = err.localizedDescription
-                                self.show.toggle()
+                    Spacer(minLength: 30)
+
+                    InputTextField(secure: false,
+                                   heading: "eMail address",
+                                   placeHolder: "Enter your email address",
+                                   value: $newItem.email)
+                        .keyboardType(.emailAddress)
+                        .autocapitalization(.none)
+
+                    Spacer(minLength: 30)
+
+                    InputTextField(secure: true,
+                                   heading: "Password",
+                                   placeHolder: "Enter your Enter your password",
+                                   value: $newItem.password)
+                        .keyboardType(.emailAddress)
+                        .autocapitalization(.none)
+
+                    Spacer(minLength: 30)
+
+                }
+                .padding(10)
+
+                VStack {
+                    Button(action: {
+                        if self.newItem.email.count > 0, self.newItem.password.count > 0 {
+                            // Check if the user exists
+                            let email = self.newItem.email
+                            let password = self.newItem.password
+                            
+                            // Check different predicates at :   https://nspredicate.xyz
+                            // %@ : an object (eg: String, date etc), whereas %i will be substituted with an integer.
+                            
+                            let predicate = NSPredicate(format: "email == %@ AND password == %@", email, password)
+                            
+                            self.message = ""
+                            self.show = false
+                            CloudKitUser.fetchUser(predicate: predicate) { (result) in
+                                switch result {
+                                case .success(let newItem):
+                                    self.userElements.user.append(newItem)
+                                    self.message = "Successfully fetched user's data"
+                                    self.newItem.name = newItem.name
+                                    self.newItem.email = newItem.email
+                                    self.newItem.password = newItem.password
+                                    self.show.toggle()
+                                case .failure(let err):
+                                    self.message = err.localizedDescription
+                                    self.show.toggle()
+                                }
                             }
+
+                            if self.message.count == 0 {
+                               self.message = "No user has email: \(email)"
+                               self.show.toggle()
+                            }
+
+                        }
+                        else {
+                            self.message = "Both eMail and Password must have a value"
+                            self.show.toggle()
                         }
                         
-                       print("hideTabBar #1 = \(self.settings.hideTabBar)")
+                    }) {
+                        Text("Sign In")
+                            .padding(10)
                     }
-                    else {
-                        self.message = "Both eMail and Password must have a value"
-                        self.show.toggle()
-                    }
-                    
-                    print("hideTabBar #2 = \(self.settings.hideTabBar)")
-                    
-                }) {
-                    Text("Sign In")
-                        .padding(45)
                 }
             }
-        }
-        .alert(isPresented: $show) {
-            return Alert(title: Text(self.message))
+            .alert(isPresented: $show) {
+                return Alert(title: Text(self.message))
+            }
         }
     }
 }
+

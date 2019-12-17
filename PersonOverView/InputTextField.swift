@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct InputTextField: View {
-    var disabled: Bool
     var secure: Bool
     var heading: String
     var placeHolder: String
@@ -23,30 +22,16 @@ struct InputTextField: View {
                     .padding(-5)
                     .font(.caption)
                     .foregroundColor(.accentColor)
-                if disabled {
-                    if secure {
-                        SecureField(placeHolder, text: $value)
-                            .padding(-7)
-                            .padding(.horizontal, 15)
-                            .disabled(false)
-                    } else {
-                        TextField(placeHolder, text: $value)
-                            .padding(-7)
-                            .padding(.horizontal, 15)
-                            .disabled(false)
-                    }
+                if secure {
+                    SecureField(placeHolder, text: $value)
+                        .padding(-7)
+                        .padding(.horizontal, 15)
+                        .disabled(false)
                 } else {
-                    if secure {
-                        SecureField(placeHolder, text: $value)
-                            .padding(-7)
-                            .padding(.horizontal, 15)
-                            .disabled(false)
-                    } else {
-                        TextField(placeHolder, text: $value)
-                            .padding(-7)
-                            .padding(.horizontal, 15)
-                            .disabled(false)
-                    }
+                    TextField(placeHolder, text: $value)
+                        .padding(-7)
+                        .padding(.horizontal, 15)
+                        .disabled(false)
                 }
             }
         }

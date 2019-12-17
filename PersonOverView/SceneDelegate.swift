@@ -27,8 +27,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // let contentView = ContentView().environment(\.managedObjectContext, context)
         
         
-        let contentView = PersonOverView().environmentObject(UserElements()).environmentObject(UserSettings())
-        
+        // let contentView = PersonOverView().environmentObject(UserElements()).environmentObject(UserSettings())
+        let contentView = PersonOverView().environmentObject(UserElements())
+
         
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
@@ -38,7 +39,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
             window.rootViewController = UIHostingController(rootView:
                 
-                contentView.environmentObject(UserElements()).environmentObject(UserSettings()))
+                contentView.environmentObject(UserElements()))
             
                 // Adding another XxxxElements
                 // contentView.environmentObject(ListElements()).environmentObject(XxxxElements()))
