@@ -66,22 +66,24 @@ struct SignUpView : View {
                 Button(action: {
                     if self.newItem.name.count > 0, self.newItem.email.count > 0, self.newItem.password.count > 0 {
                         
-                        //                        let newItem = UserElement(name: self.newItem.name,
-                        //                                                  email: self.newItem.email,
-                        //                                                  password: self.newItem.password)
+//                        let newItem = UserElement(name: self.newItem.name,
+//                                                  email: self.newItem.email,
+//                                                  password: self.newItem.password)
+//
+//                        let predicate = NSPredicate(format: "email == %@ AND password == %@",
+//                                                    self.email,
+//                                                    self.password)
 
-                        //                        let predicate = NSPredicate(format: "email == %@ AND password == %@",
-                        //                                                    self.email,
-                        //                                                    self.password)
-
-                        CloudKitUser.doesRecordExist(email: "qi") { (result) in
+                        CloudKitUser.doesRecordExist(email: self.newItem.email) { (result) in
                             // print("result \(result)")
 
                             if result == false {
-                                print("Ukjent record")
+                                print("This user does not exists")
+                                self.message = "This user does not exists"
                                 //create new record here
                             } else {
-                                print("Finnes fra før")
+                                print("his user exists")
+                                self.message = "This user exists"
                             }
                         }
 
