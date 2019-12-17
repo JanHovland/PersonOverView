@@ -74,15 +74,12 @@ struct SignUpView : View {
 //                                                    self.email,
 //                                                    self.password)
 
-                        CloudKitUser.doesRecordExist(email: self.newItem.email) { (result) in
-                            // print("result \(result)")
-
+                        CloudKitUser.doesUserExist(name: self.newItem.name,
+                                                     email: self.newItem.email) { (result) in
                             if result == false {
-                                print("This user does not exists")
                                 self.message = "This user does not exists"
                                 //create new record here
                             } else {
-                                print("his user exists")
                                 self.message = "This user exists"
                             }
                         }
@@ -109,10 +106,10 @@ struct SignUpView : View {
                 }
             }
         }
+        // MARK: - endre logikk slik at message ikke vises dersom message = nil
         .alert(isPresented: $show) {
             return Alert(title: Text(self.message))
         }
-        
     }
 }
 

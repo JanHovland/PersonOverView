@@ -10,16 +10,15 @@
 //  Block comment : Ctrl + Cmd + / (on number pad)
 //  Indent        : Ctrl + Cmd + * (on number pad)
 
-import Foundation
 import CloudKit
 import SwiftUI
 
 struct CloudKitUser {
-    
+
     struct RecordType {
         static let User = "User"
     }
-    
+
     // MARK: - errors
     enum CloudKitHelperError: Error {
         case recordFailure
@@ -29,12 +28,11 @@ struct CloudKitUser {
     }
     
     // MARK: - saving to CloudKit
-        static func saveUser(item: UserElement, completion: @escaping (Result<UserElement, Error>) -> ()) {
+    static func saveUser(item: UserElement, completion: @escaping (Result<UserElement, Error>) -> ()) {
         let itemRecord = CKRecord(recordType: RecordType.User)
         itemRecord["name"] = item.name as CKRecordValue
         itemRecord["email"] = item.email as CKRecordValue
         itemRecord["password"] = item.password as CKRecordValue
-        
         CKContainer.default().privateCloudDatabase.save(itemRecord) { (record, err) in
             DispatchQueue.main.async {
                 if let err = err {
@@ -46,43 +44,39 @@ struct CloudKitUser {
                     return
                 }
                 let recordID = record.recordID
-                
                 guard let name = record["name"] as? String else {
                     completion(.failure(CloudKitHelperError.castFailure))
                     return
                 }
-                
                 guard let email = record["email"] as? String else {
                     completion(.failure(CloudKitHelperError.castFailure))
                     return
                 }
-                
                 guard let password = record["password"] as? String else {
                     completion(.failure(CloudKitHelperError.castFailure))
                     return
                 }
-                
                 let userElement = UserElement(recordID: recordID,
                                               name: name,
                                               email: email,
                                               password: password)
-                
                 completion(.success(userElement))
             }
         }
     }
+
     // MARK: - check if the user record exists
-    static func doesRecordExist(email:  String, completion: @escaping (Bool) -> ()) {
+    static func doesUserExist(name: String,
+                              email: String,
+                              completion: @escaping (Bool) -> ()) {
         var result = false
-        let predicate = NSPredicate(format: "email == %@" , email)
+        let predicate = NSPredicate(format: "name == %@ AND email == %@", name, email)
         let query = CKQuery(recordType: RecordType.User, predicate: predicate)
         DispatchQueue.main.async {
             CKContainer.default().privateCloudDatabase.perform(query, inZoneWith: nil, completionHandler: { (results, er) in
                 DispatchQueue.main.async {
                     if results != nil {
-                        // print(results!.count)
                         if results!.count >= 1 {
-                            // print(results!.count)
                             result = true
                         }
                     }
@@ -94,15 +88,12 @@ struct CloudKitUser {
 
     // MARK: - fetching from CloudKit
     static func fetchUser(predicate:  NSPredicate, completion: @escaping (Result<UserElement, Error>) -> ()) {
-        
         let sort = NSSortDescriptor(key: "creationDate", ascending: false)
         let query = CKQuery(recordType: RecordType.User, predicate: predicate)
         query.sortDescriptors = [sort]
-        
         let operation = CKQueryOperation(query: query)
         operation.desiredKeys = ["name","email","password"]
         operation.resultsLimit = 50
-        
         operation.recordFetchedBlock = { record in
             DispatchQueue.main.async {
                 let recordID = record.recordID
@@ -121,7 +112,6 @@ struct CloudKitUser {
                 completion(.success(userElement))
             }
         }
-        
         operation.queryCompletionBlock = { ( _, err) in
             DispatchQueue.main.async {
                 if let err = err {
@@ -129,12 +119,10 @@ struct CloudKitUser {
                     return
                 }
             }
-            
         }
-        
         CKContainer.default().privateCloudDatabase.add(operation)
     }
-        
+
     // MARK: - delete from CloudKit
     static func deleteUser(recordID: CKRecord.ID, completion: @escaping (Result<CKRecord.ID, Error>) -> ()) {
         CKContainer.default().privateCloudDatabase.delete(withRecordID: recordID) { (recordID, err) in
@@ -169,7 +157,7 @@ struct CloudKitUser {
                 return
             }
             record["name"] = item.name as CKRecordValue
-    
+
             CKContainer.default().privateCloudDatabase.save(record) { (record, err) in
                 DispatchQueue.main.async {
                     if let err = err {
@@ -181,22 +169,18 @@ struct CloudKitUser {
                         return
                     }
                     let recordID = record.recordID
-                    
                     guard let name = record["name"] as? String else {
                         completion(.failure(CloudKitHelperError.castFailure))
                         return
                     }
-                    
                     guard let email = record["email"] as? String else {
                         completion(.failure(CloudKitHelperError.castFailure))
                         return
                     }
-                    
                     guard let password = record["password"] as? String else {
                         completion(.failure(CloudKitHelperError.castFailure))
                         return
                     }
-                    
                     let userElement = UserElement(recordID: recordID,
                                                   name: name,
                                                   email: email,
@@ -206,39 +190,4 @@ struct CloudKitUser {
             }
         }
     }
-
-
-
-
 }
-
-/*
-
- func doesRecordExist(inRecordType: String, withField: String, equalTo: String, _ completion: @escaping (Bool) -> ()) {
-     print(withField,equalTo)
-     var result = false
-
-     let predicate = NSPredicate(format: "\(withField) == %@", equalTo)
-     let query = CKQuery(recordType: inRecordType, predicate: predicate)
-     publicDatabase.perform(query, inZoneWith: nil, completionHandler: {results, er in
-
-         if results != nil {
-             print(results!.count)
-             if results?.count == 1 {
-                 print(results!.count)
-                 result = true
-             }
-         }
-     })
-     completion(result)
- }
-
- doesRecordExist(inRecordType: String, withField: String, equalTo: String) { (result) in
-     if result == false {
-    //create new record here
-     }
- }
-
-
-
- */
