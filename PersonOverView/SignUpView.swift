@@ -42,7 +42,7 @@ struct SignUpView : View {
                                    heading: "Your name",
                                    placeHolder: "Enter your name",
                                    value: $newItem.name)
-                       .autocapitalization(.words)
+                        .autocapitalization(.words)
 
                     Spacer(minLength: 30)
 
@@ -79,21 +79,25 @@ struct SignUpView : View {
                                                                 switch result {
                                                                 case .success(let newItem):
                                                                     self.userElements.user.insert(newItem, at: 0)
-                                                                    self.message = "Successfully added user \(self.newItem.name)"
+                                                                    self.message = "Addedd new user: '\(self.newItem.name)'"
+                                                                    self.show.toggle()
                                                                 case .failure(let err):
                                                                     print(err.localizedDescription)
                                                                     self.message = err.localizedDescription
+                                                                    self.show.toggle()
                                                                 }
                                                             }
 
                                                         } else {
-                                                            self.message = "The user: \(self.newItem.name) already exists"
+                                                            self.message = "The user: '\(self.newItem.name)' already exists"
+                                                            self.show.toggle()
                                                         }
                             }
                         } else {
                             self.message = "Name, eMail or Password must all contain a value."
+                            self.show.toggle()
                         }
-                        self.show.toggle()
+
                     }) {
                         Text("Sign up")
                             .padding(10)
@@ -105,9 +109,7 @@ struct SignUpView : View {
                 return Alert(title: Text(self.message))
             }
         }
-
     }
-    
 }
 
 struct FormField: View {

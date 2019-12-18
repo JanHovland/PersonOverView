@@ -44,7 +44,7 @@ struct SignInView : View {
                                    heading: "Your name",
                                    placeHolder: "Enter your name",
                                    value: $newItem.name)
-                       .autocapitalization(.words)
+                        .autocapitalization(.words)
 
                     Spacer(minLength: 30)
 
@@ -81,27 +81,25 @@ struct SignInView : View {
                             
                             let predicate = NSPredicate(format: "email == %@ AND password == %@", email, password)
                             
-                            self.message = ""
-                            self.show = false
-                            CloudKitUser.fetchUser(predicate: predicate) { (result) in
-                                switch result {
-                                case .success(let newItem):
-                                    self.userElements.user.append(newItem)
-                                    self.message = "Successfully fetched user's data"
-                                    self.newItem.name = newItem.name
-                                    self.newItem.email = newItem.email
-                                    self.newItem.password = newItem.password
-                                    // self.show.toggle()
-                                case .failure(let err):
-                                    self.message = err.localizedDescription
-                                    // self.show.toggle()
-                                }
+                            CloudKitUser.doesUserExist(name: self.newItem.name,
+                                                       email: self.newItem.email) { (result) in
+                                                        if result == false {
+                                                            self.message = "Unknown user: '\(self.newItem.name)'"
+                                                        } else {
+                                                            CloudKitUser.fetchUser(predicate: predicate) { (result) in
+                                                                switch result {
+                                                                case .success(let newItem):
+                                                                    self.userElements.user.append(newItem)
+                                                                    self.message = "Fetched user: '\(self.newItem.name)'"
+                                                                    self.newItem.name = newItem.name
+                                                                    self.newItem.email = newItem.email
+                                                                    self.newItem.password = newItem.password
+                                                                case .failure(let err):
+                                                                    self.message = err.localizedDescription
+                                                                }
+                                                            }
+                                                        }
                             }
-                            if self.message.count == 0 {
-                               self.message = "No user has email: \(email)"
-                               // self.show.toggle()
-                            }
-                            //
                             self.show.toggle()
                         }
                         else {
