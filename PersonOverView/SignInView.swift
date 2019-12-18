@@ -22,7 +22,7 @@ struct SignInView : View {
     @State private var password: String = ""
     @State private var show: Bool = false
     @State private var message: String = ""
-    @State private var newItem = UserElement(name: "", email: "", password: "")
+    @State private var userItem = UserElement(name: "", email: "", password: "")
     
     @EnvironmentObject var userElements: UserElements
 
@@ -43,7 +43,7 @@ struct SignInView : View {
                     InputTextField(secure: false,
                                    heading: "Your name",
                                    placeHolder: "Enter your name",
-                                   value: $newItem.name)
+                                   value: $userItem.name)
                         .autocapitalization(.words)
 
                     Spacer(minLength: 20)
@@ -51,7 +51,7 @@ struct SignInView : View {
                     InputTextField(secure: false,
                                    heading: "eMail address",
                                    placeHolder: "Enter your email address",
-                                   value: $newItem.email)
+                                   value: $userItem.email)
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
 
@@ -60,7 +60,7 @@ struct SignInView : View {
                     InputTextField(secure: true,
                                    heading: "Password",
                                    placeHolder: "Enter your Enter your password",
-                                   value: $newItem.password)
+                                   value: $userItem.password)
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
 
@@ -71,29 +71,29 @@ struct SignInView : View {
 
                 VStack {
                     Button(action: {
-                        if self.newItem.email.count > 0, self.newItem.password.count > 0 {
+                        if self.userItem.email.count > 0, self.userItem.password.count > 0 {
                             // Check if the user exists
-                            let email = self.newItem.email
-                            let password = self.newItem.password
+                            let email = self.userItem.email
+                            let password = self.userItem.password
                             
                             // Check different predicates at :   https://nspredicate.xyz
                             // %@ : an object (eg: String, date etc), whereas %i will be substituted with an integer.
                             
                             let predicate = NSPredicate(format: "email == %@ AND password == %@", email, password)
                             
-                            CloudKitUser.doesUserExist(name: self.newItem.name,
-                                                       email: self.newItem.email) { (result) in
+                            CloudKitUser.doesUserExist(name: self.userItem.name,
+                                                       email: self.userItem.email) { (result) in
                                                         if result == false {
-                                                            self.message = "Unknown user: '\(self.newItem.name)'"
+                                                            self.message = "Unknown user: '\(self.userItem.name)'"
                                                         } else {
                                                             CloudKitUser.fetchUser(predicate: predicate) { (result) in
                                                                 switch result {
-                                                                case .success(let newItem):
-                                                                    self.userElements.user.append(newItem)
-                                                                    self.message = "Fetched user: '\(self.newItem.name)'"
-                                                                    self.newItem.name = newItem.name
-                                                                    self.newItem.email = newItem.email
-                                                                    self.newItem.password = newItem.password
+                                                                case .success(let userItem):
+                                                                    self.userElements.user.append(userItem)
+                                                                    self.message = "Fetched user: '\(self.userItem.name)'"
+                                                                    self.userItem.name = userItem.name
+                                                                    self.userItem.email = userItem.email
+                                                                    self.userItem.password = userItem.password
                                                                 case .failure(let err):
                                                                     self.message = err.localizedDescription
                                                                 }

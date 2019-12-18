@@ -19,7 +19,7 @@ struct SignUpView : View {
     @State private var password: String = ""
     @State private var show: Bool = false
     @State private var message: String = ""
-    @State private var newItem = UserElement(name: "", email: "", password: "")
+    @State private var userItem = UserElement(name: "", email: "", password: "")
     
     @EnvironmentObject var userElements: UserElements
 
@@ -41,7 +41,7 @@ struct SignUpView : View {
                     InputTextField(secure: false,
                                    heading: "Your name",
                                    placeHolder: "Enter your name",
-                                   value: $newItem.name)
+                                   value: $userItem.name)
                         .autocapitalization(.words)
 
                     Spacer(minLength: 20)
@@ -49,7 +49,7 @@ struct SignUpView : View {
                     InputTextField(secure: false,
                                    heading: "eMail address",
                                    placeHolder: "Enter your email address",
-                                   value: $newItem.email)
+                                   value: $userItem.email)
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
 
@@ -58,7 +58,7 @@ struct SignUpView : View {
                     InputTextField(secure: true,
                                    heading: "Password",
                                    placeHolder: "Enter your Enter your password",
-                                   value: $newItem.password)
+                                   value: $userItem.password)
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
 
@@ -69,17 +69,17 @@ struct SignUpView : View {
 
                 VStack {
                     Button(action: {
-                        if self.newItem.name.count > 0, self.newItem.email.count > 0, self.newItem.password.count > 0 {
+                        if self.userItem.name.count > 0, self.userItem.email.count > 0, self.userItem.password.count > 0 {
 
-                            CloudKitUser.doesUserExist(name: self.newItem.name,
-                                                       email: self.newItem.email) { (result) in
+                            CloudKitUser.doesUserExist(name: self.userItem.name,
+                                                       email: self.userItem.email) { (result) in
                                                         if result == false {
                                                             // MARK: - saving to CloudKit
-                                                            CloudKitUser.saveUser(item: self.newItem) { (result) in
+                                                            CloudKitUser.saveUser(item: self.userItem) { (result) in
                                                                 switch result {
-                                                                case .success(let newItem):
-                                                                    self.userElements.user.insert(newItem, at: 0)
-                                                                    self.message = "Addedd new user: '\(self.newItem.name)'"
+                                                                case .success(let userItem):
+                                                                    self.userElements.user.insert(userItem, at: 0)
+                                                                    self.message = "Addedd new user: '\(self.userItem.name)'"
                                                                     self.show.toggle()
                                                                 case .failure(let err):
                                                                     print(err.localizedDescription)
@@ -89,7 +89,7 @@ struct SignUpView : View {
                                                             }
 
                                                         } else {
-                                                            self.message = "The user: '\(self.newItem.name)' already exists"
+                                                            self.message = "The user: '\(self.userItem.name)' already exists"
                                                             self.show.toggle()
                                                         }
                             }
