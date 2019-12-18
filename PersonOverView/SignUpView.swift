@@ -26,17 +26,17 @@ struct SignUpView : View {
     var body: some View {
         Form {
             VStack (alignment: .center) {
-                Spacer(minLength: 30)
+                //Spacer(minLength: 20)
                 Image("CloudKit")
                     .resizable()
                     .frame(width: 50, height: 50, alignment: .center)
                     .clipShape(Circle())
-                Spacer(minLength: 30)
+                Spacer(minLength: 20)
                 Text("Sign Up CloudKit")
                     .font(.headline)
                     .multilineTextAlignment(.center)
 
-                Spacer(minLength: 30)
+                Spacer(minLength: 20)
                 VStack {
                     InputTextField(secure: false,
                                    heading: "Your name",
@@ -44,7 +44,7 @@ struct SignUpView : View {
                                    value: $newItem.name)
                         .autocapitalization(.words)
 
-                    Spacer(minLength: 30)
+                    Spacer(minLength: 20)
 
                     InputTextField(secure: false,
                                    heading: "eMail address",
@@ -53,7 +53,7 @@ struct SignUpView : View {
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
 
-                    Spacer(minLength: 30)
+                    Spacer(minLength: 20)
 
                     InputTextField(secure: true,
                                    heading: "Password",
@@ -62,7 +62,7 @@ struct SignUpView : View {
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
 
-                    Spacer(minLength: 30)
+                    Spacer(minLength: 20)
 
                 }
                 .padding(10)
