@@ -33,7 +33,6 @@ struct SignInView : View {
                 Image("CloudKit")
                     .resizable()
                     .frame(width: 50, height: 50, alignment: .center)
-                    .clipShape(Circle())
                 Spacer(minLength: 20)
                 Text("Sign In CloudKit")
                     .font(.headline)
