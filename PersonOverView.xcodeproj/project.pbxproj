@@ -24,6 +24,7 @@
 		DB302B8D237EF3BD00076D10 /* CheckUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B8C237EF3BD00076D10 /* CheckUser.swift */; };
 		DB302B8F237EF43400076D10 /* CloudKitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B8E237EF43400076D10 /* CloudKitUser.swift */; };
 		DB302B93237FDD8600076D10 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB302B92237FDD8600076D10 /* CloudKit.framework */; };
+		DB6739C123AA910E00EF9ECD /* SwiftUIImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6739C023AA910E00EF9ECD /* SwiftUIImagePicker.swift */; };
 		DBD509572385614700D524EA /* ToSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD509562385614700D524EA /* ToSignInView.swift */; };
 		DBDDEB4A2386910700DD82B3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDDEB492386910700DD82B3 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
@@ -49,6 +50,7 @@
 		DB302B8E237EF43400076D10 /* CloudKitUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitUser.swift; sourceTree = "<group>"; };
 		DB302B90237FDD7200076D10 /* PersonOverView.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonOverView.entitlements; sourceTree = "<group>"; };
 		DB302B92237FDD8600076D10 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		DB6739C023AA910E00EF9ECD /* SwiftUIImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIImagePicker.swift; sourceTree = "<group>"; };
 		DBD509562385614700D524EA /* ToSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToSignInView.swift; sourceTree = "<group>"; };
 		DBDDEB492386910700DD82B3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,6 +92,7 @@
 				DB302B72237EF02300076D10 /* Assets.xcassets */,
 				DB302B8C237EF3BD00076D10 /* CheckUser.swift */,
 				DB302B8E237EF43400076D10 /* CloudKitUser.swift */,
+				DB6739C023AA910E00EF9ECD /* SwiftUIImagePicker.swift */,
 				DB302B7A237EF02300076D10 /* Info.plist */,
 				DB1FEF922380592F00F8D763 /* InputGender.swift */,
 				DB1FEF90238055FE00F8D763 /* InputTextField.swift */,
@@ -211,6 +214,7 @@
 				DB302B85237EF27400076D10 /* SignInView.swift in Sources */,
 				DB302B83237EF18D00076D10 /* UserElements.swift in Sources */,
 				DB302B8F237EF43400076D10 /* CloudKitUser.swift in Sources */,
+				DB6739C123AA910E00EF9ECD /* SwiftUIImagePicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
