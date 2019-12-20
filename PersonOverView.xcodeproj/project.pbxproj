@@ -25,6 +25,8 @@
 		DB302B8F237EF43400076D10 /* CloudKitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B8E237EF43400076D10 /* CloudKitUser.swift */; };
 		DB302B93237FDD8600076D10 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB302B92237FDD8600076D10 /* CloudKit.framework */; };
 		DB6739C123AA910E00EF9ECD /* SwiftUIImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6739C023AA910E00EF9ECD /* SwiftUIImagePicker.swift */; };
+		DB6739C423AD46A800EF9ECD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB6739C223AD46A800EF9ECD /* InfoPlist.strings */; };
+		DB6739C723AD46A800EF9ECD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB6739C523AD46A800EF9ECD /* Localizable.strings */; };
 		DBDDEB4A2386910700DD82B3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDDEB492386910700DD82B3 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +52,8 @@
 		DB302B90237FDD7200076D10 /* PersonOverView.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonOverView.entitlements; sourceTree = "<group>"; };
 		DB302B92237FDD8600076D10 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		DB6739C023AA910E00EF9ECD /* SwiftUIImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIImagePicker.swift; sourceTree = "<group>"; };
+		DB6739C823AD495500EF9ECD /* nb-NO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nb-NO"; path = "nb-NO.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		DB6739C923AD495500EF9ECD /* nb-NO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nb-NO"; path = "nb-NO.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		DBDDEB492386910700DD82B3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,6 +96,8 @@
 				DB302B8E237EF43400076D10 /* CloudKitUser.swift */,
 				DB6739C023AA910E00EF9ECD /* SwiftUIImagePicker.swift */,
 				DB302B7A237EF02300076D10 /* Info.plist */,
+				DB6739C523AD46A800EF9ECD /* Localizable.strings */,
+				DB6739C223AD46A800EF9ECD /* InfoPlist.strings */,
 				DB1FEF922380592F00F8D763 /* InputGender.swift */,
 				DB1FEF90238055FE00F8D763 /* InputTextField.swift */,
 				DB1FEF8E2380554F00F8D763 /* Launch Screen.storyboard */,
@@ -167,6 +173,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"nb-NO",
 			);
 			mainGroup = DB302B5D237EF02300076D10;
 			productRefGroup = DB302B67237EF02300076D10 /* Products */;
@@ -183,7 +190,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB6739C723AD46A800EF9ECD /* Localizable.strings in Resources */,
 				DB302B76237EF02300076D10 /* Preview Assets.xcassets in Resources */,
+				DB6739C423AD46A800EF9ECD /* InfoPlist.strings in Resources */,
 				DB1FEF8F2380554F00F8D763 /* Launch Screen.storyboard in Resources */,
 				DB302B73237EF02300076D10 /* Assets.xcassets in Resources */,
 			);
@@ -215,6 +224,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DB6739C223AD46A800EF9ECD /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB6739C923AD495500EF9ECD /* nb-NO */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DB6739C523AD46A800EF9ECD /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB6739C823AD495500EF9ECD /* nb-NO */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		DB302B7B237EF02300076D10 /* Debug */ = {
