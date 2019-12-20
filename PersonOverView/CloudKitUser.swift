@@ -99,7 +99,7 @@ struct CloudKitUser {
         query.sortDescriptors = [sort]
         let operation = CKQueryOperation(query: query)
         operation.desiredKeys = ["name","email","password","image"]
-        operation.resultsLimit = 50
+        operation.resultsLimit = 1
         operation.recordFetchedBlock = { record in
             DispatchQueue.main.async {
                 let recordID = record.recordID

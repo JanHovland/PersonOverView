@@ -22,17 +22,20 @@ struct SignInView : View {
     @State private var password: String = ""
     @State private var show: Bool = false
     @State private var message: String = ""
+    @State private var image = UIImage()
     @State private var userItem = UserElement(name: "", email: "", password: "")
-    
+
     @EnvironmentObject var userElements: UserElements
 
     var body: some View {
         Form {
             VStack (alignment: .center) {
                 // Spacer(minLength: 20)
-                Image("CloudKit")
+                // Image("CloudKit")
+                Image(uiImage: image)
                     .resizable()
                     .frame(width: 50, height: 50, alignment: .center)
+                    .clipShape(Circle())
                 Spacer(minLength: 20)
                 Text("Sign In CloudKit")
                     .font(.headline)
@@ -89,11 +92,8 @@ struct SignInView : View {
                                                                 switch result {
                                                                 case .success(let userItem):
                                                                     self.userElements.user.append(userItem)
+                                                                    self.image = userItem.image!
                                                                     self.message = "Fetched user: '\(self.userItem.name)'"
-                                                                    self.userItem.name = userItem.name
-                                                                    self.userItem.email = userItem.email
-                                                                    self.userItem.password = userItem.password
-                                                                    self.userItem.image = userItem.image
                                                                 case .failure(let err):
                                                                     self.message = err.localizedDescription
                                                                 }
@@ -113,9 +113,9 @@ struct SignInView : View {
                     }
                 }
             }
-            .alert(isPresented: $show) {
-                return Alert(title: Text(self.message))
-            }
+//            .alert(isPresented: $show) {
+//                return Alert(title: Text(self.message))
+//            }
         }
     }
 }
