@@ -56,10 +56,16 @@ struct CloudKitUser {
                     completion(.failure(CloudKitHelperError.castFailure))
                     return
                 }
+                //                guard let image = record["image"] as? String else {
+                //                    completion(.failure(CloudKitHelperError.castFailure))
+                //                    return
+                //                }
+
                 let userElement = UserElement(recordID: recordID,
                                               name: name,
                                               email: email,
                                               password: password)
+                // image: image)
                 completion(.success(userElement))
             }
         }
@@ -92,7 +98,7 @@ struct CloudKitUser {
         let query = CKQuery(recordType: RecordType.User, predicate: predicate)
         query.sortDescriptors = [sort]
         let operation = CKQueryOperation(query: query)
-        operation.desiredKeys = ["name","email","password"]
+        operation.desiredKeys = ["name","email","password","image"]
         operation.resultsLimit = 50
         operation.recordFetchedBlock = { record in
             DispatchQueue.main.async {
@@ -100,11 +106,25 @@ struct CloudKitUser {
                 guard let name = record["name"] as? String else { return }
                 guard let email = record["email"] as? String else { return }
                 guard let password = record["password"] as? String else { return }
-                let userElement = UserElement(recordID: recordID,
-                                              name: name,
-                                              email: email,
-                                              password: password)
-                completion(.success(userElement))
+
+                if let image = record["image"], let imageAsset = image as? CKAsset {
+                    if let imageData = try? Data.init(contentsOf: imageAsset.fileURL!) {
+                        let image = UIImage(data: imageData)
+                        let userElement = UserElement(recordID: recordID,
+                                                      name: name,
+                                                      email: email,
+                                                      password: password,
+                                                      image: image)
+                        completion(.success(userElement))
+                        print("hit")
+                    }
+                } else {
+                    let userElement = UserElement(recordID: recordID,
+                                                  name: name,
+                                                  email: email,
+                                                  password: password)
+                    completion(.success(userElement))
+                }
             }
         }
         operation.queryCompletionBlock = { ( _, err) in
@@ -176,10 +196,17 @@ struct CloudKitUser {
                         completion(.failure(CloudKitHelperError.castFailure))
                         return
                     }
+
+                    //                    guard let image = record["image"] as? String else {
+                    //                        completion(.failure(CloudKitHelperError.castFailure))
+                    //                        return
+                    //                    }
+
                     let userElement = UserElement(recordID: recordID,
                                                   name: name,
                                                   email: email,
                                                   password: password)
+                    // image: image)
                     completion(.success(userElement))
                 }
             }

@@ -18,4 +18,5 @@ struct UserElement: Identifiable {
     var name: String
     var email: String
     var password: String
+    var image: UIImage?
 }

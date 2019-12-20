@@ -93,6 +93,7 @@ struct SignInView : View {
                                                                     self.userItem.name = userItem.name
                                                                     self.userItem.email = userItem.email
                                                                     self.userItem.password = userItem.password
+                                                                    self.userItem.image = userItem.image
                                                                 case .failure(let err):
                                                                     self.message = err.localizedDescription
                                                                 }
