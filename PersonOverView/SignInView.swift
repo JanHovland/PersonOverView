@@ -28,14 +28,24 @@ struct SignInView : View {
     @EnvironmentObject var userElements: UserElements
 
     var body: some View {
+
         Form {
             VStack (alignment: .center) {
-                // Spacer(minLength: 20)
-                // Image("CloudKit")
-                Image(uiImage: image)
-                    .resizable()
-                    .frame(width: 50, height: 50, alignment: .center)
-                    .clipShape(Circle())
+                Spacer(minLength: 10)
+
+                ZStack {
+                    Image(systemName: "person.circle")
+                        .resizable()
+                        .frame(width: 100, height: 100, alignment: .center)
+                        .clipShape(Circle())
+                    // Her legges aktuelt bilde oppå "person.circle"
+                    Image(uiImage: image)
+                        .resizable()
+                        .frame(width: 100, height: 100, alignment: .center)
+                        .aspectRatio(contentMode: .fill)
+                        .clipShape(Circle())
+                }
+
                 Spacer(minLength: 20)
                 Text("Sign In CloudKit")
                     .font(.headline)
@@ -113,9 +123,9 @@ struct SignInView : View {
                     }
                 }
             }
-//            .alert(isPresented: $show) {
-//                return Alert(title: Text(self.message))
-//            }
+            .alert(isPresented: $show) {
+                return Alert(title: Text(self.message))
+            }
         }
     }
 }

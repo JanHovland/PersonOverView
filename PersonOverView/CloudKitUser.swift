@@ -116,7 +116,6 @@ struct CloudKitUser {
                                                       password: password,
                                                       image: image)
                         completion(.success(userElement))
-                        print("hit")
                     }
                 } else {
                     let userElement = UserElement(recordID: recordID,
