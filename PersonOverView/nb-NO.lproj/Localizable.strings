@@ -1,8 +1,29 @@
+/* SignInView */
+"Both eMail and Password must have a value" = "Både e-post og passord må ha en verdi";
+
+/* SignInView */
+"eMail address" = "e-post addresse";
+
+/* SignInView */
+"Enter your email address" = "Legg inn e-post adressen din";
+
+/* SignInView */
+"Enter your name" = "Legg inn navnet ditt";
+
+/* SignInView */
+"Enter your password" = "Legg inn passordet ditt";
+
+/* SignInView */
+"Fetched user:" = "Hentet bruker:";
+
 /* No comment provided by engineer. */
 "Image" = "Bilde";
 
+/* SignInView */
+"Password" = "Passord";
+
 /* No comment provided by engineer. */
-"Persons" = "Persons";
+"Persons" = "Personer";
 
 /* No comment provided by engineer. */
 "Select Image" = "Velg bilde";
@@ -14,8 +35,20 @@
 "Sign in" = "Logg inn";
 
 /* No comment provided by engineer. */
-"Sign In CloudKit" = "Logg in CloudKit";
+"Sign In" = "Logg inn";
+
+/* SignInView */
+"Sign In CloudKit" = "Logg inn på CloudKit";
 
 /* No comment provided by engineer. */
-"Sign Up CloudKit" = "Meld deg på CloudKit";
+"Sign Up" = "Meld inn";
+
+/* No comment provided by engineer. */
+"Sign Up CloudKit" = "Meld deg inn i CloudKit";
+
+/* SignInView */
+"Unknown user:" = "Ukjent bruker:";
+
+/* SignInView */
+"Your name" = "Navnet ditt";
 

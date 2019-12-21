@@ -46,22 +46,22 @@ struct SignInView : View {
                 }
 
                 Spacer(minLength: 20)
-                Text("Sign In CloudKit")
+                Text(NSLocalizedString("Sign In CloudKit", comment: "SignInView"))
                     .font(.headline)
                     .multilineTextAlignment(.center)
                 Spacer(minLength: 20)
                 VStack {
                     InputTextField(secure: false,
-                                   heading: "Your name",
-                                   placeHolder: "Enter your name",
+                                   heading: NSLocalizedString("Your name", comment: "SignInView"),
+                                   placeHolder: NSLocalizedString("Enter your name", comment: "SignInView"),
                                    value: $userItem.name)
                         .autocapitalization(.words)
 
                     Spacer(minLength: 20)
 
                     InputTextField(secure: false,
-                                   heading: "eMail address",
-                                   placeHolder: "Enter your email address",
+                                   heading: NSLocalizedString("eMail address", comment: "SignInView"),
+                                   placeHolder: NSLocalizedString("Enter your email address", comment: "SignInView"),
                                    value: $userItem.email)
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
@@ -69,8 +69,8 @@ struct SignInView : View {
                     Spacer(minLength: 20)
 
                     InputTextField(secure: true,
-                                   heading: "Password",
-                                   placeHolder: "Enter your Enter your password",
+                                   heading: NSLocalizedString("Password",  comment: "SignInView"),
+                                   placeHolder: NSLocalizedString("Enter your password", comment: "SignInView"),
                                    value: $userItem.password)
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
@@ -95,14 +95,16 @@ struct SignInView : View {
                             CloudKitUser.doesUserExist(name: self.userItem.name,
                                                        email: self.userItem.email) { (result) in
                                                         if result == false {
-                                                            self.message = "Unknown user: '\(self.userItem.name)'"
+                                                            let message = NSLocalizedString("Unknown user:", comment: "SignInView")
+                                                            self.message = message + " '\(self.userItem.name)'"
                                                         } else {
                                                             CloudKitUser.fetchUser(predicate: predicate) { (result) in
                                                                 switch result {
                                                                 case .success(let userItem):
                                                                     self.userElements.user.append(userItem)
                                                                     self.image = userItem.image!
-                                                                    self.message = "Fetched user: '\(self.userItem.name)'"
+                                                                    let message = NSLocalizedString("Fetched user:", comment: "SignInView")
+                                                                    self.message = message + " '\(self.userItem.name)'"
                                                                 case .failure(let err):
                                                                     self.message = err.localizedDescription
                                                                 }
@@ -112,7 +114,7 @@ struct SignInView : View {
                             self.show.toggle()
                         }
                         else {
-                            self.message = "Both eMail and Password must have a value"
+                            self.message = NSLocalizedString("Both eMail and Password must have a value", comment: "SignInView")
                             self.show.toggle()
                         }
                         
