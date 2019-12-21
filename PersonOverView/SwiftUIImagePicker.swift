@@ -19,7 +19,7 @@ struct SwiftUIImagePicker: View {
                 .resizable()
                 .frame(width: 100, height: 100)
                 .scaledToFit()
-                .border(Color.white, width: 2)
+                // .border(Color.white, width: 1)
                 .clipShape(Circle())
 
             Button(action: {
