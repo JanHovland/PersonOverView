@@ -8,9 +8,6 @@
 "Enter your email address" = "Legg inn e-post adressen din";
 
 /* SignInView */
-"Enter your name" = "Legg inn navnet ditt";
-
-/* SignInView */
 "Enter your password" = "Legg inn passordet ditt";
 
 /* SignInView */
@@ -47,7 +44,7 @@
 "Sign Up CloudKit" = "Meld deg inn i CloudKit";
 
 /* SignInView */
-"Unknown user:" = "Ukjent bruker:";
+"Unknown email:" = "Ukjent e-post adresse:";
 
 /* SignInView */
 "Your name" = "Navnet ditt";
