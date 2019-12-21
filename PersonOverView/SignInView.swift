@@ -37,6 +37,7 @@ struct SignInView : View {
                     Image(systemName: "person.circle")
                         .resizable()
                         .frame(width: 100, height: 100, alignment: .center)
+                        .font(Font.title.weight(.ultraLight))
                     // Her legges aktuelt bilde oppå "person.circle"
                     Image(uiImage: image)
                         .resizable()

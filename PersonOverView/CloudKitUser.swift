@@ -33,6 +33,7 @@ struct CloudKitUser {
         itemRecord["name"] = item.name as CKRecordValue
         itemRecord["email"] = item.email as CKRecordValue
         itemRecord["password"] = item.password as CKRecordValue
+        itemRecord["image"] = (item.image as! CKRecordValue)
         CKContainer.default().privateCloudDatabase.save(itemRecord) { (record, err) in
             DispatchQueue.main.async {
                 if let err = err {
