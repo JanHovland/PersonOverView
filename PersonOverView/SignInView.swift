@@ -91,28 +91,27 @@ struct SignInView : View {
                             
                             let predicate = NSPredicate(format: "email == %@ AND password == %@", email, password)
                             
-                            CloudKitUser.doesUserExist(email: self.email,
-                                                       password: self.password) { (result) in
-                                                        if result == false {
-                                                            let message = NSLocalizedString("Unknown email:", comment: "SignInView")
-                                                            self.message = message + " '\(self.email)'"
-                                                        } else {
-                                                            CloudKitUser.fetchUser(predicate: predicate) { (result) in
-                                                                switch result {
-                                                                case .success(let userItem):
-                                                                    self.userElements.user.append(userItem)
-                                                                    self.email = userItem.email
-                                                                    self.password = userItem.password
-                                                                    self.name = userItem.name
-                                                                    self.image = userItem.image!
-                                                                    let message = NSLocalizedString("Fetched user:", comment: "SignInView")
-                                                                    self.message = message + " '\(self.name)'"
-                                                                case .failure(let err):
-                                                                    self.message = err.localizedDescription
-                                                                }
-                                                            }
-                                                        }
-                            }
+                            CloudKitUser.doesUserExist(email: self.email) { (result) in
+                                if result == false {
+                                    let message = NSLocalizedString("Unknown email:", comment: "SignInView")
+                                    self.message = message + " '\(self.email)'"
+                                } else {
+                                    CloudKitUser.fetchUser(predicate: predicate) { (result) in
+                                        switch result {
+                                        case .success(let userItem):
+                                            self.userElements.user.append(userItem)
+                                            self.email = userItem.email
+                                            self.password = userItem.password
+                                            self.name = userItem.name
+                                            self.image = userItem.image!
+                                            let message = NSLocalizedString("Fetched user:", comment: "SignInView")
+                                            self.message = message + " '\(self.name)'"
+                                        case .failure(let err):
+                                            self.message = err.localizedDescription
+                                        }
+                                    }
+                                }
+                        }
                             self.show.toggle()
                         }
                         else {

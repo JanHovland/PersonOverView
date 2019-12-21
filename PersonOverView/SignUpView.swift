@@ -70,15 +70,14 @@ struct SignUpView : View {
                     Button(action: {
                         if self.userItem.name.count > 0, self.userItem.email.count > 0, self.userItem.password.count > 0 {
 
-                            CloudKitUser.doesUserExist(email: self.userItem.email,
-                                                       password: self.userItem.password) { (result) in
+                            CloudKitUser.doesUserExist(email: self.userItem.email) { (result) in
                                                         if result == false {
                                                             // MARK: - saving to CloudKit
                                                             CloudKitUser.saveUser(item: self.userItem) { (result) in
                                                                 switch result {
                                                                 case .success(let userItem):
                                                                     self.userElements.user.insert(userItem, at: 0)
-                                                                    self.message = "Addedd new user: '\(self.userItem.name)'"
+                                                                    self.message = "Added new user: '\(self.userItem.name)'"
                                                                     self.show.toggle()
                                                                 case .failure(let err):
                                                                     print(err.localizedDescription)
