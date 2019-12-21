@@ -70,8 +70,8 @@ struct SignUpView : View {
                     Button(action: {
                         if self.userItem.name.count > 0, self.userItem.email.count > 0, self.userItem.password.count > 0 {
 
-                            CloudKitUser.doesUserExist(name: self.userItem.name,
-                                                       email: self.userItem.email) { (result) in
+                            CloudKitUser.doesUserExist(email: self.userItem.email,
+                                                       password: self.userItem.password) { (result) in
                                                         if result == false {
                                                             // MARK: - saving to CloudKit
                                                             CloudKitUser.saveUser(item: self.userItem) { (result) in

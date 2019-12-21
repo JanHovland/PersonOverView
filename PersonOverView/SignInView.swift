@@ -50,11 +50,10 @@ struct SignInView : View {
                     .font(.headline)
                     .multilineTextAlignment(.center)
                 Spacer(minLength: 20)
-                VStack {
-                    InputTextField(secure: false,
+                VStack (alignment: .leading) {
+                    OutputTextField(secure: false,
                                    heading: NSLocalizedString("Your name", comment: "SignInView"),
-                                   placeHolder: NSLocalizedString("Enter your name", comment: "SignInView"),
-                                   value: $userItem.name)
+                                   value: $name)
                         .autocapitalization(.words)
 
                     Spacer(minLength: 20)
@@ -62,7 +61,7 @@ struct SignInView : View {
                     InputTextField(secure: false,
                                    heading: NSLocalizedString("eMail address", comment: "SignInView"),
                                    placeHolder: NSLocalizedString("Enter your email address", comment: "SignInView"),
-                                   value: $userItem.email)
+                                   value: $email)
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
 
@@ -71,7 +70,7 @@ struct SignInView : View {
                     InputTextField(secure: true,
                                    heading: NSLocalizedString("Password",  comment: "SignInView"),
                                    placeHolder: NSLocalizedString("Enter your password", comment: "SignInView"),
-                                   value: $userItem.password)
+                                   value: $password)
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
 
@@ -82,29 +81,32 @@ struct SignInView : View {
 
                 VStack {
                     Button(action: {
-                        if self.userItem.email.count > 0, self.userItem.password.count > 0 {
+                        if self.email.count > 0, self.password.count > 0 {
                             // Check if the user exists
-                            let email = self.userItem.email
-                            let password = self.userItem.password
+                            let email = self.email
+                            let password = self.password
                             
                             // Check different predicates at :   https://nspredicate.xyz
                             // %@ : an object (eg: String, date etc), whereas %i will be substituted with an integer.
                             
                             let predicate = NSPredicate(format: "email == %@ AND password == %@", email, password)
                             
-                            CloudKitUser.doesUserExist(name: self.userItem.name,
-                                                       email: self.userItem.email) { (result) in
+                            CloudKitUser.doesUserExist(email: self.email,
+                                                       password: self.password) { (result) in
                                                         if result == false {
-                                                            let message = NSLocalizedString("Unknown user:", comment: "SignInView")
-                                                            self.message = message + " '\(self.userItem.name)'"
+                                                            let message = NSLocalizedString("Unknown email:", comment: "SignInView")
+                                                            self.message = message + " '\(self.email)'"
                                                         } else {
                                                             CloudKitUser.fetchUser(predicate: predicate) { (result) in
                                                                 switch result {
                                                                 case .success(let userItem):
                                                                     self.userElements.user.append(userItem)
+                                                                    self.email = userItem.email
+                                                                    self.password = userItem.password
+                                                                    self.name = userItem.name
                                                                     self.image = userItem.image!
                                                                     let message = NSLocalizedString("Fetched user:", comment: "SignInView")
-                                                                    self.message = message + " '\(self.userItem.name)'"
+                                                                    self.message = message + " '\(self.name)'"
                                                                 case .failure(let err):
                                                                     self.message = err.localizedDescription
                                                                 }

@@ -72,11 +72,11 @@ struct CloudKitUser {
     }
 
     // MARK: - check if the user record exists
-    static func doesUserExist(name: String,
-                              email: String,
+    static func doesUserExist(email: String,
+                              password: String,
                               completion: @escaping (Bool) -> ()) {
         var result = false
-        let predicate = NSPredicate(format: "name == %@ AND email == %@", name, email)
+        let predicate = NSPredicate(format: "email == %@ AND password == %@", email, password)
         let query = CKQuery(recordType: RecordType.User, predicate: predicate)
         DispatchQueue.main.async {
             CKContainer.default().privateCloudDatabase.perform(query, inZoneWith: nil, completionHandler: { (results, er) in
