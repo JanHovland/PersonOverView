@@ -19,7 +19,9 @@ struct SignUpView : View {
     @State private var password: String = ""
     @State private var show: Bool = false
     @State private var message: String = ""
-    @State private var userItem = UserElement(name: "", email: "", password: "")
+    @State private var inage: UIImage?
+
+    @State private var userItem = UserElement(name: "", email: "", password: "", image: nil)
     
     @EnvironmentObject var userElements: UserElements
 
@@ -69,10 +71,11 @@ struct SignUpView : View {
                 VStack {
                     Button(action: {
                         if self.userItem.name.count > 0, self.userItem.email.count > 0, self.userItem.password.count > 0 {
-
-                            CloudKitUser.doesUserExist(email: self.userItem.email) { (result) in
+                                         // (systemName: "tray.2")
+                                CloudKitUser.doesUserExist(email: self.userItem.email) { (result) in
                                                         if result == false {
                                                             // MARK: - saving to CloudKit
+                                                            self.userItem.image = UIImage(contentsOfFile: "Cloudkit")  
                                                             CloudKitUser.saveUser(item: self.userItem) { (result) in
                                                                 switch result {
                                                                 case .success(let userItem):
@@ -138,3 +141,4 @@ struct FormField: View {
         }
     }
 }
+

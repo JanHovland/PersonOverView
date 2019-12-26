@@ -30,10 +30,21 @@ struct CloudKitUser {
     // MARK: - saving to CloudKit
     static func saveUser(item: UserElement, completion: @escaping (Result<UserElement, Error>) -> ()) {
         let itemRecord = CKRecord(recordType: RecordType.User)
+
+        // let imageData = UIImage(contentsOfFile: "CloudKit")! as Data       // (contentsOfFile: "CloudKit")
+
+
         itemRecord["name"] = item.name as CKRecordValue
         itemRecord["email"] = item.email as CKRecordValue
         itemRecord["password"] = item.password as CKRecordValue
-        itemRecord["image"] = (item.image as! CKRecordValue)
+//         itemRecord["image"] = (item.image as! CKAsset?)
+
+
+
+
+        // let imageData = UIImage(contentsOfFile: "CloudKit")! as Data
+
+
         CKContainer.default().privateCloudDatabase.save(itemRecord) { (record, err) in
             DispatchQueue.main.async {
                 if let err = err {
@@ -57,16 +68,16 @@ struct CloudKitUser {
                     completion(.failure(CloudKitHelperError.castFailure))
                     return
                 }
-                //                guard let image = record["image"] as? String else {
-                //                    completion(.failure(CloudKitHelperError.castFailure))
-                //                    return
-                //                }
+                // guard (record["image"]) != nil else {
+                guard (record["image"] as? String) != nil else {
+                    completion(.failure(CloudKitHelperError.castFailure))
+                    return
+                }
 
                 let userElement = UserElement(recordID: recordID,
                                               name: name,
                                               email: email,
                                               password: password)
-                // image: image)
                 completion(.success(userElement))
             }
         }
