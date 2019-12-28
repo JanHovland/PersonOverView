@@ -20,11 +20,20 @@ class ImagePicker: ObservableObject {
     let coordinator = ImagePicker.Coordinator()
 
     let willChange = PassthroughSubject<Image?, Never>()
+    let willChangeURL = PassthroughSubject<URL?, Never>()
 
     @Published var image: Image? = nil {
         didSet {
             if image != nil {
                 willChange.send(image)
+            }
+        }
+    }
+
+    @Published var url: URL? = nil {
+        didSet {
+            if url != nil {
+                willChangeURL.send(url)
             }
         }
     }
@@ -39,8 +48,10 @@ extension ImagePicker {
 
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+            let url = info[UIImagePickerController.InfoKey.imageURL] as! URL
 
             ImagePicker.shared.image = Image(uiImage: image)
+            ImagePicker.shared.url = url  
             picker.dismiss(animated: true)
         }
 

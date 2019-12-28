@@ -13,6 +13,7 @@ struct SwiftUIImagePicker: View {
 
     @State var showingImagePicker = false
     @State var image: Image? = nil
+    @State var url: URL? = nil
 
     var body: some View {
         VStack {
@@ -36,6 +37,13 @@ struct SwiftUIImagePicker: View {
                     .padding(.bottom)
 
             }
+
+//            if ImagePicker.shared.$url != nil {
+//                print(url as Any)
+//            }
+
+            // Text(url as? String)
+
             Button("Choose Profile Image") {
                 self.showingImagePicker.toggle()
             }
@@ -43,6 +51,9 @@ struct SwiftUIImagePicker: View {
             ImagePicker.shared.view
         }).onReceive(ImagePicker.shared.$image) { image in
             self.image = image
+        }.onReceive(ImagePicker.shared.$url) { url in
+            self.url = url
+            print(url as Any)
         }
     }
 }
