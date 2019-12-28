@@ -21,7 +21,6 @@
 		DB302B85237EF27400076D10 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B84237EF27400076D10 /* SignInView.swift */; };
 		DB302B87237EF2A700076D10 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B86237EF2A700076D10 /* SignUpView.swift */; };
 		DB302B8B237EF33100076D10 /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B8A237EF33100076D10 /* PersonView.swift */; };
-		DB302B8D237EF3BD00076D10 /* CheckUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B8C237EF3BD00076D10 /* CheckUser.swift */; };
 		DB302B8F237EF43400076D10 /* CloudKitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B8E237EF43400076D10 /* CloudKitUser.swift */; };
 		DB302B93237FDD8600076D10 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB302B92237FDD8600076D10 /* CloudKit.framework */; };
 		DB6739C123AA910E00EF9ECD /* SwiftUIImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6739C023AA910E00EF9ECD /* SwiftUIImagePicker.swift */; };
@@ -49,7 +48,6 @@
 		DB302B84237EF27400076D10 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		DB302B86237EF2A700076D10 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		DB302B8A237EF33100076D10 /* PersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonView.swift; sourceTree = "<group>"; };
-		DB302B8C237EF3BD00076D10 /* CheckUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUser.swift; sourceTree = "<group>"; };
 		DB302B8E237EF43400076D10 /* CloudKitUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitUser.swift; sourceTree = "<group>"; };
 		DB302B90237FDD7200076D10 /* PersonOverView.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonOverView.entitlements; sourceTree = "<group>"; };
 		DB302B92237FDD8600076D10 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -96,7 +94,6 @@
 				DB302B90237FDD7200076D10 /* PersonOverView.entitlements */,
 				DB302B69237EF02300076D10 /* AppDelegate.swift */,
 				DB302B72237EF02300076D10 /* Assets.xcassets */,
-				DB302B8C237EF3BD00076D10 /* CheckUser.swift */,
 				DB302B8E237EF43400076D10 /* CloudKitUser.swift */,
 				DB6739C023AA910E00EF9ECD /* SwiftUIImagePicker.swift */,
 				DBB4C62723B6301F0055296B /* ImagePicker.swift */,
@@ -217,7 +214,6 @@
 				DBB4C62823B6301F0055296B /* ImagePicker.swift in Sources */,
 				DB302B71237EF02300076D10 /* PersonOverView.swift in Sources */,
 				DB302B81237EF16200076D10 /* UserElement.swift in Sources */,
-				DB302B8D237EF3BD00076D10 /* CheckUser.swift in Sources */,
 				DB302B8B237EF33100076D10 /* PersonView.swift in Sources */,
 				DB1FEF932380592F00F8D763 /* InputGender.swift in Sources */,
 				DB302B87237EF2A700076D10 /* SignUpView.swift in Sources */,
