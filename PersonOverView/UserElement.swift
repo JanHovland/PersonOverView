@@ -19,4 +19,5 @@ struct UserElement: Identifiable {
     var email: String
     var password: String
     var image: UIImage?
+    var imageAsset: CKAsset?
 }

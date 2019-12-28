@@ -28,6 +28,7 @@
 		DB6739C423AD46A800EF9ECD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB6739C223AD46A800EF9ECD /* InfoPlist.strings */; };
 		DB6739C723AD46A800EF9ECD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB6739C523AD46A800EF9ECD /* Localizable.strings */; };
 		DB6739CB23AE2B0600EF9ECD /* OutputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6739CA23AE2B0600EF9ECD /* OutputTextField.swift */; };
+		DBB4C62823B6301F0055296B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB4C62723B6301F0055296B /* ImagePicker.swift */; };
 		DBDDEB4A2386910700DD82B3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDDEB492386910700DD82B3 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		DB6739C823AD495500EF9ECD /* nb-NO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nb-NO"; path = "nb-NO.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		DB6739C923AD495500EF9ECD /* nb-NO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nb-NO"; path = "nb-NO.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		DB6739CA23AE2B0600EF9ECD /* OutputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputTextField.swift; sourceTree = "<group>"; };
+		DBB4C62723B6301F0055296B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		DBDDEB492386910700DD82B3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,6 +99,7 @@
 				DB302B8C237EF3BD00076D10 /* CheckUser.swift */,
 				DB302B8E237EF43400076D10 /* CloudKitUser.swift */,
 				DB6739C023AA910E00EF9ECD /* SwiftUIImagePicker.swift */,
+				DBB4C62723B6301F0055296B /* ImagePicker.swift */,
 				DB302B7A237EF02300076D10 /* Info.plist */,
 				DB6739C523AD46A800EF9ECD /* Localizable.strings */,
 				DB6739C223AD46A800EF9ECD /* InfoPlist.strings */,
@@ -211,6 +214,7 @@
 				DBDDEB4A2386910700DD82B3 /* SettingsView.swift in Sources */,
 				DB302B6F237EF02300076D10 /* PersonOverView.xcdatamodeld in Sources */,
 				DB302B6A237EF02300076D10 /* AppDelegate.swift in Sources */,
+				DBB4C62823B6301F0055296B /* ImagePicker.swift in Sources */,
 				DB302B71237EF02300076D10 /* PersonOverView.swift in Sources */,
 				DB302B81237EF16200076D10 /* UserElement.swift in Sources */,
 				DB302B8D237EF3BD00076D10 /* CheckUser.swift in Sources */,
