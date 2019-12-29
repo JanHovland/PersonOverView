@@ -104,7 +104,9 @@ struct SignInView : View {
                                             self.email = userItem.email
                                             self.password = userItem.password
                                             self.name = userItem.name
-                                            self.image = userItem.image!
+                                            if userItem.image != nil {
+                                                self.image = userItem.image!
+                                            } 
                                             let message = NSLocalizedString("Fetched user:", comment: "SignInView")
                                             self.message = message + " '\(self.name)'"
                                         case .failure(let err):

@@ -14,11 +14,9 @@ import CloudKit
 import SwiftUI
 
 struct CloudKitUser {
-
     struct RecordType {
         static let User = "User"
     }
-
     // MARK: - errors
     enum CloudKitHelperError: Error {
         case recordFailure
@@ -27,18 +25,25 @@ struct CloudKitUser {
         case cursorFailure
     }
 
+    @EnvironmentObject var imagePicker:  ImagePicker
+
     // MARK: - saving to CloudKit
     static func saveUser(item: UserElement, completion: @escaping (Result<UserElement, Error>) -> ()) {
-
         let itemRecord = CKRecord(recordType: RecordType.User)
-
         itemRecord["name"] = item.name as CKRecordValue
         itemRecord["email"] = item.email as CKRecordValue
-
-        // MARK: - Global variable "fileURL" is used, must be altered
-
         itemRecord["password"] = item.password as CKRecordValue
-        itemRecord["image"] = CKAsset(fileURL: fileURL!)
+
+        if ImagePicker.shared.imageFileURL != nil {
+            itemRecord["image"] = CKAsset(fileURL: ImagePicker.shared.imageFileURL!)
+        }
+//         else {
+//            let imageFileURL = URL("person.fill")
+//
+//
+//                URL(fileURLWithPath: "person.fill")
+//            itemRecord["image"] = UIImage(systemName: "person.fill") as? __CKRecordObjCValue
+//         }
 
         CKContainer.default().privateCloudDatabase.save(itemRecord) { (record, err) in
             DispatchQueue.main.async {
@@ -63,10 +68,12 @@ struct CloudKitUser {
                     completion(.failure(CloudKitHelperError.castFailure))
                     return
                 }
-                guard (record["image"] as? CKAsset) != nil else {
-                    completion(.failure(CloudKitHelperError.castFailure))
-                    return
-                }
+
+                // MARK: - "image" vil være nil når det ikke er valgt noe bilde
+                // guard (record["image"] as? CKAsset) != nil else {
+                //     completion(.failure(CloudKitHelperError.castFailure))
+                //     return
+                // }
 
                 let userElement = UserElement(recordID: recordID,
                                               name: name,

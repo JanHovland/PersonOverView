@@ -15,7 +15,7 @@ import CloudKit
 class ImagePicker: ObservableObject {
 
     static let shared: ImagePicker = ImagePicker()
-    private init() {}
+    init() {}
 
     let view = ImagePicker.View()
     let coordinator = ImagePicker.Coordinator()

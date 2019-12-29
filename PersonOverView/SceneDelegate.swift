@@ -39,7 +39,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
             window.rootViewController = UIHostingController(rootView:
                 
-                contentView.environmentObject(UserElements()))
+                contentView.environmentObject(UserElements()).environmentObject(ImagePicker()))
             
                 // Adding another XxxxElements
                 // contentView.environmentObject(ListElements()).environmentObject(XxxxElements()))
