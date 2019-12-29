@@ -26,7 +26,6 @@ class ImagePicker: ObservableObject {
     @Published var image: Image? = nil {
         didSet {
             if image != nil {
-
                 // MARK: - Reduce the size of the image ??
                 willChange.send(image)
             }
