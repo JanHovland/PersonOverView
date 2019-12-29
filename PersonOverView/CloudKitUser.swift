@@ -37,13 +37,6 @@ struct CloudKitUser {
         if ImagePicker.shared.imageFileURL != nil {
             itemRecord["image"] = CKAsset(fileURL: ImagePicker.shared.imageFileURL!)
         }
-//         else {
-//            let imageFileURL = URL("person.fill")
-//
-//
-//                URL(fileURLWithPath: "person.fill")
-//            itemRecord["image"] = UIImage(systemName: "person.fill") as? __CKRecordObjCValue
-//         }
 
         CKContainer.default().privateCloudDatabase.save(itemRecord) { (record, err) in
             DispatchQueue.main.async {
