@@ -8,12 +8,16 @@
 
 import SwiftUI
 import CloudKit
+import Combine
+
+// MARK: - Global variable must be altered !!!
+var fileURL: URL? = nil
 
 struct SwiftUIImagePicker: View {
 
-    @State var showingImagePicker = false
-    @State var image: Image? = nil
-    @State var url: URL? = nil
+    @State private var showingImagePicker = false
+    @State private var image: Image? = nil
+    @State private var imageFileURL: URL? = nil
 
     var body: some View {
         VStack {
@@ -38,12 +42,6 @@ struct SwiftUIImagePicker: View {
 
             }
 
-//            if ImagePicker.shared.$url != nil {
-//                print(url as Any)
-//            }
-
-            // Text(url as? String)
-
             Button("Choose Profile Image") {
                 self.showingImagePicker.toggle()
             }
@@ -51,9 +49,14 @@ struct SwiftUIImagePicker: View {
             ImagePicker.shared.view
         }).onReceive(ImagePicker.shared.$image) { image in
             self.image = image
-        }.onReceive(ImagePicker.shared.$url) { url in
-            self.url = url
-            print(url as Any)
+        }.onReceive(ImagePicker.shared.$imageFileURL) { imageFileURL in
+            self.imageFileURL = imageFileURL
+            if imageFileURL != nil {
+                print(imageFileURL! as Any)
+
+                // MARK: - Global variable must be altered
+                fileURL = imageFileURL!
+            }
         }
     }
 }

@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Combine
+import CloudKit
 
 // YouTube: iOS 13 Swift UI Tutorial: Use UIKit Components with Swift UI
 
@@ -20,7 +21,7 @@ class ImagePicker: ObservableObject {
     let coordinator = ImagePicker.Coordinator()
 
     let willChange = PassthroughSubject<Image?, Never>()
-    let willChangeURL = PassthroughSubject<URL?, Never>()
+    let willChangeImageFileURL = PassthroughSubject<URL?, Never>()
 
     @Published var image: Image? = nil {
         didSet {
@@ -30,10 +31,10 @@ class ImagePicker: ObservableObject {
         }
     }
 
-    @Published var url: URL? = nil {
+    @Published var imageFileURL: URL? = nil {
         didSet {
-            if url != nil {
-                willChangeURL.send(url)
+            if imageFileURL != nil {
+                willChangeImageFileURL.send(imageFileURL)
             }
         }
     }
@@ -48,10 +49,9 @@ extension ImagePicker {
 
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-            let url = info[UIImagePickerController.InfoKey.imageURL] as! URL
-
+      
             ImagePicker.shared.image = Image(uiImage: image)
-            ImagePicker.shared.url = url  
+            ImagePicker.shared.imageFileURL = info[UIImagePickerController.InfoKey.imageURL] as? URL
             picker.dismiss(animated: true)
         }
 

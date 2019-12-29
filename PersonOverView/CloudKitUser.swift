@@ -26,24 +26,19 @@ struct CloudKitUser {
         case castFailure
         case cursorFailure
     }
-    
+
     // MARK: - saving to CloudKit
     static func saveUser(item: UserElement, completion: @escaping (Result<UserElement, Error>) -> ()) {
+
         let itemRecord = CKRecord(recordType: RecordType.User)
-
-        // let imageData = UIImage(contentsOfFile: "CloudKit")! as Data       // (contentsOfFile: "CloudKit")
-
 
         itemRecord["name"] = item.name as CKRecordValue
         itemRecord["email"] = item.email as CKRecordValue
+
+        // MARK: - Global variable "fileURL" is used, must be altered
+
         itemRecord["password"] = item.password as CKRecordValue
-//         itemRecord["image"] = (item.image as! CKAsset?)
-
-
-
-
-        // let imageData = UIImage(contentsOfFile: "CloudKit")! as Data
-
+        itemRecord["image"] = CKAsset(fileURL: fileURL!)
 
         CKContainer.default().privateCloudDatabase.save(itemRecord) { (record, err) in
             DispatchQueue.main.async {
@@ -68,8 +63,7 @@ struct CloudKitUser {
                     completion(.failure(CloudKitHelperError.castFailure))
                     return
                 }
-                // guard (record["image"]) != nil else {
-                guard (record["image"] as? String) != nil else {
+                guard (record["image"] as? CKAsset) != nil else {
                     completion(.failure(CloudKitHelperError.castFailure))
                     return
                 }
