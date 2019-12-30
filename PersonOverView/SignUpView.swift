@@ -26,7 +26,7 @@ struct SignUpView : View {
     @EnvironmentObject var userElements: UserElements
 
     var body: some View {
-        Form {
+        ScrollView {
             VStack (alignment: .center) {
                 //Spacer(minLength: 20)
                 Image("CloudKit")

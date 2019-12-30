@@ -23,6 +23,7 @@
 		DB302B8B237EF33100076D10 /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B8A237EF33100076D10 /* PersonView.swift */; };
 		DB302B8F237EF43400076D10 /* CloudKitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B8E237EF43400076D10 /* CloudKitUser.swift */; };
 		DB302B93237FDD8600076D10 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB302B92237FDD8600076D10 /* CloudKit.framework */; };
+		DB46938023B9F0A50060933E /* ToDoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB46937F23B9F0A50060933E /* ToDoView.swift */; };
 		DB6739C123AA910E00EF9ECD /* SwiftUIImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6739C023AA910E00EF9ECD /* SwiftUIImagePicker.swift */; };
 		DB6739C423AD46A800EF9ECD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB6739C223AD46A800EF9ECD /* InfoPlist.strings */; };
 		DB6739C723AD46A800EF9ECD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB6739C523AD46A800EF9ECD /* Localizable.strings */; };
@@ -51,6 +52,7 @@
 		DB302B8E237EF43400076D10 /* CloudKitUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitUser.swift; sourceTree = "<group>"; };
 		DB302B90237FDD7200076D10 /* PersonOverView.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonOverView.entitlements; sourceTree = "<group>"; };
 		DB302B92237FDD8600076D10 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		DB46937F23B9F0A50060933E /* ToDoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoView.swift; sourceTree = "<group>"; };
 		DB6739C023AA910E00EF9ECD /* SwiftUIImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIImagePicker.swift; sourceTree = "<group>"; };
 		DB6739C823AD495500EF9ECD /* nb-NO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nb-NO"; path = "nb-NO.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		DB6739C923AD495500EF9ECD /* nb-NO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nb-NO"; path = "nb-NO.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				DBDDEB492386910700DD82B3 /* SettingsView.swift */,
 				DB302B84237EF27400076D10 /* SignInView.swift */,
 				DB302B86237EF2A700076D10 /* SignUpView.swift */,
+				DB46937F23B9F0A50060933E /* ToDoView.swift */,
 				DB302B80237EF16200076D10 /* UserElement.swift */,
 				DB302B82237EF18D00076D10 /* UserElements.swift */,
 				DB302B74237EF02300076D10 /* Preview Content */,
@@ -222,6 +225,7 @@
 				DB1FEF91238055FE00F8D763 /* InputTextField.swift in Sources */,
 				DB302B85237EF27400076D10 /* SignInView.swift in Sources */,
 				DB302B83237EF18D00076D10 /* UserElements.swift in Sources */,
+				DB46938023B9F0A50060933E /* ToDoView.swift in Sources */,
 				DB302B8F237EF43400076D10 /* CloudKitUser.swift in Sources */,
 				DB6739C123AA910E00EF9ECD /* SwiftUIImagePicker.swift in Sources */,
 			);

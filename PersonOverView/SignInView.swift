@@ -29,7 +29,7 @@ struct SignInView : View {
 
     var body: some View {
 
-        Form {
+        ScrollView  {
             VStack (alignment: .center) {
                 Spacer(minLength: 10)
 
@@ -132,6 +132,6 @@ struct SignInView : View {
                 return Alert(title: Text(self.message))
             }
         }
-    }
+     }
 }
 
