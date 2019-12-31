@@ -14,6 +14,9 @@ import CloudKit
 import SwiftUI
 
 struct CloudKitUser {
+
+    @EnvironmentObject var imagePicker:  ImagePicker
+
     struct RecordType {
         static let User = "User"
     }
@@ -24,8 +27,6 @@ struct CloudKitUser {
         case castFailure
         case cursorFailure
     }
-
-    @EnvironmentObject var imagePicker:  ImagePicker
 
     // MARK: - saving to CloudKit
     static func saveUser(item: UserElement, completion: @escaping (Result<UserElement, Error>) -> ()) {
@@ -62,7 +63,7 @@ struct CloudKitUser {
                     return
                 }
 
-                // MARK: - "image" vil være nil når det ikke er valgt noe bilde
+                // MARK: - "image" kan være nil, dersom det ikke er valgt noe bilde
                 // guard (record["image"] as? CKAsset) != nil else {
                 //     completion(.failure(CloudKitHelperError.castFailure))
                 //     return
