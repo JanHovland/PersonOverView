@@ -19,25 +19,51 @@ struct SignUpView : View {
     @State private var password: String = ""
     @State private var show: Bool = false
     @State private var message: String = ""
-    @State private var inage: UIImage?
+    @State private var image: Image? = nil
 
+    @State private var showingImagePicker = false
     @State private var userItem = UserElement(name: "", email: "", password: "", image: nil)
     
     @EnvironmentObject var userElements: UserElements
+    @EnvironmentObject var imagePicker:  ImagePicker
 
     var body: some View {
         ScrollView {
-            VStack (alignment: .center) {
-                //Spacer(minLength: 20)
-                Image("CloudKit")
-                    .resizable()
-                    .frame(width: 50, height: 50, alignment: .center)
+            VStack {
                 Spacer(minLength: 20)
-                Text("Sign Up CloudKit")
-                    .font(.headline)
-                    .multilineTextAlignment(.center)
+
+                HStack {
+//                    Image("CloudKit")
+//                        .resizable()
+//                        .frame(width: 40, height: 40, alignment: .center)
+//                        .clipShape(Circle())
+                    Text("Sign Up CloudKit")
+                        .font(.headline)
+                        .multilineTextAlignment(.center)
+                }
+                Spacer(minLength: 20)
+
+                ZStack {
+                    Image(systemName: "person.circle")
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                        .font(Font.title.weight(.ultraLight))
+                    // Her legges aktuelt bilde oppå "person.circle"
+                    if image != nil {
+                        image!
+                            .resizable()
+                            .frame(width: 100, height: 100)
+                            .aspectRatio(contentMode: .fill)
+                            .clipShape(Circle())
+                    }
+                }
 
                 Spacer(minLength: 20)
+
+                Button("Choose Profile Image") {
+                    self.showingImagePicker.toggle()
+                }
+
                 VStack {
                     InputTextField(secure: false,
                                    heading: "Your name",
@@ -71,28 +97,28 @@ struct SignUpView : View {
                 VStack {
                     Button(action: {
                         if self.userItem.name.count > 0, self.userItem.email.count > 0, self.userItem.password.count > 0 {
-                                         // (systemName: "tray.2")
-                                CloudKitUser.doesUserExist(email: self.userItem.email) { (result) in
-                                                        if result == false {
-                                                            // MARK: - saving to CloudKit
-                                                            self.userItem.image = UIImage(contentsOfFile: "Cloudkit")  
-                                                            CloudKitUser.saveUser(item: self.userItem) { (result) in
-                                                                switch result {
-                                                                case .success(let userItem):
-                                                                    self.userElements.user.insert(userItem, at: 0)
-                                                                    self.message = "Added new user: '\(self.userItem.name)'"
-                                                                    self.show.toggle()
-                                                                case .failure(let err):
-                                                                    print(err.localizedDescription)
-                                                                    self.message = err.localizedDescription
-                                                                    self.show.toggle()
-                                                                }
-                                                            }
+                            // (systemName: "tray.2")
+                            CloudKitUser.doesUserExist(email: self.userItem.email) { (result) in
+                                if result == false {
+                                    // MARK: - saving to CloudKit
+                                    self.userItem.image = UIImage(contentsOfFile: "Cloudkit")
+                                    CloudKitUser.saveUser(item: self.userItem) { (result) in
+                                        switch result {
+                                        case .success(let userItem):
+                                            self.userElements.user.insert(userItem, at: 0)
+                                            self.message = "Added new user: '\(self.userItem.name)'"
+                                            self.show.toggle()
+                                        case .failure(let err):
+                                            print(err.localizedDescription)
+                                            self.message = err.localizedDescription
+                                            self.show.toggle()
+                                        }
+                                    }
 
-                                                        } else {
-                                                            self.message = "The user: '\(self.userItem.name)' already exists"
-                                                            self.show.toggle()
-                                                        }
+                                } else {
+                                    self.message = "The user: '\(self.userItem.name)' already exists"
+                                    self.show.toggle()
+                                }
                             }
                         } else {
                             self.message = "Name, eMail or Password must all contain a value."
@@ -105,13 +131,18 @@ struct SignUpView : View {
                     }
                 }
             }
-            // MARK: - Endre logikk slik at message ikke vises dersom message = nil
-            .alert(isPresented: $show) {
-                return Alert(title: Text(self.message))
+                // MARK: - Endre logikk slik at message ikke vises dersom message = nil
+                .alert(isPresented: $show) {
+                    return Alert(title: Text(self.message))
             }
+        }.sheet(isPresented: $showingImagePicker, content: {
+            ImagePicker.shared.view
+        }).onReceive(ImagePicker.shared.$image) { image in
+            self.image = image
         }
     }
 }
+
 
 struct FormField: View {
     var fieldName = ""

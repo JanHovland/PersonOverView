@@ -31,7 +31,19 @@ struct SignInView : View {
 
         ScrollView  {
             VStack (alignment: .center) {
-                Spacer(minLength: 10)
+
+                Spacer(minLength: 20)
+
+                HStack {
+//                    Image("CloudKit")
+//                        .resizable()
+//                        .frame(width: 40, height: 40, alignment: .center)
+//                        .clipShape(Circle())
+                    Text("Sign in CloudKit")
+                        .font(.headline)
+                        .multilineTextAlignment(.center)
+                }
+                Spacer(minLength: 20)
 
                 ZStack {
                     Image(systemName: "person.circle")
@@ -46,11 +58,8 @@ struct SignInView : View {
                         .clipShape(Circle())
                 }
 
-                Spacer(minLength: 20)
-                Text(NSLocalizedString("Sign In CloudKit", comment: "SignInView"))
-                    .font(.headline)
-                    .multilineTextAlignment(.center)
-                Spacer(minLength: 20)
+                Spacer(minLength: 40)
+
                 VStack (alignment: .leading) {
                     OutputTextField(secure: false,
                                    heading: NSLocalizedString("Your name", comment: "SignInView"),

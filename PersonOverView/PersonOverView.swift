@@ -19,14 +19,6 @@ struct PersonOverView: View {
 
     var body: some View {
         TabView {
-           SwiftUIImagePicker()
-               .tabItem {
-                    VStack {
-                        Image(systemName: "person.fill")
-                        Text("Image")
-                    }
-               }
-               .tag(0)
             SignInView()
                 .tabItem {
                      VStack {
@@ -34,7 +26,7 @@ struct PersonOverView: View {
                          Text("Sign in")
                      }
                 }
-                .tag(1)
+                .tag(0)
             SignUpView()
                 .tabItem {
                     VStack {
@@ -42,7 +34,7 @@ struct PersonOverView: View {
                         Text("Sign Up")
                     }
                 }
-                .tag(2)
+                .tag(1)
             ToDoView()
                 .tabItem {
                     VStack {
@@ -50,7 +42,7 @@ struct PersonOverView: View {
                         Text("Todo")
                     }
                 }
-                .tag(3)
+                .tag(2)
             SettingsView()
                 .tabItem {
                     VStack {
@@ -58,7 +50,7 @@ struct PersonOverView: View {
                         Text("Settings")
                     }
                 }
-                .tag(4)
+                .tag(3)
             PersonView()
                 .tabItem {
                     VStack {
@@ -66,7 +58,7 @@ struct PersonOverView: View {
                         Text("Persons")
                     }
                 }
-                .tag(5)
+                .tag(4)
         }
     }
 }
