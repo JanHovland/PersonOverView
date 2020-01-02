@@ -24,36 +24,59 @@ struct PersonView : View {
     @State var gender = 0
     @State var dateOfBirth = Date()
     
-    var genders = ["Man", "Woman"]
+    var genders = [NSLocalizedString("Man", comment: "PersonView"),
+                   NSLocalizedString("Woman", comment: "PersonView")]
     
     var body: some View {
         VStack {
             Form {
-                InputTextField(secure: false, heading: "First name",   placeHolder: "Enter your first name",    value: $firstName)
-                InputTextField(secure: false, heading: "Last name",    placeHolder: "Enter your last name",     value: $lastName)
-                InputTextField(secure: false, heading: "eMail",        placeHolder: "Enter your email address", value: $personEmail)
-                InputTextField(secure: false, heading: "Address",      placeHolder: "Enter your address",       value: $address)
-                InputTextField(secure: false, heading: "Phone Number", placeHolder: "Enter your phone number",  value: $phoneNumber)
+                InputTextField(secure: false,
+                               heading: NSLocalizedString("First name", comment: "PersonView"),
+                               placeHolder: NSLocalizedString("Enter your first name", comment: "PersonView"),
+                               value: $firstName)
+
+                InputTextField(secure: false,
+                               heading: NSLocalizedString("Last name", comment: "PersonView"),
+                               placeHolder: NSLocalizedString("Enter your last name", comment: "PersonView"),
+                               value: $lastName)
+                InputTextField(secure: false,
+                               heading: NSLocalizedString("eMail", comment: "PersonView"),
+                               placeHolder: NSLocalizedString("Enter your email address", comment: "PersonView"),
+                               value: $personEmail)
+                InputTextField(secure: false,
+                               heading: NSLocalizedString("Address", comment: "PersonView"),
+                               placeHolder: NSLocalizedString("Enter your address", comment: "PersonView"),
+                               value: $address)
+                InputTextField(secure: false,
+                               heading: NSLocalizedString("Phone Number", comment: "PersonView"),
+                               placeHolder: NSLocalizedString("Enter your phone number", comment: "PersonView"),
+                               value: $phoneNumber)
                 HStack {
-                    InputTextField(secure: false, heading: "City", placeHolder: "Enter the city", value: $city)
+                    InputTextField(secure: false,
+                                   heading: NSLocalizedString("City", comment: "PersonView"),
+                                   placeHolder: NSLocalizedString("Enter the city", comment: "PersonView"),
+                                   value: $city)
                     Image(systemName: "magnifyingglass")
                         .resizable()
                         .frame(width: 20, height: 20, alignment: .center)
                         .foregroundColor(.blue)
                         .font(.title)
                 }
-                InputTextField(secure: false, heading: "Municipality", placeHolder: "Enter your municipality",  value: $municipality)
+                InputTextField(secure: false,
+                               heading: NSLocalizedString("Municipality", comment: "PersonView"),
+                               placeHolder: NSLocalizedString("Enter your municipality", comment: "PersonView"),
+                               value: $municipality)
                 DatePicker(
                     selection: $dateOfBirth,
                     in: ...Date(),
                     displayedComponents: [.date],
                     label: {
-                        Text("Date of birth")
+                        Text(NSLocalizedString("Date of birth", comment: "PersonView"))
                             .font(.footnote)
                             .padding(-5)
                 })
                 // Returning an integer 0 == "Man" 1 == "Women
-                InputGender(heading: "Gender ", genders: genders, value: $gender)
+                InputGender(heading: NSLocalizedString("Gender", comment: "PersonView"), genders: genders, value: $gender)
             }
 
         }

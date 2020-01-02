@@ -94,12 +94,11 @@ struct SignInView : View {
                         if self.email.count > 0, self.password.count > 0 {
                             // Check if the user exists
                             let email = self.email
-                            let password = self.password
-                            
+
                             // Check different predicates at :   https://nspredicate.xyz
                             // %@ : an object (eg: String, date etc), whereas %i will be substituted with an integer.
                             
-                            let predicate = NSPredicate(format: "email == %@ AND password == %@", email, password)
+                            let predicate = NSPredicate(format: "email == %@", email)
                             
                             CloudKitUser.doesUserExist(email: self.email) { (result) in
                                 if result == false {

@@ -1,29 +1,88 @@
-/* SignInView */
-"Both eMail and Password must have a value" = "Både e-post og passord må ha en verdi";
+/* PersonView */
+"Address" = "Addresse";
+
+/* SignUpView */
+"already exists" = "finnes allrede";
 
 /* SignInView */
-"eMail address" = "e-post addresse";
+"Both eMail and Password must have a value" = "e-Post og passord må begge ha verdi";
 
-/* SignInView */
-"Enter your email address" = "Legg inn e-post adressen din";
+/* SignUpView */
+"Choose Profile Image" = "Velg profilbilde";
 
-/* SignInView */
-"Enter your password" = "Legg inn passordet ditt";
+/* PersonView */
+"City" = "By/Tettsted";
+
+/* PersonView */
+"Date of birth" = "Fødselsdato";
+
+/* PersonView */
+"eMail" = "e-Post";
+
+/* SignInView
+   SignUpView */
+"eMail address" = "e-Post addresse";
+
+/* PersonView */
+"Enter the city" = "Legg inn by/tettsted";
+
+/* PersonView */
+"Enter your address" = "Legg inn adresse";
+
+/* PersonView
+   SignInView
+   SignUpView */
+"Enter your email address" = "Legg inn e-Post adresse";
+
+/* PersonView */
+"Enter your first name" = "Legg inn fornavn";
+
+/* PersonView */
+"Enter your last name" = "Legg inn etternavn";
+
+/* PersonView */
+"Enter your municipality" = "Legg inn kommune";
+
+/* SignUpView */
+"Enter your name" = "Legg inn navn";
+
+/* SignInView
+   SignUpView */
+"Enter your password" = "Legg inn passord";
+
+/* PersonView */
+"Enter your phone number" = "Legg inn telefonnummer";
 
 /* SignInView */
 "Fetched user:" = "Hentet bruker:";
 
-/* No comment provided by engineer. */
-"Image" = "Bilde";
+/* PersonView */
+"First name" = "Fornavn";
 
-/* SignInView */
+/* PersonView */
+"Gender" = "Kjønn";
+
+/* PersonView */
+"Last name" = "Etternavn";
+
+/* PersonView */
+"Man" = "Mann";
+
+/* PersonView */
+"Municipality" = "Kommune";
+
+/* SignUpView */
+"Name, eMail or Password must all contain a value." = "Navn, e-Post eller passord må alle ha en verdi.";
+
+/* SignInView
+   SignUpView */
 "Password" = "Passord";
 
 /* No comment provided by engineer. */
 "Persons" = "Personer";
 
-/* No comment provided by engineer. */
-"Select Image" = "Velg bilde";
+/* PersonView */
+"Phone Number" = "Telefonnummer";
 
 /* No comment provided by engineer. */
 "Settings" = "Innstillinger";
@@ -34,18 +93,34 @@
 /* No comment provided by engineer. */
 "Sign In" = "Logg inn";
 
-/* SignInView */
-"Sign In CloudKit" = "Logg inn på CloudKit";
+/* No comment provided by engineer. */
+"Sign in CloudKit" = "Logg inn CloudKit";
 
 /* No comment provided by engineer. */
-"Sign Up" = "Meld inn";
+"Sign up" = "Meld deg inn";
 
 /* No comment provided by engineer. */
+"Sign Up" = "Meld deg inn";
+
+/* SignUpView */
 "Sign Up CloudKit" = "Meld deg inn i CloudKit";
 
-/* SignInView */
-"Unknown email:" = "Ukjent e-post adresse:";
+/* SignUpView */
+"The user:" = "Brukeren:";
+
+/* No comment provided by engineer. */
+"To be done" = "Oppgaver";
+
+/* No comment provided by engineer. */
+"Todo" = "Oppgaver";
 
 /* SignInView */
-"Your name" = "Navnet ditt";
+"Unknown email:" = "Ukjent e-Post adresse:";
+
+/* PersonView */
+"Woman" = "Kvinne";
+
+/* SignInView
+   SignUpiew */
+"Your name" = "Navn";
 

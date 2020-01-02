@@ -10,12 +10,17 @@ import SwiftUI
 
 var toDo =
 """
-1. Kunne trykke på bildet istedet for på teksten i "SwiftUIImagePicker.swift"
+Oppgaver:
+
+1. Oppgave 1
 2. Oppgave 2
 3. Oppgave 3
-4. Oppgave 4
-5. Oppgave 5
-6. Oppgave 6
+
+Senere (om mulig):
+
+1. Kunne trykke på bildet istedet for på teksten i "SwiftUIImagePicker.swift"
+2.
+
 """
 
 struct ToDoView: View {

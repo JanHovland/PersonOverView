@@ -37,7 +37,7 @@ struct SignUpView : View {
 //                        .resizable()
 //                        .frame(width: 40, height: 40, alignment: .center)
 //                        .clipShape(Circle())
-                    Text("Sign Up CloudKit")
+                    Text(NSLocalizedString("Sign Up CloudKit", comment: "SignUpView"))
                         .font(.headline)
                         .multilineTextAlignment(.center)
                 }
@@ -60,22 +60,22 @@ struct SignUpView : View {
 
                 Spacer(minLength: 20)
 
-                Button("Choose Profile Image") {
+                Button(NSLocalizedString("Choose Profile Image", comment: "SignUpView")) {
                     self.showingImagePicker.toggle()
                 }
 
                 VStack {
                     InputTextField(secure: false,
-                                   heading: "Your name",
-                                   placeHolder: "Enter your name",
+                                   heading: NSLocalizedString("Your name", comment: "SignUpiew"),
+                                   placeHolder: NSLocalizedString("Enter your name", comment: "SignUpView"),
                                    value: $userItem.name)
                         .autocapitalization(.words)
 
                     Spacer(minLength: 20)
 
                     InputTextField(secure: false,
-                                   heading: "eMail address",
-                                   placeHolder: "Enter your email address",
+                                   heading: NSLocalizedString("eMail address", comment: "SignUpView"),
+                                   placeHolder: NSLocalizedString("Enter your email address", comment: "SignUpView"),
                                    value: $userItem.email)
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
@@ -83,8 +83,8 @@ struct SignUpView : View {
                     Spacer(minLength: 20)
 
                     InputTextField(secure: true,
-                                   heading: "Password",
-                                   placeHolder: "Enter your Enter your password",
+                                   heading: NSLocalizedString("Password", comment: "SignUpView"),
+                                   placeHolder: NSLocalizedString("Enter your password", comment: "SignUpView"),
                                    value: $userItem.password)
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
@@ -116,12 +116,15 @@ struct SignUpView : View {
                                     }
 
                                 } else {
-                                    self.message = "The user: '\(self.userItem.name)' already exists"
+                                    let user = "'\(self.userItem.name)'"
+                                    let message1 = NSLocalizedString("The user:", comment: "SignUpView")
+                                    let message2 =  NSLocalizedString("already exists", comment: "SignUpView")
+                                    self.message = message1 + " " + user + " " + message2
                                     self.show.toggle()
                                 }
                             }
                         } else {
-                            self.message = "Name, eMail or Password must all contain a value."
+                            self.message = NSLocalizedString("Name, eMail or Password must all contain a value.", comment: "SignUpView")
                             self.show.toggle()
                         }
 
