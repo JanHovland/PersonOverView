@@ -33,10 +33,6 @@ struct SignUpView : View {
                 Spacer(minLength: 20)
 
                 HStack {
-//                    Image("CloudKit")
-//                        .resizable()
-//                        .frame(width: 40, height: 40, alignment: .center)
-//                        .clipShape(Circle())
                     Text(NSLocalizedString("Sign Up CloudKit", comment: "SignUpView"))
                         .font(.headline)
                         .multilineTextAlignment(.center)
@@ -98,7 +94,8 @@ struct SignUpView : View {
                     Button(action: {
                         if self.userItem.name.count > 0, self.userItem.email.count > 0, self.userItem.password.count > 0 {
                             // (systemName: "tray.2")
-                            CloudKitUser.doesUserExist(email: self.userItem.email) { (result) in
+                            CloudKitUser.doesUserExist(email: self.userItem.email,
+                                                       password: self.userItem.password) { (result) in
                                 if result == false {
                                     // MARK: - saving to CloudKit
                                     self.userItem.image = UIImage(contentsOfFile: "Cloudkit")
@@ -134,7 +131,6 @@ struct SignUpView : View {
                     }
                 }
             }
-                // MARK: - Endre logikk slik at message ikke vises dersom message = nil
                 .alert(isPresented: $show) {
                     return Alert(title: Text(self.message))
             }
@@ -147,7 +143,6 @@ struct SignUpView : View {
 
     }
 }
-
 
 struct FormField: View {
     var fieldName = ""

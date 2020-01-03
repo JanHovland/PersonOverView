@@ -100,10 +100,12 @@ struct SignInView : View {
                             
                             let predicate = NSPredicate(format: "email == %@", email)
                             
-                            CloudKitUser.doesUserExist(email: self.email) { (result) in
+                            CloudKitUser.doesUserExist(email: self.email,
+                                                       password: self.password) { (result) in
                                 if result == false {
-                                    let message = NSLocalizedString("Unknown email:", comment: "SignInView")
-                                    self.message = message + " '\(self.email)'"
+                                    self.message = NSLocalizedString("Unknown email or password:", comment: "SignInView")
+//                                    self.message = message + " '\(self.email)'"
+                                    self.show.toggle()
                                 } else {
                                     CloudKitUser.fetchUser(predicate: predicate) { (result) in
                                         switch result {
@@ -115,15 +117,15 @@ struct SignInView : View {
                                             if userItem.image != nil {
                                                 self.image = userItem.image!
                                             } 
-                                            let message = NSLocalizedString("Fetched user:", comment: "SignInView")
-                                            self.message = message + " '\(self.name)'"
+//                                            let message = NSLocalizedString("Fetched user:", comment: "SignInView")
+//                                            self.message = message + " '\(self.name)'"
                                         case .failure(let err):
                                             self.message = err.localizedDescription
                                         }
                                     }
                                 }
                         }
-                            self.show.toggle()
+                            // self.show.toggle()
                         }
                         else {
                             self.message = NSLocalizedString("Both eMail and Password must have a value", comment: "SignInView")

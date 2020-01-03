@@ -12,15 +12,19 @@ var toDo =
 """
 Oppgaver:
 
-1. Redusere meldinger i SignInView.swift etter "Logg inn"
-2. Redusere meldinger i SignUpView.swift etter "Meld deg inn"
-3. Ta bort "online keyboard" "etter "Logg inn" og "Meld deg inn"
-4. Oppgave 4
+ 1. Oppgave 1
 
-Senere (om mulig):
+ Senere (om mulig):
 
-1. Kunne trykke på bildet istedet for på teksten i "SwiftUIImagePicker.swift"
-2. Oppgave 2
+ 1. Kunne trykke på bildet istedet for på teksten i "SwiftUIImagePicker.swift"
+ 2. Oppgave 2
+
+ Ferdig:
+
+ Redusere meldinger i SignInView.swift
+ Redusere meldinger i SignUpView.swift
+ Ta bort "online keyboard" 
+ ... Lagt inn .modifier(DismissingKeyboard())
 
 """
 
@@ -34,6 +38,7 @@ struct ToDoView: View {
                 Text(toDo)
                     .font(.custom("courier", size: 15))
                     .foregroundColor(.none)
+                    .multilineTextAlignment(.leading)
             }
 
         }
