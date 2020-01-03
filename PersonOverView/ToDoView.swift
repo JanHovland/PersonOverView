@@ -10,20 +10,20 @@ import SwiftUI
 
 var toDo =
 """
-Oppgaver:
+ O p p g a v e r :
 
  1. Oppgave 1
 
- Senere (om mulig):
+ S e n e r e (om mulig) :
 
  1. Kunne trykke på bildet istedet for på teksten i "SwiftUIImagePicker.swift"
  2. Oppgave 2
 
- Ferdig:
+ F e r d i g
 
  Redusere meldinger i SignInView.swift
  Redusere meldinger i SignUpView.swift
- Ta bort "online keyboard" 
+ Ta bort "online keyboard"
  ... Lagt inn .modifier(DismissingKeyboard())
 
 """
@@ -36,7 +36,7 @@ struct ToDoView: View {
                     .font(.title)
                     .padding()
                 Text(toDo)
-                    .font(.custom("courier", size: 15))
+                    .font(.custom("courier", size: 16))
                     .foregroundColor(.none)
                     .multilineTextAlignment(.leading)
             }
