@@ -143,6 +143,8 @@ struct SignUpView : View {
         }).onReceive(ImagePicker.shared.$image) { image in
             self.image = image
         }
+        .modifier(DismissingKeyboard())
+
     }
 }
 
