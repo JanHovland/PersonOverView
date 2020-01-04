@@ -91,14 +91,14 @@ extension ImagePicker {
 
         func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker.View>) ->
             UIImagePickerController {
-            let imagePickerController = UIImagePickerController()
-            imagePickerController.delegate = context.coordinator
+                let imagePickerController = UIImagePickerController()
+                imagePickerController.delegate = context.coordinator
                 return imagePickerController
 
         }
 
         func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker.View>) {
-       }
+        }
 
     }
 }
