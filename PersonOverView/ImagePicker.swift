@@ -54,29 +54,28 @@ extension ImagePicker {
         }
 
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            /// Velger ut et bilde
             let url = info[UIImagePickerController.InfoKey.imageURL] as! URL
 
-            /// Her reduseres det valgte iage vha. func resizedImage og dette vises på "Logg inn CloudKit
-            /// Men bildet vil lagres i full størrelse fordi CKAsset knyttrd til valgt url som igjen peker til full billedstørrelse
-            /// Her må det lages en endring
+            /// Redusere det valgte bildet  vha. func resizedImage()
             let size = CGSize(width: 30, height: 30)
             let image = resizedImage(at: url, for: size)
-
             ImagePicker.shared.image = Image(uiImage: image!)
-            /// ImagePicker.shared.imageFileURL = url
 
-            ///obtaining saving path
+            /// Lage ny urlReducedImage
             let fileManager = FileManager.default
             let documentsPath = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
-            let imagePath = documentsPath?.appendingPathComponent("image.jpg")
+            let urlReducedImage = documentsPath?.appendingPathComponent("image.jpg")
 
-            /// extract image from the picker and save it
+            /// Lagre det reduserte bildet på urlReducedImage
             if (info[UIImagePickerController.InfoKey.originalImage] as? UIImage) != nil {
-                let imageData = image!.jpegData(compressionQuality: 1)
-                try! imageData!.write(to: imagePath!)
+                /// compressionQuality : 0 == max compression 1 == ingen compression)
+                let imageData = image!.jpegData(compressionQuality: 0.5)
+                try! imageData!.write(to: urlReducedImage!)
             }
 
-            ImagePicker.shared.imageFileURL = imagePath
+            /// Bruker nå urlReducedImage
+            ImagePicker.shared.imageFileURL = urlReducedImage
             picker.dismiss(animated: true)
         }
 
