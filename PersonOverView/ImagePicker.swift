@@ -27,6 +27,11 @@ class ImagePicker: ObservableObject {
         didSet {
             if image != nil {
                 // MARK: - Reduce the size of the image ??
+
+
+
+
+
                 willChange.send(image)
             }
         }
@@ -49,10 +54,29 @@ extension ImagePicker {
         }
 
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-      
-            ImagePicker.shared.image = Image(uiImage: image)
-            ImagePicker.shared.imageFileURL = info[UIImagePickerController.InfoKey.imageURL] as? URL
+            let url = info[UIImagePickerController.InfoKey.imageURL] as! URL
+
+            /// Her reduseres det valgte iage vha. func resizedImage og dette vises på "Logg inn CloudKit
+            /// Men bildet vil lagres i full størrelse fordi CKAsset knyttrd til valgt url som igjen peker til full billedstørrelse
+            /// Her må det lages en endring
+            let size = CGSize(width: 30, height: 30)
+            let image = resizedImage(at: url, for: size)
+
+            ImagePicker.shared.image = Image(uiImage: image!)
+            /// ImagePicker.shared.imageFileURL = url
+
+            ///obtaining saving path
+            let fileManager = FileManager.default
+            let documentsPath = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
+            let imagePath = documentsPath?.appendingPathComponent("image.jpg")
+
+            /// extract image from the picker and save it
+            if (info[UIImagePickerController.InfoKey.originalImage] as? UIImage) != nil {
+                let imageData = image!.jpegData(compressionQuality: 1)
+                try! imageData!.write(to: imagePath!)
+            }
+
+            ImagePicker.shared.imageFileURL = imagePath
             picker.dismiss(animated: true)
         }
 

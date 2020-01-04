@@ -29,6 +29,7 @@
 		DB6739C723AD46A800EF9ECD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB6739C523AD46A800EF9ECD /* Localizable.strings */; };
 		DB6739CB23AE2B0600EF9ECD /* OutputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6739CA23AE2B0600EF9ECD /* OutputTextField.swift */; };
 		DBB4C62823B6301F0055296B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB4C62723B6301F0055296B /* ImagePicker.swift */; };
+		DBDA561A23BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */; };
 		DBDDEB4A2386910700DD82B3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDDEB492386910700DD82B3 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		DB6739C923AD495500EF9ECD /* nb-NO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nb-NO"; path = "nb-NO.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		DB6739CA23AE2B0600EF9ECD /* OutputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputTextField.swift; sourceTree = "<group>"; };
 		DBB4C62723B6301F0055296B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptsToSoftwareKeyboard.swift; sourceTree = "<group>"; };
 		DBDDEB492386910700DD82B3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +97,7 @@
 			children = (
 				DB302B90237FDD7200076D10 /* PersonOverView.entitlements */,
 				DB302B69237EF02300076D10 /* AppDelegate.swift */,
+				DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */,
 				DB302B72237EF02300076D10 /* Assets.xcassets */,
 				DB302B8E237EF43400076D10 /* CloudKitUser.swift */,
 				DB6739C023AA910E00EF9ECD /* SwiftUIImagePicker.swift */,
@@ -212,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBDDEB4A2386910700DD82B3 /* SettingsView.swift in Sources */,
+				DBDA561A23BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift in Sources */,
 				DB302B6F237EF02300076D10 /* PersonOverView.xcdatamodeld in Sources */,
 				DB302B6A237EF02300076D10 /* AppDelegate.swift in Sources */,
 				DBB4C62823B6301F0055296B /* ImagePicker.swift in Sources */,

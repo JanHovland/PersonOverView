@@ -14,6 +14,7 @@
 //  All used to work well with ios 13.1 (iPhone and iPad), after upgrading to ios 13.2, the crash occurs.
 
 import SwiftUI
+import Combine
 
 struct SignInView : View {
     
@@ -143,6 +144,7 @@ struct SignInView : View {
             }
         }
         .modifier(DismissingKeyboard())
+        .modifier(AdaptsToSoftwareKeyboard())
      }
 }
 
@@ -161,3 +163,4 @@ struct DismissingKeyboard: ViewModifier {
         }
     }
 }
+

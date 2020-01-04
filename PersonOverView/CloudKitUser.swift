@@ -36,6 +36,7 @@ struct CloudKitUser {
         itemRecord["password"] = item.password as CKRecordValue
 
         if ImagePicker.shared.imageFileURL != nil {
+            /// Her lagres image i full størrelse siden CKAsset peker på shared.imageFileURL
             itemRecord["image"] = CKAsset(fileURL: ImagePicker.shared.imageFileURL!)
         }
 
