@@ -10,6 +10,18 @@
 /* SignInView */
 "Both eMail and Password must have a value" = "e-Post og passord må begge ha verdi";
 
+/* SignInView */
+"Change eMail" = "Bytt e-Post";
+
+/* SignInView */
+"Change image" = "Bytt profil bilde";
+
+/* SignInView */
+"Change password" = "Bytt passord";
+
+/* SignInView */
+"Change user name" = "Bytt bruker navn";
+
 /* SignUpView */
 "Choose Profile Image" = "Velg profilbilde";
 
@@ -18,6 +30,9 @@
 
 /* PersonView */
 "Date of birth" = "Fødselsdato";
+
+/* SignInView */
+"Delete user" = "Slett bruker";
 
 /* PersonView */
 "eMail" = "e-Post";

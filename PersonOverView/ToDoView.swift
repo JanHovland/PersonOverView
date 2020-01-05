@@ -13,14 +13,11 @@ var toDo =
  E n d r i n g e r :
 
  1. Meny oppdatering for CloudKit:
-    a) Endre bilde
-    b) Endre Navn
-    c) Endre e-Post
-    d) Endre passord
-
- S e n e r e (om mulig) :
-
- 1. Trykke på bildet istedet for på teksten i "SignUpView.swift"
+    a) Slett bruker
+    b) Endre bilde
+    c) Endre Navn
+    d) Endre e-Post
+    e) Endre passord
 
  F e r d i g :
 
@@ -30,7 +27,11 @@ var toDo =
     ... Lagt inn .modifier(DismissingKeyboard())
  4. Reduserer nå størrelsen på bildet som blir lagret på CloudKit.
  5. Viser nå kun lagret bilde i CloudKit.
-    Uten lagret bilde, vises det nå et blankt bilde i SignInView.swift
+    ... Uten lagret bilde vises et blankt bilde i SignInView.swift
+
+S e n e r e (om mulig) :
+
+1. Trykke på bildet istedet for på teksten i "SignUpView.swift"
 
 """
 
