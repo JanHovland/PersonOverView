@@ -21,80 +21,55 @@ struct SignInView : View {
     @State private var message: String = ""
     @State private var image = UIImage()
     @State private var userItem = UserElement(name: "", email: "", password: "")
-
     @EnvironmentObject var userElements: UserElements
-
     var body: some View {
-
         ScrollView  {
             VStack (alignment: .center) {
-
                 Spacer(minLength: 20)
-
                 HStack {
                     Text("Sign in CloudKit")
                         .font(.headline)
                         .multilineTextAlignment(.center)
                 }
                 Spacer(minLength: 20)
-
-                // ZStack {
-//                    Image(systemName: "person.circle")
-//                        .resizable()
-//                        .frame(width: 100, height: 100, alignment: .center)
-//                    .aspectRatio(contentMode: .fill)
-//                    .font(Font.title.weight(.ultraLight))
-                    /// Her legges aktuelt bilde oppå "person.circle"
-                    Image(uiImage: image)
-                        .resizable()
-                        .frame(width: 100, height: 100, alignment: .center)
-                        //.aspectRatio(contentMode: .fill)
-                        .font(Font.title.weight(.ultraLight))
-                        .clipShape(Circle())
-                // }
-
+                /// Nå vises kun bildet fra CloudKit
+                /// Er det ikke noe bilde fra CloudKit blankes det forrige bildet
+                Image(uiImage: image)
+                    .resizable()
+                    .frame(width: 100, height: 100, alignment: .center)
+                    //.aspectRatio(contentMode: .fill)
+                    .font(Font.title.weight(.ultraLight))
+                    .clipShape(Circle())
                 Spacer(minLength: 40)
-
                 VStack (alignment: .leading) {
                     OutputTextField(secure: false,
                                     heading: NSLocalizedString("Your name", comment: "SignInView"),
                                     value: $name)
                         .autocapitalization(.words)
-
                     Spacer(minLength: 20)
-
                     InputTextField(secure: false,
                                    heading: NSLocalizedString("eMail address", comment: "SignInView"),
                                    placeHolder: NSLocalizedString("Enter your email address", comment: "SignInView"),
                                    value: $email)
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
-
                     Spacer(minLength: 20)
-
                     InputTextField(secure: true,
                                    heading: NSLocalizedString("Password",  comment: "SignInView"),
                                    placeHolder: NSLocalizedString("Enter your password", comment: "SignInView"),
                                    value: $password)
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
-
                     Spacer(minLength: 20)
-
                 }
                 .padding(10)
-
                 VStack {
                     Button(action: {
                         if self.email.count > 0, self.password.count > 0 {
-                            /// Check if the user exists
                             let email = self.email
-
                             /// Check different predicates at :   https://nspredicate.xyz
                             /// %@ : an object (eg: String, date etc), whereas %i will be substituted with an integer.
-                            
                             let predicate = NSPredicate(format: "email == %@", email)
-                            
                             CloudKitUser.doesUserExist(email: self.email,
                                                        password: self.password) { (result) in
                                                         if result == false {
@@ -122,7 +97,6 @@ struct SignInView : View {
                             self.message = NSLocalizedString("Both eMail and Password must have a value", comment: "SignInView")
                             self.show.toggle()
                         }
-                        
                     }) {
                         Text("Sign In")
                             .padding(10)
