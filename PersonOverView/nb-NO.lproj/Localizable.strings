@@ -129,6 +129,9 @@
 /* No comment provided by engineer. */
 "Todo" = "Oppgaver";
 
+/* SignInView */
+"Unknown email or password:" = "Feil e-Post eller passord:";
+
 /* PersonView */
 "Woman" = "Kvinne";
 
