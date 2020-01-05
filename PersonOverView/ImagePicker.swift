@@ -52,19 +52,19 @@ extension ImagePicker {
             let urlOld = info[UIImagePickerController.InfoKey.imageURL] as! URL
 
             /// Redusere det valgte bildet  vha. func resizedImage() og original url
-            let size = CGSize(width: 30, height: 30)
+            let size = CGSize(width: 60, height: 60)
             let image = resizedImage(at: urlOld, for: size)
             ImagePicker.shared.image = Image(uiImage: image!)
 
             /// Lage ny url
             let fileManager = FileManager.default
             let documentsPath = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
-            let url = documentsPath?.appendingPathComponent("image.jpg")
+            let url = documentsPath?.appendingPathComponent("image.png")
 
             /// Lagre det reduserte bildet med ny url
             if (info[UIImagePickerController.InfoKey.originalImage] as? UIImage) != nil {
-                /// compressionQuality : 0 == max compression 1 == ingen compression)
-                let imageData = image!.jpegData(compressionQuality: 0.5)
+                /// compressionQuality : 0 == max compression    1 == ingen compression)
+                let imageData = image!.pngData()  /// .jpegData(compressionQuality: 1.0)
                 try! imageData!.write(to: url!)
             }
 
