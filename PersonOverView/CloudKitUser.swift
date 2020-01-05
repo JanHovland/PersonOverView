@@ -125,11 +125,16 @@ struct CloudKitUser {
                                                       image: image)
                         completion(.success(userElement))
                     }
-                } else {
+                }
+                else {
+                    /// Ved å bygge opp image på denne måten vil det vises et blankt image i SignInView
+                    /// Dette blanke bildet sletter også det forrige image
+                    let image = UIImage(systemName: "person.circle") 
                     let userElement = UserElement(recordID: recordID,
                                                   name: name,
                                                   email: email,
-                                                  password: password)
+                                                  password: password,
+                                                  image: image)
                     completion(.success(userElement))
                 }
             }
