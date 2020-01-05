@@ -12,11 +12,7 @@ var toDo =
 """
  E n d r i n g e r :
 
- 1. Redusere meldinger i SignUpView.swift
- 2. Flytte feltene opp slik at online keyboard ikke skjuler aktuelt felt
- 3. Dersom det ligger et bilde og en logger inn en bruker uten bilde blir det gamle bildet liggende.
- 4. Redusere størrelsen på det bildet som blir lagret på CloudKit.
-    Nå benyttes CKAsset(url) hvor url'en peker til bilde i full størrelse
+ 1. Oppgave 1
 
  S e n e r e (om mulig) :
 
@@ -25,9 +21,15 @@ var toDo =
 
  F e r d i g :
 
- 1. Redusere meldinger i SignInView.swift
+ 1. Redusert meldinger i SignInView.swift
+ 2. Redusert meldinger i SignUpView.swift
  3. Ta bort "online keyboard"
     ... Lagt inn .modifier(DismissingKeyboard())
+ 4. Reduserer nå størrelsen på det bildet som blir lagret på CloudKit.
+ 5. Nå vises kun det bildet som er lagret i CloudKit.
+    Er det ikke lagret et bilde, vises det nå blankt bilde i SignInView.swift
+
+
 
 """
 
@@ -45,12 +47,6 @@ struct ToDoView: View {
             }
 
         }
-    }
-}
-
-struct ToDoView_Previews: PreviewProvider {
-    static var previews: some View {
-        ToDoView()
     }
 }
 

@@ -1,3 +1,6 @@
+/* SignUpView */
+"Added new user:" = "Lagt inn ny bruker:";
+
 /* PersonView */
 "Address" = "Addresse";
 
@@ -52,9 +55,6 @@
 
 /* PersonView */
 "Enter your phone number" = "Legg inn telefonnummer";
-
-/* SignInView */
-"Fetched user:" = "Hentet bruker:";
 
 /* PersonView */
 "First name" = "Fornavn";
@@ -113,9 +113,6 @@
 
 /* No comment provided by engineer. */
 "Todo" = "Oppgaver";
-
-/* SignInView */
-"Unknown email:" = "Ukjent e-Post adresse:";
 
 /* PersonView */
 "Woman" = "Kvinne";
