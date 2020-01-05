@@ -12,24 +12,25 @@ var toDo =
 """
  E n d r i n g e r :
 
- 1. Oppgave 1
+ 1. Meny oppdatering for CloudKit:
+    a) Endre bilde
+    b) Endre Navn
+    c) Endre e-Post
+    d) Endre passord
 
  S e n e r e (om mulig) :
 
- 1. Kunne trykke på bildet istedet for på teksten i "SwiftUIImagePicker.swift"
- 2. Oppgave 2
+ 1. Trykke på bildet istedet for på teksten i "SignUpView.swift"
 
  F e r d i g :
 
- 1. Redusert meldinger i SignInView.swift
- 2. Redusert meldinger i SignUpView.swift
+ 1. Reduserte meldinger i SignInView.swift
+ 2. Reduserte meldinger i SignUpView.swift
  3. Ta bort "online keyboard"
     ... Lagt inn .modifier(DismissingKeyboard())
- 4. Reduserer nå størrelsen på det bildet som blir lagret på CloudKit.
- 5. Nå vises kun det bildet som er lagret i CloudKit.
-    Er det ikke lagret et bilde, vises det nå blankt bilde i SignInView.swift
-
-
+ 4. Reduserer nå størrelsen på bildet som blir lagret på CloudKit.
+ 5. Viser nå kun lagret bilde i CloudKit.
+    Uten lagret bilde, vises det nå et blankt bilde i SignInView.swift
 
 """
 
@@ -56,7 +57,6 @@ func resizedImage(at url: URL, for size: CGSize) -> UIImage? {
     guard let image = UIImage(contentsOfFile: url.path) else {
         return nil
     }
-
     let renderer = UIGraphicsImageRenderer(size: size)
     return renderer.image { (context) in
         image.draw(in: CGRect(origin: .zero, size: size))
