@@ -11,6 +11,7 @@ import SwiftUI
 struct Administration: View {
     var body: some View {
         NavigationView {
+            /// Bruk "List" "i sted for "ScrollView" fordi list kan gå over flere skjermer
             List{
                 Section(header: Text("Users")) {
                     NavigationLink(destination: DeleteUserView()) {
@@ -31,6 +32,7 @@ struct Administration: View {
                     }
                 }
             }
+            /// "navigationBarTitle" "kan også brukers på "List"
             .navigationBarTitle("Administration")
         }
     }
