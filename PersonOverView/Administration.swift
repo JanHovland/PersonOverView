@@ -32,8 +32,6 @@ struct Administration: View {
                 }
             }
             .navigationBarTitle("Administration")
-
         }
-        .navigationBarTitle("Delete User")
     }
 }
