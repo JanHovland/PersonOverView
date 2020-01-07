@@ -23,58 +23,14 @@ struct SignInView : View {
     @State private var userItem = UserElement(name: "", email: "", password: "")
     @EnvironmentObject var userElements: UserElements
 
-    private var deleteUser: String = NSLocalizedString("Delete user", comment: "SignInView")
-    private var changeImage: String = NSLocalizedString("Change image", comment: "SignInView")
-    private var changeName: String = NSLocalizedString("Change user name", comment: "SignInView")
-    private var changeEMail: String = NSLocalizedString("Change eMail", comment: "SignInView")
-    private var changePassword: String = NSLocalizedString("Change password", comment: "SignInView")
-
     var body: some View {
-        ScrollView  {
-            VStack {
-                Spacer(minLength: 20)
-                HStack {
-                    Text("Sign in CloudKit")
-                        .font(.headline)
-                        .multilineTextAlignment(.center)
-                        .contextMenu {
-                            Button(action: {
-                                // Endre bilde
-                            }) {
-                                Text(changeImage)
-                                Image(systemName: "square.and.pencil")
-                            }
-
-                            Button(action: {
-                                // Endre Navn
-                            }) {
-                                Text(changeName)
-                                Image(systemName: "square.and.pencil")
-                            }
-
-                            Button(action: {
-                                // Endre e-Post
-                            }) {
-                                Text("Change eMail")
-                                Image(systemName: "square.and.pencil")
-                            }
-
-                            Button(action: {
-                                // Endre passord
-                            }) {
-                                Text(changePassword)
-                                Image(systemName: "square.and.pencil")
-                            }
-
-                            Button(action: {
-                                // Slett bruker
-                            }) {
-                                Text(deleteUser)
-                                Image(systemName: "trash.circle")
-                            }
-
-                    }
-
+            ScrollView  {
+                VStack {
+                    Spacer(minLength: 20)
+                    HStack {
+                        Text("Sign in CloudKit")
+                            .font(.headline)
+                            .multilineTextAlignment(.center)
                 }
 
                 Spacer(minLength: 20)

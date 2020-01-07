@@ -43,11 +43,11 @@ struct PersonOverView: View {
                     }
                 }
                 .tag(2)
-            SettingsView()
+            Administration()
                 .tabItem {
                     VStack {
                         Image(systemName: "gear")
-                        Text("Settings")
+                        Text("Administration")
                     }
                 }
                 .tag(3)
