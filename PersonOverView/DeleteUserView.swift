@@ -10,8 +10,12 @@ import SwiftUI
 
 struct DeleteUserView: View {
     var body: some View {
-        Text("Delete user")
-           .font(.headline)
+        ScrollView {
+            NavigationView {
+                Text("Delete a user View")
+            }
+            .navigationBarTitle("Delete a user")
+        }
     }
 }
 

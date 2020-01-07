@@ -12,13 +12,27 @@ struct Administration: View {
     var body: some View {
         NavigationView {
             List{
-                Section(header: Text("")) {
+                Section(header: Text("Users")) {
                     NavigationLink(destination: DeleteUserView()) {
                         Text("Delete user")
+                            .padding(.leading)
+                    }
+                }
+                Section {
+                    NavigationLink(destination: DeleteUserView()) {
+                        Text("Update name")
+                            .padding(.leading)
+                    }
+                }
+                Section(header: Text("Miscellaneous")) {
+                    NavigationLink(destination: DeleteUserView()) {
+                        Text("New password")
+                            .padding(.leading)
                     }
                 }
             }
             .navigationBarTitle("Administration")
+
         }
         .navigationBarTitle("Delete User")
     }

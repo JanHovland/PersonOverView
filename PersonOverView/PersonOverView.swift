@@ -35,19 +35,19 @@ struct PersonOverView: View {
                     }
                 }
                 .tag(1)
-            ToDoView()
-                .tabItem {
-                    VStack {
-                        Image(systemName: "person.crop.circle")
-                        Text("Todo")
-                    }
-                }
-                .tag(2)
             Administration()
                 .tabItem {
                     VStack {
                         Image(systemName: "gear")
                         Text("Administration")
+                    }
+                }
+                .tag(2)
+            ToDoView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "person.crop.circle")
+                        Text("Todo")
                     }
                 }
                 .tag(3)
