@@ -12,10 +12,10 @@ var toDo =
 """
  E n d r i n g e r :
 
- 1. Meny oppdatering for CloudKit:
+ 1. Nytt View for:
     a) Slett bruker
-    b) Endre bilde
-    c) Endre Navn
+    b) Endre profil bilde
+    c) Endre navn
     d) Endre e-Post
     e) Endre passord
 
