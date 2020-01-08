@@ -28,7 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         // let contentView = PersonOverView().environmentObject(UserElements()).environmentObject(UserSettings())
-        let contentView = PersonOverView().environmentObject(UserElements())
+        let contentView = PersonOverView() // .environmentObject(UserElements())
 
         
         // Use a UIHostingController as window root view controller.
