@@ -32,7 +32,6 @@
 		DBDA561A23BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */; };
 		DBFC29C323C48F6C00F2224B /* Administration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC29C223C48F6C00F2224B /* Administration.swift */; };
 		DBFC29C723C4962500F2224B /* DeleteUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC29C623C4962500F2224B /* DeleteUserView.swift */; };
-		DBFC29C923C5CAA500F2224B /* qwerty.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC29C823C5CAA500F2224B /* qwerty.swift */; };
 		DBFC29CB23C5DE8500F2224B /* UserMaintenanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC29CA23C5DE8500F2224B /* UserMaintenanceView.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,7 +64,6 @@
 		DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptsToSoftwareKeyboard.swift; sourceTree = "<group>"; };
 		DBFC29C223C48F6C00F2224B /* Administration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Administration.swift; sourceTree = "<group>"; };
 		DBFC29C623C4962500F2224B /* DeleteUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserView.swift; sourceTree = "<group>"; };
-		DBFC29C823C5CAA500F2224B /* qwerty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qwerty.swift; sourceTree = "<group>"; };
 		DBFC29CA23C5DE8500F2224B /* UserMaintenanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMaintenanceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,7 +103,6 @@
 				DB302B69237EF02300076D10 /* AppDelegate.swift */,
 				DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */,
 				DBFC29C223C48F6C00F2224B /* Administration.swift */,
-				DBFC29C823C5CAA500F2224B /* qwerty.swift */,
 				DB302B72237EF02300076D10 /* Assets.xcassets */,
 				DB302B8E237EF43400076D10 /* CloudKitUser.swift */,
 				DBFC29C623C4962500F2224B /* DeleteUserView.swift */,
@@ -238,7 +235,6 @@
 				DB6739CB23AE2B0600EF9ECD /* OutputTextField.swift in Sources */,
 				DB1FEF91238055FE00F8D763 /* InputTextField.swift in Sources */,
 				DB302B85237EF27400076D10 /* SignInView.swift in Sources */,
-				DBFC29C923C5CAA500F2224B /* qwerty.swift in Sources */,
 				DB302B83237EF18D00076D10 /* UserElements.swift in Sources */,
 				DB46938023B9F0A50060933E /* ToDoView.swift in Sources */,
 				DB302B8F237EF43400076D10 /* CloudKitUser.swift in Sources */,
