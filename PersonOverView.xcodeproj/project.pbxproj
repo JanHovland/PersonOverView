@@ -33,6 +33,7 @@
 		DBFC29C323C48F6C00F2224B /* Administration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC29C223C48F6C00F2224B /* Administration.swift */; };
 		DBFC29C723C4962500F2224B /* DeleteUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC29C623C4962500F2224B /* DeleteUserView.swift */; };
 		DBFC29C923C5CAA500F2224B /* qwerty.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC29C823C5CAA500F2224B /* qwerty.swift */; };
+		DBFC29CB23C5DE8500F2224B /* UserMaintenanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC29CA23C5DE8500F2224B /* UserMaintenanceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		DBFC29C223C48F6C00F2224B /* Administration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Administration.swift; sourceTree = "<group>"; };
 		DBFC29C623C4962500F2224B /* DeleteUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserView.swift; sourceTree = "<group>"; };
 		DBFC29C823C5CAA500F2224B /* qwerty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qwerty.swift; sourceTree = "<group>"; };
+		DBFC29CA23C5DE8500F2224B /* UserMaintenanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMaintenanceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				DB46937F23B9F0A50060933E /* ToDoView.swift */,
 				DB302B80237EF16200076D10 /* UserElement.swift */,
 				DB302B82237EF18D00076D10 /* UserElements.swift */,
+				DBFC29CA23C5DE8500F2224B /* UserMaintenanceView.swift */,
 				DB302B74237EF02300076D10 /* Preview Content */,
 			);
 			path = PersonOverView;
@@ -239,6 +242,7 @@
 				DB302B83237EF18D00076D10 /* UserElements.swift in Sources */,
 				DB46938023B9F0A50060933E /* ToDoView.swift in Sources */,
 				DB302B8F237EF43400076D10 /* CloudKitUser.swift in Sources */,
+				DBFC29CB23C5DE8500F2224B /* UserMaintenanceView.swift in Sources */,
 				DB6739C123AA910E00EF9ECD /* SwiftUIImagePicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

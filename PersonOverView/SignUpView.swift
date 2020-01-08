@@ -21,6 +21,7 @@ struct SignUpView : View {
     @State private var image: Image? = nil
     @State private var showingImagePicker = false
     @State private var userItem = UserElement(name: "", email: "", password: "", image: nil)
+    @State private var showUserMaintenanceView: Bool = false
     @EnvironmentObject var userElements: UserElements
     var body: some View {
         ScrollView {
@@ -30,6 +31,19 @@ struct SignUpView : View {
                     Text(NSLocalizedString("Sign Up CloudKit", comment: "SignUpView"))
                         .font(.headline)
                         .multilineTextAlignment(.center)
+                        .contextMenu {
+                            HStack {
+                                Button(action: {
+                                    self.showUserMaintenanceView.toggle()
+                                }, label: {
+                                    Image(systemName: "pencil.and.ellipsis.rectangle")
+                                    Text("User maintenance")
+                                })
+                            }
+                    }
+                    .sheet(isPresented: $showUserMaintenanceView) {
+                        UserMaintenanceView()
+                    }
                 }
                 Spacer(minLength: 20)
                 ZStack {
@@ -78,27 +92,27 @@ struct SignUpView : View {
                         if self.userItem.name.count > 0, self.userItem.email.count > 0, self.userItem.password.count > 0 {
                             CloudKitUser.doesUserExist(email: self.userItem.email,
                                                        password: self.userItem.password) { (result) in
-                                if result == false {
-                                    CloudKitUser.saveUser(item: self.userItem) { (result) in
-                                        switch result {
-                                        case .success(let userItem):
-                                            self.userElements.user.insert(userItem, at: 0)
-                                            let message1 = NSLocalizedString("Added new user:", comment: "SignUpView")
-                                            self.message = message1 + " '\(self.userItem.name)'"
-                                            self.show.toggle()
-                                        case .failure(let err):
-                                            print(err.localizedDescription)
-                                            self.message = err.localizedDescription
-                                            self.show.toggle()
-                                        }
-                                    }
-                               } else {
-                                    let user = "'\(self.userItem.name)'"
-                                    let message1 = NSLocalizedString("The user:", comment: "SignUpView")
-                                    let message2 =  NSLocalizedString("already exists", comment: "SignUpView")
-                                    self.message = message1 + " " + user + " " + message2
-                                    self.show.toggle()
-                                }
+                                                        if result == false {
+                                                            CloudKitUser.saveUser(item: self.userItem) { (result) in
+                                                                switch result {
+                                                                case .success(let userItem):
+                                                                    self.userElements.user.insert(userItem, at: 0)
+                                                                    let message1 = NSLocalizedString("Added new user:", comment: "SignUpView")
+                                                                    self.message = message1 + " '\(self.userItem.name)'"
+                                                                    self.show.toggle()
+                                                                case .failure(let err):
+                                                                    print(err.localizedDescription)
+                                                                    self.message = err.localizedDescription
+                                                                    self.show.toggle()
+                                                                }
+                                                            }
+                                                        } else {
+                                                            let user = "'\(self.userItem.name)'"
+                                                            let message1 = NSLocalizedString("The user:", comment: "SignUpView")
+                                                            let message2 =  NSLocalizedString("already exists", comment: "SignUpView")
+                                                            self.message = message1 + " " + user + " " + message2
+                                                            self.show.toggle()
+                                                        }
                             }
                         } else {
                             self.message = NSLocalizedString("Name, eMail or Password must all contain a value.", comment: "SignUpView")
@@ -110,8 +124,8 @@ struct SignUpView : View {
                     }
                 }
             }
-                .alert(isPresented: $show) {
-                    return Alert(title: Text(self.message))
+            .alert(isPresented: $show) {
+                return Alert(title: Text(self.message))
             }
         }.sheet(isPresented: $showingImagePicker, content: {
             ImagePicker.shared.view

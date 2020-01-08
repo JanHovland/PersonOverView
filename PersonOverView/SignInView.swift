@@ -21,16 +21,32 @@ struct SignInView : View {
     @State private var message: String = ""
     @State private var image = UIImage()
     @State private var userItem = UserElement(name: "", email: "", password: "")
+    @State private var showUserMaintenanceView: Bool = false
+
     @EnvironmentObject var userElements: UserElements
 
     var body: some View {
-            ScrollView  {
-                VStack {
-                    Spacer(minLength: 20)
-                    HStack {
-                        Text("Sign in CloudKit")
-                            .font(.headline)
-                            .multilineTextAlignment(.center)
+        ScrollView  {
+            VStack {
+                Spacer(minLength: 20)
+                HStack {
+                    Text("Sign in CloudKit")
+                        .font(.headline)
+                        .multilineTextAlignment(.center)
+                        .contextMenu {
+                            HStack {
+                                Button(action: {
+                                    self.showUserMaintenanceView.toggle()
+                                }, label: {
+                                    Image(systemName: "pencil.and.ellipsis.rectangle")
+                                    Text("User maintenance")
+                                })
+                            }
+                        }
+                    .sheet(isPresented: $showUserMaintenanceView) {
+                        UserMaintenanceView()
+                    }
+
                 }
 
                 Spacer(minLength: 20)
@@ -130,3 +146,17 @@ struct DismissingKeyboard: ViewModifier {
     }
 }
 
+
+//struct MenuInfo: View {
+//    var showUserMaintenanceView
+//    var body: some View {
+//        HStack {
+//            Button(action: {
+//                self.showUserMaintenanceView.toggle()
+//            }, label: {
+//                Image(systemName: "pencil.and.ellipsis.rectangle")
+//                Text("User maintenance")
+//            })
+//        }
+//    }
+//}
