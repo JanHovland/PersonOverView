@@ -46,7 +46,7 @@ struct SignInView : View {
                         }
                     .sheet(isPresented: $showUserMaintenanceView) {
                         /// må kalles på denne måten for å kunne benytte environmentObject 
-                        UserMaintenanceView().environmentObject(User())
+                        UserMaintenanceView().environmentObject(self.user)
                     }
 
                 }
@@ -105,7 +105,10 @@ struct SignInView : View {
                                                                     self.email = userItem.email
                                                                     self.password = userItem.password
                                                                     self.name = userItem.name
+                                                                    /// Oppdaterer @environmentObject "user"
                                                                     self.user.name = userItem.name
+                                                                    self.user.email = userItem.email
+                                                                    self.user.password = userItem.password
                                                                     if userItem.image != nil {
                                                                         self.image = userItem.image!
                                                                     }

@@ -10,7 +10,7 @@ import Combine
 import SwiftUI
 
 class User: ObservableObject {
-     @Published var name = "Ola"
+     @Published var name = ""
      @Published var email = ""
      @Published var password = ""
 }

@@ -9,33 +9,29 @@
 import SwiftUI
 
 struct UserMaintenanceView: View {
-    @State private var name: String = ""
-    @State private var email: String = ""
-    @State private var password: String = ""
-
     @EnvironmentObject var user: User
 
     var body: some View {
         VStack {
-            Text(NSLocalizedString("User maintenance", comment: "UserMaintenanceView")) // Text(user.name)
+            Text(NSLocalizedString("User maintenance", comment: "UserMaintenanceView"))
                 .font(.largeTitle)
                 .padding(.top)
             List {
                 InputTextField(secure: false,
                                heading: NSLocalizedString("Your name", comment: "UserMaintenanceView"),
                                placeHolder: NSLocalizedString("Enter your name", comment: "UserMaintenanceView"),
-                               value: $name)
+                               value: $user.name)
                     .autocapitalization(.words)
-            InputTextField(secure: false,
+                InputTextField(secure: false,
                                heading: NSLocalizedString("eMail address", comment: "UserMaintenanceView"),
                                placeHolder: NSLocalizedString("Enter your email address", comment: "UserMaintenanceView"),
-                               value: $email)
+                               value: $user.email)
                     .keyboardType(.emailAddress)
                     .autocapitalization(.none)
                 InputTextField(secure: true,
                                heading: NSLocalizedString("Password", comment: "UserMaintenanceView"),
                                placeHolder: NSLocalizedString("Enter your password", comment: "UserMaintenanceView"),
-                               value: $password)
+                               value: $user.password)
                     .keyboardType(.emailAddress)
                     .autocapitalization(.none)
             }.padding(.bottom)

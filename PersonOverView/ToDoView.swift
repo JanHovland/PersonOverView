@@ -29,6 +29,8 @@ var toDo =
  5. Viser nå kun lagret bilde i CloudKit.
     ... Uten lagret bilde vises et blankt bilde i SignInView.swift
  6. Endre "Feil e-Post eller passord" til "Ukjent ...."
+ 7. Endret fra UserMaintenanceView().environmentObject(User()
+    til : UserMaintenanceView().environmentObject(self.user)
 
 S e n e r e (om mulig) :
 
