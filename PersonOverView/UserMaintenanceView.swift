@@ -9,16 +9,15 @@
 import SwiftUI
 
 struct UserMaintenanceView: View {
-
     @State private var name: String = ""
     @State private var email: String = ""
     @State private var password: String = ""
 
-    @EnvironmentObject var m: Main
+    @EnvironmentObject var user: User
 
     var body: some View {
         VStack {
-            Text(m.name)             /// "User maintenance")
+            Text(user.name)             /// "User maintenance")
                 .font(.largeTitle)
                 .padding(.top)
             List {
@@ -27,8 +26,7 @@ struct UserMaintenanceView: View {
                                placeHolder: NSLocalizedString("Enter your name", comment: "UserMaintenanceView"),
                                value: $name)
                     .autocapitalization(.words)
-
-                InputTextField(secure: false,
+            InputTextField(secure: false,
                                heading: NSLocalizedString("eMail address", comment: "UserMaintenanceView"),
                                placeHolder: NSLocalizedString("Enter your email address", comment: "UserMaintenanceView"),
                                value: $email)
@@ -41,20 +39,6 @@ struct UserMaintenanceView: View {
                     .keyboardType(.emailAddress)
                     .autocapitalization(.none)
             }.padding(.bottom)
-
-
-
-
         }
-    }
-
-
-
-}
-
-
-struct UserMaintenanceView_Previews: PreviewProvider {
-    static var previews: some View {
-        UserMaintenanceView()
     }
 }

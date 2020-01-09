@@ -12,11 +12,6 @@
 import SwiftUI
 import Combine
 
-class Main: ObservableObject {
-     @Published var name = "Ola"
-     @Published var email = ""
-     @Published var password = ""
-}
 struct SignInView : View {
     
     @State private var name: String = ""
@@ -29,7 +24,7 @@ struct SignInView : View {
     @State private var showUserMaintenanceView: Bool = false
 
     @EnvironmentObject var userElements: UserElements
-    @EnvironmentObject var m: Main
+    @EnvironmentObject var user: User
 
     var body: some View {
         ScrollView  {
@@ -50,7 +45,8 @@ struct SignInView : View {
                             }
                         }
                     .sheet(isPresented: $showUserMaintenanceView) {
-                        UserMaintenanceView().environmentObject(Main())
+                        /// må kalles på denne måten for å kunne benytte environmentObject 
+                        UserMaintenanceView().environmentObject(User())
                     }
 
                 }
@@ -70,6 +66,8 @@ struct SignInView : View {
                                     heading: NSLocalizedString("Your name", comment: "SignInView"),
                                     value: $name)
                         .autocapitalization(.words)
+                    // m.name = name
+
                     Spacer(minLength: 20)
                     InputTextField(secure: false,
                                    heading: NSLocalizedString("eMail address", comment: "SignInView"),
@@ -107,7 +105,7 @@ struct SignInView : View {
                                                                     self.email = userItem.email
                                                                     self.password = userItem.password
                                                                     self.name = userItem.name
-                                                                    self.m.name = userItem.name
+                                                                    self.user.name = userItem.name
                                                                     if userItem.image != nil {
                                                                         self.image = userItem.image!
                                                                     }
@@ -135,6 +133,15 @@ struct SignInView : View {
         .modifier(DismissingKeyboard())
         .modifier(AdaptsToSoftwareKeyboard())
     }
+
+//    static func AddName() {
+//        var from: String
+//        var to: String
+//
+//        to = from
+//
+//    }
+
 }
 
 /// Dismiss the keyboard

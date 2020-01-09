@@ -8,8 +8,9 @@
 
 import Combine
 import SwiftUI
-/*
-class UserSettings: ObservableObject {
-     @Published var score = 0
+
+class User: ObservableObject {
+     @Published var name = "Ola"
+     @Published var email = ""
+     @Published var password = ""
 }
-*/

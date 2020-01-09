@@ -9,19 +9,13 @@
 import SwiftUI
 
 struct DeleteUserView: View {
-        @EnvironmentObject var m: Main
+    @EnvironmentObject var user: User
     var body: some View {
         ScrollView {
             NavigationView {
                 Text("Delete a user View")
             }
-            .navigationBarTitle(m.name)
+            .navigationBarTitle(user.name)
         }
-    }
-}
-
-struct DeleteUserView_Previews: PreviewProvider {
-    static var previews: some View {
-        DeleteUserView()
     }
 }

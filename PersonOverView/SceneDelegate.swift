@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     var userElements = UserElements()
     var imagePicker = ImagePicker()
-    var main = Main()
+    var main = User()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -26,33 +26,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
-        // let contentView = ContentView().environment(\.managedObjectContext, context)
-        
-        
-        // let contentView = PersonOverView().environmentObject(UserElements()).environmentObject(UserSettings())
-        // let 
-
-//        let userElements = UserElements()
-//        let imagePicker = ImagePicker()
-//        let contentView = PersonOverView().environmentObject(userElements).environmentObject(imagePicker)
-//
         // Use a UIHostingController as window root view controller.
+
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             
             // Add UserElement() to the window.rootViewController
 
             window.rootViewController = UIHostingController(rootView:
-
                 PersonOverView().environmentObject(userElements).environmentObject(imagePicker).environmentObject(main))
-
-//
-//                contentView.environmentObject(User()))
-//            
-                // Adding another XxxxElements
-                // contentView.environmentObject(ListElements()).environmentObject(XxxxElements()))
-
-            // window.rootViewController = UIHostingController(rootView: contentView)
             self.window = window
             window.makeKeyAndVisible()
         }
