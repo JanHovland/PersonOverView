@@ -22,6 +22,7 @@ struct SignUpView : View {
     @State private var showingImagePicker = false
     @State private var userItem = UserElement(name: "", email: "", password: "", image: nil)
     @State private var showUserMaintenanceView: Bool = false
+    
     @EnvironmentObject var userElements: UserElements
     
     var body: some View {

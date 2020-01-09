@@ -4,23 +4,14 @@
 /* PersonView */
 "Address" = "Addresse";
 
+/* No comment provided by engineer. */
+"Administration" = "Administrasjon";
+
 /* SignUpView */
 "already exists" = "finnes allrede";
 
 /* SignInView */
 "Both eMail and Password must have a value" = "e-Post og passord må begge ha verdi";
-
-/* SignInView */
-"Change eMail" = "Bytt e-Post";
-
-/* SignInView */
-"Change image" = "Bytt profil bilde";
-
-/* SignInView */
-"Change password" = "Bytt passord";
-
-/* SignInView */
-"Change user name" = "Bytt bruker navn";
 
 /* SignUpView */
 "Choose Profile Image" = "Velg profilbilde";
@@ -31,14 +22,18 @@
 /* PersonView */
 "Date of birth" = "Fødselsdato";
 
-/* SignInView */
+/* No comment provided by engineer. */
+"Delete a user View" = "Slett et user View";
+
+/* No comment provided by engineer. */
 "Delete user" = "Slett bruker";
 
 /* PersonView */
 "eMail" = "e-Post";
 
 /* SignInView
-   SignUpView */
+   SignUpView
+   UserMaintenanceView */
 "eMail address" = "e-Post addresse";
 
 /* PersonView */
@@ -49,7 +44,8 @@
 
 /* PersonView
    SignInView
-   SignUpView */
+   SignUpView
+   UserMaintenanceView */
 "Enter your email address" = "Legg inn e-Post adresse";
 
 /* PersonView */
@@ -61,11 +57,13 @@
 /* PersonView */
 "Enter your municipality" = "Legg inn kommune";
 
-/* SignUpView */
+/* SignUpView
+   UserMaintenanceView */
 "Enter your name" = "Legg inn navn";
 
 /* SignInView
-   SignUpView */
+   SignUpView
+   UserMaintenanceView */
 "Enter your password" = "Legg inn passord";
 
 /* PersonView */
@@ -83,14 +81,21 @@
 /* PersonView */
 "Man" = "Mann";
 
+/* No comment provided by engineer. */
+"Miscellaneous" = "Diverse";
+
 /* PersonView */
 "Municipality" = "Kommune";
 
 /* SignUpView */
 "Name, eMail or Password must all contain a value." = "Navn, e-Post eller passord må alle ha en verdi.";
 
+/* No comment provided by engineer. */
+"New password" = "Nytt passord";
+
 /* SignInView
-   SignUpView */
+   SignUpView
+   UserMaintenanceView */
 "Password" = "Passord";
 
 /* No comment provided by engineer. */
@@ -98,9 +103,6 @@
 
 /* PersonView */
 "Phone Number" = "Telefonnummer";
-
-/* No comment provided by engineer. */
-"Settings" = "Innstillinger";
 
 /* No comment provided by engineer. */
 "Sign in" = "Logg inn";
@@ -130,12 +132,22 @@
 "Todo" = "Oppgaver";
 
 /* SignInView */
-"Unknown email or password:" = "Feil e-Post eller passord:";
+"Unknown email or password:" = "Ukjent e-Post eller passord:";
+
+/* No comment provided by engineer. */
+"Update name" = "Oppdater navn";
+
+/* UserMaintenanceView */
+"User maintenance" = "Bruker vedlikehold";
+
+/* No comment provided by engineer. */
+"Users" = "Brukere";
 
 /* PersonView */
 "Woman" = "Kvinne";
 
 /* SignInView
-   SignUpiew */
+   SignUpiew
+   UserMaintenanceView */
 "Your name" = "Navn";
 

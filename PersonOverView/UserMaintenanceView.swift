@@ -17,7 +17,7 @@ struct UserMaintenanceView: View {
 
     var body: some View {
         VStack {
-            Text(user.name)             /// "User maintenance")
+            Text(NSLocalizedString("User maintenance", comment: "UserMaintenanceView")) // Text(user.name)
                 .font(.largeTitle)
                 .padding(.top)
             List {

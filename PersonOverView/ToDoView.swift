@@ -12,8 +12,7 @@ var toDo =
 """
  E n d r i n g e r :
 
- 1. Endre "Feil e-Post eller passord" til "Ukjent ...."
- 2. Nytt View som inneholder :
+ 1. Nytt View som inneholder :
     a) Slett bruker
     b) Endre profil bilde
     c) Endre navn
@@ -29,6 +28,7 @@ var toDo =
  4. Reduserer nå størrelsen på bildet som blir lagret på CloudKit.
  5. Viser nå kun lagret bilde i CloudKit.
     ... Uten lagret bilde vises et blankt bilde i SignInView.swift
+ 6. Endre "Feil e-Post eller passord" til "Ukjent ...."
 
 S e n e r e (om mulig) :
 
