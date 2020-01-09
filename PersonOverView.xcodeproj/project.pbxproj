@@ -33,6 +33,7 @@
 		DBFC29C323C48F6C00F2224B /* Administration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC29C223C48F6C00F2224B /* Administration.swift */; };
 		DBFC29C723C4962500F2224B /* DeleteUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC29C623C4962500F2224B /* DeleteUserView.swift */; };
 		DBFC29CB23C5DE8500F2224B /* UserMaintenanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC29CA23C5DE8500F2224B /* UserMaintenanceView.swift */; };
+		DBFC29CF23C74D6900F2224B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC29CE23C74D6900F2224B /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		DBFC29C223C48F6C00F2224B /* Administration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Administration.swift; sourceTree = "<group>"; };
 		DBFC29C623C4962500F2224B /* DeleteUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserView.swift; sourceTree = "<group>"; };
 		DBFC29CA23C5DE8500F2224B /* UserMaintenanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMaintenanceView.swift; sourceTree = "<group>"; };
+		DBFC29CE23C74D6900F2224B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				DB302B86237EF2A700076D10 /* SignUpView.swift */,
 				DB46937F23B9F0A50060933E /* ToDoView.swift */,
 				DB302B80237EF16200076D10 /* UserElement.swift */,
+				DBFC29CE23C74D6900F2224B /* User.swift */,
 				DB302B82237EF18D00076D10 /* UserElements.swift */,
 				DBFC29CA23C5DE8500F2224B /* UserMaintenanceView.swift */,
 				DB302B74237EF02300076D10 /* Preview Content */,
@@ -240,6 +243,7 @@
 				DB302B8F237EF43400076D10 /* CloudKitUser.swift in Sources */,
 				DBFC29CB23C5DE8500F2224B /* UserMaintenanceView.swift in Sources */,
 				DB6739C123AA910E00EF9ECD /* SwiftUIImagePicker.swift in Sources */,
+				DBFC29CF23C74D6900F2224B /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

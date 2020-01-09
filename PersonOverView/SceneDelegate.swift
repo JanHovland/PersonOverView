@@ -12,7 +12,9 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    var userElements = UserElements()
+    var imagePicker = ImagePicker()
+    var main = Main()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -28,9 +30,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         // let contentView = PersonOverView().environmentObject(UserElements()).environmentObject(UserSettings())
-        let contentView = PersonOverView() // .environmentObject(UserElements())
+        // let 
 
-        
+//        let userElements = UserElements()
+//        let imagePicker = ImagePicker()
+//        let contentView = PersonOverView().environmentObject(userElements).environmentObject(imagePicker)
+//
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
@@ -38,13 +43,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             // Add UserElement() to the window.rootViewController
 
             window.rootViewController = UIHostingController(rootView:
-                
-                contentView.environmentObject(UserElements()).environmentObject(ImagePicker()))
-            
+
+                PersonOverView().environmentObject(userElements).environmentObject(imagePicker).environmentObject(main))
+
+//
+//                contentView.environmentObject(User()))
+//            
                 // Adding another XxxxElements
                 // contentView.environmentObject(ListElements()).environmentObject(XxxxElements()))
 
-            window.rootViewController = UIHostingController(rootView: contentView)
+            // window.rootViewController = UIHostingController(rootView: contentView)
             self.window = window
             window.makeKeyAndVisible()
         }

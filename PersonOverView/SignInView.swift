@@ -12,6 +12,11 @@
 import SwiftUI
 import Combine
 
+class Main: ObservableObject {
+     @Published var name = "Ola"
+     @Published var email = ""
+     @Published var password = ""
+}
 struct SignInView : View {
     
     @State private var name: String = ""
@@ -24,6 +29,7 @@ struct SignInView : View {
     @State private var showUserMaintenanceView: Bool = false
 
     @EnvironmentObject var userElements: UserElements
+    @EnvironmentObject var m: Main
 
     var body: some View {
         ScrollView  {
@@ -44,7 +50,7 @@ struct SignInView : View {
                             }
                         }
                     .sheet(isPresented: $showUserMaintenanceView) {
-                        UserMaintenanceView()
+                        UserMaintenanceView().environmentObject(Main())
                     }
 
                 }
@@ -101,6 +107,7 @@ struct SignInView : View {
                                                                     self.email = userItem.email
                                                                     self.password = userItem.password
                                                                     self.name = userItem.name
+                                                                    self.m.name = userItem.name
                                                                     if userItem.image != nil {
                                                                         self.image = userItem.image!
                                                                     }

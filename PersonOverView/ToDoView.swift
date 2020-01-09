@@ -12,7 +12,8 @@ var toDo =
 """
  E n d r i n g e r :
 
- 1. Nytt View som inneholder :
+ 1. Endre "Feil e-Post eller passord" til "Ukjent ...."
+ 2. Nytt View som inneholder :
     a) Slett bruker
     b) Endre profil bilde
     c) Endre navn

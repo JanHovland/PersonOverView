@@ -79,7 +79,8 @@ struct CloudKitUser {
         let predicate = NSPredicate(format: "email == %@ AND password = %@", email, password)
         let query = CKQuery(recordType: RecordType.User, predicate: predicate)
         DispatchQueue.main.async {
-            CKContainer.default().privateCloudDatabase.perform(query, inZoneWith: nil, completionHandler: { (results, er) in
+             /// inZoneWith: nil : Specify nil to search the default zone of the database.
+             CKContainer.default().privateCloudDatabase.perform(query, inZoneWith: nil, completionHandler: { (results, er) in
                 DispatchQueue.main.async {
                     if results != nil {
                         if results!.count >= 1 {
