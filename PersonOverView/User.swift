@@ -13,4 +13,5 @@ class User: ObservableObject {
      @Published var name = ""
      @Published var email = ""
      @Published var password = ""
+     @Published var image: UIImage?
 }

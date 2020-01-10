@@ -66,8 +66,6 @@ struct SignInView : View {
                                     heading: NSLocalizedString("Your name", comment: "SignInView"),
                                     value: $name)
                         .autocapitalization(.words)
-                    // m.name = name
-
                     Spacer(minLength: 20)
                     InputTextField(secure: false,
                                    heading: NSLocalizedString("eMail address", comment: "SignInView"),
@@ -111,7 +109,9 @@ struct SignInView : View {
                                                                     self.user.password = userItem.password
                                                                     if userItem.image != nil {
                                                                         self.image = userItem.image!
+                                                                        self.user.image = userItem.image!
                                                                     }
+
                                                                 case .failure(let err):
                                                                     self.message = err.localizedDescription
                                                                 }

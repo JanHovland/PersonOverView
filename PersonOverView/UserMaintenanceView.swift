@@ -10,12 +10,29 @@ import SwiftUI
 
 struct UserMaintenanceView: View {
     @EnvironmentObject var user: User
+    //@State private var image: UIImage? = $user.image
 
     var body: some View {
         VStack {
             Text(NSLocalizedString("User maintenance", comment: "UserMaintenanceView"))
                 .font(.largeTitle)
                 .padding(.top)
+
+            ZStack {
+                Image(systemName: "person.circle")
+                    .resizable()
+                    .frame(width: 100, height: 100)
+                    .font(Font.title.weight(.ultraLight))
+                /// Her legges aktuelt bilde oppå "person.circle"
+                if user.image != nil {
+                    Image(uiImage: user.image!)
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                        .aspectRatio(contentMode: .fill)
+                        .clipShape(Circle())
+                }
+            }
+
             List {
                 InputTextField(secure: false,
                                heading: NSLocalizedString("Your name", comment: "UserMaintenanceView"),
@@ -35,6 +52,10 @@ struct UserMaintenanceView: View {
                     .keyboardType(.emailAddress)
                     .autocapitalization(.none)
             }.padding(.bottom)
+            /// Fjerner linjer mellom elementene
+            .listStyle(GroupedListStyle())
+                .environment(\.horizontalSizeClass, .regular)
+
         }
     }
 }

@@ -13,11 +13,13 @@ var toDo =
  E n d r i n g e r :
 
  1. Nytt View som inneholder :
-    a) Slett bruker
     b) Endre profil bilde
     c) Endre navn
     d) Endre e-Post
     e) Endre passord
+
+ 2. Nytt View som inneholder :
+    a) Slett bruker
 
  F e r d i g :
 
@@ -35,6 +37,7 @@ var toDo =
 S e n e r e (om mulig) :
 
 1. Trykke på bildet istedet for på teksten i "SignUpView.swift"
+   ... Bruk: .contextMenu
 
 """
 

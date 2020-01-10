@@ -33,19 +33,6 @@ struct SignUpView : View {
                     Text(NSLocalizedString("Sign Up CloudKit", comment: "SignUpView"))
                         .font(.headline)
                         .multilineTextAlignment(.center)
-                        .contextMenu {
-                            HStack {
-                                Button(action: {
-                                    self.showUserMaintenanceView.toggle()
-                                }, label: {
-                                    Image(systemName: "pencil.and.ellipsis.rectangle")
-                                    Text("User maintenance")
-                                })
-                            }
-                    }
-                    .sheet(isPresented: $showUserMaintenanceView) {
-                        UserMaintenanceView()
-                    }
                 }
                 Spacer(minLength: 20)
                 ZStack {
