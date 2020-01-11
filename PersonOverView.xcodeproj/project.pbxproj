@@ -28,6 +28,7 @@
 		DB6739C423AD46A800EF9ECD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB6739C223AD46A800EF9ECD /* InfoPlist.strings */; };
 		DB6739C723AD46A800EF9ECD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB6739C523AD46A800EF9ECD /* Localizable.strings */; };
 		DB6739CB23AE2B0600EF9ECD /* OutputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6739CA23AE2B0600EF9ECD /* OutputTextField.swift */; };
+		DB691A1E23CA718F004CDBE8 /* qwerty.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB691A1D23CA718F004CDBE8 /* qwerty.swift */; };
 		DBB4C62823B6301F0055296B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB4C62723B6301F0055296B /* ImagePicker.swift */; };
 		DBDA561A23BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */; };
 		DBFC29C323C48F6C00F2224B /* Administration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC29C223C48F6C00F2224B /* Administration.swift */; };
@@ -61,6 +62,7 @@
 		DB6739C823AD495500EF9ECD /* nb-NO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nb-NO"; path = "nb-NO.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		DB6739C923AD495500EF9ECD /* nb-NO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nb-NO"; path = "nb-NO.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		DB6739CA23AE2B0600EF9ECD /* OutputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputTextField.swift; sourceTree = "<group>"; };
+		DB691A1D23CA718F004CDBE8 /* qwerty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qwerty.swift; sourceTree = "<group>"; };
 		DBB4C62723B6301F0055296B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptsToSoftwareKeyboard.swift; sourceTree = "<group>"; };
 		DBFC29C223C48F6C00F2224B /* Administration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Administration.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				DB302B6D237EF02300076D10 /* PersonOverView.xcdatamodeld */,
 				DB302B70237EF02300076D10 /* PersonOverView.swift */,
 				DB302B8A237EF33100076D10 /* PersonView.swift */,
+				DB691A1D23CA718F004CDBE8 /* qwerty.swift */,
 				DB302B6B237EF02300076D10 /* SceneDelegate.swift */,
 				DB302B84237EF27400076D10 /* SignInView.swift */,
 				DB302B86237EF2A700076D10 /* SignUpView.swift */,
@@ -238,6 +241,7 @@
 				DB6739CB23AE2B0600EF9ECD /* OutputTextField.swift in Sources */,
 				DB1FEF91238055FE00F8D763 /* InputTextField.swift in Sources */,
 				DB302B85237EF27400076D10 /* SignInView.swift in Sources */,
+				DB691A1E23CA718F004CDBE8 /* qwerty.swift in Sources */,
 				DB302B83237EF18D00076D10 /* UserElements.swift in Sources */,
 				DB46938023B9F0A50060933E /* ToDoView.swift in Sources */,
 				DB302B8F237EF43400076D10 /* CloudKitUser.swift in Sources */,

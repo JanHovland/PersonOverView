@@ -12,6 +12,6 @@
 import SwiftUI
 
 class UserElements: ObservableObject {
-    @Published var user: [UserElement] = []
+    @Published var users: [UserElement] = []
 }
 

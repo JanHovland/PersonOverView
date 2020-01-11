@@ -102,7 +102,7 @@ struct SignInView : View {
                                                             CloudKitUser.fetchUser(predicate: predicate) { (result) in
                                                                 switch result {
                                                                 case .success(let userItem):
-                                                                    self.userElements.user.append(userItem)
+                                                                    self.userElements.users.append(userItem)
                                                                     self.email = userItem.email
                                                                     self.password = userItem.password
                                                                     self.name = userItem.name

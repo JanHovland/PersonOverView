@@ -85,7 +85,7 @@ struct SignUpView : View {
                                                             CloudKitUser.saveUser(item: self.userItem) { (result) in
                                                                 switch result {
                                                                 case .success(let userItem):
-                                                                    self.userElements.user.insert(userItem, at: 0)
+                                                                    self.userElements.users.insert(userItem, at: 0)
                                                                     let message1 = NSLocalizedString("Added new user:", comment: "SignUpView")
                                                                     self.message = message1 + " '\(self.userItem.name)'"
                                                                     self.show.toggle()
