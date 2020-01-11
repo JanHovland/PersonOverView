@@ -7,10 +7,14 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct UserMaintenanceView: View {
     @EnvironmentObject var user: User
-    //@State private var image: UIImage? = $user.image
+    @State private var message: String = ""
+    @State private var show: Bool = false
+
+    @EnvironmentObject var userElements: UserElements
 
     var body: some View {
         VStack {
@@ -34,6 +38,8 @@ struct UserMaintenanceView: View {
             }
 
             List {
+
+                // Text(user.recordID)
                 InputTextField(secure: false,
                                heading: NSLocalizedString("Your name", comment: "UserMaintenanceView"),
                                placeHolder: NSLocalizedString("Enter your name", comment: "UserMaintenanceView"),
@@ -52,10 +58,35 @@ struct UserMaintenanceView: View {
                     .keyboardType(.emailAddress)
                     .autocapitalization(.none)
             }.padding(.bottom)
-            /// Fjerner linjer mellom elementene
-            .listStyle(GroupedListStyle())
+                /// Fjerner linjer mellom elementene
+                .listStyle(GroupedListStyle())
                 .environment(\.horizontalSizeClass, .regular)
 
         }
+        .onAppear {
+            // MARK: - fetch from CloudKit
+            if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
+                let email = self.user.email
+                let predicate = NSPredicate(format: "email == %@", email)
+                CloudKitUser.fetchUser(predicate: predicate) { (result) in
+                    switch result {
+                    case .success(let userItem):
+                        self.userElements.user.append(userItem)
+//                        self.message = "Successfully fetched item"
+//                        self.show.toggle()
+                    case .failure(let err):
+                        self.message = err.localizedDescription
+                        self.show.toggle()
+                    }
+                }
+            } else {
+                self.message = "Missing parameters"
+                self.show.toggle()
+            }
+        }
+        .alert(isPresented: $show) {
+            return Alert(title: Text(self.message))
+        }
+
     }
 }

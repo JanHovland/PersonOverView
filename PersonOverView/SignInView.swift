@@ -9,6 +9,9 @@
 //  Block comment : Ctrl + Cmd + / (on number pad)
 //  Indent        : Ctrl + Cmd + * (on number pad)
 
+
+/// Ref: SwiftUICloudKit-master-3
+
 import SwiftUI
 import Combine
 
@@ -46,7 +49,7 @@ struct SignInView : View {
                         }
                     .sheet(isPresented: $showUserMaintenanceView) {
                         /// må kalles på denne måten for å kunne benytte environmentObject 
-                        UserMaintenanceView().environmentObject(self.user)
+                        UserMaintenanceView().environmentObject(self.user).environmentObject(self.userElements)
                     }
 
                 }
@@ -111,6 +114,7 @@ struct SignInView : View {
                                                                         self.image = userItem.image!
                                                                         self.user.image = userItem.image!
                                                                     }
+                                                                    self.user.recordID = userItem.recordID
 
                                                                 case .failure(let err):
                                                                     self.message = err.localizedDescription
