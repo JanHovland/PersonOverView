@@ -20,13 +20,11 @@ struct qwerty: View {
                 .padding()
 
             TextField("Navn", text: $item.name)
+            TextField("email", text: $item.email)
+            SecureField("Password", text: $item.password)
 
             Button(
                 action: {
-                    // self.item.name = self.item.name
-                    self.item.email = "a@b.com"
-                    self.item.password = "qwerty"
-
                     let msg = CloudKitRecord.saveUser(item: self.item)
                     if msg.count > 0 {
                         print("msg = \(msg)")
