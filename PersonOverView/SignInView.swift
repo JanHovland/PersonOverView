@@ -140,15 +140,6 @@ struct SignInView : View {
         .modifier(DismissingKeyboard())
         .modifier(AdaptsToSoftwareKeyboard())
     }
-
-//    static func AddName() {
-//        var from: String
-//        var to: String
-//
-//        to = from
-//
-//    }
-
 }
 
 /// Dismiss the keyboard
@@ -167,17 +158,3 @@ struct DismissingKeyboard: ViewModifier {
     }
 }
 
-
-//struct MenuInfo: View {
-//    var showUserMaintenanceView
-//    var body: some View {
-//        HStack {
-//            Button(action: {
-//                self.showUserMaintenanceView.toggle()
-//            }, label: {
-//                Image(systemName: "pencil.and.ellipsis.rectangle")
-//                Text("User maintenance")
-//            })
-//        }
-//    }
-//}

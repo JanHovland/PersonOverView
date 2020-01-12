@@ -64,39 +64,42 @@ struct UserMaintenanceView: View {
                 .environment(\.horizontalSizeClass, .regular)
 
             Button(action: {
-                 if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
-//                     let email = self.user.email
-//                     let predicate = NSPredicate(format: "email == %@", email)
+                if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
+                /*
+                    //                     let email = self.user.email
+                    //                     let predicate = NSPredicate(format: "email == %@", email)
 
-                     self.userItem.name = self.user.name
-//                     self.userItem1.email = self.user.email
-//                     self.userItem1.password = self.user.password
+                    self.userItem.name = self.user.name
+                    //                     self.userItem1.email = self.user.email
+                    //                     self.userItem1.password = self.user.password
 
                     let userItem = UserElement(name: "AAA", email: "BBB", password: "QWERTY", image: nil)
 
 
                     CloudKitUser.modifyUser(item: userItem) { (result) in
-                           switch result {
-                           case .success(let userItem):
-                               self.userElements.users.insert(userItem, at: 0)
-                               let message1 = NSLocalizedString("Modified user:", comment: "SignUpView")
-                               self.message = message1 + " '\(self.userItem.name)'"
-                               self.show.toggle()
-                           case .failure(let err):
-                               print(err.localizedDescription)
-                               self.message = err.localizedDescription
-                               self.show.toggle()
-                           }
-                       }
-                 } else {
-                     self.message = "Missing parameters"
-                     self.show.toggle()
-                 }
+                        switch result {
+                        case .success(let userItem):
+                            self.userElements.users.insert(userItem, at: 0)
+                            let message1 = NSLocalizedString("Modified user:", comment: "SignUpView")
+                            self.message = message1 + " '\(self.userItem.name)'"
+                            self.show.toggle()
+                        case .failure(let err):
+                            print(err.localizedDescription)
+                            self.message = err.localizedDescription
+                            self.show.toggle()
+                        }
+                    }
+                */
+                } else {
+                    self.message = "Missing parameters"
+                    self.show.toggle()
+                }
              }, label: {
                  Text("Modify user")
              })
 
         }
+        /*
         .onAppear {
             // MARK: - fetch from CloudKit
             if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
@@ -121,6 +124,7 @@ struct UserMaintenanceView: View {
                 self.show.toggle()
             }
         }
+        */
         .alert(isPresented: $show) {
             return Alert(title: Text(self.message))
         }
