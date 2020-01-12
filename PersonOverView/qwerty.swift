@@ -17,31 +17,12 @@ struct qwerty: View {
                 .padding()
             Button(
                 action: {
-                    saveRecord(recordType: "User", value: "Petter",  key: "name")
+                    CloudKitRecord.saveRecord(recordType: "User",
+                                              value: "Kristian",
+                                              key: "name")
             },
-                label: { Text("Test function for CloudKit") }
+                label: { Text("Test save function for CloudKit") }
             )
-
         }
     }
-}
-
-struct qwerty_Previews: PreviewProvider {
-    static var previews: some View {
-        qwerty()
-    }
-}
-
-func saveRecord(recordType: String, value: String, key: String) {
-    let privateDatabase = CKContainer.default().privateCloudDatabase
-    let record = CKRecord(recordType: recordType)
-    record.setValue(value, forKey: key)
-    privateDatabase.save(record) { (savedRecord, error) in
-        if error == nil {
-            print("Record Saved")
-        } else {
-            print("Record Not Saved")
-        }
-    }
-
 }
