@@ -11,19 +11,46 @@ import CloudKit
 
 struct CloudKitRecord {
     /// MARK: - saving to CloudKit
-    static func saveRecord(recordType: String, value: String, key: String) {
-        let record = CKRecord(recordType: recordType)
+//    static func saveRecord(recordType: String, value: String, key: String) {
+//        let record = CKRecord(recordType: recordType)
+//        if recordType == "User" {
+//            let privateDatabase = CKContainer.default().privateCloudDatabase
+//            record.setValue(value, forKey: key)
+//            privateDatabase.save(record) { (savedRecord, error) in
+//                DispatchQueue.main.async {
+//                    if error == nil {
+//                        print("Record Saved")
+//                    } else {
+//                        print("Record Not Saved")
+//                    }
+//                }
+//            }
+//        }
+//    }
+
+    static func saveRecord(item: UserElement, recordType: String) {
         let privateDatabase = CKContainer.default().privateCloudDatabase
-        record.setValue(value, forKey: key)
-        privateDatabase.save(record) { (savedRecord, error) in
-            if error == nil {
-                print("Record Saved")
-            } else {
-                print("Record Not Saved")
+        let record = CKRecord(recordType: recordType)
+        if recordType == "User" {
+            record["name"] = item.name as CKRecordValue
+            record["email"] = item.email as CKRecordValue
+            record["password"] = item.password as CKRecordValue
+            if ImagePicker.shared.imageFileURL != nil {
+                /// Her lagres det et komprimertbilde
+                record["image"] = CKAsset(fileURL: ImagePicker.shared.imageFileURL!)
+            }
+            privateDatabase.save(record) { (savedRecord, error) in
+                DispatchQueue.main.async {
+                    if error == nil {
+                        print("Record Saved")
+                    } else {
+                        print("Record Not Saved")
+                    }
+                }
             }
         }
     }
-    
+
     // MARK: - fetching from CloudKit
     static func fetchRecord() {
         var titles = [String]()

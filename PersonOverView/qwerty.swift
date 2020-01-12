@@ -10,6 +10,9 @@ import SwiftUI
 import CloudKit
 
 struct qwerty: View {
+
+    @State private var item = UserElement(name: "Kjelling", email: "a@b.com", password: "1234")
+
     var body: some View {
         VStack {
             Text("CloudKit")
@@ -17,10 +20,8 @@ struct qwerty: View {
                 .padding()
             Button(
                 action: {
-                    CloudKitRecord.saveRecord(recordType: "User",
-                                              value: "Kristian",
-                                              key: "name")
-            },
+                    CloudKitRecord.saveRecord(item: self.item, recordType: "User")
+                },
                 label: { Text("Test save function for CloudKit") }
             )
         }
