@@ -11,16 +11,27 @@ import CloudKit
 
 struct qwerty: View {
 
-    @State private var item = UserElement(name: "Kjelling", email: "a@b.com", password: "1234")
+    @State private var item = UserElement(name: "", email: "", password: "")
 
     var body: some View {
         VStack {
             Text("CloudKit")
                 .font(.largeTitle)
                 .padding()
+
+            TextField("Navn", text: $item.name)
+
             Button(
                 action: {
-                    CloudKitRecord.saveRecord(item: self.item, recordType: "User")
+                    // self.item.name = self.item.name
+                    self.item.email = "a@b.com"
+                    self.item.password = "qwerty"
+
+                    let msg = CloudKitRecord.saveUser(item: self.item)
+                    if msg.count > 0 {
+                        print("msg = \(msg)")
+                    }
+
                 },
                 label: { Text("Test save function for CloudKit") }
             )
