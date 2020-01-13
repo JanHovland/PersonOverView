@@ -13,10 +13,12 @@ var toDo =
  E n d r i n g e r :
 
  1. Nytt View som inneholder :
+    a) UserMaintenanceView.swift: Må trykke flere ganger på "Velg profilbilde"
     b) Endre profil bilde
     c) Endre navn
     d) Endre e-Post
     e) Endre passord
+
 
  2. Nytt View som inneholder :
     a) Slett bruker

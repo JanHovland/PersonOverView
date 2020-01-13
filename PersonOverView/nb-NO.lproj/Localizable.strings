@@ -13,11 +13,15 @@
 /* SignInView */
 "Both eMail and Password must have a value" = "e-Post og passord må begge ha verdi";
 
-/* SignUpView */
+/* SignUpView
+   UserMaintenanceView */
 "Choose Profile Image" = "Velg profilbilde";
 
 /* PersonView */
 "City" = "By/Tettsted";
+
+/* No comment provided by engineer. */
+"CloudKit" = "CloudKit";
 
 /* PersonView */
 "Date of birth" = "Fødselsdato";
@@ -27,6 +31,9 @@
 
 /* No comment provided by engineer. */
 "Delete user" = "Slett bruker";
+
+/* No comment provided by engineer. */
+"email" = "e-Post";
 
 /* PersonView */
 "eMail" = "e-Post";
@@ -84,6 +91,9 @@
 /* No comment provided by engineer. */
 "Miscellaneous" = "Diverse";
 
+/* UserMaintenanceView */
+"Modify user" = "Modifiser bruker";
+
 /* PersonView */
 "Municipality" = "Kommune";
 
@@ -121,6 +131,12 @@
 
 /* SignUpView */
 "Sign Up CloudKit" = "Meld deg inn i CloudKit";
+
+/* UserMaintenanceView */
+"Successfully modified item" = "Elementet ble endret";
+
+/* No comment provided by engineer. */
+"Test -F I N D- function for CloudKit" = "Test av -F I N D- function for CloudKit";
 
 /* SignUpView */
 "The user:" = "Brukeren:";

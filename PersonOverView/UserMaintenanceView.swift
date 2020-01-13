@@ -13,18 +13,13 @@ struct UserMaintenanceView: View {
     @EnvironmentObject var user: User
     @State private var message: String = ""
     @State private var show: Bool = false
-    @State var newItem = UserElement(name: "", email: "", password: "", image: nil)
+    @State private var newItem = UserElement(name: "", email: "", password: "", image: nil)
     @State private var showingImagePicker = false
-    @State var image: UIImage? = nil
-
-    @EnvironmentObject var userElements: UserElements
-
     var body: some View {
         VStack {
             Text(NSLocalizedString("User maintenance", comment: "UserMaintenanceView"))
                 .font(.largeTitle)
                 .padding(.top)
-
             ZStack {
                 Image(systemName: "person.circle")
                     .resizable()
@@ -39,10 +34,7 @@ struct UserMaintenanceView: View {
                         .clipShape(Circle())
                 }
             }
-
             List {
-
-                // Text(user.recordID)
                 InputTextField(secure: false,
                                heading: NSLocalizedString("Your name", comment: "UserMaintenanceView"),
                                placeHolder: NSLocalizedString("Enter your name", comment: "UserMaintenanceView"),
@@ -68,44 +60,59 @@ struct UserMaintenanceView: View {
                 /// Fjerner linjer mellom elementene
                 .listStyle(GroupedListStyle())
                 .environment(\.horizontalSizeClass, .regular)
-
             Button(action: {
                 if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
-
                     self.newItem.name = self.user.name
                     self.newItem.email = self.user.email
                     self.newItem.password = self.user.password
                     self.newItem.recordID = self.user.recordID
-
                     // MARK: - modify in CloudKit
                     CloudKitUser.modifyUser(item: self.newItem) { (result) in
                         switch result {
                         case .success:
-                            print("Successfully modified item")
+                            self.message = NSLocalizedString("Successfully modified item", comment: "UserMaintenanceView")
                         case .failure(let err):
-                            print(err.localizedDescription)
+                            self.message = err.localizedDescription
+                            self.show.toggle()
                         }
                     }
                 } else {
-                    self.message = "Missing parameters"
+                    self.message = NSLocalizedString("Missing parameters", comment: "UserMaintenanceView")
                     self.show.toggle()
                 }
              }, label: {
-                 Text("Modify user")
+                 Text(NSLocalizedString("Modify user", comment: "UserMaintenanceView"))
              })
-
         }
         .sheet(isPresented: $showingImagePicker, content: {
             ImagePicker.shared.view
         }).onReceive(ImagePicker.shared.$image) { image in
-            self.image = image
             self.user.image  = image
         }
-
+        .onAppear {
+            let email = self.user.email
+            CloudKitUser.doesUserExist(email: self.user.email, password: self.user.password) { (result) in
+                if result == false {
+                    self.message = NSLocalizedString("Unknown email or password:", comment: "SignInView")
+                    self.show.toggle()
+                } else {
+                    let predicate = NSPredicate(format: "email == %@", email)
+                    CloudKitUser.fetchUser(predicate: predicate) { (result) in
+                        switch result {
+                        case .success(let userItem):
+                            if userItem.image != nil {
+                                self.user.image = userItem.image!
+                            }
+                        case .failure(let err):
+                            self.message = err.localizedDescription
+                        }
+                    }
+                }
+            }
+        }
         .modifier(DismissingKeyboard())
         .alert(isPresented: $show) {
             return Alert(title: Text(self.message))
         }
-
     }
 }
