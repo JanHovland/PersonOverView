@@ -12,20 +12,16 @@ import CloudKit
 struct CloudKitRecord {
 
     static func saveUser(item: UserElement) -> String {
-
         var error = ""
-
         let privateDatabase = CKContainer.default().privateCloudDatabase
         let record = CKRecord(recordType: "User")
         record["name"] = item.name as CKRecordValue
         record["email"] = item.email as CKRecordValue
         record["password"] = item.password as CKRecordValue
         if ImagePicker.shared.imageFileURL != nil {
-            /// Her lagres det et komprimertbilde
             record["image"] = CKAsset(fileURL: ImagePicker.shared.imageFileURL!)
         }
-
-        privateDatabase.save(record) { (savedRecord, err) in
+        privateDatabase.save(record) { (cursor,  err) in
             DispatchQueue.main.async {
                 if err != nil {
                     error = err!.localizedDescription
@@ -35,29 +31,39 @@ struct CloudKitRecord {
         return error
     }
 
-    // MARK: - fetching from CloudKit
-    static func fetchRecord() {
-        var titles = [String]()
-        var recordIDs = [CKRecord.ID]()
+    // MARK: - find user(s) from CloudKit
+    static func findUser(predicate:  NSPredicate) -> String {
+        var error = ""
         let privateDatabase = CKContainer.default().privateCloudDatabase
-        let predicate = NSPredicate(value: true)
-        let query = CKQuery(recordType: "Note", predicate: predicate)
-        query.sortDescriptors = [NSSortDescriptor(key: "modificationDate", ascending: false)]
+
+        var email = [String]()
+        var recordIDs = [CKRecord.ID]()
+
+        let query = CKQuery(recordType: "User", predicate: predicate)
+        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         let operation = CKQueryOperation(query: query)
-        titles.removeAll()
+        operation.desiredKeys = ["name","email","password","image"]
+        operation.resultsLimit = 10
+        email.removeAll()
         recordIDs.removeAll()
+
         operation.recordFetchedBlock = { record in
-            titles.append(record["title"]!)
+            email.append(record["email"]!)
             recordIDs.append(record.recordID)
             
         }
-        operation.queryCompletionBlock = { cursor, error in
+        operation.queryCompletionBlock = { cursor, err in
             DispatchQueue.main.async {
-                print("Titles: \(titles)")
+                if err != nil {
+                    error = err!.localizedDescription
+                }
+                print("email: \(email)")
                 print("RecordIDs: \(recordIDs)")
             }
         }
         privateDatabase.add(operation)
+
+        return error
     }
     
     // MARK: - update from CloudKit

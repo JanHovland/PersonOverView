@@ -20,10 +20,10 @@ class ImagePicker: ObservableObject {
     let view = ImagePicker.View()
     let coordinator = ImagePicker.Coordinator()
 
-    let willChange = PassthroughSubject<Image?, Never>()
+    let willChange = PassthroughSubject<UIImage?, Never>()
     let willChangeImageFileURL = PassthroughSubject<URL?, Never>()
 
-    @Published var image: Image? = nil {
+    @Published var image: UIImage? = nil {
         didSet {
             if image != nil {
                 willChange.send(image)
@@ -54,7 +54,7 @@ extension ImagePicker {
             /// Redusere det valgte bildet  vha. func resizedImage() og original url
             let size = CGSize(width: 60, height: 60)
             let image = resizedImage(at: urlOld, for: size)
-            ImagePicker.shared.image = Image(uiImage: image!)
+            ImagePicker.shared.image = image
 
             /// Lage ny url
             let fileManager = FileManager.default

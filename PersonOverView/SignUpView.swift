@@ -18,8 +18,8 @@ struct SignUpView : View {
     @State private var password: String = ""
     @State private var show: Bool = false
     @State private var message: String = ""
-    @State private var image: Image? = nil
-    @State private var showingImagePicker = false
+    @State private var image: UIImage? = nil
+    @State  var showingImagePicker = false
     @State private var userItem = UserElement(name: "", email: "", password: "", image: nil)
     @State private var showUserMaintenanceView: Bool = false
     
@@ -42,7 +42,7 @@ struct SignUpView : View {
                         .font(Font.title.weight(.ultraLight))
                     // Her legges aktuelt bilde oppå "person.circle"
                     if image != nil {
-                        image!
+                        Image(uiImage: image!)
                             .resizable()
                             .frame(width: 100, height: 100)
                             .aspectRatio(contentMode: .fill)
@@ -120,6 +120,7 @@ struct SignUpView : View {
             ImagePicker.shared.view
         }).onReceive(ImagePicker.shared.$image) { image in
             self.image = image
+
         }
         .modifier(DismissingKeyboard())
     }

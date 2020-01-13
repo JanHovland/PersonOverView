@@ -48,7 +48,7 @@ struct SignInView : View {
                             }
                         }
                     .sheet(isPresented: $showUserMaintenanceView) {
-                        /// må kalles på denne måten for å kunne benytte environmentObject 
+                        /// må kalles på denne måten for å kunne benytte flere environmentObject 
                         UserMaintenanceView().environmentObject(self.user).environmentObject(self.userElements)
                     }
 

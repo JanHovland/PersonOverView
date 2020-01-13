@@ -13,7 +13,7 @@ import Combine
 struct SwiftUIImagePicker: View {
 
     @State private var showingImagePicker = false
-    @State private var image: Image? = nil
+    @State private var image: UIImage? = nil
     
     @EnvironmentObject var imagePicker:  ImagePicker
 
@@ -29,7 +29,7 @@ struct SwiftUIImagePicker: View {
                         .stroke(Color.gray, lineWidth: 4))
                     .padding(.bottom)
             } else{
-                image?
+                Image(uiImage: image!)
                     .resizable()
                     .clipShape(Circle())
                     .frame(width: 100, height: 100)

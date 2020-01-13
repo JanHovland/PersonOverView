@@ -13,7 +13,9 @@ struct UserMaintenanceView: View {
     @EnvironmentObject var user: User
     @State private var message: String = ""
     @State private var show: Bool = false
-    @State private var userItem = UserElement(name: "", email: "", password: "", image: nil)
+    @State var newItem = UserElement(name: "", email: "", password: "", image: nil)
+    @State private var showingImagePicker = false
+    @State var image: UIImage? = nil
 
     @EnvironmentObject var userElements: UserElements
 
@@ -58,6 +60,10 @@ struct UserMaintenanceView: View {
                                value: $user.password)
                     .keyboardType(.emailAddress)
                     .autocapitalization(.none)
+                Button(NSLocalizedString("Choose Profile Image", comment: "UserMaintenanceView")) {
+                    self.showingImagePicker.toggle()
+                }
+
             }.padding(.bottom)
                 /// Fjerner linjer mellom elementene
                 .listStyle(GroupedListStyle())
@@ -65,31 +71,21 @@ struct UserMaintenanceView: View {
 
             Button(action: {
                 if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
-                /*
-                    //                     let email = self.user.email
-                    //                     let predicate = NSPredicate(format: "email == %@", email)
 
-                    self.userItem.name = self.user.name
-                    //                     self.userItem1.email = self.user.email
-                    //                     self.userItem1.password = self.user.password
+                    self.newItem.name = self.user.name
+                    self.newItem.email = self.user.email
+                    self.newItem.password = self.user.password
+                    self.newItem.recordID = self.user.recordID
 
-                    let userItem = UserElement(name: "AAA", email: "BBB", password: "QWERTY", image: nil)
-
-
-                    CloudKitUser.modifyUser(item: userItem) { (result) in
+                    // MARK: - modify in CloudKit
+                    CloudKitUser.modifyUser(item: self.newItem) { (result) in
                         switch result {
-                        case .success(let userItem):
-                            self.userElements.users.insert(userItem, at: 0)
-                            let message1 = NSLocalizedString("Modified user:", comment: "SignUpView")
-                            self.message = message1 + " '\(self.userItem.name)'"
-                            self.show.toggle()
+                        case .success:
+                            print("Successfully modified item")
                         case .failure(let err):
                             print(err.localizedDescription)
-                            self.message = err.localizedDescription
-                            self.show.toggle()
                         }
                     }
-                */
                 } else {
                     self.message = "Missing parameters"
                     self.show.toggle()
@@ -99,32 +95,14 @@ struct UserMaintenanceView: View {
              })
 
         }
-        /*
-        .onAppear {
-            // MARK: - fetch from CloudKit
-            if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
-                let email = self.user.email
-                let predicate = NSPredicate(format: "email == %@", email)
-                CloudKitUser.fetchUser(predicate: predicate) { (result) in
-                    switch result {
-                    case .success(let userItems):
-
-                        self.userElements.users.append(self.userItem)
-
-                        self.userItem.name = userItems.name
-                        self.userItem.email = userItems.email
-                        self.userItem.password = userItems.password
-                    case .failure(let err):
-                        self.message = err.localizedDescription
-                        self.show.toggle()
-                    }
-                }
-            } else {
-                self.message = "Missing parameters"
-                self.show.toggle()
-            }
+        .sheet(isPresented: $showingImagePicker, content: {
+            ImagePicker.shared.view
+        }).onReceive(ImagePicker.shared.$image) { image in
+            self.image = image
+            self.user.image  = image
         }
-        */
+
+        .modifier(DismissingKeyboard())
         .alert(isPresented: $show) {
             return Alert(title: Text(self.message))
         }

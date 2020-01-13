@@ -31,7 +31,6 @@ struct CloudKitUser {
         itemRecord["email"] = item.email as CKRecordValue
         itemRecord["password"] = item.password as CKRecordValue
         if ImagePicker.shared.imageFileURL != nil {
-            /// Her lagres det et komprimertbilde
             itemRecord["image"] = CKAsset(fileURL: ImagePicker.shared.imageFileURL!)
         }
         CKContainer.default().privateCloudDatabase.save(itemRecord) { (record, err) in
@@ -177,6 +176,12 @@ struct CloudKitUser {
                 return
             }
             record["name"] = item.name as CKRecordValue
+            record["email"] = item.email as CKRecordValue
+            record["password"] = item.password as CKRecordValue
+            if ImagePicker.shared.imageFileURL != nil {
+                /// Her lagres det et komprimertbilde
+                record["image"] = CKAsset(fileURL: ImagePicker.shared.imageFileURL!)
+            }
 
             CKContainer.default().privateCloudDatabase.save(record) { (record, err) in
                 DispatchQueue.main.async {
@@ -201,17 +206,11 @@ struct CloudKitUser {
                         completion(.failure(CloudKitHelperError.castFailure))
                         return
                     }
-
-                    //                    guard let image = record["image"] as? String else {
-                    //                        completion(.failure(CloudKitHelperError.castFailure))
-                    //                        return
-                    //                    }
-
                     let userElement = UserElement(recordID: recordID,
                                                   name: name,
                                                   email: email,
                                                   password: password)
-                    // image: image)
+
                     completion(.success(userElement))
                 }
             }

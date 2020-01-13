@@ -12,9 +12,11 @@ import CloudKit
 struct qwerty: View {
 
     @State private var item = UserElement(name: "", email: "", password: "")
+    @State private var show: Bool = false
+    @State private var message: String = ""
 
     var body: some View {
-        VStack {
+        Form {
             Text("CloudKit")
                 .font(.largeTitle)
                 .padding()
@@ -23,16 +25,27 @@ struct qwerty: View {
             TextField("email", text: $item.email)
             SecureField("Password", text: $item.password)
 
+
+
             Button(
                 action: {
-                    let msg = CloudKitRecord.saveUser(item: self.item)
-                    if msg.count > 0 {
-                        print("msg = \(msg)")
+//                    let predicate = NSPredicate(format: "email == %@", self.item.email)
+                    let predicate = NSPredicate(value: true)
+                    let error = CloudKitRecord.findUser(predicate: predicate)
+                    if error.count == 0 {
+                        self.message = "Find OK"
+                        self.show.toggle()
+                    } else {
+                        self.message = error
+                        self.show.toggle()
                     }
 
                 },
-                label: { Text("Test save function for CloudKit") }
+                label: { Text("Test -F I N D- function for CloudKit") }
             )
+        }
+        .alert(isPresented: $show) {
+            return Alert(title: Text(self.message))
         }
     }
 }
