@@ -19,12 +19,8 @@ struct SignUpView : View {
     @State private var show: Bool = false
     @State private var message: String = ""
     @State private var image: UIImage? = nil
-    @State  var showingImagePicker = false
+    @State private var showingImagePicker = false
     @State private var userItem = UserElement(name: "", email: "", password: "", image: nil)
-    @State private var showUserMaintenanceView: Bool = false
-    
-    @EnvironmentObject var userElements: UserElements
-    
     var body: some View {
         ScrollView {
             VStack {
@@ -84,8 +80,7 @@ struct SignUpView : View {
                                                         if result == false {
                                                             CloudKitUser.saveUser(item: self.userItem) { (result) in
                                                                 switch result {
-                                                                case .success(let userItem):
-                                                                    self.userElements.users.insert(userItem, at: 0)
+                                                                case .success:
                                                                     let message1 = NSLocalizedString("Added new user:", comment: "SignUpView")
                                                                     self.message = message1 + " '\(self.userItem.name)'"
                                                                     self.show.toggle()
