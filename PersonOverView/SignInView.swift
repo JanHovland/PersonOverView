@@ -40,7 +40,12 @@ var body: some View {
                     .contextMenu {
                         HStack {
                             Button(action: {
-                                self.showUserMaintenanceView.toggle()
+                                if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
+                                    self.showUserMaintenanceView.toggle()
+                                } else {
+                                    self.message = NSLocalizedString("Name, eMail and Password must have a value", comment: "SignInView")
+                                    self.show.toggle()
+                                }
                             }, label: {
                                 Image(systemName: "pencil.and.ellipsis.rectangle")
                                 Text("User maintenance")
