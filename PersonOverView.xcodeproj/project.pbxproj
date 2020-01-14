@@ -30,6 +30,7 @@
 		DB6739CB23AE2B0600EF9ECD /* OutputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6739CA23AE2B0600EF9ECD /* OutputTextField.swift */; };
 		DB691A1E23CA718F004CDBE8 /* qwerty.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB691A1D23CA718F004CDBE8 /* qwerty.swift */; };
 		DB691A2023CB31ED004CDBE8 /* CloudKitRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB691A1F23CB31ED004CDBE8 /* CloudKitRecord.swift */; };
+		DB9A4DD923CDE2AE00948B21 /* UserDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9A4DD823CDE2AE00948B21 /* UserDeleteView.swift */; };
 		DBB4C62823B6301F0055296B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB4C62723B6301F0055296B /* ImagePicker.swift */; };
 		DBDA561A23BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */; };
 		DBFC29C323C48F6C00F2224B /* Administration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC29C223C48F6C00F2224B /* Administration.swift */; };
@@ -65,6 +66,7 @@
 		DB6739CA23AE2B0600EF9ECD /* OutputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputTextField.swift; sourceTree = "<group>"; };
 		DB691A1D23CA718F004CDBE8 /* qwerty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qwerty.swift; sourceTree = "<group>"; };
 		DB691A1F23CB31ED004CDBE8 /* CloudKitRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitRecord.swift; sourceTree = "<group>"; };
+		DB9A4DD823CDE2AE00948B21 /* UserDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDeleteView.swift; sourceTree = "<group>"; };
 		DBB4C62723B6301F0055296B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptsToSoftwareKeyboard.swift; sourceTree = "<group>"; };
 		DBFC29C223C48F6C00F2224B /* Administration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Administration.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				DB46937F23B9F0A50060933E /* ToDoView.swift */,
 				DB302B80237EF16200076D10 /* UserElement.swift */,
 				DBFC29CE23C74D6900F2224B /* User.swift */,
+				DB9A4DD823CDE2AE00948B21 /* UserDeleteView.swift */,
 				DB302B82237EF18D00076D10 /* UserElements.swift */,
 				DBFC29CA23C5DE8500F2224B /* UserMaintenanceView.swift */,
 				DB302B74237EF02300076D10 /* Preview Content */,
@@ -249,6 +252,7 @@
 				DB302B83237EF18D00076D10 /* UserElements.swift in Sources */,
 				DB46938023B9F0A50060933E /* ToDoView.swift in Sources */,
 				DB302B8F237EF43400076D10 /* CloudKitUser.swift in Sources */,
+				DB9A4DD923CDE2AE00948B21 /* UserDeleteView.swift in Sources */,
 				DBFC29CB23C5DE8500F2224B /* UserMaintenanceView.swift in Sources */,
 				DB6739C123AA910E00EF9ECD /* SwiftUIImagePicker.swift in Sources */,
 				DBFC29CF23C74D6900F2224B /* User.swift in Sources */,

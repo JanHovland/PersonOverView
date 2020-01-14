@@ -20,6 +20,7 @@ struct SignInView : View {
     @State private var message: String = ""
     @State private var userItem = UserElement(name: "", email: "", password: "")
     @State private var showUserMaintenanceView: Bool = false
+    @State private var showDeleteUserView: Bool = false
     @EnvironmentObject var user: User
     var body: some View {
         ScrollView  {
@@ -40,13 +41,32 @@ struct SignInView : View {
                                     }
                                 }, label: {
                                     Image(systemName: "pencil.and.ellipsis.rectangle")
+                                        .font(Font.system(.headline).weight(.regular))
                                     Text("User maintenance")
+                                })
+                            }
+                            HStack {
+                                Button(action: {
+                                    if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
+                                        self.showDeleteUserView.toggle()
+                                    } else {
+                                        self.message = NSLocalizedString("Name, eMail and Password must have a value", comment: "SignInView")
+                                        self.show.toggle()
+                                    }
+                                }, label: {
+                                    Image(systemName: "person")
+                                        .font(Font.system(.headline).weight(.thin))
+                                    Text("Delete user")
                                 })
                             }
                     }
                     .sheet(isPresented: $showUserMaintenanceView) {
                         /// må kalles på denne måten for å kunne benytte flere environmentObject
                         UserMaintenanceView().environmentObject(self.user)
+                    }
+                    .sheet(isPresented: $showDeleteUserView) {
+                        /// må kalles på denne måten for å kunne benytte flere environmentObject
+                        UserDeleteView().environmentObject(self.user)
                     }
 
                 }
