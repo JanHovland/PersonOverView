@@ -10,9 +10,6 @@
 /* SignUpView */
 "already exists" = "finnes allrede";
 
-/* SignInView */
-"Both eMail and Password must have a value" = "e-Post og passord må begge ha verdi";
-
 /* SignUpView
    UserMaintenanceView */
 "Choose Profile Image" = "Velg profilbilde";
@@ -96,6 +93,12 @@
 
 /* PersonView */
 "Municipality" = "Kommune";
+
+/* No comment provided by engineer. */
+"Name" = "Navn";
+
+/* SignInView */
+"Name, eMail and Password must have a value" = "Navn, e-Post og passord må ha en verdi";
 
 /* SignUpView */
 "Name, eMail or Password must all contain a value." = "Navn, e-Post eller passord må alle ha en verdi.";

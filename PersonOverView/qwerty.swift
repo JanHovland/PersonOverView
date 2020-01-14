@@ -21,7 +21,7 @@ struct qwerty: View {
                 .font(.largeTitle)
                 .padding()
 
-            TextField("Navn", text: $item.name)
+            TextField("Name", text: $item.name)
             TextField("email", text: $item.email)
             SecureField("Password", text: $item.password)
 
