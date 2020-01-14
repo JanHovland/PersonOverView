@@ -12,16 +12,7 @@ var toDo =
 """
  E n d r i n g e r :
 
- 1. Nytt View som inneholder :
-    a) UserMaintenanceView.swift: Må trykke flere ganger på "Velg profilbilde"
-    b) Endre profil bilde
-    c) Endre navn
-    d) Endre e-Post
-    e) Endre passord
-
-
- 2. Nytt View som inneholder :
-    a) Slett bruker
+ 1. Legg inn slett bruker
 
  F e r d i g :
 
@@ -35,6 +26,11 @@ var toDo =
  6. Endre "Feil e-Post eller passord" til "Ukjent ...."
  7. Endret fra UserMaintenanceView().environmentObject(User()
     til : UserMaintenanceView().environmentObject(self.user)
+ 8. Ny .sheet som inneholder :
+       a) Endre profil bilde
+       b) Endre navn
+       c) Endre e-Post
+       d) Endre passord
 
 S e n e r e (om mulig) :
 
