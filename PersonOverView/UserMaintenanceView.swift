@@ -11,6 +11,8 @@ import CloudKit
 
 struct UserMaintenanceView: View {
     @EnvironmentObject var user: User
+    @Environment(\.presentationMode) var presentationMode
+
     @State private var message: String = ""
     @State private var show: Bool = false
     @State private var newItem = UserElement(name: "", email: "", password: "", image: nil)
@@ -80,9 +82,9 @@ struct UserMaintenanceView: View {
                     self.message = NSLocalizedString("Missing parameters", comment: "UserMaintenanceView")
                     self.show.toggle()
                 }
-             }, label: {
-                 Text(NSLocalizedString("Modify user", comment: "UserMaintenanceView"))
-             })
+            }, label: {
+                Text(NSLocalizedString("Modify user", comment: "UserMaintenanceView"))
+            })
         }
         .sheet(isPresented: $showingImagePicker, content: {
             ImagePicker.shared.view
@@ -114,5 +116,22 @@ struct UserMaintenanceView: View {
         .alert(isPresented: $show) {
             return Alert(title: Text(self.message))
         }
+        .overlay(
+            HStack {
+                Spacer()
+                VStack {
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "chevron.down.circle.fill")
+                            .font(.largeTitle)
+                            .foregroundColor(.none)
+                    })
+                        .padding(.trailing, 20)
+                        .padding(.top, 80)
+                    Spacer()
+                }
+            }
+        )
     }
 }

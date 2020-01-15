@@ -73,6 +73,7 @@ struct PersonView : View {
                     label: {
                         Text(NSLocalizedString("Date of birth", comment: "PersonView"))
                             .font(.footnote)
+                            .foregroundColor(.accentColor)
                             .padding(-5)
                 })
                 // Returning an integer 0 == "Man" 1 == "Women

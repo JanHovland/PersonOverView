@@ -21,7 +21,6 @@ struct OutputTextField: View {
                     .padding(-4)
                     .font(.caption)
                     .foregroundColor(.accentColor)
-
                 Text(value)
                     .padding(.horizontal, 7)
             }

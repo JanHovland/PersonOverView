@@ -18,6 +18,7 @@ struct InputGender: View {
             HStack {
                 Text(heading)
                     .font(.footnote)
+                    .foregroundColor(.accentColor)
                     .padding(-5)
                 Picker(selection: $value, label: Text("")) {
                     ForEach(0..<genders.count) { index in
