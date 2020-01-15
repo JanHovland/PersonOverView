@@ -71,17 +71,22 @@ struct SignInView : View {
 
                 }
                 Spacer(minLength: 20)
-                /// Nå vises kun bildet fra CloudKit
-                /// Er det ikke noe bilde fra CloudKit blankes det forrige bildet
-                //                Image(uiImage: image)
-                if self.user.image != nil {
-                    Image(uiImage: self.user.image!)
+                ZStack {
+                    Image(systemName: "person.circle")
                         .resizable()
-                        .frame(width: 100, height: 100, alignment: .center)
-                        //.aspectRatio(contentMode: .fill)
+                        .frame(width: 100, height: 100)
                         .font(Font.title.weight(.ultraLight))
-                        .clipShape(Circle())
+                    // Her legges aktuelt bilde oppå "person.circle"
+                    if self.user.image != nil {
+                        Image(uiImage: self.user.image!)
+                            .resizable()
+                            .frame(width: 100, height: 100, alignment: .center)
+                            //.aspectRatio(contentMode: .fill)
+                            .font(Font.title.weight(.ultraLight))
+                            .clipShape(Circle())
+                    }
                 }
+
                 Spacer(minLength: 40)
                 VStack (alignment: .leading) {
                     OutputTextField(secure: false,

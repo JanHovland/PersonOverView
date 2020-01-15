@@ -12,7 +12,9 @@ var toDo =
 """
  E n d r i n g e r :
 
- 1. Legg inn slett bruker
+ 1. Blanke feltene etter:
+    a) "Meld deg inn"
+    b) "Slett"
 
  F e r d i g :
 
@@ -31,6 +33,8 @@ var toDo =
        b) Endre navn
        c) Endre e-Post
        d) Endre passord
+ 9. Lagt inn "slett bruker" meny
+10. "Sign up" -> Registrer(ing)
 
 S e n e r e (om mulig) :
 

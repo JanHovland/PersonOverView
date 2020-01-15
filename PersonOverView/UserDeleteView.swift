@@ -34,24 +34,15 @@ struct UserDeleteView: View {
                 }
             }
             List {
-                InputTextField(secure: false,
+                OutputTextField(secure: false,
                                heading: NSLocalizedString("Your name", comment: "UserDeleteView"),
-                               placeHolder: NSLocalizedString("Enter your name", comment: "UserDeleteView"),
                                value: $user.name)
-                    .autocapitalization(.words)
-                InputTextField(secure: false,
+                OutputTextField(secure: false,
                                heading: NSLocalizedString("eMail address", comment: "UserDeleteView"),
-                               placeHolder: NSLocalizedString("Enter your email address", comment: "UserDeleteView"),
                                value: $user.email)
-                    .keyboardType(.emailAddress)
-                    .autocapitalization(.none)
-                InputTextField(secure: true,
+                OutputTextField(secure: true,
                                heading: NSLocalizedString("Password", comment: "UserDeleteView"),
-                               placeHolder: NSLocalizedString("Enter your password", comment: "UserDeleteView"),
                                value: $user.password)
-                    .keyboardType(.emailAddress)
-                    .autocapitalization(.none)
-
             }.padding(.bottom)
                 /// Fjerner linjer mellom elementene
                 .listStyle(GroupedListStyle())
@@ -62,11 +53,13 @@ struct UserDeleteView: View {
                     CloudKitUser.deleteUser(recordID: self.user.recordID!) { (result) in
                         switch result {
                         case .success:
+                            let message1 = NSLocalizedString("User", comment: "UserDeleteView")
+                            let message2 = NSLocalizedString("deleted", comment: "UserDeleteView")
+                            self.message = message1 + " '\(self.user.name)'" + " " + message2
                             self.user.name = ""
                             self.user.email = ""
                             self.user.password = ""
                             self.user.image = nil
-                            self.message = NSLocalizedString("User deleted", comment: "UserDeleteView")
                             self.show.toggle()
                         case .failure(let err):
                             self.message = err.localizedDescription

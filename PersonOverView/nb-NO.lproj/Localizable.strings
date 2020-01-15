@@ -1,5 +1,5 @@
 /* SignUpView */
-"Added new user:" = "Lagt til ny bruker:";
+"Added new user:" = "Registrert ny bruker:";
 
 /* PersonView */
 "Address" = "Addresse";
@@ -32,6 +32,9 @@
 /* UserDeleteView */
 "Delete user" = "Slett bruker";
 
+/* UserDeleteView */
+"deleted" = "slettet";
+
 /* No comment provided by engineer. */
 "email" = "e-post";
 
@@ -42,7 +45,7 @@
    SignUpView
    UserDeleteView
    UserMaintenanceView */
-"eMail address" = "e-post addresse";
+"eMail address" = "e-post";
 
 /* PersonView */
 "Enter the city" = "Legg inn by/tettsted";
@@ -53,9 +56,8 @@
 /* PersonView
    SignInView
    SignUpView
-   UserDeleteView
    UserMaintenanceView */
-"Enter your email address" = "Skriv inn e-post adressen din";
+"Enter your email address" = "Legg inn e-post";
 
 /* PersonView */
 "Enter your first name" = "Legg inn fornavn";
@@ -67,13 +69,11 @@
 "Enter your municipality" = "Legg inn kommune";
 
 /* SignUpView
-   UserDeleteView
    UserMaintenanceView */
 "Enter your name" = "Legg inn navn";
 
 /* SignInView
    SignUpView
-   UserDeleteView
    UserMaintenanceView */
 "Enter your password" = "Legg inn passord";
 
@@ -136,16 +136,16 @@
 "Sign In" = "Logg inn";
 
 /* No comment provided by engineer. */
-"Sign in CloudKit" = "Logg inn i CloudKit";
+"Sign in CloudKit" = "Innlogging CloudKit";
 
 /* No comment provided by engineer. */
-"Sign up" = "Meld deg inn";
+"Sign up" = "Registrer deg";
 
 /* No comment provided by engineer. */
-"Sign Up" = "Melde deg på";
+"Sign Up" = "Registrer";
 
 /* SignUpView */
-"Sign Up CloudKit" = "Registrer deg i CloudKit";
+"Sign Up CloudKit" = "Registrering CloudKit";
 
 /* UserMaintenanceView */
 "Successfully modified item" = "Elementet ble endret";
@@ -168,6 +168,9 @@
 
 /* No comment provided by engineer. */
 "Update name" = "Oppdater navn";
+
+/* UserDeleteView */
+"User" = "Bruker";
 
 /* UserMaintenanceView */
 "User maintenance" = "Bruker vedlikehold";

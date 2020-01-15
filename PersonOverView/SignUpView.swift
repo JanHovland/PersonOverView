@@ -82,7 +82,13 @@ struct SignUpView : View {
                                                                 switch result {
                                                                 case .success:
                                                                     let message1 = NSLocalizedString("Added new user:", comment: "SignUpView")
+                                                                    /// Slette feltene
                                                                     self.message = message1 + " '\(self.userItem.name)'"
+                                                                    self.userItem.name = ""
+                                                                    self.userItem.email = ""
+                                                                    self.userItem.password = ""
+                                                                    self.userItem.image = nil
+                                                                    self.image = nil
                                                                     self.show.toggle()
                                                                 case .failure(let err):
                                                                     print(err.localizedDescription)
