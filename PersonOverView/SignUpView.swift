@@ -117,7 +117,9 @@ struct SignUpView : View {
             self.image = image
 
         }
+        /// Ta bort tastaturet
         .modifier(DismissingKeyboard())
+        /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
         .modifier(AdaptsToSoftwareKeyboard())
     }
 }

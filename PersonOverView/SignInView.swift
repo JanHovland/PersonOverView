@@ -148,7 +148,9 @@ struct SignInView : View {
                 return Alert(title: Text(self.message))
             }
         }
+        /// Ta bort tastaturet
         .modifier(DismissingKeyboard())
+        /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
         .modifier(AdaptsToSoftwareKeyboard())
     }
 }
