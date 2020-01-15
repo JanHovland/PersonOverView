@@ -12,11 +12,11 @@ var toDo =
 """
  E n d r i n g e r :
 
- 1. .sheet Vedlikehold:
+ 1. user.image har verdi ved blankt bilde
+ 2. .sheet Vedlikehold:
         a) Legg inn avslutt
-
- 2. .sheet Slett:
-       a) Legg inn avslutt med Spørsmål
+ 3. .sheet Slett:
+       a) Legg inn Slett med spørsmål
 
  F e r d i g :
 

@@ -28,7 +28,6 @@ struct SignUpView : View {
                 HStack {
                     Text(NSLocalizedString("Sign Up CloudKit", comment: "SignUpView"))
                         .font(.headline)
-                        .foregroundColor(.accentColor)
                         .fontWeight(.bold)
                         .multilineTextAlignment(.center)
                 }
@@ -42,8 +41,8 @@ struct SignUpView : View {
                     if image != nil {
                         Image(uiImage: image!)
                             .resizable()
-                            .frame(width: 100, height: 100)
-                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 100, height: 100, alignment: .center)
+                            .font(Font.title.weight(.ultraLight))
                             .clipShape(Circle())
                     }
                 }

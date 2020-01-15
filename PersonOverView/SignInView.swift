@@ -29,7 +29,6 @@ struct SignInView : View {
                 HStack {
                     Text("Sign in CloudKit")
                         .font(.headline)
-                        .foregroundColor(.accentColor)
                         .fontWeight(.bold)
                         .multilineTextAlignment(.center)
                         .contextMenu {
@@ -73,21 +72,20 @@ struct SignInView : View {
                 }
                 Spacer(minLength: 20)
                 ZStack {
-                    Image(systemName: "person.circle")
-                        .resizable()
-                        .frame(width: 100, height: 100)
-                        .font(Font.title.weight(.ultraLight))
-                    // Her legges aktuelt bilde oppå "person.circle"
+//                    Image(systemName: "person.circle")
+//                        .resizable()
+//                        .frame(width: 100, height: 100, alignment: .center)
+//                        .font(Font.title.weight(.ultraLight))
+//                        // .clipShape(Circle())
+//                    // Her legges aktuelt bilde oppå "person.circle"
                     if self.user.image != nil {
                         Image(uiImage: self.user.image!)
                             .resizable()
                             .frame(width: 100, height: 100, alignment: .center)
-                            //.aspectRatio(contentMode: .fill)
-                            .font(Font.title.weight(.ultraLight))
+//                            .font(Font.title.weight(.ultraLight))
                             .clipShape(Circle())
                     }
                 }
-
                 Spacer(minLength: 40)
                 VStack (alignment: .leading) {
                     OutputTextField(secure: false,
