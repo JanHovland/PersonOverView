@@ -1,5 +1,5 @@
 /* SignUpView */
-"Added new user:" = "Lagt inn ny bruker:";
+"Added new user:" = "Lagt til ny bruker:";
 
 /* PersonView */
 "Address" = "Addresse";
@@ -9,6 +9,9 @@
 
 /* SignUpView */
 "already exists" = "finnes allrede";
+
+/* SignInView */
+"Both email and Password must have a value" = "Både e-post og passord må ha en verdi";
 
 /* SignUpView
    UserMaintenanceView */
@@ -24,21 +27,22 @@
 "Date of birth" = "Fødselsdato";
 
 /* No comment provided by engineer. */
-"Delete a user View" = "Slett et user View";
+"Delete a user View" = "Slett en brukervisning";
 
-/* No comment provided by engineer. */
+/* UserDeleteView */
 "Delete user" = "Slett bruker";
 
 /* No comment provided by engineer. */
-"email" = "e-Post";
+"email" = "e-post";
 
 /* PersonView */
-"eMail" = "e-Post";
+"eMail" = "e-post";
 
 /* SignInView
    SignUpView
+   UserDeleteView
    UserMaintenanceView */
-"eMail address" = "e-Post addresse";
+"eMail address" = "e-post addresse";
 
 /* PersonView */
 "Enter the city" = "Legg inn by/tettsted";
@@ -49,8 +53,9 @@
 /* PersonView
    SignInView
    SignUpView
+   UserDeleteView
    UserMaintenanceView */
-"Enter your email address" = "Legg inn e-Post adresse";
+"Enter your email address" = "Skriv inn e-post adressen din";
 
 /* PersonView */
 "Enter your first name" = "Legg inn fornavn";
@@ -62,11 +67,13 @@
 "Enter your municipality" = "Legg inn kommune";
 
 /* SignUpView
+   UserDeleteView
    UserMaintenanceView */
 "Enter your name" = "Legg inn navn";
 
 /* SignInView
    SignUpView
+   UserDeleteView
    UserMaintenanceView */
 "Enter your password" = "Legg inn passord";
 
@@ -88,8 +95,12 @@
 /* No comment provided by engineer. */
 "Miscellaneous" = "Diverse";
 
+/* UserDeleteView
+   UserMaintenanceView */
+"Missing parameters" = "Manglende parametere";
+
 /* UserMaintenanceView */
-"Modify user" = "Modifiser bruker";
+"Modify user" = "Endre bruker";
 
 /* PersonView */
 "Municipality" = "Kommune";
@@ -98,16 +109,17 @@
 "Name" = "Navn";
 
 /* SignInView */
-"Name, eMail and Password must have a value" = "Navn, e-Post og passord må ha en verdi";
+"Name, eMail and Password must have a value" = "Navn, e-post og passord må ha en verdi";
 
 /* SignUpView */
-"Name, eMail or Password must all contain a value." = "Navn, e-Post eller passord må alle ha en verdi.";
+"Name, eMail or Password must all contain a value." = "Navn, e-post eller passord må alle ha en verdi.";
 
 /* No comment provided by engineer. */
 "New password" = "Nytt passord";
 
 /* SignInView
    SignUpView
+   UserDeleteView
    UserMaintenanceView */
 "Password" = "Passord";
 
@@ -124,16 +136,16 @@
 "Sign In" = "Logg inn";
 
 /* No comment provided by engineer. */
-"Sign in CloudKit" = "Logg inn CloudKit";
+"Sign in CloudKit" = "Logg inn i CloudKit";
 
 /* No comment provided by engineer. */
 "Sign up" = "Meld deg inn";
 
 /* No comment provided by engineer. */
-"Sign Up" = "Meld deg inn";
+"Sign Up" = "Melde deg på";
 
 /* SignUpView */
-"Sign Up CloudKit" = "Meld deg inn i CloudKit";
+"Sign Up CloudKit" = "Registrer deg i CloudKit";
 
 /* UserMaintenanceView */
 "Successfully modified item" = "Elementet ble endret";
@@ -150,8 +162,9 @@
 /* No comment provided by engineer. */
 "Todo" = "Oppgaver";
 
-/* SignInView */
-"Unknown email or password:" = "Ukjent e-Post eller passord:";
+/* SignInView
+   UserDeleteView */
+"Unknown email or password:" = "Ukjent e-post eller passord:";
 
 /* No comment provided by engineer. */
 "Update name" = "Oppdater navn";
@@ -167,6 +180,7 @@
 
 /* SignInView
    SignUpiew
+   UserDeleteView
    UserMaintenanceView */
 "Your name" = "Navn";
 

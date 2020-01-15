@@ -66,7 +66,7 @@ struct UserDeleteView: View {
                             self.user.email = ""
                             self.user.password = ""
                             self.user.image = nil
-                            self.message = NSLocalizedString("Successfully delete user", comment: "UserDeleteView")
+                            self.message = NSLocalizedString("User deleted", comment: "UserDeleteView")
                             self.show.toggle()
                         case .failure(let err):
                             self.message = err.localizedDescription
