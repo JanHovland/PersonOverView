@@ -33,6 +33,7 @@
 		DB9A4DD923CDE2AE00948B21 /* UserDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9A4DD823CDE2AE00948B21 /* UserDeleteView.swift */; };
 		DBB4C62823B6301F0055296B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB4C62723B6301F0055296B /* ImagePicker.swift */; };
 		DBDA561A23BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */; };
+		DBE58ACF23CF2D5300D3EF1D /* resizedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE58ACE23CF2D5300D3EF1D /* resizedImage.swift */; };
 		DBFC29C323C48F6C00F2224B /* Administration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC29C223C48F6C00F2224B /* Administration.swift */; };
 		DBFC29C723C4962500F2224B /* DeleteUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC29C623C4962500F2224B /* DeleteUserView.swift */; };
 		DBFC29CB23C5DE8500F2224B /* UserMaintenanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC29CA23C5DE8500F2224B /* UserMaintenanceView.swift */; };
@@ -69,6 +70,7 @@
 		DB9A4DD823CDE2AE00948B21 /* UserDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDeleteView.swift; sourceTree = "<group>"; };
 		DBB4C62723B6301F0055296B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptsToSoftwareKeyboard.swift; sourceTree = "<group>"; };
+		DBE58ACE23CF2D5300D3EF1D /* resizedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resizedImage.swift; sourceTree = "<group>"; };
 		DBFC29C223C48F6C00F2224B /* Administration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Administration.swift; sourceTree = "<group>"; };
 		DBFC29C623C4962500F2224B /* DeleteUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserView.swift; sourceTree = "<group>"; };
 		DBFC29CA23C5DE8500F2224B /* UserMaintenanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMaintenanceView.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				DB302B70237EF02300076D10 /* PersonOverView.swift */,
 				DB302B8A237EF33100076D10 /* PersonView.swift */,
 				DB691A1D23CA718F004CDBE8 /* qwerty.swift */,
+				DBE58ACE23CF2D5300D3EF1D /* resizedImage.swift */,
 				DB302B6B237EF02300076D10 /* SceneDelegate.swift */,
 				DB302B84237EF27400076D10 /* SignInView.swift */,
 				DB302B86237EF2A700076D10 /* SignUpView.swift */,
@@ -247,6 +250,7 @@
 				DB302B6C237EF02300076D10 /* SceneDelegate.swift in Sources */,
 				DB6739CB23AE2B0600EF9ECD /* OutputTextField.swift in Sources */,
 				DB1FEF91238055FE00F8D763 /* InputTextField.swift in Sources */,
+				DBE58ACF23CF2D5300D3EF1D /* resizedImage.swift in Sources */,
 				DB302B85237EF27400076D10 /* SignInView.swift in Sources */,
 				DB691A1E23CA718F004CDBE8 /* qwerty.swift in Sources */,
 				DB302B83237EF18D00076D10 /* UserElements.swift in Sources */,
