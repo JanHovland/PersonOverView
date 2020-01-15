@@ -12,9 +12,11 @@ var toDo =
 """
  E n d r i n g e r :
 
- 1. Blanke feltene etter:
-    a) "Meld deg inn"
-    b) "Slett"
+ 1. .sheet Vedlikehold:
+        a) Legg inn avslutt
+
+ 2. .sheet Slett:
+       a) Legg inn avslutt med Spørsmål
 
  F e r d i g :
 
@@ -35,6 +37,12 @@ var toDo =
        d) Endre passord
  9. Lagt inn "slett bruker" meny
 10. "Sign up" -> Registrer(ing)
+11. Blanke feltene etter:
+       a) "Meld deg inn"
+       b) "Slett"
+12. "Innlogging CloudKit":
+       a) "Bruker vedlikehold" går tilbake til "Innlogging CloudKit"
+           Løsning: Flytte .sheet rett etter hver "Button"
 
 S e n e r e (om mulig) :
 

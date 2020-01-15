@@ -45,6 +45,10 @@ struct SignInView : View {
                                     Text("User maintenance")
                                 })
                             }
+                            .sheet(isPresented: $showUserMaintenanceView) {
+                                /// må kalles på denne måten for å kunne benytte flere environmentObject
+                                UserMaintenanceView().environmentObject(self.user)
+                            }
                             HStack {
                                 Button(action: {
                                     if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
@@ -59,16 +63,11 @@ struct SignInView : View {
                                     Text("Delete user")
                                 })
                             }
+                            .sheet(isPresented: $showDeleteUserView) {
+                                /// må kalles på denne måten for å kunne benytte flere environmentObject
+                                UserDeleteView().environmentObject(self.user)
+                            }
                     }
-                    .sheet(isPresented: $showUserMaintenanceView) {
-                        /// må kalles på denne måten for å kunne benytte flere environmentObject
-                        UserMaintenanceView().environmentObject(self.user)
-                    }
-                    .sheet(isPresented: $showDeleteUserView) {
-                        /// må kalles på denne måten for å kunne benytte flere environmentObject
-                        UserDeleteView().environmentObject(self.user)
-                    }
-
                 }
                 Spacer(minLength: 20)
                 ZStack {
