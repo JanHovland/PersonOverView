@@ -118,6 +118,7 @@ struct SignUpView : View {
 
         }
         .modifier(DismissingKeyboard())
+        .modifier(AdaptsToSoftwareKeyboard())
     }
 }
 
