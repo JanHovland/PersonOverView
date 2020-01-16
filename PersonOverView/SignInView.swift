@@ -72,17 +72,15 @@ struct SignInView : View {
                 }
                 Spacer(minLength: 20)
                 ZStack {
-//                    Image(systemName: "person.circle")
-//                        .resizable()
-//                        .frame(width: 100, height: 100, alignment: .center)
-//                        .font(Font.title.weight(.ultraLight))
-//                        // .clipShape(Circle())
-//                    // Her legges aktuelt bilde oppå "person.circle"
+                    Image(systemName: "person.circle")
+                        .resizable()
+                        .frame(width: 100, height: 100, alignment: .center)
+                        .font(Font.title.weight(.ultraLight))
+                    // Her legges aktuelt bilde oppå "person.circle"
                     if self.user.image != nil {
                         Image(uiImage: self.user.image!)
                             .resizable()
                             .frame(width: 100, height: 100, alignment: .center)
-//                            .font(Font.title.weight(.ultraLight))
                             .clipShape(Circle())
                     }
                 }
@@ -129,6 +127,8 @@ struct SignInView : View {
                                             self.user.name = userItem.name
                                             if userItem.image != nil {
                                                 self.user.image = userItem.image!
+                                            } else {
+                                                self.user.image = nil
                                             }
                                             self.user.recordID = userItem.recordID
                                         case .failure(let err):
@@ -152,7 +152,7 @@ struct SignInView : View {
                 return Alert(title: Text(self.message))
             }
         }
-        /// Ta bort tastaturet
+        /// Ta bort tastaturet når en klikker utenfor feltet
         .modifier(DismissingKeyboard())
         /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
         .modifier(AdaptsToSoftwareKeyboard())

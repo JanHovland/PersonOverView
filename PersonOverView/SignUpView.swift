@@ -35,14 +35,13 @@ struct SignUpView : View {
                 ZStack {
                     Image(systemName: "person.circle")
                         .resizable()
-                        .frame(width: 100, height: 100)
+                        .frame(width: 100, height: 100, alignment: .center)
                         .font(Font.title.weight(.ultraLight))
                     // Her legges aktuelt bilde oppå "person.circle"
                     if image != nil {
                         Image(uiImage: image!)
                             .resizable()
                             .frame(width: 100, height: 100, alignment: .center)
-                            .font(Font.title.weight(.ultraLight))
                             .clipShape(Circle())
                     }
                 }
@@ -124,7 +123,7 @@ struct SignUpView : View {
             self.image = image
 
         }
-        /// Ta bort tastaturet
+        /// Ta bort tastaturet når en klikker utenfor feltet
         .modifier(DismissingKeyboard())
         /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
         .modifier(AdaptsToSoftwareKeyboard())
