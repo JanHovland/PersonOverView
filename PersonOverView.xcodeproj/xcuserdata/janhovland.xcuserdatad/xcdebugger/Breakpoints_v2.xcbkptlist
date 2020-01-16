@@ -3,4 +3,54 @@
    uuid = "C626A215-70A8-467F-A2B4-723856A02C4F"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6AAACD9B-E090-40E3-AA9C-A47D5C7A3D55"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersonOverView/UserDeleteView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "6AAACD9B-E090-40E3-AA9C-A47D5C7A3D55 - 8f2a9b586eec0c3c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PersonOverView.UserDeleteView.body.getter : some"
+                  moduleName = "PersonOverView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/janhovland/Desktop/SwiftUI/PersonOverView/PersonOverView/UserDeleteView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "2316">
+               </Location>
+               <Location
+                  uuid = "6AAACD9B-E090-40E3-AA9C-A47D5C7A3D55 - 9db92304037cd597"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #5 () -&gt; SwiftUI.Alert in PersonOverView.UserDeleteView.body.getter : some"
+                  moduleName = "PersonOverView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/janhovland/Desktop/SwiftUI/PersonOverView/PersonOverView/UserDeleteView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "152">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
