@@ -20,8 +20,9 @@ struct UserMaintenanceView: View {
     var body: some View {
         VStack {
             Text(NSLocalizedString("User maintenance", comment: "UserMaintenanceView"))
-                .font(.largeTitle)
-                .padding(.top)
+                .multilineTextAlignment(.center)
+                .font(Font.headline.weight(.semibold))
+                .foregroundColor(.accentColor)
             ZStack {
                 Image(systemName: "person.circle")
                     .resizable()

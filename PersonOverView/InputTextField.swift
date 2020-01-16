@@ -19,7 +19,7 @@ struct InputTextField: View {
             VStack (alignment: .leading) {
                 Text(heading)
                     .padding(-5)
-                    .font(.caption)
+                    .font(Font.caption.weight(.semibold))
                     .foregroundColor(.accentColor)
                 if secure {
                     SecureField(placeHolder, text: $value)

@@ -27,9 +27,9 @@ struct SignUpView : View {
                 Spacer(minLength: 20)
                 HStack {
                     Text(NSLocalizedString("Sign Up CloudKit", comment: "SignUpView"))
-                        .font(.headline)
-                        .fontWeight(.bold)
                         .multilineTextAlignment(.center)
+                        .font(Font.headline.weight(.semibold))
+                        .foregroundColor(.accentColor)
                 }
                 Spacer(minLength: 20)
                 ZStack {

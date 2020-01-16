@@ -19,7 +19,7 @@ struct OutputTextField: View {
             VStack (alignment: .leading) {
                 Text(heading)
                     .padding(-4)
-                    .font(.caption)
+                    .font(Font.caption.weight(.semibold))
                     .foregroundColor(.accentColor)
                 Text(value)
                     .padding(.horizontal, 7)

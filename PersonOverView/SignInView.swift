@@ -28,9 +28,9 @@ struct SignInView : View {
                 Spacer(minLength: 20)
                 HStack {
                     Text("Sign in CloudKit")
-                        .font(.headline)
-                        .fontWeight(.bold)
                         .multilineTextAlignment(.center)
+                        .font(Font.headline.weight(.semibold))
+                        .foregroundColor(.accentColor)
                         .contextMenu {
                             HStack {
                                 Button(action: {
