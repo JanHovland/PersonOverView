@@ -12,17 +12,17 @@ import CloudKit
 struct UserMaintenanceView: View {
     @EnvironmentObject var user: User
     @Environment(\.presentationMode) var presentationMode
-
     @State private var message: String = ""
     @State private var show: Bool = false
     @State private var newItem = UserElement(name: "", email: "", password: "", image: nil)
     @State private var showingImagePicker = false
+
     var body: some View {
         VStack {
             Text(NSLocalizedString("User maintenance", comment: "UserMaintenanceView"))
-                .multilineTextAlignment(.center)
-                .font(Font.headline.weight(.semibold))
+                .font(Font.title.weight(.semibold))
                 .foregroundColor(.accentColor)
+                .padding(.top)
             ZStack {
                 Image(systemName: "person.circle")
                     .resizable()
@@ -39,55 +39,64 @@ struct UserMaintenanceView: View {
                         .shadow(color: .gray, radius: 3)
                 }
             }
-            List {
-                InputTextField(secure: false,
-                               heading: NSLocalizedString("Your name", comment: "UserMaintenanceView"),
-                               placeHolder: NSLocalizedString("Enter your name", comment: "UserMaintenanceView"),
-                               value: $user.name)
-                    .autocapitalization(.words)
-                InputTextField(secure: false,
-                               heading: NSLocalizedString("eMail address", comment: "UserMaintenanceView"),
-                               placeHolder: NSLocalizedString("Enter your email address", comment: "UserMaintenanceView"),
-                               value: $user.email)
-                    .keyboardType(.emailAddress)
-                    .autocapitalization(.none)
-                InputTextField(secure: true,
-                               heading: NSLocalizedString("Password", comment: "UserMaintenanceView"),
-                               placeHolder: NSLocalizedString("Enter your password", comment: "UserMaintenanceView"),
-                               value: $user.password)
-                    .keyboardType(.emailAddress)
-                    .autocapitalization(.none)
-                Button(NSLocalizedString("Choose Profile Image", comment: "UserMaintenanceView")) {
-                    self.showingImagePicker.toggle()
-                }
+            .padding(.bottom)
+            VStack {
+                List {
+                    InputTextField(secure: false,
+                                   heading: NSLocalizedString("Your name", comment: "UserMaintenanceView"),
+                                   placeHolder: NSLocalizedString("Enter your name", comment: "UserMaintenanceView"),
+                                   value: $user.name)
+                        .autocapitalization(.words)
+                    InputTextField(secure: false,
+                                   heading: NSLocalizedString("eMail address", comment: "UserMaintenanceView"),
+                                   placeHolder: NSLocalizedString("Enter your email address", comment: "UserMaintenanceView"),
+                                   value: $user.email)
+                        .keyboardType(.emailAddress)
+                        .autocapitalization(.none)
+                    InputTextField(secure: true,
+                                   heading: NSLocalizedString("Password", comment: "UserMaintenanceView"),
+                                   placeHolder: NSLocalizedString("Enter your password", comment: "UserMaintenanceView"),
+                                   value: $user.password)
+                        .keyboardType(.emailAddress)
+                        .autocapitalization(.none)
 
-            }.padding(.bottom)
-                /// Fjerner linjer mellom elementene
-                .listStyle(GroupedListStyle())
-                .environment(\.horizontalSizeClass, .regular)
-            Button(action: {
-                if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
-                    self.newItem.name = self.user.name
-                    self.newItem.email = self.user.email
-                    self.newItem.password = self.user.password
-                    self.newItem.recordID = self.user.recordID
-                    // MARK: - modify in CloudKit
-                    CloudKitUser.modifyUser(item: self.newItem) { (result) in
-                        switch result {
-                        case .success:
-                            self.message = NSLocalizedString("Successfully modified item", comment: "UserMaintenanceView")
-                        case .failure(let err):
-                            self.message = err.localizedDescription
+                    Spacer()
+
+                    Button(NSLocalizedString("Choose Profile Image", comment: "UserMaintenanceView")) {
+                        self.showingImagePicker.toggle()
+                    }
+                    Spacer()
+                    Button(action: {
+                        if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
+                            self.newItem.name = self.user.name
+                            self.newItem.email = self.user.email
+                            self.newItem.password = self.user.password
+                            self.newItem.recordID = self.user.recordID
+                            // MARK: - modify in CloudKit
+                            CloudKitUser.modifyUser(item: self.newItem) { (result) in
+                                switch result {
+                                case .success:
+                                    self.message = NSLocalizedString("Successfully modified item", comment: "UserMaintenanceView")
+                                case .failure(let err):
+                                    self.message = err.localizedDescription
+                                    self.show.toggle()
+                                }
+                            }
+                        } else {
+                            self.message = NSLocalizedString("Missing parameters", comment: "UserMaintenanceView")
                             self.show.toggle()
                         }
-                    }
-                } else {
-                    self.message = NSLocalizedString("Missing parameters", comment: "UserMaintenanceView")
-                    self.show.toggle()
-                }
-            }, label: {
-                Text(NSLocalizedString("Modify user", comment: "UserMaintenanceView"))
-            })
+                    }, label: {
+                        Text(NSLocalizedString("Modify user", comment: "UserMaintenanceView"))
+                        .foregroundColor(.red)
+                        .padding(.leading, 110)
+                    })
+
+                }.padding(.bottom)
+                    /// Fjerner linjer mellom elementene
+                    .listStyle(GroupedListStyle())
+                    .environment(\.horizontalSizeClass, .regular)
+            }
         }
         .sheet(isPresented: $showingImagePicker, content: {
             ImagePicker.shared.view
@@ -130,9 +139,9 @@ struct UserMaintenanceView: View {
                             .font(.largeTitle)
                             .foregroundColor(.none)
                     })
-                        .padding(.trailing, 20)
-                        .padding(.top, 80)
-                    Spacer()
+                    .padding(.trailing, 20)
+                    .padding(.top, 100)
+                Spacer()
                 }
             }
         )

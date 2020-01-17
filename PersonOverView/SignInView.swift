@@ -29,7 +29,7 @@ struct SignInView : View {
                 HStack {
                     Text("Sign in CloudKit")
                         .multilineTextAlignment(.center)
-                        .font(Font.headline.weight(.semibold))
+                        .font(Font.title.weight(.semibold))
                         .foregroundColor(.accentColor)
                         .contextMenu {
                             HStack {
