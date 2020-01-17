@@ -19,7 +19,7 @@ struct UserDeleteView: View {
     var body: some View {
         VStack {
             Text(NSLocalizedString("Delete user", comment: "UserDeleteView"))
-                .font(Font.title.weight(.semibold))
+                .font(Font.title.weight(.light))
                 .foregroundColor(.accentColor)
                 .padding(.top)
             ZStack {

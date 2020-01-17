@@ -20,7 +20,7 @@ struct UserMaintenanceView: View {
     var body: some View {
         VStack {
             Text(NSLocalizedString("User maintenance", comment: "UserMaintenanceView"))
-                .font(Font.title.weight(.semibold))
+                .font(Font.title.weight(.light))
                 .foregroundColor(.accentColor)
                 .padding(.top)
             ZStack {
