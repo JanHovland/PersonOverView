@@ -22,7 +22,7 @@ struct UserMaintenanceView: View {
             Text(NSLocalizedString("User maintenance", comment: "UserMaintenanceView"))
                 .font(Font.title.weight(.light))
                 .foregroundColor(.accentColor)
-                .padding(.top)
+                // .padding(.top)
             ZStack {
                 Image(systemName: "person.circle")
                     .resizable()
@@ -141,7 +141,7 @@ struct UserMaintenanceView: View {
                     })
                     .padding(.trailing, 20)
                     .padding(.top, 100)
-                Spacer()
+                    Spacer()
                 }
             }
         )

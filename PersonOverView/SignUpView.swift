@@ -24,14 +24,14 @@ struct SignUpView : View {
     var body: some View {
         ScrollView {
             VStack {
-                Spacer(minLength: 20)
+                Spacer(minLength: 17)
                 HStack {
                     Text(NSLocalizedString("Sign Up CloudKit", comment: "SignUpView"))
                         .multilineTextAlignment(.center)
                         .font(Font.title.weight(.light))
                         .foregroundColor(.accentColor)
                 }
-                Spacer(minLength: 20)
+                Spacer(minLength: 22)
                 ZStack {
                     Image(systemName: "person.circle")
                         .resizable()

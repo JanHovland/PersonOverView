@@ -68,31 +68,40 @@ struct SignInView : View {
                                 /// må kalles på denne måten for å kunne benytte flere environmentObject
                                 UserDeleteView().environmentObject(self.user)
                             }
-                    }
+                    }//.padding()
                 }
                 Spacer(minLength: 20)
-                ZStack {
-                    Image(systemName: "person.circle")
-                        .resizable()
-                        .frame(width: 100, height: 100, alignment: .center)
-                        .font(Font.title.weight(.ultraLight))
-                    // Her legges aktuelt bilde oppå "person.circle"
-                    if self.user.image != nil {
-                        Image(uiImage: self.user.image!)
+                HStack {
+                    ZStack {
+                        Image(systemName: "person.circle")
                             .resizable()
                             .frame(width: 100, height: 100, alignment: .center)
-                            .clipShape(Circle())
-                            .overlay(Circle().stroke(Color.white, lineWidth: 3))
-                            .shadow(color: .gray, radius: 3)
+                            .font(Font.title.weight(.ultraLight))
+                        // Her legges aktuelt bilde oppå "person.circle"
+                        if self.user.image != nil {
+                            Image(uiImage: self.user.image!)
+                                .resizable()
+                                .frame(width: 100, height: 100, alignment: .center)
+                                .clipShape(Circle())
+                                .overlay(Circle().stroke(Color.white, lineWidth: 3))
+                                .shadow(color: .gray, radius: 3)
+                        }
                     }
+
+                    Image(systemName: "info.circle")
+                        .font(Font.system(.headline).weight(.regular))
+
+                    // Spacer(minLength: 5)
+
                 }
-                Spacer(minLength: 40)
+                // Spacer(minLength: 20)
                 VStack (alignment: .leading) {
+                    Spacer(minLength: 38)
                     OutputTextField(secure: false,
                                     heading: NSLocalizedString("Your name", comment: "SignInView"),
                                     value: $user.name)
                         .autocapitalization(.words)
-                    Spacer(minLength: 20)
+                    Spacer(minLength: 23)
                     InputTextField(secure: false,
                                    heading: NSLocalizedString("eMail address", comment: "SignInView"),
                                    placeHolder: NSLocalizedString("Enter your email address", comment: "SignInView"),
