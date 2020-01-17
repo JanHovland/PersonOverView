@@ -68,7 +68,7 @@ struct SignInView : View {
                                 /// må kalles på denne måten for å kunne benytte flere environmentObject
                                 UserDeleteView().environmentObject(self.user)
                             }
-                    }//.padding()
+                    }
                 }
                 Spacer(minLength: 20)
                 HStack {
@@ -88,13 +88,12 @@ struct SignInView : View {
                         }
                     }
 
+                    // Spacer(minLength: -5)
+
                     Image(systemName: "info.circle")
                         .font(Font.system(.headline).weight(.regular))
 
-                    // Spacer(minLength: 5)
-
                 }
-                // Spacer(minLength: 20)
                 VStack (alignment: .leading) {
                     Spacer(minLength: 38)
                     OutputTextField(secure: false,
