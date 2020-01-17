@@ -25,7 +25,7 @@ struct SignInView : View {
     var body: some View {
         ScrollView  {
             VStack {
-                Spacer(minLength: 20)
+                Spacer(minLength: 17)
                 HStack {
                     Text("Sign in CloudKit")
                         .multilineTextAlignment(.center)

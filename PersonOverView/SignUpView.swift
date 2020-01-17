@@ -31,7 +31,7 @@ struct SignUpView : View {
                         .font(Font.title.weight(.light))
                         .foregroundColor(.accentColor)
                 }
-                Spacer(minLength: 22)
+                Spacer(minLength: 19)
                 ZStack {
                     Image(systemName: "person.circle")
                         .resizable()
