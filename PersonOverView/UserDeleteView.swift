@@ -33,6 +33,8 @@ struct UserDeleteView: View {
                         .frame(width: 100, height: 100)
                         .aspectRatio(contentMode: .fill)
                         .clipShape(Circle())
+                        .overlay(Circle().stroke(Color.white, lineWidth: 3))
+                        .shadow(color: .gray, radius: 3)
                 }
             }
             List {
