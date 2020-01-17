@@ -71,7 +71,7 @@ struct SignInView : View {
                     }
                 }
                 Spacer(minLength: 20)
-                HStack {
+                HStack  (alignment: .center, spacing: 40) {
                     ZStack {
                         Image(systemName: "person.circle")
                             .resizable()
@@ -87,12 +87,9 @@ struct SignInView : View {
                                 .shadow(color: .gray, radius: 3)
                         }
                     }
-
-                    // Spacer(minLength: -5)
-
                     Image(systemName: "info.circle")
-                        .font(Font.system(.headline).weight(.regular))
-
+                        .font(Font.system(.title).weight(.thin))
+                        .foregroundColor(.accentColor)
                 }
                 VStack (alignment: .leading) {
                     Spacer(minLength: 38)
