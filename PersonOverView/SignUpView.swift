@@ -113,7 +113,7 @@ struct SignUpView : View {
                         }
                     }) {
                         Text("Sign up")
-                            .padding(10)
+                            // .padding(10)
                     }
                 }
             }

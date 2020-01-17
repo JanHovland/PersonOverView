@@ -146,7 +146,7 @@ struct SignInView : View {
                         }
                     }) {
                         Text("Sign In")
-                            .padding(10)
+                            // .padding(10)
                     }
                 }
             }
