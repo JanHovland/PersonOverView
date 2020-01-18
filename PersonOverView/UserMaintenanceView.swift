@@ -12,6 +12,7 @@ import CloudKit
 struct UserMaintenanceView: View {
     @EnvironmentObject var user: User
     @Environment(\.presentationMode) var presentationMode
+
     @State private var message: String = ""
     @State private var show: Bool = false
     @State private var newItem = UserElement(name: "", email: "", password: "", image: nil)
@@ -22,13 +23,11 @@ struct UserMaintenanceView: View {
             Text(NSLocalizedString("User maintenance", comment: "UserMaintenanceView"))
                 .font(Font.title.weight(.light))
                 .foregroundColor(.accentColor)
-                // .padding(.top)
             ZStack {
                 Image(systemName: "person.circle")
                     .resizable()
                     .frame(width: 100, height: 100)
                     .font(Font.title.weight(.ultraLight))
-                /// Her legges aktuelt bilde oppå "person.circle"
                 if user.image != nil {
                     Image(uiImage: user.image!)
                         .resizable()

@@ -17,13 +17,14 @@ import Combine
 
 struct SignInView : View {
     
+    @EnvironmentObject var user: User
+    @Environment(\.presentationMode) var presentationMode
+
     @State private var show: Bool = false
     @State private var message: String = ""
     @State private var userItem = UserElement(name: "", email: "", password: "")
     @State private var showUserMaintenanceView: Bool = false
     @State private var showDeleteUserView: Bool = false
-    @EnvironmentObject var user: User
-    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         ScrollView  {
@@ -52,7 +53,7 @@ struct SignInView : View {
                     }
                     HStack {
                         Image(systemName: "info.circle")
-                            .font(Font.system(.title).weight(.thin))
+                            .font(Font.system(.title).weight(.light))
                             .foregroundColor(.accentColor)
                     }
                 }
@@ -104,9 +105,7 @@ struct SignInView : View {
                             HStack {
                                 Text(NSLocalizedString("Exit", comment: "SignInView"))
                                 Image(systemName: "chevron.down")
-                                    .font(Font.system(.headline).weight(.ultraLight))
-                                    .background(Color(.blue))
-                                    .foregroundColor(.accentColor)
+                                    .font(Font.system(.title).weight(.ultraLight))
                             }
                         })
                     )

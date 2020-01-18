@@ -9,8 +9,10 @@
 import SwiftUI
 
 struct UserDeleteView: View {
+
     @EnvironmentObject var user: User
     @Environment(\.presentationMode) var presentationMode
+    
     @State private var message: String = ""
     @State private var show: Bool = false
     @State private var newItem = UserElement(name: "", email: "", password: "", image: nil)
