@@ -37,20 +37,20 @@ struct SignUpView : View {
                 ZStack {
                     Image(systemName: "person.circle")
                         .resizable()
-                        .frame(width: 100, height: 100, alignment: .center)
+                        .frame(width: 90, height: 90, alignment: .center)
                         .font(Font.title.weight(.ultraLight))
                     // Her legges aktuelt bilde oppå "person.circle"
                     if image != nil {
                         Image(uiImage: image!)
                             .resizable()
-                            .frame(width: 100, height: 100, alignment: .center)
+                            .frame(width: 90, height: 90, alignment: .center)
                             .clipShape(Circle())
                             .overlay(Circle().stroke(Color.white, lineWidth: 3))
                             .shadow(color: .gray, radius: 3)
 
                     }
                 }
-                Spacer(minLength: 20)
+                Spacer(minLength: 21)
                 Button(NSLocalizedString("Choose Profile Image", comment: "SignUpView")) {
                     self.showingImagePicker.toggle()
                 }

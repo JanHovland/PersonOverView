@@ -29,23 +29,23 @@ struct SignInView : View {
     var body: some View {
         ScrollView  {
             VStack {
-                Spacer(minLength: 17)
+                Spacer(minLength: 15)
                 HStack {
                     Text(NSLocalizedString("Sign in CloudKit", comment: "SignInView"))
                         .font(Font.title.weight(.light))
                         .foregroundColor(.accentColor)
                 }
                 //Spacer(minLength: 15)
-                HStack  (alignment: .center, spacing: 80) {
+                HStack  (alignment: .center, spacing: 60) {
                     ZStack {
                         Image(systemName: "person.circle")
                             .resizable()
-                            .frame(width: 100, height: 100, alignment: .center)
+                            .frame(width: 90, height: 90, alignment: .center)
                             .font(Font.title.weight(.ultraLight))
                         if self.user.image != nil {
                             Image(uiImage: self.user.image!)
                                 .resizable()
-                                .frame(width: 100, height: 100, alignment: .center)
+                                .frame(width: 90, height: 90, alignment: .center)
                                 .clipShape(Circle())
                                 .overlay(Circle().stroke(Color.white, lineWidth: 3))
                                 .shadow(color: .gray, radius: 3)
@@ -57,7 +57,7 @@ struct SignInView : View {
                             .foregroundColor(.accentColor)
                     }
                 }
-                .padding(5)
+                .padding(7)
                 .contextMenu {
                     HStack {
                         Button(action: {
