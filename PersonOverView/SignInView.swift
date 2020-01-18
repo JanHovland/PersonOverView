@@ -35,7 +35,7 @@ struct SignInView : View {
                         .font(Font.title.weight(.light))
                         .foregroundColor(.accentColor)
                 }
-                Spacer(minLength: 20)
+                //Spacer(minLength: 15)
                 HStack  (alignment: .center, spacing: 80) {
                     ZStack {
                         Image(systemName: "person.circle")
@@ -57,7 +57,7 @@ struct SignInView : View {
                             .foregroundColor(.accentColor)
                     }
                 }
-                .padding()
+                .padding(5)
                 .contextMenu {
                     HStack {
                         Button(action: {
@@ -111,7 +111,7 @@ struct SignInView : View {
                     )
                 }
                 VStack (alignment: .leading) {
-                    Spacer(minLength: 38)
+                    Spacer(minLength: 33)
                     OutputTextField(secure: false,
                                     heading: NSLocalizedString("Your name", comment: "SignInView"),
                                     value: $user.name)
