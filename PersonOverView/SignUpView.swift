@@ -13,6 +13,7 @@ import SwiftUI
 import CloudKit
 
 struct SignUpView : View {
+
     @State private var name: String = ""
     @State private var email: String = ""
     @State private var password: String = ""
@@ -21,6 +22,7 @@ struct SignUpView : View {
     @State private var image: UIImage? = nil
     @State private var showingImagePicker = false
     @State private var userItem = UserElement(name: "", email: "", password: "", image: nil)
+    
     var body: some View {
         ScrollView {
             VStack {

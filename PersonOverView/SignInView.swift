@@ -16,68 +16,31 @@ import SwiftUI
 import Combine
 
 struct SignInView : View {
+    
     @State private var show: Bool = false
     @State private var message: String = ""
     @State private var userItem = UserElement(name: "", email: "", password: "")
     @State private var showUserMaintenanceView: Bool = false
     @State private var showDeleteUserView: Bool = false
     @EnvironmentObject var user: User
+    @Environment(\.presentationMode) var presentationMode
+
     var body: some View {
         ScrollView  {
             VStack {
                 Spacer(minLength: 17)
                 HStack {
-                    Text("Sign in CloudKit")
-                        .multilineTextAlignment(.center)
+                    Text(NSLocalizedString("Sign in CloudKit", comment: "SignInView"))
                         .font(Font.title.weight(.light))
                         .foregroundColor(.accentColor)
-                        .contextMenu {
-                            HStack {
-                                Button(action: {
-                                    if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
-                                        self.showUserMaintenanceView.toggle()
-                                    } else {
-                                        self.message = NSLocalizedString("Name, eMail and Password must have a value", comment: "SignInView")
-                                        self.show.toggle()
-                                    }
-                                }, label: {
-                                    Image(systemName: "pencil.and.ellipsis.rectangle")
-                                        .font(Font.system(.headline).weight(.regular))
-                                    Text("User maintenance")
-                                })
-                            }
-                            .sheet(isPresented: $showUserMaintenanceView) {
-                                /// må kalles på denne måten for å kunne benytte flere environmentObject
-                                UserMaintenanceView().environmentObject(self.user)
-                            }
-                            HStack {
-                                Button(action: {
-                                    if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
-                                        self.showDeleteUserView.toggle()
-                                    } else {
-                                        self.message = NSLocalizedString("Name, eMail and Password must have a value", comment: "SignInView")
-                                        self.show.toggle()
-                                    }
-                                }, label: {
-                                    Image(systemName: "person")
-                                        .font(Font.system(.headline).weight(.thin))
-                                    Text("Delete user")
-                                })
-                            }
-                            .sheet(isPresented: $showDeleteUserView) {
-                                /// må kalles på denne måten for å kunne benytte flere environmentObject
-                                UserDeleteView().environmentObject(self.user)
-                            }
-                    }
                 }
                 Spacer(minLength: 20)
-                HStack  (alignment: .center, spacing: 40) {
+                HStack  (alignment: .center, spacing: 80) {
                     ZStack {
                         Image(systemName: "person.circle")
                             .resizable()
                             .frame(width: 100, height: 100, alignment: .center)
                             .font(Font.title.weight(.ultraLight))
-                        // Her legges aktuelt bilde oppå "person.circle"
                         if self.user.image != nil {
                             Image(uiImage: self.user.image!)
                                 .resizable()
@@ -87,9 +50,66 @@ struct SignInView : View {
                                 .shadow(color: .gray, radius: 3)
                         }
                     }
-                    Image(systemName: "info.circle")
-                        .font(Font.system(.title).weight(.thin))
-                        .foregroundColor(.accentColor)
+                    HStack {
+                        Image(systemName: "info.circle")
+                            .font(Font.system(.title).weight(.thin))
+                            .foregroundColor(.accentColor)
+                    }
+                }
+                .padding()
+                .contextMenu {
+                    HStack {
+                        Button(action: {
+                            if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
+                                self.showUserMaintenanceView.toggle()
+                            } else {
+                                self.message = NSLocalizedString("Name, eMail and Password must have a value", comment: "SignInView")
+                                self.show.toggle()
+                            }
+                        }, label: {
+                            Text(NSLocalizedString("User maintenance", comment: "SignInView"))
+                            Image(systemName: "pencil.and.ellipsis.rectangle")
+                                .font(Font.system(.headline).weight(.regular))
+                        })
+                    }
+                    .sheet(isPresented: $showUserMaintenanceView) {
+                        /// må kalles på denne måten for å kunne benytte flere environmentObject
+                        UserMaintenanceView().environmentObject(self.user)
+                    }
+                    HStack {
+                        Button(action: {
+                            if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
+                                self.showDeleteUserView.toggle()
+                            } else {
+                                self.message = NSLocalizedString("Name, eMail and Password must have a value", comment: "SignInView")
+                                self.show.toggle()
+                            }
+                        }, label: {
+                            Text(NSLocalizedString("Delete user", comment: "SignInView"))
+                            Image(systemName: "person")
+                                .font(Font.system(.headline).weight(.thin))
+                        })
+                    }
+                    .sheet(isPresented: $showDeleteUserView) {
+                        /// må kalles på denne måten for å kunne benytte flere environmentObject
+                        UserDeleteView().environmentObject(self.user)
+                    }
+                    /// Uten padding blir noe av visningen kuttet bort
+                    .padding()
+                    /// Brukes for å få med "Image(systemName: "chevron.down")"
+                    .overlay(
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }, label: {
+                            HStack {
+                                Text(NSLocalizedString("Exit", comment: "SignInView"))
+                                Image(systemName: "chevron.down")
+                                    .font(Font.system(.headline).weight(.ultraLight))
+                                    .background(Color(.blue))
+                                    .foregroundColor(.accentColor)
+                            }
+                        })
+                    )
                 }
                 VStack (alignment: .leading) {
                     Spacer(minLength: 38)
@@ -150,8 +170,8 @@ struct SignInView : View {
                             self.show.toggle()
                         }
                     }) {
-                        Text("Sign In")
-                            // .padding(10)
+                        Text(NSLocalizedString("Sign In", comment: "SignInView"))
+                        // .padding(10)
                     }
                 }
             }
