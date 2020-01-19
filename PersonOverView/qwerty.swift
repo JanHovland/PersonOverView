@@ -39,6 +39,8 @@ struct qwerty: View {
                   primaryButton: .default(Text("Yes"),
                   action: {
 
+                    /// Her legges inn den aktuelle funksjonen
+
                       print("Yes")
 
                   }),
