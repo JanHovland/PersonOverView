@@ -12,10 +12,7 @@ var toDo =
 """
  E n d r i n g e r :
 
- 1. user.image har verdi ved blankt bilde
- 2. .sheet Vedlikehold:
-        a) Legg inn avslutt
- 3. .sheet Slett:
+ 1. .sheet Slett:
        a) Legg inn Slett med spørsmål
 
  F e r d i g :
