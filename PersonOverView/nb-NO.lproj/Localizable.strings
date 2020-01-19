@@ -1,3 +1,7 @@
+/* UserDeleteView
+   UserMaintenanceView */
+"(Hold and press to activate)" = "(Trykk hardt og så slipp for å aktivere)";
+
 /* SignUpView */
 "Added new user:" = "Registrert ny bruker:";
 
@@ -29,7 +33,8 @@
 /* No comment provided by engineer. */
 "Delete a user View" = "Slett en brukervisning";
 
-/* UserDeleteView */
+/* SignInView
+   UserDeleteView */
 "Delete user" = "Slett bruker";
 
 /* UserDeleteView */
@@ -100,7 +105,7 @@
 "Missing parameters" = "Manglende parametere";
 
 /* UserMaintenanceView */
-"Modify user" = "Endre bruker";
+"Modify user" = "Oppdatere bruker";
 
 /* PersonView */
 "Municipality" = "Kommune";
@@ -132,10 +137,10 @@
 /* No comment provided by engineer. */
 "Sign in" = "Logg inn";
 
-/* No comment provided by engineer. */
+/* SignInView */
 "Sign In" = "Logg inn";
 
-/* No comment provided by engineer. */
+/* SignInView */
 "Sign in CloudKit" = "Innlogging CloudKit";
 
 /* No comment provided by engineer. */
@@ -172,7 +177,8 @@
 /* UserDeleteView */
 "User" = "Bruker";
 
-/* UserMaintenanceView */
+/* SignInView
+   UserMaintenanceView */
 "User maintenance" = "Bruker vedlikehold";
 
 /* No comment provided by engineer. */

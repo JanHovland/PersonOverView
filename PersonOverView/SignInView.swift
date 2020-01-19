@@ -57,6 +57,11 @@ struct SignInView : View {
                             .foregroundColor(.accentColor)
                     }
                 }
+//                HStack {
+//                    Image(systemName: "info.circle")
+//                        .font(Font.system(.title).weight(.light))
+//                        .foregroundColor(.accentColor)
+//                }
                 .padding(7)
                 .contextMenu {
                     HStack {

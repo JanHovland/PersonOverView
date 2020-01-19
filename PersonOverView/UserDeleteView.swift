@@ -77,9 +77,12 @@ struct UserDeleteView: View {
                             self.show.toggle()
                         }
                     }, label: {
-                        Text(NSLocalizedString("Delete user", comment: "UserDeleteView"))
-                            .foregroundColor(.red)
-                            .padding(.leading, 120)
+                        HStack (alignment: .center, spacing: 30) {
+                            Text(NSLocalizedString("Delete user", comment: "UserDeleteView"))
+                            Text(NSLocalizedString("(Hold and press to activate)", comment: "UserDeleteView"))
+                                .font(.footnote)
+                        }
+                        .foregroundColor(.red)
                     })
                     }.padding(.bottom)
                     /// Fjerner linjer mellom elementene

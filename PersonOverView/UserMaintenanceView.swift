@@ -61,10 +61,16 @@ struct UserMaintenanceView: View {
 
                     Spacer()
 
-                    Button(NSLocalizedString("Choose Profile Image", comment: "UserMaintenanceView")) {
-                        self.showingImagePicker.toggle()
+                    HStack (alignment: .center, spacing: 30) {
+                        Button(NSLocalizedString("Choose Profile Image", comment: "UserMaintenanceView")) {
+                            self.showingImagePicker.toggle()
+                        }
+                        Text(NSLocalizedString("(Hold and press to activate)", comment: "UserMaintenanceView"))
+                            .font(.footnote)
                     }
-                    Spacer()
+                    .foregroundColor(.blue)
+                    // Spacer()
+                    VStack {
                     Button(action: {
                         if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
                             self.newItem.name = self.user.name
@@ -76,6 +82,7 @@ struct UserMaintenanceView: View {
                                 switch result {
                                 case .success:
                                     self.message = NSLocalizedString("Successfully modified item", comment: "UserMaintenanceView")
+                                    self.show.toggle()
                                 case .failure(let err):
                                     self.message = err.localizedDescription
                                     self.show.toggle()
@@ -86,10 +93,15 @@ struct UserMaintenanceView: View {
                             self.show.toggle()
                         }
                     }, label: {
-                        Text(NSLocalizedString("Modify user", comment: "UserMaintenanceView"))
+                        HStack (alignment: .center, spacing: 30) {
+                            Text(NSLocalizedString("Modify user", comment: "UserMaintenanceView"))
+                            Text(NSLocalizedString("(Hold and press to activate)", comment: "UserMaintenanceView"))
+                                .font(.footnote)
+
+                        }
                         .foregroundColor(.red)
-                        .padding(.leading, 110)
                     })
+                    }
 
                 }.padding(.bottom)
                     /// Fjerner linjer mellom elementene
