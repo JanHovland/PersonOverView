@@ -58,9 +58,7 @@ struct UserMaintenanceView: View {
                                    value: $user.password)
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
-
                     Spacer()
-
                     HStack (alignment: .center, spacing: 30) {
                         Button(NSLocalizedString("Choose Profile Image", comment: "UserMaintenanceView")) {
                             self.showingImagePicker.toggle()
@@ -69,40 +67,37 @@ struct UserMaintenanceView: View {
                             .font(.footnote)
                     }
                     .foregroundColor(.blue)
-                    // Spacer()
                     VStack {
-                    Button(action: {
-                        if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
-                            self.newItem.name = self.user.name
-                            self.newItem.email = self.user.email
-                            self.newItem.password = self.user.password
-                            self.newItem.recordID = self.user.recordID
-                            // MARK: - modify in CloudKit
-                            CloudKitUser.modifyUser(item: self.newItem) { (result) in
-                                switch result {
-                                case .success:
-                                    self.message = NSLocalizedString("Successfully modified item", comment: "UserMaintenanceView")
-                                    self.show.toggle()
-                                case .failure(let err):
-                                    self.message = err.localizedDescription
-                                    self.show.toggle()
+                        Button(action: {
+                            if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
+                                self.newItem.name = self.user.name
+                                self.newItem.email = self.user.email
+                                self.newItem.password = self.user.password
+                                self.newItem.recordID = self.user.recordID
+                                // MARK: - modify in CloudKit
+                                CloudKitUser.modifyUser(item: self.newItem) { (result) in
+                                    switch result {
+                                    case .success:
+                                        self.message = NSLocalizedString("Successfully modified item", comment: "UserMaintenanceView")
+                                        self.show.toggle()
+                                    case .failure(let err):
+                                        self.message = err.localizedDescription
+                                        self.show.toggle()
+                                    }
                                 }
+                            } else {
+                                self.message = NSLocalizedString("Missing parameters", comment: "UserMaintenanceView")
+                                self.show.toggle()
                             }
-                        } else {
-                            self.message = NSLocalizedString("Missing parameters", comment: "UserMaintenanceView")
-                            self.show.toggle()
-                        }
-                    }, label: {
-                        HStack (alignment: .center, spacing: 30) {
-                            Text(NSLocalizedString("Modify user", comment: "UserMaintenanceView"))
-                            Text(NSLocalizedString("(Hold and press to activate)", comment: "UserMaintenanceView"))
-                                .font(.footnote)
-
-                        }
-                        .foregroundColor(.red)
-                    })
+                        }, label: {
+                            HStack (alignment: .center, spacing: 30) {
+                                Text(NSLocalizedString("Modify user", comment: "UserMaintenanceView"))
+                                Text(NSLocalizedString("(Hold and press to activate)", comment: "UserMaintenanceView"))
+                                    .font(.footnote)
+                            }
+                            .foregroundColor(.red)
+                        })
                     }
-
                 }.padding(.bottom)
                     /// Fjerner linjer mellom elementene
                     .listStyle(GroupedListStyle())
@@ -150,8 +145,8 @@ struct UserMaintenanceView: View {
                             .font(.largeTitle)
                             .foregroundColor(.none)
                     })
-                    .padding(.trailing, 20)
-                    .padding(.top, 100)
+                        .padding(.trailing, 20)
+                        .padding(.top, 100)
                     Spacer()
                 }
             }

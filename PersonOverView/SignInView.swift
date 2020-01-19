@@ -35,7 +35,6 @@ struct SignInView : View {
                         .font(Font.title.weight(.light))
                         .foregroundColor(.accentColor)
                 }
-                //Spacer(minLength: 15)
                 HStack  (alignment: .center, spacing: 60) {
                     ZStack {
                         Image(systemName: "person.circle")
@@ -57,11 +56,6 @@ struct SignInView : View {
                             .foregroundColor(.accentColor)
                     }
                 }
-//                HStack {
-//                    Image(systemName: "info.circle")
-//                        .font(Font.system(.title).weight(.light))
-//                        .foregroundColor(.accentColor)
-//                }
                 .padding(7)
                 .contextMenu {
                     HStack {
@@ -100,19 +94,19 @@ struct SignInView : View {
                         /// må kalles på denne måten for å kunne benytte flere environmentObject
                         UserDeleteView().environmentObject(self.user)
                     }
-                    /// Uten padding blir noe av visningen kuttet bort
-                    .padding()
-                    /// Brukes for å få med "Image(systemName: "chevron.down")"
-                    .overlay(
-                        Button(action: {
-                            self.presentationMode.wrappedValue.dismiss()
-                        }, label: {
-                            HStack {
-                                Text(NSLocalizedString("Exit", comment: "SignInView"))
-                                Image(systemName: "chevron.down")
-                                    .font(Font.system(.title).weight(.ultraLight))
-                            }
-                        })
+                        /// Uten padding blir noe av visningen kuttet bort
+                        .padding()
+                        /// Brukes for å få med "Image(systemName: "chevron.down")"
+                        .overlay(
+                            Button(action: {
+                                self.presentationMode.wrappedValue.dismiss()
+                            }, label: {
+                                HStack {
+                                    Text(NSLocalizedString("Exit", comment: "SignInView"))
+                                    Image(systemName: "chevron.down")
+                                        .font(Font.system(.title).weight(.ultraLight))
+                                }
+                            })
                     )
                 }
                 VStack (alignment: .leading) {
@@ -175,7 +169,6 @@ struct SignInView : View {
                         }
                     }) {
                         Text(NSLocalizedString("Sign In", comment: "SignInView"))
-                        // .padding(10)
                     }
                 }
             }
@@ -183,9 +176,9 @@ struct SignInView : View {
                 return Alert(title: Text(self.message))
             }
         }
-        /// Ta bort tastaturet når en klikker utenfor feltet
-        .modifier(DismissingKeyboard())
-        /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
-        .modifier(AdaptsToSoftwareKeyboard())
+            /// Ta bort tastaturet når en klikker utenfor feltet
+            .modifier(DismissingKeyboard())
+            /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
+            .modifier(AdaptsToSoftwareKeyboard())
     }
 }

@@ -29,7 +29,6 @@ struct UserDeleteView: View {
                     .resizable()
                     .frame(width: 100, height: 100)
                     .font(Font.title.weight(.ultraLight))
-                /// Her legges aktuelt bilde oppå "person.circle"
                 if user.image != nil {
                     Image(uiImage: user.image!)
                         .resizable()
@@ -84,7 +83,7 @@ struct UserDeleteView: View {
                         }
                         .foregroundColor(.red)
                     })
-                    }.padding(.bottom)
+                }.padding(.bottom)
                     /// Fjerner linjer mellom elementene
                     .listStyle(GroupedListStyle())
                     .environment(\.horizontalSizeClass, .regular)
