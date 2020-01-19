@@ -19,7 +19,7 @@ struct PersonOverView: View {
 
     var body: some View {
         TabView {
-           SignInView()  /// SignInView()  qwerty()
+          qwerty()   //  SignInView()  /// SignInView()  qwerty()
                 .tabItem {
                      VStack {
                          Image(systemName: "arrow.right.to.line.alt")

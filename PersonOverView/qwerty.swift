@@ -15,37 +15,72 @@ struct qwerty: View {
     @State private var show: Bool = false
     @State private var message: String = ""
 
+    @Environment(\.presentationMode) var presentationMode
+
+    @State private var showAlert: Bool = false
+
+
     var body: some View {
-        Form {
-            Text("CloudKit")
-                .font(.largeTitle)
-                .padding()
+        VStack {
+            Text("test")
 
-            TextField("Name", text: $item.name)
-            TextField("email", text: $item.email)
-            SecureField("Password", text: $item.password)
+            Button(action: {
+                self.showAlert = true},
+                   label: {
+                    Image(systemName: "chevron.down.circle.fill")
+            })
+                .font(.largeTitle) .foregroundColor(.white)
 
-
-
-            Button(
-                action: {
-//                    let predicate = NSPredicate(format: "email == %@", self.item.email)
-                    let predicate = NSPredicate(value: true)
-                    let error = CloudKitRecord.findUser(predicate: predicate)
-                    if error.count == 0 {
-                        self.message = "Find OK"
-                        self.show.toggle()
-                    } else {
-                        self.message = error
-                        self.show.toggle()
-                    }
-
-                },
-                label: { Text("Test -F I N D- function for CloudKit") }
-            )
         }
-        .alert(isPresented: $show) {
-            return Alert(title: Text(self.message))
+
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("Reminder"),
+                  message: Text("Are you sure you finish reading the article?"),
+                  primaryButton: .default(Text("Yes"),
+                  action: {
+
+                      print("Yes")
+
+                  }),
+                  secondaryButton: .cancel(Text("No")))
+
+
         }
     }
 }
+
+
+
+//        Form {
+//            Text("CloudKit")
+//                .font(.largeTitle)
+//                .padding()
+//
+//            TextField("Name", text: $item.name)
+//            TextField("email", text: $item.email)
+//            SecureField("Password", text: $item.password)
+//
+//
+//
+//            Button(
+//                action: {
+//                    /// let predicate = NSPredicate(format: "email == %@", self.item.email)
+//                    let predicate = NSPredicate(value: true)
+//                    let error = CloudKitRecord.findUser(predicate: predicate)
+//                    if error.count == 0 {
+//                        self.message = "Find OK"
+//                        self.show.toggle()
+//                    } else {
+//                        self.message = error
+//                        self.show.toggle()
+//                    }
+//
+//                },
+//                label: { Text("Test -F I N D- function for CloudKit") }
+//            )
+//        }
+//        .alert(isPresented: $show) {
+//            return Alert(title: Text(self.message))
+//        }
+//    }
+//}
