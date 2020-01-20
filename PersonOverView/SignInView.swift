@@ -20,11 +20,12 @@ struct SignInView : View {
     @EnvironmentObject var user: User
     @Environment(\.presentationMode) var presentationMode
 
-    @State private var show: Bool = false
     @State private var message: String = ""
     @State private var userItem = UserElement(name: "", email: "", password: "")
     @State private var showUserMaintenanceView: Bool = false
     @State private var showDeleteUserView: Bool = false
+
+    @State private var alertIdentifier: AlertID?
 
     var body: some View {
         ScrollView  {
@@ -64,7 +65,7 @@ struct SignInView : View {
                                 self.showUserMaintenanceView.toggle()
                             } else {
                                 self.message = NSLocalizedString("Name, eMail and Password must have a value", comment: "SignInView")
-                                self.show.toggle()
+                                self.alertIdentifier = AlertID(id: .first)
                             }
                         }, label: {
                             Text(NSLocalizedString("User maintenance", comment: "SignInView"))
@@ -82,7 +83,7 @@ struct SignInView : View {
                                 self.showDeleteUserView.toggle()
                             } else {
                                 self.message = NSLocalizedString("Name, eMail and Password must have a value", comment: "SignInView")
-                                self.show.toggle()
+                                self.alertIdentifier = AlertID(id: .first)
                             }
                         }, label: {
                             Text(NSLocalizedString("Delete user", comment: "SignInView"))
@@ -142,7 +143,7 @@ struct SignInView : View {
                             CloudKitUser.doesUserExist(email: self.user.email, password: self.user.password) { (result) in
                                 if result == false {
                                     self.message = NSLocalizedString("Unknown email or password:", comment: "SignInView")
-                                    self.show.toggle()
+                                    self.alertIdentifier = AlertID(id: .first)
                                 } else {
                                     CloudKitUser.fetchUser(predicate: predicate) { (result) in
                                         switch result {
@@ -158,6 +159,7 @@ struct SignInView : View {
                                             self.user.recordID = userItem.recordID
                                         case .failure(let err):
                                             self.message = err.localizedDescription
+                                            self.alertIdentifier = AlertID(id: .first)
                                         }
                                     }
                                 }
@@ -165,15 +167,20 @@ struct SignInView : View {
                         }
                         else {
                             self.message = NSLocalizedString("Both email and Password must have a value", comment: "SignInView")
-                            self.show.toggle()
+                            self.alertIdentifier = AlertID(id: .first)
                         }
                     }) {
                         Text(NSLocalizedString("Sign In", comment: "SignInView"))
                     }
                 }
             }
-            .alert(isPresented: $show) {
-                return Alert(title: Text(self.message))
+            .alert(item: $alertIdentifier) { alert in
+                switch alert.id {
+                case .first:
+                    return Alert(title: Text(self.message))
+                case .second:
+                    return Alert(title: Text(self.message))
+                }
             }
         }
             /// Ta bort tastaturet når en klikker utenfor feltet

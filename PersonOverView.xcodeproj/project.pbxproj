@@ -10,6 +10,7 @@
 		DB1FEF8F2380554F00F8D763 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB1FEF8E2380554F00F8D763 /* Launch Screen.storyboard */; };
 		DB1FEF91238055FE00F8D763 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1FEF90238055FE00F8D763 /* InputTextField.swift */; };
 		DB1FEF932380592F00F8D763 /* InputGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1FEF922380592F00F8D763 /* InputGender.swift */; };
+		DB28D73B23D615E900CF6915 /* AlertID.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB28D73A23D615E900CF6915 /* AlertID.swift */; };
 		DB302B6A237EF02300076D10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B69237EF02300076D10 /* AppDelegate.swift */; };
 		DB302B6C237EF02300076D10 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B6B237EF02300076D10 /* SceneDelegate.swift */; };
 		DB302B6F237EF02300076D10 /* PersonOverView.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB302B6D237EF02300076D10 /* PersonOverView.xcdatamodeld */; };
@@ -46,6 +47,7 @@
 		DB1FEF8E2380554F00F8D763 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		DB1FEF90238055FE00F8D763 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
 		DB1FEF922380592F00F8D763 /* InputGender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputGender.swift; sourceTree = "<group>"; };
+		DB28D73A23D615E900CF6915 /* AlertID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertID.swift; sourceTree = "<group>"; };
 		DB302B66237EF02300076D10 /* PersonOverView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonOverView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB302B69237EF02300076D10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB302B6B237EF02300076D10 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,8 +115,8 @@
 		DB302B68237EF02300076D10 /* PersonOverView */ = {
 			isa = PBXGroup;
 			children = (
-				DB302B90237FDD7200076D10 /* PersonOverView.entitlements */,
 				DB302B69237EF02300076D10 /* AppDelegate.swift */,
+				DB28D73A23D615E900CF6915 /* AlertID.swift */,
 				DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */,
 				DBFC29C223C48F6C00F2224B /* Administration.swift */,
 				DB302B72237EF02300076D10 /* Assets.xcassets */,
@@ -134,6 +136,7 @@
 				DB6739CA23AE2B0600EF9ECD /* OutputTextField.swift */,
 				DB302B6D237EF02300076D10 /* PersonOverView.xcdatamodeld */,
 				DB302B70237EF02300076D10 /* PersonOverView.swift */,
+				DB302B90237FDD7200076D10 /* PersonOverView.entitlements */,
 				DB302B8A237EF33100076D10 /* PersonView.swift */,
 				DB691A1D23CA718F004CDBE8 /* qwerty.swift */,
 				DBE58ACE23CF2D5300D3EF1D /* resizedImage.swift */,
@@ -250,6 +253,7 @@
 				DB302B71237EF02300076D10 /* PersonOverView.swift in Sources */,
 				DB302B81237EF16200076D10 /* UserElement.swift in Sources */,
 				DB302B8B237EF33100076D10 /* PersonView.swift in Sources */,
+				DB28D73B23D615E900CF6915 /* AlertID.swift in Sources */,
 				DB1FEF932380592F00F8D763 /* InputGender.swift in Sources */,
 				DB691A2023CB31ED004CDBE8 /* CloudKitRecord.swift in Sources */,
 				DB302B87237EF2A700076D10 /* SignUpView.swift in Sources */,

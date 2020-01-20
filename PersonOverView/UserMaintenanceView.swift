@@ -7,22 +7,12 @@
 //
 
 import SwiftUI
-import CloudKit
-
-struct AlertID: Identifiable {
-    enum Choice {
-        case first, second
-    }
-
-    var id: Choice
-}
 
 struct UserMaintenanceView: View {
     @EnvironmentObject var user: User
     @Environment(\.presentationMode) var presentationMode
 
     @State private var message: String = ""
-    // @State private var show: Bool = false
     @State private var newItem = UserElement(name: "", email: "", password: "", image: nil)
     @State private var showingImagePicker = false
 
