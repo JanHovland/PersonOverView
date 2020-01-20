@@ -34,27 +34,28 @@ struct SignUpView : View {
                         .font(Font.title.weight(.light))
                         .foregroundColor(.accentColor)
                 }
-                Spacer(minLength: 22)
+                Spacer(minLength: 18)
                 ZStack {
                     Image(systemName: "person.circle")
                         .resizable()
-                        .frame(width: 90, height: 90, alignment: .center)
+                        .frame(width: 80, height: 80, alignment: .center)
                         .font(Font.title.weight(.ultraLight))
                     // Her legges aktuelt bilde oppå "person.circle"
                     if image != nil {
                         Image(uiImage: image!)
                             .resizable()
-                            .frame(width: 90, height: 90, alignment: .center)
+                            .frame(width: 80, height: 80, alignment: .center)
                             .clipShape(Circle())
                             .overlay(Circle().stroke(Color.white, lineWidth: 3))
                             .shadow(color: .gray, radius: 3)
 
                     }
                 }
-                Spacer(minLength: 21)
+                Spacer(minLength: 20)
                 Button(NSLocalizedString("Choose Profile Image", comment: "SignUpView")) {
                     self.showingImagePicker.toggle()
                 }
+                Spacer(minLength: 39)
                 VStack {
                     InputTextField(secure: false,
                                    heading: NSLocalizedString("Your name", comment: "SignUpiew"),

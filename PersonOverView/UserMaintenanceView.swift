@@ -26,12 +26,12 @@ struct UserMaintenanceView: View {
             ZStack {
                 Image(systemName: "person.circle")
                     .resizable()
-                    .frame(width: 100, height: 100)
+                    .frame(width: 80, height: 80)
                     .font(Font.title.weight(.ultraLight))
                 if user.image != nil {
                     Image(uiImage: user.image!)
                         .resizable()
-                        .frame(width: 100, height: 100)
+                        .frame(width: 80, height: 80)
                         .aspectRatio(contentMode: .fill)
                         .clipShape(Circle())
                         .overlay(Circle().stroke(Color.white, lineWidth: 3))
@@ -85,8 +85,10 @@ struct UserMaintenanceView: View {
         }
         .sheet(isPresented: $showingImagePicker, content: {
             ImagePicker.shared.view
-        }).onReceive(ImagePicker.shared.$image) { image in
-            self.user.image  = image
+        })
+
+        .onReceive(ImagePicker.shared.$image) { image in
+            self.user.image = image
         }
         .onAppear {
             let email = self.user.email
@@ -125,6 +127,9 @@ struct UserMaintenanceView: View {
                                 self.newItem.email = self.user.email
                                 self.newItem.password = self.user.password
                                 self.newItem.recordID = self.user.recordID
+                                if ImagePicker.shared.image != nil {
+                                    self.newItem.image = ImagePicker.shared.image
+                                }
                                 // MARK: - modify in CloudKit
                                 CloudKitUser.modifyUser(item: self.newItem) { (result) in
                                     switch result {
@@ -163,4 +168,5 @@ struct UserMaintenanceView: View {
             }
         )
     }
+
 }

@@ -28,12 +28,12 @@ struct UserDeleteView: View {
             ZStack {
                 Image(systemName: "person.circle")
                     .resizable()
-                    .frame(width: 100, height: 100)
+                    .frame(width: 80, height: 80)
                     .font(Font.title.weight(.ultraLight))
                 if user.image != nil {
                     Image(uiImage: user.image!)
                         .resizable()
-                        .frame(width: 100, height: 100)
+                        .frame(width: 80, height: 80)
                         .aspectRatio(contentMode: .fill)
                         .clipShape(Circle())
                         .overlay(Circle().stroke(Color.white, lineWidth: 3))
