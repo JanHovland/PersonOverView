@@ -17,12 +17,13 @@ struct SignUpView : View {
     @State private var name: String = ""
     @State private var email: String = ""
     @State private var password: String = ""
-    @State private var show: Bool = false
     @State private var message: String = ""
     @State private var image: UIImage? = nil
     @State private var showingImagePicker = false
     @State private var userItem = UserElement(name: "", email: "", password: "", image: nil)
-    
+
+    @State private var alertIdentifier: AlertID?
+
     var body: some View {
         ScrollView {
             VStack {
@@ -94,11 +95,11 @@ struct SignUpView : View {
                                                                     self.userItem.password = ""
                                                                     self.userItem.image = nil
                                                                     self.image = nil
-                                                                    self.show.toggle()
+                                                                    self.alertIdentifier = AlertID(id: .first)
                                                                 case .failure(let err):
                                                                     print(err.localizedDescription)
                                                                     self.message = err.localizedDescription
-                                                                    self.show.toggle()
+                                                                    self.alertIdentifier = AlertID(id: .first)
                                                                 }
                                                             }
                                                         } else {
@@ -106,12 +107,12 @@ struct SignUpView : View {
                                                             let message1 = NSLocalizedString("The user:", comment: "SignUpView")
                                                             let message2 =  NSLocalizedString("already exists", comment: "SignUpView")
                                                             self.message = message1 + " " + user + " " + message2
-                                                            self.show.toggle()
+                                                            self.alertIdentifier = AlertID(id: .first)
                                                         }
                             }
                         } else {
                             self.message = NSLocalizedString("Name, eMail or Password must all contain a value.", comment: "SignUpView")
-                            self.show.toggle()
+                            self.alertIdentifier = AlertID(id: .first)
                         }
                     }) {
                         Text("Sign up")
@@ -119,8 +120,13 @@ struct SignUpView : View {
                     }
                 }
             }
-            .alert(isPresented: $show) {
-                return Alert(title: Text(self.message))
+            .alert(item: $alertIdentifier) { alert in
+                switch alert.id {
+                case .first:
+                    return Alert(title: Text(self.message))
+                case .second:
+                    return Alert(title: Text(self.message))
+                }
             }
         }.sheet(isPresented: $showingImagePicker, content: {
             ImagePicker.shared.view
