@@ -17,6 +17,7 @@ struct UserMaintenanceView: View {
     @State private var show: Bool = false
     @State private var newItem = UserElement(name: "", email: "", password: "", image: nil)
     @State private var showingImagePicker = false
+    @State private var showUpdate: Bool = false
 
     var body: some View {
         VStack {
@@ -67,38 +68,17 @@ struct UserMaintenanceView: View {
                             .font(.footnote)
                     }
                     .foregroundColor(.blue)
-                    VStack {
-                        Button(action: {
-                            if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
-                                self.newItem.name = self.user.name
-                                self.newItem.email = self.user.email
-                                self.newItem.password = self.user.password
-                                self.newItem.recordID = self.user.recordID
-                                // MARK: - modify in CloudKit
-                                CloudKitUser.modifyUser(item: self.newItem) { (result) in
-                                    switch result {
-                                    case .success:
-                                        self.message = NSLocalizedString("Successfully modified item", comment: "UserMaintenanceView")
-                                        self.show.toggle()
-                                    case .failure(let err):
-                                        self.message = err.localizedDescription
-                                        self.show.toggle()
-                                    }
-                                }
-                            } else {
-                                self.message = NSLocalizedString("Missing parameters", comment: "UserMaintenanceView")
-                                self.show.toggle()
-                            }
-                        }, label: {
-                            HStack (alignment: .center, spacing: 30) {
-                                Text(NSLocalizedString("Modify user", comment: "UserMaintenanceView"))
-                                Text(NSLocalizedString("(Hold and press to activate)", comment: "UserMaintenanceView"))
+                    Button(action: {
+                        self.showUpdate.toggle()
+                    }, label: {
+                       HStack (alignment: .center, spacing: 30) {
+                           Text(NSLocalizedString("Modify user", comment: "UserMaintenanceView"))
+                            Text(NSLocalizedString("(Hold and press to activate)", comment: "UserMaintenanceView"))
                                     .font(.footnote)
-                            }
-                            .foregroundColor(.red)
+                        }
+                        .foregroundColor(.red)
                         })
-                    }
-                }.padding(.bottom)
+                    }.padding(.bottom)
                     /// Fjerner linjer mellom elementene
                     .listStyle(GroupedListStyle())
                     .environment(\.horizontalSizeClass, .regular)
@@ -131,8 +111,33 @@ struct UserMaintenanceView: View {
             }
         }
         .modifier(DismissingKeyboard())
-        .alert(isPresented: $show) {
-            return Alert(title: Text(self.message))
+        .alert(isPresented: $showUpdate) {
+            Alert(title: Text(NSLocalizedString("Update user", comment: "UserMaintenanceView")),
+                  message: Text(NSLocalizedString("Are you sure you want to update this user?", comment: "UserMaintenanceView")),
+                  primaryButton: .default(Text(NSLocalizedString("Yes", comment: "UserMaintenanceView")),
+                  action: {
+                    if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
+                        self.newItem.name = self.user.name
+                        self.newItem.email = self.user.email
+                        self.newItem.password = self.user.password
+                        self.newItem.recordID = self.user.recordID
+                        // MARK: - modify in CloudKit
+                        CloudKitUser.modifyUser(item: self.newItem) { (result) in
+                            switch result {
+                            case .success:
+                                self.message = NSLocalizedString("Successfully modified item", comment: "UserMaintenanceView")
+                                self.show.toggle()
+                            case .failure(let err):
+                                self.message = err.localizedDescription
+                                self.show.toggle()
+                            }
+                        }
+                    } else {
+                        self.message = NSLocalizedString("Missing parameters", comment: "UserMaintenanceView")
+                        self.show.toggle()
+                    }
+                  }),
+                  secondaryButton: .cancel(Text(NSLocalizedString("No", comment: "UserMaintenanceView"))))
         }
         .overlay(
             HStack {

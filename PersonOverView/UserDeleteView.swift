@@ -17,6 +17,7 @@ struct UserDeleteView: View {
     @State private var show: Bool = false
     @State private var newItem = UserElement(name: "", email: "", password: "", image: nil)
     @State private var showingImagePicker = false
+    @State private var showDelete = false
 
     var body: some View {
         VStack {
@@ -53,28 +54,7 @@ struct UserDeleteView: View {
                                     value: $user.password)
                     Spacer()
                     Button(action: {
-                        if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
-                            // MARK: - delete user in CloudKit
-                            CloudKitUser.deleteUser(recordID: self.user.recordID!) { (result) in
-                                switch result {
-                                case .success:
-                                    let message1 = NSLocalizedString("User", comment: "UserDeleteView")
-                                    let message2 = NSLocalizedString("deleted", comment: "UserDeleteView")
-                                    self.message = message1 + " '\(self.user.name)'" + " " + message2
-                                    self.user.name = ""
-                                    self.user.email = ""
-                                    self.user.password = ""
-                                    self.user.image = nil
-                                    self.show.toggle()
-                                case .failure(let err):
-                                    self.message = err.localizedDescription
-                                    self.show.toggle()
-                                }
-                            }
-                        } else {
-                            self.message = NSLocalizedString("Missing parameters", comment: "UserDeleteView")
-                            self.show.toggle()
-                        }
+                        self.showDelete.toggle()
                     }, label: {
                         HStack (alignment: .center, spacing: 30) {
                             Text(NSLocalizedString("Delete user", comment: "UserDeleteView"))
@@ -87,7 +67,6 @@ struct UserDeleteView: View {
                     /// Fjerner linjer mellom elementene
                     .listStyle(GroupedListStyle())
                     .environment(\.horizontalSizeClass, .regular)
-
             }
         }
         .sheet(isPresented: $showingImagePicker, content: {
@@ -117,8 +96,36 @@ struct UserDeleteView: View {
             }
         }
         .modifier(DismissingKeyboard())
-        .alert(isPresented: $show) {
-            return Alert(title: Text(self.message))
+        .alert(isPresented: $showDelete) {
+            Alert(title: Text(NSLocalizedString("Delete user", comment: "UserDeleteView")),
+                  message: Text(NSLocalizedString("Are you sure you want to delete this user?", comment: "UserDeleteView")),
+                  primaryButton: .default(Text(NSLocalizedString("Yes", comment: "UserDeleteView")),
+                  action: {
+                    if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
+                        // MARK: - delete user in CloudKit
+                        CloudKitUser.deleteUser(recordID: self.user.recordID!) { (result) in
+                            switch result {
+                            case .success:
+                                let message1 = NSLocalizedString("User", comment: "UserDeleteView")
+                                let message2 = NSLocalizedString("deleted", comment: "UserDeleteView")
+                                self.message = message1 + " '\(self.user.name)'" + " " + message2
+                                self.user.name = ""
+                                self.user.email = ""
+                                self.user.password = ""
+                                self.user.image = nil
+                                self.show.toggle()
+                            case .failure(let err):
+                                self.message = err.localizedDescription
+                                self.show.toggle()
+                            }
+                        }
+                    } else {
+                        self.message = NSLocalizedString("Missing parameters", comment: "UserDeleteView")
+                        self.show.toggle()
+                    }
+
+                  }),
+                  secondaryButton: .cancel(Text(NSLocalizedString("No", comment: "UserDeleteView"))))
         }
         .overlay(
             HStack {

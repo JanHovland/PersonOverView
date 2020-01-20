@@ -12,8 +12,8 @@ var toDo =
 """
  E n d r i n g e r :
 
- 1. .sheet Slett:
-       a) Legg inn Slett med spørsmål
+ 1. .alert kan bare legges inn en gang
+        a) Må sjekkes
 
  F e r d i g :
 
@@ -40,6 +40,9 @@ var toDo =
 12. "Innlogging CloudKit":
        a) "Bruker vedlikehold" går tilbake til "Innlogging CloudKit"
            Løsning: Flytte .sheet rett etter hver "Button"
+13. Lagt inn .alert med spørsmål på:
+       a) "UserMaintenanceView.swift"
+       b) "UserDeleteView.swift"
 
 S e n e r e (om mulig) :
 

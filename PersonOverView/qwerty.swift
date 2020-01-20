@@ -11,13 +11,13 @@ import CloudKit
 
 struct qwerty: View {
 
-    @State private var item = UserElement(name: "", email: "", password: "")
-    @State private var show: Bool = false
-    @State private var message: String = ""
+//    @State private var item = UserElement(name: "", email: "", password: "")
+//    @State private var show: Bool = false
+//    @State private var message: String = ""
+//
+//    @Environment(\.presentationMode) var presentationMode
 
-    @Environment(\.presentationMode) var presentationMode
-
-    @State private var showAlert: Bool = false
+    @State private var showDelete: Bool = false
 
 
     var body: some View {
@@ -25,7 +25,7 @@ struct qwerty: View {
             Text("test")
 
             Button(action: {
-                self.showAlert = true},
+                self.showDelete = true},
                    label: {
                     Image(systemName: "chevron.down.circle.fill")
             })
@@ -33,7 +33,7 @@ struct qwerty: View {
 
         }
 
-        .alert(isPresented: $showAlert) {
+        .alert(isPresented: $showDelete) {
             Alert(title: Text("Reminder"),
                   message: Text("Are you sure you finish reading the article?"),
                   primaryButton: .default(Text("Yes"),
