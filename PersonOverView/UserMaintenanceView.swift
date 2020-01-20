@@ -9,15 +9,24 @@
 import SwiftUI
 import CloudKit
 
+struct AlertID: Identifiable {
+    enum Choice {
+        case first, second
+    }
+
+    var id: Choice
+}
+
 struct UserMaintenanceView: View {
     @EnvironmentObject var user: User
     @Environment(\.presentationMode) var presentationMode
 
     @State private var message: String = ""
-    @State private var show: Bool = false
+    // @State private var show: Bool = false
     @State private var newItem = UserElement(name: "", email: "", password: "", image: nil)
     @State private var showingImagePicker = false
-    @State private var showUpdate: Bool = false
+
+    @State private var alertIdentifier: AlertID?
 
     var body: some View {
         VStack {
@@ -69,7 +78,7 @@ struct UserMaintenanceView: View {
                     }
                     .foregroundColor(.blue)
                     Button(action: {
-                        self.showUpdate.toggle()
+                        self.alertIdentifier = AlertID(id: .second)
                     }, label: {
                        HStack (alignment: .center, spacing: 30) {
                            Text(NSLocalizedString("Modify user", comment: "UserMaintenanceView"))
@@ -94,7 +103,7 @@ struct UserMaintenanceView: View {
             CloudKitUser.doesUserExist(email: self.user.email, password: self.user.password) { (result) in
                 if result == false {
                     self.message = NSLocalizedString("Unknown email or password:", comment: "SignInView")
-                    self.show.toggle()
+                    self.alertIdentifier = AlertID(id: .first)
                 } else {
                     let predicate = NSPredicate(format: "email == %@", email)
                     CloudKitUser.fetchUser(predicate: predicate) { (result) in
@@ -105,39 +114,46 @@ struct UserMaintenanceView: View {
                             }
                         case .failure(let err):
                             self.message = err.localizedDescription
+                            self.alertIdentifier = AlertID(id: .first)
                         }
                     }
                 }
             }
         }
         .modifier(DismissingKeyboard())
-        .alert(isPresented: $showUpdate) {
-            Alert(title: Text(NSLocalizedString("Update user", comment: "UserMaintenanceView")),
-                  message: Text(NSLocalizedString("Are you sure you want to update this user?", comment: "UserMaintenanceView")),
-                  primaryButton: .default(Text(NSLocalizedString("Yes", comment: "UserMaintenanceView")),
-                  action: {
-                    if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
-                        self.newItem.name = self.user.name
-                        self.newItem.email = self.user.email
-                        self.newItem.password = self.user.password
-                        self.newItem.recordID = self.user.recordID
-                        // MARK: - modify in CloudKit
-                        CloudKitUser.modifyUser(item: self.newItem) { (result) in
-                            switch result {
-                            case .success:
-                                self.message = NSLocalizedString("Successfully modified item", comment: "UserMaintenanceView")
-                                self.show.toggle()
-                            case .failure(let err):
-                                self.message = err.localizedDescription
-                                self.show.toggle()
+        .alert(item: $alertIdentifier) { alert in
+            switch alert.id {
+            case .first:
+                return Alert(title: Text(self.message))
+            case .second:
+                return Alert(title: Text(NSLocalizedString("Update user", comment: "UserMaintenanceView")),
+                          message: Text(NSLocalizedString("Are you sure you want to update this user?", comment: "UserMaintenanceView")),
+                          primaryButton: .default(Text(NSLocalizedString("Yes", comment: "UserMaintenanceView")),
+                          action: {
+                            if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
+                                self.newItem.name = self.user.name
+                                self.newItem.email = self.user.email
+                                self.newItem.password = self.user.password
+                                self.newItem.recordID = self.user.recordID
+                                // MARK: - modify in CloudKit
+                                CloudKitUser.modifyUser(item: self.newItem) { (result) in
+                                    switch result {
+                                    case .success:
+                                        self.message = NSLocalizedString("Successfully modified the user", comment: "UserMaintenanceView")
+                                        self.alertIdentifier = AlertID(id: .first)
+                                    case .failure(let err):
+                                        self.message = err.localizedDescription
+                                        self.alertIdentifier = AlertID(id: .first)
+                                    }
+                                }
+                            } else {
+                                self.message = NSLocalizedString("Missing parameters", comment: "UserMaintenanceView")
+                                self.alertIdentifier = AlertID(id: .first)
                             }
-                        }
-                    } else {
-                        self.message = NSLocalizedString("Missing parameters", comment: "UserMaintenanceView")
-                        self.show.toggle()
-                    }
-                  }),
-                  secondaryButton: .cancel(Text(NSLocalizedString("No", comment: "UserMaintenanceView"))))
+                          }),
+                          secondaryButton: .cancel(Text(NSLocalizedString("No", comment: "UserMaintenanceView"))))
+            }
+
         }
         .overlay(
             HStack {

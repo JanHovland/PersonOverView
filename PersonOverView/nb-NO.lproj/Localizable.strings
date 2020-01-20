@@ -3,7 +3,7 @@
 "(Hold and press to activate)" = "(Trykk hardt og så slipp for å aktivere)";
 
 /* SignUpView */
-"Added new user:" = "Registrere ny bruker:";
+"Added new user:" = "Ny bruker er registrert :";
 
 /* PersonView */
 "Address" = "Addresse";
@@ -13,9 +13,6 @@
 
 /* SignUpView */
 "already exists" = "finnes allrede";
-
-/* No comment provided by engineer. */
-"Are you sure you finish reading the article?" = "Er du sikker på at du er ferdig med å lese artikkelen?";
 
 /* UserDeleteView */
 "Are you sure you want to delete this user?" = "Er du sikker på at du vil slette denne brukeren?";
@@ -151,7 +148,7 @@
 "Phone Number" = "Telefonnummer";
 
 /* No comment provided by engineer. */
-"Reminder" = "Påminnelse";
+"Second Alert" = "Second Alert";
 
 /* No comment provided by engineer. */
 "Sign in" = "Logg inn";
@@ -172,10 +169,7 @@
 "Sign Up CloudKit" = "Registrering CloudKit";
 
 /* UserMaintenanceView */
-"Successfully modified item" = "Elementet ble endret";
-
-/* No comment provided by engineer. */
-"test" = "test";
+"Successfully modified the user" = "Brukeren er oppdatert";
 
 /* No comment provided by engineer. */
 "Test -F I N D- function for CloudKit" = "Test av -F I N D- function for CloudKit";
@@ -184,10 +178,19 @@
 "The user:" = "Brukeren:";
 
 /* No comment provided by engineer. */
+"This is the first alert" = "This is the first alert";
+
+/* No comment provided by engineer. */
+"This is the second alert" = "This is the second alert";
+
+/* No comment provided by engineer. */
 "To be done" = "Oppgaver";
 
 /* No comment provided by engineer. */
 "Todo" = "Oppgaver";
+
+/* No comment provided by engineer. */
+"Two" = "To";
 
 /* SignInView
    UserDeleteView */
