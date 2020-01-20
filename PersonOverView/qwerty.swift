@@ -9,50 +9,76 @@
 import SwiftUI
 import CloudKit
 
+struct AlertIdentifier: Identifiable {
+    enum Choice {
+        case first, second
+    }
+
+    var id: Choice
+}
+
 struct qwerty: View {
+    @State private var alertIdentifier: AlertIdentifier?
+
+    var body: some View {
+        VStack {
+            Button("Show First Alert") {
+                self.alertIdentifier = AlertIdentifier(id: .first)
+            }
+            .padding()
+            Button("Show Second Alert") {
+                self.alertIdentifier = AlertIdentifier(id: .second)
+            }
+        }
+        .alert(item: $alertIdentifier) { alert in
+            switch alert.id {
+            case .first:
+                return Alert(title: Text("First Alert"),
+                             message: Text("This is the first alert"))
+            case .second:
+                return Alert(title: Text("Second Alert"),
+                             message: Text("This is the second alert"))
+            }
+        }
+    }
+}
+
 
 //    @State private var item = UserElement(name: "", email: "", password: "")
 //    @State private var show: Bool = false
 //    @State private var message: String = ""
 //
 //    @Environment(\.presentationMode) var presentationMode
-
-    @State private var showDelete: Bool = false
-
-
-    var body: some View {
-        VStack {
-            Text("test")
-
-            Button(action: {
-                self.showDelete = true},
-                   label: {
-                    Image(systemName: "chevron.down.circle.fill")
-            })
-                .font(.largeTitle) .foregroundColor(.white)
-
-        }
-
-        .alert(isPresented: $showDelete) {
-            Alert(title: Text("Reminder"),
-                  message: Text("Are you sure you finish reading the article?"),
-                  primaryButton: .default(Text("Yes"),
-                  action: {
-
-                    /// Her legges inn den aktuelle funksjonen
-
-                      print("Yes")
-
-                  }),
-                  secondaryButton: .cancel(Text("No")))
-
-
-        }
-    }
-}
-
-
-
+//
+//    @State private var showAlert: Bool = false
+//
+//    @State private var showingAlert1 = false
+//    @State private var showingAlert2 = false
+//
+//        var body: some View {
+//        VStack {
+//            Button("Show 1") {
+//                self.showingAlert1 = true
+//            }
+//            .alert(isPresented: $showingAlert1) {
+//                Alert(title: Text("One"), message: nil, dismissButton: .cancel())
+//            }
+//
+//            Spacer()
+//
+//            Button("Show 2") {
+//                self.showingAlert2 = true
+//            }
+//            .alert(isPresented: $showingAlert2) {
+//                Alert(title: Text("Two"), message: nil, dismissButton: .cancel())
+//            }
+//        }
+//    }
+//
+//}
+//
+//
+//
 //        Form {
 //            Text("CloudKit")
 //                .font(.largeTitle)
