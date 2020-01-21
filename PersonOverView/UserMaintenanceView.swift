@@ -59,7 +59,7 @@ struct UserMaintenanceView: View {
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
                     Text(NSLocalizedString("Hold and release to activate the actions below", comment: "UserMaintenanceView"))
-                        .font(.footnote)
+                        .font(.caption)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .foregroundColor(.red)
                     Button(NSLocalizedString("Choose Profile Image", comment: "UserMaintenanceView")) {
