@@ -52,18 +52,20 @@ struct UserDeleteView: View {
                     OutputTextField(secure: true,
                                     heading: NSLocalizedString("Password", comment: "UserDeleteView"),
                                     value: $user.password)
-                    Text(NSLocalizedString("Hold and release to activate the actions below", comment: "UserMaintenanceView"))
+                    Text(NSLocalizedString("Hold and release to activate the actions below", comment: "UserDeleteView"))
                         .font(.caption)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .foregroundColor(.red)
-                    Button(action: {
-                        self.alertIdentifier = AlertID(id: .second)
-                    }, label: {
-                        HStack (alignment: .center, spacing: 30) {
-                            Text(NSLocalizedString("Delete user", comment: "UserDeleteView"))
+
+                    HStack {
+                        Button(NSLocalizedString("Delete user", comment: "UserDeleteView")) {
+                            self.alertIdentifier = AlertID(id: .second)
                         }
-                        .foregroundColor(.red)
-                    })
+                        Image(systemName: "trash")
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                    }
+                    .foregroundColor(.red)
+
                 }.padding(.bottom)
                     /// Fjerner linjer mellom elementene
                     .listStyle(GroupedListStyle())
@@ -104,7 +106,7 @@ struct UserDeleteView: View {
             case .second:
                 return Alert(title: Text(NSLocalizedString("Delete user", comment: "UserDeleteView")),
                   message: Text(NSLocalizedString("Are you sure you want to delete this user?", comment: "UserDeleteView")),
-                  primaryButton: .default(Text(NSLocalizedString("Yes", comment: "UserDeleteView")),
+                  primaryButton: .destructive(Text(NSLocalizedString("Yes", comment: "UserDeleteView")),
                   action: {
                     if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
                         // MARK: - delete user in CloudKit

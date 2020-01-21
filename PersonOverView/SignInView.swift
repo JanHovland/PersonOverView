@@ -67,8 +67,9 @@ struct SignInView : View {
                             }
                         }, label: {
                             Text(NSLocalizedString("User maintenance", comment: "SignInView"))
-                            Image(systemName: "pencil.and.ellipsis.rectangle")
-                                .font(Font.system(.headline).weight(.regular))
+                            Image(systemName: "square.and.pencil")
+                                .font(Font.system(.headline).weight(.ultraLight))
+
                         })
                     }
                     .sheet(isPresented: $showUserMaintenanceView) {
@@ -84,9 +85,12 @@ struct SignInView : View {
                                 self.alertIdentifier = AlertID(id: .first)
                             }
                         }, label: {
-                            Text(NSLocalizedString("Delete user", comment: "SignInView"))
-                            Image(systemName: "person")
-                                .font(Font.system(.headline).weight(.thin))
+                            HStack {
+                                Text(NSLocalizedString("Delete user", comment: "SignInView"))
+                                Image(systemName: "trash")
+                                    .font(Font.system(.headline).weight(.thin))
+                            }
+                            .foregroundColor(.red)
                         })
                     }
                     .sheet(isPresented: $showDeleteUserView) {
@@ -107,6 +111,9 @@ struct SignInView : View {
                                 }
                             })
                     )
+
+
+
                 }
                 Spacer(minLength: 32)
                 VStack (alignment: .leading) {

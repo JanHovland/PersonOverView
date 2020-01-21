@@ -62,19 +62,23 @@ struct UserMaintenanceView: View {
                         .font(.caption)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .foregroundColor(.red)
-                    Button(NSLocalizedString("Choose Profile Image", comment: "UserMaintenanceView")) {
-                         self.showingImagePicker.toggle()
+                    HStack {
+                        Button(NSLocalizedString("Choose Profile Image", comment: "UserMaintenanceView")) {
+                            self.showingImagePicker.toggle()
+                        }
+                        Image(systemName: "photo")
+                            .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                     .foregroundColor(.blue)
-                    Button(action: {
-                        self.alertIdentifier = AlertID(id: .second)
-                    }, label: {
-                       HStack (alignment: .center) {
-                           Text(NSLocalizedString("Modify user", comment: "UserMaintenanceView"))
+                    HStack {
+                        Button(NSLocalizedString("Modify user", comment: "UserMaintenanceView")) {
+                            self.alertIdentifier = AlertID(id: .second)
                         }
-                        .foregroundColor(.blue)
-                        })
-                    }.padding(.bottom)
+                        Image(systemName: "square.and.pencil")
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                    }
+                    .foregroundColor(.red)
+                }.padding(.bottom)
                     /// Fjerner linjer mellom elementene
                     .listStyle(GroupedListStyle())
                     .environment(\.horizontalSizeClass, .regular)
@@ -84,8 +88,8 @@ struct UserMaintenanceView: View {
             ImagePicker.shared.view
         })
 
-        .onReceive(ImagePicker.shared.$image) { image in
-            self.user.image = image
+            .onReceive(ImagePicker.shared.$image) { image in
+                self.user.image = image
         }
         .onAppear {
             let email = self.user.email
@@ -116,34 +120,34 @@ struct UserMaintenanceView: View {
                 return Alert(title: Text(self.message))
             case .second:
                 return Alert(title: Text(NSLocalizedString("Update user", comment: "UserMaintenanceView")),
-                          message: Text(NSLocalizedString("Are you sure you want to update this user?", comment: "UserMaintenanceView")),
-                          primaryButton: .default(Text(NSLocalizedString("Yes", comment: "UserMaintenanceView")),
-                          action: {
-                            if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
-                                self.newItem.name = self.user.name
-                                self.newItem.email = self.user.email
-                                self.newItem.password = self.user.password
-                                self.newItem.recordID = self.user.recordID
-                                if ImagePicker.shared.image != nil {
-                                    self.newItem.image = ImagePicker.shared.image
-                                }
-                                // MARK: - modify in CloudKit
-                                CloudKitUser.modifyUser(item: self.newItem) { (result) in
-                                    switch result {
-                                    case .success:
-                                        self.message = NSLocalizedString("Successfully modified the user", comment: "UserMaintenanceView")
-                                        self.alertIdentifier = AlertID(id: .first)
-                                    case .failure(let err):
-                                        self.message = err.localizedDescription
-                                        self.alertIdentifier = AlertID(id: .first)
-                                    }
-                                }
-                            } else {
-                                self.message = NSLocalizedString("Missing parameters", comment: "UserMaintenanceView")
-                                self.alertIdentifier = AlertID(id: .first)
-                            }
-                          }),
-                          secondaryButton: .cancel(Text(NSLocalizedString("No", comment: "UserMaintenanceView"))))
+                             message: Text(NSLocalizedString("Are you sure you want to update this user?", comment: "UserMaintenanceView")),
+                             primaryButton: .destructive(Text(NSLocalizedString("Yes", comment: "UserMaintenanceView")),
+                                                         action: {
+                                                            if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
+                                                                self.newItem.name = self.user.name
+                                                                self.newItem.email = self.user.email
+                                                                self.newItem.password = self.user.password
+                                                                self.newItem.recordID = self.user.recordID
+                                                                if ImagePicker.shared.image != nil {
+                                                                    self.newItem.image = ImagePicker.shared.image
+                                                                }
+                                                                // MARK: - modify in CloudKit
+                                                                CloudKitUser.modifyUser(item: self.newItem) { (result) in
+                                                                    switch result {
+                                                                    case .success:
+                                                                        self.message = NSLocalizedString("Successfully modified the user", comment: "UserMaintenanceView")
+                                                                        self.alertIdentifier = AlertID(id: .first)
+                                                                    case .failure(let err):
+                                                                        self.message = err.localizedDescription
+                                                                        self.alertIdentifier = AlertID(id: .first)
+                                                                    }
+                                                                }
+                                                            } else {
+                                                                self.message = NSLocalizedString("Missing parameters", comment: "UserMaintenanceView")
+                                                                self.alertIdentifier = AlertID(id: .first)
+                                                            }
+                             }),
+                             secondaryButton: .cancel(Text(NSLocalizedString("No", comment: "UserMaintenanceView"))))
             }
 
         }

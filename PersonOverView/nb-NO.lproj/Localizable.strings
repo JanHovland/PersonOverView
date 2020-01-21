@@ -90,7 +90,8 @@
 /* PersonView */
 "Gender" = "Kjønn";
 
-/* UserMaintenanceView */
+/* UserDeleteView
+   UserMaintenanceView */
 "Hold and release to activate the actions below" = "Trykk hardt og slipp for å aktivere handlingene nedenfor";
 
 /* PersonView */
@@ -107,7 +108,7 @@
 "Missing parameters" = "Manglende parametere";
 
 /* UserMaintenanceView */
-"Modify user" = "Oppdatere bruker";
+"Modify user" = "Oppdater bruker";
 
 /* PersonView */
 "Municipality" = "Kommune";
