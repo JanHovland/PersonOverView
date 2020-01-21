@@ -111,9 +111,6 @@ struct SignInView : View {
                                 }
                             })
                     )
-
-
-
                 }
                 Spacer(minLength: 32)
                 VStack (alignment: .leading) {

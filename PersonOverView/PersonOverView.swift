@@ -35,7 +35,7 @@ struct PersonOverView: View {
                     }
                 }
                 .tag(1)
-            Administration()
+            AdministrationView()
                 .tabItem {
                     VStack {
                         Image(systemName: "gear")
