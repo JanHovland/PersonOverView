@@ -33,31 +33,26 @@ struct SignInView : View {
                 Spacer(minLength: 17)
                 HStack {
                     Text(NSLocalizedString("Sign in CloudKit", comment: "SignInView"))
-                        .font(Font.title.weight(.light))
+                        .font(.headline)
                         .foregroundColor(.accentColor)
                 }
-                HStack  (alignment: .center, spacing: 60) {
-                    ZStack {
-                        Image(systemName: "person.circle")
+                ZStack {
+                    Image(systemName: "person.circle")
+                        .resizable()
+                        .frame(width: 80, height: 80, alignment: .center)
+                        .font(Font.title.weight(.ultraLight))
+                    if self.user.image != nil {
+                        Image(uiImage: self.user.image!)
                             .resizable()
                             .frame(width: 80, height: 80, alignment: .center)
-                            .font(Font.title.weight(.ultraLight))
-                        if self.user.image != nil {
-                            Image(uiImage: self.user.image!)
-                                .resizable()
-                                .frame(width: 80, height: 80, alignment: .center)
-                                .clipShape(Circle())
-                                .overlay(Circle().stroke(Color.white, lineWidth: 3))
-                                .shadow(color: .gray, radius: 3)
-                        }
+                            .clipShape(Circle())
+                            .overlay(Circle().stroke(Color.white, lineWidth: 3))
+                            .shadow(color: .gray, radius: 3)
                     }
                 }
-                HStack (alignment: .center, spacing: 30) {
+                HStack (alignment: .center, spacing: 10) {
                     Text(NSLocalizedString("Settings", comment: "SignInView"))
-                        .font(Font.system(.body).weight(.light))
                     Image(systemName: "gear")
-                        .font(Font.system(.body).weight(.light))
-
                 }
                 .foregroundColor(.accentColor)
                 .padding(10)
@@ -113,13 +108,13 @@ struct SignInView : View {
                             })
                     )
                 }
+                Spacer(minLength: 32)
                 VStack (alignment: .leading) {
-                    Spacer(minLength: 33)
                     OutputTextField(secure: false,
                                     heading: NSLocalizedString("Your name", comment: "SignInView"),
                                     value: $user.name)
                         .autocapitalization(.words)
-                    Spacer(minLength: 23)
+                    Spacer(minLength: 22)
                     InputTextField(secure: false,
                                    heading: NSLocalizedString("eMail address", comment: "SignInView"),
                                    placeHolder: NSLocalizedString("Enter your email address", comment: "SignInView"),

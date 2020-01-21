@@ -30,11 +30,9 @@ struct SignUpView : View {
                 Spacer(minLength: 17)
                 HStack {
                     Text(NSLocalizedString("Sign Up CloudKit", comment: "SignUpView"))
-                        .multilineTextAlignment(.center)
-                        .font(Font.title.weight(.light))
+                        .font(.headline)
                         .foregroundColor(.accentColor)
                 }
-                Spacer(minLength: 18)
                 ZStack {
                     Image(systemName: "person.circle")
                         .resizable()
@@ -51,11 +49,11 @@ struct SignUpView : View {
 
                     }
                 }
-                Spacer(minLength: 20)
+                Spacer(minLength: 18)
                 Button(NSLocalizedString("Choose Profile Image", comment: "SignUpView")) {
                     self.showingImagePicker.toggle()
                 }
-                Spacer(minLength: 39)
+                Spacer(minLength: 43)
                 VStack {
                     InputTextField(secure: false,
                                    heading: NSLocalizedString("Your name", comment: "SignUpiew"),
