@@ -1,7 +1,3 @@
-/* UserDeleteView
-   UserMaintenanceView */
-"(Hold and press to activate)" = "(Trykk hardt og så slipp for å aktivere)";
-
 /* SignUpView */
 "Added new user:" = "Ny bruker er registrert :";
 
@@ -102,6 +98,9 @@
 
 /* PersonView */
 "Gender" = "Kjønn";
+
+/* UserMaintenanceView */
+"Hold and release to activate the actions below" = "Hold nede og slipp for å aktivere handlingene nedenfor";
 
 /* PersonView */
 "Last name" = "Etternavn";

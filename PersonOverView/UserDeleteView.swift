@@ -52,14 +52,15 @@ struct UserDeleteView: View {
                     OutputTextField(secure: true,
                                     heading: NSLocalizedString("Password", comment: "UserDeleteView"),
                                     value: $user.password)
-                    Spacer()
+                    Text(NSLocalizedString("Hold and release to activate the actions below", comment: "UserMaintenanceView"))
+                        .font(.footnote)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .foregroundColor(.red)
                     Button(action: {
                         self.alertIdentifier = AlertID(id: .second)
                     }, label: {
                         HStack (alignment: .center, spacing: 30) {
                             Text(NSLocalizedString("Delete user", comment: "UserDeleteView"))
-                            Text(NSLocalizedString("(Hold and press to activate)", comment: "UserDeleteView"))
-                                .font(.footnote)
                         }
                         .foregroundColor(.red)
                     })

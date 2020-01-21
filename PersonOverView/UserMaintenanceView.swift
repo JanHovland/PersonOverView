@@ -58,24 +58,21 @@ struct UserMaintenanceView: View {
                                    value: $user.password)
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
-                    Spacer()
-                    HStack (alignment: .center, spacing: 30) {
-                        Button(NSLocalizedString("Choose Profile Image", comment: "UserMaintenanceView")) {
-                            self.showingImagePicker.toggle()
-                        }
-                        Text(NSLocalizedString("(Hold and press to activate)", comment: "UserMaintenanceView"))
-                            .font(.footnote)
+                    Text(NSLocalizedString("Hold and release to activate the actions below", comment: "UserMaintenanceView"))
+                        .font(.footnote)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .foregroundColor(.red)
+                    Button(NSLocalizedString("Choose Profile Image", comment: "UserMaintenanceView")) {
+                         self.showingImagePicker.toggle()
                     }
                     .foregroundColor(.blue)
                     Button(action: {
                         self.alertIdentifier = AlertID(id: .second)
                     }, label: {
-                       HStack (alignment: .center, spacing: 30) {
+                       HStack (alignment: .center) {
                            Text(NSLocalizedString("Modify user", comment: "UserMaintenanceView"))
-                            Text(NSLocalizedString("(Hold and press to activate)", comment: "UserMaintenanceView"))
-                                    .font(.footnote)
                         }
-                        .foregroundColor(.red)
+                        .foregroundColor(.blue)
                         })
                     }.padding(.bottom)
                     /// Fjerner linjer mellom elementene
