@@ -4,7 +4,7 @@
 /* PersonView */
 "Address" = "Addresse";
 
-/* No comment provided by engineer. */
+/* AdministrationView */
 "Administration" = "Administrasjon";
 
 /* SignUpView */
@@ -28,9 +28,6 @@
 
 /* PersonView */
 "Date of birth" = "Fødselsdato";
-
-/* No comment provided by engineer. */
-"Delete a user View" = "Slett en brukervisning";
 
 /* SignInView
    UserDeleteView */
@@ -100,9 +97,6 @@
 /* PersonView */
 "Man" = "Mann";
 
-/* No comment provided by engineer. */
-"Miscellaneous" = "Diverse";
-
 /* UserDeleteView
    UserMaintenanceView */
 "Missing parameters" = "Manglende parametere";
@@ -119,14 +113,13 @@
 /* SignUpView */
 "Name, eMail or Password must all contain a value." = "Navn, e-post eller passord må alle inneholde en verdi.";
 
-/* No comment provided by engineer. */
-"New password" = "Nytt passord";
-
-/* UserDeleteView
+/* AdministrationEnum
+   UserDeleteView
    UserMaintenanceView */
 "No" = "Nei";
 
-/* SignInView
+/* AdministrationView
+   SignInView
    SignUpView
    UserDeleteView
    UserMaintenanceView */
@@ -140,6 +133,9 @@
 
 /* SignInView */
 "Settings" = "Innstillinger";
+
+/* AdministrationView */
+"Show password" = "Vis passord";
 
 /* No comment provided by engineer. */
 "Sign in" = "Logg inn";
@@ -175,9 +171,6 @@
    UserDeleteView */
 "Unknown email or password:" = "Ukjent e-post eller passord:";
 
-/* No comment provided by engineer. */
-"Update name" = "Oppdater navn";
-
 /* UserMaintenanceView */
 "Update user" = "Oppdater bruker";
 
@@ -188,13 +181,11 @@
    UserMaintenanceView */
 "User maintenance" = "Bruker vedlikehold";
 
-/* No comment provided by engineer. */
-"Users" = "Brukere";
-
 /* PersonView */
 "Woman" = "Kvinne";
 
-/* UserDeleteView
+/* AdministrationEnum
+   UserDeleteView
    UserMaintenanceView */
 "Yes" = "Ja";
 
