@@ -26,9 +26,6 @@
 /* PersonView */
 "City" = "By/Tettsted";
 
-/* No comment provided by engineer. */
-"CloudKit" = "CloudKit";
-
 /* PersonView */
 "Date of birth" = "Fødselsdato";
 
@@ -41,9 +38,6 @@
 
 /* UserDeleteView */
 "deleted" = "slettet";
-
-/* No comment provided by engineer. */
-"email" = "e-post";
 
 /* PersonView */
 "eMail" = "e-post";
@@ -90,9 +84,6 @@
 /* SignInView */
 "Exit" = "Retur";
 
-/* No comment provided by engineer. */
-"First Alert" = "Første varsel";
-
 /* PersonView */
 "First name" = "Fornavn";
 
@@ -100,7 +91,7 @@
 "Gender" = "Kjønn";
 
 /* UserMaintenanceView */
-"Hold and release to activate the actions below" = "Hold nede og slipp for å aktivere handlingene nedenfor";
+"Hold and release to activate the actions below" = "Trykk hardt og slipp for å aktivere handlingene nedenfor";
 
 /* PersonView */
 "Last name" = "Etternavn";
@@ -121,9 +112,6 @@
 /* PersonView */
 "Municipality" = "Kommune";
 
-/* No comment provided by engineer. */
-"Name" = "Navn";
-
 /* SignInView */
 "Name, eMail and Password must have a value" = "Navn, e-post og passord må ha en verdi";
 
@@ -137,9 +125,6 @@
    UserMaintenanceView */
 "No" = "Nei";
 
-/* No comment provided by engineer. */
-"One" = "En";
-
 /* SignInView
    SignUpView
    UserDeleteView
@@ -151,9 +136,6 @@
 
 /* PersonView */
 "Phone Number" = "Telefonnummer";
-
-/* No comment provided by engineer. */
-"Second Alert" = "Second Alert";
 
 /* SignInView */
 "Settings" = "Innstillinger";
@@ -179,26 +161,14 @@
 /* UserMaintenanceView */
 "Successfully modified the user" = "Brukeren er oppdatert";
 
-/* No comment provided by engineer. */
-"Test -F I N D- function for CloudKit" = "Test av -F I N D- function for CloudKit";
-
 /* SignUpView */
 "The user:" = "Brukeren:";
-
-/* No comment provided by engineer. */
-"This is the first alert" = "Dette er den første varslingen";
-
-/* No comment provided by engineer. */
-"This is the second alert" = "Dette er det andre varselet";
 
 /* No comment provided by engineer. */
 "To be done" = "Oppgaver";
 
 /* No comment provided by engineer. */
 "Todo" = "Oppgaver";
-
-/* No comment provided by engineer. */
-"Two" = "To";
 
 /* SignInView
    UserDeleteView */
