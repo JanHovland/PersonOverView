@@ -94,6 +94,9 @@
 /* SignInView */
 "Exit" = "Retur";
 
+/* No comment provided by engineer. */
+"First Alert" = "Første varsel";
+
 /* PersonView */
 "First name" = "Fornavn";
 
@@ -135,6 +138,9 @@
    UserMaintenanceView */
 "No" = "Nei";
 
+/* No comment provided by engineer. */
+"One" = "En";
+
 /* SignInView
    SignUpView
    UserDeleteView
@@ -149,6 +155,9 @@
 
 /* No comment provided by engineer. */
 "Second Alert" = "Second Alert";
+
+/* SignInView */
+"Settings" = "Innstillinger";
 
 /* No comment provided by engineer. */
 "Sign in" = "Logg inn";
@@ -178,10 +187,10 @@
 "The user:" = "Brukeren:";
 
 /* No comment provided by engineer. */
-"This is the first alert" = "This is the first alert";
+"This is the first alert" = "Dette er den første varslingen";
 
 /* No comment provided by engineer. */
-"This is the second alert" = "This is the second alert";
+"This is the second alert" = "Dette er det andre varselet";
 
 /* No comment provided by engineer. */
 "To be done" = "Oppgaver";

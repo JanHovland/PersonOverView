@@ -12,8 +12,7 @@ var toDo =
 """
  E n d r i n g e r :
 
- 1. .alert kan bare legges inn en gang
-        a) Må sjekkes
+ 1. Oppgave 1
 
  F e r d i g :
 
@@ -43,6 +42,9 @@ var toDo =
 13. Lagt inn .alert med spørsmål på:
        a) "UserMaintenanceView.swift"
        b) "UserDeleteView.swift"
+14. .alert kan bare legges inn en gang
+       a) Lagt inn: struct AlertID
+
 
 S e n e r e (om mulig) :
 
