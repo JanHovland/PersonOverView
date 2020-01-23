@@ -34,5 +34,6 @@ struct AdministrationView: View {
         .onAppear {
             self.showPassword = UserDefaults.standard.bool(forKey: "showPassword")
         }
+       .padding()
     }
 }

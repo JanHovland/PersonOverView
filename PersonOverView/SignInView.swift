@@ -24,6 +24,8 @@ struct SignInView : View {
     @State private var userItem = UserElement(name: "", email: "", password: "")
     @State private var showUserMaintenanceView: Bool = false
     @State private var showDeleteUserView: Bool = false
+    @State private var showAdministrationView: Bool = false
+    @State private var showToDoView: Bool = false
 
     @State private var alertIdentifier: AlertID?
 
@@ -57,6 +59,7 @@ struct SignInView : View {
                 .foregroundColor(.accentColor)
                 .padding(10)
                 .contextMenu {
+                    /// User maintenance
                     HStack {
                         Button(action: {
                             if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
@@ -76,6 +79,7 @@ struct SignInView : View {
                         /// må kalles på denne måten for å kunne benytte flere environmentObject
                         UserMaintenanceView().environmentObject(self.user)
                     }
+                    /// Delete user
                     HStack {
                         Button(action: {
                             if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
@@ -97,19 +101,61 @@ struct SignInView : View {
                         /// må kalles på denne måten for å kunne benytte flere environmentObject
                         UserDeleteView().environmentObject(self.user)
                     }
-                        /// Uten padding blir noe av visningen kuttet bort
-                        .padding()
-                        /// Brukes for å få med "Image(systemName: "chevron.down")"
-                        .overlay(
-                            Button(action: {
-                                self.presentationMode.wrappedValue.dismiss()
-                            }, label: {
-                                HStack {
-                                    Text(NSLocalizedString("Exit", comment: "SignInView"))
-                                    Image(systemName: "chevron.down")
-                                        .font(Font.system(.title).weight(.ultraLight))
-                                }
-                            })
+                    /// Delete user
+                    HStack {
+                        Button(action: {
+                            if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
+                                self.showAdministrationView.toggle()
+                            } else {
+                                self.message = NSLocalizedString("Name, eMail and Password must have a value", comment: "SignInView")
+                                self.alertIdentifier = AlertID(id: .first)
+                            }
+                        }, label: {
+                            HStack {
+                                Text(NSLocalizedString("Administration", comment: "SignInView"))
+                                Image(systemName: "gear")
+                                    .font(Font.system(.headline).weight(.thin))
+                            }
+                            .foregroundColor(.red)
+                        })
+                    }
+                    .sheet(isPresented: $showAdministrationView) {
+                        AdministrationView()
+                    }
+                    /// ToDo
+                    HStack {
+                        Button(action: {
+                            if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
+                                self.showToDoView.toggle()
+                            } else {
+                                self.message = NSLocalizedString("Name, eMail and Password must have a value", comment: "SignInView")
+                                self.alertIdentifier = AlertID(id: .first)
+                            }
+                        }, label: {
+                            HStack {
+                                Text(NSLocalizedString("To do", comment: "SignInView"))
+                                Image(systemName: "gear")
+                                    .font(Font.system(.headline).weight(.thin))
+                            }
+                            .foregroundColor(.red)
+                        })
+                    }
+                    .sheet(isPresented: $showToDoView) {
+                        ToDoView()
+                    }
+                    /// Uten padding blir noe av visningen kuttet bort
+                    .padding()
+                    /// Brukes for å få med "Image(systemName: "chevron.down")"
+                    .overlay(
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }, label: {
+                            HStack {
+                                Text(NSLocalizedString("Exit", comment: "SignInView"))
+                                Image(systemName: "chevron.down")
+                                    .font(Font.system(.title).weight(.ultraLight))
+                            }
+                        })
                     )
                 }
                 Spacer(minLength: 32)

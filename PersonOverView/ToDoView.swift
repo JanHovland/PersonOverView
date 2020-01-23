@@ -54,6 +54,9 @@ S e n e r e (om mulig) :
 """
 
 struct ToDoView: View {
+    
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -65,8 +68,8 @@ struct ToDoView: View {
                     .foregroundColor(.none)
                     .multilineTextAlignment(.leading)
             }
-
         }
+        .padding()
     }
 }
 

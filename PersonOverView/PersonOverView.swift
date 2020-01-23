@@ -35,22 +35,6 @@ struct PersonOverView: View {
                     }
                 }
                 .tag(1)
-            AdministrationView()
-                .tabItem {
-                    VStack {
-                        Image(systemName: "gear")
-                        Text("Administration")
-                    }
-                }
-                .tag(2)
-            ToDoView()
-                .tabItem {
-                    VStack {
-                        Image(systemName: "person.crop.circle")
-                        Text("Todo")
-                    }
-                }
-                .tag(3)
             PersonView()
                 .tabItem {
                     VStack {
@@ -58,7 +42,7 @@ struct PersonOverView: View {
                         Text("Persons")
                     }
                 }
-                .tag(4)
+                .tag(2)
         }
     }
 }
