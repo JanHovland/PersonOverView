@@ -24,7 +24,7 @@ struct InputTextField: View {
                     .font(Font.caption.weight(.semibold))
                     .foregroundColor(.accentColor)
                 if secure {
-                    if showPassword == false {
+                    if showPassword == true {
                         SecureField(placeHolder, text: $value)
                             .padding(-7)
                             .padding(.horizontal, 15)
