@@ -30,7 +30,7 @@ struct OutputTextField: View {
                 if secure {
                     if self.showPassword == true {
                         Text(secureValue)
-                            .font(Font.system(size: 10, design: .default))
+                            .font(Font.system(size: 9, design: .default))
                             .padding(.horizontal, 8)
                             .padding(.vertical, 6)
                     } else {
@@ -45,22 +45,18 @@ struct OutputTextField: View {
         }
         .onAppear {
             self.showPassword = UserDefaults.standard.bool(forKey: "showPassword")
-            print(self.showPassword)
             if self.showPassword == true {
                 if self.secure {
                     self.secureValue = ""
-                    print(self.secureValue.count)
                     if self.value.count > 0 {
                         for _ in 0..<self.value.count {
                             self.secureValue = self.secureValue + "●"
                         }
                     }
-                    print(self.secureValue)
                 }
             } else {
                 self.secureValue = self.value
             }
-
         }
     }
 }
