@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct InputTextField: View {
+
+    @State private var showPassword: Bool = false
+    
     var secure: Bool
     var heading: String
     var placeHolder: String
     @Binding var value: String
 
     var body: some View {
-
         ZStack {
             VStack (alignment: .leading) {
                 Text(heading)
@@ -22,15 +24,24 @@ struct InputTextField: View {
                     .font(Font.caption.weight(.semibold))
                     .foregroundColor(.accentColor)
                 if secure {
-                    SecureField(placeHolder, text: $value)
-                        .padding(-7)
-                        .padding(.horizontal, 15)
+                    if showPassword == false {
+                        SecureField(placeHolder, text: $value)
+                            .padding(-7)
+                            .padding(.horizontal, 15)
+                    } else {
+                        TextField(placeHolder, text: $value)
+                            .padding(-7)
+                            .padding(.horizontal, 15)
+                    }
                 } else {
                     TextField(placeHolder, text: $value)
                         .padding(-7)
                         .padding(.horizontal, 15)
                 }
             }
+        }
+        .onAppear {
+            self.showPassword = UserDefaults.standard.bool(forKey: "showPassword")
         }
     }
 }

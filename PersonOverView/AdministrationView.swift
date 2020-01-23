@@ -10,26 +10,29 @@ import SwiftUI
 
 struct AdministrationView: View {
 
-    @EnvironmentObject var administration: Administration
+    @Environment(\.presentationMode) var presentationMode
 
-    @State private var selectionPassword = AdministrationEnum.showNo
+    @State private var showPassword: Bool = false
 
     var body: some View {
         NavigationView {
             Form {
                 Section(header: Text(NSLocalizedString("Password", comment: "AdministrationView"))) {
-                    Picker(selection: $selectionPassword,
-                           label: Text(NSLocalizedString("Show password", comment: "AdministrationView"))) {
-                        ForEach(AdministrationEnum.allCases, id: \.self) {
-                            orderType in
-                            Text(orderType.text)
-
-                        }
-
+                    Toggle(isOn: $showPassword) {
+                        Text(NSLocalizedString("Show password", comment: "AdministrationView"))
                     }
                 }
+                Button(action: {
+                    UserDefaults.standard.set(self.showPassword, forKey: "showPassword")
+                    self.presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    Text("Save")
+                })
             }
             .navigationBarTitle(NSLocalizedString("Administration", comment: "AdministrationView"))
+        }
+        .onAppear {
+            self.showPassword = UserDefaults.standard.bool(forKey: "showPassword")
         }
     }
 }

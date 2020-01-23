@@ -11,9 +11,7 @@
 		DB1FEF91238055FE00F8D763 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1FEF90238055FE00F8D763 /* InputTextField.swift */; };
 		DB1FEF932380592F00F8D763 /* InputGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1FEF922380592F00F8D763 /* InputGender.swift */; };
 		DB28D73B23D615E900CF6915 /* AlertID.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB28D73A23D615E900CF6915 /* AlertID.swift */; };
-		DB28D73D23D7558A00CF6915 /* Administration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB28D73C23D7558A00CF6915 /* Administration.swift */; };
 		DB28D73F23D75B2B00CF6915 /* ShowPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB28D73E23D75B2B00CF6915 /* ShowPasswordView.swift */; };
-		DB28D74123D7636C00CF6915 /* AdministrationEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB28D74023D7636C00CF6915 /* AdministrationEnum.swift */; };
 		DB302B6A237EF02300076D10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B69237EF02300076D10 /* AppDelegate.swift */; };
 		DB302B6C237EF02300076D10 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B6B237EF02300076D10 /* SceneDelegate.swift */; };
 		DB302B6F237EF02300076D10 /* PersonOverView.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB302B6D237EF02300076D10 /* PersonOverView.xcdatamodeld */; };
@@ -49,9 +47,7 @@
 		DB1FEF90238055FE00F8D763 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
 		DB1FEF922380592F00F8D763 /* InputGender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputGender.swift; sourceTree = "<group>"; };
 		DB28D73A23D615E900CF6915 /* AlertID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertID.swift; sourceTree = "<group>"; };
-		DB28D73C23D7558A00CF6915 /* Administration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Administration.swift; sourceTree = "<group>"; };
 		DB28D73E23D75B2B00CF6915 /* ShowPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPasswordView.swift; sourceTree = "<group>"; };
-		DB28D74023D7636C00CF6915 /* AdministrationEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdministrationEnum.swift; sourceTree = "<group>"; };
 		DB302B66237EF02300076D10 /* PersonOverView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonOverView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB302B69237EF02300076D10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB302B6B237EF02300076D10 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,9 +116,7 @@
 				DB302B69237EF02300076D10 /* AppDelegate.swift */,
 				DB28D73A23D615E900CF6915 /* AlertID.swift */,
 				DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */,
-				DB28D73C23D7558A00CF6915 /* Administration.swift */,
 				DBFC29C223C48F6C00F2224B /* AdministrationView.swift */,
-				DB28D74023D7636C00CF6915 /* AdministrationEnum.swift */,
 				DB302B72237EF02300076D10 /* Assets.xcassets */,
 				DB691A1F23CB31ED004CDBE8 /* CloudKitRecord.swift */,
 				DB302B8E237EF43400076D10 /* CloudKitUser.swift */,
@@ -264,9 +258,7 @@
 				DB6739CB23AE2B0600EF9ECD /* OutputTextField.swift in Sources */,
 				DBE58AD323CF79E900D3EF1D /* FormField.swift in Sources */,
 				DB1FEF91238055FE00F8D763 /* InputTextField.swift in Sources */,
-				DB28D73D23D7558A00CF6915 /* Administration.swift in Sources */,
 				DBE58ACF23CF2D5300D3EF1D /* resizedImage.swift in Sources */,
-				DB28D74123D7636C00CF6915 /* AdministrationEnum.swift in Sources */,
 				DB302B85237EF27400076D10 /* SignInView.swift in Sources */,
 				DB302B83237EF18D00076D10 /* UserElements.swift in Sources */,
 				DB46938023B9F0A50060933E /* ToDoView.swift in Sources */,
