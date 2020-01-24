@@ -40,7 +40,7 @@ struct AdministrationView: View {
                             .foregroundColor(.none)
                     })
                 )}
-      .onAppear {
+       .onAppear {
             self.showPassword = UserDefaults.standard.bool(forKey: "showPassword")
         }
     }

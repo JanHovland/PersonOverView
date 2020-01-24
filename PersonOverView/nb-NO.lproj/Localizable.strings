@@ -4,7 +4,8 @@
 /* PersonView */
 "Address" = "Addresse";
 
-/* AdministrationView */
+/* AdministrationView
+   SignInView */
 "Administration" = "Administrasjon";
 
 /* SignUpView */
@@ -18,6 +19,9 @@
 
 /* SignInView */
 "Both email and Password must have a value" = "Både e-post og passord må ha en verdi";
+
+/* No comment provided by engineer. */
+"Cancel" = "Avbryt";
 
 /* SignUpView
    UserMaintenanceView */
@@ -113,8 +117,7 @@
 /* SignUpView */
 "Name, eMail or Password must all contain a value." = "Navn, e-post eller passord må alle inneholde en verdi.";
 
-/* AdministrationEnum
-   UserDeleteView
+/* UserDeleteView
    UserMaintenanceView */
 "No" = "Nei";
 
@@ -130,6 +133,9 @@
 
 /* PersonView */
 "Phone Number" = "Telefonnummer";
+
+/* No comment provided by engineer. */
+"Save" = "Lagre";
 
 /* SignInView */
 "Settings" = "Innstillinger";
@@ -164,8 +170,8 @@
 /* No comment provided by engineer. */
 "To be done" = "Oppgaver";
 
-/* No comment provided by engineer. */
-"Todo" = "Oppgaver";
+/* SignInView */
+"To do" = "Oppgaver";
 
 /* SignInView
    UserDeleteView */
@@ -184,8 +190,7 @@
 /* PersonView */
 "Woman" = "Kvinne";
 
-/* AdministrationEnum
-   UserDeleteView
+/* UserDeleteView
    UserMaintenanceView */
 "Yes" = "Ja";
 

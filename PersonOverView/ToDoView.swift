@@ -44,12 +44,19 @@ var toDo =
        b) "UserDeleteView.swift"
 14. .alert kan bare legges inn en gang
        a) Lagt inn: struct AlertID
-
+15. Ta bort Scroll indicators:
+       a) ScrollView (.vertical, showsIndicators: false) {
 
 S e n e r e (om mulig) :
 
 1. Trykke på bildet istedet for på teksten i "SignUpView.swift"
    ... Bruk: .contextMenu
+
+K j e n t e  f e i l:
+
+1. Når en bytter showPassword, oppdateres ikke "SignInView.swift" automatisk.
+        a) Foreløpig løsning: Skift til "SignUpView.swift" og så
+           tilbake til "SignInView.swift"
 
 """
 
@@ -57,26 +64,30 @@ struct ToDoView: View {
     
     @Environment(\.presentationMode) var presentationMode
 
-    init() {
-        UITableView.appearance().showsVerticalScrollIndicator = false
-    }
-
-
-
     var body: some View {
-        ScrollView {
-            VStack {
-                Text("To be done")
-                    .font(.title)
-                    .padding()
-                Text(toDo)
-                    .font(.custom("courier", size: 16))
-                    .foregroundColor(.none)
-                    .multilineTextAlignment(.leading)
+        NavigationView {
+            ScrollView (.vertical, showsIndicators: false) {
+                VStack {
+                    Text("To be done")
+                        .font(.title)
+                        .padding()
+                    Text(toDo)
+                        .font(.custom("courier", size: 16))
+                        .foregroundColor(.none)
+                        .multilineTextAlignment(.leading)
+                }
             }
+            .padding()
         }
-
-        .padding()
-    }
+        .navigationBarTitle(NSLocalizedString("To do", comment: "ToDoView"))
+        .navigationBarItems(leading:
+            Button(action: {
+                self.presentationMode.wrappedValue.dismiss()
+            }, label: {
+                Text("Cancel")
+                    .foregroundColor(.none)
+            })
+        )
+  }
 }
 

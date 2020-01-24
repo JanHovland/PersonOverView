@@ -134,8 +134,8 @@ struct SignInView : View {
                         }, label: {
                             HStack {
                                 Text(NSLocalizedString("To do", comment: "SignInView"))
-                                Image(systemName: "gear")
-                                    .font(Font.system(.headline).weight(.thin))
+                                Image(systemName: "square.and.pencil")
+                                    .font(Font.system(.headline).weight(.ultraLight))
                             }
                             .foregroundColor(.red)
                         })
