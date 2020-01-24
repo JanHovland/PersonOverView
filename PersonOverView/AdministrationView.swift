@@ -9,11 +9,11 @@
 import SwiftUI
 
 struct AdministrationView: View {
-
+    
     @Environment(\.presentationMode) var presentationMode
-
+    
     @State private var showPassword: Bool = false
-
+    
     var body: some View {
         NavigationView {
             Form {
@@ -22,18 +22,28 @@ struct AdministrationView: View {
                         Text(NSLocalizedString("Show password", comment: "AdministrationView"))
                     }
                 }
-                Button(action: {
-                    UserDefaults.standard.set(self.showPassword, forKey: "showPassword")
-                    self.presentationMode.wrappedValue.dismiss()
-                }, label: {
-                    Text("Save")
-                })
             }
             .navigationBarTitle(NSLocalizedString("Administration", comment: "AdministrationView"))
-        }
-        .onAppear {
+            .navigationBarItems(leading:
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    Text("Cancel")
+                        .foregroundColor(.none)
+                })
+                , trailing:
+                    Button(action: {
+                        UserDefaults.standard.set(self.showPassword, forKey: "showPassword")
+                        self.presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Text("Save")
+                            .foregroundColor(.none)
+                    })
+                )}
+      .onAppear {
             self.showPassword = UserDefaults.standard.bool(forKey: "showPassword")
         }
-       .padding()
     }
+
 }
+

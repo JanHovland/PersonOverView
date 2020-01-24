@@ -56,7 +56,13 @@ S e n e r e (om mulig) :
 struct ToDoView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    
+
+    init() {
+        UITableView.appearance().showsVerticalScrollIndicator = false
+    }
+
+
+
     var body: some View {
         ScrollView {
             VStack {
@@ -69,6 +75,7 @@ struct ToDoView: View {
                     .multilineTextAlignment(.leading)
             }
         }
+
         .padding()
     }
 }
