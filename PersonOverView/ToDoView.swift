@@ -8,14 +8,23 @@
 
 import SwiftUI
 
-var toDo =
+var toDo_0 =
 """
  E n d r i n g e r :
+"""
 
+var toDo_1 =
+"""
  1. Oppgave 1
+"""
 
+var toDo_2 =
+"""
  F e r d i g :
+"""
 
+var toDo_3 =
+"""
  1. Reduserte meldinger i SignInView.swift
  2. Reduserte meldinger i SignUpView.swift
  3. Ta bort "online keyboard"
@@ -46,18 +55,30 @@ var toDo =
        a) Lagt inn: struct AlertID
 15. Ta bort Scroll indicators:
        a) ScrollView (.vertical, showsIndicators: false) {
+"""
 
+var toDo_4 =
+"""
 S e n e r e (om mulig) :
+"""
 
+var toDo_5 =
+"""
 1. Trykke på bildet istedet for på teksten i "SignUpView.swift"
    ... Bruk: .contextMenu
+"""
 
+var toDo_6 =
+"""
 K j e n t e  f e i l:
+"""
+
+var toDo_7 =
+"""
 
 1. Når en bytter showPassword, oppdateres ikke "SignInView.swift" automatisk.
         a) Foreløpig løsning: Skift til "SignUpView.swift" og så
            tilbake til "SignInView.swift"
-
 """
 
 struct ToDoView: View {
@@ -68,7 +89,31 @@ struct ToDoView: View {
         NavigationView {
             ScrollView (.vertical, showsIndicators: false) {
                 VStack {
-                    Text(toDo)
+                    Text(toDo_0)
+                        .foregroundColor(.accentColor)
+                        .padding()
+                    Text(toDo_1)
+                        .font(.custom("courier", size: 16))
+                        .foregroundColor(.none)
+                        .multilineTextAlignment(.leading)
+                    Text(toDo_2)
+                        .foregroundColor(.accentColor)
+                        .padding()
+                    Text(toDo_3)
+                        .font(.custom("courier", size: 16))
+                        .foregroundColor(.none)
+                        .multilineTextAlignment(.leading)
+                    Text(toDo_4)
+                        .foregroundColor(.accentColor)
+                        .padding()
+                    Text(toDo_5)
+                        .font(.custom("courier", size: 16))
+                        .foregroundColor(.none)
+                        .multilineTextAlignment(.leading)
+                    Text(toDo_6)
+                        .foregroundColor(.accentColor)
+                        .padding()
+                    Text(toDo_7)
                         .font(.custom("courier", size: 16))
                         .foregroundColor(.none)
                         .multilineTextAlignment(.leading)
