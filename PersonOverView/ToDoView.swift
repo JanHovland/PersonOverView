@@ -68,9 +68,6 @@ struct ToDoView: View {
         NavigationView {
             ScrollView (.vertical, showsIndicators: false) {
                 VStack {
-                    Text("To be done")
-                        .font(.title)
-                        .padding()
                     Text(toDo)
                         .font(.custom("courier", size: 16))
                         .foregroundColor(.none)
@@ -78,16 +75,16 @@ struct ToDoView: View {
                 }
             }
             .padding()
+            .navigationBarTitle(NSLocalizedString("To do", comment: "ToDoView"))
+            .navigationBarItems(leading:
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    Text("Cancel")
+                        .foregroundColor(.none)
+                })
+            )
         }
-        .navigationBarTitle(NSLocalizedString("To do", comment: "ToDoView"))
-        .navigationBarItems(leading:
-            Button(action: {
-                self.presentationMode.wrappedValue.dismiss()
-            }, label: {
-                Text("Cancel")
-                    .foregroundColor(.none)
-            })
-        )
   }
 }
 
