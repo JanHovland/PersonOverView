@@ -26,6 +26,7 @@ struct SignInView : View {
     @State private var showDeleteUserView: Bool = false
     @State private var showAdministrationView: Bool = false
     @State private var showToDoView: Bool = false
+    @State private var showPersonView: Bool = false
 
     @State private var alertIdentifier: AlertID?
 
@@ -142,6 +143,28 @@ struct SignInView : View {
                     }
                     .sheet(isPresented: $showToDoView) {
                         ToDoView()
+                    }
+                    Spacer(minLength: 32)
+                    /// Personer
+                    HStack {
+                        Button(action: {
+                            if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
+                                self.showPersonView.toggle()
+                            } else {
+                                self.message = NSLocalizedString("Name, eMail and Password must have a value", comment: "SignInView")
+                                self.alertIdentifier = AlertID(id: .first)
+                            }
+                        }, label: {
+                            HStack {
+                                Text(NSLocalizedString("Persons", comment: "SignInView"))
+                                Image(systemName: "person")
+                                    .font(Font.system(.headline).weight(.ultraLight))
+                            }
+                            .foregroundColor(.red)
+                        })
+                    }
+                    .sheet(isPresented: $showPersonView) {
+                        PersonView()
                     }
                     /// Uten padding blir noe av visningen kuttet bort
                     .padding()
