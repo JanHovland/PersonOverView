@@ -13,7 +13,9 @@
 import SwiftUI
 
 struct PersonView : View {
-    
+
+    @Environment(\.presentationMode) var presentationMode
+
     @State private var firstName: String = ""
     @State var lastName: String = ""
     @State var personEmail: String = ""
@@ -90,9 +92,23 @@ struct PersonView : View {
                 /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
                 .modifier(AdaptsToSoftwareKeyboard())
 
-            .navigationBarTitle("Person")
-        }
-
+                .navigationBarTitle("Person")
+                .navigationBarItems(leading:
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Text("Cancel")
+                            .foregroundColor(.none)
+                    })
+                    , trailing:
+                    Button(action: {
+                        /// Save person data
+                        self.presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Text("Save")
+                            .foregroundColor(.none)
+                    })
+            )}
     }
 }
 

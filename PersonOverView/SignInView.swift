@@ -102,7 +102,7 @@ struct SignInView : View {
                         /// må kalles på denne måten for å kunne benytte flere environmentObject
                         UserDeleteView().environmentObject(self.user)
                     }
-                    /// Delete user
+                    /// Settings
                     HStack {
                         Button(action: {
                             if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
@@ -113,7 +113,7 @@ struct SignInView : View {
                             }
                         }, label: {
                             HStack {
-                                Text(NSLocalizedString("Administration", comment: "SignInView"))
+                                Text(NSLocalizedString("Settings", comment: "SignInView"))
                                 Image(systemName: "gear")
                                     .font(Font.system(.headline).weight(.thin))
                             }
@@ -121,7 +121,7 @@ struct SignInView : View {
                         })
                     }
                     .sheet(isPresented: $showAdministrationView) {
-                        AdministrationView()
+                        SettingView()
                     }
                     /// ToDo
                     HStack {
@@ -144,7 +144,6 @@ struct SignInView : View {
                     .sheet(isPresented: $showToDoView) {
                         ToDoView()
                     }
-                    Spacer(minLength: 32)
                     /// Personer
                     HStack {
                         Button(action: {

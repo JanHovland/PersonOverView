@@ -35,14 +35,6 @@ struct PersonOverView: View {
                     }
                 }
                 .tag(1)
-            PersonView()
-                .tabItem {
-                    VStack {
-                        Image(systemName: "person.crop.circle")
-                        Text("Persons")
-                    }
-                }
-                .tag(2)
         }
     }
 }
