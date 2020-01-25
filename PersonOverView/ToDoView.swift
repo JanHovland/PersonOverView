@@ -10,7 +10,7 @@ import SwiftUI
 
 var toDo_0 =
 """
- E n d r i n g e r :
+ E n d r i n g e r
 """
 
 var toDo_1 =
@@ -20,7 +20,7 @@ var toDo_1 =
 
 var toDo_2 =
 """
- F e r d i g :
+ F e r d i g
 """
 
 var toDo_3 =
@@ -59,7 +59,7 @@ var toDo_3 =
 
 var toDo_4 =
 """
-S e n e r e (om mulig) :
+S e n e r e
 """
 
 var toDo_5 =
@@ -70,12 +70,11 @@ var toDo_5 =
 
 var toDo_6 =
 """
-K j e n t e  f e i l:
+K j e n t e   f e i l
 """
 
 var toDo_7 =
 """
-
 1. Når en bytter showPassword, oppdateres ikke "SignInView.swift" automatisk.
         a) Foreløpig løsning: Skift til "SignUpView.swift" og så
            tilbake til "SignInView.swift"
@@ -90,31 +89,35 @@ struct ToDoView: View {
             ScrollView (.vertical, showsIndicators: false) {
                 VStack {
                     Text(toDo_0)
+                        .font(.custom("system", size: 24)).bold()
                         .foregroundColor(.accentColor)
                         .padding()
                     Text(toDo_1)
-                        .font(.custom("courier", size: 16))
+                        .font(.custom("system", size: 16))
                         .foregroundColor(.none)
                         .multilineTextAlignment(.leading)
                     Text(toDo_2)
+                        .font(.custom("system", size: 24)).bold()
                         .foregroundColor(.accentColor)
                         .padding()
                     Text(toDo_3)
-                        .font(.custom("courier", size: 16))
+                        .font(.custom("system", size: 16))
                         .foregroundColor(.none)
                         .multilineTextAlignment(.leading)
                     Text(toDo_4)
+                        .font(.custom("system", size: 24)).bold()
                         .foregroundColor(.accentColor)
                         .padding()
                     Text(toDo_5)
-                        .font(.custom("courier", size: 16))
+                        .font(.custom("system", size: 16))
                         .foregroundColor(.none)
                         .multilineTextAlignment(.leading)
                     Text(toDo_6)
+                        .font(.custom("system", size: 24)).bold()
                         .foregroundColor(.accentColor)
                         .padding()
                     Text(toDo_7)
-                        .font(.custom("courier", size: 16))
+                        .font(.custom("system", size: 16))
                         .foregroundColor(.none)
                         .multilineTextAlignment(.leading)
                 }
