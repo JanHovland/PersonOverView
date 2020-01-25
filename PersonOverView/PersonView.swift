@@ -71,7 +71,7 @@ struct PersonView : View {
                                    value: $municipality)
                     DatePicker(
                         selection: $dateOfBirth,
-                        // in: ...Date(),
+                        in: ...Date(),
                         displayedComponents: [.date],
                         label: {
                             Text(NSLocalizedString("Date of birth", comment: "PersonView"))

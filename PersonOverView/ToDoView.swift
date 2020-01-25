@@ -15,7 +15,7 @@ var toDo_0 =
 
 var toDo_1 =
 """
- 1. Oppgave 1
+ 1. Må sjekke Datepicker mht. in: ...Date()
 """
 
 var toDo_2 =
