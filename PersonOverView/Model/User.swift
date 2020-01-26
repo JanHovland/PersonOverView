@@ -6,7 +6,6 @@
 //  Copyright © 2020 Jan Hovland. All rights reserved.
 //
 
-import Combine
 import SwiftUI
 import CloudKit
 

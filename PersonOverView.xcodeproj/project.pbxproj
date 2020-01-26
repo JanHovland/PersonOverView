@@ -26,6 +26,7 @@
 		DB302B8F237EF43400076D10 /* CloudKitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B8E237EF43400076D10 /* CloudKitUser.swift */; };
 		DB302B93237FDD8600076D10 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB302B92237FDD8600076D10 /* CloudKit.framework */; };
 		DB46938023B9F0A50060933E /* ToDoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB46937F23B9F0A50060933E /* ToDoView.swift */; };
+		DB4A8F3523DE264900558788 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4A8F3423DE264900558788 /* Person.swift */; };
 		DB6739C123AA910E00EF9ECD /* SwiftUIImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6739C023AA910E00EF9ECD /* SwiftUIImagePicker.swift */; };
 		DB6739C423AD46A800EF9ECD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB6739C223AD46A800EF9ECD /* InfoPlist.strings */; };
 		DB6739C723AD46A800EF9ECD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB6739C523AD46A800EF9ECD /* Localizable.strings */; };
@@ -65,6 +66,7 @@
 		DB302B90237FDD7200076D10 /* PersonOverView.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonOverView.entitlements; sourceTree = "<group>"; };
 		DB302B92237FDD8600076D10 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		DB46937F23B9F0A50060933E /* ToDoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoView.swift; sourceTree = "<group>"; };
+		DB4A8F3423DE264900558788 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		DB6739C023AA910E00EF9ECD /* SwiftUIImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIImagePicker.swift; sourceTree = "<group>"; };
 		DB6739C823AD495500EF9ECD /* nb-NO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nb-NO"; path = "nb-NO.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		DB6739C923AD495500EF9ECD /* nb-NO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nb-NO"; path = "nb-NO.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 		DB302B68237EF02300076D10 /* PersonOverView */ = {
 			isa = PBXGroup;
 			children = (
+				DB4A8F3323DE260700558788 /* Model */,
 				DB302B69237EF02300076D10 /* AppDelegate.swift */,
 				DB28D73A23D615E900CF6915 /* AlertID.swift */,
 				DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */,
@@ -142,7 +145,6 @@
 				DB6739C023AA910E00EF9ECD /* SwiftUIImagePicker.swift */,
 				DB46937F23B9F0A50060933E /* ToDoView.swift */,
 				DB302B80237EF16200076D10 /* UserElement.swift */,
-				DBFC29CE23C74D6900F2224B /* User.swift */,
 				DB9A4DD823CDE2AE00948B21 /* UserDeleteView.swift */,
 				DB302B82237EF18D00076D10 /* UserElements.swift */,
 				DBFC29CA23C5DE8500F2224B /* UserMaintenanceView.swift */,
@@ -165,6 +167,15 @@
 				DB302B92237FDD8600076D10 /* CloudKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DB4A8F3323DE260700558788 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DB4A8F3423DE264900558788 /* Person.swift */,
+				DBFC29CE23C74D6900F2224B /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +270,7 @@
 				DBE58AD323CF79E900D3EF1D /* FormField.swift in Sources */,
 				DB1FEF91238055FE00F8D763 /* InputTextField.swift in Sources */,
 				DBE58ACF23CF2D5300D3EF1D /* resizedImage.swift in Sources */,
+				DB4A8F3523DE264900558788 /* Person.swift in Sources */,
 				DB302B85237EF27400076D10 /* SignInView.swift in Sources */,
 				DB302B83237EF18D00076D10 /* UserElements.swift in Sources */,
 				DB46938023B9F0A50060933E /* ToDoView.swift in Sources */,
