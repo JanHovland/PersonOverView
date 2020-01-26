@@ -58,8 +58,8 @@ struct PersonView : View {
                                    value: $phoneNumber)
                     HStack (alignment: .center, spacing: 0) {
                         InputTextField(secure: false,
-                                       heading: NSLocalizedString("Number", comment: "PersonView"),
-                                       placeHolder: NSLocalizedString("Number", comment: "PersonView"),
+                                       heading: NSLocalizedString("Postalcode", comment: "PersonView"),
+                                       placeHolder: NSLocalizedString("Enter number", comment: "PersonView"),
                                        value: $cityNumber)
                         InputTextField(secure: false,
                                        heading: NSLocalizedString("City", comment: "PersonView"),
@@ -73,8 +73,8 @@ struct PersonView : View {
                     }
                     HStack (alignment: .center, spacing: 0) {
                         InputTextField(secure: false,
-                                       heading: NSLocalizedString("Number", comment: "PersonView"),
-                                       placeHolder: NSLocalizedString("Number", comment: "PersonView"),
+                                       heading: NSLocalizedString("Municipality number", comment: "PersonView"),
+                                       placeHolder: NSLocalizedString("Enter number", comment: "PersonView"),
                                        value: $municipalityNumber)
                         InputTextField(secure: false,
                                        heading: NSLocalizedString("Municipality", comment: "PersonView"),

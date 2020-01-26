@@ -101,6 +101,9 @@
 /* PersonView */
 "Municipality" = "Kommune";
 
+/* PersonView */
+"Municipality number" = "Kommune nummer";
+
 /* SignInView */
 "Name, eMail and Password must have a value" = "Navn, e-post og passord må ha en verdi";
 
@@ -110,9 +113,6 @@
 /* UserDeleteView
    UserMaintenanceView */
 "No" = "Nei";
-
-/* PersonView */
-"Number" = "Nummer";
 
 /* SignInView */
 "Options Menu" = "Meny valg";
@@ -129,6 +129,9 @@
 
 /* PersonView */
 "Phone Number" = "Telefonnummer";
+
+/* PersonView */
+"Postalcode" = "Postkode";
 
 /* No comment provided by engineer. */
 "Save" = "Lagre";
