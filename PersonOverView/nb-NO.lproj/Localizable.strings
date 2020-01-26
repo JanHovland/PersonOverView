@@ -4,10 +4,6 @@
 /* PersonView */
 "Address" = "Addresse";
 
-/* AdministrationView
-   SignInView */
-"Administration" = "Administrasjon";
-
 /* SignUpView */
 "already exists" = "finnes allerede";
 
@@ -121,14 +117,17 @@
    UserMaintenanceView */
 "No" = "Nei";
 
-/* AdministrationView
+/* SignInView */
+"Options Menu" = "Valgmeny";
+
+/* SettingView
    SignInView
    SignUpView
    UserDeleteView
    UserMaintenanceView */
 "Password" = "Passord";
 
-/* No comment provided by engineer. */
+/* SignInView */
 "Persons" = "Personer";
 
 /* PersonView */
@@ -137,10 +136,11 @@
 /* No comment provided by engineer. */
 "Save" = "Lagre";
 
-/* SignInView */
+/* SettingView
+   SignInView */
 "Settings" = "Innstillinger";
 
-/* AdministrationView */
+/* SettingView */
 "Show password" = "Vis passord";
 
 /* No comment provided by engineer. */
@@ -167,10 +167,8 @@
 /* SignUpView */
 "The user:" = "Brukeren:";
 
-/* No comment provided by engineer. */
-"To be done" = "Oppgaver";
-
-/* SignInView */
+/* SignInView
+   ToDoView */
 "To do" = "Oppgaver";
 
 /* SignInView
