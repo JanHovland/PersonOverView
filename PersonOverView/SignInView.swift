@@ -150,7 +150,7 @@ struct SignInView : View {
                     .sheet(isPresented: $showToDoView) {
                         ToDoView()
                     }
-                    /// Personer
+                    /// Person
                     HStack {
                         Button(action: {
                             if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
@@ -161,8 +161,8 @@ struct SignInView : View {
                             }
                         }, label: {
                             HStack {
-                                Text(NSLocalizedString("Persons", comment: "SignInView"))
-                                Image(systemName: "person.2")
+                                Text(NSLocalizedString("Person", comment: "SignInView"))
+                                Image(systemName: "person")
                                     .font(Font.system(.headline).weight(.thin))
                             }
                             .foregroundColor(.red)

@@ -22,7 +22,9 @@ struct PersonView : View {
     @State var address: String = ""
     @State var phoneNumber: String = ""
     @State var city: String = ""
+    @State var cityNumber: String = ""
     @State var municipality: String = ""
+    @State var municipalityNumber: String = ""
     @State var gender = 0
     @State var dateOfBirth = Date()
     
@@ -54,10 +56,14 @@ struct PersonView : View {
                                    heading: NSLocalizedString("Phone Number", comment: "PersonView"),
                                    placeHolder: NSLocalizedString("Enter your phone number", comment: "PersonView"),
                                    value: $phoneNumber)
-                    HStack {
+                    HStack (alignment: .center, spacing: 0) {
+                        InputTextField(secure: false,
+                                       heading: NSLocalizedString("Number", comment: "PersonView"),
+                                       placeHolder: NSLocalizedString("Number", comment: "PersonView"),
+                                       value: $cityNumber)
                         InputTextField(secure: false,
                                        heading: NSLocalizedString("City", comment: "PersonView"),
-                                       placeHolder: NSLocalizedString("Enter the city", comment: "PersonView"),
+                                       placeHolder: NSLocalizedString("City", comment: "PersonView"),
                                        value: $city)
                         Image(systemName: "magnifyingglass")
                             .resizable()
@@ -65,10 +71,16 @@ struct PersonView : View {
                             .foregroundColor(.blue)
                             .font(.title)
                     }
-                    InputTextField(secure: false,
-                                   heading: NSLocalizedString("Municipality", comment: "PersonView"),
-                                   placeHolder: NSLocalizedString("Enter your municipality", comment: "PersonView"),
-                                   value: $municipality)
+                    HStack (alignment: .center, spacing: 0) {
+                        InputTextField(secure: false,
+                                       heading: NSLocalizedString("Number", comment: "PersonView"),
+                                       placeHolder: NSLocalizedString("Number", comment: "PersonView"),
+                                       value: $municipalityNumber)
+                        InputTextField(secure: false,
+                                       heading: NSLocalizedString("Municipality", comment: "PersonView"),
+                                       placeHolder: NSLocalizedString("Municipality", comment: "PersonView"),
+                                       value: $municipality)
+                    }
                     DatePicker(
                         selection: $dateOfBirth,
                         in: ...Date(),

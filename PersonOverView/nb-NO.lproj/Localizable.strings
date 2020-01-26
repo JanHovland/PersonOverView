@@ -24,7 +24,7 @@
 "Choose Profile Image" = "Velg profilbilde";
 
 /* PersonView */
-"City" = "By/Tettsted";
+"City" = "Sted";
 
 /* PersonView */
 "Date of birth" = "Fødselsdato";
@@ -46,9 +46,6 @@
 "eMail address" = "e-post";
 
 /* PersonView */
-"Enter the city" = "Legg inn by/tettsted";
-
-/* PersonView */
 "Enter your address" = "Legg inn adresse";
 
 /* PersonView
@@ -62,9 +59,6 @@
 
 /* PersonView */
 "Enter your last name" = "Legg inn etternavn";
-
-/* PersonView */
-"Enter your municipality" = "Legg inn kommune";
 
 /* SignUpView
    UserMaintenanceView */
@@ -89,7 +83,7 @@
 
 /* UserDeleteView
    UserMaintenanceView */
-"Hold and release to activate the actions below" = "Trykk hardt og slipp for å aktivere handlingene nedenfor";
+"Hold and release to activate the actions below" = "Trykk hardt og så slipp for å aktivere handlingene nedenfor";
 
 /* PersonView */
 "Last name" = "Etternavn";
@@ -117,6 +111,9 @@
    UserMaintenanceView */
 "No" = "Nei";
 
+/* PersonView */
+"Number" = "Nummer";
+
 /* SignInView */
 "Options Menu" = "Meny valg";
 
@@ -128,7 +125,7 @@
 "Password" = "Passord";
 
 /* SignInView */
-"Persons" = "Personer";
+"Person" = "Person";
 
 /* PersonView */
 "Phone Number" = "Telefonnummer";

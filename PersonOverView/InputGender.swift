@@ -15,7 +15,7 @@ struct InputGender: View {
     
     var body: some View {
         VStack {
-            HStack {
+            HStack (alignment: .center, spacing: 90) {
                 Text(heading)
                     .font(.footnote)
                     .foregroundColor(.accentColor)
