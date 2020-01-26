@@ -54,8 +54,8 @@ struct SignInView : View {
                     }
                 }
                 HStack (alignment: .center, spacing: 10) {
-                    Text(NSLocalizedString("Settings", comment: "SignInView"))
-                    Image(systemName: "gear")
+                    Text(NSLocalizedString("Options Menu", comment: "SignInView"))
+                    Image(systemName: "line.horizontal.3")
                 }
                 .foregroundColor(.accentColor)
                 .padding(10)
@@ -72,7 +72,7 @@ struct SignInView : View {
                         }, label: {
                             Text(NSLocalizedString("User maintenance", comment: "SignInView"))
                             Image(systemName: "square.and.pencil")
-                                .font(Font.system(.headline).weight(.ultraLight))
+                                .font(Font.system(.headline).weight(.thin))
 
                         })
                     }
@@ -136,7 +136,7 @@ struct SignInView : View {
                             HStack {
                                 Text(NSLocalizedString("To do", comment: "SignInView"))
                                 Image(systemName: "square.and.pencil")
-                                    .font(Font.system(.headline).weight(.ultraLight))
+                                    .font(Font.system(.headline).weight(.thin))
                             }
                             .foregroundColor(.red)
                         })
@@ -156,8 +156,8 @@ struct SignInView : View {
                         }, label: {
                             HStack {
                                 Text(NSLocalizedString("Persons", comment: "SignInView"))
-                                Image(systemName: "person")
-                                    .font(Font.system(.headline).weight(.ultraLight))
+                                Image(systemName: "person.2")
+                                    .font(Font.system(.headline).weight(.thin))
                             }
                             .foregroundColor(.red)
                         })
