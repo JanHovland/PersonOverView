@@ -15,7 +15,7 @@ var toDo_0 =
 
 var toDo_1 =
 """
- 1. Må sjekke Datepicker mht. in: ...Date()
+ 1. Oppgave 1.......................
 """
 
 var toDo_2 =
@@ -54,7 +54,10 @@ var toDo_3 =
 14. .alert kan bare legges inn en gang
        a) Lagt inn: struct AlertID
 15. Ta bort Scroll indicators:
-       a) ScrollView (.vertical, showsIndicators: false) {
+       a) Løsning: ScrollView (.vertical, showsIndicators: false)
+16. Må skjule "Meny valg" før innlogging
+       a) Løsning: .opacity(showOptionMenu ? 1 : 0)
+          og showOptionMenu settes til true når en finner brukeren
 """
 
 var toDo_4 =

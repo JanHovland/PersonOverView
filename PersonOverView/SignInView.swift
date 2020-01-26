@@ -28,6 +28,8 @@ struct SignInView : View {
     @State private var showToDoView: Bool = false
     @State private var showPersonView: Bool = false
 
+    @State private var showOptionMenu = false
+
     @State private var alertIdentifier: AlertID?
 
     var body: some View {
@@ -55,7 +57,11 @@ struct SignInView : View {
                 }
                 HStack (alignment: .center, spacing: 10) {
                     Text(NSLocalizedString("Options Menu", comment: "SignInView"))
+                        /// Skjuler teksten uten å påvirke layout
+                        .opacity(showOptionMenu ? 1 : 0)
                     Image(systemName: "line.horizontal.3")
+                        /// Skjuler bildet  uten å påvirke layout
+                        .opacity(showOptionMenu ? 1 : 0)
                 }
                 .foregroundColor(.accentColor)
                 .padding(10)
@@ -206,6 +212,8 @@ struct SignInView : View {
                 VStack {
                     Button(action: {
                         if self.user.email.count > 0, self.user.password.count > 0 {
+                            /// Skjuler OptionMenu
+                            self.showOptionMenu = false
                             let email = self.user.email
                             /// Check different predicates at :   https://nspredicate.xyz
                             /// %@ : an object (eg: String, date etc), whereas %i will be substituted with an integer.
@@ -227,6 +235,8 @@ struct SignInView : View {
                                                 self.user.image = nil
                                             }
                                             self.user.recordID = userItem.recordID
+                                            /// Viser OptionMenu
+                                            self.showOptionMenu = true
                                         case .failure(let err):
                                             self.message = err.localizedDescription
                                             self.alertIdentifier = AlertID(id: .first)
