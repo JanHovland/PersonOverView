@@ -10,9 +10,9 @@ import SwiftUI
 import CloudKit
 
 class User: ObservableObject {
+     @Published var recordID: CKRecord.ID?
      @Published var name = ""
      @Published var email = "a"
      @Published var password = "a"
      @Published var image: UIImage?
-     @Published var recordID: CKRecord.ID?
 }
