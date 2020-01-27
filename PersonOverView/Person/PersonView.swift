@@ -17,17 +17,17 @@ struct PersonView : View {
     @Environment(\.presentationMode) var presentationMode
 
     @State private var firstName: String = ""
-    @State var lastName: String = ""
-    @State var personEmail: String = ""
-    @State var address: String = ""
-    @State var phoneNumber: String = ""
-    @State var city: String = ""
-    @State var cityNumber: String = ""
-    @State var municipality: String = ""
-    @State var municipalityNumber: String = ""
-    @State var gender = 0
-    @State var dateOfBirth = Date()
-    
+    @State private var lastName: String = ""
+    @State private var personEmail: String = ""
+    @State private var address: String = ""
+    @State private var phoneNumber: String = ""
+    @State private var cityNumber: String = ""
+    @State private var city: String = ""
+    @State private var municipalityNumber: String = ""
+    @State private var municipality: String = ""
+    @State private var dateOfBirth = Date()
+    @State private var gender = 0
+
     var genders = [NSLocalizedString("Man", comment: "PersonView"),
                    NSLocalizedString("Woman", comment: "PersonView")]
     
