@@ -49,6 +49,12 @@
 "eMail address" = "e-post";
 
 /* PersonView */
+"Enter city" = "Legg inn sted";
+
+/* PersonView */
+"Enter municipality" = "Legg inn kommune";
+
+/* PersonView */
 "Enter number" = "Legg inn nummer";
 
 /* PersonView */

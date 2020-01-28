@@ -75,7 +75,7 @@ struct PersonView : View {
                             .keyboardType(.numberPad)
                         InputTextField(secure: false,
                                        heading: NSLocalizedString("City", comment: "PersonView"),
-                                       placeHolder: NSLocalizedString("City", comment: "PersonView"),
+                                       placeHolder: NSLocalizedString("Enter city", comment: "PersonView"),
                                        value: $person.city)
                             .autocapitalization(.words)
                         Image(systemName: "magnifyingglass")
@@ -92,7 +92,7 @@ struct PersonView : View {
                             .keyboardType(.numberPad)
                         InputTextField(secure: false,
                                        heading: NSLocalizedString("Municipality", comment: "PersonView"),
-                                       placeHolder: NSLocalizedString("Municipality", comment: "PersonView"),
+                                       placeHolder: NSLocalizedString("Enter municipality", comment: "PersonView"),
                                        value: $person.municipality)
                             .autocapitalization(.words)
                     }
