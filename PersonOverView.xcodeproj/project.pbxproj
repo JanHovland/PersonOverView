@@ -26,11 +26,14 @@
 		DB302B93237FDD8600076D10 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB302B92237FDD8600076D10 /* CloudKit.framework */; };
 		DB46938023B9F0A50060933E /* ToDoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB46937F23B9F0A50060933E /* ToDoView.swift */; };
 		DB4A8F3523DE264900558788 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4A8F3423DE264900558788 /* Person.swift */; };
+		DB4A8F3B23DEE76400558788 /* PersonElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4A8F3A23DEE76400558788 /* PersonElement.swift */; };
+		DB4A8F3E23DEE79200558788 /* PersonElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4A8F3D23DEE79200558788 /* PersonElements.swift */; };
+		DB4A8F4023DEE87B00558788 /* CloudKitPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4A8F3F23DEE87B00558788 /* CloudKitPerson.swift */; };
 		DB6739C123AA910E00EF9ECD /* SwiftUIImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6739C023AA910E00EF9ECD /* SwiftUIImagePicker.swift */; };
 		DB6739C423AD46A800EF9ECD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB6739C223AD46A800EF9ECD /* InfoPlist.strings */; };
 		DB6739C723AD46A800EF9ECD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB6739C523AD46A800EF9ECD /* Localizable.strings */; };
 		DB6739CB23AE2B0600EF9ECD /* OutputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6739CA23AE2B0600EF9ECD /* OutputTextField.swift */; };
-		DB691A2023CB31ED004CDBE8 /* CloudKitRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB691A1F23CB31ED004CDBE8 /* CloudKitRecord.swift */; };
+		DB691A2023CB31ED004CDBE8 /* CloudKitRecordXXX.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB691A1F23CB31ED004CDBE8 /* CloudKitRecordXXX.swift */; };
 		DB9A4DD923CDE2AE00948B21 /* UserDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9A4DD823CDE2AE00948B21 /* UserDeleteView.swift */; };
 		DBB4C62823B6301F0055296B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB4C62723B6301F0055296B /* ImagePicker.swift */; };
 		DBDA561A23BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */; };
@@ -64,11 +67,14 @@
 		DB302B92237FDD8600076D10 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		DB46937F23B9F0A50060933E /* ToDoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoView.swift; sourceTree = "<group>"; };
 		DB4A8F3423DE264900558788 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		DB4A8F3A23DEE76400558788 /* PersonElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonElement.swift; sourceTree = "<group>"; };
+		DB4A8F3D23DEE79200558788 /* PersonElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonElements.swift; sourceTree = "<group>"; };
+		DB4A8F3F23DEE87B00558788 /* CloudKitPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitPerson.swift; sourceTree = "<group>"; };
 		DB6739C023AA910E00EF9ECD /* SwiftUIImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIImagePicker.swift; sourceTree = "<group>"; };
 		DB6739C823AD495500EF9ECD /* nb-NO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nb-NO"; path = "nb-NO.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		DB6739C923AD495500EF9ECD /* nb-NO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nb-NO"; path = "nb-NO.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		DB6739CA23AE2B0600EF9ECD /* OutputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputTextField.swift; sourceTree = "<group>"; };
-		DB691A1F23CB31ED004CDBE8 /* CloudKitRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitRecord.swift; sourceTree = "<group>"; };
+		DB691A1F23CB31ED004CDBE8 /* CloudKitRecordXXX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitRecordXXX.swift; sourceTree = "<group>"; };
 		DB9A4DD823CDE2AE00948B21 /* UserDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDeleteView.swift; sourceTree = "<group>"; };
 		DBB4C62723B6301F0055296B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptsToSoftwareKeyboard.swift; sourceTree = "<group>"; };
@@ -152,6 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				DB4A8F3423DE264900558788 /* Person.swift */,
+				DB4A8F3A23DEE76400558788 /* PersonElement.swift */,
+				DB4A8F3D23DEE79200558788 /* PersonElements.swift */,
 				DBFC29CE23C74D6900F2224B /* User.swift */,
 				DB302B80237EF16200076D10 /* UserElement.swift */,
 				DB302B82237EF18D00076D10 /* UserElements.swift */,
@@ -178,8 +186,9 @@
 		DB4A8F3723DEDC8D00558788 /* CloudKit */ = {
 			isa = PBXGroup;
 			children = (
-				DB691A1F23CB31ED004CDBE8 /* CloudKitRecord.swift */,
+				DB691A1F23CB31ED004CDBE8 /* CloudKitRecordXXX.swift */,
 				DB302B8E237EF43400076D10 /* CloudKitUser.swift */,
+				DB4A8F3F23DEE87B00558788 /* CloudKitPerson.swift */,
 			);
 			path = CloudKit;
 			sourceTree = "<group>";
@@ -281,14 +290,17 @@
 				DBDA561A23BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift in Sources */,
 				DBE58AD123CF798000D3EF1D /* DismissingKeyboard.swift in Sources */,
 				DB302B6F237EF02300076D10 /* PersonOverView.xcdatamodeld in Sources */,
+				DB4A8F3E23DEE79200558788 /* PersonElements.swift in Sources */,
 				DB302B6A237EF02300076D10 /* AppDelegate.swift in Sources */,
 				DBB4C62823B6301F0055296B /* ImagePicker.swift in Sources */,
+				DB4A8F4023DEE87B00558788 /* CloudKitPerson.swift in Sources */,
 				DB302B71237EF02300076D10 /* PersonOverView.swift in Sources */,
 				DB302B81237EF16200076D10 /* UserElement.swift in Sources */,
 				DB302B8B237EF33100076D10 /* PersonView.swift in Sources */,
+				DB4A8F3B23DEE76400558788 /* PersonElement.swift in Sources */,
 				DB28D73B23D615E900CF6915 /* AlertID.swift in Sources */,
 				DB1FEF932380592F00F8D763 /* InputGender.swift in Sources */,
-				DB691A2023CB31ED004CDBE8 /* CloudKitRecord.swift in Sources */,
+				DB691A2023CB31ED004CDBE8 /* CloudKitRecordXXX.swift in Sources */,
 				DB302B87237EF2A700076D10 /* SignUpView.swift in Sources */,
 				DBFC29C323C48F6C00F2224B /* SettingView.swift in Sources */,
 				DB302B6C237EF02300076D10 /* SceneDelegate.swift in Sources */,

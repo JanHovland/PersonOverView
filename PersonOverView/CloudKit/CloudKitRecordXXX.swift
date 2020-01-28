@@ -1,5 +1,5 @@
 //
-//  CloudKitRecord.swift
+//  CloudKitRecordXXX.swift
 //  PersonOverView
 //
 //  Created by Jan Hovland on 12/01/2020.
@@ -9,7 +9,7 @@
 import SwiftUI
 import CloudKit
 
-struct CloudKitRecord {
+struct CloudKitRecordXXXX {
 
     static func saveUser(item: UserElement) -> String {
         var error = ""

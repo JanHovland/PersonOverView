@@ -69,6 +69,7 @@ var toDo_5 =
 """
 1. Trykke på bildet istedet for på teksten i "SignUpView.swift"
    ... Bruk: .contextMenu
+2. Legge inn søking på postnummer
 """
 
 var toDo_6 =
@@ -81,6 +82,9 @@ var toDo_7 =
 1. Når en bytter showPassword, oppdateres ikke "SignInView.swift" automatisk.
         a) Foreløpig løsning: Skift til "SignUpView.swift" og så
            tilbake til "SignInView.swift"
+2. Det mangler .keyboadType(.phone).
+   Nå brukes default keyboardType
+
 """
 
 struct ToDoView: View {

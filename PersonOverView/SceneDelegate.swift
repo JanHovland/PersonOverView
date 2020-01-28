@@ -14,6 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     var userElements = UserElements()
     var imagePicker = ImagePicker()
+    var person = Person()
     var user = User()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -36,7 +37,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.rootViewController = UIHostingController(rootView:
                 PersonOverView().environmentObject(userElements)
                                 .environmentObject(imagePicker)
-                                .environmentObject(user)                         )
+                                .environmentObject(person)
+                                .environmentObject(user))
             self.window = window
             window.makeKeyAndVisible()
         }

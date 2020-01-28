@@ -21,6 +21,6 @@ class Person: ObservableObject {
     @Published var municipalityNumber: String = ""
     @Published var municipality: String = ""
     @Published var dateOfBirth = Date()
-    @Published var gender = 0
+    @Published var gender: Int = 0
     @Published var image: UIImage?
 }

@@ -1,3 +1,6 @@
+/* PersonView */
+"Added new person:" = "Lagt til ny person:";
+
 /* SignUpView */
 "Added new user:" = "Ny bruker er registrert :";
 
@@ -16,7 +19,7 @@
 /* SignInView */
 "Both email and Password must have a value" = "Både e-post og passord må ha en verdi";
 
-/* No comment provided by engineer. */
+/* PersonView */
 "Cancel" = "Avbryt";
 
 /* SignUpView
@@ -77,6 +80,9 @@
 
 /* PersonView */
 "First name" = "Fornavn";
+
+/* PersonView */
+"First name and last name must both contain a value." = "For- og etternavn må begge ha verdier.";
 
 /* PersonView */
 "Gender" = "Kjønn";
@@ -164,6 +170,9 @@
 /* UserMaintenanceView */
 "Successfully modified the user" = "Brukeren er oppdatert";
 
+/* PersonView */
+"The person:" = "Personen:";
+
 /* SignUpView */
 "The user:" = "Brukeren:";
 
@@ -184,6 +193,9 @@
 /* SignInView
    UserMaintenanceView */
 "User maintenance" = "Bruker vedlikehold";
+
+/* PersonView */
+"was modified" = "ble modifisert";
 
 /* PersonView */
 "Woman" = "Kvinne";

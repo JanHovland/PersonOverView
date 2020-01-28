@@ -18,6 +18,7 @@ import Combine
 struct SignInView : View {
     
     @EnvironmentObject var user: User
+    @EnvironmentObject var person: Person
     @Environment(\.presentationMode) var presentationMode
 
     @State private var message: String = ""
@@ -169,7 +170,7 @@ struct SignInView : View {
                         })
                     }
                     .sheet(isPresented: $showPersonView) {
-                        PersonView()
+                        PersonView().environmentObject(self.person)
                     }
                     /// Uten padding blir noe av visningen kuttet bort
                     .padding()
