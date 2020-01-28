@@ -34,22 +34,9 @@ struct PersonView : View {
                                            gender: 0,
                                            image: nil)
 
-    @State  var newItem = PersonElement(firstName: "",
-                                        lastName: "",
-                                        personEmail: "",
-                                        address: "",
-                                        phoneNumber: "",
-                                        cityNumber: "",
-                                        city: "",
-                                        municipalityNumber: "",
-                                        municipality: "",
-                                        dateOfBirth: Date(),
-                                        gender: 0,
-                                        image: nil)
-
     var genders = [NSLocalizedString("Man", comment: "PersonView"),
                    NSLocalizedString("Woman", comment: "PersonView")]
-    
+
     var body: some View {
         NavigationView {
             VStack {
@@ -126,12 +113,6 @@ struct PersonView : View {
             }
                 // Removes all separators below in the List view
                 .listStyle(GroupedListStyle())
-
-                /// Ta bort tastaturet når en klikker utenfor feltet
-                .modifier(DismissingKeyboard())
-                /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
-                .modifier(AdaptsToSoftwareKeyboard())
-
                 .navigationBarTitle("Person")
                 .navigationBarItems(leading:
                     Button(action: {
@@ -147,17 +128,14 @@ struct PersonView : View {
                             CloudKitPerson.doesPersonExist(firstName: self.person.firstName,
                                                            lastName: self.person.lastName) { (result) in
                                                             if result == false {
-
                                                                 self.personItem.firstName = self.person.firstName
                                                                 self.personItem.lastName = self.person.lastName
                                                                 self.personItem.personEmail = self.person.personEmail
-
                                                                 CloudKitPerson.savePerson(item: self.personItem) { (result) in
                                                                     switch result {
                                                                     case .success:
                                                                         let message1 = NSLocalizedString("Added new person:", comment: "PersonView")
-                                                                        self.message = message1 + " '\(self.personItem.firstName)" +
-                                                                        " \(self.personItem.lastName)'"
+                                                                        self.message = message1 + " '\(self.personItem.firstName)" + " \(self.personItem.lastName)'"
                                                                         self.alertIdentifier = AlertID(id: .first)
                                                                     case .failure(let err):
                                                                         print(err.localizedDescription)
@@ -166,14 +144,10 @@ struct PersonView : View {
                                                                     }
                                                                 }
                                                             } else {
-                                                                self.personItem.firstName = self.person.firstName
-                                                                self.personItem.lastName = self.person.lastName
-                                                                // self.personItem.personEmail = self.person.personEmail
-
                                                                 let firstName = self.person.firstName
                                                                 let lastName = self.person.lastName
                                                                 let predicate = NSPredicate(format: "firstName == %@ AND lastName == %@", firstName, lastName)
-
+                                                                /// Må finne recordID for å kunne modifisere personen  i  CloudKit
                                                                 CloudKitPerson.fetchPerson(predicate: predicate) { (result) in
                                                                     switch result {
                                                                     case .success(let personItem):
@@ -195,25 +169,35 @@ struct PersonView : View {
                                                                     }
                                                                 }
 
-//                                                                if ImagePicker.shared.image != nil {
-//                                                                    self.personItem.image = ImagePicker.shared.image
-//                                                                }
-//                                                                // MARK: - modify person in CloudKit
-//                                                                self.personItem.recordID = self.recordID
-//                                                                print(self.personItem.recordID as Any)
-//                                                                CloudKitPerson.modifyPerson(item: self.personItem) { (result) in
-//                                                                    switch result {
-//                                                                    case .success:
-//                                                                        let person = "'\(self.personItem.firstName)" + " \(self.personItem.lastName)'"
-//                                                                        let message1 = NSLocalizedString("The person:", comment: "PersonView")
-//                                                                        let message2 =  NSLocalizedString("was modified", comment: "PersonView")
-//                                                                        self.message = message1 + " " + person + " " + message2
-//                                                                        self.alertIdentifier = AlertID(id: .first)
-//                                                                    case .failure(let err):
-//                                                                        self.message = err.localizedDescription
-//                                                                        self.alertIdentifier = AlertID(id: .first)
-//                                                                    }
-//                                                                }
+                                                                //                                                                if ImagePicker.shared.image != nil {
+                                                                //                                                                    self.personItem.image = ImagePicker.shared.image
+                                                                //                                                                }
+
+                                                                /// Modify the person in CloudKit
+                                                                self.personItem.recordID = self.person.recordID
+                                                                self.personItem.firstName = self.person.firstName
+                                                                self.personItem.lastName = self.person.lastName
+                                                                self.personItem.personEmail = self.person.personEmail
+                                                                self.personItem.address = self.person.address
+                                                                self.personItem.phoneNumber = self.person.phoneNumber
+                                                                self.personItem.city = self.person.city
+                                                                self.personItem.cityNumber = self.person.cityNumber
+                                                                self.personItem.municipalityNumber = self.person.municipalityNumber
+                                                                self.personItem.municipality = self.person.municipality
+                                                                self.personItem.dateOfBirth = self.person.dateOfBirth
+                                                                self.personItem.gender = self.personItem.gender
+                                                                CloudKitPerson.modifyPerson(item: self.personItem) { (result) in
+                                                                    switch result {
+                                                                    case .success:
+                                                                        let person = "'\(self.personItem.firstName)" + " \(self.personItem.lastName)'"
+                                                                        let message1 =  NSLocalizedString("was modified", comment: "PersonView")
+                                                                        self.message = person + " " + message1
+                                                                        self.alertIdentifier = AlertID(id: .first)
+                                                                    case .failure(let err):
+                                                                        self.message = err.localizedDescription
+                                                                        self.alertIdentifier = AlertID(id: .first)
+                                                                    }
+                                                                }
                                                             }
                             }
                         } else {
@@ -233,7 +217,10 @@ struct PersonView : View {
                     return Alert(title: Text(self.message))
                 }
         }
-
+            /// Ta bort tastaturet når en klikker utenfor feltet
+            .modifier(DismissingKeyboard())
+            /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
+            .modifier(AdaptsToSoftwareKeyboard())
     }
 }
 

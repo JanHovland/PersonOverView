@@ -15,7 +15,7 @@ var toDo_0 =
 
 var toDo_1 =
 """
- 1. Oppgave 1.......................
+ 1. Legge inn bilde i Person bildet
 """
 
 var toDo_2 =
