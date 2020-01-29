@@ -31,6 +31,7 @@ struct CloudKitPerson {
         itemRecord["personEmail"] = item.personEmail as CKRecordValue
         itemRecord["address"] = item.address as CKRecordValue
         itemRecord["phoneNumber"] = item.phoneNumber as CKRecordValue
+        itemRecord["cityNumber"] = item.cityNumber as CKRecordValue
         itemRecord["city"] = item.city as CKRecordValue
         itemRecord["municipalityNumber"] = item.municipalityNumber as CKRecordValue
         itemRecord["municipality"] = item.municipality as CKRecordValue
@@ -70,6 +71,10 @@ struct CloudKitPerson {
                     completion(.failure(CloudKitHelperError.castFailure))
                     return
                 }
+                guard let cityNumber = record["cityNumber"] as? String else {
+                    completion(.failure(CloudKitHelperError.castFailure))
+                    return
+                }
                 guard let city = record["city"] as? String else {
                     completion(.failure(CloudKitHelperError.castFailure))
                     return
@@ -101,6 +106,7 @@ struct CloudKitPerson {
                                                   personEmail: personEmail,
                                                   address: address,
                                                   phoneNumber: phoneNumber,
+                                                  cityNumber: cityNumber,
                                                   city: city,
                                                   municipalityNumber: municipalityNumber,
                                                   municipality: municipality,
@@ -140,7 +146,7 @@ struct CloudKitPerson {
         let query = CKQuery(recordType: RecordType.Person, predicate: predicate)
         query.sortDescriptors = [sort]
         let operation = CKQueryOperation(query: query)
-        operation.desiredKeys = ["recordID",
+        operation.desiredKeys = [// "recordID",
                                  "firstName",
                                  "lastName",
                                  "personEmail",

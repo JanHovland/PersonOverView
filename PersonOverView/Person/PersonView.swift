@@ -20,6 +20,8 @@ struct PersonView : View {
 
     @State private var message: String = ""
     @State private var alertIdentifier: AlertID?
+    @State private var showingImagePicker = false
+    @State private var image: UIImage? = nil
 
     @State  var personItem = PersonElement(firstName: "",
                                            lastName: "",
@@ -40,6 +42,31 @@ struct PersonView : View {
     var body: some View {
         NavigationView {
             VStack {
+                HStack (alignment: .center, spacing: 115) {
+                    ZStack {
+                        Image(systemName: "person.circle")
+                            .resizable()
+                            .frame(width: 80, height: 80, alignment: .center)
+                            .font(Font.title.weight(.ultraLight))
+                        if self.person.image != nil {
+                            Image(uiImage: self.person.image!)
+                                .resizable()
+                                .frame(width: 80, height: 80, alignment: .center)
+                                .clipShape(Circle())
+                                .overlay(Circle().stroke(Color.white, lineWidth: 3))
+                                .shadow(color: .gray, radius: 3)
+                        }
+                    }
+                    Button(NSLocalizedString("Choose Profile Image", comment: "SignUpView")) {
+                        self.showingImagePicker.toggle()
+                    }
+                }
+                .sheet(isPresented: $showingImagePicker, content: {
+                    ImagePicker.shared.view
+                }).onReceive(ImagePicker.shared.$image) { image in
+                    self.person.image = image
+                }
+
                 Form {
                     InputTextField(secure: false,
                                    heading: NSLocalizedString("First name", comment: "PersonView"),
@@ -131,6 +158,15 @@ struct PersonView : View {
                                                                 self.personItem.firstName = self.person.firstName
                                                                 self.personItem.lastName = self.person.lastName
                                                                 self.personItem.personEmail = self.person.personEmail
+                                                                self.personItem.address = self.person.address
+                                                                self.personItem.phoneNumber = self.person.phoneNumber
+                                                                self.personItem.city = self.person.city
+                                                                self.personItem.cityNumber = self.person.cityNumber
+                                                                self.personItem.municipalityNumber = self.person.municipalityNumber
+                                                                self.personItem.municipality = self.person.municipality
+                                                                self.personItem.dateOfBirth = self.person.dateOfBirth
+                                                                self.personItem.gender = self.person.gender
+                                                                self.personItem.image = self.person.image
                                                                 CloudKitPerson.savePerson(item: self.personItem) { (result) in
                                                                     switch result {
                                                                     case .success:
@@ -163,15 +199,12 @@ struct PersonView : View {
                                                                         self.person.municipality = personItem.municipality
                                                                         self.person.dateOfBirth = personItem.dateOfBirth
                                                                         self.person.gender = personItem.gender
+                                                                        self.person.image = personItem.image
                                                                     case .failure(let err):
                                                                         self.message = err.localizedDescription
                                                                         self.alertIdentifier = AlertID(id: .first)
                                                                     }
                                                                 }
-
-                                                                //                                                                if ImagePicker.shared.image != nil {
-                                                                //                                                                    self.personItem.image = ImagePicker.shared.image
-                                                                //                                                                }
 
                                                                 /// Modify the person in CloudKit
                                                                 self.personItem.recordID = self.person.recordID
@@ -185,7 +218,19 @@ struct PersonView : View {
                                                                 self.personItem.municipalityNumber = self.person.municipalityNumber
                                                                 self.personItem.municipality = self.person.municipality
                                                                 self.personItem.dateOfBirth = self.person.dateOfBirth
-                                                                self.personItem.gender = self.personItem.gender
+                                                                self.personItem.gender = self.person.gender
+
+//                                                                if ImagePicker.shared.image != nil {
+//                                                                    self.personItem.image = ImagePicker.shared.image
+//                                                                    self.person.image = ImagePicker.shared.image
+//                                                                    ImagePicker.shared.image = nil
+//                                                                }
+//                                                                else {
+//                                                                    self.personItem.image = self.person.image
+//                                                                }
+
+                                                                self.personItem.image = self.person.image
+
                                                                 CloudKitPerson.modifyPerson(item: self.personItem) { (result) in
                                                                     switch result {
                                                                     case .success:
@@ -217,10 +262,15 @@ struct PersonView : View {
                     return Alert(title: Text(self.message))
                 }
         }
-            /// Ta bort tastaturet når en klikker utenfor feltet
-            .modifier(DismissingKeyboard())
-            /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
-            .modifier(AdaptsToSoftwareKeyboard())
+//        .sheet(isPresented: $showingImagePicker, content: {
+//            ImagePicker.shared.view
+//        }).onReceive(ImagePicker.shared.$image) { image in
+//            self.person.image = image
+//        }
+        /// Ta bort tastaturet når en klikker utenfor feltet
+        .modifier(DismissingKeyboard())
+        /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
+        .modifier(AdaptsToSoftwareKeyboard())
     }
 }
 
