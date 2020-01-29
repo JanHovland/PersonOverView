@@ -32,6 +32,10 @@ struct PersonsOverView: View {
                         Text(person.cityNumber)
                         Text(person.city)
                     }
+                    .onTapGesture(count: 1, perform: {
+                        self.message = "Tap"
+                        self.alertIdentifier = AlertID(id: .first)
+                    })
                 }
                 .navigationBarTitle(NSLocalizedString("Persons overview", comment: "PersonsOverView"))
                 .navigationBarItems(leading:
