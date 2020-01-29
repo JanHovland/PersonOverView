@@ -60,7 +60,7 @@ struct SignInView : View {
                     Text(NSLocalizedString("Options Menu", comment: "SignInView"))
                         /// Skjuler teksten uten å påvirke layout
                         .opacity(showOptionMenu ? 1 : 0)
-                    Image(systemName: "line.horizontal.3")
+                    Image(systemName: "square.stack")      ///"line.horizontal.3")
                         /// Skjuler bildet  uten å påvirke layout
                         .opacity(showOptionMenu ? 1 : 0)
                 }
