@@ -21,7 +21,7 @@ struct PersonView : View {
     @State private var message: String = ""
     @State private var alertIdentifier: AlertID?
     @State private var showingImagePicker = false
-    @State   var image: UIImage? = nil
+    @State private var image: UIImage? = nil
 
     @State  var personItem = PersonElement(firstName: "",
                                            lastName: "",
@@ -208,46 +208,35 @@ struct PersonView : View {
                                                                 }
 
                                                                 /// Modify the person in CloudKit
-//                                                                self.personItem.recordID = self.person.recordID
-//                                                                self.personItem.firstName = self.person.firstName
-//                                                                self.personItem.lastName = self.person.lastName
-//                                                                self.personItem.personEmail = self.person.personEmail
-//                                                                self.personItem.address = self.person.address
-//                                                                self.personItem.phoneNumber = self.person.phoneNumber
-//                                                                self.personItem.city = self.person.city
-//                                                                self.personItem.cityNumber = self.person.cityNumber
-//                                                                self.personItem.municipalityNumber = self.person.municipalityNumber
-//                                                                self.personItem.municipality = self.person.municipality
-//                                                                self.personItem.dateOfBirth = self.person.dateOfBirth
-//                                                                self.personItem.gender = self.person.gender
-//
-////                                                                if ImagePicker.shared.image != nil {
-////                                                                    self.personItem.image = ImagePicker.shared.image
-////                                                                    self.person.image = ImagePicker.shared.image
-////                                                                    ImagePicker.shared.image = nil
-////                                                                }
-////                                                                else {
-////                                                                    self.personItem.image = self.person.image
-////                                                                }
-//
-////                                                                if self.image != nil {
-////
-////                                                                    self.personItem.image = self.image
-////                                                                }
-//
-//                                                                CloudKitPerson.modifyPerson(item: self.personItem) { (result) in
-//                                                                    switch result {
-//                                                                    case .success:
-//                                                                        self.image = self.personItem.image
-//                                                                        let person = "'\(self.personItem.firstName)" + " \(self.personItem.lastName)'"
-//                                                                        let message1 =  NSLocalizedString("was modified", comment: "PersonView")
-//                                                                        self.message = person + " " + message1
-//                                                                        self.alertIdentifier = AlertID(id: .first)
-//                                                                    case .failure(let err):
-//                                                                        self.message = err.localizedDescription
-//                                                                        self.alertIdentifier = AlertID(id: .first)
-//                                                                    }
-//                                                                }
+                                                                self.personItem.recordID = self.person.recordID
+                                                                self.personItem.firstName = self.person.firstName
+                                                                self.personItem.lastName = self.person.lastName
+                                                                self.personItem.personEmail = self.person.personEmail
+                                                                self.personItem.address = self.person.address
+                                                                self.personItem.phoneNumber = self.person.phoneNumber
+                                                                self.personItem.city = self.person.city
+                                                                self.personItem.cityNumber = self.person.cityNumber
+                                                                self.personItem.municipalityNumber = self.person.municipalityNumber
+                                                                self.personItem.municipality = self.person.municipality
+                                                                self.personItem.dateOfBirth = self.person.dateOfBirth
+                                                                self.personItem.gender = self.person.gender
+                                                                /// Først vises det gamle bildet til personen, så kommer det nye bildet opp
+                                                                if self.image != nil {
+                                                                    self.personItem.image = self.image
+                                                                }
+                                                                CloudKitPerson.modifyPerson(item: self.personItem) { (result) in
+                                                                    switch result {
+                                                                    case .success:
+                                                                        self.image = self.personItem.image
+                                                                        let person = "'\(self.personItem.firstName)" + " \(self.personItem.lastName)'"
+                                                                        let message1 =  NSLocalizedString("was modified", comment: "PersonView")
+                                                                        self.message = person + " " + message1
+                                                                        self.alertIdentifier = AlertID(id: .first)
+                                                                    case .failure(let err):
+                                                                        self.message = err.localizedDescription
+                                                                        self.alertIdentifier = AlertID(id: .first)
+                                                                    }
+                                                                }
                                                             }
                             }
                         } else {
@@ -267,15 +256,10 @@ struct PersonView : View {
                     return Alert(title: Text(self.message))
                 }
         }
-//        .sheet(isPresented: $showingImagePicker, content: {
-//            ImagePicker.shared.view
-//        }).onReceive(ImagePicker.shared.$image) { image in
-//            self.person.image = image
-//        }
-        /// Ta bort tastaturet når en klikker utenfor feltet
-        .modifier(DismissingKeyboard())
-        /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
-        .modifier(AdaptsToSoftwareKeyboard())
+            /// Ta bort tastaturet når en klikker utenfor feltet
+            .modifier(DismissingKeyboard())
+            /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
+            .modifier(AdaptsToSoftwareKeyboard())
     }
 }
 
