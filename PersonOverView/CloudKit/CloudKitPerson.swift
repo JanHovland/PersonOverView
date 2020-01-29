@@ -146,8 +146,7 @@ struct CloudKitPerson {
         let query = CKQuery(recordType: RecordType.Person, predicate: predicate)
         query.sortDescriptors = [sort]
         let operation = CKQueryOperation(query: query)
-        operation.desiredKeys = [// "recordID",
-                                 "firstName",
+        operation.desiredKeys = ["firstName",
                                  "lastName",
                                  "personEmail",
                                  "address",
@@ -159,7 +158,7 @@ struct CloudKitPerson {
                                  "dateOfBirth",
                                  "gender",
                                  "image"]
-        operation.resultsLimit = 1
+        operation.resultsLimit = 50
         operation.recordFetchedBlock = { record in
             DispatchQueue.main.async {
                 let recordID = record.recordID

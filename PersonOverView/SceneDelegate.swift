@@ -16,6 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var imagePicker = ImagePicker()
     var person = Person()
     var user = User()
+    var personElements = PersonElements()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -38,7 +39,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 PersonOverView().environmentObject(userElements)
                                 .environmentObject(imagePicker)
                                 .environmentObject(person)
-                                .environmentObject(user))
+                                .environmentObject(user)
+                                .environmentObject(personElements))
             self.window = window
             window.makeKeyAndVisible()
         }
