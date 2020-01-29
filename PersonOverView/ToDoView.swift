@@ -15,7 +15,7 @@ var toDo_0 =
 
 var toDo_1 =
 """
- 1. Oppgave 1 ...........................
+ 1. Lage liste (tableview) over alle personene
 """
 
 var toDo_2 =
