@@ -15,7 +15,7 @@ var toDo_0 =
 
 var toDo_1 =
 """
- 1. Legge inn bilde i Person bildet
+ 1. Oppgave 1 ...........................
 """
 
 var toDo_2 =
@@ -58,6 +58,7 @@ var toDo_3 =
 16. Må skjule "Meny valg" før innlogging
        a) Løsning: .opacity(showOptionMenu ? 1 : 0)
           og showOptionMenu settes til true når en finner brukeren
+17. Personbildet har nå bilde av personen
 """
 
 var toDo_4 =
@@ -96,25 +97,25 @@ struct ToDoView: View {
             ScrollView (.vertical, showsIndicators: false) {
                 VStack {
                     Text(toDo_0)
-                        .font(.custom("system", size: 24)).bold()
+                        .font(.custom("system", size: 22)).bold()
                         .foregroundColor(.accentColor)
                         .padding()
                     Text(toDo_1)
                         .multilineTextAlignment(.leading)
                     Text(toDo_2)
-                        .font(.custom("system", size: 24)).bold()
+                        .font(.custom("system", size: 22)).bold()
                         .foregroundColor(.accentColor)
                         .padding()
                     Text(toDo_3)
                         .multilineTextAlignment(.leading)
                     Text(toDo_4)
-                        .font(.custom("system", size: 24)).bold()
+                        .font(.custom("system", size: 22)).bold()
                         .foregroundColor(.accentColor)
                         .padding()
                     Text(toDo_5)
                         .multilineTextAlignment(.leading)
                     Text(toDo_6)
-                        .font(.custom("system", size: 24)).bold()
+                        .font(.custom("system", size: 22)).bold()
                         .foregroundColor(.accentColor)
                         .padding()
                     Text(toDo_7)
