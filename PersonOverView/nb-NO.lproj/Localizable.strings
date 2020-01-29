@@ -2,7 +2,7 @@
 "Added new person:" = "Lagt til ny person:";
 
 /* SignUpView */
-"Added new user:" = "Ny bruker er registrert :";
+"Added new user:" = "Ny bruker er registrert:";
 
 /* PersonView */
 "Address" = "Addresse";
@@ -98,7 +98,7 @@
 
 /* UserDeleteView
    UserMaintenanceView */
-"Hold and release to activate the actions below" = "Trykk hardt og så slipp for å aktivere handlingene nedenfor";
+"Hold and release to activate the actions below" = "Trykk hardt og slipp så for å utføre handlingene nedenfor";
 
 /* PersonView */
 "Last name" = "Etternavn";
@@ -120,10 +120,10 @@
 "Municipality number" = "Kommune nummer";
 
 /* SignInView */
-"Name, eMail and Password must have a value" = "Navn, e-post og passord må ha en verdi";
+"Name, eMail and Password must have a value" = "Navn, e-post og passord må alle ha en verdi";
 
 /* SignUpView */
-"Name, eMail or Password must all contain a value." = "Navn, e-post eller passord må alle inneholde en verdi.";
+"Name, eMail or Password must all contain a value." = "Navn, e-post og passord må alle ha en verdi.";
 
 /* UserDeleteView
    UserMaintenanceView */
@@ -168,13 +168,13 @@
 "Sign in CloudKit" = "Innlogging CloudKit";
 
 /* No comment provided by engineer. */
-"Sign up" = "Registrer ny bruker";
+"Sign up" = "Legg inn ny bruker";
 
 /* No comment provided by engineer. */
 "Sign Up" = "Ny bruker";
 
 /* SignUpView */
-"Sign Up CloudKit" = "Registrering CloudKit";
+"Sign Up CloudKit" = "Ny bruker CloudKit";
 
 /* UserMaintenanceView */
 "Successfully modified the user" = "Brukeren er oppdatert";
