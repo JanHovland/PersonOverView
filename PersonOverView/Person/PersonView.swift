@@ -16,7 +16,7 @@ import CloudKit
 struct PersonView : View {
 
     @Environment(\.presentationMode) var presentationMode
-    // @EnvironmentObject var person: Person
+//    @EnvironmentObject var person: Person
 
     @State private var message: String = ""
     @State private var alertIdentifier: AlertID?
