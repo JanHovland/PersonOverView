@@ -28,6 +28,7 @@ struct SignInView : View {
     @State private var showAdministrationView: Bool = false
     @State private var showToDoView: Bool = false
     @State private var showPersonView: Bool = false
+    @State private var showPersonsOverView: Bool = false
 
     @State private var showOptionMenu = false
 
@@ -172,6 +173,30 @@ struct SignInView : View {
                     .sheet(isPresented: $showPersonView) {
                         PersonView().environmentObject(self.person)
                     }
+
+                    /// PersonsOverView
+                    HStack {
+                        Button(action: {
+                            if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
+                                self.showPersonsOverView.toggle()
+                            } else {
+                                self.message = NSLocalizedString("Name, eMail and Password must have a value", comment: "SignInView")
+                                self.alertIdentifier = AlertID(id: .first)
+                            }
+                        }, label: {
+                            HStack {
+                                Text(NSLocalizedString("PersonsOverview", comment: "SignInView"))
+                                Image(systemName: "person.2")
+                                    .font(Font.system(.headline).weight(.thin))
+                            }
+                            .foregroundColor(.red)
+                        })
+                    }
+                    .sheet(isPresented: $showPersonsOverView) {
+                        PersonsOverView().environmentObject(self.person)
+                    }
+
+
                     /// Uten padding blir noe av visningen kuttet bort
                     .padding()
                     /// Brukes for å få med "Image(systemName: "chevron.down")"

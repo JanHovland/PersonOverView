@@ -29,6 +29,7 @@
 		DB4A8F3B23DEE76400558788 /* PersonElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4A8F3A23DEE76400558788 /* PersonElement.swift */; };
 		DB4A8F3E23DEE79200558788 /* PersonElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4A8F3D23DEE79200558788 /* PersonElements.swift */; };
 		DB4A8F4023DEE87B00558788 /* CloudKitPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4A8F3F23DEE87B00558788 /* CloudKitPerson.swift */; };
+		DB65AE7C23E1EE2100568032 /* PersonsOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB65AE7B23E1EE2100568032 /* PersonsOverView.swift */; };
 		DB6739C123AA910E00EF9ECD /* SwiftUIImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6739C023AA910E00EF9ECD /* SwiftUIImagePicker.swift */; };
 		DB6739C423AD46A800EF9ECD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB6739C223AD46A800EF9ECD /* InfoPlist.strings */; };
 		DB6739C723AD46A800EF9ECD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB6739C523AD46A800EF9ECD /* Localizable.strings */; };
@@ -70,6 +71,7 @@
 		DB4A8F3A23DEE76400558788 /* PersonElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonElement.swift; sourceTree = "<group>"; };
 		DB4A8F3D23DEE79200558788 /* PersonElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonElements.swift; sourceTree = "<group>"; };
 		DB4A8F3F23DEE87B00558788 /* CloudKitPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitPerson.swift; sourceTree = "<group>"; };
+		DB65AE7B23E1EE2100568032 /* PersonsOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsOverView.swift; sourceTree = "<group>"; };
 		DB6739C023AA910E00EF9ECD /* SwiftUIImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIImagePicker.swift; sourceTree = "<group>"; };
 		DB6739C823AD495500EF9ECD /* nb-NO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nb-NO"; path = "nb-NO.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		DB6739C923AD495500EF9ECD /* nb-NO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nb-NO"; path = "nb-NO.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				DB302B8A237EF33100076D10 /* PersonView.swift */,
+				DB65AE7B23E1EE2100568032 /* PersonsOverView.swift */,
 			);
 			path = Person;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				DB4A8F4023DEE87B00558788 /* CloudKitPerson.swift in Sources */,
 				DB302B71237EF02300076D10 /* PersonOverView.swift in Sources */,
 				DB302B81237EF16200076D10 /* UserElement.swift in Sources */,
+				DB65AE7C23E1EE2100568032 /* PersonsOverView.swift in Sources */,
 				DB302B8B237EF33100076D10 /* PersonView.swift in Sources */,
 				DB4A8F3B23DEE76400558788 /* PersonElement.swift in Sources */,
 				DB28D73B23D615E900CF6915 /* AlertID.swift in Sources */,
