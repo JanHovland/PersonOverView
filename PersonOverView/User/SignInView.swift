@@ -181,7 +181,7 @@ struct SignInView : View {
                         }, label: {
                             HStack {
                                 Text(NSLocalizedString("Exit", comment: "SignInView"))
-                                Image(systemName: "chevron.down")
+                                Image(systemName: "return")
                                     .font(Font.system(.title).weight(.ultraLight))
                             }
                         })
