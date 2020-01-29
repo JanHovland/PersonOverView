@@ -13,6 +13,9 @@ struct PersonsOverView: View {
     @EnvironmentObject var personElements: PersonElements
     @Environment(\.presentationMode) var presentationMode
 
+    @State private var message: String = ""
+    @State private var alertIdentifier: AlertID?
+
     var body: some View {
         NavigationView {
             VStack {
@@ -47,14 +50,23 @@ struct PersonsOverView: View {
             let predicate = NSPredicate(value: true)
             CloudKitPerson.fetchPerson(predicate: predicate)  { (result) in
                 switch result {
-                case .success(let newItem):
-                    self.personElements.persons.append(newItem)
-                    print("Successfully fetched item")
+                case .success(let person):
+                    self.personElements.persons.append(person)
                 case .failure(let err):
-                    print(err.localizedDescription)
+                    self.message = err.localizedDescription
+                    self.alertIdentifier = AlertID(id: .first)
                 }
             }
         }
+        .alert(item: $alertIdentifier) { alert in
+            switch alert.id {
+            case .first:
+                return Alert(title: Text(self.message))
+            case .second:
+                return Alert(title: Text(self.message))
+            }
+        }
+
     }
 }
 
