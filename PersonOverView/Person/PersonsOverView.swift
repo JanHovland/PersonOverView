@@ -26,7 +26,7 @@ struct PersonsOverView: View {
                 List {
                     ForEach(personElements.persons) {
                         person in
-                        NavigationLink(destination: PersonView()) {
+                        NavigationLink(destination: DetailView()) {
                             HStack(spacing: 5) {
                                 Group {
                                     Image(uiImage: person.image!)
@@ -80,3 +80,14 @@ struct PersonsOverView: View {
     }
 }
 
+struct DetailView: View {
+    @EnvironmentObject var personElements: PersonElements
+
+    var body: some View {
+        // A text view that reads from the environment settings
+        VStack {
+        Text("Navn første: \(personElements.persons[0].firstName)")
+        Text("Navn andre:  \(personElements.persons[1].firstName)")
+        }
+    }
+}
