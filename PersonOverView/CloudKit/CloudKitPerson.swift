@@ -141,7 +141,7 @@ struct CloudKitPerson {
     }
 
     // MARK: - fetching from CloudKit
-    static func fetchPerson(predicate:  NSPredicate, completion: @escaping (Result<PersonElement, Error>) -> ()) {
+    static func fetchPerson(predicate:  NSPredicate, completion: @escaping (Result<Person, Error>) -> ()) {
         let sort = NSSortDescriptor(key: "creationDate", ascending: false)
         let query = CKQuery(recordType: RecordType.Person, predicate: predicate)
         query.sortDescriptors = [sort]
@@ -177,7 +177,7 @@ struct CloudKitPerson {
                 if let image = record["image"], let imageAsset = image as? CKAsset {
                     if let imageData = try? Data.init(contentsOf: imageAsset.fileURL!) {
                         let image = UIImage(data: imageData)
-                        let personElement = PersonElement(recordID: recordID,
+                        let person = Person(recordID: recordID,
                                                           firstName: firstName,
                                                           lastName: lastName,
                                                           personEmail: personEmail,
@@ -190,11 +190,11 @@ struct CloudKitPerson {
                                                           dateOfBirth: dateOfBirth,
                                                           gender: gender,
                                                           image: image)
-                        completion(.success(personElement))
+                        completion(.success(person))
                     }
                 }
                 else {
-                    let personElement = PersonElement(recordID: recordID,
+                    let personElement = Person(recordID: recordID,
                                                       firstName: firstName,
                                                       lastName: lastName,
                                                       personEmail: personEmail,

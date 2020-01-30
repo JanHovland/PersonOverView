@@ -18,7 +18,7 @@ import Combine
 struct SignInView : View {
     
     @EnvironmentObject var user: User
-    @EnvironmentObject var personElements: PersonElements
+    // @EnvironmentObject var personElements: PersonElements
 
     @Environment(\.presentationMode) var presentationMode
 
@@ -194,7 +194,7 @@ struct SignInView : View {
                         })
                     }
                     .sheet(isPresented: $showPersonsOverView) {
-                        PersonsOverView().environmentObject(self.personElements)
+                        PersonsOverView() // .environmentObject(self.personElements)
                     }
 
 

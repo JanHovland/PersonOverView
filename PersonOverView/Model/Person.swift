@@ -24,3 +24,20 @@ import CloudKit
 //    @Published var gender: Int = 0
 //    @Published var image: UIImage?
 //}
+
+struct Person: Identifiable {
+    var id = UUID()
+    var recordID: CKRecord.ID?
+    var firstName: String = ""
+    var lastName: String = ""
+    var personEmail: String = ""
+    var address: String = ""
+    var phoneNumber: String = ""
+    var cityNumber: String = ""
+    var city: String = ""
+    var municipalityNumber: String = ""
+    var municipality: String = ""
+    var dateOfBirth = Date()
+    var gender: Int = 0
+    var image: UIImage?
+}
