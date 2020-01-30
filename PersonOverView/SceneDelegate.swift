@@ -14,7 +14,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     var userElements = UserElements()
     var imagePicker = ImagePicker()
-    var person = Person()
     var user = User()
     var personElements = PersonElements()
 
@@ -38,7 +37,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.rootViewController = UIHostingController(rootView:
                 PersonOverView().environmentObject(userElements)
                                 .environmentObject(imagePicker)
-                                .environmentObject(person)
                                 .environmentObject(user)
                                 .environmentObject(personElements))
             self.window = window
