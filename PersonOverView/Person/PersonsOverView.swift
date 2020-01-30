@@ -13,7 +13,7 @@ struct PersonsOverView: View {
     @EnvironmentObject var personElements: PersonElements
     @Environment(\.presentationMode) var presentationMode
 
-//    @EnvironmentObject var person: Person
+    //    @EnvironmentObject var person: Person
 
     @State private var showPersonView: Bool = false
 
@@ -23,37 +23,25 @@ struct PersonsOverView: View {
     var body: some View {
         NavigationView {
             VStack {
-                List(personElements.persons) { person in
-
-                    HStack(spacing: 5) {
-                        Group {
-                            Image(uiImage: person.image!)
-                                .resizable()
-                                .frame(width: 30, height: 30, alignment: .center)
-                                .clipShape(Circle())
-                                .overlay(Circle().stroke(Color.white, lineWidth: 1))
-                            Text(person.firstName)
-                            Text(person.lastName)
-                            Text(person.address)
-                            Text(person.cityNumber)
-                            Text(person.city)
-                        }
+                List {
+                    ForEach(personElements.persons) {
+                        person in
+                        NavigationLink(destination: PersonView()) {
+                            HStack(spacing: 5) {
+                                Group {
+                                    Image(uiImage: person.image!)
+                                        .resizable()
+                                        .frame(width: 30, height: 30, alignment: .center)
+                                        .clipShape(Circle())
+                                        .overlay(Circle().stroke(Color.white, lineWidth: 1))
+                                    Text(person.firstName)
+                                    Text(person.lastName)
+                                    Text(person.address)
+                                    Text(person.cityNumber)
+                                    Text(person.city)
+                                }
+                            }}
                     }
-                    .onTapGesture(count: 1, perform: {
-
-                        // self.showPersonView.toggle()
-
-                        self.message = person.firstName + " " + person.lastName + " " + person.address
-                        self.alertIdentifier = AlertID(id: .first)
-                    })
-
-//                    .sheet(isPresented: self.$showPersonView) {
-//                        PersonView().environmentObject(self.person)
-//                    }
-
-
-
-
                 }
                 .navigationBarTitle(NSLocalizedString("Persons overview", comment: "PersonsOverView"))
                 .navigationBarItems(leading:

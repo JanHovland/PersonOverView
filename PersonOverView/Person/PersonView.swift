@@ -51,7 +51,7 @@ struct PersonView : View {
                    NSLocalizedString("Woman", comment: "PersonView")]
 
     var body: some View {
-        NavigationView {
+        // NavigationView {
             VStack {
                 HStack (alignment: .center, spacing: 115) {
                     ZStack {
@@ -260,7 +260,7 @@ struct PersonView : View {
                         Text("Save")
                             .foregroundColor(.none)
                     })
-            )}
+            )
             .alert(item: $alertIdentifier) { alert in
                 switch alert.id {
                 case .first:
@@ -273,5 +273,7 @@ struct PersonView : View {
             .modifier(DismissingKeyboard())
             /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
             .modifier(AdaptsToSoftwareKeyboard())
-    }
+
+        }
+
 }
