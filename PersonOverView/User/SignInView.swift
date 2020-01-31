@@ -18,8 +18,6 @@ import Combine
 struct SignInView : View {
     
     @EnvironmentObject var user: User
-    // @EnvironmentObject var personElements: PersonElements
-
     @Environment(\.presentationMode) var presentationMode
 
     @State private var message: String = ""
@@ -30,9 +28,7 @@ struct SignInView : View {
     @State private var showToDoView: Bool = false
     @State private var showPersonView: Bool = false
     @State private var showPersonsOverView: Bool = false
-
     @State private var showOptionMenu = false
-
     @State private var alertIdentifier: AlertID?
 
     var body: some View {
@@ -153,28 +149,6 @@ struct SignInView : View {
                     .sheet(isPresented: $showToDoView) {
                         ToDoView()
                     }
-                    /// Person
-                    HStack {
-                        Button(action: {
-                            if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
-                                self.showPersonView.toggle()
-                            } else {
-                                self.message = NSLocalizedString("Name, eMail and Password must have a value", comment: "SignInView")
-                                self.alertIdentifier = AlertID(id: .first)
-                            }
-                        }, label: {
-                            HStack {
-                                Text(NSLocalizedString("Person", comment: "SignInView"))
-                                Image(systemName: "person")
-                                    .font(Font.system(.headline).weight(.thin))
-                            }
-                            .foregroundColor(.red)
-                        })
-                    }
-                    .sheet(isPresented: $showPersonView) {
-                        PersonView()
-                    }
-
                     /// PersonsOverView
                     HStack {
                         Button(action: {
@@ -194,10 +168,8 @@ struct SignInView : View {
                         })
                     }
                     .sheet(isPresented: $showPersonsOverView) {
-                        PersonsOverView() // .environmentObject(self.personElements)
+                        PersonsOverView()
                     }
-
-
                     /// Uten padding blir noe av visningen kuttet bort
                     .padding()
                     /// Brukes for å få med "Image(systemName: "chevron.down")"
@@ -290,9 +262,9 @@ struct SignInView : View {
                 }
             }
         }
-            /// Ta bort tastaturet når en klikker utenfor feltet
-            .modifier(DismissingKeyboard())
-            /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
-            .modifier(AdaptsToSoftwareKeyboard())
+        /// Ta bort tastaturet når en klikker utenfor feltet
+        .modifier(DismissingKeyboard())
+        /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
+        .modifier(AdaptsToSoftwareKeyboard())
     }
 }
