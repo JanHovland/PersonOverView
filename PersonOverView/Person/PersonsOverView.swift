@@ -43,15 +43,23 @@ struct PersonsOverView: View {
                             }}
                     }
                 }
-                .navigationBarTitle(NSLocalizedString("Persons overview", comment: "PersonsOverView"))
-                .navigationBarItems(leading:
-                    Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }, label: {
-                        Text(NSLocalizedString("Cancel", comment: "PersonsOverView"))
-                            .foregroundColor(.none)
-                    }))
             }
+            .navigationBarTitle(NSLocalizedString("Persons overview", comment: "PersonsOverView"))
+            .navigationBarItems(leading:
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    Text("Cancel")
+                        .foregroundColor(.none)
+                })
+                , trailing:
+                Button(action: {
+                    /// Rutine for å legge til en person
+                    self.presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    Text("Add")
+                })
+            )
         }
         .onAppear {
             /// Sletter alt tidligere innhold i personElements.persons
