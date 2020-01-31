@@ -102,8 +102,8 @@ struct DetailView: View {
     @State private var gender: Int = 0
     @State private var image: UIImage?
 
-    var genders = [NSLocalizedString("Man", comment: "PersonView"),
-                   NSLocalizedString("Woman", comment: "PersonView")]
+    var genders = [NSLocalizedString("Man", comment: "PersonsOverView"),
+                   NSLocalizedString("Woman", comment: "PersonsOverView")]
 
     @State  var personItem = PersonElement(firstName: "",
                                            lastName: "",
@@ -147,40 +147,40 @@ struct DetailView: View {
             }
             Form {
                 InputTextField(secure: false,
-                               heading: NSLocalizedString("First name", comment: "PersonView"),
-                               placeHolder: NSLocalizedString("Enter your first name", comment: "PersonView"),
+                               heading: NSLocalizedString("First name", comment: "PersonsOverView"),
+                               placeHolder: NSLocalizedString("Enter your first name", comment: "PersonsOverView"),
                                value: $firstName)
                     .autocapitalization(.words)
                 InputTextField(secure: false,
-                               heading: NSLocalizedString("Last name", comment: "PersonView"),
-                               placeHolder: NSLocalizedString("Enter your last name", comment: "PersonView"),
+                               heading: NSLocalizedString("Last name", comment: "PersonsOverView"),
+                               placeHolder: NSLocalizedString("Enter your last name", comment: "PersonsOverView"),
                                value: $lastName)
                     .autocapitalization(.words)
                 InputTextField(secure: false,
-                               heading: NSLocalizedString("eMail", comment: "PersonView"),
-                               placeHolder: NSLocalizedString("Enter your email address", comment: "PersonView"),
+                               heading: NSLocalizedString("eMail", comment: "PersonsOverView"),
+                               placeHolder: NSLocalizedString("Enter your email address", comment: "PersonsOverView"),
                                value: $personEmail)
                     .keyboardType(.emailAddress)
                     .autocapitalization(.none)
                 InputTextField(secure: false,
-                               heading: NSLocalizedString("Address", comment: "PersonView"),
-                               placeHolder: NSLocalizedString("Enter your address", comment: "PersonView"),
+                               heading: NSLocalizedString("Address", comment: "PersonsOverView"),
+                               placeHolder: NSLocalizedString("Enter your address", comment: "PersonsOverView"),
                                value: $address)
                     .autocapitalization(.words)
                 InputTextField(secure: false,
-                               heading: NSLocalizedString("Phone Number", comment: "PersonView"),
-                               placeHolder: NSLocalizedString("Enter your phone number", comment: "PersonView"),
+                               heading: NSLocalizedString("Phone Number", comment: "PersonsOverView"),
+                               placeHolder: NSLocalizedString("Enter your phone number", comment: "PersonsOverView"),
                                value: $phoneNumber)
                 // .keyboardType(.xxxxxxx)
                 HStack (alignment: .center, spacing: 0) {
                     InputTextField(secure: false,
-                                   heading: NSLocalizedString("Postalcode", comment: "PersonView"),
-                                   placeHolder: NSLocalizedString("Enter number", comment: "PersonView"),
+                                   heading: NSLocalizedString("Postalcode", comment: "PersonsOverView"),
+                                   placeHolder: NSLocalizedString("Enter number", comment: "PersonsOverView"),
                                    value: $cityNumber)
                         .keyboardType(.numberPad)
                     InputTextField(secure: false,
-                                   heading: NSLocalizedString("City", comment: "PersonView"),
-                                   placeHolder: NSLocalizedString("Enter city", comment: "PersonView"),
+                                   heading: NSLocalizedString("City", comment: "PersonsOverView"),
+                                   placeHolder: NSLocalizedString("Enter city", comment: "PersonsOverView"),
                                    value: $city)
                         .autocapitalization(.words)
                     Image(systemName: "magnifyingglass")
@@ -191,13 +191,13 @@ struct DetailView: View {
                 }
                 HStack (alignment: .center, spacing: 0) {
                     InputTextField(secure: false,
-                                   heading: NSLocalizedString("Municipality number", comment: "PersonView"),
-                                   placeHolder: NSLocalizedString("Enter number", comment: "PersonView"),
+                                   heading: NSLocalizedString("Municipality number", comment: "PersonsOverView"),
+                                   placeHolder: NSLocalizedString("Enter number", comment: "PersonsOverView"),
                                    value: $municipalityNumber)
                         .keyboardType(.numberPad)
                     InputTextField(secure: false,
-                                   heading: NSLocalizedString("Municipality", comment: "PersonView"),
-                                   placeHolder: NSLocalizedString("Enter municipality", comment: "PersonView"),
+                                   heading: NSLocalizedString("Municipality", comment: "PersonsOverView"),
+                                   placeHolder: NSLocalizedString("Enter municipality", comment: "PersonsOverView"),
                                    value: $municipality)
                         .autocapitalization(.words)
                 }
@@ -206,26 +206,26 @@ struct DetailView: View {
                     in: ...Date(),
                     displayedComponents: [.date],
                     label: {
-                        Text(NSLocalizedString("Date of birth", comment: "PersonView"))
+                        Text(NSLocalizedString("Date of birth", comment: "PersonsOverView"))
                             .font(.footnote)
                             .foregroundColor(.accentColor)
                             .padding(-5)
                 })
-                // Returning an integer 0 == "Man" 1 == "Women
-                InputGender(heading: NSLocalizedString("Gender", comment: "PersonView"),
+                /// Returning an integer 0 == "Man" 1 == "Women
+                InputGender(heading: NSLocalizedString("Gender", comment: "PersonsOverView"),
                             genders: genders,
                             value: $gender)
             }
 
         }
-            // Removes all separators below in the List view
+            /// Removes all separators below in the List view
             .listStyle(GroupedListStyle())
             .navigationBarTitle("Person")
             .navigationBarItems(leading:
                 Button(action: {
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
-                    Text(NSLocalizedString("Cancel", comment: "PersonView"))
+                    Text(NSLocalizedString("Cancel", comment: "PersonsOverView"))
                         .foregroundColor(.none)
                 })
                 , trailing:
@@ -235,30 +235,6 @@ struct DetailView: View {
                         CloudKitPerson.doesPersonExist(firstName: self.firstName,
                                                        lastName: self.lastName) { (result) in
                                                         if result == false {
-                                                            //                                                            self.personItem.firstName = self.firstName
-                                                            //                                                            self.personItem.lastName = self.lastName
-                                                            //                                                            self.personItem.personEmail = self.personEmail
-                                                            //                                                            self.personItem.address = self.address
-                                                            //                                                            self.personItem.phoneNumber = self.phoneNumber
-                                                            //                                                            self.personItem.city = self.city
-                                                            //                                                            self.personItem.cityNumber = self.cityNumber
-                                                            //                                                            self.personItem.municipalityNumber = self.municipalityNumber
-                                                            //                                                            self.personItem.municipality = self.municipality
-                                                            //                                                            self.personItem.dateOfBirth = self.dateOfBirth
-                                                            //                                                            self.personItem.gender = self.gender
-                                                            //                                                            self.personItem.image = self.image
-                                                            //                                                            CloudKitPerson.savePerson(item: self.personItem) { (result) in
-                                                            //                                                                switch result {
-                                                            //                                                                case .success:
-                                                            //                                                                    let message1 = NSLocalizedString("Added new person:", comment: "PersonView")
-                                                            //                                                                    self.message = message1 + " '\(self.personItem.firstName)" + " \(self.personItem.lastName)'"
-                                                            //                                                                    self.alertIdentifier = AlertID(id: .first)
-                                                            //                                                                case .failure(let err):
-                                                            //                                                                    print(err.localizedDescription)
-                                                            //                                                                    self.message = err.localizedDescription
-                                                            //                                                                    self.alertIdentifier = AlertID(id: .first)
-                                                            //                                                                }
-                                                            //                                                            }
                                                         } else {
                                                             //                                                            let firstName = self.firstName
                                                             //                                                            let lastName = self.lastName
@@ -309,7 +285,7 @@ struct DetailView: View {
                                                                 case .success:
                                                                     self.image = self.personItem.image
                                                                     let person = "'\(self.personItem.firstName)" + " \(self.personItem.lastName)'"
-                                                                    let message1 =  NSLocalizedString("was modified", comment: "PersonView")
+                                                                    let message1 =  NSLocalizedString("was modified", comment: "PersonsOverView")
                                                                     self.message = person + " " + message1
                                                                     self.alertIdentifier = AlertID(id: .first)
                                                                 case .failure(let err):
@@ -320,63 +296,56 @@ struct DetailView: View {
                                                         }
                         }
                     } else {
-                        self.message = NSLocalizedString("First name and last name must both contain a value.", comment: "PersonView")
+                        self.message = NSLocalizedString("First name and last name must both contain a value.", comment: "PersonsOverView")
                         self.alertIdentifier = AlertID(id: .first)
                     }
                 }, label: {
-                    Text("Save")
-                        .foregroundColor(.none)
+                    Text(NSLocalizedString("Modify", comment: "PersonsOverView"))
                 })
         )
-            .onAppear {
-                self.firstName = self.person.firstName
-                self.lastName = self.person.lastName
+        .onAppear {
+            self.firstName = self.person.firstName
+            self.lastName = self.person.lastName
 
-                let firstName = self.firstName
-                let lastName = self.lastName
-                let predicate = NSPredicate(format: "firstName == %@ AND lastName == %@", firstName, lastName)
-                /// Må finne recordID for å kunne modifisere personen  i  CloudKit
-                CloudKitPerson.fetchPerson(predicate: predicate) { (result) in
-                    switch result {
-                    case .success(let perItem):
-                        self.recordID = perItem.recordID
-                        self.firstName = perItem.firstName
-                        self.lastName = perItem.lastName
-                        self.personEmail = perItem.personEmail
-                        self.address = perItem.address
-                        self.phoneNumber = perItem.phoneNumber
-                        self.city = perItem.city
-                        self.cityNumber = perItem.cityNumber
-                        self.municipalityNumber = perItem.municipalityNumber
-                        self.municipality = perItem.municipality
-                        self.dateOfBirth = perItem.dateOfBirth
-                        self.gender = perItem.gender
-                        /// Setter image (personens bilde)  til det bildet som er lagret på personen
-                        self.image = perItem.image
-                    case .failure(let err):
-                        self.message = err.localizedDescription
-                        self.alertIdentifier = AlertID(id: .first)
-                    }
+            let firstName = self.firstName
+            let lastName = self.lastName
+            let predicate = NSPredicate(format: "firstName == %@ AND lastName == %@", firstName, lastName)
+            /// Må finne recordID for å kunne modifisere personen  i  CloudKit
+            CloudKitPerson.fetchPerson(predicate: predicate) { (result) in
+                switch result {
+                case .success(let perItem):
+                    self.recordID = perItem.recordID
+                    self.firstName = perItem.firstName
+                    self.lastName = perItem.lastName
+                    self.personEmail = perItem.personEmail
+                    self.address = perItem.address
+                    self.phoneNumber = perItem.phoneNumber
+                    self.city = perItem.city
+                    self.cityNumber = perItem.cityNumber
+                    self.municipalityNumber = perItem.municipalityNumber
+                    self.municipality = perItem.municipality
+                    self.dateOfBirth = perItem.dateOfBirth
+                    self.gender = perItem.gender
+                    /// Setter image (personens bilde)  til det bildet som er lagret på personen
+                    self.image = perItem.image
+                case .failure(let err):
+                    self.message = err.localizedDescription
+                    self.alertIdentifier = AlertID(id: .first)
                 }
-
-                //            self.personEmail = self.person.personEmail
-                //            self.address = self.person.address
-                //            self.phoneNumber = self.person.phoneNumber
-                //            self.city = self.person.city
-                //            self.cityNumber = self.person.cityNumber
-                //            self.municipalityNumber = self.person.municipalityNumber
-                //            self.municipality = self.person.municipality
-                //            self.dateOfBirth = self.person.dateOfBirth
-                //            self.gender = self.person.gender
-                //            self.image = self.person.image
+            }
         }
-
-            /// Ta bort tastaturet når en klikker utenfor feltet
-            .modifier(DismissingKeyboard())
-            /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
-            .modifier(AdaptsToSoftwareKeyboard())
-
-
+        .alert(item: $alertIdentifier) { alert in
+            switch alert.id {
+            case .first:
+                return Alert(title: Text(self.message))
+            case .second:
+                return Alert(title: Text(self.message))
+            }
+        }
+        /// Ta bort tastaturet når en klikker utenfor feltet
+        .modifier(DismissingKeyboard())
+        /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
+        .modifier(AdaptsToSoftwareKeyboard())
     }
 }
 

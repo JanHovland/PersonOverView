@@ -59,6 +59,8 @@ var toDo_3 =
        a) Løsning: .opacity(showOptionMenu ? 1 : 0)
           og showOptionMenu settes til true når en finner brukeren
 17. Personbildet har nå bilde av personen
+18. Har lagd en liste (tableview) over alle personene
+
 """
 
 var toDo_4 =
@@ -69,7 +71,7 @@ S e n e r e
 var toDo_5 =
 """
 1. Trykke på bildet istedet for på teksten i "SignUpView.swift"
-   ... Bruk: .contextMenu
+   ... Bruk: .contextMenu??
 2. Legge inn søking på postnummer
 """
 
@@ -85,6 +87,8 @@ var toDo_7 =
            tilbake til "SignInView.swift"
 2. Det mangler .keyboadType(.phone).
    Nå brukes default keyboardType
+3. .onAppear virker kun første gang en app kalles,
+   ikke ved retur fra en annen app.
 
 """
 
