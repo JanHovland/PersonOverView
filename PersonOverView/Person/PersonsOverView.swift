@@ -14,10 +14,8 @@ struct PersonsOverView: View {
     @Environment(\.presentationMode) var presentationMode
 
     @State private var showPersonView: Bool = false
-
     @State private var message: String = ""
     @State private var alertIdentifier: AlertID?
-
     @State private var persons = [Person]()
 
     var body: some View {
@@ -29,11 +27,13 @@ struct PersonsOverView: View {
                         NavigationLink(destination: DetailView(person: person)) {
                             HStack(spacing: 5) {
                                 Group {
-                                    Image(uiImage: person .image!)
-                                        .resizable()
-                                        .frame(width: 30, height: 30, alignment: .center)
-                                        .clipShape(Circle())
-                                        .overlay(Circle().stroke(Color.white, lineWidth: 1))
+                                    if person.image != nil {
+                                        Image(uiImage: person.image!)
+                                            .resizable()
+                                            .frame(width: 30, height: 30, alignment: .center)
+                                            .clipShape(Circle())
+                                            .overlay(Circle().stroke(Color.white, lineWidth: 1))
+                                    }
                                     Text(person.firstName)
                                     Text(person.lastName)
                                     Text(person.address)
@@ -88,7 +88,7 @@ struct DetailView: View {
     @State private var alertIdentifier: AlertID?
     @State private var showingImagePicker = false
 
-    @State private var recordID: CKRecord.ID?
+    @State  var recordID: CKRecord.ID?
     @State private var firstName: String = ""
     @State private var lastName: String = ""
     @State private var personEmail: String = ""
@@ -222,131 +222,159 @@ struct DetailView: View {
             .listStyle(GroupedListStyle())
             .navigationBarTitle("Person")
             .navigationBarItems(leading:
-                    Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }, label: {
-                        Text(NSLocalizedString("Cancel", comment: "PersonView"))
-                            .foregroundColor(.none)
-                    })
-                    , trailing:
-                    Button(action: {
-                        /// Save person data
-                        if self.firstName.count > 0, self.lastName.count > 0 {
-                            CloudKitPerson.doesPersonExist(firstName: self.firstName,
-                                                           lastName: self.lastName) { (result) in
-                                                            if result == false {
-                                                                self.personItem.firstName = self.firstName
-                                                                self.personItem.lastName = self.lastName
-                                                                self.personItem.personEmail = self.personEmail
-                                                                self.personItem.address = self.address
-                                                                self.personItem.phoneNumber = self.phoneNumber
-                                                                self.personItem.city = self.city
-                                                                self.personItem.cityNumber = self.cityNumber
-                                                                self.personItem.municipalityNumber = self.municipalityNumber
-                                                                self.personItem.municipality = self.municipality
-                                                                self.personItem.dateOfBirth = self.dateOfBirth
-                                                                self.personItem.gender = self.gender
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    Text(NSLocalizedString("Cancel", comment: "PersonView"))
+                        .foregroundColor(.none)
+                })
+                , trailing:
+                Button(action: {
+                    /// Save person data
+                    if self.firstName.count > 0, self.lastName.count > 0 {
+                        CloudKitPerson.doesPersonExist(firstName: self.firstName,
+                                                       lastName: self.lastName) { (result) in
+                                                        if result == false {
+                                                            //                                                            self.personItem.firstName = self.firstName
+                                                            //                                                            self.personItem.lastName = self.lastName
+                                                            //                                                            self.personItem.personEmail = self.personEmail
+                                                            //                                                            self.personItem.address = self.address
+                                                            //                                                            self.personItem.phoneNumber = self.phoneNumber
+                                                            //                                                            self.personItem.city = self.city
+                                                            //                                                            self.personItem.cityNumber = self.cityNumber
+                                                            //                                                            self.personItem.municipalityNumber = self.municipalityNumber
+                                                            //                                                            self.personItem.municipality = self.municipality
+                                                            //                                                            self.personItem.dateOfBirth = self.dateOfBirth
+                                                            //                                                            self.personItem.gender = self.gender
+                                                            //                                                            self.personItem.image = self.image
+                                                            //                                                            CloudKitPerson.savePerson(item: self.personItem) { (result) in
+                                                            //                                                                switch result {
+                                                            //                                                                case .success:
+                                                            //                                                                    let message1 = NSLocalizedString("Added new person:", comment: "PersonView")
+                                                            //                                                                    self.message = message1 + " '\(self.personItem.firstName)" + " \(self.personItem.lastName)'"
+                                                            //                                                                    self.alertIdentifier = AlertID(id: .first)
+                                                            //                                                                case .failure(let err):
+                                                            //                                                                    print(err.localizedDescription)
+                                                            //                                                                    self.message = err.localizedDescription
+                                                            //                                                                    self.alertIdentifier = AlertID(id: .first)
+                                                            //                                                                }
+                                                            //                                                            }
+                                                        } else {
+                                                            //                                                            let firstName = self.firstName
+                                                            //                                                            let lastName = self.lastName
+                                                            //                                                            let predicate = NSPredicate(format: "firstName == %@ AND lastName == %@", firstName, lastName)
+                                                            //                                                            /// Må finne recordID for å kunne modifisere personen  i  CloudKit
+                                                            //                                                            CloudKitPerson.fetchPerson(predicate: predicate) { (result) in
+                                                            //                                                                switch result {
+                                                            //                                                                case .success(let perItem):
+                                                            //                                                                    self.recordID = perItem.recordID
+                                                            //                                                                    self.firstName = perItem.firstName
+                                                            //                                                                    self.lastName = perItem.lastName
+                                                            //                                                                    self.personEmail = perItem.personEmail
+                                                            //                                                                    self.address = perItem.address
+                                                            //                                                                    self.phoneNumber = perItem.phoneNumber
+                                                            //                                                                    self.city = perItem.city
+                                                            //                                                                    self.cityNumber = perItem.cityNumber
+                                                            //                                                                    self.municipalityNumber = perItem.municipalityNumber
+                                                            //                                                                    self.municipality = perItem.municipality
+                                                            //                                                                    self.dateOfBirth = perItem.dateOfBirth
+                                                            //                                                                    self.gender = perItem.gender
+                                                            //                                                                    /// Setter image (personens bilde)  til det bildet som er lagret på personen
+                                                            //                                                                    self.image = perItem.image
+                                                            //                                                                case .failure(let err):
+                                                            //                                                                    self.message = err.localizedDescription
+                                                            //                                                                    self.alertIdentifier = AlertID(id: .first)
+                                                            //                                                                }
+                                                            //                                                            }
+                                                            //
+                                                            /// Modify the person in CloudKit
+                                                            self.personItem.recordID = self.recordID
+                                                            self.personItem.firstName = self.firstName
+                                                            self.personItem.lastName = self.lastName
+                                                            self.personItem.personEmail = self.personEmail
+                                                            self.personItem.address = self.address
+                                                            self.personItem.phoneNumber = self.phoneNumber
+                                                            self.personItem.city = self.city
+                                                            self.personItem.cityNumber = self.cityNumber
+                                                            self.personItem.municipalityNumber = self.municipalityNumber
+                                                            self.personItem.municipality = self.municipality
+                                                            self.personItem.dateOfBirth = self.dateOfBirth
+                                                            self.personItem.gender = self.gender
+                                                            /// Først vises det gamle bildet til personen, så kommer det nye bildet opp
+                                                            if self.image != nil {
                                                                 self.personItem.image = self.image
-                                                                CloudKitPerson.savePerson(item: self.personItem) { (result) in
-                                                                    switch result {
-                                                                    case .success:
-                                                                        let message1 = NSLocalizedString("Added new person:", comment: "PersonView")
-                                                                        self.message = message1 + " '\(self.personItem.firstName)" + " \(self.personItem.lastName)'"
-                                                                        self.alertIdentifier = AlertID(id: .first)
-                                                                    case .failure(let err):
-                                                                        print(err.localizedDescription)
-                                                                        self.message = err.localizedDescription
-                                                                        self.alertIdentifier = AlertID(id: .first)
-                                                                    }
-                                                                }
-                                                            } else {
-                                                                let firstName = self.firstName
-                                                                let lastName = self.lastName
-                                                                let predicate = NSPredicate(format: "firstName == %@ AND lastName == %@", firstName, lastName)
-                                                                /// Må finne recordID for å kunne modifisere personen  i  CloudKit
-                                                                CloudKitPerson.fetchPerson(predicate: predicate) { (result) in
-                                                                    switch result {
-                                                                    case .success(let perItem):
-                                                                        self.recordID = perItem.recordID
-                                                                        self.firstName = perItem.firstName
-                                                                        self.lastName = perItem.lastName
-                                                                        self.personEmail = perItem.personEmail
-                                                                        self.address = perItem.address
-                                                                        self.phoneNumber = perItem.phoneNumber
-                                                                        self.city = perItem.city
-                                                                        self.cityNumber = perItem.cityNumber
-                                                                        self.municipalityNumber = perItem.municipalityNumber
-                                                                        self.municipality = perItem.municipality
-                                                                        self.dateOfBirth = perItem.dateOfBirth
-                                                                        self.gender = perItem.gender
-                                                                        /// Setter image (personens bilde)  til det bildet som er lagret på personen
-                                                                        self.image = perItem.image
-                                                                    case .failure(let err):
-                                                                        self.message = err.localizedDescription
-                                                                        self.alertIdentifier = AlertID(id: .first)
-                                                                    }
-                                                                }
-
-                                                                /// Modify the person in CloudKit
-                                                                self.personItem.recordID = self.recordID
-                                                                self.personItem.firstName = self.firstName
-                                                                self.personItem.lastName = self.lastName
-                                                                self.personItem.personEmail = self.personEmail
-                                                                self.personItem.address = self.address
-                                                                self.personItem.phoneNumber = self.phoneNumber
-                                                                self.personItem.city = self.city
-                                                                self.personItem.cityNumber = self.cityNumber
-                                                                self.personItem.municipalityNumber = self.municipalityNumber
-                                                                self.personItem.municipality = self.municipality
-                                                                self.personItem.dateOfBirth = self.dateOfBirth
-                                                                self.personItem.gender = self.gender
-                                                                /// Først vises det gamle bildet til personen, så kommer det nye bildet opp
-                                                                if self.image != nil {
-                                                                    self.personItem.image = self.image
-                                                                }
-                                                                CloudKitPerson.modifyPerson(item: self.personItem) { (result) in
-                                                                    switch result {
-                                                                    case .success:
-                                                                        self.image = self.personItem.image
-                                                                        let person = "'\(self.personItem.firstName)" + " \(self.personItem.lastName)'"
-                                                                        let message1 =  NSLocalizedString("was modified", comment: "PersonView")
-                                                                        self.message = person + " " + message1
-                                                                        self.alertIdentifier = AlertID(id: .first)
-                                                                    case .failure(let err):
-                                                                        self.message = err.localizedDescription
-                                                                        self.alertIdentifier = AlertID(id: .first)
-                                                                    }
+                                                            }
+                                                            CloudKitPerson.modifyPerson(item: self.personItem) { (result) in
+                                                                switch result {
+                                                                case .success:
+                                                                    self.image = self.personItem.image
+                                                                    let person = "'\(self.personItem.firstName)" + " \(self.personItem.lastName)'"
+                                                                    let message1 =  NSLocalizedString("was modified", comment: "PersonView")
+                                                                    self.message = person + " " + message1
+                                                                    self.alertIdentifier = AlertID(id: .first)
+                                                                case .failure(let err):
+                                                                    self.message = err.localizedDescription
+                                                                    self.alertIdentifier = AlertID(id: .first)
                                                                 }
                                                             }
-                            }
-                        } else {
-                            self.message = NSLocalizedString("First name and last name must both contain a value.", comment: "PersonView")
-                            self.alertIdentifier = AlertID(id: .first)
+                                                        }
                         }
-                    }, label: {
-                        Text("Save")
-                            .foregroundColor(.none)
-                    })
-            )
-        .onAppear {
-            self.firstName = self.person.firstName
-            self.lastName = self.person.lastName
-            self.personEmail = self.person.personEmail
-            self.address = self.person.address
-             self.phoneNumber = self.person.phoneNumber
-             self.city = self.person.city
-             self.cityNumber = self.person.cityNumber
-             self.municipalityNumber = self.person.municipalityNumber
-             self.municipality = self.person.municipality
-             self.dateOfBirth = self.person.dateOfBirth
-             self.gender = self.person.gender
-             self.image = self.person.image
-         }
+                    } else {
+                        self.message = NSLocalizedString("First name and last name must both contain a value.", comment: "PersonView")
+                        self.alertIdentifier = AlertID(id: .first)
+                    }
+                }, label: {
+                    Text("Save")
+                        .foregroundColor(.none)
+                })
+        )
+            .onAppear {
+                self.firstName = self.person.firstName
+                self.lastName = self.person.lastName
 
-        /// Ta bort tastaturet når en klikker utenfor feltet
-        .modifier(DismissingKeyboard())
-        /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
-        .modifier(AdaptsToSoftwareKeyboard())
+                let firstName = self.firstName
+                let lastName = self.lastName
+                let predicate = NSPredicate(format: "firstName == %@ AND lastName == %@", firstName, lastName)
+                /// Må finne recordID for å kunne modifisere personen  i  CloudKit
+                CloudKitPerson.fetchPerson(predicate: predicate) { (result) in
+                    switch result {
+                    case .success(let perItem):
+                        self.recordID = perItem.recordID
+                        self.firstName = perItem.firstName
+                        self.lastName = perItem.lastName
+                        self.personEmail = perItem.personEmail
+                        self.address = perItem.address
+                        self.phoneNumber = perItem.phoneNumber
+                        self.city = perItem.city
+                        self.cityNumber = perItem.cityNumber
+                        self.municipalityNumber = perItem.municipalityNumber
+                        self.municipality = perItem.municipality
+                        self.dateOfBirth = perItem.dateOfBirth
+                        self.gender = perItem.gender
+                        /// Setter image (personens bilde)  til det bildet som er lagret på personen
+                        self.image = perItem.image
+                    case .failure(let err):
+                        self.message = err.localizedDescription
+                        self.alertIdentifier = AlertID(id: .first)
+                    }
+                }
+
+                //            self.personEmail = self.person.personEmail
+                //            self.address = self.person.address
+                //            self.phoneNumber = self.person.phoneNumber
+                //            self.city = self.person.city
+                //            self.cityNumber = self.person.cityNumber
+                //            self.municipalityNumber = self.person.municipalityNumber
+                //            self.municipality = self.person.municipality
+                //            self.dateOfBirth = self.person.dateOfBirth
+                //            self.gender = self.person.gender
+                //            self.image = self.person.image
+        }
+
+            /// Ta bort tastaturet når en klikker utenfor feltet
+            .modifier(DismissingKeyboard())
+            /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
+            .modifier(AdaptsToSoftwareKeyboard())
 
 
     }
