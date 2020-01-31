@@ -15,7 +15,8 @@ import CloudKit
 
 struct PersonView : View {
 
-    var person: Person
+    /// Kan ikke inneholde @State private var fordi:  'PersonView' initializer is inaccessible due to 'private' protection level
+                   var person: Person
 
     @Environment(\.presentationMode) var presentationMode
     @State private var message: String = ""
@@ -167,35 +168,11 @@ struct PersonView : View {
                         CloudKitPerson.doesPersonExist(firstName: self.firstName,
                                                        lastName: self.lastName) { (result) in
                                                         if result == false {
+                                                            self.message = NSLocalizedString("Unknown person", comment: "PersonsOverView")
+                                                            self.alertIdentifier = AlertID(id: .first)
                                                         } else {
-                                                            //                                                            let firstName = self.firstName
-                                                            //                                                            let lastName = self.lastName
-                                                            //                                                            let predicate = NSPredicate(format: "firstName == %@ AND lastName == %@", firstName, lastName)
-                                                            //                                                            /// Må finne recordID for å kunne modifisere personen  i  CloudKit
-                                                            //                                                            CloudKitPerson.fetchPerson(predicate: predicate) { (result) in
-                                                            //                                                                switch result {
-                                                            //                                                                case .success(let perItem):
-                                                            //                                                                    self.recordID = perItem.recordID
-                                                            //                                                                    self.firstName = perItem.firstName
-                                                            //                                                                    self.lastName = perItem.lastName
-                                                            //                                                                    self.personEmail = perItem.personEmail
-                                                            //                                                                    self.address = perItem.address
-                                                            //                                                                    self.phoneNumber = perItem.phoneNumber
-                                                            //                                                                    self.city = perItem.city
-                                                            //                                                                    self.cityNumber = perItem.cityNumber
-                                                            //                                                                    self.municipalityNumber = perItem.municipalityNumber
-                                                            //                                                                    self.municipality = perItem.municipality
-                                                            //                                                                    self.dateOfBirth = perItem.dateOfBirth
-                                                            //                                                                    self.gender = perItem.gender
-                                                            //                                                                    /// Setter image (personens bilde)  til det bildet som er lagret på personen
-                                                            //                                                                    self.image = perItem.image
-                                                            //                                                                case .failure(let err):
-                                                            //                                                                    self.message = err.localizedDescription
-                                                            //                                                                    self.alertIdentifier = AlertID(id: .first)
-                                                            //                                                                }
-                                                            //                                                            }
-                                                            //
                                                             /// Modify the person in CloudKit
+                                                            /// Kan ikke bruke person fordi: Kan ikke inneholde @State private var fordi:  'PersonView' initializer is inaccessible due to 'private' protection level
                                                             self.personItem.recordID = self.recordID
                                                             self.personItem.firstName = self.firstName
                                                             self.personItem.lastName = self.lastName
