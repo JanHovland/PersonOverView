@@ -133,7 +133,6 @@ struct DetailView: View {
                             .frame(width: 80, height: 80, alignment: .center)
                             .clipShape(Circle())
                             .overlay(Circle().stroke(Color.white, lineWidth: 3))
-                            .shadow(color: .gray, radius: 3)
                     }
                 }
                 Button(NSLocalizedString("Choose Profile Image", comment: "SignUpView")) {
