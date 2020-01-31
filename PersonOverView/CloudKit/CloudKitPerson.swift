@@ -24,7 +24,7 @@ struct CloudKitPerson {
         case cursorFailure
     }
     /// MARK: - saving to CloudKit
-    static func savePerson(item: PersonElement, completion: @escaping (Result<PersonElement, Error>) -> ()) {
+    static func savePerson(item: Person, completion: @escaping (Result<Person, Error>) -> ()) {
         let itemRecord = CKRecord(recordType: RecordType.Person)
         itemRecord["firstName"] = item.firstName as CKRecordValue
         itemRecord["lastName"] = item.lastName as CKRecordValue
@@ -100,20 +100,20 @@ struct CloudKitPerson {
                 ///     completion(.failure(CloudKitHelperError.castFailure))
                 ///     return
                 /// }
-                let personElement = PersonElement(recordID: recordID,
-                                                  firstName: firstName,
-                                                  lastName: lastName,
-                                                  personEmail: personEmail,
-                                                  address: address,
-                                                  phoneNumber: phoneNumber,
-                                                  cityNumber: cityNumber,
-                                                  city: city,
-                                                  municipalityNumber: municipalityNumber,
-                                                  municipality: municipality,
-                                                  dateOfBirth: dateOfBirth,
-                                                  gender: gender)
+                let person = Person(recordID: recordID,
+                                    firstName: firstName,
+                                    lastName: lastName,
+                                    personEmail: personEmail,
+                                    address: address,
+                                    phoneNumber: phoneNumber,
+                                    cityNumber: cityNumber,
+                                    city: city,
+                                    municipalityNumber: municipalityNumber,
+                                    municipality: municipality,
+                                    dateOfBirth: dateOfBirth,
+                                    gender: gender)
 
-                completion(.success(personElement))
+                completion(.success(person))
             }
         }
     }
@@ -178,36 +178,36 @@ struct CloudKitPerson {
                     if let imageData = try? Data.init(contentsOf: imageAsset.fileURL!) {
                         let image = UIImage(data: imageData)
                         let person = Person(recordID: recordID,
-                                                          firstName: firstName,
-                                                          lastName: lastName,
-                                                          personEmail: personEmail,
-                                                          address: address,
-                                                          phoneNumber: phoneNumber,
-                                                          cityNumber: cityNumber,
-                                                          city: city,
-                                                          municipalityNumber: municipalityNumber,
-                                                          municipality: municipality,
-                                                          dateOfBirth: dateOfBirth,
-                                                          gender: gender,
-                                                          image: image)
+                                            firstName: firstName,
+                                            lastName: lastName,
+                                            personEmail: personEmail,
+                                            address: address,
+                                            phoneNumber: phoneNumber,
+                                            cityNumber: cityNumber,
+                                            city: city,
+                                            municipalityNumber: municipalityNumber,
+                                            municipality: municipality,
+                                            dateOfBirth: dateOfBirth,
+                                            gender: gender,
+                                            image: image)
                         completion(.success(person))
                     }
                 }
                 else {
-                    let personElement = Person(recordID: recordID,
-                                                      firstName: firstName,
-                                                      lastName: lastName,
-                                                      personEmail: personEmail,
-                                                      address: address,
-                                                      phoneNumber: phoneNumber,
-                                                      cityNumber: cityNumber,
-                                                      city: city,
-                                                      municipalityNumber: municipalityNumber,
-                                                      municipality: municipality,
-                                                      dateOfBirth: dateOfBirth,
-                                                      gender: gender,
-                                                      image: nil)
-                    completion(.success(personElement))
+                    let person = Person(recordID: recordID,
+                                        firstName: firstName,
+                                        lastName: lastName,
+                                        personEmail: personEmail,
+                                        address: address,
+                                        phoneNumber: phoneNumber,
+                                        cityNumber: cityNumber,
+                                        city: city,
+                                        municipalityNumber: municipalityNumber,
+                                        municipality: municipality,
+                                        dateOfBirth: dateOfBirth,
+                                        gender: gender,
+                                        image: nil)
+                    completion(.success(person))
                 }
             }
         }

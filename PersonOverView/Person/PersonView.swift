@@ -22,7 +22,7 @@ struct PersonView : View {
     @State private var alertIdentifier: AlertID?
     @State private var showingImagePicker = false
 
-    @State  var recordID: CKRecord.ID?
+    @State private var recordID: CKRecord.ID?
     @State private var firstName: String = ""
     @State private var lastName: String = ""
     @State private var personEmail: String = ""
@@ -39,19 +39,18 @@ struct PersonView : View {
     var genders = [NSLocalizedString("Man", comment: "PersonsOverView"),
                    NSLocalizedString("Woman", comment: "PersonsOverView")]
 
-    @State  var personItem = PersonElement(firstName: "",
-                                           lastName: "",
-                                           personEmail: "",
-                                           address: "",
-                                           phoneNumber: "",
-                                           cityNumber: "",
-                                           city: "",
-                                           municipalityNumber: "",
-                                           municipality: "",
-                                           dateOfBirth: Date(),
-                                           gender: 0,
-                                           image: nil)
-
+    @State private var personItem = PersonElement(firstName: "",
+                                                  lastName: "",
+                                                  personEmail: "",
+                                                  address: "",
+                                                  phoneNumber: "",
+                                                  cityNumber: "",
+                                                  city: "",
+                                                  municipalityNumber: "",
+                                                  municipality: "",
+                                                  dateOfBirth: Date(),
+                                                  gender: 0,
+                                                  image: nil)
 
     var body: some View {
         VStack {

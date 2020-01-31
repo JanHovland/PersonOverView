@@ -15,7 +15,7 @@ var toDo_0 =
 
 var toDo_1 =
 """
- 1. Lage liste (tableview) over alle personene
+ 1. Legg inn en ny person i "PersonOverView"
 """
 
 var toDo_2 =
