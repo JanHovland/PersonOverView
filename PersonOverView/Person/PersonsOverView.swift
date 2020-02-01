@@ -49,6 +49,7 @@ struct PersonsOverView: View {
             .navigationBarTitle(personsOverview)
             .navigationBarItems(leading:
                 Button(action: {
+                    // Rutine for å friske opp personoversikten
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Text("Refresh")
