@@ -18,6 +18,8 @@ struct PersonsOverView: View {
     @State private var alertIdentifier: AlertID?
     @State private var persons = [Person]()
 
+    @State private var personsOverview = NSLocalizedString("Persons overview", comment: "PersonsOverView")
+
     var body: some View {
         NavigationView {
             VStack {
@@ -44,12 +46,12 @@ struct PersonsOverView: View {
                     }
                 }
             }
-            .navigationBarTitle(NSLocalizedString("Persons overview", comment: "PersonsOverView"))
+            .navigationBarTitle(personsOverview)
             .navigationBarItems(leading:
                 Button(action: {
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
-                    Text("Cancel")
+                    Text("Refresh")
                         .foregroundColor(.none)
                 })
                 , trailing:
@@ -84,6 +86,23 @@ struct PersonsOverView: View {
                 return Alert(title: Text(self.message))
             }
         }
+        .overlay(
+            HStack {
+                Spacer()
+                VStack {
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "chevron.down.circle.fill")
+                            .font(.largeTitle)
+                            .foregroundColor(.none)
+                    })
+                        .padding(.trailing, 20)
+                        .padding(.top, 70)
+                    Spacer()
+                }
+            }
+        )
 
     }
 }

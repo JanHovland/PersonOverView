@@ -143,10 +143,16 @@
 "Password" = "Passord";
 
 /* PersonsOverView */
+"Persons overview" = "Person oversikt";
+
+/* PersonsOverView */
 "Phone Number" = "Telefonnummer";
 
 /* PersonsOverView */
 "Postalcode" = "Postkode";
+
+/* No comment provided by engineer. */
+"Refresh" = "Frisk opp";
 
 /* No comment provided by engineer. */
 "Save" = "Lagre";

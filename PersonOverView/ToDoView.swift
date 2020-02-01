@@ -15,12 +15,12 @@ var toDo_0 =
 
 var toDo_1 =
 """
- 1. Legg inn en ny person i "PersonOverView" icon 􀅼
- 2. Legg inn sortering i "PersonOverView"
- 3. Rydde opp i visningen i "PersonOverView"
- 4. Legg inn knapp "Frisk opp"
+ 1. Legg inn en ny person i "PersonOverView"
+ 2. Legg inn knapp "Frisk opp"
+ 3. Legg inn sortering i "PersonOverView"
+ 4. Rydde opp i visningen i "PersonOverView"
  5. Kople "Ny bruker" til "SignInView bildet"
- 6. "vis passord" gir motsatt visning
+ 6. "Vis passord" gir motsatt visning
  7. Endring av for- og etternavn gir feilmelding
 
 """
