@@ -17,7 +17,7 @@ struct PersonsOverView: View {
     @State private var message: String = ""
     @State private var alertIdentifier: AlertID?
     @State private var persons = [Person]()
-    @State private var addPerson = false
+    @State private var newPerson = false
 
     @State private var personsOverview = NSLocalizedString("Persons overview", comment: "PersonsOverView")
 
@@ -59,16 +59,17 @@ struct PersonsOverView: View {
                 , trailing:
                 Button(action: {
                     /// Rutine for å legge til en person
-                    self.addPerson.toggle()
+                    self.newPerson.toggle()
                 }, label: {
                     Text("Add")
                 })
             )
         }
-//        .sheet(isPresented: $addPerson) {
-//            // PersonView(newPerson: true, person: nil)
-//            // NavigationLink(destination: PersonView(newPerson: false, person: person))
-//        }
+        .sheet(isPresented: $newPerson) {
+            // ToDoView()
+            NewPersonView()
+            // NavigationLink(destination: PersonNewView())
+        }
         .onAppear {
             /// Sletter alt tidligere innhold i personElements.persons
             self.persons.removeAll()

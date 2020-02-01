@@ -40,6 +40,7 @@
 		DBDA561A23BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */; };
 		DBE58ACF23CF2D5300D3EF1D /* resizedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE58ACE23CF2D5300D3EF1D /* resizedImage.swift */; };
 		DBE58AD123CF798000D3EF1D /* DismissingKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE58AD023CF798000D3EF1D /* DismissingKeyboard.swift */; };
+		DBF0397E23E5A50D00230FAA /* NewPersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF0397D23E5A50D00230FAA /* NewPersonView.swift */; };
 		DBFC29C323C48F6C00F2224B /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC29C223C48F6C00F2224B /* SettingView.swift */; };
 		DBFC29CB23C5DE8500F2224B /* UserMaintenanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC29CA23C5DE8500F2224B /* UserMaintenanceView.swift */; };
 		DBFC29CF23C74D6900F2224B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC29CE23C74D6900F2224B /* User.swift */; };
@@ -82,6 +83,7 @@
 		DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptsToSoftwareKeyboard.swift; sourceTree = "<group>"; };
 		DBE58ACE23CF2D5300D3EF1D /* resizedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resizedImage.swift; sourceTree = "<group>"; };
 		DBE58AD023CF798000D3EF1D /* DismissingKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissingKeyboard.swift; sourceTree = "<group>"; };
+		DBF0397D23E5A50D00230FAA /* NewPersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPersonView.swift; sourceTree = "<group>"; };
 		DBFC29C223C48F6C00F2224B /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		DBFC29CA23C5DE8500F2224B /* UserMaintenanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMaintenanceView.swift; sourceTree = "<group>"; };
 		DBFC29CE23C74D6900F2224B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 		DB4A8F3923DEDDD200558788 /* Person */ = {
 			isa = PBXGroup;
 			children = (
+				DBF0397D23E5A50D00230FAA /* NewPersonView.swift */,
 				DB302B8A237EF33100076D10 /* PersonView.swift */,
 				DB65AE7B23E1EE2100568032 /* PersonsOverView.swift */,
 			);
@@ -316,6 +319,7 @@
 				DB302B83237EF18D00076D10 /* UserElements.swift in Sources */,
 				DB46938023B9F0A50060933E /* ToDoView.swift in Sources */,
 				DB302B8F237EF43400076D10 /* CloudKitUser.swift in Sources */,
+				DBF0397E23E5A50D00230FAA /* NewPersonView.swift in Sources */,
 				DB9A4DD923CDE2AE00948B21 /* UserDeleteView.swift in Sources */,
 				DBFC29CB23C5DE8500F2224B /* UserMaintenanceView.swift in Sources */,
 				DB6739C123AA910E00EF9ECD /* SwiftUIImagePicker.swift in Sources */,
