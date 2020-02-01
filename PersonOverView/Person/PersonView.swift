@@ -16,7 +16,7 @@ import CloudKit
 struct PersonView : View {
 
     /// Kan ikke inneholde @State private var fordi:  'PersonView' initializer is inaccessible due to 'private' protection level
-                   var person: Person
+    var person: Person
 
     @Environment(\.presentationMode) var presentationMode
     @State private var message: String = ""
@@ -73,6 +73,7 @@ struct PersonView : View {
                     self.showingImagePicker.toggle()
                 }
             }
+            .padding()
             .sheet(isPresented: $showingImagePicker, content: {
                 ImagePicker.shared.view
             }).onReceive(ImagePicker.shared.$image) { image in
@@ -150,18 +151,12 @@ struct PersonView : View {
                             value: $gender)
             }
 
+
         }
             /// Removes all separators below in the List view
             .listStyle(GroupedListStyle())
             .navigationBarTitle("Person")
-            .navigationBarItems(leading:
-                Button(action: {
-                    self.presentationMode.wrappedValue.dismiss()
-                }, label: {
-                    Text(NSLocalizedString("Cancel", comment: "PersonsOverView"))
-                        .foregroundColor(.none)
-                })
-                , trailing:
+            .navigationBarItems(trailing:
                 Button(action: {
                     /// Save person data
                     if self.firstName.count > 0, self.lastName.count > 0 {
@@ -242,6 +237,8 @@ struct PersonView : View {
                         self.alertIdentifier = AlertID(id: .first)
                     }
                 }
+
+
         }
         .alert(item: $alertIdentifier) { alert in
             switch alert.id {
