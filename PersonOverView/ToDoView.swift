@@ -15,10 +15,11 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-1. Sletting sletter kun i bildet og ikke i CloudKit
+
 1. Rydde opp i visningen i "PersonOverView"
 2. Legg inn søk i "PersonOverView"
 3. "Vis passord" gir motsatt visning
+4. Legge inn "Ny bruker" på oppstartsbildet "Logg inn"
 
 """
 
@@ -68,6 +69,9 @@ og showOptionMenu settes til true når en finner brukeren
 20. Lagt inn knapp for lagring av ny person i "PersonOverView"
 21. Lagt inn knapp "Frisk opp" med oppfriskning funksjon
 22. Endring av for- og etternavn er nå riktig
+23. Sletting fjerner nå fra listen og i CloudKit
+
+
 """
 
 var toDo_4 =
