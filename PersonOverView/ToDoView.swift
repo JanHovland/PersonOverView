@@ -17,9 +17,11 @@ var toDo_1 =
 """
 
 1. Rydde opp i visningen i "PersonOverView"
+   a) Laget funksjonen func "DateToString(date: Date) -> String"
+      Må implementeres i et View for å vise "person.dateOfBirth"
+      som en streng i "struct ShowPersons: View" i "UserMaintenanceView"
 2. Legg inn søk i "PersonOverView"
-3. "Vis passord" gir motsatt visning
-4. Legge inn "Ny bruker" på oppstartsbildet "Logg inn"
+3. Legge inn "Ny bruker" på oppstartsbildet "Logg inn"
 
 """
 
@@ -70,7 +72,7 @@ og showOptionMenu settes til true når en finner brukeren
 21. Lagt inn knapp "Frisk opp" med oppfriskning funksjon
 22. Endring av for- og etternavn er nå riktig
 23. Sletting fjerner nå fra listen og i CloudKit
-
+24. "Vis passord" har nå korrekt visning
 
 """
 

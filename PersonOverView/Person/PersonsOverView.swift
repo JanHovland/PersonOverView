@@ -26,39 +26,25 @@ struct PersonsOverView: View {
                     ForEach(persons) {
                         person in
                         NavigationLink(destination: PersonView(person: person)) {
-                            HStack(spacing: 5) {
-                                Group {
-                                    if person.image != nil {
-                                        Image(uiImage: person.image!)
-                                            .resizable()
-                                            .frame(width: 30, height: 30, alignment: .center)
-                                            .clipShape(Circle())
-                                            .overlay(Circle().stroke(Color.white, lineWidth: 1))
-                                    }
-                                    Text(person.firstName)
-                                    Text(person.lastName)
-                                    Text(person.address)
-                                    Text(person.cityNumber)
-                                    Text(person.city)
-
-                                }
-                            }}
-                    }
-                    /// Sletter  valgt person og oppdaterer CliudKit
-                    .onDelete { (indexSet) in
-                        guard let recordID = self.persons[indexSet.first!].recordID else { return }
-                        CloudKitPerson.deletePerson(recordID: recordID) { (result) in
-                            switch result {
-                            case .success :
-                                self.message = NSLocalizedString("Successfully deleted a person", comment: "PersonsOverView")
-                                self.alertIdentifier = AlertID(id: .first)
-                            case .failure(let err):
-                                self.message = err.localizedDescription
-                                self.alertIdentifier = AlertID(id: .first)
-                            }
+                            ShowPersons(person: person)
                         }
-                        /// Sletter den valgte raden
-                        self.persons.remove(atOffsets: indexSet)
+                    }
+
+                        /// Sletter  valgt person og oppdaterer CliudKit
+                        .onDelete { (indexSet) in
+                            guard let recordID = self.persons[indexSet.first!].recordID else { return }
+                            CloudKitPerson.deletePerson(recordID: recordID) { (result) in
+                                switch result {
+                                case .success :
+                                    self.message = NSLocalizedString("Successfully deleted a person", comment: "PersonsOverView")
+                                    self.alertIdentifier = AlertID(id: .first)
+                                case .failure(let err):
+                                    self.message = err.localizedDescription
+                                    self.alertIdentifier = AlertID(id: .first)
+                                }
+                            }
+                            /// Sletter den valgte raden
+                            self.persons.remove(atOffsets: indexSet)
                     }
                 }
             }
@@ -67,6 +53,7 @@ struct PersonsOverView: View {
                 Button(action: {
                     /// Rutine for å friske opp personoversikten
                     self.refresh()
+                    print(self.DateToString(date: Date()))
                 }, label: {
                     Text("Refresh")
                         .foregroundColor(.none)
@@ -84,6 +71,7 @@ struct PersonsOverView: View {
             NewPersonView()
         }
         .onAppear {
+            print(self.DateToString(date: Date()))
             self.refresh()
         }
         .alert(item: $alertIdentifier) { alert in
@@ -113,6 +101,14 @@ struct PersonsOverView: View {
         )
     }
 
+    func DateToString(date: Date) -> String {
+        /// ref: https://www.hackingwithswift.com/example-code/system/how-to-convert-dates-and-times-to-a-string-using-dateformatter
+        /// Returnerer 02.02.2020 for 2. februar 2020
+        let formatter1 = DateFormatter()
+        formatter1.dateStyle = .short
+        return formatter1.string(from: date) 
+    }
+
     /// Rutine for å friske opp bildet
     func refresh() {
         /// Sletter alt tidligere innhold i person
@@ -129,5 +125,38 @@ struct PersonsOverView: View {
             }
         }
     }
+
+    /// Et eget View for å vise person detail view
+    struct ShowPersons: View {
+        var person: Person
+        var body: some View {
+            HStack(spacing: 5) {
+                if person.image != nil {
+                    Image(uiImage: person.image!)
+                        .resizable()
+                        .frame(width: 50, height: 50, alignment: .center)
+                        .clipShape(Circle())
+                        .overlay(Circle().stroke(Color.white, lineWidth: 1))
+                }
+                VStack (alignment: .leading, spacing: 5) {
+                    HStack {
+                        Text(person.firstName)
+                            .bold()
+                        Text(person.lastName)
+                            .bold()
+                    }
+
+                    /// Text(person.dateOfBirth as String)
+                    HStack {
+                        Text(person.address)
+                        Text(person.cityNumber)
+                        Text(person.city)
+                    }
+                }
+                .padding()
+            }
+        }
+    }
+
 }
 
