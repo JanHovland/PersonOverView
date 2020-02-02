@@ -32,7 +32,7 @@ struct SignInView : View {
     @State private var alertIdentifier: AlertID?
 
     var body: some View {
-        ScrollView  {
+        ScrollView (.vertical, showsIndicators: false) {
             VStack {
                 Spacer(minLength: 17)
                 HStack {

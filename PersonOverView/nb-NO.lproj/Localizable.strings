@@ -20,9 +20,6 @@
 /* SignInView */
 "Both email and Password must have a value" = "Både e-post og passord må ha en verdi";
 
-/* No comment provided by engineer. */
-"Cancel" = "Avbryt";
-
 /* SignUpView
    UserMaintenanceView */
 "Choose Profile Image" = "Velg profilbilde";
@@ -197,7 +194,7 @@
 "Successfully deleted a person" = "En person ble slettet";
 
 /* UserMaintenanceView */
-"Successfully modified the user" = "Brukeren er oppdatert";
+"Successfully modified the user" = "Brukeren er endret";
 
 /* SignUpView */
 "The user:" = "Brukeren:";
@@ -221,7 +218,7 @@
 "User maintenance" = "Bruker vedlikehold";
 
 /* PersonsOverView */
-"was modified" = "ble modifisert";
+"was modified" = "ble endret";
 
 /* NewPersonView */
 "was saved" = "ble lagret";
