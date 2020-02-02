@@ -22,6 +22,7 @@ var toDo_1 =
  5. Kople "Ny bruker" til "SignInView bildet"
  6. "Vis passord" gir motsatt visning
  7. Endring av for- og etternavn gir feilmelding
+ 8. Slette en person
 
 """
 

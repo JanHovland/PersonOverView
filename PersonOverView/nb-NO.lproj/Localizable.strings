@@ -7,7 +7,8 @@
 /* PersonsOverView */
 "Address" = "Addresse";
 
-/* SignUpView */
+/* NewPersonView
+   SignUpView */
 "already exists" = "finnes allerede";
 
 /* UserDeleteView */
@@ -19,7 +20,7 @@
 /* SignInView */
 "Both email and Password must have a value" = "Både e-post og passord må ha en verdi";
 
-/* PersonsOverView */
+/* No comment provided by engineer. */
 "Cancel" = "Avbryt";
 
 /* SignUpView
@@ -128,6 +129,9 @@
 /* SignUpView */
 "Name, eMail or Password must all contain a value." = "Navn, e-post og passord må alle ha en verdi.";
 
+/* NewPersonView */
+"New person" = "Ny person";
+
 /* UserDeleteView
    UserMaintenanceView */
 "No" = "Nei";
@@ -142,8 +146,14 @@
    UserMaintenanceView */
 "Password" = "Passord";
 
+/* NewPersonView */
+"Person overview" = "Personoversikt";
+
 /* PersonsOverView */
-"Persons overview" = "Person oversikt";
+"Persons overview" = "Oversikt personer";
+
+/* SignInView */
+"PersonsOverview" = "Oversikt personer";
 
 /* PersonsOverView */
 "Phone Number" = "Telefonnummer";
@@ -154,7 +164,7 @@
 /* No comment provided by engineer. */
 "Refresh" = "Frisk opp";
 
-/* No comment provided by engineer. */
+/* NewPersonView */
 "Save" = "Lagre";
 
 /* SettingView
@@ -211,6 +221,9 @@
 
 /* PersonsOverView */
 "was modified" = "ble modifisert";
+
+/* NewPersonView */
+"was saved" = "ble lagret";
 
 /* PersonsOverView */
 "Woman" = "Kvinne";

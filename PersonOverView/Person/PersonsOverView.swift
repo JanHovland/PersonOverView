@@ -66,9 +66,9 @@ struct PersonsOverView: View {
             )
         }
         .sheet(isPresented: $newPerson) {
-            // ToDoView()
             NewPersonView()
-            // NavigationLink(destination: PersonNewView())
+            /// Cannot invoke initializer for type 'NavigationLink<_, _>' with an argument list of type '(destination: NewPersonView)'
+            /// NavigationLink(destination: NewPersonView())
         }
         .onAppear {
             /// Sletter alt tidligere innhold i personElements.persons
