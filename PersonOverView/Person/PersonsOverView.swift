@@ -20,6 +20,7 @@ struct PersonsOverView: View {
     @State private var personsOverview = NSLocalizedString("Persons overview", comment: "PersonsOverView")
 
     var body: some View {
+
         NavigationView {
             VStack {
                 List {
@@ -53,7 +54,6 @@ struct PersonsOverView: View {
                 Button(action: {
                     /// Rutine for å friske opp personoversikten
                     self.refresh()
-                    print(self.DateToString(date: Date()))
                 }, label: {
                     Text("Refresh")
                         .foregroundColor(.none)
@@ -71,7 +71,6 @@ struct PersonsOverView: View {
             NewPersonView()
         }
         .onAppear {
-            print(self.DateToString(date: Date()))
             self.refresh()
         }
         .alert(item: $alertIdentifier) { alert in
@@ -101,14 +100,6 @@ struct PersonsOverView: View {
         )
     }
 
-    func DateToString(date: Date) -> String {
-        /// ref: https://www.hackingwithswift.com/example-code/system/how-to-convert-dates-and-times-to-a-string-using-dateformatter
-        /// Returnerer 02.02.2020 for 2. februar 2020
-        let formatter1 = DateFormatter()
-        formatter1.dateStyle = .short
-        return formatter1.string(from: date) 
-    }
-
     /// Rutine for å friske opp bildet
     func refresh() {
         /// Sletter alt tidligere innhold i person
@@ -128,6 +119,13 @@ struct PersonsOverView: View {
 
     /// Et eget View for å vise person detail view
     struct ShowPersons: View {
+
+        static let taskDateFormat: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .long
+            return formatter
+        }()
+
         var person: Person
         var body: some View {
             HStack(spacing: 5) {
@@ -146,6 +144,10 @@ struct PersonsOverView: View {
                             .bold()
                     }
 
+                    Text("\(person.dateOfBirth, formatter: Self.taskDateFormat)")
+
+
+
                     /// Text(person.dateOfBirth as String)
                     HStack {
                         Text(person.address)
@@ -157,6 +159,14 @@ struct PersonsOverView: View {
             }
         }
     }
+
+//    struct ShowDate: View {
+//        var date: Date
+//        var body: some View {
+//            let q = self.DateToString(date: Date)
+//          Text(q)
+//        }
+//    }
 
 }
 

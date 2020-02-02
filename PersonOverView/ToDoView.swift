@@ -16,12 +16,8 @@ E n d r i n g e r
 var toDo_1 =
 """
 
-1. Rydde opp i visningen i "PersonOverView"
-   a) Laget funksjonen func "DateToString(date: Date) -> String"
-      Må implementeres i et View for å vise "person.dateOfBirth"
-      som en streng i "struct ShowPersons: View" i "UserMaintenanceView"
-2. Legg inn søk i "PersonOverView"
-3. Legge inn "Ny bruker" på oppstartsbildet "Logg inn"
+1. Legg inn søk i "PersonOverView"
+2. Legge inn "Ny bruker" på oppstartsbildet "Logg inn"
 
 """
 
@@ -32,47 +28,51 @@ F e r d i g
 
 var toDo_3 =
 """
-1. Reduserte meldinger i SignInView.swift
-2. Reduserte meldinger i SignUpView.swift
-3. Ta bort "online keyboard"
-... Lagt inn .modifier(DismissingKeyboard())
-4. Reduserer nå størrelsen på bildet som blir lagret på CloudKit.
-5. Viser nå kun lagret bilde i CloudKit.
-... Uten lagret bilde vises et blankt bilde i SignInView.swift
-6. Endre "Feil e-Post eller passord" til "Ukjent ...."
-7. Endret fra UserMaintenanceView().environmentObject(User()
-til : UserMaintenanceView().environmentObject(self.user)
-8. Ny .sheet som inneholder :
-a) Endre profil bilde
-b) Endre navn
-c) Endre e-post
-d) Endre passord
-9. Lagt inn "slett bruker" meny
-10. "Sign up" -> Registrer(ing)
-11. Blanke feltene etter:
-a) "Meld deg inn"
-b) "Slett"
-12. "Innlogging CloudKit":
-a) "Bruker vedlikehold" går tilbake til "Innlogging CloudKit"
-Løsning: Flytte .sheet rett etter hver "Button"
-13. Lagt inn .alert med spørsmål på:
-a) "UserMaintenanceView.swift"
-b) "UserDeleteView.swift"
-14. .alert kan bare legges inn en gang
-a) Lagt inn: struct AlertID
-15. Ta bort Scroll indicators:
-a) Løsning: ScrollView (.vertical, showsIndicators: false)
-16. Må skjule "Meny valg" før innlogging
-a) Løsning: .opacity(showOptionMenu ? 1 : 0)
-og showOptionMenu settes til true når en finner brukeren
-17. Personbildet har nå bilde av personen
-18. Har lagd en liste (tableview) over alle personene
-19. Lagt inn knapp "Ny bruker" for kopling til "NewPersonView bildet"
-20. Lagt inn knapp for lagring av ny person i "PersonOverView"
-21. Lagt inn knapp "Frisk opp" med oppfriskning funksjon
-22. Endring av for- og etternavn er nå riktig
-23. Sletting fjerner nå fra listen og i CloudKit
-24. "Vis passord" har nå korrekt visning
+ 1. Reduserte meldinger i SignInView.swift
+ 2. Reduserte meldinger i SignUpView.swift
+ 3. Ta bort "online keyboard"
+    ... Lagt inn .modifier(DismissingKeyboard())
+ 4. Reduserer nå størrelsen på bildet som blir lagret på CloudKit.
+ 5. Viser nå kun lagret bilde i CloudKit.
+    ... Uten lagret bilde vises et blankt bilde i SignInView.swift
+ 6. Endre "Feil e-Post eller passord" til "Ukjent ...."
+ 7. Endret fra UserMaintenanceView().environmentObject(User()
+    til : UserMaintenanceView().environmentObject(self.user)
+ 8. Ny .sheet som inneholder :
+    a) Endre profil bilde
+    b) Endre navn
+    c) Endre e-post
+    d) Endre passord
+ 9. Lagt inn "slett bruker" meny
+ 10. "Sign up" -> Registrer(ing)
+ 11. Blanke feltene etter:
+     a) "Meld deg inn"
+     b) "Slett"
+ 12. "Innlogging CloudKit":
+     a) "Bruker vedlikehold" går tilbake til "Innlogging CloudKit"
+        Løsning: Flytte .sheet rett etter hver "Button"
+ 13. Lagt inn .alert med spørsmål på:
+     a) "UserMaintenanceView.swift"
+     b) "UserDeleteView.swift"
+ 14. .alert kan bare legges inn en gang
+     a) Lagt inn: struct AlertID
+ 15. Ta bort Scroll indicators:
+     a) Løsning: ScrollView (.vertical, showsIndicators: false)
+ 16. Må skjule "Meny valg" før innlogging
+     a) Løsning: .opacity(showOptionMenu ? 1 : 0)
+        og showOptionMenu settes til true når en finner brukeren
+ 17. Personbildet har nå bilde av personen
+ 18. Har lagd en liste (tableview) over alle personene
+ 19. Lagt inn knapp "Ny bruker" for kopling til "NewPersonView bildet"
+ 20. Lagt inn knapp for lagring av ny person i "PersonOverView"
+ 21. Lagt inn knapp "Frisk opp" med oppfriskning funksjon
+ 22. Endring av for- og etternavn er nå riktig
+ 23. Sletting fjerner nå fra listen og i CloudKit
+ 24. "Vis passord" har nå korrekt visning
+ 25. "person.dateOfBirth" vises nå som DD.MM.YYYY
+ 26. Ryddet opp i visningen i "PersonOverView"
+ 27. Bruker nå .autocapitalization(.sentences) på adresse feltene
+
 
 """
 
@@ -84,7 +84,7 @@ S e n e r e
 var toDo_5 =
 """
 1. Trykke på bildet istedet for på teksten i "SignUpView.swift"
-... Bruk: .contextMenu??
+   ... Bruk: .contextMenu??
 2. Legge inn søking på postnummer
 """
 
@@ -96,12 +96,12 @@ K j e n t e   f e i l
 var toDo_7 =
 """
 1. Når en bytter showPassword, oppdateres ikke "SignInView.swift" automatisk.
-a) Foreløpig løsning: Skift til "SignUpView.swift" og så
-tilbake til "SignInView.swift"
-2. Det mangler .keyboadType(.phone).
-Nå brukes default keyboardType
-3. .onAppear virker kun første gang en app kalles,
-ikke ved retur fra en annen app.
+   a) Foreløpig løsning: Skift til "SignUpView.swift" og så
+      tilbake til "SignInView.swift" (implementere refresh)
+2. onAppear virker kun første gang en app kalles,
+   ikke ved retur fra en annen app. (implementere refresh)
+3. Det mangler .keyboadType(.phone).
+   a) Nå brukes default keyboardType
 
 """
 
