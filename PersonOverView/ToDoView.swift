@@ -15,9 +15,8 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-1. Slette en bruker
-2. Legg inn søk i "PersonOverView"
-3. Legge inn "Ny bruker" på oppstartsbildet "Logg inn"
+1. Legg inn søk i "PersonOverView"
+2. Legge inn "Ny bruker" på oppstartsbildet "Logg inn"
 
 """
 
