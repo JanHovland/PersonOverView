@@ -11,8 +11,8 @@ import CloudKit
 
 class User: ObservableObject {
     @Published var recordID: CKRecord.ID?
-    @Published var name = ""
-    @Published var email = "a"
-    @Published var password = "a"
+    @Published var name = "Jan Hovland"
+    @Published var email = "jan.hovland@lyse.net"
+    @Published var password = "qwerty"
     @Published var image: UIImage?
 }
