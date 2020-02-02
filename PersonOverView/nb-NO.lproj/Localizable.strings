@@ -91,7 +91,8 @@
 /* PersonsOverView */
 "First name" = "Fornavn";
 
-/* PersonsOverView */
+/* NewPersonView
+   PersonsOverView */
 "First name and last name must both contain a value." = "For- og etternavn må begge ha verdier.";
 
 /* PersonsOverView */
@@ -192,6 +193,9 @@
 /* SignUpView */
 "Sign Up CloudKit" = "Ny bruker CloudKit";
 
+/* PersonsOverView */
+"Successfully deleted a person" = "En person ble slettet";
+
 /* UserMaintenanceView */
 "Successfully modified the user" = "Brukeren er oppdatert";
 
@@ -205,9 +209,6 @@
 /* SignInView
    UserDeleteView */
 "Unknown email or password:" = "Ukjent e-post eller passord:";
-
-/* PersonsOverView */
-"Unknown person" = "Ukjent person";
 
 /* UserMaintenanceView */
 "Update user" = "Oppdater bruker";

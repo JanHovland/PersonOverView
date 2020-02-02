@@ -38,6 +38,44 @@
 		DB9A4DD923CDE2AE00948B21 /* UserDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9A4DD823CDE2AE00948B21 /* UserDeleteView.swift */; };
 		DBB4C62823B6301F0055296B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB4C62723B6301F0055296B /* ImagePicker.swift */; };
 		DBDA561A23BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */; };
+		DBDE714723E71A88004F9CA8 /* AdaptsToSoftwareKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */; };
+		DBDE714823E71A88004F9CA8 /* DismissingKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE58AD023CF798000D3EF1D /* DismissingKeyboard.swift */; };
+		DBDE714923E71A88004F9CA8 /* PersonOverView.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB302B6D237EF02300076D10 /* PersonOverView.xcdatamodeld */; };
+		DBDE714A23E71A88004F9CA8 /* PersonElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4A8F3D23DEE79200558788 /* PersonElements.swift */; };
+		DBDE714B23E71A88004F9CA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B69237EF02300076D10 /* AppDelegate.swift */; };
+		DBDE714C23E71A88004F9CA8 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB4C62723B6301F0055296B /* ImagePicker.swift */; };
+		DBDE714D23E71A88004F9CA8 /* CloudKitPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4A8F3F23DEE87B00558788 /* CloudKitPerson.swift */; };
+		DBDE714E23E71A88004F9CA8 /* PersonOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B70237EF02300076D10 /* PersonOverView.swift */; };
+		DBDE714F23E71A88004F9CA8 /* UserElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B80237EF16200076D10 /* UserElement.swift */; };
+		DBDE715023E71A88004F9CA8 /* PersonsOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB65AE7B23E1EE2100568032 /* PersonsOverView.swift */; };
+		DBDE715123E71A88004F9CA8 /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B8A237EF33100076D10 /* PersonView.swift */; };
+		DBDE715223E71A88004F9CA8 /* PersonElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4A8F3A23DEE76400558788 /* PersonElement.swift */; };
+		DBDE715323E71A88004F9CA8 /* AlertID.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB28D73A23D615E900CF6915 /* AlertID.swift */; };
+		DBDE715423E71A88004F9CA8 /* InputGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1FEF922380592F00F8D763 /* InputGender.swift */; };
+		DBDE715523E71A88004F9CA8 /* CloudKitRecordXXX.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB691A1F23CB31ED004CDBE8 /* CloudKitRecordXXX.swift */; };
+		DBDE715623E71A88004F9CA8 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B86237EF2A700076D10 /* SignUpView.swift */; };
+		DBDE715723E71A88004F9CA8 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC29C223C48F6C00F2224B /* SettingView.swift */; };
+		DBDE715823E71A88004F9CA8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B6B237EF02300076D10 /* SceneDelegate.swift */; };
+		DBDE715923E71A88004F9CA8 /* OutputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6739CA23AE2B0600EF9ECD /* OutputTextField.swift */; };
+		DBDE715A23E71A88004F9CA8 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1FEF90238055FE00F8D763 /* InputTextField.swift */; };
+		DBDE715B23E71A88004F9CA8 /* resizedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE58ACE23CF2D5300D3EF1D /* resizedImage.swift */; };
+		DBDE715C23E71A88004F9CA8 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4A8F3423DE264900558788 /* Person.swift */; };
+		DBDE715D23E71A88004F9CA8 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B84237EF27400076D10 /* SignInView.swift */; };
+		DBDE715E23E71A88004F9CA8 /* UserElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B82237EF18D00076D10 /* UserElements.swift */; };
+		DBDE715F23E71A88004F9CA8 /* ToDoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB46937F23B9F0A50060933E /* ToDoView.swift */; };
+		DBDE716023E71A88004F9CA8 /* CloudKitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B8E237EF43400076D10 /* CloudKitUser.swift */; };
+		DBDE716123E71A88004F9CA8 /* NewPersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF0397D23E5A50D00230FAA /* NewPersonView.swift */; };
+		DBDE716223E71A88004F9CA8 /* UserDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9A4DD823CDE2AE00948B21 /* UserDeleteView.swift */; };
+		DBDE716323E71A88004F9CA8 /* UserMaintenanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC29CA23C5DE8500F2224B /* UserMaintenanceView.swift */; };
+		DBDE716423E71A88004F9CA8 /* SwiftUIImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6739C023AA910E00EF9ECD /* SwiftUIImagePicker.swift */; };
+		DBDE716523E71A88004F9CA8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC29CE23C74D6900F2224B /* User.swift */; };
+		DBDE716723E71A88004F9CA8 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB302B92237FDD8600076D10 /* CloudKit.framework */; };
+		DBDE716923E71A88004F9CA8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB6739C523AD46A800EF9ECD /* Localizable.strings */; };
+		DBDE716A23E71A88004F9CA8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB302B75237EF02300076D10 /* Preview Assets.xcassets */; };
+		DBDE716B23E71A88004F9CA8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB6739C223AD46A800EF9ECD /* InfoPlist.strings */; };
+		DBDE716C23E71A88004F9CA8 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB1FEF8E2380554F00F8D763 /* Launch Screen.storyboard */; };
+		DBDE716D23E71A88004F9CA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB302B72237EF02300076D10 /* Assets.xcassets */; };
+		DBDE717523E72D7A004F9CA8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DBDE717323E72D7A004F9CA8 /* Localizable.strings */; };
 		DBE58ACF23CF2D5300D3EF1D /* resizedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE58ACE23CF2D5300D3EF1D /* resizedImage.swift */; };
 		DBE58AD123CF798000D3EF1D /* DismissingKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE58AD023CF798000D3EF1D /* DismissingKeyboard.swift */; };
 		DBF0397E23E5A50D00230FAA /* NewPersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF0397D23E5A50D00230FAA /* NewPersonView.swift */; };
@@ -81,6 +119,9 @@
 		DB9A4DD823CDE2AE00948B21 /* UserDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDeleteView.swift; sourceTree = "<group>"; };
 		DBB4C62723B6301F0055296B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptsToSoftwareKeyboard.swift; sourceTree = "<group>"; };
+		DBDE717123E71A88004F9CA8 /* PersonOverView copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PersonOverView copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBDE717223E71A88004F9CA8 /* PersonOverView copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "PersonOverView copy-Info.plist"; path = "/Users/janhovland/Desktop/SwiftUI/PersonOverView/PersonOverView copy-Info.plist"; sourceTree = "<absolute>"; };
+		DBDE717423E72D7A004F9CA8 /* nb-NO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nb-NO"; path = "nb-NO.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		DBE58ACE23CF2D5300D3EF1D /* resizedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resizedImage.swift; sourceTree = "<group>"; };
 		DBE58AD023CF798000D3EF1D /* DismissingKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissingKeyboard.swift; sourceTree = "<group>"; };
 		DBF0397D23E5A50D00230FAA /* NewPersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPersonView.swift; sourceTree = "<group>"; };
@@ -98,6 +139,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DBDE716623E71A88004F9CA8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBDE716723E71A88004F9CA8 /* CloudKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -107,6 +156,8 @@
 				DB302B68237EF02300076D10 /* PersonOverView */,
 				DB302B67237EF02300076D10 /* Products */,
 				DB302B91237FDD8600076D10 /* Frameworks */,
+				DBDE717223E71A88004F9CA8 /* PersonOverView copy-Info.plist */,
+				DBDE717323E72D7A004F9CA8 /* Localizable.strings */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				DB302B66237EF02300076D10 /* PersonOverView.app */,
+				DBDE717123E71A88004F9CA8 /* PersonOverView copy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -239,6 +291,23 @@
 			productReference = DB302B66237EF02300076D10 /* PersonOverView.app */;
 			productType = "com.apple.product-type.application";
 		};
+		DBDE714523E71A88004F9CA8 /* PersonOverView copy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DBDE716E23E71A88004F9CA8 /* Build configuration list for PBXNativeTarget "PersonOverView copy" */;
+			buildPhases = (
+				DBDE714623E71A88004F9CA8 /* Sources */,
+				DBDE716623E71A88004F9CA8 /* Frameworks */,
+				DBDE716823E71A88004F9CA8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PersonOverView copy";
+			productName = PersonOverView;
+			productReference = DBDE717123E71A88004F9CA8 /* PersonOverView copy.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -269,6 +338,7 @@
 			projectRoot = "";
 			targets = (
 				DB302B65237EF02300076D10 /* PersonOverView */,
+				DBDE714523E71A88004F9CA8 /* PersonOverView copy */,
 			);
 		};
 /* End PBXProject section */
@@ -283,6 +353,19 @@
 				DB6739C423AD46A800EF9ECD /* InfoPlist.strings in Resources */,
 				DB1FEF8F2380554F00F8D763 /* Launch Screen.storyboard in Resources */,
 				DB302B73237EF02300076D10 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBDE716823E71A88004F9CA8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBDE716923E71A88004F9CA8 /* Localizable.strings in Resources */,
+				DBDE717523E72D7A004F9CA8 /* Localizable.strings in Resources */,
+				DBDE716A23E71A88004F9CA8 /* Preview Assets.xcassets in Resources */,
+				DBDE716B23E71A88004F9CA8 /* InfoPlist.strings in Resources */,
+				DBDE716C23E71A88004F9CA8 /* Launch Screen.storyboard in Resources */,
+				DBDE716D23E71A88004F9CA8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +410,44 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DBDE714623E71A88004F9CA8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBDE714723E71A88004F9CA8 /* AdaptsToSoftwareKeyboard.swift in Sources */,
+				DBDE714823E71A88004F9CA8 /* DismissingKeyboard.swift in Sources */,
+				DBDE714923E71A88004F9CA8 /* PersonOverView.xcdatamodeld in Sources */,
+				DBDE714A23E71A88004F9CA8 /* PersonElements.swift in Sources */,
+				DBDE714B23E71A88004F9CA8 /* AppDelegate.swift in Sources */,
+				DBDE714C23E71A88004F9CA8 /* ImagePicker.swift in Sources */,
+				DBDE714D23E71A88004F9CA8 /* CloudKitPerson.swift in Sources */,
+				DBDE714E23E71A88004F9CA8 /* PersonOverView.swift in Sources */,
+				DBDE714F23E71A88004F9CA8 /* UserElement.swift in Sources */,
+				DBDE715023E71A88004F9CA8 /* PersonsOverView.swift in Sources */,
+				DBDE715123E71A88004F9CA8 /* PersonView.swift in Sources */,
+				DBDE715223E71A88004F9CA8 /* PersonElement.swift in Sources */,
+				DBDE715323E71A88004F9CA8 /* AlertID.swift in Sources */,
+				DBDE715423E71A88004F9CA8 /* InputGender.swift in Sources */,
+				DBDE715523E71A88004F9CA8 /* CloudKitRecordXXX.swift in Sources */,
+				DBDE715623E71A88004F9CA8 /* SignUpView.swift in Sources */,
+				DBDE715723E71A88004F9CA8 /* SettingView.swift in Sources */,
+				DBDE715823E71A88004F9CA8 /* SceneDelegate.swift in Sources */,
+				DBDE715923E71A88004F9CA8 /* OutputTextField.swift in Sources */,
+				DBDE715A23E71A88004F9CA8 /* InputTextField.swift in Sources */,
+				DBDE715B23E71A88004F9CA8 /* resizedImage.swift in Sources */,
+				DBDE715C23E71A88004F9CA8 /* Person.swift in Sources */,
+				DBDE715D23E71A88004F9CA8 /* SignInView.swift in Sources */,
+				DBDE715E23E71A88004F9CA8 /* UserElements.swift in Sources */,
+				DBDE715F23E71A88004F9CA8 /* ToDoView.swift in Sources */,
+				DBDE716023E71A88004F9CA8 /* CloudKitUser.swift in Sources */,
+				DBDE716123E71A88004F9CA8 /* NewPersonView.swift in Sources */,
+				DBDE716223E71A88004F9CA8 /* UserDeleteView.swift in Sources */,
+				DBDE716323E71A88004F9CA8 /* UserMaintenanceView.swift in Sources */,
+				DBDE716423E71A88004F9CA8 /* SwiftUIImagePicker.swift in Sources */,
+				DBDE716523E71A88004F9CA8 /* User.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -342,6 +463,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				DB6739C823AD495500EF9ECD /* nb-NO */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		DBDE717323E72D7A004F9CA8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DBDE717423E72D7A004F9CA8 /* nb-NO */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -507,6 +636,48 @@
 			};
 			name = Release;
 		};
+		DBDE716F23E71A88004F9CA8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PersonOverView/PersonOverView.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"PersonOverView/Preview Content\"";
+				DEVELOPMENT_TEAM = 6UR9TA6744;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "PersonOverView copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.janhovland.PersonsOverView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DBDE717023E71A88004F9CA8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PersonOverView/PersonOverView.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"PersonOverView/Preview Content\"";
+				DEVELOPMENT_TEAM = 6UR9TA6744;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "PersonOverView copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.janhovland.PersonsOverView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -524,6 +695,15 @@
 			buildConfigurations = (
 				DB302B7E237EF02300076D10 /* Debug */,
 				DB302B7F237EF02300076D10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DBDE716E23E71A88004F9CA8 /* Build configuration list for PBXNativeTarget "PersonOverView copy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBDE716F23E71A88004F9CA8 /* Debug */,
+				DBDE717023E71A88004F9CA8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

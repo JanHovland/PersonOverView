@@ -40,11 +40,24 @@ struct PersonsOverView: View {
                                     Text(person.address)
                                     Text(person.cityNumber)
                                     Text(person.city)
+
                                 }
                             }}
                     }
-                    /// Sletter  valgt person
+                    /// Sletter  valgt person og oppdaterer CliudKit
                     .onDelete { (indexSet) in
+                        guard let recordID = self.persons[indexSet.first!].recordID else { return }
+                        CloudKitPerson.deletePerson(recordID: recordID) { (result) in
+                            switch result {
+                            case .success :
+                                self.message = NSLocalizedString("Successfully deleted a person", comment: "PersonsOverView")
+                                self.alertIdentifier = AlertID(id: .first)
+                            case .failure(let err):
+                                self.message = err.localizedDescription
+                                self.alertIdentifier = AlertID(id: .first)
+                            }
+                        }
+                        /// Sletter den valgte raden
                         self.persons.remove(atOffsets: indexSet)
                     }
                 }
