@@ -10,64 +10,64 @@ import SwiftUI
 
 var toDo_0 =
 """
- E n d r i n g e r
+E n d r i n g e r
 """
 
 var toDo_1 =
 """
- 1. Legg inn en ny person i "PersonOverView"
- 2. Legg inn knapp "Frisk opp"
- 3. Legg inn sortering i "PersonOverView"
- 4. Rydde opp i visningen i "PersonOverView"
- 5. Kople "Ny bruker" til "SignInView bildet"
- 6. "Vis passord" gir motsatt visning
- 7. Endring av for- og etternavn gir feilmelding
- 8. Slette en person
+1. Endring av for- og etternavn gir feilmelding i
+2. Legg inn søk i "PersonOverView"
+3. Rydde opp i visningen i "PersonOverView"
+4. "Vis passord" gir motsatt visning
 
 """
 
 var toDo_2 =
 """
- F e r d i g
+F e r d i g
 """
 
 var toDo_3 =
 """
- 1. Reduserte meldinger i SignInView.swift
- 2. Reduserte meldinger i SignUpView.swift
- 3. Ta bort "online keyboard"
-    ... Lagt inn .modifier(DismissingKeyboard())
- 4. Reduserer nå størrelsen på bildet som blir lagret på CloudKit.
- 5. Viser nå kun lagret bilde i CloudKit.
-    ... Uten lagret bilde vises et blankt bilde i SignInView.swift
- 6. Endre "Feil e-Post eller passord" til "Ukjent ...."
- 7. Endret fra UserMaintenanceView().environmentObject(User()
-    til : UserMaintenanceView().environmentObject(self.user)
- 8. Ny .sheet som inneholder :
-       a) Endre profil bilde
-       b) Endre navn
-       c) Endre e-post
-       d) Endre passord
- 9. Lagt inn "slett bruker" meny
+1. Reduserte meldinger i SignInView.swift
+2. Reduserte meldinger i SignUpView.swift
+3. Ta bort "online keyboard"
+... Lagt inn .modifier(DismissingKeyboard())
+4. Reduserer nå størrelsen på bildet som blir lagret på CloudKit.
+5. Viser nå kun lagret bilde i CloudKit.
+... Uten lagret bilde vises et blankt bilde i SignInView.swift
+6. Endre "Feil e-Post eller passord" til "Ukjent ...."
+7. Endret fra UserMaintenanceView().environmentObject(User()
+til : UserMaintenanceView().environmentObject(self.user)
+8. Ny .sheet som inneholder :
+a) Endre profil bilde
+b) Endre navn
+c) Endre e-post
+d) Endre passord
+9. Lagt inn "slett bruker" meny
 10. "Sign up" -> Registrer(ing)
 11. Blanke feltene etter:
-       a) "Meld deg inn"
-       b) "Slett"
+a) "Meld deg inn"
+b) "Slett"
 12. "Innlogging CloudKit":
-       a) "Bruker vedlikehold" går tilbake til "Innlogging CloudKit"
-           Løsning: Flytte .sheet rett etter hver "Button"
+a) "Bruker vedlikehold" går tilbake til "Innlogging CloudKit"
+Løsning: Flytte .sheet rett etter hver "Button"
 13. Lagt inn .alert med spørsmål på:
-       a) "UserMaintenanceView.swift"
-       b) "UserDeleteView.swift"
+a) "UserMaintenanceView.swift"
+b) "UserDeleteView.swift"
 14. .alert kan bare legges inn en gang
-       a) Lagt inn: struct AlertID
+a) Lagt inn: struct AlertID
 15. Ta bort Scroll indicators:
-       a) Løsning: ScrollView (.vertical, showsIndicators: false)
+a) Løsning: ScrollView (.vertical, showsIndicators: false)
 16. Må skjule "Meny valg" før innlogging
-       a) Løsning: .opacity(showOptionMenu ? 1 : 0)
-          og showOptionMenu settes til true når en finner brukeren
+a) Løsning: .opacity(showOptionMenu ? 1 : 0)
+og showOptionMenu settes til true når en finner brukeren
 17. Personbildet har nå bilde av personen
 18. Har lagd en liste (tableview) over alle personene
+19. Lagt inn knapp "Ny bruker" for kopling til "NewPersonView bildet"
+20. Lagt inn knapp for lagring av ny person i "PersonOverView"
+21. Lagt inn knapp "Frisk opp" med oppfriskning funksjon
+22. Lagt inn slette en person
 
 """
 
@@ -79,7 +79,7 @@ S e n e r e
 var toDo_5 =
 """
 1. Trykke på bildet istedet for på teksten i "SignUpView.swift"
-   ... Bruk: .contextMenu??
+... Bruk: .contextMenu??
 2. Legge inn søking på postnummer
 """
 
@@ -91,18 +91,20 @@ K j e n t e   f e i l
 var toDo_7 =
 """
 1. Når en bytter showPassword, oppdateres ikke "SignInView.swift" automatisk.
-        a) Foreløpig løsning: Skift til "SignUpView.swift" og så
-           tilbake til "SignInView.swift"
+a) Foreløpig løsning: Skift til "SignUpView.swift" og så
+tilbake til "SignInView.swift"
 2. Det mangler .keyboadType(.phone).
-   Nå brukes default keyboardType
+Nå brukes default keyboardType
 3. .onAppear virker kun første gang en app kalles,
-   ikke ved retur fra en annen app.
+ikke ved retur fra en annen app.
 
 """
 
 struct ToDoView: View {
     
     @Environment(\.presentationMode) var presentationMode
+
+    @State private var toDo = NSLocalizedString("To do", comment: "ToDoView")
 
     var body: some View {
         NavigationView {
@@ -135,16 +137,25 @@ struct ToDoView: View {
                 }
             }
             .padding()
-            .navigationBarTitle(NSLocalizedString("To do", comment: "ToDoView"))
-            .navigationBarItems(leading:
-                Button(action: {
-                    self.presentationMode.wrappedValue.dismiss()
-                }, label: {
-                    Text("Cancel")
-                        .foregroundColor(.none)
-                })
-            )
+            .navigationBarTitle(NSLocalizedString(toDo, comment: "ToDoView"))
         }
-  }
+        .overlay(
+            HStack {
+                Spacer()
+                VStack {
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "chevron.down.circle.fill")
+                            .font(.largeTitle)
+                            .foregroundColor(.none)
+                    })
+                        .padding(.trailing, 20)
+                        .padding(.top, 70)
+                    Spacer()
+                }
+            }
+        )
+    }
 }
 

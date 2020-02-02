@@ -13,12 +13,10 @@ struct PersonsOverView: View {
 
     @Environment(\.presentationMode) var presentationMode
 
-    @State private var showPersonView: Bool = false
     @State private var message: String = ""
     @State private var alertIdentifier: AlertID?
     @State private var persons = [Person]()
     @State private var newPerson = false
-
     @State private var personsOverview = NSLocalizedString("Persons overview", comment: "PersonsOverView")
 
     var body: some View {
@@ -45,13 +43,18 @@ struct PersonsOverView: View {
                                 }
                             }}
                     }
+                    /// Sletter den valgte person 
+                    .onDelete { (indexSet) in
+                        self.persons.remove(atOffsets: indexSet)
+                    }
+
                 }
             }
             .navigationBarTitle(personsOverview)
             .navigationBarItems(leading:
                 Button(action: {
-                    // Rutine for å friske opp personoversikten
-                    self.presentationMode.wrappedValue.dismiss()
+                    /// Rutine for å friske opp personoversikten
+                    self.refresh()
                 }, label: {
                     Text("Refresh")
                         .foregroundColor(.none)
@@ -67,23 +70,9 @@ struct PersonsOverView: View {
         }
         .sheet(isPresented: $newPerson) {
             NewPersonView()
-            /// Cannot invoke initializer for type 'NavigationLink<_, _>' with an argument list of type '(destination: NewPersonView)'
-            /// NavigationLink(destination: NewPersonView())
         }
         .onAppear {
-            /// Sletter alt tidligere innhold i personElements.persons
-            self.persons.removeAll()
-            /// Fetch all persons from CloudKit
-            let predicate = NSPredicate(value: true)
-            CloudKitPerson.fetchPerson(predicate: predicate)  { (result) in
-                switch result {
-                case .success(let person):
-                    self.persons.append(person)
-                case .failure(let err):
-                    self.message = err.localizedDescription
-                    self.alertIdentifier = AlertID(id: .first)
-                }
-            }
+            self.refresh()
         }
         .alert(item: $alertIdentifier) { alert in
             switch alert.id {
@@ -110,7 +99,51 @@ struct PersonsOverView: View {
                 }
             }
         )
+    }
 
+    /// Rutine for å friske opp bildet
+    func refresh() {
+        /// Sletter alt tidligere innhold i person
+        self.persons.removeAll()
+        /// Fetch all persons from CloudKit
+        let predicate = NSPredicate(value: true)
+        CloudKitPerson.fetchPerson(predicate: predicate)  { (result) in
+            switch result {
+            case .success(let person):
+                self.persons.append(person)
+            case .failure(let err):
+                self.message = err.localizedDescription
+                self.alertIdentifier = AlertID(id: .first)
+            }
+        }
     }
 }
+
+/*
+
+ .onDelete { (indexSet) in self.restaurants.remove(atOffsets: indexSet)
+ }
+
+
+                       .onLongPressGesture {
+                            if !self.showEditTextField {
+                                guard let recordID = item.recordID else { return }
+                                // MARK: - delete from CloudKit
+                                CloudKitHelper.delete(recordID: recordID) { (result) in
+                                    switch result {
+                                    case .success(let recordID):
+                                        self.listElements.items.removeAll { (listElement) -> Bool in
+                                            return listElement.recordID == recordID
+                                        }
+                                        print("Successfully deleted item")
+                                    case .failure(let err):
+                                        print(err.localizedDescription)
+                                    }
+                                }
+
+                            }
+                    }
+
+
+ */
 

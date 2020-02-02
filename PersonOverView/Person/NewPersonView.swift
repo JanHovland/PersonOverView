@@ -183,6 +183,9 @@ struct NewPersonView: View {
                                                             }
                                                         }
                         }
+                    } else {
+                        self.message = NSLocalizedString("First name and last name must both contain a value.", comment: "NewPersonView")
+                        self.alertIdentifier = AlertID(id: .first)
                     }
                 }, label: {
                     Text(NSLocalizedString("Save", comment: "NewPersonView"))
