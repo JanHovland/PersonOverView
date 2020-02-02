@@ -15,10 +15,10 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-1. Endring av for- og etternavn gir feilmelding i
+
+1. Rydde opp i visningen i "PersonOverView"
 2. Legg inn søk i "PersonOverView"
-3. Rydde opp i visningen i "PersonOverView"
-4. "Vis passord" gir motsatt visning
+3. "Vis passord" gir motsatt visning
 
 """
 
@@ -68,7 +68,7 @@ og showOptionMenu settes til true når en finner brukeren
 20. Lagt inn knapp for lagring av ny person i "PersonOverView"
 21. Lagt inn knapp "Frisk opp" med oppfriskning funksjon
 22. Lagt inn slette en person
-
+23. Endring av for- og etternavn er nå riktig
 """
 
 var toDo_4 =

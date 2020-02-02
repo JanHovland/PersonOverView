@@ -43,11 +43,10 @@ struct PersonsOverView: View {
                                 }
                             }}
                     }
-                    /// Sletter den valgte person 
+                    /// Sletter  valgt person
                     .onDelete { (indexSet) in
                         self.persons.remove(atOffsets: indexSet)
                     }
-
                 }
             }
             .navigationBarTitle(personsOverview)
@@ -118,32 +117,4 @@ struct PersonsOverView: View {
         }
     }
 }
-
-/*
-
- .onDelete { (indexSet) in self.restaurants.remove(atOffsets: indexSet)
- }
-
-
-                       .onLongPressGesture {
-                            if !self.showEditTextField {
-                                guard let recordID = item.recordID else { return }
-                                // MARK: - delete from CloudKit
-                                CloudKitHelper.delete(recordID: recordID) { (result) in
-                                    switch result {
-                                    case .success(let recordID):
-                                        self.listElements.items.removeAll { (listElement) -> Bool in
-                                            return listElement.recordID == recordID
-                                        }
-                                        print("Successfully deleted item")
-                                    case .failure(let err):
-                                        print(err.localizedDescription)
-                                    }
-                                }
-
-                            }
-                    }
-
-
- */
 
