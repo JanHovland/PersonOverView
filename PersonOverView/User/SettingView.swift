@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SettingView: View {
     
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) var presentationMode   
     
     @State private var showPassword: Bool = true
     @State private var message: String = ""
