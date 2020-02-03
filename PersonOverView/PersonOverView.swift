@@ -9,33 +9,14 @@
 //  Block comment : Ctrl + Cmd + / (on number pad)
 //  Indent        : Ctrl + Cmd + * (on number pad)
 
-
 import SwiftUI
-
 
 struct PersonOverView: View {
     
     @State private var selection = 0
 
     var body: some View {
-        TabView {
-             SignInView()  /// SignInView()  qwerty()
-                .tabItem {
-                     VStack {
-                         Image(systemName: "arrow.right.to.line.alt")
-                         Text("Sign in")
-                     }
-                }
-                .tag(0)
-            SignUpView()
-                .tabItem {
-                    VStack {
-                        Image(systemName: "arrow.right.to.line.alt")
-                        Text("Sign Up")
-                    }
-                }
-                .tag(1)
-        }
+        SignInView()
     }
 }
 

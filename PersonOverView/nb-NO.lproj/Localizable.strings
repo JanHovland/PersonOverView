@@ -27,6 +27,9 @@
 /* PersonsOverView */
 "City" = "Sted";
 
+/* SignInView */
+"Create a new account?" = "Opprett ny bruker?";
+
 /* PersonsOverView */
 "Date of birth" = "Fødselsdato";
 
@@ -130,6 +133,9 @@
 /* NewPersonView */
 "New person" = "Ny person";
 
+/* SignInView */
+"New user" = "Ny bruker";
+
 /* UserDeleteView
    UserMaintenanceView */
 "No" = "Nei";
@@ -175,9 +181,6 @@
 /* SettingView */
 "Show password" = "Vis passord";
 
-/* No comment provided by engineer. */
-"Sign in" = "Logg inn";
-
 /* SignInView */
 "Sign In" = "Logg inn";
 
@@ -186,9 +189,6 @@
 
 /* No comment provided by engineer. */
 "Sign up" = "Legg inn ny bruker";
-
-/* No comment provided by engineer. */
-"Sign Up" = "Ny bruker";
 
 /* SignUpView */
 "Sign Up CloudKit" = "Ny bruker CloudKit";

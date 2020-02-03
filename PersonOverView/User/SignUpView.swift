@@ -14,6 +14,8 @@ import CloudKit
 
 struct SignUpView : View {
 
+    @Environment(\.presentationMode) var presentationMode
+
     @State private var name: String = ""
     @State private var email: String = ""
     @State private var password: String = ""
@@ -135,6 +137,25 @@ struct SignUpView : View {
         .modifier(DismissingKeyboard())
         /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
         .modifier(AdaptsToSoftwareKeyboard())
+        .overlay(
+            HStack {
+                Spacer()
+                VStack {
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "chevron.down.circle.fill")
+                            .font(.largeTitle)
+                            .foregroundColor(.none)
+                    })
+                        .padding(.trailing, 20)
+                        .padding(.top, 70)
+                    Spacer()
+                }
+            }
+        )
+
+
     }
 }
 

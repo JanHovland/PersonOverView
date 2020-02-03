@@ -9,7 +9,6 @@
 //  Block comment : Ctrl + Cmd + / (on number pad)
 //  Indent        : Ctrl + Cmd + * (on number pad)
 
-
 /// Ref: SwiftUICloudKit-master-3
 
 import SwiftUI
@@ -29,6 +28,7 @@ struct SignInView : View {
     @State private var showPersonView: Bool = false
     @State private var showPersonsOverView: Bool = false
     @State private var showOptionMenu = false
+    @State private var showSignUpView = false
     @State private var alertIdentifier: AlertID?
 
     var body: some View {
@@ -250,6 +250,21 @@ struct SignInView : View {
                     }) {
                         Text(NSLocalizedString("Sign In", comment: "SignInView"))
                     }
+                }
+                Spacer(minLength: 120)
+                HStack (alignment: .center, spacing: 60) {
+                  Text(NSLocalizedString("Create a new account?", comment: "SignInView"))
+                  Button(action: {
+                    self.showSignUpView.toggle()
+                  }, label: {
+                      HStack {
+                          Text(NSLocalizedString("New user", comment: "SignInView"))
+                      }
+                      .foregroundColor(.blue)
+                  })
+                  .sheet(isPresented: $showSignUpView) {
+                      SignUpView()
+                  }
                 }
             }
             .alert(item: $alertIdentifier) { alert in
