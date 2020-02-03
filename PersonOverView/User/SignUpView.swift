@@ -35,6 +35,7 @@ struct SignUpView : View {
                         .font(.headline)
                         .foregroundColor(.accentColor)
                 }
+                Spacer(minLength: 37)
                 ZStack {
                     Image(systemName: "person.circle")
                         .resizable()
@@ -49,11 +50,11 @@ struct SignUpView : View {
                             .overlay(Circle().stroke(Color.white, lineWidth: 3))
                     }
                 }
-                Spacer(minLength: 18)
+                .padding(10)
                 Button(NSLocalizedString("Choose Profile Image", comment: "SignUpView")) {
                     self.showingImagePicker.toggle()
                 }
-                Spacer(minLength: 43)
+                Spacer(minLength: 56)
                 VStack {
                     InputTextField(secure: false,
                                    heading: NSLocalizedString("Your name", comment: "SignUpiew"),
@@ -115,7 +116,7 @@ struct SignUpView : View {
                         }
                     }) {
                         Text("Sign up")
-                            // .padding(10)
+                            .padding(5)
                     }
                 }
             }
