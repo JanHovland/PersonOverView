@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct UserMaintenanceView: View {
+
     @EnvironmentObject var user: User
     @Environment(\.presentationMode) var presentationMode
 
@@ -17,6 +18,7 @@ struct UserMaintenanceView: View {
     @State private var showingImagePicker = false
 
     @State private var alertIdentifier: AlertID?
+
 
     var body: some View {
         VStack {

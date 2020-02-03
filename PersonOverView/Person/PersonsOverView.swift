@@ -11,41 +11,70 @@ import CloudKit
 
 struct PersonsOverView: View {
 
+    struct SearchBar: UIViewRepresentable {
+        @Binding var text: String
+        class Coordinator: NSObject, UISearchBarDelegate {
+            @Binding var text: String
+            init(text: Binding<String>) {
+                _text = text
+            }
+            func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+                text = searchText
+            }
+        }
+        func makeCoordinator() -> SearchBar.Coordinator {
+            return Coordinator(text: $text)
+        }
+        func makeUIView(context: UIViewRepresentableContext<SearchBar>) -> UISearchBar {
+            let searchBar = UISearchBar(frame: .zero)
+            searchBar.delegate = context.coordinator
+            searchBar.placeholder = NSLocalizedString("Search for a person...", comment: "PersonsOverView")
+            searchBar.autocapitalizationType = .none
+            return searchBar
+        }
+        func updateUIView(_ uiView: UISearchBar, context: UIViewRepresentableContext<SearchBar>) {
+            uiView.text = text
+        }
+    }
+
     @Environment(\.presentationMode) var presentationMode
 
     @State private var message: String = ""
+    @State private var searchText: String = ""
     @State private var alertIdentifier: AlertID?
     @State private var persons = [Person]()
     @State private var newPerson = false
     @State private var personsOverview = NSLocalizedString("Persons overview", comment: "PersonsOverView")
 
     var body: some View {
-
         NavigationView {
             VStack {
+                SearchBar(text: $searchText)
                 List {
-                    ForEach(persons) {
+                    /// Søker etter personer som inneholder $searchText i for- eller etternavnet
+                    ForEach(persons.filter({ self.searchText.isEmpty ||
+                                             $0.firstName.localizedStandardContains(self.searchText) ||
+                                             $0.lastName.localizedStandardContains (self.searchText)}   )) {
                         person in
                         NavigationLink(destination: PersonView(person: person)) {
                             ShowPersons(person: person)
                         }
                     }
-
-                        /// Sletter  valgt person og oppdaterer CliudKit
-                        .onDelete { (indexSet) in
-                            guard let recordID = self.persons[indexSet.first!].recordID else { return }
-                            CloudKitPerson.deletePerson(recordID: recordID) { (result) in
-                                switch result {
-                                case .success :
-                                    self.message = NSLocalizedString("Successfully deleted a person", comment: "PersonsOverView")
-                                    self.alertIdentifier = AlertID(id: .first)
-                                case .failure(let err):
-                                    self.message = err.localizedDescription
-                                    self.alertIdentifier = AlertID(id: .first)
-                                }
+                    /// Sletter  valgt person og oppdaterer CliudKit
+                    .onDelete { (indexSet) in
+                        guard let recordID = self.persons[indexSet.first!].recordID else { return }
+                        CloudKitPerson.deletePerson(recordID: recordID) { (result) in
+                            switch result {
+                            case .success :
+                                self.message = NSLocalizedString("Successfully deleted a person", comment: "PersonsOverView")
+                                self.alertIdentifier = AlertID(id: .first)
+                            case .failure(let err):
+                                self.message = err.localizedDescription
+                                self.alertIdentifier = AlertID(id: .first)
                             }
-                            /// Sletter den valgte raden
-                            self.persons.remove(atOffsets: indexSet)
+                        }
+                        /// Sletter den valgte raden
+                        self.persons.remove(atOffsets: indexSet)
                     }
                 }
             }
@@ -119,13 +148,11 @@ struct PersonsOverView: View {
 
     /// Et eget View for å vise person detail view
     struct ShowPersons: View {
-
         static let taskDateFormat: DateFormatter = {
             let formatter = DateFormatter()
             formatter.dateStyle = .long
             return formatter
         }()
-
         var person: Person
         var body: some View {
             HStack(spacing: 5) {
@@ -143,12 +170,7 @@ struct PersonsOverView: View {
                         Text(person.lastName)
                             .bold()
                     }
-
                     Text("\(person.dateOfBirth, formatter: Self.taskDateFormat)")
-
-
-
-                    /// Text(person.dateOfBirth as String)
                     HStack {
                         Text(person.address)
                         Text(person.cityNumber)
@@ -157,16 +179,11 @@ struct PersonsOverView: View {
                 }
                 .padding()
             }
+            /// Ta bort tastaturet når en klikker utenfor feltet
+            .modifier(DismissingKeyboard())
+            /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
+            .modifier(AdaptsToSoftwareKeyboard())
         }
     }
-
-//    struct ShowDate: View {
-//        var date: Date
-//        var body: some View {
-//            let q = self.DateToString(date: Date)
-//          Text(q)
-//        }
-//    }
-
 }
 

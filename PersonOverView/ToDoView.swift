@@ -15,7 +15,7 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. Legg inn søke felt i "PersonOverView"
+  1. Legge inn fødselsdaglisten fra Firebase
   2. Legge inn postnummer i CloudKit
   3. Lagre søkebilde for postnummer
 """
@@ -73,6 +73,8 @@ var toDo_3 =
  27. Bruker nå .autocapitalization(.sentences) på adresse feltene
  28. Lagt inn "Ny bruker" på oppstartsbildet "Logg inn"
  29. Legt inn sortering på fornavn-etternavn i "CloudKitPerson.fetchPerson"
+ 30. Lagt inn søke felt i "PersonOverView" og
+     søker nå etter søketeksten i for- og/eller etternavnet
 
 """
 

@@ -8,5 +8,8 @@
 "Saved the setting" = "Innstillingene er nå oppdatert";
 
 /* PersonsOverView */
+"Search for a person..." = "Søk etter en person...";
+
+/* PersonsOverView */
 "Successfully deleted a person" = "En person ble slettet";
 

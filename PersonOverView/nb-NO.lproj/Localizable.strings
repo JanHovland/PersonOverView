@@ -174,6 +174,9 @@
 /* SettingView */
 "Saved the setting" = "Innstillingene er nå oppdatert";
 
+/* PersonsOverView */
+"Search for a person..." = "Søk etter en person...";
+
 /* SettingView
    SignInView */
 "Settings" = "Innstillinger";

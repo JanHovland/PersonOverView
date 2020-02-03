@@ -15,7 +15,7 @@ import SwiftUI
 import Combine
 
 struct SignInView : View {
-    
+
     @EnvironmentObject var user: User
     @Environment(\.presentationMode) var presentationMode
 
