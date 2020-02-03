@@ -165,6 +165,9 @@
 /* NewPersonView */
 "Save" = "Lagre";
 
+/* SettingView */
+"Saved the setting" = "Innstillingene er nå oppdatert";
+
 /* SettingView
    SignInView */
 "Settings" = "Innstillinger";

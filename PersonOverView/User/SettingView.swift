@@ -13,7 +13,9 @@ struct SettingView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @State private var showPassword: Bool = true
-    
+    @State private var message: String = ""
+    @State private var alertIdentifier: AlertID?
+
     var body: some View {
         NavigationView {
             Form {
@@ -27,7 +29,8 @@ struct SettingView: View {
             .navigationBarItems(trailing:
                 Button(action: {
                     UserDefaults.standard.set(self.showPassword, forKey: "showPassword")
-                    self.presentationMode.wrappedValue.dismiss()
+                    self.message = NSLocalizedString("Saved the setting", comment: "SettingView")
+                    self.alertIdentifier = AlertID(id: .first)
                 }, label: {
                     Text("Save")
                         .foregroundColor(.none)
@@ -53,6 +56,16 @@ struct SettingView: View {
                 }
             }
         )
+        .alert(item: $alertIdentifier) { alert in
+            switch alert.id {
+            case .first:
+                return Alert(title: Text(self.message))
+            case .second:
+                return Alert(title: Text(self.message))
+            }
+        }
+
+
     }
 }
 
