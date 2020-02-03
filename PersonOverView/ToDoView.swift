@@ -15,9 +15,9 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-1. Legg inn søk i "PersonOverView"
-2. Legge inn "Ny bruker" på oppstartsbildet "Logg inn"
-
+  1. Legg inn søke felt i "PersonOverView"
+  2. Legge inn postnummer i CloudKit
+  3. Lagre søkebilde for postnummer
 """
 
 var toDo_2 =
@@ -27,22 +27,22 @@ F e r d i g
 
 var toDo_3 =
 """
- 1. Reduserte meldinger i SignInView.swift
- 2. Reduserte meldinger i SignUpView.swift
- 3. Ta bort "online keyboard"
+  1. Reduserte meldinger i SignInView.swift
+  2. Reduserte meldinger i SignUpView.swift
+  3. Ta bort "online keyboard"
     ... Lagt inn .modifier(DismissingKeyboard())
- 4. Reduserer nå størrelsen på bildet som blir lagret på CloudKit.
- 5. Viser nå kun lagret bilde i CloudKit.
+  4. Reduserer nå størrelsen på bildet som blir lagret på CloudKit.
+  5. Viser nå kun lagret bilde i CloudKit.
     ... Uten lagret bilde vises et blankt bilde i SignInView.swift
- 6. Endre "Feil e-Post eller passord" til "Ukjent ...."
- 7. Endret fra UserMaintenanceView().environmentObject(User()
+  6. Endre "Feil e-Post eller passord" til "Ukjent ...."
+  7. Endret fra UserMaintenanceView().environmentObject(User()
     til : UserMaintenanceView().environmentObject(self.user)
- 8. Ny .sheet som inneholder :
-    a) Endre profil bilde
-    b) Endre navn
-    c) Endre e-post
-    d) Endre passord
- 9. Lagt inn "slett bruker" meny
+  8. Ny .sheet som inneholder :
+     a) Endre profil bilde
+     b) Endre navn
+     c) Endre e-post
+     d) Endre passord
+  9. Lagt inn "slett bruker" meny
  10. "Sign up" -> Registrer(ing)
  11. Blanke feltene etter:
      a) "Meld deg inn"
@@ -71,7 +71,8 @@ var toDo_3 =
  25. "person.dateOfBirth" vises nå som DD.MM.YYYY
  26. Ryddet opp i visningen i "PersonOverView"
  27. Bruker nå .autocapitalization(.sentences) på adresse feltene
-
+ 28. Lagt inn "Ny bruker" på oppstartsbildet "Logg inn"
+ 29. Legt inn sortering på fornavn-etternavn i "CloudKitPerson.fetchPerson"
 
 """
 

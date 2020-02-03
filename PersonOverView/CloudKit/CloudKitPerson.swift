@@ -142,9 +142,10 @@ struct CloudKitPerson {
 
     // MARK: - fetching from CloudKit
     static func fetchPerson(predicate:  NSPredicate, completion: @escaping (Result<Person, Error>) -> ()) {
-        let sort = NSSortDescriptor(key: "creationDate", ascending: false)
+        let sort1 = NSSortDescriptor(key: "firstName", ascending: true)
+        let sort2 = NSSortDescriptor(key: "lastName", ascending: true)
         let query = CKQuery(recordType: RecordType.Person, predicate: predicate)
-        query.sortDescriptors = [sort]
+        query.sortDescriptors = [sort1, sort2]
         let operation = CKQueryOperation(query: query)
         operation.desiredKeys = ["firstName",
                                  "lastName",
