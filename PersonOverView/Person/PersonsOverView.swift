@@ -10,7 +10,7 @@ import SwiftUI
 import CloudKit
 
 struct PersonsOverView: View {
-
+    /// SearchBar er ikke er ikke en dekl av SWIFTUI
     struct SearchBar: UIViewRepresentable {
         @Binding var text: String
         class Coordinator: NSObject, UISearchBarDelegate {
@@ -54,7 +54,7 @@ struct PersonsOverView: View {
                     /// Søker etter personer som inneholder $searchText i for- eller etternavnet
                     ForEach(persons.filter({ self.searchText.isEmpty ||
                                              $0.firstName.localizedStandardContains(self.searchText) ||
-                                             $0.lastName.localizedStandardContains (self.searchText)}   )) {
+                                             $0.lastName.localizedStandardContains (self.searchText)    })) {
                         person in
                         NavigationLink(destination: PersonView(person: person)) {
                             ShowPersons(person: person)
@@ -155,7 +155,7 @@ struct PersonsOverView: View {
         }()
         var person: Person
         var body: some View {
-            HStack(spacing: 5) {
+            HStack(spacing: 10) {
                 if person.image != nil {
                     Image(uiImage: person.image!)
                         .resizable()
@@ -166,18 +166,23 @@ struct PersonsOverView: View {
                 VStack (alignment: .leading, spacing: 5) {
                     HStack {
                         Text(person.firstName)
-                            .bold()
+                        .font(.custom("system", size: 19)).bold()
                         Text(person.lastName)
-                            .bold()
+                        .font(.custom("system", size: 19)).bold()
                     }
                     Text("\(person.dateOfBirth, formatter: Self.taskDateFormat)")
+                    .font(.custom("system", size: 17))
                     HStack {
                         Text(person.address)
+                            .font(.custom("system", size: 17))
+                    }
+                    HStack {
                         Text(person.cityNumber)
                         Text(person.city)
                     }
+                    .font(.custom("system", size: 17))
                 }
-                .padding()
+                .padding(.top, 10)
             }
             /// Ta bort tastaturet når en klikker utenfor feltet
             .modifier(DismissingKeyboard())

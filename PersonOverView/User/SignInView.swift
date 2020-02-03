@@ -34,12 +34,13 @@ struct SignInView : View {
     var body: some View {
         ScrollView (.vertical, showsIndicators: false) {
             VStack {
-                Spacer(minLength: 17)
+                Spacer(minLength: 37)
                 HStack {
                     Text(NSLocalizedString("Sign in CloudKit", comment: "SignInView"))
                         .font(.headline)
                         .foregroundColor(.accentColor)
                 }
+                Spacer(minLength: 37)
                 ZStack {
                     Image(systemName: "person.circle")
                         .resizable()
@@ -53,6 +54,7 @@ struct SignInView : View {
                             .overlay(Circle().stroke(Color.white, lineWidth: 3))
                     }
                 }
+                .padding(10)
                 HStack (alignment: .center, spacing: 10) {
                     Text(NSLocalizedString("Options Menu", comment: "SignInView"))
                         /// Skjuler teksten uten å påvirke layout

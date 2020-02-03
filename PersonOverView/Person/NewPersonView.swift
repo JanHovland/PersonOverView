@@ -35,7 +35,7 @@ struct NewPersonView: View {
     var body: some View {
         NavigationView {
             VStack {
-                HStack (alignment: .center, spacing: 115) {
+                HStack (alignment: .center, spacing: 50) {
                     ZStack {
                         Image(systemName: "person.circle")
                             .resizable()
@@ -53,7 +53,7 @@ struct NewPersonView: View {
                         self.showingImagePicker.toggle()
                     }
                 }
-                .padding()
+                // .padding()
                 .sheet(isPresented: $showingImagePicker, content: {
                     ImagePicker.shared.view
                 }).onReceive(ImagePicker.shared.$image) { image in
@@ -199,6 +199,7 @@ struct NewPersonView: View {
                 case .second:
                     return Alert(title: Text(self.message))
                 }
+                
         }
         /// Ta bort tastaturet når en klikker utenfor feltet
         .modifier(DismissingKeyboard())

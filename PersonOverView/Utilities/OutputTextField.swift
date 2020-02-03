@@ -28,7 +28,7 @@ struct OutputTextField: View {
                     .font(Font.caption.weight(.semibold))
                     .foregroundColor(.accentColor)
                 if secure {
-                    if self.showPassword == true {
+                    if self.showPassword == false {
                         Text(secureValue)
                             .font(Font.system(size: 9, design: .default))
                             .padding(.horizontal, 8)
@@ -45,7 +45,7 @@ struct OutputTextField: View {
         }
         .onAppear {
             self.showPassword = UserDefaults.standard.bool(forKey: "showPassword")
-            if self.showPassword == true {
+            if self.showPassword == false {
                 if self.secure {
                     self.secureValue = ""
                     if self.value.count > 0 {
