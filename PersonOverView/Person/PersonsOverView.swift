@@ -10,6 +10,12 @@ import SwiftUI
 import CloudKit
 
 struct PersonsOverView: View {
+
+    /// Skjuler scroll indicators.
+    init() {
+        UITableView.appearance().showsVerticalScrollIndicator = false
+    }
+
     /// SearchBar er ikke er ikke en dekl av SWIFTUI
     struct SearchBar: UIViewRepresentable {
         @Binding var text: String

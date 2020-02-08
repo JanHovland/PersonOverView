@@ -15,18 +15,14 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. Norsk sortering på Oversikt (Å kommer først)
-  2. Oppdatering Person: Etternavn og epost forsvinner.
-     Dette skjer først når en avslutter utvalg på dato.
-  3. Ta bort scrollbar på: Person og Oversikt Person.
-  4. Legge inn postnummer i CloudKit:
+  1. Legge inn postnummer i CloudKit:
      a) Legg data inn i CloudKit i som CKAsset i en tabell?
      b) Bruke samme metode som jeg brukte i Firebase?
      c) Lage en link til postnummer.csv i "Filer" på iPhone
         La denne linken være parameter til appen som sletter og
         så oppdaterer postnummer tabellen
-  5. Legge inn fødselsdaglisten fra Firebase
-  6. Lagre søkebilde for postnummer
+  2. Legge inn fødselsdaglisten fra Firebase
+  3. Lagre søkebilde for postnummer
 """
 
 var toDo_2 =
@@ -84,6 +80,12 @@ var toDo_3 =
  29. Legt inn sortering på fornavn-etternavn i "CloudKitPerson.fetchPerson"
  30. Lagt inn søke felt i "PersonOverView" og
      søker nå etter søketeksten i for- og/eller etternavnet
+ 31  Norsk sortering på Oversikt
+ 32. Oppdatering Person: Etternavn og epost forsvinner.
+     Dette skjer først når en avslutter utvalg på dato.
+     Ser ut som det hadde sammenheng med forrige versjon av iOS (17D50 bruker nå 17E5223h)
+ 33. Tatt bort scrollbar på: Person og Oversikt Person ved hjelp av:
+     UITableView.appearance().showsVerticalScrollIndicator = false
 
 """
 

@@ -53,6 +53,7 @@ struct PersonView : View {
                                                   gender: 0,
                                                   image: nil)
 
+
     var body: some View {
         VStack {
             HStack (alignment: .center, spacing: 115) {
