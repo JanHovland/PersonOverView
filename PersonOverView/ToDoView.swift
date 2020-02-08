@@ -15,19 +15,18 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. Legge inn postnumer i databaen:
+  1. Norsk sortering på Oversikt (Å kommer først)
+  2. Oppdatering Person: Etternavn og epost forsvinner.
+     Dette skjer først når en avslutter utvalg på dato.
+  3. Ta bort scrollbar på: Person og Oversikt Person.
+  4. Legge inn postnummer i CloudKit:
      a) Legg data inn i CloudKit i som CKAsset i en tabell?
      b) Bruke samme metode som jeg brukte i Firebase?
      c) Lage en link til postnummer.csv i "Filer" på iPhone
         La denne linken være parameter til appen som sletter og
         så oppdaterer postnummer tabellen
-  2. Oppdatering Person: Etternavn og epost forsvinner.
-     Dette skjer først når en avslutter utvalg på dato.
-  3. Ta bort scrollbar på: Person og Oversikt Person.
-  4. Norsk sortering på Oversikt (Å kommer først)
   5. Legge inn fødselsdaglisten fra Firebase
-  6. Legge inn postnummer i CloudKit
-  7. Lagre søkebilde for postnummer
+  6. Lagre søkebilde for postnummer
 """
 
 var toDo_2 =
