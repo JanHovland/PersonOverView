@@ -53,7 +53,7 @@ struct NewPersonView: View {
                         self.showingImagePicker.toggle()
                     }
                 }
-                // .padding()
+                .padding(.top, 40)
                 .sheet(isPresented: $showingImagePicker, content: {
                     ImagePicker.shared.view
                 }).onReceive(ImagePicker.shared.$image) { image in
@@ -131,7 +131,7 @@ struct NewPersonView: View {
                                 value: $gender)
                 }
             }
-            .navigationBarTitle(newPerson)
+            .navigationBarTitle(Text(newPerson), displayMode: .inline)
             .navigationBarItems(leading:
                 Button(action: {
                     // Rutine for å returnere til personoversikten

@@ -73,7 +73,7 @@ struct PersonView : View {
                     self.showingImagePicker.toggle()
                 }
             }
-            .padding(.bottom, -10)
+            .padding(.top, 40)
             .sheet(isPresented: $showingImagePicker, content: {
                 ImagePicker.shared.view
             }).onReceive(ImagePicker.shared.$image) { image in
@@ -155,7 +155,7 @@ struct PersonView : View {
         }
         /// Removes all separators below in the List view
         .listStyle(GroupedListStyle())
-        .navigationBarTitle("Person")
+        .navigationBarTitle("Person", displayMode: .inline)
         .navigationBarItems(trailing:
             Button(action: {
                 /// Save person data

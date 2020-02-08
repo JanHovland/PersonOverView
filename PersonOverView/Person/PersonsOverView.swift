@@ -50,7 +50,7 @@ struct PersonsOverView: View {
         NavigationView {
             VStack {
                 SearchBar(text: $searchText)
-                List {
+                List  {
                     /// Søker etter personer som inneholder $searchText i for- eller etternavnet
                     ForEach(persons.filter({ self.searchText.isEmpty ||
                                              $0.firstName.localizedStandardContains(self.searchText) ||
