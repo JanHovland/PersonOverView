@@ -28,6 +28,7 @@
 		DB33E12F23EF6CF400A95FAA /* PostalCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB33E12E23EF6CF400A95FAA /* PostalCodeView.swift */; };
 		DB33E13323F07C7D00A95FAA /* Postnummerregister-ansi.txt in Resources */ = {isa = PBXBuildFile; fileRef = DB33E13223F07C7D00A95FAA /* Postnummerregister-ansi.txt */; };
 		DB33E13523F0893100A95FAA /* PostalCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB33E13423F0893100A95FAA /* PostalCode.swift */; };
+		DB33E13723F09E4B00A95FAA /* CloudKitPostalCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB33E13623F09E4B00A95FAA /* CloudKitPostalCode.swift */; };
 		DB46938023B9F0A50060933E /* ToDoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB46937F23B9F0A50060933E /* ToDoView.swift */; };
 		DB4A8F3523DE264900558788 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4A8F3423DE264900558788 /* Person.swift */; };
 		DB4A8F3B23DEE76400558788 /* PersonElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4A8F3A23DEE76400558788 /* PersonElement.swift */; };
@@ -112,6 +113,7 @@
 		DB33E12E23EF6CF400A95FAA /* PostalCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostalCodeView.swift; sourceTree = "<group>"; };
 		DB33E13223F07C7D00A95FAA /* Postnummerregister-ansi.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Postnummerregister-ansi.txt"; path = "../../../../../Downloads/Postnummerregister-ansi.txt"; sourceTree = "<group>"; };
 		DB33E13423F0893100A95FAA /* PostalCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostalCode.swift; sourceTree = "<group>"; };
+		DB33E13623F09E4B00A95FAA /* CloudKitPostalCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitPostalCode.swift; sourceTree = "<group>"; };
 		DB46937F23B9F0A50060933E /* ToDoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoView.swift; sourceTree = "<group>"; };
 		DB4A8F3423DE264900558788 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		DB4A8F3A23DEE76400558788 /* PersonElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonElement.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 				DB691A1F23CB31ED004CDBE8 /* CloudKitRecordXXX.swift */,
 				DB302B8E237EF43400076D10 /* CloudKitUser.swift */,
 				DB4A8F3F23DEE87B00558788 /* CloudKitPerson.swift */,
+				DB33E13623F09E4B00A95FAA /* CloudKitPostalCode.swift */,
 			);
 			path = CloudKit;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				DBB4C62823B6301F0055296B /* ImagePicker.swift in Sources */,
 				DB4A8F4023DEE87B00558788 /* CloudKitPerson.swift in Sources */,
 				DB302B71237EF02300076D10 /* PersonOverView.swift in Sources */,
+				DB33E13723F09E4B00A95FAA /* CloudKitPostalCode.swift in Sources */,
 				DB302B81237EF16200076D10 /* UserElement.swift in Sources */,
 				DB65AE7C23E1EE2100568032 /* PersonsOverView.swift in Sources */,
 				DB302B8B237EF33100076D10 /* PersonView.swift in Sources */,

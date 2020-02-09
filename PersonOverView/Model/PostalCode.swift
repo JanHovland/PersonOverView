@@ -12,7 +12,7 @@ import CloudKit
 struct PostalCode: Identifiable {
    var id = UUID()
    var recordID: CKRecord.ID?
-   var postalCode: String = ""
+   var postalNumber: String = ""
    var postalName: String = ""
    var municipalityNumber: String = ""
    var municipalityName: String = ""

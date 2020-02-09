@@ -34,7 +34,7 @@ func parseCSV (contentsOfURL: URL,
                 var values:[String] = []
                 if line != "" {
                     values = line.components(separatedBy: delimiter)
-                    postalCode.postalCode = values[0]
+                    postalCode.postalNumber = values[0]
                     postalCode.postalName = values[1]
                     postalCode.municipalityNumber = values[2]
                     postalCode.municipalityName = values[3]
@@ -68,7 +68,7 @@ func preloadData() {
                              encoding: String.Encoding.ascii,
                              delimiter: "\t") {
         for postalCode in postalCodes {
-            print(postalCode.postalCode + " " + postalCode.postalName + " " + postalCode.municipalityNumber + " " + postalCode.municipalityName)
+            print(postalCode.postalNumber + " " + postalCode.postalName + " " + postalCode.municipalityNumber + " " + postalCode.municipalityName)
         }
     }
 }
