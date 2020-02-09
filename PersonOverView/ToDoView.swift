@@ -16,11 +16,13 @@ E n d r i n g e r
 var toDo_1 =
 """
   1. Legge inn postnummer i CloudKit:
-     a) Legg data inn i CloudKit i som CKAsset i en tabell?
-     b) Bruke samme metode som jeg brukte i Firebase?
-     c) Lage en link til postnummer.csv i "Filer" på iPhone
-        La denne linken være parameter til appen som sletter og
-        så oppdaterer postnummer tabellen
+     a) 😀 Opprette tabellen i "PostalCode"
+     b) 😀 Legger csv filen fra Bring inn i prosjektet
+     c) Lage func for å lese fra csv filen
+     d) Lage func for å slette helt inholdet i "PostalCode" tabellen
+     e) Lage func for å lagre
+     f) Lage func for henting mhv. predicate
+     g) Legge nytt view fra Settings for å oppdatere "PostalCode" tabellen
   2. Legge inn fødselsdaglisten fra Firebase
   3. Lagre søkebilde for postnummer
 """
