@@ -189,7 +189,6 @@
 				DB6739C223AD46A800EF9ECD /* InfoPlist.strings */,
 				DB1FEF8E2380554F00F8D763 /* Launch Screen.storyboard */,
 				DB302B6D237EF02300076D10 /* PersonOverView.xcdatamodeld */,
-				DB302B70237EF02300076D10 /* PersonOverView.swift */,
 				DB302B90237FDD7200076D10 /* PersonOverView.entitlements */,
 				DB302B6B237EF02300076D10 /* SceneDelegate.swift */,
 				DB46937F23B9F0A50060933E /* ToDoView.swift */,
@@ -288,6 +287,7 @@
 			children = (
 				DBF0397D23E5A50D00230FAA /* NewPersonView.swift */,
 				DB302B8A237EF33100076D10 /* PersonView.swift */,
+				DB302B70237EF02300076D10 /* PersonOverView.swift */,
 				DB65AE7B23E1EE2100568032 /* PersonsOverView.swift */,
 			);
 			path = Person;
