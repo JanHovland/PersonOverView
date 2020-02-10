@@ -29,7 +29,7 @@ struct CloudKitPostalCode {
         itemRecord["municipalityName"] = item.municipalityName as CKRecordValue
         itemRecord["categori"] = item.categori as CKRecordValue
         CKContainer.default().privateCloudDatabase.save(itemRecord) { (record, err) in
-            DispatchQueue.main.async {
+            // DispatchQueue.main.async {
                 if let err = err {
                     completion(.failure(err))
                     return
@@ -67,7 +67,7 @@ struct CloudKitPostalCode {
                                             categori: categori)
 
                 completion(.success(postalCode))
-            }
+            // }
         }
     }
 
@@ -131,6 +131,9 @@ struct CloudKitPostalCode {
         let privateDb =  CKContainer.default().privateCloudDatabase
         let query = CKQuery(recordType: "PostalCode", predicate: NSPredicate(format: "TRUEPREDICATE", argumentArray: nil))
         var counter = 0
+
+        let operation = CKQueryOperation(query: query)
+        operation.resultsLimit = 2000
         DispatchQueue.main.async {
             privateDb.perform(query, inZoneWith: nil) { (records, error) in
                 if error == nil {

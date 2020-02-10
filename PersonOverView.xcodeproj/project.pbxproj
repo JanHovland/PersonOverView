@@ -24,9 +24,9 @@
 		DB302B8B237EF33100076D10 /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B8A237EF33100076D10 /* PersonView.swift */; };
 		DB302B8F237EF43400076D10 /* CloudKitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B8E237EF43400076D10 /* CloudKitUser.swift */; };
 		DB302B93237FDD8600076D10 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB302B92237FDD8600076D10 /* CloudKit.framework */; };
-		DB33E13323F07C7D00A95FAA /* Postnummerregister-ansi.txt in Resources */ = {isa = PBXBuildFile; fileRef = DB33E13223F07C7D00A95FAA /* Postnummerregister-ansi.txt */; };
 		DB33E13523F0893100A95FAA /* PostalCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB33E13423F0893100A95FAA /* PostalCode.swift */; };
 		DB33E13723F09E4B00A95FAA /* CloudKitPostalCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB33E13623F09E4B00A95FAA /* CloudKitPostalCode.swift */; };
+		DB33E13A23F1D5E800A95FAA /* Postnummerregister-ansi.txt in Resources */ = {isa = PBXBuildFile; fileRef = DB33E13923F1D5E800A95FAA /* Postnummerregister-ansi.txt */; };
 		DB46938023B9F0A50060933E /* ToDoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB46937F23B9F0A50060933E /* ToDoView.swift */; };
 		DB4A8F3523DE264900558788 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4A8F3423DE264900558788 /* Person.swift */; };
 		DB4A8F3B23DEE76400558788 /* PersonElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4A8F3A23DEE76400558788 /* PersonElement.swift */; };
@@ -107,9 +107,9 @@
 		DB302B8E237EF43400076D10 /* CloudKitUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitUser.swift; sourceTree = "<group>"; };
 		DB302B90237FDD7200076D10 /* PersonOverView.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonOverView.entitlements; sourceTree = "<group>"; };
 		DB302B92237FDD8600076D10 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		DB33E13223F07C7D00A95FAA /* Postnummerregister-ansi.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Postnummerregister-ansi.txt"; path = "../../../../../Downloads/Postnummerregister-ansi.txt"; sourceTree = "<group>"; };
 		DB33E13423F0893100A95FAA /* PostalCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostalCode.swift; sourceTree = "<group>"; };
 		DB33E13623F09E4B00A95FAA /* CloudKitPostalCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitPostalCode.swift; sourceTree = "<group>"; };
+		DB33E13923F1D5E800A95FAA /* Postnummerregister-ansi.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Postnummerregister-ansi.txt"; sourceTree = "<group>"; };
 		DB46937F23B9F0A50060933E /* ToDoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoView.swift; sourceTree = "<group>"; };
 		DB4A8F3423DE264900558788 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		DB4A8F3A23DEE76400558788 /* PersonElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonElement.swift; sourceTree = "<group>"; };
@@ -219,7 +219,7 @@
 		DB33E12D23EF63BD00A95FAA /* PostalCode */ = {
 			isa = PBXGroup;
 			children = (
-				DB33E13223F07C7D00A95FAA /* Postnummerregister-ansi.txt */,
+				DB33E13923F1D5E800A95FAA /* Postnummerregister-ansi.txt */,
 			);
 			path = PostalCode;
 			sourceTree = "<group>";
@@ -372,9 +372,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB33E13A23F1D5E800A95FAA /* Postnummerregister-ansi.txt in Resources */,
 				DBB83D9A23E822CE003AA2C9 /* Localizable.strings in Resources */,
 				DB302B76237EF02300076D10 /* Preview Assets.xcassets in Resources */,
-				DB33E13323F07C7D00A95FAA /* Postnummerregister-ansi.txt in Resources */,
 				DB6739C423AD46A800EF9ECD /* InfoPlist.strings in Resources */,
 				DB1FEF8F2380554F00F8D763 /* Launch Screen.storyboard in Resources */,
 				DB302B73237EF02300076D10 /* Assets.xcassets in Resources */,
