@@ -10,7 +10,7 @@ import SwiftUI
 
 struct AlertID: Identifiable {
     enum Choice {
-        case first, second
+        case first, second, third
     }
 
     var id: Choice

@@ -237,6 +237,8 @@ struct PersonView : View {
                 return Alert(title: Text(self.message))
             case .second:
                 return Alert(title: Text(self.message))
+            case .third:
+                return Alert(title: Text(self.message))
             }
         }
         /// Ta bort tastaturet når en klikker utenfor feltet

@@ -75,16 +75,73 @@ struct SettingView: View {
                              message: Text(NSLocalizedString("Are you sure you want to save the PostalCodes?", comment: "SettingView")),
                              primaryButton: .destructive(Text(NSLocalizedString("Yes", comment: "UserMaintenanceView")),
                                                          action: {
-                                                             /// Sletter hele postnummer tabellen
-                                                             CloudKitPostalCode.deleteAllPostalCode()
-                                                             /// Leser og lagrer fra csv filen: Postnummerregister-ansi.txt 
-
+                                                            CloudKitPostalCode.deleteAllPostalCode()
+                                                            self.UpdatePostalCodeFromCSV()
                                                          }),
                              secondaryButton: .cancel(Text(NSLocalizedString("No", comment: "SettingView"))))
+            case .third:
+                return Alert(title: Text(self.message))
             }
         }
     }
 
+    func parseCSV (contentsOfURL: URL,
+                   encoding: String.Encoding,
+                   delimiter: String) -> [(PostalCode)]? {
+
+        /// Hvis denne feilmeldingen kommer : Swift Error: Struct 'XX' must be completely initialized before a member is stored to
+        /// endre til : var postalCode: PostalCode! = PostalCode()
+        var postalCode: PostalCode! = PostalCode()
+        var postalCodes: [(PostalCode)]?
+            do {
+                let content = try String(contentsOf: contentsOfURL,
+                                         encoding: encoding)
+                postalCodes = []
+                let lines: [String] = content.components(separatedBy: .newlines)
+                for line in lines {
+                    var values:[String] = []
+                    if line != "" {
+                        values = line.components(separatedBy: delimiter)
+                        postalCode.postalNumber = values[0]
+                        postalCode.postalName = values[1]
+                        postalCode.municipalityNumber = values[2]
+                        postalCode.municipalityName = values[3]
+                        postalCode.categori = values[4]
+                        postalCodes?.append(postalCode)
+                    }
+                }
+            } catch {
+                print(error)
+            }
+            return postalCodes
+    }
+
+    func UpdatePostalCodeFromCSV() {
+
+        var counter = 0
+
+        /// Finner URL fra prosjektet
+        guard let contentsOfURL = Bundle.main.url(forResource: "Postnummerregister-ansi", withExtension: "txt") else { return }
+        /// Må bruke encoding == ascii (utf8 virker ikke)
+        if let postalCodes = parseCSV (contentsOfURL: contentsOfURL,
+                                 encoding: String.Encoding.ascii,
+                                 delimiter: "\t") {
+            for postalCode in postalCodes {
+                counter += 1
+                /// Lagre postnummerne
+                CloudKitPostalCode.savePostalCode(item: postalCode) { (result) in
+                    switch result {
+                    case .success:
+                        let _ = 1
+                    case .failure(let err):
+                        print(err.localizedDescription)
+                    }
+                }
+            }
+        }
+        let message1 = NSLocalizedString("Records stored:", comment: "SettingView")
+        print(message1  + " \(counter)")
+    }
 }
 
 

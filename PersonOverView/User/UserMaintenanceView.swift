@@ -149,6 +149,8 @@ struct UserMaintenanceView: View {
                                                             }
                              }),
                              secondaryButton: .cancel(Text(NSLocalizedString("No", comment: "UserMaintenanceView"))))
+            case .third:
+               return Alert(title: Text(self.message))
             }
 
         }

@@ -114,6 +114,8 @@ struct PersonsOverView: View {
                 return Alert(title: Text(self.message))
             case .second:
                 return Alert(title: Text(self.message))
+            case .third:
+                return Alert(title: Text(self.message))
             }
         }
         .overlay(

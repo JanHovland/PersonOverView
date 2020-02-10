@@ -128,20 +128,26 @@ struct CloudKitPostalCode {
 
     // MARK: - delete all from CloudKit
     static func deleteAllPostalCode() {
-
         let privateDb =  CKContainer.default().privateCloudDatabase
         let query = CKQuery(recordType: "PostalCode", predicate: NSPredicate(format: "TRUEPREDICATE", argumentArray: nil))
-
-        privateDb.perform(query, inZoneWith: nil) { (records, error) in
-            if error == nil {
-                for record in records! {
-                    privateDb.delete(withRecordID: record.recordID, completionHandler: { (recordId, error) in
-                        if error == nil {
-                            print("Record deleted")
-                        }
-                    })
+        var counter = 0
+        DispatchQueue.main.async {
+            privateDb.perform(query, inZoneWith: nil) { (records, error) in
+                if error == nil {
+                    for record in records! {
+                        privateDb.delete(withRecordID: record.recordID, completionHandler: { (recordId, error) in
+                            if error == nil {
+                                counter += 1
+                                print(counter)
+                            }
+                        })
+                    }
+                } else {
+                    print(error as Any)
                 }
             }
+            let message1 = NSLocalizedString("Records deleted:", comment: "SettingView")
+            print(message1 + " " + "\(counter)")
         }
     }
 

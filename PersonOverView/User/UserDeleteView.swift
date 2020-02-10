@@ -132,6 +132,8 @@ struct UserDeleteView: View {
 
                   }),
                   secondaryButton: .cancel(Text(NSLocalizedString("No", comment: "UserDeleteView"))))
+            case .third:
+               return Alert(title: Text(self.message))
             }
         }
         .overlay(
