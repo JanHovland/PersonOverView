@@ -24,6 +24,16 @@ struct SettingView: View {
                         Text(NSLocalizedString("Show password", comment: "SettingView"))
                     }
                 }
+                Section(header: Text(NSLocalizedString("PostalCode", comment: "SettingView"))) {
+                    Button(
+                        action: {
+                            self.alertIdentifier = AlertID(id: .second)
+                        },
+                        label: {
+                            Text(NSLocalizedString("Save PostalCode", comment: "SettingView")
+                        )}
+                    )
+                }
             }
             .navigationBarTitle(NSLocalizedString("Settings", comment: "SettingView"))
             .navigationBarItems(trailing:
@@ -61,11 +71,20 @@ struct SettingView: View {
             case .first:
                 return Alert(title: Text(self.message))
             case .second:
-                return Alert(title: Text(self.message))
+                return Alert(title: Text(NSLocalizedString("Save PostalCode", comment: "SettingView")),
+                             message: Text(NSLocalizedString("Are you sure you want to save the PostalCodes?", comment: "SettingView")),
+                             primaryButton: .destructive(Text(NSLocalizedString("Yes", comment: "UserMaintenanceView")),
+                                                         action: {
+                                                             /// Sletter hele postnummer tabellen
+                                                             CloudKitPostalCode.deleteAllPostalCode()
+                                                             /// Leser og lagrer fra csv filen: Postnummerregister-ansi.txt 
+
+                                                         }),
+                             secondaryButton: .cancel(Text(NSLocalizedString("No", comment: "SettingView"))))
             }
         }
-
-
     }
+
 }
+
 

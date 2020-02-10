@@ -71,23 +71,6 @@ struct CloudKitPostalCode {
         }
     }
 
-    // MARK: - delete from CloudKit
-    static func deletePostalCode(recordID: CKRecord.ID, completion: @escaping (Result<CKRecord.ID, Error>) -> ()) {
-        CKContainer.default().privateCloudDatabase.delete(withRecordID: recordID) { (recordID, err) in
-            DispatchQueue.main.async {
-                if let err = err {
-                    completion(.failure(err))
-                    return
-                }
-                guard let recordID = recordID else {
-                    completion(.failure(CloudKitHelperError.recordIDFailure))
-                    return
-                }
-                completion(.success(recordID))
-            }
-        }
-    }
-
     // MARK: - fetching from CloudKit
     static func fetchPostalCode(predicate:  NSPredicate, completion: @escaping (Result<PostalCode, Error>) -> ()) {
         let query = CKQuery(recordType: RecordType.PostalCode, predicate: predicate)
@@ -125,5 +108,42 @@ struct CloudKitPostalCode {
         }
         CKContainer.default().privateCloudDatabase.add(operation)
     }
+
+     // MARK: - delete from CloudKit
+     static func deletePostalCode(recordID: CKRecord.ID, completion: @escaping (Result<CKRecord.ID, Error>) -> ()) {
+         CKContainer.default().privateCloudDatabase.delete(withRecordID: recordID) { (recordID, err) in
+             DispatchQueue.main.async {
+                 if let err = err {
+                     completion(.failure(err))
+                     return
+                 }
+                 guard let recordID = recordID else {
+                     completion(.failure(CloudKitHelperError.recordIDFailure))
+                     return
+                 }
+                 completion(.success(recordID))
+             }
+         }
+     }
+
+    // MARK: - delete all from CloudKit
+    static func deleteAllPostalCode() {
+
+        let privateDb =  CKContainer.default().privateCloudDatabase
+        let query = CKQuery(recordType: "PostalCode", predicate: NSPredicate(format: "TRUEPREDICATE", argumentArray: nil))
+
+        privateDb.perform(query, inZoneWith: nil) { (records, error) in
+            if error == nil {
+                for record in records! {
+                    privateDb.delete(withRecordID: record.recordID, completionHandler: { (recordId, error) in
+                        if error == nil {
+                            print("Record deleted")
+                        }
+                    })
+                }
+            }
+        }
+    }
+
 }
 

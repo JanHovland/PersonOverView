@@ -25,7 +25,6 @@
 		DB302B8F237EF43400076D10 /* CloudKitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B8E237EF43400076D10 /* CloudKitUser.swift */; };
 		DB302B93237FDD8600076D10 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB302B92237FDD8600076D10 /* CloudKit.framework */; };
 		DB33E12C23EF638300A95FAA /* ParseCSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB33E12B23EF638300A95FAA /* ParseCSV.swift */; };
-		DB33E12F23EF6CF400A95FAA /* PostalCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB33E12E23EF6CF400A95FAA /* PostalCodeView.swift */; };
 		DB33E13323F07C7D00A95FAA /* Postnummerregister-ansi.txt in Resources */ = {isa = PBXBuildFile; fileRef = DB33E13223F07C7D00A95FAA /* Postnummerregister-ansi.txt */; };
 		DB33E13523F0893100A95FAA /* PostalCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB33E13423F0893100A95FAA /* PostalCode.swift */; };
 		DB33E13723F09E4B00A95FAA /* CloudKitPostalCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB33E13623F09E4B00A95FAA /* CloudKitPostalCode.swift */; };
@@ -110,7 +109,6 @@
 		DB302B90237FDD7200076D10 /* PersonOverView.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonOverView.entitlements; sourceTree = "<group>"; };
 		DB302B92237FDD8600076D10 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		DB33E12B23EF638300A95FAA /* ParseCSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseCSV.swift; sourceTree = "<group>"; };
-		DB33E12E23EF6CF400A95FAA /* PostalCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostalCodeView.swift; sourceTree = "<group>"; };
 		DB33E13223F07C7D00A95FAA /* Postnummerregister-ansi.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Postnummerregister-ansi.txt"; path = "../../../../../Downloads/Postnummerregister-ansi.txt"; sourceTree = "<group>"; };
 		DB33E13423F0893100A95FAA /* PostalCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostalCode.swift; sourceTree = "<group>"; };
 		DB33E13623F09E4B00A95FAA /* CloudKitPostalCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitPostalCode.swift; sourceTree = "<group>"; };
@@ -196,6 +194,7 @@
 				DB4A8F3323DE260700558788 /* Model */,
 				DB33E12D23EF63BD00A95FAA /* PostalCode */,
 				DB4A8F3923DEDDD200558788 /* Person */,
+				DB33E13823F17E5900A95FAA /* Settings */,
 				DB4A8F3823DEDDA100558788 /* User */,
 				DB4A8F3623DEDC1C00558788 /* Utilities */,
 				DB302B74237EF02300076D10 /* Preview Content */,
@@ -224,9 +223,16 @@
 			children = (
 				DB33E13223F07C7D00A95FAA /* Postnummerregister-ansi.txt */,
 				DB33E12B23EF638300A95FAA /* ParseCSV.swift */,
-				DB33E12E23EF6CF400A95FAA /* PostalCodeView.swift */,
 			);
 			path = PostalCode;
+			sourceTree = "<group>";
+		};
+		DB33E13823F17E5900A95FAA /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				DBFC29C223C48F6C00F2224B /* SettingView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		DB4A8F3323DE260700558788 /* Model */ = {
@@ -273,7 +279,6 @@
 		DB4A8F3823DEDDA100558788 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				DBFC29C223C48F6C00F2224B /* SettingView.swift */,
 				DB302B84237EF27400076D10 /* SignInView.swift */,
 				DB302B86237EF2A700076D10 /* SignUpView.swift */,
 				DB9A4DD823CDE2AE00948B21 /* UserDeleteView.swift */,
@@ -399,7 +404,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBDA561A23BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift in Sources */,
-				DB33E12F23EF6CF400A95FAA /* PostalCodeView.swift in Sources */,
 				DBE58AD123CF798000D3EF1D /* DismissingKeyboard.swift in Sources */,
 				DB302B6F237EF02300076D10 /* PersonOverView.xcdatamodeld in Sources */,
 				DB4A8F3E23DEE79200558788 /* PersonElements.swift in Sources */,
