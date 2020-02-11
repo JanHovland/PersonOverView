@@ -91,127 +91,124 @@ struct SettingView: View {
                              message: Text(NSLocalizedString("Are you sure you want to save PostalCodes?", comment: "SettingView")),
                              primaryButton: .destructive(Text(NSLocalizedString("Yes", comment: "SettingView")),
                                                          action: {
-                                                            self.testSave()
-                                                            // self.UpdatePostalCodeFromCSV()
+                                                            // self.testSave()
+                                                            self.UpdatePostalCodeFromCSV()
                                                          }),
                              secondaryButton: .cancel(Text(NSLocalizedString("No", comment: "SettingView"))))
             }
         }
     }
 
-    func testSave() {
-        var number = 1
-        let maxNumber = 501
-        var postalCode: PostalCode! = PostalCode()
-
-        repeat {
-            postalCode.postalNumber = "1"
-            // DispatchQueue.main.async {
-                CloudKitPostalCode.savePostalCode(item: postalCode) { (result) in
-                    switch result {
-                    case .success:
-                        _ = 1 // print("Saved")
-                    case .failure(let err):
-                        print(err.localizedDescription)
-                    }
-                }
-            // }
-
-            number += 1
-
-        } while number < maxNumber
-        print("Finished")
-
-    }
-
-
     func parseCSV (contentsOfURL: URL,
                    encoding: String.Encoding,
-                   delimiter: String) {
+                   delimiter: String) -> [(PostalCode)]? {
 
         /// Hvis denne feilmeldingen kommer : Swift Error: Struct 'XX' must be completely initialized before a member is stored to
         /// endre til : var postalCode: PostalCode! = PostalCode()
         var postalCode: PostalCode! = PostalCode()
-        var counter = 0
-        do {
-            let content = try String(contentsOf: contentsOfURL,
-                                     encoding: encoding)
-            let lines: [String] = content.components(separatedBy: .newlines)
-            // DispatchQueue.main.async {
-            /*
-            repeat {
-                // move up or down for a snake or ladder
-                square += board[square]
-                // roll the dice
-                diceRoll += 1
-                if diceRoll == 7 { diceRoll = 1 }
-                // move by the rolled amount
-                square += diceRoll
-            } while square < finalSquare
-            print("Game over!")
-            */
+        var postalCodes: [(PostalCode)]?
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            for line in lines {
-                var values:[String] = []
-                if line != "" {
-                    values = line.components(separatedBy: delimiter)
-                    postalCode.postalNumber = values[0]
-                    postalCode.postalName = values[1]
-                    postalCode.municipalityNumber = values[2]
-                    postalCode.municipalityName = values[3]
-                    postalCode.categori = values[4]
-                    print("1 -> " + postalCode.postalNumber + " " + postalCode.postalName)
-                    counter += 1
-                    print(counter)
-                    /// Lagre postnummerne
-                    // DispatchQueue.main.async {
-                        CloudKitPostalCode.savePostalCode(item: postalCode) { (result) in
-                            switch result {
-                            case .success:
-                                print("2 -> " + postalCode.postalNumber + " " + postalCode.postalName)
-                            case .failure(let err):
-                                print(err.localizedDescription)
-                            }
-                        }
-                    // }
-                    if counter > 3000 {
-                        return
+            do {
+                let content = try String(contentsOf: contentsOfURL,
+                                         encoding: encoding)
+                postalCodes = []
+                let lines: [String] = content.components(separatedBy: .newlines)
+                for line in lines {
+                    var values:[String] = []
+                    if line != "" {
+                        values = line.components(separatedBy: delimiter)
+                        postalCode.postalNumber = values[0]
+                        postalCode.postalName = values[1]
+                        postalCode.municipalityNumber = values[2]
+                        postalCode.municipalityName = values[3]
+                        postalCode.categori = values[4]
+                        postalCodes?.append(postalCode)
                     }
+                }
+            } catch {
+                print(error)
+            }
+            return postalCodes
+    }
 
+    func testSave() {
+        var number = 1
+        let maxNumber = 51
+        var postalCode: PostalCode! = PostalCode()
+
+        repeat {
+            postalCode.postalNumber = "1"
+            CloudKitPostalCode.savePostalCode(item: postalCode) { (result) in
+                switch result {
+                case .success:
+                    _ = 1
+                case .failure(let err):
+                    print(err.localizedDescription)
                 }
             }
-
-        } catch {
-            print(error)
-        }
+            number += 1
+        } while number < maxNumber
+        print("Poster lagret: \(number-1)")
     }
 
     func UpdatePostalCodeFromCSV() {
+
+        var index = 0
         /// Finner URL fra prosjektet
         guard let contentsOfURL = Bundle.main.url(forResource: "Postnummerregister-ansi", withExtension: "txt") else { return }
         /// Må bruke encoding == ascii (utf8 virker ikke)
-        parseCSV (contentsOfURL: contentsOfURL,
-                  encoding: String.Encoding.ascii,
-                  delimiter: "\t")
+        let postalCodes = parseCSV (contentsOfURL: contentsOfURL,
+                                       encoding: String.Encoding.ascii,
+                                       delimiter: "\t")
+        let maxNumber =  postalCodes!.count
+        repeat {
+            let postalCode = postalCodes![index]
+            CloudKitPostalCode.savePostalCode(item: postalCode) { (result) in
+                switch result {
+                case .success:
+                    _ = 1
+                case .failure(let err):
+                    print(err.localizedDescription)
+                }
+            }
+            index += 1
+        } while index < maxNumber
+        print("Poster lagret: \(index-1)")
     }
-
 }
 
+/*
+ @State var showAlert = false
+ @State var showActionSheet = false
+ @State var showAddModal = false
 
+ var body: some View {
+     VStack {
+         // ALERT
+         Button(action: { self.showAlert = true }) {
+             Text("Show Alert")
+         }
+         .alert(isPresented: $showAlert) {
+              // Alert(...)
+              // showAlert set to false through the binding
+         }
+
+         // ACTION SHEET
+         Button(action: { self.showActionSheet = true }) {
+             Text("Show Action Sheet")
+         }
+         .actionSheet(isPresented: $showActionSheet) {
+              // ActionSheet(...)
+              // showActionSheet set to false through the binding
+         }
+
+         // FULL-SCREEN VIEW
+         Button(action: { self.showAddModal = true }) {
+             Text("Show Modal")
+         }
+         .sheet(isPresented: $showAddModal, onDismiss: {} ) {
+             // INSERT a call to the new view, and in it set showAddModal = false to close
+             // e.g. AddItem(isPresented: self.$showAddModal)
+         }
+ }
+ */

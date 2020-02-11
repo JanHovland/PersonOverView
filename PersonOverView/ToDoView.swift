@@ -19,12 +19,14 @@ var toDo_1 =
      a) 😀 Opprette tabellen i "PostalCode"
      b) 😀 Legger csv filen fra Bring inn i prosjektet
      c) 😀 Lage func for å slette hele inholdet i "PostalCode" tabellen
+           a) Nå slettes kun 100 om gangen, endre til å kunne slette all
      d) Legge nytt view fra Settings for å oppdatere "PostalCode" tabellen
      e) 🥶 Lage func for å lese fra csv filen
      f) 🥶 Lage func for å lagre i "PostalCode" tabellen
-     g) 🥶 Lage func for henting mhv. predicate
-  2. Legge inn fødselsdaglisten fra Firebase
-  3. Lagre søkebilde for postnummer
+     g) 🥶 Lage func for henting fra "PostalCode" tabellen mhv. predicate
+  2. Benytte ActionSheet (se på slutten av "SettingsView"
+  3. Legge inn fødselsdaglisten fra Firebase
+  4. Lagre søkebilde for postnummer
 """
 
 var toDo_2 =

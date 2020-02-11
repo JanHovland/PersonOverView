@@ -83,6 +83,7 @@ struct PersonsOverView: View {
                         self.persons.remove(atOffsets: indexSet)
                     }
                 }
+                .listStyle(GroupedListStyle())
             }
             .navigationBarTitle(personsOverview)
             .navigationBarItems(leading:
