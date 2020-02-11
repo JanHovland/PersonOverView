@@ -134,23 +134,21 @@ struct CloudKitPostalCode {
 
         let operation = CKQueryOperation(query: query)
         operation.resultsLimit = 2000
-        DispatchQueue.main.async {
-            privateDb.perform(query, inZoneWith: nil) { (records, error) in
-                if error == nil {
-                    for record in records! {
-                        privateDb.delete(withRecordID: record.recordID, completionHandler: { (recordId, error) in
-                            if error == nil {
-                                counter += 1
-                                print(counter)
-                            }
-                        })
-                    }
-                } else {
-                    print(error as Any)
+        privateDb.perform(query, inZoneWith: nil) { (records, error) in
+            if error == nil {
+                for record in records! {
+                    privateDb.delete(withRecordID: record.recordID, completionHandler: { (recordId, error) in
+                        if error == nil {
+                            _ = 0
+                        }
+                    })
+                    counter += 1
                 }
+                let message1 = NSLocalizedString("Records deleted:", comment: "SettingView")
+                print(message1 + " " + "\(counter)")
+            } else {
+                print(error as Any)
             }
-            let message1 = NSLocalizedString("Records deleted:", comment: "SettingView")
-            print(message1 + " " + "\(counter)")
         }
     }
 
