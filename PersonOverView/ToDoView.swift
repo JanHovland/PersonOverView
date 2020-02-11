@@ -15,21 +15,21 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. Legge inn postnummer i CloudKit:
-     a) 😀 Opprette tabellen i "PostalCode"
-     b) 😀 Legger csv filen fra Bring inn i prosjektet
-     c) 🥶 Lage func for å slette hele inholdet i "PostalCode" tabellen
-           a) 😐 Nå slettes kun 100 om gangen, endre til å kunne slette alle samtidig
-     d) 😀 Legge nytt view fra Settings for å oppdatere "PostalCode" tabellen
-     e) 😀 Lage func for å lese fra csv filen
-     f) 😀 Lage func for å lagre i "PostalCode" tabellen. Status: OK !!!!
-           a) 😀 Alle 5093 (tid: 34 minutter)
-           b) 😀 1000
-           c) 😀 2700
-     g) 🥶 Lage func for henting fra "PostalCode" tabellen mhv. predicate
-  2. Benytte ActionSheet (se på slutten av "SettingsView")
-  3. Legge inn fødselsdaglisten fra Firebase
-  4. Lagre søkebilde for postnummer
+  1. 🟠 Legge inn postnummer i CloudKit:
+     a) 🟢 Opprette tabellen i "PostalCode"
+     b) 🟢 Legger csv filen fra Bring inn i prosjektet
+     c) 🔴 Lage func for å slette hele inholdet i "PostalCode" tabellen
+           a) 🟢 Nå slettes kun 100 om gangen, endre til å kunne slette alle samtidig
+     d) 🟢 Legge nytt view fra Settings for å oppdatere "PostalCode" tabellen
+     e) 🟢 Lage func for å lese fra csv filen
+     f) 🟢 Lage func for å lagre i "PostalCode" tabellen. Status: OK !!!!
+           a) 🟢 Alle 5093 (tid: 34 minutter)
+           b) 🟢 1000
+           c) 🟢 2700
+  2. 🔴 Lage func for henting fra "PostalCode" tabellen mhv. predicate
+  3. 🔴 Benytte ActionSheet (se på slutten av "SettingsView")
+  4. 🔴 Legge inn fødselsdaglisten fra Firebase
+  5. 🔴 Lagre søkebilde for postnummer
 """
 
 var toDo_2 =
