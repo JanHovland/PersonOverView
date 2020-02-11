@@ -91,12 +91,39 @@ struct SettingView: View {
                              message: Text(NSLocalizedString("Are you sure you want to save PostalCodes?", comment: "SettingView")),
                              primaryButton: .destructive(Text(NSLocalizedString("Yes", comment: "SettingView")),
                                                          action: {
-                                                            self.UpdatePostalCodeFromCSV()
+                                                            self.testSave()
+                                                            // self.UpdatePostalCodeFromCSV()
                                                          }),
                              secondaryButton: .cancel(Text(NSLocalizedString("No", comment: "SettingView"))))
             }
         }
     }
+
+    func testSave() {
+        var number = 1
+        let maxNumber = 501
+        var postalCode: PostalCode! = PostalCode()
+
+        repeat {
+            postalCode.postalNumber = "1"
+            // DispatchQueue.main.async {
+                CloudKitPostalCode.savePostalCode(item: postalCode) { (result) in
+                    switch result {
+                    case .success:
+                        _ = 1 // print("Saved")
+                    case .failure(let err):
+                        print(err.localizedDescription)
+                    }
+                }
+            // }
+
+            number += 1
+
+        } while number < maxNumber
+        print("Finished")
+
+    }
+
 
     func parseCSV (contentsOfURL: URL,
                    encoding: String.Encoding,
@@ -111,6 +138,36 @@ struct SettingView: View {
                                      encoding: encoding)
             let lines: [String] = content.components(separatedBy: .newlines)
             // DispatchQueue.main.async {
+            /*
+            repeat {
+                // move up or down for a snake or ladder
+                square += board[square]
+                // roll the dice
+                diceRoll += 1
+                if diceRoll == 7 { diceRoll = 1 }
+                // move by the rolled amount
+                square += diceRoll
+            } while square < finalSquare
+            print("Game over!")
+            */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             for line in lines {
                 var values:[String] = []
                 if line != "" {
