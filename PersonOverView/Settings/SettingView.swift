@@ -28,10 +28,18 @@ struct SettingView: View {
                     Button(
                         action: {
                             self.alertIdentifier = AlertID(id: .second)
-                        },
+                    },
+                        label: {
+                            Text(NSLocalizedString("Delete PostalCode (100 at a time)", comment: "SettingView")
+                            )}
+                    )
+                    Button(
+                        action: {
+                            self.alertIdentifier = AlertID(id: .third)
+                    },
                         label: {
                             Text(NSLocalizedString("Save PostalCode", comment: "SettingView")
-                        )}
+                            )}
                     )
                 }
             }
@@ -71,16 +79,21 @@ struct SettingView: View {
             case .first:
                 return Alert(title: Text(self.message))
             case .second:
-                return Alert(title: Text(NSLocalizedString("Save PostalCode", comment: "SettingView")),
-                             message: Text(NSLocalizedString("Are you sure you want to save the PostalCodes?", comment: "SettingView")),
-                             primaryButton: .destructive(Text(NSLocalizedString("Yes", comment: "UserMaintenanceView")),
+                return Alert(title: Text(NSLocalizedString("Delete PostalCode", comment: "SettingView")),
+                             message: Text(NSLocalizedString("Are you sure you want to delete PostalCode?", comment: "SettingView")),
+                             primaryButton: .destructive(Text(NSLocalizedString("Yes", comment: "SettingView")),
                                                          action: {
-                                                            // CloudKitPostalCode.deleteAllPostalCode()
-                                                            self.UpdatePostalCodeFromCSV()
+                                                            CloudKitPostalCode.deleteAllPostalCode()
                                                          }),
                              secondaryButton: .cancel(Text(NSLocalizedString("No", comment: "SettingView"))))
             case .third:
-                return Alert(title: Text(self.message))
+                return Alert(title: Text(NSLocalizedString("Save PostalCode", comment: "SettingView")),
+                             message: Text(NSLocalizedString("Are you sure you want to save PostalCodes?", comment: "SettingView")),
+                             primaryButton: .destructive(Text(NSLocalizedString("Yes", comment: "SettingView")),
+                                                         action: {
+                                                            self.UpdatePostalCodeFromCSV()
+                                                         }),
+                             secondaryButton: .cancel(Text(NSLocalizedString("No", comment: "SettingView"))))
             }
         }
     }
@@ -115,15 +128,15 @@ struct SettingView: View {
                         CloudKitPostalCode.savePostalCode(item: postalCode) { (result) in
                             switch result {
                             case .success:
-                                _ = 1 // print("2 -> " + postalCode.postalNumber + " " + postalCode.postalName)
+                                print("2 -> " + postalCode.postalNumber + " " + postalCode.postalName)
                             case .failure(let err):
                                 print(err.localizedDescription)
                             }
                         }
                     // }
-//                    if counter > 9 {
-//                        return
-//                    }
+                    if counter > 3000 {
+                        return
+                    }
 
                 }
             }

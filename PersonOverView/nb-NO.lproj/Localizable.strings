@@ -11,8 +11,14 @@
    SignUpView */
 "already exists" = "finnes allerede";
 
+/* SettingView */
+"Are you sure you want to delete PostalCode?" = "Er du sikker på at du vil slette PostalCode?";
+
 /* UserDeleteView */
 "Are you sure you want to delete this user?" = "Er du sikker på at du vil slette denne brukeren?";
+
+/* SettingView */
+"Are you sure you want to save PostalCodes?" = "Er du sikker på at du vil lagre postnummer?";
 
 /* UserMaintenanceView */
 "Are you sure you want to update this user?" = "Er du sikker på at du vil oppdatere denne brukeren?";
@@ -32,6 +38,12 @@
 
 /* PersonsOverView */
 "Date of birth" = "Fødselsdato";
+
+/* SettingView */
+"Delete PostalCode" = "Slett PostalCode";
+
+/* SettingView */
+"Delete PostalCode (100 at a time)" = "Slett PostalCode (100 om gangen)";
 
 /* SignInView
    UserDeleteView */
@@ -136,7 +148,8 @@
 /* SignInView */
 "New user" = "Ny bruker";
 
-/* UserDeleteView
+/* SettingView
+   UserDeleteView
    UserMaintenanceView */
 "No" = "Nei";
 
@@ -165,11 +178,17 @@
 /* PersonsOverView */
 "Postalcode" = "Postkode";
 
+/* SettingView */
+"Records deleted:" = "Poster slettet:";
+
 /* No comment provided by engineer. */
 "Refresh" = "Frisk opp";
 
 /* NewPersonView */
 "Save" = "Lagre";
+
+/* SettingView */
+"Save PostalCode" = "Lagre PostalCode";
 
 /* SettingView */
 "Saved the setting" = "Innstillingene er nå oppdatert";
@@ -232,7 +251,8 @@
 /* PersonsOverView */
 "Woman" = "Kvinne";
 
-/* UserDeleteView
+/* SettingView
+   UserDeleteView
    UserMaintenanceView */
 "Yes" = "Ja";
 
