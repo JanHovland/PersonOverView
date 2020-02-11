@@ -173,7 +173,7 @@ struct SettingView: View {
             }
             index += 1
         } while index < maxNumber
-        print("Poster lagret: \(index-1)")
+        print("Poster lagret: \(index)")
     }
 }
 
