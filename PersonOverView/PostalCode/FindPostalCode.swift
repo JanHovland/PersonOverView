@@ -42,17 +42,22 @@ struct FindPostalCode: View {
                 List {
                     ForEach(postalCodes) {
                         postalCode in
-                        HStack {
-                            Text(postalCode.postalNumber)
-                            Text(postalCode.postalName)
+
+                        NavigationLink(
+                        destination: DetailView(value: postalCode)) {
+                                HStack {
+                                    Text(postalCode.postalNumber)
+                                    Text(postalCode.postalName.lowercased().capitalizingFirstLetter())
+                                }
                         }
+
                     }
                 }
             }
             .navigationBarTitle("PostalCode", displayMode: .inline)
         }
         .onAppear {
-            self.zoomPostalCode(value: "Varhaug")
+            self.zoomPostalCode(value: "Os")
         }
     }
 
@@ -82,6 +87,28 @@ struct FindPostalCode: View {
             }
         }
     }
+
 }
 
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
 
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
+}
+
+struct DetailView: View {
+  let value: PostalCode
+
+  var body: some View {
+    HStack {
+        Text(value.postalNumber)
+        Text(value.postalName.lowercased().capitalizingFirstLetter())
+        Text(value.municipalityNumber)
+        Text(value.municipalityName.lowercased().capitalizingFirstLetter())
+    }
+  }
+}

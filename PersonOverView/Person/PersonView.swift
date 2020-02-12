@@ -22,6 +22,7 @@ struct PersonView : View {
     @State private var message: String = ""
     @State private var alertIdentifier: AlertID?
     @State private var showingImagePicker = false
+    @State private var findPostalCode = false
 
     @State private var recordID: CKRecord.ID?
     @State private var firstName: String = ""
@@ -118,11 +119,23 @@ struct PersonView : View {
                                    placeHolder: NSLocalizedString("Enter city", comment: "PersonsOverView"),
                                    value: $city)
                         .autocapitalization(.words)
-                    Image(systemName: "magnifyingglass")
-                        .resizable()
-                        .frame(width: 20, height: 20, alignment: .center)
-                        .foregroundColor(.blue)
-                        .font(.title)
+                    Button(action: {
+                        self.findPostalCode.toggle()
+                    }, label: {
+                        Image(systemName: "magnifyingglass")
+                            .resizable()
+                            .frame(width: 20, height: 20, alignment: .center)
+                            .foregroundColor(.blue)
+                            .font(.title)
+                    })
+                    .sheet(isPresented: $findPostalCode) {
+//                        NavigationLink(destination: FindPostalCode()) {
+//                            FindPostalCode()
+//                        }
+                          FindPostalCode()
+                    }
+
+                    
                 }
                 HStack (alignment: .center, spacing: 0) {
                     InputTextField(secure: false,
