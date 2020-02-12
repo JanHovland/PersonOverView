@@ -80,7 +80,7 @@ struct CloudKitPostalCode {
                                  "municipalityNumber",
                                  "municipalityName",
                                  "categori"]
-        operation.resultsLimit = 1000
+        operation.resultsLimit = 500
         operation.recordFetchedBlock = { record in
             DispatchQueue.main.async {
                 let recordID = record.recordID
@@ -131,9 +131,6 @@ struct CloudKitPostalCode {
         let privateDb =  CKContainer.default().privateCloudDatabase
         let query = CKQuery(recordType: "PostalCode", predicate: NSPredicate(format: "TRUEPREDICATE", argumentArray: nil))
         var counter = 0
-
-        let operation = CKQueryOperation(query: query)
-        operation.resultsLimit = 2000
         privateDb.perform(query, inZoneWith: nil) { (records, error) in
             if error == nil {
                 for record in records! {

@@ -178,6 +178,10 @@
 /* PersonsOverView */
 "Postalcode" = "Postkode";
 
+/* FindPostalCode
+   SettingView */
+"PostalCode" = "Poststed";
+
 /* SettingView */
 "Records deleted:" = "Poster slettet:";
 
@@ -193,8 +197,11 @@
 /* SettingView */
 "Saved the setting" = "Innstillingene er nå oppdatert";
 
-/* PersonsOverView */
-"Search for a person..." = "Søk etter en person...";
+/* FindPostalCode */
+"Search" = "Søk";
+
+/* FindPostalCode */
+"Search for PostalCode..." = "Søk etter poststed...";
 
 /* SettingView
    SignInView */

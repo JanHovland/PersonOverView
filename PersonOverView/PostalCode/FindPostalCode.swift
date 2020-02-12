@@ -15,72 +15,58 @@ struct FindPostalCode: View {
         UITableView.appearance().showsVerticalScrollIndicator = false
     }
 
-    /// SearchBar er ikke er ikke en dekl av SWIFTUI
-    struct SearchBar: UIViewRepresentable {
-        @Binding var text: String
-        class Coordinator: NSObject, UISearchBarDelegate {
-            @Binding var text: String
-            init(text: Binding<String>) {
-                _text = text
-            }
-            func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-                text = searchText
-            }
-        }
-        func makeCoordinator() -> SearchBar.Coordinator {
-            return Coordinator(text: $text)
-        }
-        func makeUIView(context: UIViewRepresentableContext<SearchBar>) -> UISearchBar {
-            let searchBar = UISearchBar(frame: .zero)
-            searchBar.delegate = context.coordinator
-            searchBar.placeholder = NSLocalizedString("Search for PostalCode...", comment: "FindPostalCode")
-            searchBar.autocapitalizationType = .none
-            return searchBar
-        }
-        func updateUIView(_ uiView: UISearchBar, context: UIViewRepresentableContext<SearchBar>) {
-            uiView.text = text
-        }
-    }
-
     @State private var searchText: String = ""
-    @State private var lookupPostalCode = NSLocalizedString("PostalCode", comment: "FindPostalCode")
     @State private var postalCode = PostalCode()
     @State private var postalCodes = [PostalCode]()
+    @State private var findPostalCode: Bool = false
 
     var body: some View {
         NavigationView {
             VStack {
-                SearchBar(text: $searchText)
-                List  {
-                    // ForEach(postalCodes) {
-                    ForEach(postalCodes.filter({ self.searchText.isEmpty ||
-                        $0.postalName.localizedStandardContains(self.searchText) ||
-                        $0.postalName.localizedStandardContains (self.searchText)    })) {
-                            postalCode in
-                            HStack {
-                                Text(postalCode.postalNumber)
-                                Text(postalCode.postalName)
-                            }
+                HStack (alignment: .center) {
+                    TextField("Search for PostalCode...", text: $searchText)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding()
+                    Button(action: {
+                        self.zoomPostalCode(value: self.searchText)
+                    }, label: {
+                        HStack {
+                            Text(NSLocalizedString("Search", comment: "FindPostalCode"))
+                        }
+                        .foregroundColor(.blue)
+                    })
+                }
+                .padding(.leading, 10)
+                .padding(.trailing,10)
+                Spacer()
+                List {
+                    ForEach(postalCodes) {
+                        postalCode in
+                        HStack {
+                            Text(postalCode.postalNumber)
+                            Text(postalCode.postalName)
+                        }
                     }
                 }
             }
-            .navigationBarTitle(lookupPostalCode)
+            .navigationBarTitle("PostalCode", displayMode: .inline)
         }
         .onAppear {
-            self.zoomPostalCode()
+            self.zoomPostalCode(value: "Varhaug")
         }
     }
 
-    /// Rutine for å friske opp bildet
-    func zoomPostalCode() {
-
+    /// Rutine for å finne postnummert
+    func zoomPostalCode(value: String) {
         /// Sletter alt tidligere innhold
         self.postalCodes.removeAll()
-        /// Fetch actual postCodes from CloudKit
-        
-        // let predicate = NSPredicate(value: true)
-        let predicate = NSPredicate(format: "postalName == %@", "BERGEN")
-
+        /// Dette predicate gir følgende feilmelding: Your request contains 4186 items which is more than the maximum number of items in a single request (400)
+        /// Dersom operation.resultsLimit i CloudKitPostalCode er for høy verdi 500 er OK
+        /// let predicate = NSPredicate(value: true)
+        /// Dette predicate gir ikke noen feilmelding
+        let predicate = NSPredicate(format: "postalName == %@", value.uppercased())
+        /// Dette predicate gir ikke noen feilmelding
+        /// let predicate = NSPredicate(format:"postalName BEGINSWITH %@", value.uppercased())
         CloudKitPostalCode.fetchPostalCode(predicate: predicate)  { (result) in
             switch result {
             case .success(let postalCode):
@@ -96,7 +82,6 @@ struct FindPostalCode: View {
             }
         }
     }
-
 }
 
 
