@@ -80,7 +80,7 @@ struct CloudKitPostalCode {
                                  "municipalityNumber",
                                  "municipalityName",
                                  "categori"]
-        operation.resultsLimit = 50
+        operation.resultsLimit = 1000
         operation.recordFetchedBlock = { record in
             DispatchQueue.main.async {
                 let recordID = record.recordID
