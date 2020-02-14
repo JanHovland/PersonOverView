@@ -178,8 +178,7 @@
 /* PersonsOverView */
 "Postalcode" = "Postkode";
 
-/* FindPostalCode
-   SettingView */
+/* SettingView */
 "PostalCode" = "Poststed";
 
 /* SettingView */
@@ -201,7 +200,7 @@
 "Search" = "Søk";
 
 /* FindPostalCode */
-"Search for PostalCode..." = "Søk etter poststed...";
+"Search..." = "Søk...";
 
 /* SettingView
    SignInView */

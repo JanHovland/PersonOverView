@@ -26,7 +26,7 @@ struct SearchBar: UIViewRepresentable {
     func makeUIView(context: UIViewRepresentableContext<SearchBar>) -> UISearchBar {
         let searchBar = UISearchBar(frame: .zero)
         searchBar.delegate = context.coordinator
-        searchBar.placeholder = NSLocalizedString("Search for PostalCode...", comment: "FindPostalCode")
+        searchBar.placeholder = NSLocalizedString("Search...", comment: "FindPostalCode")
         searchBar.autocapitalizationType = .none
         return searchBar
     }
