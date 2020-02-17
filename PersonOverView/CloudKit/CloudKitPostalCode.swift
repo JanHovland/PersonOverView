@@ -10,6 +10,9 @@ import CloudKit
 import SwiftUI
 
 struct CloudKitPostalCode {
+
+    // @EnvironmentObject var postalCodeSettings: PostalCodeSettings
+    
     struct RecordType {
         static let PostalCode = "PostalCode"
     }

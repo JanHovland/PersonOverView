@@ -18,6 +18,7 @@ struct PersonView : View {
     /// Kan ikke inneholde @State private var fordi:  'PersonView' initializer is inaccessible due to 'private' protection level
     var person: Person
 
+    // @EnvironmentObject var postalCodeSettings: PostalCodeSettings
     @Environment(\.presentationMode) var presentationMode
     @State private var message: String = ""
     @State private var alertIdentifier: AlertID?
@@ -119,6 +120,7 @@ struct PersonView : View {
                                    placeHolder: NSLocalizedString("Enter city", comment: "PersonsOverView"),
                                    value: $city)
                         .autocapitalization(.words)
+                    VStack {
                     Button(action: {
                         self.findPostalCode.toggle()
                     }, label: {
@@ -128,14 +130,13 @@ struct PersonView : View {
                             .foregroundColor(.blue)
                             .font(.title)
                     })
+                    }
                     .sheet(isPresented: $findPostalCode) {
 //                        NavigationLink(destination: FindPostalCode()) {
 //                            FindPostalCode()
 //                        }
-                          FindPostalCode()
+                         FindPostalCode() // .environmentObject(self.postalCodeSettings)
                     }
-
-                    
                 }
                 HStack (alignment: .center, spacing: 0) {
                     InputTextField(secure: false,
@@ -243,6 +244,10 @@ struct PersonView : View {
                     self.alertIdentifier = AlertID(id: .first)
                 }
             }
+//            if self.postalCodeSettings.postalName.count > 0 {
+//                print("Qwerty: \(self.postalCodeSettings.postalName)")
+//            }
+            print("globalPostalNumber: \(globalPostalNumber)")
         }
         .alert(item: $alertIdentifier) { alert in
             switch alert.id {

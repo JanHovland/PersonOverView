@@ -8,6 +8,14 @@
 
 import SwiftUI
 
+    var qw: String =  "" // postalCode()
+
+    var globalPostalNumber: String = ""
+    var globalPostalName: String = ""
+    var globalMunicipalityNumber: String = ""
+    var globalMunicipalityName: String = ""
+    var globalCategori: String = ""
+
 struct FindPostalCode: View {
 
     /// Skjuler scroll indicators.
@@ -15,10 +23,16 @@ struct FindPostalCode: View {
         UITableView.appearance().showsVerticalScrollIndicator = false
     }
 
+    // @EnvironmentObject var postalCodeSettings: PostalCodeSettings
+
     @State private var searchText: String = ""
     @State private var postalCode = PostalCode()
-    @State private var postalCodes = [PostalCode]()
+    @State  var postalCodes = [PostalCode]()
     @State private var findPostalCode: Bool = false
+
+    @State private var colours = ["Egersund", "Vigrestad", "Varhaug", "Nærbø", "Bryne", "Klepp", "Sandnes"]
+    @State private var selection = 0
+    @State private var pickerVisible = false
 
     var body: some View {
         NavigationView {
@@ -40,18 +54,47 @@ struct FindPostalCode: View {
                 .padding(.trailing,10)
                 Spacer()
                 List {
-                    ForEach(postalCodes) {
-                        postalCode in
 
-                        NavigationLink(
-                        destination: DetailView(value: postalCode)) {
-                                HStack {
-                                    Text(postalCode.postalNumber)
-                                    Text(postalCode.postalName.lowercased().capitalizingFirstLetter())
-                                }
+                    HStack {
+                        Text("Poststed")
+                        Spacer()
+                        if postalCodes.count > 0 {
+                            Button(self.postalCodes[selection].postalNumber + " " + self.postalCodes[selection].postalName) {
+                                self.pickerVisible.toggle()
+                            }
+                            .foregroundColor(self.pickerVisible ? .red : .blue)
                         }
-
                     }
+                    if pickerVisible {
+                        Picker(selection: $selection, label: Text("")) {
+                            ForEach(0..<postalCodes.count) {
+                                Text(self.postalCodes[$0].postalNumber + " " + self.postalCodes[$0].postalName)
+                            }
+                        }
+                        .onTapGesture {
+                            globalPostalNumber = self.postalCodes[self.selection].postalNumber
+                            globalPostalName = self.postalCodes[self.selection].postalName
+                            globalMunicipalityNumber = self.postalCodes[self.selection].municipalityNumber
+                            globalMunicipalityName = self.postalCodes[self.selection].municipalityName
+                            globalCategori = self.postalCodes[self.selection].categori
+                            qw = globalPostalNumber
+                            print(qw)
+                            self.pickerVisible.toggle()
+                        }
+                    }
+
+//                    ForEach(postalCodes) {
+//                        postalCode in
+//
+//                        NavigationLink(
+//                        destination: DetailView(value: postalCode)) {
+//                                HStack {
+//                                    Text(postalCode.postalNumber)
+//                                    Text(postalCode.postalName.lowercased().capitalizingFirstLetter())
+//                                }
+//                        }
+//
+//                    }
                 }
             }
             .navigationBarTitle("PostalCode", displayMode: .inline)
@@ -72,7 +115,7 @@ struct FindPostalCode: View {
         let predicate = NSPredicate(format: "postalName == %@", value.uppercased())
         /// Dette predicate gir ikke noen feilmelding
         /// let predicate = NSPredicate(format:"postalName BEGINSWITH %@", value.uppercased())
-        CloudKitPostalCode.fetchPostalCode(predicate: predicate)  { (result) in
+        CloudKitPostalCode.fetchPostalCode(predicate: predicate) { (result) in
             switch result {
             case .success(let postalCode):
                 self.postalCodes.append(postalCode)

@@ -17,6 +17,7 @@ struct PersonsOverView: View {
     }
 
     @Environment(\.presentationMode) var presentationMode
+    // @EnvironmentObject var postalCodeSettings: PostalCodeSettings
 
     @State private var message: String = ""
     @State private var searchText: String = ""
@@ -35,9 +36,11 @@ struct PersonsOverView: View {
                                              $0.firstName.localizedStandardContains(self.searchText) ||
                                              $0.lastName.localizedStandardContains (self.searchText)    })) {
                         person in
+
                         NavigationLink(destination: PersonView(person: person)) {
                             ShowPersons(person: person)
                         }
+                        // self.postalCodeSettings.postalName = "Varhaug i Hå kommune"
                     }
                     /// Sletter  valgt person og oppdaterer CliudKit
                     .onDelete { (indexSet) in

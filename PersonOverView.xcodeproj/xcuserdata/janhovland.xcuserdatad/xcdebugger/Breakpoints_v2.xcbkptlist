@@ -3,4 +3,70 @@
    uuid = "C626A215-70A8-467F-A2B4-723856A02C4F"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "13D28933-3269-437D-B2E1-8CDE3A8DCAA8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersonOverView/PostalCode/FindPostalCode.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "76797983-43E7-48EE-8684-4A42E21FA329"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersonOverView/Person/PersonView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "PersonView"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "76797983-43E7-48EE-8684-4A42E21FA329 - 631df76c102ab296"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PersonOverView.PersonView.postalCodeSettings.getter : PersonOverView.PostalCodeSettings"
+                  moduleName = "PersonOverView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/janhovland/Desktop/SwiftUI/PersonOverView/PersonOverView/Person/PersonView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "168">
+               </Location>
+               <Location
+                  uuid = "76797983-43E7-48EE-8684-4A42E21FA329 - 1e92b33a64407045"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PersonOverView.PersonView.$postalCodeSettings.getter : SwiftUI.EnvironmentObject&lt;PersonOverView.PostalCodeSettings&gt;.Wrapper"
+                  moduleName = "PersonOverView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/janhovland/Desktop/SwiftUI/PersonOverView/PersonOverView/Person/PersonView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "168">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

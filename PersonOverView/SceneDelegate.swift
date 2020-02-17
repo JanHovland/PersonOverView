@@ -12,7 +12,7 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var postalCodeSettings = PostalCodeSettings()
+    // var postalCodeSettings = PostalCodeSettings()
     var userElements = UserElements()
     var imagePicker = ImagePicker()
     var user = User()
@@ -36,7 +36,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             // Add UserElement() to the window.rootViewController
 
             window.rootViewController = UIHostingController(rootView:
-                PersonOverView().environmentObject(postalCodeSettings)
+                PersonOverView() // .environmentObject(postalCodeSettings)
                                 .environmentObject(imagePicker)
                                 .environmentObject(user)
                                 .environmentObject(personElements)
