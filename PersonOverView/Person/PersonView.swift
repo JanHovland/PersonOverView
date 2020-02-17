@@ -115,10 +115,11 @@ struct PersonView : View {
                                    placeHolder: NSLocalizedString("Enter number", comment: "PersonsOverView"),
                                    value: $cityNumber)
                         .keyboardType(.numberPad)
-                    InputTextField(secure: false,
-                                   heading: NSLocalizedString("City", comment: "PersonsOverView"),
-                                   placeHolder: NSLocalizedString("Enter city", comment: "PersonsOverView"),
-                                   value: $city)
+//                    OutputTextField(secure: false,
+//                                   heading: NSLocalizedString("City", comment: "PersonsOverView"),
+//                                   // placeHolder: NSLocalizedString("Enter city", comment: "PersonsOverView"),
+//                                   value: $city)
+                    Text(globalPostalName)
                         .autocapitalization(.words)
                     VStack {
                     Button(action: {
@@ -135,7 +136,7 @@ struct PersonView : View {
 //                        NavigationLink(destination: FindPostalCode()) {
 //                            FindPostalCode()
 //                        }
-                         FindPostalCode() // .environmentObject(self.postalCodeSettings)
+                          FindPostalCode() // .environmentObject(self.postalCodeSettings)
                     }
                 }
                 HStack (alignment: .center, spacing: 0) {
@@ -247,7 +248,7 @@ struct PersonView : View {
 //            if self.postalCodeSettings.postalName.count > 0 {
 //                print("Qwerty: \(self.postalCodeSettings.postalName)")
 //            }
-            print("globalPostalNumber: \(globalPostalNumber)")
+//            print("globalPostalNumber: \(globalPostalNumber)")
         }
         .alert(item: $alertIdentifier) { alert in
             switch alert.id {
@@ -264,6 +265,6 @@ struct PersonView : View {
         /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
         .modifier(AdaptsToSoftwareKeyboard())
     }
-}
 
+}
 

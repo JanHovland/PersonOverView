@@ -268,3 +268,6 @@
    UserMaintenanceView */
 "Your name" = "Navn";
 
+/* FindPostalCode */
+"Request failed with http status code 503" = "Forespørsel mislyktes med http-statuskode 503";
+"The operation has been rate limited due to an earlier error: Request failed with http status code 503" = "Operasjonen har blitt takstbegrenset på grunn av en tidligere feil: Forespørsel mislyktes med http-statuskode 503 ";

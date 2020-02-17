@@ -27,7 +27,7 @@ struct FindPostalCode: View {
 
     @State private var searchText: String = ""
     @State private var postalCode = PostalCode()
-    @State  var postalCodes = [PostalCode]()
+    @State private var postalCodes = [PostalCode]()
     @State private var findPostalCode: Bool = false
 
     @State private var colours = ["Egersund", "Vigrestad", "Varhaug", "Nærbø", "Bryne", "Klepp", "Sandnes"]
@@ -42,6 +42,7 @@ struct FindPostalCode: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()
                     Button(action: {
+                        self.postalCodes.removeAll()
                         self.zoomPostalCode(value: self.searchText)
                     }, label: {
                         HStack {
@@ -58,9 +59,12 @@ struct FindPostalCode: View {
                     HStack {
                         Text("Poststed")
                         Spacer()
-                        if postalCodes.count > 0 {
+                        if self.postalCodes.count > 0 {
+                            Text("count: \(self.postalCodes.count)")
+                            Text("selection: \(selection)")
                             Button(self.postalCodes[selection].postalNumber + " " + self.postalCodes[selection].postalName) {
-                                self.pickerVisible.toggle()
+//                            Button("Search Poststed") {
+                               self.pickerVisible.toggle()
                             }
                             .foregroundColor(self.pickerVisible ? .red : .blue)
                         }
@@ -68,7 +72,7 @@ struct FindPostalCode: View {
                     if pickerVisible {
                         Picker(selection: $selection, label: Text("")) {
                             ForEach(0..<postalCodes.count) {
-                                Text(self.postalCodes[$0].postalNumber + " " + self.postalCodes[$0].postalName)
+                                Text(self.postalCodes[$0].postalNumber + " " + self.postalCodes[$0].postalName).tag($0)
                             }
                         }
                         .onTapGesture {
@@ -99,9 +103,9 @@ struct FindPostalCode: View {
             }
             .navigationBarTitle("PostalCode", displayMode: .inline)
         }
-        .onAppear {
-            self.zoomPostalCode(value: "Os")
-        }
+//        .onAppear {
+//            self.zoomPostalCode(value: "Os")
+//        }
     }
 
     /// Rutine for å finne postnummert
