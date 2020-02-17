@@ -103,9 +103,9 @@ struct FindPostalCode: View {
             }
             .navigationBarTitle("PostalCode", displayMode: .inline)
         }
-//        .onAppear {
-//            self.zoomPostalCode(value: "Os")
-//        }
+        .onAppear {
+            self.zoomPostalCode(value: "Haugesund")
+        }
     }
 
     /// Rutine for å finne postnummert
