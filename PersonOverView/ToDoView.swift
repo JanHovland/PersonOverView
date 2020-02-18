@@ -15,24 +15,13 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🟠 Legge inn postnummer i CloudKit:
-     a) 🟢 Opprette tabellen i "PostalCode"
-     b) 🟢 Legger csv filen fra Bring inn i prosjektet
-     c) 🔴 Lage func for å slette hele inholdet i "PostalCode" tabellen
-           a) 🟢 Nå slettes kun 100 om gangen, endre til å kunne slette alle samtidig
-     d) 🟢 Legge nytt view fra Settings for å oppdatere "PostalCode" tabellen
-     e) 🟢 Lage func for å lese fra csv filen
-     f) 🟢 Lage func for å lagre i "PostalCode" tabellen. Status: OK !!!!
-           a) 🟢 Alle 5093 (tid: 34 minutter)
-           b) 🟢 1000
-           c) 🟢 2700
-  2. 🔴 Lage func for henting fra "PostalCode" tabellen mhv. predicate
-  3. 🔴 Benytte ActionSheet (se på slutten av "SettingsView")
-  4. 🔴 Legge inn fødselsdaglisten fra Firebase
-  5. 🔴 Lagre søkebilde for postnummer 
-  6. 🔴 Legg til 2 nye parametre til FindPostalCode(searchText, firstName og LastName)
+  1. 🔴 Vise postnr, kommunenr og kommunenavn som rent tekst
+        a) ny OutputPureText.swift
+  2. 🔴 Legg til 2 nye parametre til FindPostalCode(searchText, firstName og LastName)
         a) Etter endring finn og oppdater person tabellen
         b) Refresh PersonView()
+  3. 🔴 Benytte ActionSheet (se på slutten av "SettingsView")
+  4. 🔴 Legge inn fødselsdaglisten fra Firebase
 """
 
 var toDo_2 =
@@ -96,6 +85,18 @@ var toDo_3 =
      Ser ut som det hadde sammenheng med forrige versjon av iOS (17D50 bruker nå 17E5223h)
  33. Tatt bort scrollbar på: Person og Oversikt Person ved hjelp av:
      UITableView.appearance().showsVerticalScrollIndicator = false
+ 34. 🟠 Legge inn postnummer i CloudKit:
+        a) 🟢 Opprette tabellen i "PostalCode"
+        b) 🟢 Legger csv filen fra Bring inn i prosjektet
+        c) 🔴 Lage func for å slette hele inholdet i "PostalCode" tabellen
+               1) 🟢 Nå slettes kun 100 om gangen, endre til å kunne slette alle samtidig
+        d) 🟢 Legge nytt view fra Settings for å oppdatere "PostalCode" tabellen
+        e) 🟢 Lage func for å lese fra csv filen
+        f) 🟢 Lage func for å lagre i "PostalCode" tabellen. Status: OK !!!!
+              1) 🟢 Alle 5093 (tid: 34 minutter)
+              2) 🟢 1000
+              3) 🟢 2700
+35.  🟢 Lage func for henting fra "PostalCode" tabellen mhv. predicate
 
 """
 
