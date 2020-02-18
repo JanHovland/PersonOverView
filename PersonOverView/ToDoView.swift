@@ -29,7 +29,10 @@ var toDo_1 =
   2. 🔴 Lage func for henting fra "PostalCode" tabellen mhv. predicate
   3. 🔴 Benytte ActionSheet (se på slutten av "SettingsView")
   4. 🔴 Legge inn fødselsdaglisten fra Firebase
-  5. 🔴 Lagre søkebilde for postnummer
+  5. 🔴 Lagre søkebilde for postnummer 
+  6. 🔴 Legg til 2 nye parametre til FindPostalCode(searchText, firstName og LastName)
+        a) Etter endring finn og oppdater person tabellen
+        b) Refresh PersonView()
 """
 
 var toDo_2 =
