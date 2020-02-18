@@ -133,6 +133,7 @@ struct PersonsOverView: View {
             }
         }
     }
+}
 
     /// Et eget View for å vise person detail view
     struct ShowPersons: View {
@@ -165,7 +166,8 @@ struct PersonsOverView: View {
                             .font(.custom("system", size: 17))
                     }
                     HStack {
-                        Text(person.cityNumber)
+//                         Text(person.cityNumber)
+                        Text(globalPostalNumber)
                         Text(person.city)
                     }
                     .font(.custom("system", size: 17))
@@ -178,5 +180,5 @@ struct PersonsOverView: View {
             .modifier(AdaptsToSoftwareKeyboard())
         }
     }
-}
+
 

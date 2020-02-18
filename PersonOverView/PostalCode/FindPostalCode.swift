@@ -18,14 +18,16 @@ import SwiftUI
 
 struct FindPostalCode: View {
 
+    var searchText: String
+
     /// Skjuler scroll indicators.
-    init() {
-        UITableView.appearance().showsVerticalScrollIndicator = false
-    }
+//    init() {
+//        UITableView.appearance().showsVerticalScrollIndicator = false
+//    }
 
     // @EnvironmentObject var postalCodeSettings: PostalCodeSettings
 
-    @State private var searchText: String = ""
+//    @State private var searchText: String = ""
     @State private var postalCode = PostalCode()
     @State private var postalCodes = [PostalCode]()
     @State private var findPostalCode: Bool = false
@@ -38,17 +40,19 @@ struct FindPostalCode: View {
         NavigationView {
             VStack {
                 HStack (alignment: .center) {
-                    TextField("Search for PostalCode...", text: $searchText)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding()
+//                    TextField("Search for PostalCode...", text: $searchText)
+//                        .textFieldStyle(RoundedBorderTextFieldStyle())
+//                        .padding()
                     Button(action: {
-                        self.postalCodes.removeAll()
+//                         self.postalCodes.removeAll()
+//                         self.zoomPostalCode(value: self.searchText)
                         self.zoomPostalCode(value: self.searchText)
                     }, label: {
-                        HStack {
-                            Text(NSLocalizedString("Search", comment: "FindPostalCode"))
-                        }
-                        .foregroundColor(.blue)
+                        EmptyView()
+//                        HStack {
+//                            Text(NSLocalizedString("Search", comment: "FindPostalCode"))
+//                        }
+//                        .foregroundColor(.blue)
                     })
                 }
                 .padding(.leading, 10)
@@ -64,17 +68,21 @@ struct FindPostalCode: View {
                             Text("selection: \(selection)")
                             Button(self.postalCodes[selection].postalNumber + " " + self.postalCodes[selection].postalName) {
 //                            Button("Search Poststed") {
+//                                self.postalCodes.removeAll()
                                self.pickerVisible.toggle()
                             }
                             .foregroundColor(self.pickerVisible ? .red : .blue)
                         }
                     }
+
                     if pickerVisible {
-                        Picker(selection: $selection, label: Text("")) {
-                            ForEach(0..<postalCodes.count) {
-                                Text(self.postalCodes[$0].postalNumber + " " + self.postalCodes[$0].postalName).tag($0)
+                        Picker(selection: $selection, label: EmptyView()) {
+                            ForEach((0..<postalCodes.count), id: \.self) { ix in
+                                Text(self.postalCodes[ix].postalNumber + " " + self.postalCodes[ix].postalName).tag(ix)
                             }
+                            // .pickerStyle(WheelPickerStyle()).frame(width: 50).clipped()
                         }
+                            .id(UUID().uuidString)
                         .onTapGesture {
                             globalPostalNumber = self.postalCodes[self.selection].postalNumber
                             globalPostalName = self.postalCodes[self.selection].postalName
@@ -84,6 +92,8 @@ struct FindPostalCode: View {
                             qw = globalPostalNumber
                             print(qw)
                             self.pickerVisible.toggle()
+                            self.selection = 0
+//                            self.postalCodes.removeAll()
                         }
                     }
 
@@ -104,8 +114,9 @@ struct FindPostalCode: View {
             .navigationBarTitle("PostalCode", displayMode: .inline)
         }
         .onAppear {
-            self.zoomPostalCode(value: "Haugesund")
+            self.zoomPostalCode(value: self.searchText)
         }
+
     }
 
     /// Rutine for å finne postnummert

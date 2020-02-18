@@ -115,11 +115,10 @@ struct PersonView : View {
                                    placeHolder: NSLocalizedString("Enter number", comment: "PersonsOverView"),
                                    value: $cityNumber)
                         .keyboardType(.numberPad)
-//                    OutputTextField(secure: false,
-//                                   heading: NSLocalizedString("City", comment: "PersonsOverView"),
-//                                   // placeHolder: NSLocalizedString("Enter city", comment: "PersonsOverView"),
-//                                   value: $city)
-                    Text(globalPostalName)
+                    InputTextField(secure: false,
+                                   heading: NSLocalizedString("City", comment: "PersonsOverView"),
+                                   placeHolder: NSLocalizedString("Enter city", comment: "PersonsOverView"),
+                                   value: $city)
                         .autocapitalization(.words)
                     VStack {
                     Button(action: {
@@ -133,10 +132,12 @@ struct PersonView : View {
                     })
                     }
                     .sheet(isPresented: $findPostalCode) {
-//                        NavigationLink(destination: FindPostalCode()) {
-//                            FindPostalCode()
+//                        NavigationLink(destination: FindPostalCode(searchText: self.city)) {
+//                            // ShowPersons(person: self.person)
 //                        }
-                          FindPostalCode() // .environmentObject(self.postalCodeSettings)
+//                          FindPostalCode(searchText: self.city) // .environmentObject(self.postalCodeSettings)
+                        FindPostalCode(searchText: self.city)
+                         // self.cityNumber = globalPostalNumber
                     }
                 }
                 HStack (alignment: .center, spacing: 0) {
