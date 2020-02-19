@@ -7,118 +7,66 @@
 //
 
 import SwiftUI
-
-    var qw: String =  "" // postalCode()
-
-    var globalPostalNumber: String = ""
-    var globalPostalName: String = ""
-    var globalMunicipalityNumber: String = ""
-    var globalMunicipalityName: String = ""
-    var globalCategori: String = ""
+import CloudKit
 
 struct FindPostalCode: View {
 
-    var searchText: String
+    var city: String
     var firstName: String
     var lastName: String
 
-    /// Skjuler scroll indicators.
-//    init() {
-//        UITableView.appearance().showsVerticalScrollIndicator = false
-//    }
-//
-    // @EnvironmentObject var postalCodeSettings: PostalCodeSettings
-
-//    @State private var searchText: String = ""
     @State private var postalCode = PostalCode()
     @State private var postalCodes = [PostalCode]()
     @State private var findPostalCode: Bool = false
-
-    @State private var colours = ["Egersund", "Vigrestad", "Varhaug", "Nærbø", "Bryne", "Klepp", "Sandnes"]
     @State private var selection = 0
     @State private var pickerVisible = false
+    @State private var message: String = ""
+    @State private var alertIdentifier: AlertID?
 
     var body: some View {
         NavigationView {
             VStack {
-                HStack (alignment: .center) {
-//                    TextField("Search for PostalCode...", text: $searchText)
-//                        .textFieldStyle(RoundedBorderTextFieldStyle())
-//                        .padding()
-                    Button(action: {
-//                         self.postalCodes.removeAll()
-//                         self.zoomPostalCode(value: self.searchText)
-                        self.zoomPostalCode(value: self.searchText)
-                    }, label: {
-                        EmptyView()
-//                        HStack {
-//                            Text(NSLocalizedString("Search", comment: "FindPostalCode"))
-//                        }
-//                        .foregroundColor(.blue)
-                    })
-                }
-                .padding(.leading, 10)
-                .padding(.trailing,10)
-                Spacer()
                 List {
-
                     HStack {
                         Text("Poststed")
                         Spacer()
                         if self.postalCodes.count > 0 {
-                            Text("count: \(self.postalCodes.count)")
-                            Text("selection: \(selection)")
                             Button(self.postalCodes[selection].postalNumber + " " + self.postalCodes[selection].postalName) {
-//                            Button("Search Poststed") {
-//                                self.postalCodes.removeAll()
                                self.pickerVisible.toggle()
                             }
                             .foregroundColor(self.pickerVisible ? .red : .blue)
                         }
                     }
-
                     if pickerVisible {
                         Picker(selection: $selection, label: EmptyView()) {
                             ForEach((0..<postalCodes.count), id: \.self) { ix in
                                 Text(self.postalCodes[ix].postalNumber + " " + self.postalCodes[ix].postalName).tag(ix)
                             }
-                            // .pickerStyle(WheelPickerStyle()).frame(width: 50).clipped()
                         }
-                            .id(UUID().uuidString)
+                        /// Denne sørger for å vise det riktige "valget" pålinje 2
+                        .id(UUID().uuidString)
                         .onTapGesture {
-                            globalPostalNumber = self.postalCodes[self.selection].postalNumber
-                            globalPostalName = self.postalCodes[self.selection].postalName
-                            globalMunicipalityNumber = self.postalCodes[self.selection].municipalityNumber
-                            globalMunicipalityName = self.postalCodes[self.selection].municipalityName
-                            globalCategori = self.postalCodes[self.selection].categori
-                            qw = globalPostalNumber
-                            print(qw)
                             self.pickerVisible.toggle()
                             self.selection = 0
-//                            self.postalCodes.removeAll()
                         }
                     }
-
-//                    ForEach(postalCodes) {
-//                        postalCode in
-//
-//                        NavigationLink(
-//                        destination: DetailView(value: postalCode)) {
-//                                HStack {
-//                                    Text(postalCode.postalNumber)
-//                                    Text(postalCode.postalName.lowercased().capitalizingFirstLetter())
-//                                }
-//                        }
-//
-//                    }
                 }
             }
             .navigationBarTitle("PostalCode", displayMode: .inline)
         }
         .onAppear {
-            self.zoomPostalCode(value: self.searchText)
+            self.zoomPostalCode(value: self.city)
         }
-
+        .alert(item: $alertIdentifier) { alert in
+            switch alert.id {
+            case .first:
+                return Alert(title: Text(self.message))
+            case .second:
+                return Alert(title: Text(self.message))
+            case .third:
+                return Alert(title: Text(self.message))
+            }
+        }
     }
 
     /// Rutine for å finne postnummert
@@ -139,17 +87,16 @@ struct FindPostalCode: View {
                 /// Sortering
                 self.postalCodes.sort(by: {$0.postalName < $1.postalName})
                 self.postalCodes.sort(by: {$0.postalNumber < $1.postalNumber})
-            /// self.persons.sort(by: {$0.firstName < $1.firstName})
             case .failure(let err):
-                print(err.localizedDescription)
-                /// self.message = err.localizedDescription
-                /// self.alertIdentifier = AlertID(id: .first)
+                self.message = err.localizedDescription
+                self.alertIdentifier = AlertID(id: .first)
             }
         }
     }
 
 }
 
+/// Funksjon for å sette første bokstav til uppercase
 extension String {
     func capitalizingFirstLetter() -> String {
         return prefix(1).capitalized + dropFirst()
@@ -158,17 +105,4 @@ extension String {
     mutating func capitalizeFirstLetter() {
         self = self.capitalizingFirstLetter()
     }
-}
-
-struct DetailView: View {
-  let value: PostalCode
-
-  var body: some View {
-    HStack {
-        Text(value.postalNumber)
-        Text(value.postalName.lowercased().capitalizingFirstLetter())
-        Text(value.municipalityNumber)
-        Text(value.municipalityName.lowercased().capitalizingFirstLetter())
-    }
-  }
 }

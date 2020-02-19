@@ -166,8 +166,7 @@ struct PersonsOverView: View {
                             .font(.custom("system", size: 17))
                     }
                     HStack {
-//                         Text(person.cityNumber)
-                        Text(globalPostalNumber)
+                        Text(person.cityNumber)
                         Text(person.city)
                     }
                     .font(.custom("system", size: 17))

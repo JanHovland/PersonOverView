@@ -136,7 +136,7 @@ struct PersonView : View {
 //                            // ShowPersons(person: self.person)
 //                        }
 //                          FindPostalCode(searchText: self.city) // .environmentObject(self.postalCodeSettings)
-                        FindPostalCode(searchText: self.city,
+                        FindPostalCode(city: self.city,
                                        firstName: self.firstName,
                                        lastName: self.lastName)
                          // self.cityNumber = globalPostalNumber
