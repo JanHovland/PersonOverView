@@ -15,11 +15,11 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 Vise postnr, kommunenr og kommunenavn som rent tekst
+  1. 🔴 Vise postnr, kommunenr og kommunenavn som rent tekst ????????
         a) ny OutputPureText.swift
   2. 🔴 Legg til 2 nye parametre til FindPostalCode(searchText, firstName og LastName)
-        a) Etter endring finn og oppdater person tabellen
-        b) Refresh PersonView()
+        a) 🔴 Etter endring finn og oppdater person tabellen
+        b) 🔴 Refresh PersonView()
   3. 🔴 Benytte ActionSheet (se på slutten av "SettingsView")
   4. 🔴 Legge inn fødselsdaglisten fra Firebase
 """

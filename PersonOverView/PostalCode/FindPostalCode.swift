@@ -19,12 +19,14 @@ import SwiftUI
 struct FindPostalCode: View {
 
     var searchText: String
+    var firstName: String
+    var lastName: String
 
     /// Skjuler scroll indicators.
 //    init() {
 //        UITableView.appearance().showsVerticalScrollIndicator = false
 //    }
-
+//
     // @EnvironmentObject var postalCodeSettings: PostalCodeSettings
 
 //    @State private var searchText: String = ""
