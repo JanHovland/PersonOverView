@@ -38,7 +38,7 @@ struct FindPostalCode: View {
                         }
                     }
                     if pickerVisible {
-                        Picker(selection: $selection, label: EmptyView()) {
+                         Picker(selection: $selection, label: EmptyView()) {
                             ForEach((0..<postalCodes.count), id: \.self) { ix in
                                 Text(self.postalCodes[ix].postalNumber + " " + self.postalCodes[ix].postalName).tag(ix)
                             }
@@ -48,6 +48,7 @@ struct FindPostalCode: View {
                         .onTapGesture {
                             self.pickerVisible.toggle()
                             self.selection = 0
+                            print(self.postalCodes[self.selection].postalNumber)
                         }
                     }
                 }

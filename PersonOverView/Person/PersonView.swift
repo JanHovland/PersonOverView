@@ -136,10 +136,7 @@ struct PersonView : View {
 //                            // ShowPersons(person: self.person)
 //                        }
 //                          FindPostalCode(searchText: self.city) // .environmentObject(self.postalCodeSettings)
-                        FindPostalCode(city: self.city,
-                                       firstName: self.firstName,
-                                       lastName: self.lastName)
-                         // self.cityNumber = globalPostalNumber
+                        FindPostalCode(city: self.city, firstName: self.firstName, lastName: self.lastName)
                     }
                 }
                 HStack (alignment: .center, spacing: 0) {
