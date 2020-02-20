@@ -53,40 +53,22 @@ struct FindPostalCode: View {
                             print("Postnummer: \(self.postalCodes[self.selection].postalNumber)")
                             print("Fornavn: \(self.person.firstName)")
                             print("Gammelt postnummer: \(self.person.cityNumber)")
-                            /// Oppdatere person tabellen
-                            // let x = self.postalCodes[self.selection].postalNumber)
-                            ModifyPerson(recordID: self.person.recordID,
-                                                          firstName: self.firstName,
-                                                          lastName: self.lastName,
-                                                          personEmail: self.person.personEmail,
-                                                          address: self.person.address,
-                                                          phoneNumber: self.person.phoneNumber,
-                                                          city: self.city,
-                                                          cityNumber: self.person.cityNumber,
-                                                          municipalityNumber: self.person.municipalityNumber,
-                                                          municipality: self.person.municipality,
-                                                          dateOfBirth: self.person.dateOfBirth,
-                                                          gender: self.person.gender,
-                                                          image: self.person.image)
-
-//                            (recordID: CKRecord.ID?,
-//                                              firstName: String,
-//                                              lastName: String,
-//                                              personEmail: String,
-//                                              address: String,
-//                                              phoneNumber: String,
-//                                              city: String,
-//                                              cityNumber: String,
-//                                              municipalityNumber: String,
-//                                              municipality: String,
-//                                              dateOfBirth: Date,
-//                                              gender: Int,
-//                                              image: UIImage?)
-
-
-
-
-
+                            /// Feilmelding:  Cannot assign to property: 'self' is immutable
+                            //  self.person.cityNumber = self.postalCodes[self.selection].postalNumber
+                            /// Modify person data, men det kommer inger status meldinger !!!!!!!
+                            CloudKitPerson.ModifyPerson(recordID: self.person.recordID,
+                                                        firstName: self.firstName,
+                                                        lastName: self.lastName,
+                                                        personEmail: self.person.personEmail,
+                                                        address: self.person.address,
+                                                        phoneNumber: self.person.phoneNumber,
+                                                        city: self.city,
+                                                        cityNumber: self.postalCodes[self.selection].postalNumber,  //self.person.cityNumber,
+                                                        municipalityNumber: self.person.municipalityNumber,
+                                                        municipality: self.person.municipality,
+                                                        dateOfBirth: self.person.dateOfBirth,
+                                                        gender: self.person.gender,
+                                                        image: self.person.image)
                             self.selection = 0
                             self.presentationMode.wrappedValue.dismiss()
                         }

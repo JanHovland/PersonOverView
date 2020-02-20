@@ -177,20 +177,20 @@ struct PersonView : View {
         .navigationBarTitle("Person", displayMode: .inline)
         .navigationBarItems(trailing:
             Button(action: {
-                /// Modify person data
-               self.ModifyPerson(recordID: self.recordID,
-                                 firstName: self.firstName,
-                                 lastName: self.lastName,
-                                 personEmail: self.personEmail,
-                                 address: self.address,
-                                 phoneNumber: self.phoneNumber,
-                                 city: self.city,
-                                 cityNumber: self.cityNumber,
-                                 municipalityNumber: self.municipalityNumber,
-                                 municipality: self.municipality,
-                                 dateOfBirth: self.dateOfBirth,
-                                 gender: self.gender,
-                                 image: self.image)
+                /// Modify person data, men det kommer inger status meldinger !!!!!!!
+                CloudKitPerson.ModifyPerson(recordID: self.recordID,
+                                            firstName: self.firstName,
+                                            lastName: self.lastName,
+                                            personEmail: self.personEmail,
+                                            address: self.address,
+                                            phoneNumber: self.phoneNumber,
+                                            city: self.city,
+                                            cityNumber: self.cityNumber,
+                                            municipalityNumber: self.municipalityNumber,
+                                            municipality: self.municipality,
+                                            dateOfBirth: self.dateOfBirth,
+                                            gender: self.gender,
+                                            image: self.image)
 
             }, label: {
                 Text(NSLocalizedString("Modify", comment: "PersonsOverView"))
@@ -243,57 +243,57 @@ struct PersonView : View {
         .modifier(AdaptsToSoftwareKeyboard())
     }
 
-    func ModifyPerson(recordID: CKRecord.ID?,
-                      firstName: String,
-                      lastName: String,
-                      personEmail: String,
-                      address: String,
-                      phoneNumber: String,
-                      city: String,
-                      cityNumber: String,
-                      municipalityNumber: String,
-                      municipality: String,
-                      dateOfBirth: Date,
-                      gender: Int,
-                      image: UIImage?) {
-
-        if firstName.count > 0, lastName.count > 0 {
-            /// Modify the person in CloudKit
-            /// Kan ikke bruke person fordi: Kan ikke inneholde @State private var fordi:  'PersonView' initializer is inaccessible due to 'private' protection level
-            var personItem: PersonElement! = PersonElement()
-            personItem.recordID = recordID
-            personItem.firstName = firstName
-            personItem.lastName = lastName
-            personItem.personEmail = personEmail
-            personItem.address = address
-            personItem.phoneNumber = phoneNumber
-            personItem.city = city
-            personItem.cityNumber = cityNumber
-            personItem.municipalityNumber = municipalityNumber
-            personItem.municipality = municipality
-            personItem.dateOfBirth = dateOfBirth
-            personItem.gender = gender
-            /// Først vises det gamle bildet til personen, så kommer det nye bildet opp
-            if image != nil {
-                personItem.image = image
-            }
-            CloudKitPerson.modifyPerson(item: personItem) { (result) in
-            switch result {
-                case .success:
-                    let person = "'\(personItem.firstName)" + " \(personItem.lastName)'"
-                    let message1 =  NSLocalizedString("was modified", comment: "PersonsOverView")
-                    self.message = person + " " + message1
-                    self.alertIdentifier = AlertID(id: .first)
-                case .failure(let err):
-                    self.message = err.localizedDescription
-                    self.alertIdentifier = AlertID(id: .first)
-                }
-            }
-        }
-        else {
-            self.message = NSLocalizedString("First name and last name must both contain a value.", comment: "PersonsOverView")
-            self.alertIdentifier = AlertID(id: .first)
-        }
-    }
+//    func ModifyPerson(recordID: CKRecord.ID?,
+//                      firstName: String,
+//                      lastName: String,
+//                      personEmail: String,
+//                      address: String,
+//                      phoneNumber: String,
+//                      city: String,
+//                      cityNumber: String,
+//                      municipalityNumber: String,
+//                      municipality: String,
+//                      dateOfBirth: Date,
+//                      gender: Int,
+//                      image: UIImage?) {
+//
+//        if firstName.count > 0, lastName.count > 0 {
+//            /// Modify the person in CloudKit
+//            /// Kan ikke bruke person fordi: Kan ikke inneholde @State private var fordi:  'PersonView' initializer is inaccessible due to 'private' protection level
+//            var personItem: PersonElement! = PersonElement()
+//            personItem.recordID = recordID
+//            personItem.firstName = firstName
+//            personItem.lastName = lastName
+//            personItem.personEmail = personEmail
+//            personItem.address = address
+//            personItem.phoneNumber = phoneNumber
+//            personItem.city = city
+//            personItem.cityNumber = cityNumber
+//            personItem.municipalityNumber = municipalityNumber
+//            personItem.municipality = municipality
+//            personItem.dateOfBirth = dateOfBirth
+//            personItem.gender = gender
+//            /// Først vises det gamle bildet til personen, så kommer det nye bildet opp
+//            if image != nil {
+//                personItem.image = image
+//            }
+//            CloudKitPerson.modifyPerson(item: personItem) { (result) in
+//            switch result {
+//                case .success:
+//                    let person = "'\(personItem.firstName)" + " \(personItem.lastName)'"
+//                    let message1 =  NSLocalizedString("was modified", comment: "PersonsOverView")
+//                    self.message = person + " " + message1
+//                    self.alertIdentifier = AlertID(id: .first)
+//                case .failure(let err):
+//                    self.message = err.localizedDescription
+//                    self.alertIdentifier = AlertID(id: .first)
+//                }
+//            }
+//        }
+//        else {
+//            self.message = NSLocalizedString("First name and last name must both contain a value.", comment: "PersonsOverView")
+//            self.alertIdentifier = AlertID(id: .first)
+//        }
+//    }
 }
 
