@@ -14,6 +14,7 @@ struct FindPostalCode: View {
     var city: String
     var firstName: String
     var lastName: String
+    var person: Person
 
     @Environment(\.presentationMode) var presentationMode
 
@@ -49,7 +50,43 @@ struct FindPostalCode: View {
                         .id(UUID().uuidString)
                         .onTapGesture {
                             self.pickerVisible.toggle()
-                            print(self.postalCodes[self.selection].postalNumber)
+                            print("Postnummer: \(self.postalCodes[self.selection].postalNumber)")
+                            print("Fornavn: \(self.person.firstName)")
+                            print("Gammelt postnummer: \(self.person.cityNumber)")
+                            /// Oppdatere person tabellen
+                            // let x = self.postalCodes[self.selection].postalNumber)
+                            ModifyPerson(recordID: self.person.recordID,
+                                                          firstName: self.firstName,
+                                                          lastName: self.lastName,
+                                                          personEmail: self.person.personEmail,
+                                                          address: self.person.address,
+                                                          phoneNumber: self.person.phoneNumber,
+                                                          city: self.city,
+                                                          cityNumber: self.person.cityNumber,
+                                                          municipalityNumber: self.person.municipalityNumber,
+                                                          municipality: self.person.municipality,
+                                                          dateOfBirth: self.person.dateOfBirth,
+                                                          gender: self.person.gender,
+                                                          image: self.person.image)
+
+//                            (recordID: CKRecord.ID?,
+//                                              firstName: String,
+//                                              lastName: String,
+//                                              personEmail: String,
+//                                              address: String,
+//                                              phoneNumber: String,
+//                                              city: String,
+//                                              cityNumber: String,
+//                                              municipalityNumber: String,
+//                                              municipality: String,
+//                                              dateOfBirth: Date,
+//                                              gender: Int,
+//                                              image: UIImage?)
+
+
+
+
+
                             self.selection = 0
                             self.presentationMode.wrappedValue.dismiss()
                         }
