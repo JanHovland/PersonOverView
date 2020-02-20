@@ -36,7 +36,7 @@ struct UserMaintenanceView: View {
                         .frame(width: 80, height: 80)
                         .aspectRatio(contentMode: .fill)
                         .clipShape(Circle())
-                        .overlay(Circle().stroke(Color.white, lineWidth: 3))
+                        .overlay(Circle().stroke(Color.white, lineWidth: 1))
                 }
             }
             .padding(.bottom)

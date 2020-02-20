@@ -176,7 +176,7 @@
 "Phone Number" = "Telefonnummer";
 
 /* PersonsOverView */
-"Postalcode" = "Postkode";
+"Postalcode" = "Postnummer";
 
 /* SettingView */
 "PostalCode" = "Poststed";
@@ -191,13 +191,10 @@
 "Save" = "Lagre";
 
 /* SettingView */
-"Save PostalCode" = "Lagre PostalCode";
+"Save PostalCode" = "Lagre postnummer";
 
 /* SettingView */
 "Saved the setting" = "Innstillingene er nå oppdatert";
-
-/* FindPostalCode */
-"Search" = "Søk";
 
 /* FindPostalCode */
 "Search..." = "Søk...";
@@ -205,6 +202,15 @@
 /* SettingView
    SignInView */
 "Settings" = "Innstillinger";
+
+/* No comment provided by engineer. */
+"Show Action Sheet" = "Vis handlingsark";
+
+/* No comment provided by engineer. */
+"Show Alert" = "Vis varsel";
+
+/* No comment provided by engineer. */
+"Show Modal" = "Vis modal";
 
 /* SettingView */
 "Show password" = "Vis passord";
@@ -268,6 +274,3 @@
    UserMaintenanceView */
 "Your name" = "Navn";
 
-/* FindPostalCode */
-"Request failed with http status code 503" = "Forespørsel mislyktes med http-statuskode 503";
-"The operation has been rate limited due to an earlier error: Request failed with http status code 503" = "Operasjonen har blitt takstbegrenset på grunn av en tidligere feil: Forespørsel mislyktes med http-statuskode 503 ";

@@ -19,7 +19,6 @@ struct PersonView : View {
     var person: Person
 
     // @EnvironmentObject var postalCodeSettings: PostalCodeSettings
-    @Environment(\.presentationMode) var presentationMode
     @State private var message: String = ""
     @State private var alertIdentifier: AlertID?
     @State private var showingImagePicker = false
@@ -69,7 +68,7 @@ struct PersonView : View {
                             .resizable()
                             .frame(width: 80, height: 80, alignment: .center)
                             .clipShape(Circle())
-                            .overlay(Circle().stroke(Color.white, lineWidth: 3))
+                            .overlay(Circle().stroke(Color.white, lineWidth: 1))
                     }
                 }
                 Button(NSLocalizedString("Choose Profile Image", comment: "SignUpView")) {

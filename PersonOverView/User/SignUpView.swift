@@ -47,7 +47,7 @@ struct SignUpView : View {
                             .resizable()
                             .frame(width: 80, height: 80, alignment: .center)
                             .clipShape(Circle())
-                            .overlay(Circle().stroke(Color.white, lineWidth: 3))
+                            .overlay(Circle().stroke(Color.white, lineWidth: 1))
                     }
                 }
                 .padding(10)

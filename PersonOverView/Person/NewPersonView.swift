@@ -46,7 +46,7 @@ struct NewPersonView: View {
                                 .resizable()
                                 .frame(width: 80, height: 80, alignment: .center)
                                 .clipShape(Circle())
-                                .overlay(Circle().stroke(Color.white, lineWidth: 3))
+                                .overlay(Circle().stroke(Color.white, lineWidth: 1))
                         }
                     }
                     Button(NSLocalizedString("Choose Profile Image", comment: "SignUpView")) {

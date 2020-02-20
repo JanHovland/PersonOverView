@@ -51,7 +51,7 @@ struct SignInView : View {
                             .resizable()
                             .frame(width: 80, height: 80, alignment: .center)
                             .clipShape(Circle())
-                            .overlay(Circle().stroke(Color.white, lineWidth: 2))
+                            .overlay(Circle().stroke(Color.white, lineWidth: 1))
                     }
                 }
                 .padding(10)
@@ -59,7 +59,7 @@ struct SignInView : View {
                     Text(NSLocalizedString("Options Menu", comment: "SignInView"))
                         /// Skjuler teksten uten å påvirke layout
                         .opacity(showOptionMenu ? 1 : 0)
-                    Image(systemName: "square.stack")      ///"line.horizontal.3")
+                    Image(systemName: "square.stack")      
                         /// Skjuler bildet  uten å påvirke layout
                         .opacity(showOptionMenu ? 1 : 0)
                 }

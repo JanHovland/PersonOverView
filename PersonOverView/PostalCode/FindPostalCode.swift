@@ -15,6 +15,8 @@ struct FindPostalCode: View {
     var firstName: String
     var lastName: String
 
+    @Environment(\.presentationMode) var presentationMode
+
     @State private var postalCode = PostalCode()
     @State private var postalCodes = [PostalCode]()
     @State private var findPostalCode: Bool = false
@@ -28,7 +30,7 @@ struct FindPostalCode: View {
             VStack {
                 List {
                     HStack {
-                        Text("Poststed")
+                        Text("City")
                         Spacer()
                         if self.postalCodes.count > 0 {
                             Button(self.postalCodes[selection].postalNumber + " " + self.postalCodes[selection].postalName) {
@@ -47,8 +49,9 @@ struct FindPostalCode: View {
                         .id(UUID().uuidString)
                         .onTapGesture {
                             self.pickerVisible.toggle()
-                            self.selection = 0
                             print(self.postalCodes[self.selection].postalNumber)
+                            self.selection = 0
+                            self.presentationMode.wrappedValue.dismiss()
                         }
                     }
                 }
