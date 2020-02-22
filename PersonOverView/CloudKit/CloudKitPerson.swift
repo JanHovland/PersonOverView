@@ -23,6 +23,7 @@ struct CloudKitPerson {
         case castFailure
         case cursorFailure
     }
+
     /// MARK: - saving to CloudKit
     static func savePerson(item: Person, completion: @escaping (Result<Person, Error>) -> ()) {
         let itemRecord = CKRecord(recordType: RecordType.Person)

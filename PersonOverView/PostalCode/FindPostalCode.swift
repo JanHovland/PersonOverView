@@ -23,8 +23,8 @@ struct FindPostalCode: View {
     @State private var findPostalCode: Bool = false
     @State private var selection = 0
     @State private var pickerVisible = false
-    @State private var message: String = ""
-    @State private var alertIdentifier: AlertID?
+    @State  var message: String = ""
+    @State  var alertIdentifier: AlertID?
 
     var body: some View {
         NavigationView {
@@ -56,7 +56,8 @@ struct FindPostalCode: View {
                             /// Feilmelding:  Cannot assign to property: 'self' is immutable
                             //  self.person.cityNumber = self.postalCodes[self.selection].postalNumber
                             /// Modify person data, men det kommer inger status meldinger !!!!!!!
-                            CloudKitPerson.ModifyPerson(recordID: self.person.recordID,
+//                            CloudKitPerson.ModifyPerson(recordID: self.person.recordID,
+                            self.ModifyPerson(recordID: self.person.recordID,
                                                         firstName: self.firstName,
                                                         lastName: self.lastName,
                                                         personEmail: self.person.personEmail,
@@ -69,8 +70,10 @@ struct FindPostalCode: View {
                                                         dateOfBirth: self.person.dateOfBirth,
                                                         gender: self.person.gender,
                                                         image: self.person.image)
+                            print("Etter self. ModifyPerson")
                             self.selection = 0
                             self.presentationMode.wrappedValue.dismiss()
+
                         }
                     }
                 }
@@ -85,6 +88,7 @@ struct FindPostalCode: View {
             case .first:
                 return Alert(title: Text(self.message))
             case .second:
+                print(".second = \(self.message)")
                 return Alert(title: Text(self.message))
             case .third:
                 return Alert(title: Text(self.message))
@@ -116,6 +120,61 @@ struct FindPostalCode: View {
             }
         }
     }
+
+    func ModifyPerson(recordID: CKRecord.ID?,
+                      firstName: String,
+                      lastName: String,
+                      personEmail: String,
+                      address: String,
+                      phoneNumber: String,
+                      city: String,
+                      cityNumber: String,
+                      municipalityNumber: String,
+                      municipality: String,
+                      dateOfBirth: Date,
+                      gender: Int,
+                      image: UIImage?) {
+
+        if firstName.count > 0, lastName.count > 0 {
+            /// Modify the person in CloudKit
+            /// Kan ikke bruke person fordi: Kan ikke inneholde @State private var fordi:  'PersonView' initializer is inaccessible due to 'private' protection level
+            var personItem: PersonElement! = PersonElement()
+            personItem.recordID = recordID
+            personItem.firstName = firstName
+            personItem.lastName = lastName
+            personItem.personEmail = personEmail
+            personItem.address = address
+            personItem.phoneNumber = phoneNumber
+            personItem.city = city
+            personItem.cityNumber = cityNumber
+            personItem.municipalityNumber = municipalityNumber
+            personItem.municipality = municipality
+            personItem.dateOfBirth = dateOfBirth
+            personItem.gender = gender
+            /// Først vises det gamle bildet til personen, så kommer det nye bildet opp
+            if image != nil {
+                personItem.image = image
+            }
+            CloudKitPerson.modifyPerson(item: personItem) { (result) in
+            switch result {
+                case .success:
+                    let person = "'\(personItem.firstName)" + " \(personItem.lastName)'"
+                    let message1 =  NSLocalizedString("was modified", comment: "PersonsOverView")
+                    self.message = person + " " + message1
+                    print(self.message as Any)
+                    self.alertIdentifier = AlertID(id: .second)
+                case .failure(let err):
+                    self.message = err.localizedDescription
+                    self.alertIdentifier = AlertID(id: .second)
+                }
+            }
+        }
+        else {
+            self.message = NSLocalizedString("First name and last name must both contain a value.", comment: "PersonsOverView")
+            self.alertIdentifier = AlertID(id: .first)
+        }
+    }
+
 
 }
 
