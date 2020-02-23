@@ -57,9 +57,9 @@ struct FindPostalCode: View {
                                                             address: self.person.address,
                                                             phoneNumber: self.person.phoneNumber,
                                                             city: self.city,
-                                                            cityNumber: self.postalCodes[self.selection].postalNumber,  //self.person.cityNumber,
-                                                            municipalityNumber: self.person.municipalityNumber,
-                                                            municipality: self.person.municipality,
+                                                            cityNumber: self.postalCodes[self.selection].postalNumber,
+                                                            municipalityNumber: self.postalCodes[self.selection].municipalityNumber,
+                                                            municipality: self.postalCodes[self.selection].municipalityName,
                                                             dateOfBirth: self.person.dateOfBirth,
                                                             gender: self.person.gender,
                                                             image: self.person.image)
