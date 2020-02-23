@@ -27,29 +27,31 @@ struct FindPostalCode: View {
     @State  var alertIdentifier: AlertID?
 
     var body: some View {
-        NavigationView {
-            VStack {
-                List {
-                    HStack {
-                        Text("City")
-                        Spacer()
-                        if self.postalCodes.count > 0 {
-                            Button(self.postalCodes[selection].postalNumber + " " + self.postalCodes[selection].postalName) {
-                               self.pickerVisible.toggle()
-                            }
-                            .foregroundColor(self.pickerVisible ? .red : .blue)
+        // NavigationView {
+        VStack {
+            List {
+                HStack {
+                    Text("Select postalcode for ")
+                    Spacer()
+                    if self.postalCodes.count > 0 {
+                        Button(city) {
+                            self.pickerVisible.toggle()
+                        }
+                        .foregroundColor(self.pickerVisible ? .red : .blue)
+                    }
+                }
+                if pickerVisible {
+                    Picker(selection: $selection, label: EmptyView()) {
+                        ForEach((0..<postalCodes.count), id: \.self) { ix in
+                            Text(self.postalCodes[ix].postalNumber).tag(ix)
                         }
                     }
-                    if pickerVisible {
-                         Picker(selection: $selection, label: EmptyView()) {
-                            ForEach((0..<postalCodes.count), id: \.self) { ix in
-                                Text(self.postalCodes[ix].postalNumber + " " + self.postalCodes[ix].postalName).tag(ix)
-                            }
-                        }
+                    .pickerStyle(WheelPickerStyle())
                         /// Denne sørger for å vise det riktige "valget" pålinje 2
                         .id(UUID().uuidString)
                         .onTapGesture {
                             self.pickerVisible.toggle()
+                            print(self.postalCodes[self.selection].postalNumber)
                             self.ModifyPersonFindPostalCode(recordID: self.person.recordID,
                                                             firstName: self.firstName,
                                                             lastName: self.lastName,
@@ -69,12 +71,11 @@ struct FindPostalCode: View {
 
                             // self.presentationMode.wrappedValue.dismiss()
 
-                        }
                     }
                 }
             }
-            .navigationBarTitle("PostalCode", displayMode: .inline)
         }
+//         .navigationBarTitle("PostalCode", displayMode: .inline)
         .onAppear {
             self.zoomPostalCode(value: self.city)
         }
@@ -116,18 +117,18 @@ struct FindPostalCode: View {
     }
 
     func ModifyPersonFindPostalCode(recordID: CKRecord.ID?,
-                                   firstName: String,
-                                   lastName: String,
-                                   personEmail: String,
-                                   address: String,
-                                   phoneNumber: String,
-                                   city: String,
-                                   cityNumber: String,
-                                   municipalityNumber: String,
-                                   municipality: String,
-                                   dateOfBirth: Date,
-                                   gender: Int,
-                                   image: UIImage?) {
+                                    firstName: String,
+                                    lastName: String,
+                                    personEmail: String,
+                                    address: String,
+                                    phoneNumber: String,
+                                    city: String,
+                                    cityNumber: String,
+                                    municipalityNumber: String,
+                                    municipality: String,
+                                    dateOfBirth: Date,
+                                    gender: Int,
+                                    image: UIImage?) {
 
         if firstName.count > 0, lastName.count > 0 {
             /// Modify the person in CloudKit
@@ -150,7 +151,7 @@ struct FindPostalCode: View {
                 personItem.image = image
             }
             CloudKitPerson.modifyPerson(item: personItem) { (result) in
-            switch result {
+                switch result {
                 case .success:
                     let person = "'\(personItem.firstName)" + " \(personItem.lastName)'"
                     let message1 =  NSLocalizedString("was modified", comment: "PersonsOverView")
