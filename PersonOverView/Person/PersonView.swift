@@ -169,6 +169,8 @@ struct PersonView : View {
                                             dateOfBirth: self.dateOfBirth,
                                             gender: self.gender,
                                             image: self.image)
+                /// Viser det oppdaterte person-bildet
+                self.ShowPerson()
             }, label: {
                 Text(NSLocalizedString("Modify", comment: "PersonsOverView"))
             })
