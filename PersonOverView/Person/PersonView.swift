@@ -265,7 +265,6 @@ struct PersonView : View {
                     let person = "'\(personItem.firstName)" + " \(personItem.lastName)'"
                     let message1 =  NSLocalizedString("was modified", comment: "PersonsOverView")
                     self.message = person + " " + message1
-                    print(self.message as Any)
                     self.alertIdentifier = AlertID(id: .second)
                 case .failure(let err):
                     self.message = err.localizedDescription

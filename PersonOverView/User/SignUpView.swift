@@ -97,7 +97,6 @@ struct SignUpView : View {
                                                                     self.image = nil
                                                                     self.alertIdentifier = AlertID(id: .first)
                                                                 case .failure(let err):
-                                                                    print(err.localizedDescription)
                                                                     self.message = err.localizedDescription
                                                                     self.alertIdentifier = AlertID(id: .first)
                                                                 }
