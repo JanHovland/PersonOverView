@@ -199,6 +199,9 @@
 /* FindPostalCode */
 "Search..." = "Søk...";
 
+/* No comment provided by engineer. */
+"Select postalcode" = "Velg postnummer";
+
 /* SettingView
    SignInView */
 "Settings" = "Innstillinger";
