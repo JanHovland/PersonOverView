@@ -36,6 +36,8 @@ struct PersonView : View {
     @State private var gender: Int = 0
     @State private var image: UIImage?
 
+    @State private var cityNumberNew: String = ""
+
     var genders = [NSLocalizedString("Man", comment: "PersonsOverView"),
                    NSLocalizedString("Woman", comment: "PersonsOverView")]
 
@@ -156,6 +158,13 @@ struct PersonView : View {
         .navigationBarTitle("Person", displayMode: .inline)
         .navigationBarItems(trailing:
             Button(action: {
+                /// Her må verdiene fra globale variable:
+                if globalCityNumber.count > 0, globalmunicipalityNumber.count > 0, globalmunicipalityName.count > 0 {
+                    self.cityNumber = globalCityNumber
+                    self.municipalityNumber = globalmunicipalityNumber
+                    self.municipality = globalmunicipalityName
+                }
+
                 self.ModifyPersonPersonView(recordID: self.recordID,
                                             firstName: self.firstName,
                                             lastName: self.lastName,
@@ -169,8 +178,6 @@ struct PersonView : View {
                                             dateOfBirth: self.dateOfBirth,
                                             gender: self.gender,
                                             image: self.image)
-                /// Viser det oppdaterte person-bildet
-                self.ShowPerson()
             }, label: {
                 Text(NSLocalizedString("Modify", comment: "PersonsOverView"))
             })
@@ -212,6 +219,7 @@ struct PersonView : View {
                 self.phoneNumber = perItem.phoneNumber
                 self.city = perItem.city
                 self.cityNumber = perItem.cityNumber
+                self.cityNumberNew = perItem.cityNumber
                 self.municipalityNumber = perItem.municipalityNumber
                 self.municipality = perItem.municipality
                 self.dateOfBirth = perItem.dateOfBirth
@@ -223,6 +231,7 @@ struct PersonView : View {
                 self.alertIdentifier = AlertID(id: .first)
             }
         }
+
     }
 
     func ModifyPersonPersonView(recordID: CKRecord.ID?,

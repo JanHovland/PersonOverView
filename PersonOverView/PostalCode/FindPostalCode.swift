@@ -9,6 +9,10 @@
 import SwiftUI
 import CloudKit
 
+var globalCityNumber = ""
+var globalmunicipalityNumber = ""
+var globalmunicipalityName = ""
+
 struct FindPostalCode: View {
 
     var city: String
@@ -23,18 +27,22 @@ struct FindPostalCode: View {
     @State private var findPostalCode: Bool = false
     @State private var selection = 0
     @State private var pickerVisible = false
-    @State  var message: String = ""
-    @State  var alertIdentifier: AlertID?
+    @State private var message: String = ""
+    @State private var alertIdentifier: AlertID?
 
     var body: some View {
-        // NavigationView {
+
         VStack {
+            Spacer(minLength: 40)
+            Text("Select postalcode")
+                .font(.title)
+            Spacer()
             List {
                 HStack {
-                    Text("Select postalcode for ")
+                    Text(self.city)
                     Spacer()
                     if self.postalCodes.count > 0 {
-                        Button(city) {
+                        Button(self.postalCodes[selection].postalNumber) {
                             self.pickerVisible.toggle()
                         }
                         .foregroundColor(self.pickerVisible ? .red : .blue)
@@ -43,15 +51,24 @@ struct FindPostalCode: View {
                 if pickerVisible {
                     Picker(selection: $selection, label: EmptyView()) {
                         ForEach((0..<postalCodes.count), id: \.self) { ix in
-                            Text(self.postalCodes[ix].postalNumber).tag(ix)
+                            HStack (alignment: .center) {
+                                Text(self.postalCodes[ix].postalNumber).tag(ix)
+                            }
                         }
                     }
                     .pickerStyle(WheelPickerStyle())
                         /// Denne sørger for å vise det riktige "valget" pålinje 2
                         .id(UUID().uuidString)
                         .onTapGesture {
+                            if self.postalCodes[self.selection].postalNumber.count > 0,
+                                self.postalCodes[self.selection].municipalityNumber.count > 0,
+                                self.postalCodes[self.selection].municipalityName.count > 0 {
+                                globalCityNumber = self.postalCodes[self.selection].postalNumber
+                                globalmunicipalityNumber = self.postalCodes[self.selection].municipalityNumber
+                                globalmunicipalityName = self.postalCodes[self.selection].municipalityName
+                            }
                             self.pickerVisible.toggle()
-                            print(self.postalCodes[self.selection].postalNumber)
+                            // print(self.postalCodes[self.selection].postalNumber)
                             self.ModifyPersonFindPostalCode(recordID: self.person.recordID,
                                                             firstName: self.firstName,
                                                             lastName: self.lastName,
@@ -59,24 +76,26 @@ struct FindPostalCode: View {
                                                             address: self.person.address,
                                                             phoneNumber: self.person.phoneNumber,
                                                             city: self.city,
-                                                            cityNumber: self.postalCodes[self.selection].postalNumber,
-                                                            municipalityNumber: self.postalCodes[self.selection].municipalityNumber,
-                                                            municipality: self.postalCodes[self.selection].municipalityName,
+                                                            cityNumber: globalCityNumber,
+                                                            municipalityNumber: globalmunicipalityNumber,
+                                                            municipality: globalmunicipalityName,
                                                             dateOfBirth: self.person.dateOfBirth,
                                                             gender: self.person.gender,
                                                             image: self.person.image)
-
+                            
                             self.selection = 0
-                            /// Nå vises Alert
-
-                            // self.presentationMode.wrappedValue.dismiss()
+                            /// Avslutter bildet
+                            self.presentationMode.wrappedValue.dismiss()
 
                     }
                 }
             }
         }
-//         .navigationBarTitle("PostalCode", displayMode: .inline)
+        .navigationBarTitle("PostalCode", displayMode: .inline)
         .onAppear {
+            globalCityNumber = ""
+            globalmunicipalityNumber = ""
+            globalmunicipalityName = ""
             self.zoomPostalCode(value: self.city)
         }
         .alert(item: $alertIdentifier) { alert in
@@ -156,10 +175,10 @@ struct FindPostalCode: View {
                     let person = "'\(personItem.firstName)" + " \(personItem.lastName)'"
                     let message1 =  NSLocalizedString("was modified", comment: "PersonsOverView")
                     self.message = person + " " + message1
-                    self.alertIdentifier = AlertID(id: .second)
+                    self.alertIdentifier = AlertID(id: .first)
                 case .failure(let err):
                     self.message = err.localizedDescription
-                    self.alertIdentifier = AlertID(id: .second)
+                    self.alertIdentifier = AlertID(id: .first)
                 }
             }
         }

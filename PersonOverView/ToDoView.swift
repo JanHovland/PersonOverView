@@ -22,6 +22,7 @@ var toDo_1 =
         b) 🔴 Refresh PersonView()
   3. 🔴 Benytte ActionSheet (se på slutten av "SettingsView")
   4. 🔴 Legge inn fødselsdaglisten fra Firebase
+  5. 🔴 Formattere telefonnummeret
 """
 
 var toDo_2 =
