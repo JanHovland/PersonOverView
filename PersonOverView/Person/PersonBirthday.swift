@@ -24,12 +24,15 @@ struct PersonBirthday: View {
         NavigationView {
             VStack {
                 List {
-                    ForEach(persons) { person in
-                        ShowPersonBirthday(person: person)
+                    ForEach(persons) {
+                        person in
+                        NavigationLink(destination: PersonView(person: person)) {
+                            ShowPersonBirthday(person: person)
+                        }
                     }
                 }
             }
-            .navigationBarTitle("Birthdays")
+            .navigationBarTitle(NSLocalizedString("Birthdays", comment: "PersonBirthday"))
         }
         .onAppear {
             self.refresh()
@@ -61,7 +64,7 @@ struct PersonBirthday: View {
 /// Et eget View for å vise person detail view
 struct ShowPersonBirthday: View {
 
-     /* Dato formateringer:
+    /* Dato formateringer:
      Wednesday, Feb 26, 2020            EEEE, MMM d, yyyy
      02/26/2020                         MM/dd/yyyy
      02-26-2020 12:30                   MM-dd-yyyy HH:mm
@@ -77,12 +80,15 @@ struct ShowPersonBirthday: View {
     static let taskDateFormat: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
-        formatter.dateFormat = "d.MMMM"
+        formatter.dateFormat = " dd.MMMM "
         return formatter
     }()
     var person: Person
+
+    @State private var sendMail = false
+
     var body: some View {
-        HStack(spacing: 10) {
+        HStack (spacing: 20) {
             if person.image != nil {
                 Image(uiImage: person.image!)
                     .resizable()
@@ -92,7 +98,19 @@ struct ShowPersonBirthday: View {
             }
             Text("\(person.dateOfBirth, formatter: Self.taskDateFormat)")
                 .background(Color(.green))
+                .foregroundColor(.black)
+                .font(.custom("Courier", size: 16))
+            Spacer()
             Text(person.firstName)
+            Image("message")
+                .resizable()
+                .frame(width: 30, height: 30, alignment: .leading)
+        }
+        .onLongPressGesture {
+             self.sendMail.toggle()
+        }
+        .sheet(isPresented: $sendMail) {
+            PersonSendMail(person: self.person)
         }
     }
 }

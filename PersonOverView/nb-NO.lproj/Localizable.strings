@@ -23,6 +23,9 @@
 /* UserMaintenanceView */
 "Are you sure you want to update this user?" = "Er du sikker på at du vil oppdatere denne brukeren?";
 
+/* PersonBirthday */
+"Birthdays" = "Fødselsdager";
+
 /* SignInView */
 "Both email and Password must have a value" = "Både e-post og passord må ha en verdi";
 
@@ -201,6 +204,12 @@
 
 /* No comment provided by engineer. */
 "Select postalcode" = "Velg postnummer";
+
+/* PersonSendMail */
+"Send eMail" = "Send e-post";
+
+/* No comment provided by engineer. */
+"Send eMail to: %@" = "Send e-post til: %@";
 
 /* SettingView
    SignInView */

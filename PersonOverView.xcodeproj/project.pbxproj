@@ -41,6 +41,7 @@
 		DB6739CB23AE2B0600EF9ECD /* OutputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6739CA23AE2B0600EF9ECD /* OutputTextField.swift */; };
 		DB691A2023CB31ED004CDBE8 /* CloudKitRecordXXX.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB691A1F23CB31ED004CDBE8 /* CloudKitRecordXXX.swift */; };
 		DB6B153524066E9500CF87B9 /* PersonBirthday.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6B153424066E9500CF87B9 /* PersonBirthday.swift */; };
+		DB7027E32406DF3800C94909 /* PersonSendMail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7027E22406DF3800C94909 /* PersonSendMail.swift */; };
 		DB9A4DD923CDE2AE00948B21 /* UserDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9A4DD823CDE2AE00948B21 /* UserDeleteView.swift */; };
 		DBB4C62823B6301F0055296B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB4C62723B6301F0055296B /* ImagePicker.swift */; };
 		DBB83D9A23E822CE003AA2C9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DBB83D9823E822CE003AA2C9 /* Localizable.strings */; };
@@ -91,6 +92,7 @@
 		DB6739CA23AE2B0600EF9ECD /* OutputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputTextField.swift; sourceTree = "<group>"; };
 		DB691A1F23CB31ED004CDBE8 /* CloudKitRecordXXX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitRecordXXX.swift; sourceTree = "<group>"; };
 		DB6B153424066E9500CF87B9 /* PersonBirthday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonBirthday.swift; sourceTree = "<group>"; };
+		DB7027E22406DF3800C94909 /* PersonSendMail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonSendMail.swift; sourceTree = "<group>"; };
 		DB9A4DD823CDE2AE00948B21 /* UserDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDeleteView.swift; sourceTree = "<group>"; };
 		DBB4C62723B6301F0055296B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		DBB83D9923E822CE003AA2C9 /* nb-NO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nb-NO"; path = "nb-NO.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 				DB302B70237EF02300076D10 /* PersonOverView.swift */,
 				DB65AE7B23E1EE2100568032 /* PersonsOverView.swift */,
 				DB6B153424066E9500CF87B9 /* PersonBirthday.swift */,
+				DB7027E22406DF3800C94909 /* PersonSendMail.swift */,
 			);
 			path = Person;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				DB302B6F237EF02300076D10 /* PersonOverView.xcdatamodeld in Sources */,
 				DB4A8F3E23DEE79200558788 /* PersonElements.swift in Sources */,
 				DB33E13C23F35E1B00A95FAA /* FindPostalCode.swift in Sources */,
+				DB7027E32406DF3800C94909 /* PersonSendMail.swift in Sources */,
 				DB302B6A237EF02300076D10 /* AppDelegate.swift in Sources */,
 				DBB4C62823B6301F0055296B /* ImagePicker.swift in Sources */,
 				DB33E13E23F4829C00A95FAA /* SearchBar.swift in Sources */,
