@@ -20,6 +20,7 @@ struct PersonBirthday: View {
     @State private var message: String = ""
     @State private var alertIdentifier: AlertID?
     var barTitle = NSLocalizedString("Birthday overview", comment: "PersonBirthday")
+    
 
     var body: some View {
         NavigationView {
@@ -34,7 +35,7 @@ struct PersonBirthday: View {
                     }
                 }
             }
-            .navigationBarTitle(Text(barTitle), displayMode: .inline)
+            .navigationBarTitle(Text(barTitle)) //, displayMode: .inline)
         }
         .onAppear {
             self.refresh()
