@@ -14,7 +14,7 @@ import SwiftUI
 struct PersonOverView: View {
     // @EnvironmentObject var postalCodeSettings: PostalCodeSettings
     var body: some View {
-       PersonBirthday() // SignInView() 
+        SignInView() // PersonBirthday()  
     }
 }
 

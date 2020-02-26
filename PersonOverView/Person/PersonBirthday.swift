@@ -16,10 +16,12 @@ struct PersonBirthday: View {
         UITableView.appearance().showsVerticalScrollIndicator = false
     }
 
+    @Environment(\.presentationMode) var presentationMode
+
     @State private var persons = [Person]()
     @State private var message: String = ""
     @State private var alertIdentifier: AlertID?
-    let barTitle = NSLocalizedString("Birthday overview", comment: "PersonBirthday")
+    let barTitle = NSLocalizedString("Birthday", comment: "PersonBirthday")
 
     var body: some View {
         NavigationView {
@@ -39,6 +41,25 @@ struct PersonBirthday: View {
         .onAppear {
             self.refresh()
         }
+
+        .overlay(
+            HStack {
+                Spacer()
+                VStack {
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "chevron.down.circle.fill")
+                            .font(.largeTitle)
+                            .foregroundColor(.none)
+                    })
+                        .padding(.trailing, 20)
+                        .padding(.top, 100)
+                    Spacer()
+                }
+            }
+        )
+
     }
 
     /// Rutine for å friske opp bildet

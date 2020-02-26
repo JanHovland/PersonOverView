@@ -27,6 +27,7 @@ struct SignInView : View {
     @State private var showToDoView: Bool = false
     @State private var showPersonView: Bool = false
     @State private var showPersonsOverView: Bool = false
+    @State private var showPersonBirthday: Bool = false
     @State private var showOptionMenu = false
     @State private var showSignUpView = false
     @State private var alertIdentifier: AlertID?
@@ -170,6 +171,27 @@ struct SignInView : View {
                     }
                     .sheet(isPresented: $showPersonsOverView) {
                         PersonsOverView()
+                    }
+                    /// PersonBirthday
+                    HStack {
+                        Button(action: {
+                            if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
+                                self.showPersonBirthday.toggle()
+                            } else {
+                                self.message = NSLocalizedString("Name, eMail and Password must have a value", comment: "SignInView")
+                                self.alertIdentifier = AlertID(id: .first)
+                            }
+                        }, label: {
+                            HStack {
+                                Text(NSLocalizedString("PersonBirthday", comment: "SignInView"))
+                                Image(systemName: "gift")
+                                    .font(Font.system(.headline).weight(.thin))
+                            }
+                            .foregroundColor(.red)
+                        })
+                    }
+                    .sheet(isPresented: $showPersonBirthday) {
+                        PersonBirthday()
                     }
                     /// Uten padding blir noe av visningen kuttet bort
                     .padding()
