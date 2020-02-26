@@ -17,7 +17,7 @@ struct PersonSendMail: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("Send eMail to: \(person.firstName)")
+                Text("Send eMail to: \(person.firstName + " " + person.lastName)")
             }
             .navigationBarTitle(NSLocalizedString("Send eMail", comment: "PersonSendMail")) 
         }
