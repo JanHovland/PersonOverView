@@ -24,7 +24,7 @@
 "Are you sure you want to update this user?" = "Er du sikker på at du vil oppdatere denne brukeren?";
 
 /* PersonBirthday */
-"Birthdays" = "Fødselsdager";
+"Birthday overview" = "Oversikt fødselsdager";
 
 /* SignInView */
 "Both email and Password must have a value" = "Både e-post og passord må ha en verdi";
