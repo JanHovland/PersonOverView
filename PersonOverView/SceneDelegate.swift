@@ -17,6 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var imagePicker = ImagePicker()
     var user = User()
     var personElements = PersonElements()
+//    var postalCodeSettings = PostalCodeSettings()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -36,11 +37,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             // Add UserElement() to the window.rootViewController
 
             window.rootViewController = UIHostingController(rootView:
-                PersonOverView() // .environmentObject(postalCodeSettings)
-                                .environmentObject(imagePicker)
+                PersonOverView().environmentObject(imagePicker)
                                 .environmentObject(user)
                                 .environmentObject(personElements)
-                                .environmentObject(userElements))  
+ //                                .environmentObject(postalCodeSettings)
+                                .environmentObject(userElements)
+            )
             self.window = window
             window.makeKeyAndVisible()
         }
