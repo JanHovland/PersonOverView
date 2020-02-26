@@ -9,15 +9,32 @@
 import UIKit
 import SwiftUI
 
+struct SystemServices: ViewModifier {
+
+    static var postalCodeSettings = PostalCodeSettings()
+    static var userElements = UserElements()
+    static var imagePicker = ImagePicker()
+    static var user = User()
+    static var personElements = PersonElements()
+
+    func body(content: Content) -> some View {
+        content
+            .environmentObject(Self.imagePicker)
+            .environmentObject(Self.user)
+            .environmentObject(Self.personElements)
+            .environmentObject(Self.postalCodeSettings)
+            .environmentObject(Self.userElements)
+    }
+}
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    // var postalCodeSettings = PostalCodeSettings()
+    var postalCodeSettings = PostalCodeSettings()
     var userElements = UserElements()
     var imagePicker = ImagePicker()
     var user = User()
     var personElements = PersonElements()
-//    var postalCodeSettings = PostalCodeSettings()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -31,17 +48,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
         // Use a UIHostingController as window root view controller.
 
+        /// Denne omhandler "SwiftUI and the Missing Environment Object"
+        /// qttps://medium.com/swlh/swiftui-and-the-missing-environment-object-1a4bf8913ba7
+        /// Jeg bruker derfor globale variabler for å overføre mellom  FindPostalCode  og PersonView for PostalCodeSettings()
+
+        let contentView = PersonOverView()
+            .modifier(SystemServices())
+
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            
-            // Add UserElement() to the window.rootViewController
-
             window.rootViewController = UIHostingController(rootView:
-                PersonOverView().environmentObject(imagePicker)
-                                .environmentObject(user)
-                                .environmentObject(personElements)
- //                                .environmentObject(postalCodeSettings)
-                                .environmentObject(userElements)
+                contentView
+//                contentView.environmentObject(imagePicker)
+//                           .environmentObject(user)
+//                           .environmentObject(personElements)
+//                           .environmentObject(postalCodeSettings)
+//                           .environmentObject(userElements)
             )
             self.window = window
             window.makeKeyAndVisible()

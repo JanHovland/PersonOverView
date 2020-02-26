@@ -21,6 +21,7 @@ struct FindPostalCode: View {
     var person: Person
 
     @Environment(\.presentationMode) var presentationMode
+    // @EnvironmentObject var postalCodeSettings: PostalCodeSettings
 
     @State private var postalCode = PostalCode()
     @State private var postalCodes = [PostalCode]()
@@ -60,6 +61,7 @@ struct FindPostalCode: View {
                         /// Denne sørger for å vise det riktige "valget" pålinje 2
                         .id(UUID().uuidString)
                         .onTapGesture {
+                            /// postalCodes og de globale variablene blir resatt av: .onAppear
                             if self.postalCodes[self.selection].postalNumber.count > 0,
                                 self.postalCodes[self.selection].municipalityNumber.count > 0,
                                 self.postalCodes[self.selection].municipalityName.count > 0 {
