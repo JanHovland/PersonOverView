@@ -19,8 +19,7 @@ struct PersonBirthday: View {
     @State private var persons = [Person]()
     @State private var message: String = ""
     @State private var alertIdentifier: AlertID?
-    var barTitle = NSLocalizedString("Birthday overview", comment: "PersonBirthday")
-    
+    let barTitle = NSLocalizedString("Birthday overview", comment: "PersonBirthday")
 
     var body: some View {
         NavigationView {
