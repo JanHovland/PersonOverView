@@ -98,7 +98,7 @@ struct SignInView : View {
                             }
                         }, label: {
                             HStack {
-                                Text(NSLocalizedString("Delete user", comment: "SignInView"))
+                                Text(NSLocalizedString("Delete an user", comment: "SignInView"))
                                 Image(systemName: "trash")
                                     .font(Font.system(.headline).weight(.thin))
                             }

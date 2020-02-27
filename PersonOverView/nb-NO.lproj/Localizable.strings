@@ -42,11 +42,17 @@
 /* PersonsOverView */
 "Date of birth" = "Fødselsdato";
 
+/* UserDeleteView */
+"Delete an user" = "Slett en bruker";
+
 /* SettingView */
 "Delete PostalCode" = "Slett PostalCode";
 
 /* SettingView */
 "Delete PostalCode (100 at a time)" = "Slett PostalCode (100 om gangen)";
+
+/* No comment provided by engineer. */
+"Delete this user" = "Slett denne brukeren";
 
 /* SignInView
    UserDeleteView */
@@ -279,7 +285,6 @@
 "Woman" = "Kvinne";
 
 /* SettingView
-   UserDeleteView
    UserMaintenanceView */
 "Yes" = "Ja";
 

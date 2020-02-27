@@ -62,7 +62,7 @@ struct UserMaintenanceView: View {
                     Text(NSLocalizedString("Hold and release to activate the actions below", comment: "UserMaintenanceView"))
                         .font(.caption)
                         .frame(maxWidth: .infinity, alignment: .center)
-                        .foregroundColor(.red)
+                        .foregroundColor(.blue)
                     HStack {
                         Button(NSLocalizedString("Choose Profile Image", comment: "UserMaintenanceView")) {
                             self.showingImagePicker.toggle()
@@ -78,7 +78,7 @@ struct UserMaintenanceView: View {
                         Image(systemName: "square.and.pencil")
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
-                    .foregroundColor(.red)
+                    .foregroundColor(.blue)
                 }.padding(.bottom)
                     /// Fjerner linjer mellom elementene
                     .listStyle(GroupedListStyle())
