@@ -25,8 +25,8 @@ struct PersonBirthday: View {
 
     var body: some View {
         NavigationView {
-            VStack {
-                Spacer()
+            Form {
+                Spacer(minLength: 5)
                 List {
                     ForEach(persons) {
                         person in
@@ -36,12 +36,11 @@ struct PersonBirthday: View {
                     }
                 }
             }
-            .navigationBarTitle(Text(barTitle)) //, displayMode: .inline)
+            .navigationBarTitle(Text(barTitle)) // , displayMode: .inline)
         }
         .onAppear {
             self.refresh()
         }
-
         .overlay(
             HStack {
                 Spacer()
@@ -53,8 +52,8 @@ struct PersonBirthday: View {
                             .font(.largeTitle)
                             .foregroundColor(.none)
                     })
-                        .padding(.trailing, 20)
-                        .padding(.top, 100)
+                        .padding(.trailing, 28)
+                        .padding(.top, 70) 
                     Spacer()
                 }
             }

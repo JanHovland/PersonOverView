@@ -17,6 +17,8 @@ struct PersonView : View {
 
     var person: Person
 
+    @Environment(\.presentationMode) var presentationMode
+
     @State private var message: String = ""
     @State private var alertIdentifier: AlertID?
     @State private var showingImagePicker = false
@@ -43,7 +45,7 @@ struct PersonView : View {
 
     var body: some View {
         VStack {
-            HStack (alignment: .center, spacing: 115) {
+            HStack (alignment: .center, spacing: 90) { // 115) {
                 ZStack {
                     Image(systemName: "person.circle")
                         .resizable()

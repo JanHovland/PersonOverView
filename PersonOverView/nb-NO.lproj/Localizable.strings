@@ -169,6 +169,9 @@
 /* NewPersonView */
 "Person overview" = "Oversikt";
 
+/* SignInView */
+"PersonBirthday" = "Fødselsdager";
+
 /* PersonsOverView */
 "Persons overview" = "Oversikt";
 
