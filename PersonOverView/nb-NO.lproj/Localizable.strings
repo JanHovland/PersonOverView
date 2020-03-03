@@ -20,7 +20,7 @@
 /* SettingView */
 "Are you sure you want to save PostalCodes?" = "Er du sikker på at du vil lagre postnummer?";
 
-/* UserMaintenanceView */
+/* UserDeleteView */
 "Are you sure you want to update this user?" = "Er du sikker på at du vil oppdatere denne brukeren?";
 
 /* PersonBirthday */
@@ -42,7 +42,8 @@
 /* PersonsOverView */
 "Date of birth" = "Fødselsdato";
 
-/* UserDeleteView */
+/* SignInView
+   UserDeleteView */
 "Delete an user" = "Slett en bruker";
 
 /* SettingView */
@@ -54,8 +55,7 @@
 /* No comment provided by engineer. */
 "Delete this user" = "Slett denne brukeren";
 
-/* SignInView
-   UserDeleteView */
+/* UserDeleteView */
 "Delete user" = "Slett bruker";
 
 /* UserDeleteView */
@@ -252,7 +252,7 @@
 "Successfully deleted a person" = "En person ble slettet";
 
 /* UserMaintenanceView */
-"Successfully modified the user" = "Brukeren er endret";
+"Successfully modified this user" = "Denne brukeren ble endret";
 
 /* SignUpView */
 "The user:" = "Brukeren:";
@@ -266,7 +266,10 @@
 "Unknown email or password:" = "Ukjent e-post eller passord:";
 
 /* UserMaintenanceView */
-"Update user" = "Oppdater bruker";
+"Update an user" = "Oppdater en bruker";
+
+/* No comment provided by engineer. */
+"Update this user" = "Oppdater denne brukeren";
 
 /* UserDeleteView */
 "User" = "Bruker";
@@ -284,8 +287,7 @@
 /* PersonsOverView */
 "Woman" = "Kvinne";
 
-/* SettingView
-   UserMaintenanceView */
+/* SettingView */
 "Yes" = "Ja";
 
 /* SignInView

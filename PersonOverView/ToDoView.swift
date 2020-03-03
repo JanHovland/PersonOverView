@@ -16,8 +16,10 @@ E n d r i n g e r
 var toDo_1 =
 """
   1. 🔴 Formattere telefonnummeret let municipality = municipality2.replacingOccurrences(of: " I ", with: " i ")
-  2. 🔴 Benytte ActionSheet (se på slutten av "SettingsView")
-  3. 🔴 Legge inn fødselsdaglisten fra Firebase
+  2. 🔴 Vise kart
+  3. 🔴 Sende melding
+  4. 🔴 Sende e-post
+  5. 🔴 Legge inn fødselsdaglisten fra Firebase
 """
 
 var toDo_2 =
@@ -94,6 +96,9 @@ var toDo_3 =
               3) 🟢 2700
 35.  🟢 Lage func for henting fra "PostalCode" tabellen mhv. predicate
 36.  🟢 Markere personer som har fødselsdag i inneværende måned (.background )
+37 . 🔴 Benytte ActionSheet (se på slutten av "SettingsView")
+        a) 🟢 "Slette bruker"
+        b) 🟢 "Endre bruker"
 
 """
 var toDo_4 =

@@ -103,34 +103,34 @@ struct UserDeleteView: View {
             ActionSheet(title: Text(NSLocalizedString("Delete an user", comment: "UserDeleteView")),
                         message: Text(NSLocalizedString("Are you sure you want to delete this user?", comment: "UserDeleteView")),
                         buttons: [.default(Text(NSLocalizedString("No", comment: "UserDeleteView")), action: {
-                                       print("default")
-                                       }),
-                                      .destructive(Text("Delete this user"), action: {
-                                           if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
-                                                // MARK: - delete user in CloudKit
-                                                CloudKitUser.deleteUser(recordID: self.user.recordID!) { (result) in
-                                                    switch result {
-                                                    case .success:
-                                                        let message1 = NSLocalizedString("User", comment: "UserDeleteView")
-                                                        let message2 = NSLocalizedString("deleted", comment: "UserDeleteView")
-                                                        self.message = message1 + " '\(self.user.name)'" + " " + message2
-                                                        self.user.name = ""
-                                                        self.user.email = ""
-                                                        self.user.password = ""
-                                                        self.user.image = nil
-                                                        self.alertIdentifier = AlertID(id: .first)
-                                                    case .failure(let err):
-                                                        self.message = err.localizedDescription
-                                                        self.alertIdentifier = AlertID(id: .first)
-                                                    }
-                                                }
-                                            } else {
-                                                self.message = NSLocalizedString("Missing parameters", comment: "UserDeleteView")
-                                                self.alertIdentifier = AlertID(id: .first)
-                                            }
-                                       }),
-                                       .cancel()
-                                 ])
+                            // print("default")
+                        }),
+                                .destructive(Text("Delete this user"), action: {
+                                    if self.user.name.count > 0, self.user.email.count > 0,     self.user.password.count > 0 {
+                                    // MARK: - delete user in CloudKit
+                                    CloudKitUser.deleteUser(recordID: self.user.recordID!) { (result) in
+                                        switch result {
+                                        case .success:
+                                            let message1 = NSLocalizedString("User", comment: "UserDeleteView")
+                                            let message2 = NSLocalizedString("deleted", comment: "UserDeleteView")
+                                            self.message = message1 + " '\(self.user.name)'" + " " + message2
+                                            self.user.name = ""
+                                            self.user.email = ""
+                                            self.user.password = ""
+                                            self.user.image = nil
+                                            self.alertIdentifier = AlertID(id: .first)
+                                        case .failure(let err):
+                                            self.message = err.localizedDescription
+                                            self.alertIdentifier = AlertID(id: .first)
+                                        }
+                                    }
+                                } else {
+                                    self.message = NSLocalizedString("Missing parameters", comment: "UserDeleteView")
+                                    self.alertIdentifier = AlertID(id: .first)
+                                }
+                              }),
+                              .cancel()
+        ])
         }
         .alert(item: $alertIdentifier) { alert in
             switch alert.id {
