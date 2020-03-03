@@ -15,6 +15,21 @@ struct InputTextField: View {
     var heading: String
     var placeHolder: String
     @Binding var value: String
+    
+    /*
+     struct ContentView: View {
+         @State private var text = ""
+
+         var body: some View {
+             TextField(
+                 "type something...",
+                 text: $text,
+                 onEditingChanged: { _ in print("changed") },
+                 onCommit: { print("commit") }
+             )
+         }
+     }
+     */
 
     var body: some View {
         ZStack {
@@ -34,7 +49,11 @@ struct InputTextField: View {
                             .padding(.horizontal, 15)
                     }
                 } else {
-                    TextField(placeHolder, text: $value)
+                    TextField(placeHolder,
+                              text: $value,
+                              onEditingChanged: { _ in print("changed") }, /// Kommer når en går inn i et felt eller forlater det
+                              onCommit: { print("commit") } /// Kommer når en trykker "retur" på tastatur
+                    )
                         .padding(-7)
                         .padding(.horizontal, 15)
                 }

@@ -35,8 +35,10 @@ struct PersonBirthday: View {
                         }
                     }
                 }
+                /// Noen ganger kan det være lurt å legge .id(UUID()) på List for hurtig oppdatering
+                /// .id(UUID())
             }
-            .navigationBarTitle(Text(barTitle)) // , displayMode: .inline)
+                .navigationBarTitle(Text(barTitle)) // , displayMode: .inline)
         }
         .onAppear {
             self.refresh()
@@ -86,6 +88,10 @@ struct PersonBirthday: View {
 /// Et eget View for å vise person detail view
 struct ShowPersonBirthday: View {
 
+    var person: Person
+
+    @State private var sendMail = false
+
     /* Dato formateringer:
      Wednesday, Feb 26, 2020            EEEE, MMM d, yyyy
      02/26/2020                         MM/dd/yyyy
@@ -105,9 +111,26 @@ struct ShowPersonBirthday: View {
         formatter.dateFormat = " dd.MMMM "
         return formatter
     }()
-    var person: Person
 
-    @State private var sendMail = false
+    var farge: Color {
+        /// Finner aktuell måned
+        let currentDate = Date()
+        let nameFormatter = DateFormatter()
+        nameFormatter.dateFormat = "MMMM"
+        let month = Calendar.current.component(.month, from: currentDate)
+
+        /// Finner måned fra personen sin fødselsdato
+        let personDate = person.dateOfBirth
+        let personFormatter = DateFormatter()
+        personFormatter.dateFormat = "MMMM"
+        let monthPerson = Calendar.current.component(.month, from: personDate)
+
+        /// Endrer bakgrunnsfarge dersom personen er født i inneværende måned
+        if monthPerson == month {
+            return Color(.systemGreen)
+        }
+        return Color(.clear)
+    }
 
     var body: some View {
         HStack (spacing: 20) {
@@ -119,8 +142,7 @@ struct ShowPersonBirthday: View {
                     .overlay(Circle().stroke(Color.white, lineWidth: 1))
             }
             Text("\(person.dateOfBirth, formatter: Self.taskDateFormat)")
-                .background(Color(.green))
-                .foregroundColor(.black)
+                .background(farge)
                 .font(.custom("Courier", size: 16))
             Spacer()
             Text(person.firstName)
@@ -129,11 +151,12 @@ struct ShowPersonBirthday: View {
                 .frame(width: 30, height: 30, alignment: .leading)
         }
         .onLongPressGesture {
-             self.sendMail.toggle()
+            self.sendMail.toggle()
         }
         .sheet(isPresented: $sendMail) {
             PersonSendMail(person: self.person)
         }
     }
+
 }
 

@@ -30,6 +30,8 @@ struct FindPostalCode: View {
     @State private var pickerVisible = false
     @State private var message: String = ""
     @State private var alertIdentifier: AlertID?
+    var defaultWheelPickerItemHeight = 2
+
 
     var body: some View {
 

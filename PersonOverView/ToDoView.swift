@@ -93,9 +93,9 @@ var toDo_3 =
               2) 🟢 1000
               3) 🟢 2700
 35.  🟢 Lage func for henting fra "PostalCode" tabellen mhv. predicate
+36.  🟢 Markere personer som har fødselsdag i inneværende måned (.background )
 
 """
-
 var toDo_4 =
 """
 S e n e r e
