@@ -48,6 +48,10 @@ extension ImagePicker {
         }
 
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+
+            /// Nullstiller bildet før en velger et nytt
+            ImagePicker.shared.imageFileURL = nil
+
             /// Velger ut et bilde med sin url
             let urlOld = info[UIImagePickerController.InfoKey.imageURL] as! URL
 

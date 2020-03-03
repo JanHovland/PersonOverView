@@ -15,11 +15,16 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 Formattere telefonnummeret let municipality = municipality2.replacingOccurrences(of: " I ", with: " i ")
-  2. 🔴 Vise kart
-  3. 🔴 Sende melding
-  4. 🔴 Sende e-post
-  5. 🔴 Legge inn fødselsdaglisten fra Firebase
+  1. 🔴 Legg inn tildato et år frem i tid for å legge inn fødselsdagen
+  2. 🔴 Adressen må ha stor bokstav i hvert ord
+  3. 🔴 Slette bilde ved ny person (henger igjen fra forrige gang)
+  4. 🔴 Postkode kan ikke legges inn / endres (kan det være manglende refresh?)
+        a) Kan ikke slå opp postnummer før en ny person kalles opp igjen fra "Oversikt"
+  5. 🔴 Formattere telefonnummeret let municipality = municipality2.replacingOccurrences(of: " I ", with: " i ")
+  6. 🔴 Vise kart
+  7. 🔴 Sende melding
+  8. 🔴 Sende e-post
+  9. 🔴 Legge inn fødselsdaglisten fra Firebase
 """
 
 var toDo_2 =

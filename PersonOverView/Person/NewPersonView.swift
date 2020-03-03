@@ -134,7 +134,7 @@ struct NewPersonView: View {
             .navigationBarTitle(Text(newPerson), displayMode: .inline)
             .navigationBarItems(leading:
                 Button(action: {
-                    // Rutine for å returnere til personoversikten
+                    /// Rutine for å returnere til personoversikten
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     HStack {
@@ -207,6 +207,9 @@ struct NewPersonView: View {
         .modifier(DismissingKeyboard())
         /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
         .modifier(AdaptsToSoftwareKeyboard())
+        .onAppear {
+            self.image = nil
+        }
     }
 }
 
