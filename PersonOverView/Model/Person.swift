@@ -38,6 +38,7 @@ struct Person: Identifiable {
     var municipalityNumber: String = ""
     var municipality: String = ""
     var dateOfBirth = Date()
+    var dateOfBirth1: String = ""        /// format      26.02.20   ==   dd.MM.yy   0226 == MMdd
     var gender: Int = 0
     var image: UIImage?
 }
