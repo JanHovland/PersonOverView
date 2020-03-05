@@ -133,7 +133,7 @@ struct ShowPersonBirthday: View {
     }
 
     var body: some View {
-        HStack (spacing: 20) {
+        HStack (spacing: 5) {
             if person.image != nil {
                 Image(uiImage: person.image!)
                     .resizable()
@@ -146,6 +146,7 @@ struct ShowPersonBirthday: View {
                 .font(.custom("Courier", size: 16))
             Spacer()
             Text(person.firstName)
+                .font(Font.system(.callout))
             Image("message")
                 .resizable()
                 .frame(width: 30, height: 30, alignment: .leading)
