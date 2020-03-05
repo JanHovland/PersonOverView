@@ -15,16 +15,13 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 Legg inn tildato et år frem i tid for å legge inn fødselsdagen
-  2. 🔴 Adressen må ha stor bokstav i hvert ord
-  3. 🔴 Slette bilde ved ny person (henger igjen fra forrige gang)
-  4. 🔴 Postkode kan ikke legges inn / endres (kan det være manglende refresh?)
-        a) Kan ikke slå opp postnummer før en ny person kalles opp igjen fra "Oversikt"
-  5. 🔴 Formattere telefonnummeret let municipality = municipality2.replacingOccurrences(of: " I ", with: " i ")
-  6. 🔴 Vise kart
-  7. 🔴 Sende melding
-  8. 🔴 Sende e-post
-  9. 🔴 Legge inn fødselsdaglisten fra Firebase
+  1. 🔴 Slette bilde ved ny person (henger igjen fra forrige gang)
+  2. 🔴 Postkode kan ikke slå opp postnummer før en person kalles opp igjen fra "Oversikt"
+  3. 🔴 Formattere telefonnummeret let municipality = municipality2.replacingOccurrences(of: " I ", with: " i ")
+  4. 🔴 Vise kart
+  5. 🔴 Sende melding
+  6. 🔴 Sende e-post
+  7. 🔴 Legge inn fødselsdaglisten fra Firebase
 """
 
 var toDo_2 =
@@ -104,6 +101,9 @@ var toDo_3 =
 37 . 🔴 Benytte ActionSheet (se på slutten av "SettingsView")
         a) 🟢 "Slette bruker"
         b) 🟢 "Endre bruker"
+38.  🟢 Lagt inn var dateMonthDay: String = "" /// format 0226 == MMdd men ny func: MonthDay(date: Date) -> String
+39.  🟢 Adressen har stor bokstav i hvert ord ved .autocapitalization(.words)
+
 
 """
 var toDo_4 =
@@ -115,7 +115,8 @@ var toDo_5 =
 """
 1. Trykke på bildet istedet for på teksten i "SignUpView.swift"
    ... Bruk: .contextMenu??
-2. Legge inn søking på postnummer
+2. 🔴 Legg inn tildato et år frem i tid for å legge inn fødselsdagen
+
 """
 
 var toDo_6 =

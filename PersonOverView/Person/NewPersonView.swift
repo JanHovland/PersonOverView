@@ -32,6 +32,8 @@ struct NewPersonView: View {
     var genders = [NSLocalizedString("Man", comment: "PersonsOverView"),
                    NSLocalizedString("Woman", comment: "PersonsOverView")]
 
+    var oneYearAHead = Calendar.current.date(byAdding: .year, value: 2, to: Date())! as Date
+
     var body: some View {
         NavigationView {
             VStack {
@@ -80,7 +82,7 @@ struct NewPersonView: View {
                                    heading: NSLocalizedString("Address", comment: "PersonsOverView"),
                                    placeHolder: NSLocalizedString("Enter your address", comment: "PersonsOverView"),
                                    value: $address)
-                        .autocapitalization(.sentences)
+                        .autocapitalization(.words)
                     InputTextField(secure: false,
                                    heading: NSLocalizedString("Phone Number", comment: "PersonsOverView"),
                                    placeHolder: NSLocalizedString("Enter your phone number", comment: "PersonsOverView"),
@@ -213,4 +215,44 @@ struct NewPersonView: View {
         }
     }
 }
+
+/*
+        let monthsToAdd = 2
+        let daysToAdd = 1
+        let yearsToAdd = 1
+        let currentDate = Date()
+
+        var dateComponent = DateComponents()
+
+        dateComponent.month = monthsToAdd
+        dateComponent.day = daysToAdd
+        dateComponent.year = yearsToAdd
+
+        let futureDate = Calendar.current.date(byAdding: dateComponent, to: currentDate)
+
+        print(currentDate)
+        print(futureDate!)
+
+        var dateComponent = DateComponents()
+
+        dateComponent.month = monthsToAdd
+        dateComponent.day = daysToAdd
+        dateComponent.year = yearsToAdd
+
+        let futureDate = Calendar.current.date(byAdding: dateComponent, to: currentDate)
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ */
 

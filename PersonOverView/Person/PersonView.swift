@@ -90,7 +90,7 @@ struct PersonView : View {
                                heading: NSLocalizedString("Address", comment: "PersonsOverView"),
                                placeHolder: NSLocalizedString("Enter your address", comment: "PersonsOverView"),
                                value: $address)
-                    .autocapitalization(.sentences)
+                    .autocapitalization(.words)
                 InputTextField(secure: false,
                                heading: NSLocalizedString("Phone Number", comment: "PersonsOverView"),
                                placeHolder: NSLocalizedString("Enter your phone number", comment: "PersonsOverView"),
