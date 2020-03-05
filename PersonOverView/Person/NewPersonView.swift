@@ -167,6 +167,7 @@ struct NewPersonView: View {
                                                                                 municipalityNumber: self.municipalityNumber,
                                                                                 municipality: self.municipality,
                                                                                 dateOfBirth: self.dateOfBirth,
+                                                                                dateMonthDay: MonthDay(date: self.dateOfBirth),
                                                                                 gender: self.gender,
                                                                                 image: self.image)
                                                             CloudKitPerson.savePerson(item: person) { (result) in

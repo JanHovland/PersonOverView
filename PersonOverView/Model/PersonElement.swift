@@ -22,6 +22,7 @@ struct PersonElement: Identifiable {
     var municipalityNumber: String = ""
     var municipality: String = ""
     var dateOfBirth = Date()
+    var dateMonthDay: String = ""
     var gender: Int = 0
     var image: UIImage?
 }

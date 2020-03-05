@@ -74,8 +74,8 @@ struct PersonBirthday: View {
             case .success(let person):
                 self.persons.append(person)
                 /// Sortering
-                self.persons.sort(by: {$0.lastName < $1.lastName})
                 self.persons.sort(by: {$0.firstName < $1.firstName})
+                self.persons.sort(by: {$0.dateMonthDay < $1.dateMonthDay})
             case .failure(let err):
                 self.message = err.localizedDescription
                 self.alertIdentifier = AlertID(id: .first)
@@ -137,11 +137,12 @@ struct ShowPersonBirthday: View {
             if person.image != nil {
                 Image(uiImage: person.image!)
                     .resizable()
-                    .frame(width: 30, height: 30, alignment: .center)
+                    .frame(width: 40, height: 40, alignment: .center)
                     .clipShape(Circle())
                     .overlay(Circle().stroke(Color.white, lineWidth: 1))
             }
             Text("\(person.dateOfBirth, formatter: Self.taskDateFormat)")
+                .bold()
                 .background(farge)
                 .font(.custom("Courier", size: 16))
             Spacer()

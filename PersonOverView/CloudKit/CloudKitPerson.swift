@@ -37,6 +37,7 @@ struct CloudKitPerson {
         itemRecord["municipalityNumber"] = item.municipalityNumber as CKRecordValue
         itemRecord["municipality"] = item.municipality as CKRecordValue
         itemRecord["dateOfBirth"] = item.dateOfBirth as CKRecordValue
+        itemRecord["dateMonthDay"] = MonthDay(date: item.dateOfBirth) as CKRecordValue
         itemRecord["gender"] = item.gender as CKRecordValue
         if ImagePicker.shared.imageFileURL != nil {
             itemRecord["image"] = CKAsset(fileURL: ImagePicker.shared.imageFileURL!)
@@ -92,6 +93,10 @@ struct CloudKitPerson {
                     completion(.failure(CloudKitHelperError.castFailure))
                     return
                 }
+                guard let dateMonthDay = record["dateMonthDay"] as? String else {
+                    completion(.failure(CloudKitHelperError.castFailure))
+                    return
+                }
                 guard let gender = record["gender"] as? Int else {
                     completion(.failure(CloudKitHelperError.castFailure))
                     return
@@ -112,6 +117,7 @@ struct CloudKitPerson {
                                     municipalityNumber: municipalityNumber,
                                     municipality: municipality,
                                     dateOfBirth: dateOfBirth,
+                                    dateMonthDay: dateMonthDay,
                                     gender: gender)
 
                 completion(.success(person))
@@ -158,6 +164,7 @@ struct CloudKitPerson {
                                  "municipalityNumber",
                                  "municipality",
                                  "dateOfBirth",
+                                 "dateMonthDay",
                                  "gender",
                                  "image"]
         operation.resultsLimit = 50
@@ -174,6 +181,7 @@ struct CloudKitPerson {
                 guard let municipalityNumber = record["municipalityNumber"] as? String else { return }
                 guard let municipality = record["municipality"] as? String else { return }
                 guard let dateOfBirth = record["dateOfBirth"] as? Date else { return }
+                let dateMonthDay = MonthDay(date: dateOfBirth)
                 guard let gender = record["gender"] as? Int else { return }
 
                 if let image = record["image"], let imageAsset = image as? CKAsset {
@@ -190,6 +198,7 @@ struct CloudKitPerson {
                                             municipalityNumber: municipalityNumber,
                                             municipality: municipality,
                                             dateOfBirth: dateOfBirth,
+                                            dateMonthDay: dateMonthDay,
                                             gender: gender,
                                             image: image)
                         completion(.success(person))
@@ -207,6 +216,7 @@ struct CloudKitPerson {
                                         municipalityNumber: municipalityNumber,
                                         municipality: municipality,
                                         dateOfBirth: dateOfBirth,
+                                        dateMonthDay: dateMonthDay,
                                         gender: gender,
                                         image: nil)
                     completion(.success(person))
@@ -267,6 +277,7 @@ struct CloudKitPerson {
             record["municipalityNumber"] = item.municipalityNumber as CKRecordValue
             record["municipality"] = item.municipality as CKRecordValue
             record["dateOfBirth"] = item.dateOfBirth as CKRecordValue
+            record["dateMonthDay"] = MonthDay(date: item.dateOfBirth) as CKRecordValue
             record["gender"] = item.gender as CKRecordValue
             if ImagePicker.shared.imageFileURL != nil {
                 /// Her lagres det et komprimertbilde
@@ -324,6 +335,10 @@ struct CloudKitPerson {
                         completion(.failure(CloudKitHelperError.castFailure))
                         return
                     }
+                    guard let dateMonthDay = record["dateMonthDay"] as? String else {
+                        completion(.failure(CloudKitHelperError.castFailure))
+                        return
+                    }
                     guard let gender = record["gender"] as? Int else {
                         completion(.failure(CloudKitHelperError.castFailure))
                         return
@@ -339,6 +354,7 @@ struct CloudKitPerson {
                                                       municipalityNumber: municipalityNumber,
                                                       municipality: municipality,
                                                       dateOfBirth: dateOfBirth,
+                                                      dateMonthDay: dateMonthDay,
                                                       gender: gender)
 
                     completion(.success(personElement))
