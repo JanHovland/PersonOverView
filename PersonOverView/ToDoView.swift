@@ -15,13 +15,12 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 Slette bilde ved ny person (henger igjen fra forrige gang)
-  2. 🔴 Postkode kan ikke slå opp postnummer før en person kalles opp igjen fra "Oversikt"
-  3. 🔴 Formattere telefonnummeret let municipality = municipality2.replacingOccurrences(of: " I ", with: " i ")
-  4. 🔴 Vise kart
-  5. 🔴 Sende melding
-  6. 🔴 Sende e-post
-  7. 🔴 Legge inn fødselsdaglisten fra Firebase
+  1. 🔴 Postkode kan ikke slå opp postnummer før en person kalles opp igjen fra "Oversikt"
+  2. 🔴 Formattere telefonnummeret let municipality = municipality2.replacingOccurrences(of: " I ", with: " i ")
+  3. 🔴 Vise kart
+  4. 🔴 Sende melding
+  5. 🔴 Sende e-post
+  6. 🔴 Legge inn fødselsdaglisten fra Firebase
 """
 
 var toDo_2 =
@@ -103,6 +102,9 @@ var toDo_3 =
         b) 🟢 "Endre bruker"
 38.  🟢 Lagt inn var dateMonthDay: String = "" /// format 0226 == MMdd men ny func: MonthDay(date: Date) -> String
 39.  🟢 Adressen har stor bokstav i hvert ord ved .autocapitalization(.words)
+40.  🟢 Slette bilde ved ny person (henger igjen fra forrige gang)
+        Lagt inn i .onAppear: ImagePicker.shared.image = nil
+
 
 
 """

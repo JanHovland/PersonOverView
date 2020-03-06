@@ -211,7 +211,8 @@ struct NewPersonView: View {
         /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
         .modifier(AdaptsToSoftwareKeyboard())
         .onAppear {
-            self.image = nil
+            /// Sletter det sist valgte bildet fra ImagePicker
+            ImagePicker.shared.image = nil
         }
     }
 }

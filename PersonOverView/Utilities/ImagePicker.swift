@@ -20,13 +20,13 @@ class ImagePicker: ObservableObject {
     let view = ImagePicker.View()
     let coordinator = ImagePicker.Coordinator()
 
-    let willChange = PassthroughSubject<UIImage?, Never>()
+    let willChangeImage = PassthroughSubject<UIImage?, Never>()
     let willChangeImageFileURL = PassthroughSubject<URL?, Never>()
 
     @Published var image: UIImage? = nil {
         didSet {
             if image != nil {
-                willChange.send(image)
+                willChangeImage.send(image)
             }
         }
     }
