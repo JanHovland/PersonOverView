@@ -139,7 +139,7 @@ struct PersonView : View {
                 }
                 DatePicker(
                     selection: $dateOfBirth,
-                    in: ...Date(),
+                    // in: ...Date(),               /// - Dette gir ubegrenset dato range
                     displayedComponents: [.date],
                     label: {
                         Text(NSLocalizedString("Date of birth", comment: "PersonsOverView"))
