@@ -28,6 +28,7 @@ struct NewPersonView: View {
     @State private var dateOfBirth = Date()
     @State private var gender: Int = 0
     @State private var image: UIImage?
+    var dato = Date()
 
     var genders = [NSLocalizedString("Man", comment: "PersonsOverView"),
                    NSLocalizedString("Woman", comment: "PersonsOverView")]
@@ -119,7 +120,7 @@ struct NewPersonView: View {
                     }
                     DatePicker(
                         selection: $dateOfBirth,
-                        in: ...Date(),
+                        // in: ...dato,                  /// Uten in: -> ingen begrensning på datoutvalg
                         displayedComponents: [.date],
                         label: {
                             Text(NSLocalizedString("Date of birth", comment: "PersonsOverView"))

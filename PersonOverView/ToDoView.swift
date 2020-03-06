@@ -15,7 +15,7 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 Postkode kan ikke slå opp postnummer før en person kalles opp igjen fra "Oversikt"
+  1. 🔴 Postkode kan ikke slå opp postnummer for en ny person før denne personen kalles opp igjen fra "Oversikt"
   2. 🔴 Formattere telefonnummeret let municipality = municipality2.replacingOccurrences(of: " I ", with: " i ")
   3. 🔴 Vise kart
   4. 🔴 Sende melding
@@ -104,8 +104,8 @@ var toDo_3 =
 39.  🟢 Adressen har stor bokstav i hvert ord ved .autocapitalization(.words)
 40.  🟢 Slette bilde ved ny person (henger igjen fra forrige gang)
         Lagt inn i .onAppear: ImagePicker.shared.image = nil
-
-
+41.  🟢 Tatt bort in: for ubegrenset dato utvalg for å kunne legge inn fødselsdag (med dag og måned større enn dagens dag ogmåned).
+        Selv med dato frem i tid resettes dag og måned tilbake til dagens dag og måned
 
 """
 var toDo_4 =
@@ -117,8 +117,6 @@ var toDo_5 =
 """
 1. Trykke på bildet istedet for på teksten i "SignUpView.swift"
    ... Bruk: .contextMenu??
-2. 🔴 Legg inn tildato et år frem i tid for å legge inn fødselsdagen
-
 """
 
 var toDo_6 =
