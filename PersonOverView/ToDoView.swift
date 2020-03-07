@@ -15,12 +15,14 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 Postkode kan ikke slå opp postnummer for en ny person før denne personen kalles opp igjen fra "Oversikt"
-  2. 🔴 Formattere telefonnummeret let municipality = municipality2.replacingOccurrences(of: " I ", with: " i ")
-  3. 🔴 Vise kart
-  4. 🔴 Sende melding
-  5. 🔴 Sende e-post
-  6. 🔴 Legge inn fødselsdaglisten fra Firebase
+  1. 🔴 " Ny person" : Postkode kan ikke slå opp postnummer for en ny person før denne personen kalles opp igjen fra "Oversikt"
+        a) 🔴 Lage en ny funksjon som brukes når en skal legge inn en ny person med input "Sted" og returnerer "postnummer", "kommunenummer" og "kommunenavn"
+  2. 🔴 Få spørsmål om sletting i "Oversikt peroner"
+  3. 🔴 Formattere telefonnummeret let municipality = municipality2.replacingOccurrences(of: " I ", with: " i ")
+  4. 🔴 Vise kart
+  5. 🔴 Sende melding
+  6. 🔴 Sende e-post
+  7. 🔴 Legge inn fødselsdaglisten fra Firebase
 """
 
 var toDo_2 =

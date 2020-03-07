@@ -10,8 +10,8 @@ import SwiftUI
 import CloudKit
 
 var globalCityNumber = ""
-var globalmunicipalityNumber = ""
-var globalmunicipalityName = ""
+var globalMunicipalityNumber = ""
+var globalMunicipalityName = ""
 
 struct FindPostalCode: View {
 
@@ -21,7 +21,6 @@ struct FindPostalCode: View {
     var person: Person
 
     @Environment(\.presentationMode) var presentationMode
-    // @EnvironmentObject var postalCodeSettings: PostalCodeSettings
 
     @State private var postalCode = PostalCode()
     @State private var postalCodes = [PostalCode]()
@@ -68,8 +67,8 @@ struct FindPostalCode: View {
                                 self.postalCodes[self.selection].municipalityNumber.count > 0,
                                 self.postalCodes[self.selection].municipalityName.count > 0 {
                                 globalCityNumber = self.postalCodes[self.selection].postalNumber
-                                globalmunicipalityNumber = self.postalCodes[self.selection].municipalityNumber
-                                globalmunicipalityName = self.postalCodes[self.selection].municipalityName
+                                globalMunicipalityNumber = self.postalCodes[self.selection].municipalityNumber
+                                globalMunicipalityName = self.postalCodes[self.selection].municipalityName
                             }
                             self.pickerVisible.toggle()
                             // print(self.postalCodes[self.selection].postalNumber)
@@ -81,8 +80,8 @@ struct FindPostalCode: View {
                                                             phoneNumber: self.person.phoneNumber,
                                                             city: self.city,
                                                             cityNumber: globalCityNumber,
-                                                            municipalityNumber: globalmunicipalityNumber,
-                                                            municipality: globalmunicipalityName,
+                                                            municipalityNumber: globalMunicipalityNumber,
+                                                            municipality: globalMunicipalityName,
                                                             dateOfBirth: self.person.dateOfBirth,
                                                             gender: self.person.gender,
                                                             image: self.person.image)
@@ -98,8 +97,8 @@ struct FindPostalCode: View {
         .navigationBarTitle("PostalCode", displayMode: .inline)
         .onAppear {
             globalCityNumber = ""
-            globalmunicipalityNumber = ""
-            globalmunicipalityName = ""
+            globalMunicipalityNumber = ""
+            globalMunicipalityName = ""
             self.zoomPostalCode(value: self.city)
         }
         .alert(item: $alertIdentifier) { alert in
@@ -114,7 +113,7 @@ struct FindPostalCode: View {
         }
     }
 
-    /// Rutine for å finne postnummert
+    /// Rutine for å finne postnummeret
     func zoomPostalCode(value: String) {
         /// Sletter alt tidligere innhold
         self.postalCodes.removeAll()

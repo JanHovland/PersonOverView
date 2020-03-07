@@ -1,5 +1,5 @@
 //
-//  PersonOverView.swift
+//  PersonView.swift
 //  PersonView
 //
 //  Created by Jan Hovland on 11/11/2019.
@@ -40,12 +40,12 @@ struct PersonView : View {
 
     @State private var cityNumberNew: String = ""
 
-    var genders = [NSLocalizedString("Man", comment: "PersonsOverView"),
-                   NSLocalizedString("Woman", comment: "PersonsOverView")]
+    var genders = [NSLocalizedString("Man", comment: "PersonView"),
+                   NSLocalizedString("Woman", comment: "PersonView")]
 
     var body: some View {
         VStack {
-            HStack (alignment: .center, spacing: 90) { // 115) {
+            HStack (alignment: .center, spacing: 60) {  
                 ZStack {
                     Image(systemName: "person.circle")
                         .resizable()
@@ -59,9 +59,21 @@ struct PersonView : View {
                             .overlay(Circle().stroke(Color.white, lineWidth: 1))
                     }
                 }
-                Button(NSLocalizedString("Choose Profile Image", comment: "SignUpView")) {
+                Button(NSLocalizedString("Profile Image", comment: "PersonView")) {
                     self.showingImagePicker.toggle()
                 }
+                Button(NSLocalizedString("Refresh", comment: "PersonView")) {
+                    if globalCityNumber.count > 0 {
+                        self.cityNumber = globalCityNumber
+                    }
+                    if globalMunicipalityNumber.count > 0 {
+                        self.municipalityNumber = globalMunicipalityNumber
+                    }
+                    if globalMunicipalityName.count > 0 {
+                        self.municipality = globalMunicipalityName
+                    }
+                }
+
             }
             .padding(.top, 40)
             .sheet(isPresented: $showingImagePicker, content: {
@@ -71,40 +83,40 @@ struct PersonView : View {
             }
             Form {
                 InputTextField(secure: false,
-                               heading: NSLocalizedString("First name", comment: "PersonsOverView"),
-                               placeHolder: NSLocalizedString("Enter your first name", comment: "PersonsOverView"),
+                               heading: NSLocalizedString("First name", comment: "PersonView"),
+                               placeHolder: NSLocalizedString("Enter your first name", comment: "PersonView"),
                                value: $firstName)
                     .autocapitalization(.words)
                 InputTextField(secure: false,
-                               heading: NSLocalizedString("Last name", comment: "PersonsOverView"),
-                               placeHolder: NSLocalizedString("Enter your last name", comment: "PersonsOverView"),
+                               heading: NSLocalizedString("Last name", comment: "PersonView"),
+                               placeHolder: NSLocalizedString("Enter your last name", comment: "PersonView"),
                                value: $lastName)
                     .autocapitalization(.words)
                 InputTextField(secure: false,
-                               heading: NSLocalizedString("eMail", comment: "PersonsOverView"),
-                               placeHolder: NSLocalizedString("Enter your email address", comment: "PersonsOverView"),
+                               heading: NSLocalizedString("eMail", comment: "PersonView"),
+                               placeHolder: NSLocalizedString("Enter your email address", comment: "PersonView"),
                                value: $personEmail)
                     .keyboardType(.emailAddress)
                     .autocapitalization(.none)
                 InputTextField(secure: false,
-                               heading: NSLocalizedString("Address", comment: "PersonsOverView"),
-                               placeHolder: NSLocalizedString("Enter your address", comment: "PersonsOverView"),
+                               heading: NSLocalizedString("Address", comment: "PersonView"),
+                               placeHolder: NSLocalizedString("Enter your address", comment: "v"),
                                value: $address)
                     .autocapitalization(.words)
                 InputTextField(secure: false,
-                               heading: NSLocalizedString("Phone Number", comment: "PersonsOverView"),
-                               placeHolder: NSLocalizedString("Enter your phone number", comment: "PersonsOverView"),
+                               heading: NSLocalizedString("Phone Number", comment: "PersonView"),
+                               placeHolder: NSLocalizedString("Enter your phone number", comment: "PersonView"),
                                value: $phoneNumber)
                 // .keyboardType(.xxxxxxx)
                 HStack (alignment: .center, spacing: 0) {
                     InputTextField(secure: false,
-                                   heading: NSLocalizedString("Postalcode", comment: "PersonsOverView"),
-                                   placeHolder: NSLocalizedString("Enter number", comment: "PersonsOverView"),
+                                   heading: NSLocalizedString("Postalcode", comment: "PersonView"),
+                                   placeHolder: NSLocalizedString("Enter number", comment: "PersonView"),
                                    value: $cityNumber)
                         .keyboardType(.numberPad)
                     InputTextField(secure: false,
-                                   heading: NSLocalizedString("City", comment: "PersonsOverView"),
-                                   placeHolder: NSLocalizedString("Enter city", comment: "PersonsOverView"),
+                                   heading: NSLocalizedString("City", comment: "PersonView"),
+                                   placeHolder: NSLocalizedString("Enter city", comment: "PersonView"),
                                    value: $city)
                         .autocapitalization(.words)
                     VStack {
@@ -127,13 +139,13 @@ struct PersonView : View {
                 }
                 HStack (alignment: .center, spacing: 0) {
                     InputTextField(secure: false,
-                                   heading: NSLocalizedString("Municipality number", comment: "PersonsOverView"),
-                                   placeHolder: NSLocalizedString("Enter number", comment: "PersonsOverView"),
+                                   heading: NSLocalizedString("Municipality number", comment: "PersonView"),
+                                   placeHolder: NSLocalizedString("Enter number", comment: "PersonView"),
                                    value: $municipalityNumber)
                         .keyboardType(.numberPad)
                     InputTextField(secure: false,
-                                   heading: NSLocalizedString("Municipality", comment: "PersonsOverView"),
-                                   placeHolder: NSLocalizedString("Enter municipality", comment: "PersonsOverView"),
+                                   heading: NSLocalizedString("Municipality", comment: "PersonView"),
+                                   placeHolder: NSLocalizedString("Enter municipality", comment: "PersonView"),
                                    value: $municipality)
                         .autocapitalization(.words)
                 }
@@ -142,13 +154,13 @@ struct PersonView : View {
                     // in: ...Date(),               /// - Dette gir ubegrenset dato range
                     displayedComponents: [.date],
                     label: {
-                        Text(NSLocalizedString("Date of birth", comment: "PersonsOverView"))
+                        Text(NSLocalizedString("Date of birth", comment: "PersonView"))
                             .font(.footnote)
                             .foregroundColor(.accentColor)
                             .padding(-5)
                 })
                 /// Returning an integer 0 == "Man" 1 == "Women
-                InputGender(heading: NSLocalizedString("Gender", comment: "PersonsOverView"),
+                InputGender(heading: NSLocalizedString("Gender", comment: "PersonView"),
                             genders: genders,
                             value: $gender)
             }
@@ -160,11 +172,11 @@ struct PersonView : View {
         .navigationBarTitle("Person", displayMode: .inline)
         .navigationBarItems(trailing:
             Button(action: {
-                /// Her må verdiene fra globale variable:
-                if globalCityNumber.count > 0, globalmunicipalityNumber.count > 0, globalmunicipalityName.count > 0 {
+                /// Her legges inn verdiene fra globale variable:
+                if globalCityNumber.count > 0, globalMunicipalityNumber.count > 0, globalMunicipalityName.count > 0 {
                     self.cityNumber = globalCityNumber
-                    self.municipalityNumber = globalmunicipalityNumber
-                    self.municipality = globalmunicipalityName
+                    self.municipalityNumber = globalMunicipalityNumber
+                    self.municipality = globalMunicipalityName
                 }
 
                 self.ModifyPersonPersonView(recordID: self.recordID,
@@ -181,7 +193,7 @@ struct PersonView : View {
                                             gender: self.gender,
                                             image: self.image)
             }, label: {
-                Text(NSLocalizedString("Modify", comment: "PersonsOverView"))
+                Text(NSLocalizedString("Modify", comment: "PersonView"))
             })
         )
         .onAppear {
@@ -274,7 +286,7 @@ struct PersonView : View {
             switch result {
                 case .success:
                     let person = "'\(personItem.firstName)" + " \(personItem.lastName)'"
-                    let message1 =  NSLocalizedString("was modified", comment: "PersonsOverView")
+                    let message1 =  NSLocalizedString("was modified", comment: "PersonView")
                     self.message = person + " " + message1
                     self.alertIdentifier = AlertID(id: .second)
                 case .failure(let err):
@@ -284,7 +296,7 @@ struct PersonView : View {
             }
         }
         else {
-            self.message = NSLocalizedString("First name and last name must both contain a value.", comment: "PersonsOverView")
+            self.message = NSLocalizedString("First name and last name must both contain a value.", comment: "PersonView")
             self.alertIdentifier = AlertID(id: .first)
         }
     }

@@ -4,7 +4,8 @@
 /* SignUpView */
 "Added new user:" = "Ny bruker er registrert:";
 
-/* PersonsOverView */
+/* NewPersonView
+   PersonView */
 "Address" = "Addresse";
 
 /* NewPersonView
@@ -33,13 +34,15 @@
    UserMaintenanceView */
 "Choose Profile Image" = "Velg profilbilde";
 
-/* PersonsOverView */
+/* NewPersonView
+   PersonView */
 "City" = "Sted";
 
 /* SignInView */
 "Create a new account?" = "Opprett ny bruker?";
 
-/* PersonsOverView */
+/* NewPersonView
+   PersonView */
 "Date of birth" = "Fødselsdato";
 
 /* SignInView
@@ -61,7 +64,8 @@
 /* UserDeleteView */
 "deleted" = "slettet";
 
-/* PersonsOverView */
+/* NewPersonView
+   PersonView */
 "eMail" = "e-post";
 
 /* SignInView
@@ -70,28 +74,35 @@
    UserMaintenanceView */
 "eMail address" = "e-post";
 
-/* PersonsOverView */
+/* NewPersonView
+   PersonView */
 "Enter city" = "Legg inn sted";
 
-/* PersonsOverView */
+/* NewPersonView
+   PersonView */
 "Enter municipality" = "Legg inn kommune";
 
-/* PersonsOverView */
+/* NewPersonView
+   PersonView */
 "Enter number" = "Legg inn nummer";
 
-/* PersonsOverView */
+/* NewPersonView
+   v */
 "Enter your address" = "Legg inn adresse";
 
-/* PersonsOverView
+/* NewPersonView
+   PersonView
    SignInView
    SignUpView
    UserMaintenanceView */
 "Enter your email address" = "Legg inn e-post";
 
-/* PersonsOverView */
+/* NewPersonView
+   PersonView */
 "Enter your first name" = "Legg inn fornavn";
 
-/* PersonsOverView */
+/* NewPersonView
+   PersonView */
 "Enter your last name" = "Legg inn etternavn";
 
 /* SignUpView
@@ -103,46 +114,54 @@
    UserMaintenanceView */
 "Enter your password" = "Legg inn passord";
 
-/* PersonsOverView */
+/* NewPersonView
+   PersonView */
 "Enter your phone number" = "Legg inn telefonnummer";
 
 /* SignInView */
 "Exit" = "Retur";
 
-/* PersonsOverView */
+/* NewPersonView
+   PersonView */
 "First name" = "Fornavn";
 
 /* NewPersonView
-   PersonsOverView */
+   PersonsOverView
+   PersonView */
 "First name and last name must both contain a value." = "For- og etternavn må begge ha verdier.";
 
-/* PersonsOverView */
+/* NewPersonView
+   PersonView */
 "Gender" = "Kjønn";
 
 /* UserDeleteView
    UserMaintenanceView */
 "Hold and release to activate the actions below" = "Trykk hardt og slipp så for å utføre handlingene nedenfor";
 
-/* PersonsOverView */
+/* NewPersonView
+   PersonView */
 "Last name" = "Etternavn";
 
-/* PersonsOverView */
+/* NewPersonView
+   PersonView */
 "Man" = "Mann";
 
 /* UserDeleteView
    UserMaintenanceView */
 "Missing parameters" = "Manglende parametere";
 
-/* PersonsOverView */
+/* PersonView */
 "Modify" = "Endre";
 
 /* UserMaintenanceView */
 "Modify user" = "Endre bruker";
 
-/* PersonsOverView */
+/* NewPersonView
+   PersonView */
 "Municipality" = "Kommune";
 
-/* PersonsOverView */
+/* NewPersonView
+   PersonView */
 "Municipality number" = "Kommune nummer";
 
 /* SignInView */
@@ -184,19 +203,26 @@
 /* SignInView */
 "PersonsOverview" = "Oversikt personer";
 
-/* PersonsOverView */
+/* NewPersonView
+   PersonView */
 "Phone Number" = "Telefonnummer";
 
-/* PersonsOverView */
+/* NewPersonView
+   PersonView */
 "Postalcode" = "Postnummer";
 
 /* SettingView */
 "PostalCode" = "Poststed";
 
+/* NewPersonView
+   PersonView */
+"Profile Image" = "Profilbilde";
+
 /* SettingView */
 "Records deleted:" = "Poster slettet:";
 
-/* No comment provided by engineer. */
+/* NewPersonView
+   PersonView */
 "Refresh" = "Frisk opp";
 
 /* NewPersonView */
@@ -278,13 +304,15 @@
    UserMaintenanceView */
 "User maintenance" = "Bruker vedlikehold";
 
-/* PersonsOverView */
+/* PersonsOverView
+   PersonView */
 "was modified" = "ble endret";
 
 /* NewPersonView */
 "was saved" = "ble lagret";
 
-/* PersonsOverView */
+/* NewPersonView
+   PersonView */
 "Woman" = "Kvinne";
 
 /* SettingView */
