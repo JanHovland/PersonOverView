@@ -147,11 +147,12 @@ struct PersonView : View {
                                    heading: NSLocalizedString("Municipality", comment: "PersonView"),
                                    placeHolder: NSLocalizedString("Enter municipality", comment: "PersonView"),
                                    value: $municipality)
+                        .autocapitalization(.none)
                         .autocapitalization(.words)
                 }
                 DatePicker(
                     selection: $dateOfBirth,
-                    // in: ...Date(),               /// - Dette gir ubegrenset dato range
+                    // in: ...Date(),               /// - Dette gir ubegrenset dato utvalg
                     displayedComponents: [.date],
                     label: {
                         Text(NSLocalizedString("Date of birth", comment: "PersonView"))
@@ -197,6 +198,12 @@ struct PersonView : View {
             })
         )
         .onAppear {
+            globalCityNumber  = ""
+            globalMunicipalityNumber  = ""
+            globalMunicipalityName  = ""
+            globalCityNumberNewPerson = ""
+            globalMunicipalityNumberNewPerson = ""
+            globalMunicipalityNameNewPerson = ""
             self.ShowPerson()
         }
         .alert(item: $alertIdentifier) { alert in

@@ -318,6 +318,9 @@
 /* SettingView */
 "Yes" = "Ja";
 
+/* FindPostalCodeNewPerson */
+"You must enter a city" = "Du må inn et sted";
+
 /* SignInView
    SignUpiew
    UserDeleteView

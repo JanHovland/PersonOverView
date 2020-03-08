@@ -15,10 +15,8 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 " Ny person" : Postkode kan ikke slå opp postnummer for en ny person før denne personen kalles opp igjen fra "Oversikt"
-        a) 🔴 Lage en ny funksjon som brukes når en skal legge inn en ny person med input "Sted" og returnerer "postnummer", "kommunenummer" og "kommunenavn"
-  2. 🔴 Få spørsmål om sletting i "Oversikt peroner"
-  3. 🔴 Formattere telefonnummeret let municipality = municipality2.replacingOccurrences(of: " I ", with: " i ")
+  1. 🔴 Få spørsmål om sletting i "Oversikt peroner"
+  2. 🔴 Formattere telefonnummeret let municipality = municipality2.replacingOccurrences(of: " I ", with: " i ")
   4. 🔴 Vise kart
   5. 🔴 Sende melding
   6. 🔴 Sende e-post
@@ -97,17 +95,22 @@ var toDo_3 =
               1) 🟢 Alle 5093 (tid: 34 minutter)
               2) 🟢 1000
               3) 🟢 2700
-35.  🟢 Lage func for henting fra "PostalCode" tabellen mhv. predicate
-36.  🟢 Markere personer som har fødselsdag i inneværende måned (.background )
-37 . 🔴 Benytte ActionSheet (se på slutten av "SettingsView")
-        a) 🟢 "Slette bruker"
-        b) 🟢 "Endre bruker"
-38.  🟢 Lagt inn var dateMonthDay: String = "" /// format 0226 == MMdd men ny func: MonthDay(date: Date) -> String
-39.  🟢 Adressen har stor bokstav i hvert ord ved .autocapitalization(.words)
-40.  🟢 Slette bilde ved ny person (henger igjen fra forrige gang)
-        Lagt inn i .onAppear: ImagePicker.shared.image = nil
-41.  🟢 Tatt bort in: for ubegrenset dato utvalg for å kunne legge inn fødselsdag (med dag og måned større enn dagens dag ogmåned).
-        Selv med dato frem i tid resettes dag og måned tilbake til dagens dag og måned
+ 35.  🟢 Lage func for henting fra "PostalCode" tabellen mhv. predicate
+ 36.  🟢 Markere personer som har fødselsdag i inneværende måned (.background )
+ 37 . 🟢 Benytte ActionSheet (se på slutten av "SettingsView")
+         a) 🟢 "Slette bruker"
+         b) 🟢 "Endre bruker"
+ 38.  🟢 Lagt inn var dateMonthDay: String = "" /// format 0226 == MMdd men ny func: MonthDay(date: Date) -> String
+ 39.  🟢 Adressen har stor bokstav i hvert ord ved .autocapitalization(.words)
+ 40.  🟢 Slette bilde ved ny person (henger igjen fra forrige gang)
+         Lagt inn i .onAppear: ImagePicker.shared.image = nil
+ 41.  🟢 Tatt bort in: for ubegrenset dato utvalg for å kunne legge inn fødselsdag (med dag og måned større enn dagens dag ogmåned).
+         Selv med dato frem i tid resettes dag og måned tilbake til dagens dag og måned
+ 42.  🟢 "Ny person" : Postkode kan ikke slå opp postnummer for en ny person før denne personen kalles opp igjen fra "Oversikt"
+         a) 🟢 Laget funksjon ("FindPostalCodeNewPerson") med nput "Sted" og returnerer "postnummer", "kommunenummer" og "kommunenavn"
+         b) 🟢 "Oppdater person": Nå oppdateres kun når en trykker "Endre" (i dag lagres endringen når en endrer postnummer)
+         c) 🟢 Legg inn avslutning ("Chevron") på "FindPostalCodeNewPerson"
+         d) 🟢 Kun valg når Cityname.count > 0
 
 """
 var toDo_4 =

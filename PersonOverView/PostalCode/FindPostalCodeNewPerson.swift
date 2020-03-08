@@ -66,6 +66,8 @@ struct FindPostalCodeNewPerson: View {
                                 globalCityNumberNewPerson = self.postalCodes[self.selection].postalNumber
                                 globalMunicipalityNumberNewPerson = self.postalCodes[self.selection].municipalityNumber
                                 globalMunicipalityNameNewPerson = self.postalCodes[self.selection].municipalityName
+                                globalMunicipalityNameNewPerson = globalMunicipalityNameNewPerson.lowercased()
+                                globalMunicipalityNameNewPerson = globalMunicipalityNameNewPerson.capitalizingFirstLetter()
                             }
                             self.pickerVisible.toggle()
                             self.selection = 0
@@ -81,7 +83,12 @@ struct FindPostalCodeNewPerson: View {
             globalCityNumberNewPerson = ""
             globalMunicipalityNumberNewPerson = ""
             globalMunicipalityNameNewPerson = ""
-            self.zoomPostalCode(value: self.city)
+            if self.city.count > 0 {
+                self.zoomPostalCode(value: self.city)
+            } else {
+                self.message = NSLocalizedString("You must enter a city", comment: "FindPostalCodeNewPerson")
+                self.alertIdentifier = AlertID(id: .first)
+            }
         }
         .alert(item: $alertIdentifier) { alert in
             switch alert.id {
@@ -93,6 +100,23 @@ struct FindPostalCodeNewPerson: View {
                 return Alert(title: Text(self.message))
             }
         }
+        .overlay(
+            HStack {
+                Spacer()
+                VStack {
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "chevron.down.circle.fill")
+                            .font(.largeTitle)
+                            .foregroundColor(.none)
+                    })
+                        .padding(.trailing, 20)
+                        .padding(.top, 47)
+                    Spacer()
+                }
+            }
+        )
     }
 
     /// Rutine for å finne postnummeret

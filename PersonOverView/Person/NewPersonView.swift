@@ -138,6 +138,7 @@ struct NewPersonView: View {
                                        heading: NSLocalizedString("Municipality", comment: "NewPersonView"),
                                        placeHolder: NSLocalizedString("Enter municipality", comment: "NewPersonView"),
                                        value: $municipality)
+                            .autocapitalization(.none)
                             .autocapitalization(.words)
                     }
                     DatePicker(
@@ -237,6 +238,9 @@ struct NewPersonView: View {
             /// Sletter det sist valgte bildet fra ImagePicker
             ImagePicker.shared.image = nil
             /// Resetter de globale variablene
+            globalCityNumber  = ""
+            globalMunicipalityNumber  = ""
+            globalMunicipalityName  = ""
             globalCityNumberNewPerson = ""
             globalMunicipalityNumberNewPerson = ""
             globalMunicipalityNameNewPerson = ""
