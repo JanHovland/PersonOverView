@@ -17,14 +17,16 @@ struct PersonsOverView: View {
     }
 
     @Environment(\.presentationMode) var presentationMode
-    // @EnvironmentObject var postalCodeSettings: PostalCodeSettings
 
     @State private var message: String = ""
     @State private var searchText: String = ""
     @State private var alertIdentifier: AlertID?
     @State private var persons = [Person]()
     @State private var newPerson = false
+    @State private var deletePersonActinSheet = false
     @State private var personsOverview = NSLocalizedString("Persons overview", comment: "PersonsOverView")
+    @State private var indexSetDelete = IndexSet()
+    @State private var recordID: CKRecord.ID?
 
     var body: some View {
         NavigationView {
@@ -33,31 +35,60 @@ struct PersonsOverView: View {
                 List  {
                     /// Søker etter personer som inneholder $searchText i for- eller etternavnet
                     ForEach(persons.filter({ self.searchText.isEmpty ||
-                                             $0.firstName.localizedStandardContains(self.searchText) ||
-                                             $0.lastName.localizedStandardContains (self.searchText)    })) {
-                        person in
+                        $0.firstName.localizedStandardContains(self.searchText) ||
+                        $0.lastName.localizedStandardContains (self.searchText)    })) {
+                            person in
 
-                        NavigationLink(destination: PersonView(person: person)) {
-                            ShowPersons(person: person)
-                        }
-                        // self.postalCodeSettings.postalName = "Varhaug i Hå kommune"
-                    }
-                    /// Sletter  valgt person og oppdaterer CliudKit
-                    .onDelete { (indexSet) in
-                        guard let recordID = self.persons[indexSet.first!].recordID else { return }
-                        CloudKitPerson.deletePerson(recordID: recordID) { (result) in
-                            switch result {
-                            case .success :
-                                self.message = NSLocalizedString("Successfully deleted a person", comment: "PersonsOverView")
-                                self.alertIdentifier = AlertID(id: .first)
-                            case .failure(let err):
-                                self.message = err.localizedDescription
-                                self.alertIdentifier = AlertID(id: .first)
+                            NavigationLink(destination: PersonView(person: person)) {
+                                ShowPersons(person: person)
                             }
-                        }
-                        /// Sletter den valgte raden
-                        self.persons.remove(atOffsets: indexSet)
+                            // self.postalCodeSettings.postalName = "Varhaug i Hå kommune"
                     }
+                        /// Sletter  valgt person og oppdaterer CliudKit
+                        .onDelete { (indexSet) in
+                            self.indexSetDelete = indexSet
+                            self.recordID = self.persons[indexSet.first!].recordID
+                            self.deletePersonActinSheet = true
+                    }
+                    .actionSheet(isPresented: $deletePersonActinSheet) {
+                        ActionSheet(title: Text(NSLocalizedString("Delete person", comment: "PersonsOverView")),
+                                    message: Text(NSLocalizedString("Are you sure you want to delete this person?", comment: "PersonsOverView")),
+                                    buttons: [.default(Text(NSLocalizedString("No", comment: "PersonsOverView")), action: {
+
+                                    }),
+                                              .destructive(Text("Delete this person"), action: {
+                                                CloudKitPerson.deletePerson(recordID: self.recordID!) { (result) in
+                                                    switch result {
+                                                    case .success :
+                                                        self.message = NSLocalizedString("Successfully deleted a person", comment: "PersonsOverView")
+                                                        self.alertIdentifier = AlertID(id: .first)
+                                                    case .failure(let err):
+                                                        self.message = err.localizedDescription
+                                                        self.alertIdentifier = AlertID(id: .first)
+                                                    }
+                                                }
+                                                /// Sletter den valgte raden
+                                                self.persons.remove(atOffsets: self.indexSetDelete)
+                                              }),
+                                              .cancel()
+                        ])
+                    }
+
+                    ///                    .onDelete { (indexSet) in
+                    //                        guard let recordID = self.persons[indexSet.first!].recordID else { return }
+                    //                        CloudKitPerson.deletePerson(recordID: recordID) { (result) in
+                    //                            switch result {
+                    //                            case .success :
+                    //                                self.message = NSLocalizedString("Successfully deleted a person", comment: "PersonsOverView")
+                    //                                self.alertIdentifier = AlertID(id: .first)
+                    //                            case .failure(let err):
+                    //                                self.message = err.localizedDescription
+                    //                                self.alertIdentifier = AlertID(id: .first)
+                    //                            }
+                    //                        }
+                    //                        /// Sletter den valgte raden
+                    //                        self.persons.remove(atOffsets: indexSet)
+                    //                    }
                 }
                 .listStyle(GroupedListStyle())
             }
@@ -136,49 +167,49 @@ struct PersonsOverView: View {
     }
 }
 
-    /// Et eget View for å vise person detail view
-    struct ShowPersons: View {
-        static let taskDateFormat: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.dateStyle = .long
-            return formatter
-        }()
-        var person: Person
-        var body: some View {
-            HStack(spacing: 10) {
-                if person.image != nil {
-                    Image(uiImage: person.image!)
-                        .resizable()
-                        .frame(width: 50, height: 50, alignment: .center)
-                        .clipShape(Circle())
-                        .overlay(Circle().stroke(Color.white, lineWidth: 1))
-                }
-                VStack (alignment: .leading, spacing: 5) {
-                    HStack {
-                        Text(person.firstName)
-                        .font(.custom("system", size: 19)).bold()
-                        Text(person.lastName)
-                        .font(.custom("system", size: 19)).bold()
-                    }
-                    Text("\(person.dateOfBirth, formatter: Self.taskDateFormat)")
-                    .font(.custom("system", size: 17))
-                    HStack {
-                        Text(person.address)
-                            .font(.custom("system", size: 17))
-                    }
-                    HStack {
-                        Text(person.cityNumber)
-                        Text(person.city)
-                    }
-                    .font(.custom("system", size: 17))
-                }
-                .padding(.top, 10)
+/// Et eget View for å vise person detail view
+struct ShowPersons: View {
+    static let taskDateFormat: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        return formatter
+    }()
+    var person: Person
+    var body: some View {
+        HStack(spacing: 10) {
+            if person.image != nil {
+                Image(uiImage: person.image!)
+                    .resizable()
+                    .frame(width: 50, height: 50, alignment: .center)
+                    .clipShape(Circle())
+                    .overlay(Circle().stroke(Color.white, lineWidth: 1))
             }
+            VStack (alignment: .leading, spacing: 5) {
+                HStack {
+                    Text(person.firstName)
+                        .font(.custom("system", size: 19)).bold()
+                    Text(person.lastName)
+                        .font(.custom("system", size: 19)).bold()
+                }
+                Text("\(person.dateOfBirth, formatter: Self.taskDateFormat)")
+                    .font(.custom("system", size: 17))
+                HStack {
+                    Text(person.address)
+                        .font(.custom("system", size: 17))
+                }
+                HStack {
+                    Text(person.cityNumber)
+                    Text(person.city)
+                }
+                .font(.custom("system", size: 17))
+            }
+            .padding(.top, 10)
+        }
             /// Ta bort tastaturet når en klikker utenfor feltet
             .modifier(DismissingKeyboard())
             /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
             .modifier(AdaptsToSoftwareKeyboard())
-        }
     }
+}
 
 

@@ -15,12 +15,11 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 Få spørsmål om sletting i "Oversikt peroner"
-  2. 🔴 Formattere telefonnummeret let municipality = municipality2.replacingOccurrences(of: " I ", with: " i ")
-  4. 🔴 Vise kart
-  5. 🔴 Sende melding
-  6. 🔴 Sende e-post
-  7. 🔴 Legge inn fødselsdaglisten fra Firebase
+  1. 🔴 Formattere telefonnummeret let municipality = municipality2.replacingOccurrences(of: " I ", with: " i ")
+  2. 🔴 Vise kart
+  3. 🔴 Sende melding
+  4. 🔴 Sende e-post
+  5. 🔴 Legge inn fødselsdaglisten fra Firebase
 """
 
 var toDo_2 =
@@ -111,6 +110,8 @@ var toDo_3 =
          b) 🟢 "Oppdater person": Nå oppdateres kun når en trykker "Endre" (i dag lagres endringen når en endrer postnummer)
          c) 🟢 Legg inn avslutning ("Chevron") på "FindPostalCodeNewPerson"
          d) 🟢 Kun valg når Cityname.count > 0
+ 43.  🟢 Får nå spørsmål om sletting i "Oversikt personer"
+         a) 🟢 Benytter nå ActionSheet
 
 """
 var toDo_4 =
