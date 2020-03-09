@@ -286,10 +286,21 @@ struct NewPersonView: View {
 
         /// Fjerne eventuelle mellomrom
 
-        let phone1 = phone.replacingOccurrences(of: "+47", with: "")
-        let phone2 = phone1.replacingOccurrences(of: " ", with: "")
+        print("phone = \(phone)")
 
-        print("phone2 = \(phone2 )")
+        let phone1 = phone.replacingOccurrences(of: "+47", with: "")
+        print("phone1 = \(phone1)")
+
+        let phone2 = phone1.replacingOccurrences(of: " ", with: "")
+        print("phone2 = \(phone2)")
+
+        /*
+        phone2 = 12345678
+        phone2 = 12345678
+        phone2 = 12345678
+        phone2 = +4712345678
+        phone = +47 +47  + 47  1 23 45 678
+        */
 
         /// Dersom lengden er 8 tegn --->  +47 123 45 6789
         if phone2.count == 8 {
