@@ -310,7 +310,7 @@ struct NewPersonView: View {
             let index5 = phone2.index(phone2.startIndex, offsetBy: 5)
 
             /// phoneNumer er delklarert slik: @State private var phoneNumber: String = ""
-            phoneNumber = "+47 " + String(phone[...index2]) + " " + String(phone[index3...index4]) + " " + String(phone[index5...])
+            phoneNumber = "+47 " + String(phone2[...index2]) + " " + String(phone2[index3...index4]) + " " + String(phone2[index5...])
         } else {
             print("phone = \(phone)")
         }
