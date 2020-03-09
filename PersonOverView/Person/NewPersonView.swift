@@ -94,10 +94,27 @@ struct NewPersonView: View {
                                    placeHolder: NSLocalizedString("Enter your address", comment: "NewPersonView"),
                                    value: $address)
                         .autocapitalization(.words)
-                    InputTextField(secure: false,
-                                   heading: NSLocalizedString("Phone Number", comment: "NewPersonView"),
-                                   placeHolder: NSLocalizedString("Enter your phone number", comment: "NewPersonView"),
-                                   value: $phoneNumber)
+//                    InputTextField(secure: false,
+//                                   heading: NSLocalizedString("Phone Number", comment: "NewPersonView"),
+//                                   placeHolder: NSLocalizedString("Enter your phone number", comment: "NewPersonView"),
+//                                   value: $phoneNumber)
+
+                    ZStack {
+                        VStack (alignment: .leading) {
+                            Text(NSLocalizedString("Phone Number", comment: "NewPersonView"))
+                                .padding(-5)
+                                .font(Font.caption.weight(.semibold))
+                                .foregroundColor(.accentColor)
+                            TextField(NSLocalizedString("Enter your phone number", comment: "NewPersonView"),
+                                      text: $phoneNumber,
+                                      onEditingChanged: { _ in self.formatPhone(phone: self.phoneNumber) } /// Kommer når en går inn i et felt eller forlater det
+                                ///     onCommit: { print("commit") } /// Kommer når en trykker "retur" på tastatur
+                                     )
+                                .padding(-7)
+                                .padding(.horizontal, 15)
+                        }
+                    }
+
                     // .keyboardType(.xxxxxxx)
                     HStack (alignment: .center, spacing: 0) {
                         InputTextField(secure: false,
@@ -262,6 +279,18 @@ struct NewPersonView: View {
                 }
             }
         )
+
+    }
+
+    func formatPhone(phone: String) {
+        let formattedPhonenumber = ""
+
+        if formattedPhonenumber.count > 0 {
+            phoneNumber = formattedPhonenumber  /// phoneNumer er delklarert slik: @State private var phoneNumber: String = ""
+        } else {
+            phoneNumber = phone
+        }
+        print("\(phoneNumber )")
     }
 
 }

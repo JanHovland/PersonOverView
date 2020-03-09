@@ -36,11 +36,11 @@ struct InputTextField: View {
                 } else {
                     TextField(placeHolder,
                               text: $value
-//                              onEditingChanged: { _ in print("changed") }, /// Kommer når en går inn i et felt eller forlater det
+//                              onEditingChanged: { _ in self.formatPhone(phone: self.value) } /// Kommer når en går inn i et felt eller forlater det
 //                              onCommit: { print("commit") } /// Kommer når en trykker "retur" på tastatur
                     )
-                        .padding(-7)
-                        .padding(.horizontal, 15)
+                    .padding(-7)
+                    .padding(.horizontal, 15)
                 }
             }
         }
@@ -48,5 +48,7 @@ struct InputTextField: View {
             self.showPassword = UserDefaults.standard.bool(forKey: "showPassword")
         }
     }
+
+
 }
 
