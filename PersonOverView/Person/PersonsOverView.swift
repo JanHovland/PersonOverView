@@ -140,8 +140,6 @@ struct PersonsOverView: View {
             case .success(let person):
                 self.persons.append(person)
                 /// Sortering
-                self.persons.sort(by: {$0.dateMonthDay < $1.dateMonthDay})
-                self.persons.sort(by: {$0.lastName < $1.lastName})
                 self.persons.sort(by: {$0.firstName < $1.firstName})
             case .failure(let err):
                 self.message = err.localizedDescription

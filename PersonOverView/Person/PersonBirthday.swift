@@ -133,13 +133,18 @@ struct ShowPersonBirthday: View {
     }
 
     var body: some View {
-        HStack (spacing: 5) {
+        HStack (spacing: 7) {
             if person.image != nil {
                 Image(uiImage: person.image!)
                     .resizable()
-                    .frame(width: 40, height: 40, alignment: .center)
+                    .frame(width: 30, height: 30, alignment: .center)
                     .clipShape(Circle())
                     .overlay(Circle().stroke(Color.white, lineWidth: 1))
+            } else {
+                Image(systemName: "person.circle")
+                    .resizable()
+                    .font(.system(size: 16, weight: .ultraLight))
+                    .frame(width: 30, height: 30, alignment: .center)
             }
             Text("\(person.dateOfBirth, formatter: Self.taskDateFormat)")
                 .bold()
