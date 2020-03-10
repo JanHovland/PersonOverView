@@ -268,6 +268,8 @@ struct NewPersonView: View {
             self.showRefreshButton = false
             /// Sletter det sist valgte bildet fra ImagePicker
             ImagePicker.shared.image = nil
+            /// Sletter også selve image
+            self.image = nil
             /// Resetter de globale variablene
             globalCityNumber  = ""
             globalMunicipalityNumber  = ""

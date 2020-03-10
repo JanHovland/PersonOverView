@@ -15,10 +15,10 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 Vise kart
-  2. 🔴 Sende melding
-  3. 🔴 Sende e-post
-  4. 🔴 Legge inn fødselsdaglisten fra Firebase
+  2. 🔴 Vise kart
+  3. 🔴 Sende melding
+  4. 🔴 Sende e-post
+  5. 🔴 Legge inn fødselsdaglisten fra Firebase
 """
 
 var toDo_2 =
@@ -117,6 +117,8 @@ var toDo_3 =
          b) 🟢 "Vedlikehold"
  46.  🟢 Kan nå trykke flere ganger på "Lagre".
          a) 🟢 Bytter "Lagre" til "Endre" etter å ha valgt "Lagre" for andre gang
+ 47.  🟢 "NewPersonView" : Hvis ikke det er valgt bilde, og trykker "Lagre", så vises det et blankt bilde i "Oversikt"
+         a) 🟢 Hvis det er valgt et bilde, vises dette korrekt i "Oversikt"
 
 """
 var toDo_4 =
