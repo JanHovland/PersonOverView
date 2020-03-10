@@ -283,62 +283,27 @@ struct NewPersonView: View {
     }
 
     func formatPhone(phone: String) {
-
-        /// Fjerne eventuelle mellomrom
-
-        print("phone = \(phone)")
-
+        /// Fjerne eventuelle "+47" og mellomrom
         let phone1 = phone.replacingOccurrences(of: "+47", with: "")
-        print("phone1 = \(phone1)")
-
         let phone2 = phone1.replacingOccurrences(of: " ", with: "")
-        print("phone2 = \(phone2)")
-
-        /*
-        phone2 = 12345678
-        phone2 = 12345678
-        phone2 = 12345678
-        phone2 = +4712345678
-        phone = +47 +47  + 47  1 23 45 678
-        */
-
         /// Dersom lengden er 8 tegn --->  +47 123 45 6789
-        if phone2.count == 8 {
+        if phone2.count == 8, phone2.isNumber() {
             let index2 = phone2.index(phone2.startIndex, offsetBy: 2)
             let index3 = phone2.index(phone2.startIndex, offsetBy: 3)
             let index4 = phone2.index(phone2.startIndex, offsetBy: 4)
             let index5 = phone2.index(phone2.startIndex, offsetBy: 5)
-
             /// phoneNumer er delklarert slik: @State private var phoneNumber: String = ""
             phoneNumber = "+47 " + String(phone2[...index2]) + " " + String(phone2[index3...index4]) + " " + String(phone2[index5...])
         } else {
-            print("phone = \(phone)")
+            phoneNumber = phone
         }
     }
 
 }
 
-/*
-
-let municipality = municipality2.replacingOccurrences(of: " I ", with: " i ")
-
- if phone.count > 0 {
-     if phone.count == 8 {
-
-         // Check that there are no spaces
-         if (isNumeric(string: phone)) {
-
-             let index2 = phone.index(phone.startIndex, offsetBy: 2)
-             let index3 = phone.index(phone.startIndex, offsetBy: 3)
-             let index4 = phone.index(phone.startIndex, offsetBy: 4)
-             let index5 = phone.index(phone.startIndex, offsetBy: 5)
-
-             return "+47 " +
-                 String(phone[...index2]) + " " +
-                 String(phone[index3...index4]) + " " +
-                 String(phone[index5...])
-         } else {
-             showAlert()
-         }
-
- */
+extension NSString  {
+    func isNumber() -> Bool {
+        let str: String = self as String
+        return Int(str) != nil || Double(str) != nil
+    }
+}
