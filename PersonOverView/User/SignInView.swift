@@ -215,14 +215,16 @@ struct SignInView : View {
                                     value: $user.name)
                         .autocapitalization(.words)
                     Spacer(minLength: 22)
-                    InputTextField(secure: false,
+                    InputTextField(checkPhone: false,
+                                   secure: false,
                                    heading: NSLocalizedString("eMail address", comment: "SignInView"),
                                    placeHolder: NSLocalizedString("Enter your email address", comment: "SignInView"),
                                    value: $user.email)
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
                     Spacer(minLength: 20)
-                    InputTextField(secure: true,
+                    InputTextField(checkPhone: false,
+                                   secure: true,
                                    heading: NSLocalizedString("Password",  comment: "SignInView"),
                                    placeHolder: NSLocalizedString("Enter your password", comment: "SignInView"),
                                    value: $user.password)

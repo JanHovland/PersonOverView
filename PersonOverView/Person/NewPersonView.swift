@@ -73,56 +73,45 @@ struct NewPersonView: View {
                     self.image = image
                 }
                 Form {
-                    InputTextField(secure: false,
+                    InputTextField(checkPhone: false,
+                                   secure: false,
                                    heading: NSLocalizedString("First name", comment: "NewPersonView"),
                                    placeHolder: NSLocalizedString("Enter your first name", comment: "NewPersonView"),
                                    value: $firstName)
                         .autocapitalization(.words)
-                    InputTextField(secure: false,
+                    InputTextField(checkPhone: false,
+                                   secure: false,
                                    heading: NSLocalizedString("Last name", comment: "NewPersonView"),
                                    placeHolder: NSLocalizedString("Enter your last name", comment: "NewPersonView"),
                                    value: $lastName)
                         .autocapitalization(.words)
-                    InputTextField(secure: false,
+                    InputTextField(checkPhone: false,
+                                   secure: false,
                                    heading: NSLocalizedString("eMail", comment: "NewPersonView"),
                                    placeHolder: NSLocalizedString("Enter your email address", comment: "NewPersonView"),
                                    value: $personEmail)
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
-                    InputTextField(secure: false,
+                    InputTextField(checkPhone: false,
+                                   secure: false,
                                    heading: NSLocalizedString("Address", comment: "NewPersonView"),
                                    placeHolder: NSLocalizedString("Enter your address", comment: "NewPersonView"),
                                    value: $address)
                         .autocapitalization(.words)
-//                    InputTextField(secure: false,
-//                                   heading: NSLocalizedString("Phone Number", comment: "NewPersonView"),
-//                                   placeHolder: NSLocalizedString("Enter your phone number", comment: "NewPersonView"),
-//                                   value: $phoneNumber)
-
-                    ZStack {
-                        VStack (alignment: .leading) {
-                            Text(NSLocalizedString("Phone Number", comment: "NewPersonView"))
-                                .padding(-5)
-                                .font(Font.caption.weight(.semibold))
-                                .foregroundColor(.accentColor)
-                            TextField(NSLocalizedString("Enter your phone number", comment: "NewPersonView"),
-                                      text: $phoneNumber,
-                                      onEditingChanged: { _ in self.formatPhone(phone: self.phoneNumber) } /// Kommer når en går inn i et felt eller forlater det
-                                ///   onCommit: { self.formatPhone(phone: self.phoneNumber) }                                                            /// Kommer når en trykker "retur" på tastatur
-                                     )
-                                .padding(-7)
-                                .padding(.horizontal, 15)
-                        }
-                    }
-
-                    // .keyboardType(.xxxxxxx)
+                    InputTextField(checkPhone: true,
+                                   secure: false,
+                                   heading: NSLocalizedString("Phone Number", comment: "NewPersonView"),
+                                   placeHolder: NSLocalizedString("Enter your phone number", comment: "NewPersonView"),
+                                   value: $phoneNumber)
                     HStack (alignment: .center, spacing: 0) {
-                        InputTextField(secure: false,
+                        InputTextField(checkPhone: false,
+                                       secure: false,
                                        heading: NSLocalizedString("Postalcode", comment: "NewPersonView"),
                                        placeHolder: NSLocalizedString("Enter number", comment: "NewPersonView"),
                                        value: $cityNumber)
                             .keyboardType(.numberPad)
-                        InputTextField(secure: false,
+                        InputTextField(checkPhone: false,
+                                       secure: false,
                                        heading: NSLocalizedString("City", comment: "NewPersonView"),
                                        placeHolder: NSLocalizedString("Enter city", comment: "NewPersonView"),
                                        value: $city)
@@ -146,12 +135,14 @@ struct NewPersonView: View {
                             }
                     }
                     HStack (alignment: .center, spacing: 0) {
-                        InputTextField(secure: false,
+                        InputTextField(checkPhone: false,
+                                       secure: false,
                                        heading: NSLocalizedString("Municipality number", comment: "NewPersonView"),
                                        placeHolder: NSLocalizedString("Enter number", comment: "NewPersonView"),
                                        value: $municipalityNumber)
                             .keyboardType(.numberPad)
-                        InputTextField(secure: false,
+                        InputTextField(checkPhone: false,
+                                       secure: false,
                                        heading: NSLocalizedString("Municipality", comment: "NewPersonView"),
                                        placeHolder: NSLocalizedString("Enter municipality", comment: "NewPersonView"),
                                        value: $municipality)
@@ -282,28 +273,5 @@ struct NewPersonView: View {
 
     }
 
-    func formatPhone(phone: String) {
-        /// Fjerne eventuelle "+47" og mellomrom
-        let phone1 = phone.replacingOccurrences(of: "+47", with: "")
-        let phone2 = phone1.replacingOccurrences(of: " ", with: "")
-        /// Dersom lengden er 8 tegn --->  +47 123 45 6789
-        if phone2.count == 8, phone2.isNumber() {
-            let index2 = phone2.index(phone2.startIndex, offsetBy: 2)
-            let index3 = phone2.index(phone2.startIndex, offsetBy: 3)
-            let index4 = phone2.index(phone2.startIndex, offsetBy: 4)
-            let index5 = phone2.index(phone2.startIndex, offsetBy: 5)
-            /// phoneNumer er delklarert slik: @State private var phoneNumber: String = ""
-            phoneNumber = "+47 " + String(phone2[...index2]) + " " + String(phone2[index3...index4]) + " " + String(phone2[index5...])
-        } else {
-            phoneNumber = phone
-        }
-    }
-
 }
 
-extension NSString  {
-    func isNumber() -> Bool {
-        let str: String = self as String
-        return Int(str) != nil || Double(str) != nil
-    }
-}
