@@ -19,6 +19,7 @@ struct FindPostalCode: View {
     var firstName: String
     var lastName: String
     var person: Person
+    @Binding var showRefreshButton: Bool
 
     @Environment(\.presentationMode) var presentationMode
 
@@ -134,6 +135,7 @@ struct FindPostalCode: View {
             switch result {
             case .success(let postalCode):
                 self.postalCodes.append(postalCode)
+                self.showRefreshButton = true
                 /// Sortering
                 self.postalCodes.sort(by: {$0.postalName < $1.postalName})
                 self.postalCodes.sort(by: {$0.postalNumber < $1.postalNumber})

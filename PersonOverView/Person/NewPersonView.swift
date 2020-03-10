@@ -30,6 +30,7 @@ struct NewPersonView: View {
     @State private var dateOfBirth = Date()
     @State private var gender: Int = 0
     @State private var image: UIImage?
+    @State private var showRefreshButton = false
 
     var genders = [NSLocalizedString("Man", comment: "NewPersonView"),
                    NSLocalizedString("Woman", comment: "NewPersonView")]
@@ -65,6 +66,8 @@ struct NewPersonView: View {
                             self.municipality = globalMunicipalityNameNewPerson
                         }
                     }
+                    /// Skjuler teksten uten å påvirke layout
+                    .opacity(showRefreshButton ? 1 : 0)
                 }
                 .padding(.top, 40)
                 .sheet(isPresented: $showingImagePicker, content: {
@@ -130,8 +133,8 @@ struct NewPersonView: View {
                             .sheet(isPresented: $findPostalCodeNewPerson) {
                                 FindPostalCodeNewPerson(city: self.city,
                                                         firstName: self.firstName,
-                                                        lastName: self.lastName)
-
+                                                        lastName: self.lastName,
+                                                        showRefreshButton: self.$showRefreshButton)
                             }
                     }
                     HStack (alignment: .center, spacing: 0) {
@@ -243,6 +246,8 @@ struct NewPersonView: View {
         /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
         .modifier(AdaptsToSoftwareKeyboard())
         .onAppear {
+            /// Skjuler "Refresh" før en har valgt "Sted" (poststed)
+            self.showRefreshButton = false
             /// Sletter det sist valgte bildet fra ImagePicker
             ImagePicker.shared.image = nil
             /// Resetter de globale variablene

@@ -37,6 +37,7 @@ struct PersonView : View {
     @State private var dateOfBirth = Date()
     @State private var gender: Int = 0
     @State private var image: UIImage?
+    @State private var showRefreshButton = false
 
     @State private var cityNumberNew: String = ""
 
@@ -73,7 +74,8 @@ struct PersonView : View {
                         self.municipality = globalMunicipalityName
                     }
                 }
-
+                /// Skjuler teksten uten å påvirke layout
+                .opacity(showRefreshButton ? 1 : 0)
             }
             .padding(.top, 40)
             .sheet(isPresented: $showingImagePicker, content: {
@@ -140,7 +142,8 @@ struct PersonView : View {
                         FindPostalCode(city: self.city,
                                        firstName: self.firstName,
                                        lastName: self.lastName,
-                                       person: self.person)
+                                       person: self.person,
+                                       showRefreshButton: self.$showRefreshButton)
                     }
                 }
                 HStack (alignment: .center, spacing: 0) {

@@ -16,13 +16,11 @@ E n d r i n g e r
 var toDo_1 =
 """
   1. 🔴 Kan ikke trykke flere ganger på "Lagre" i "Ny person" Sjekk recordID.
-  2. 🔴 Skjule "Frisk opp" før en velger "Sted (postnummer)
-         a) 🔴 "Ny person"
-         b) 🔴 "Vedlikehold"
-  3. 🔴 Vise kart
-  4. 🔴 Sende melding
-  5. 🔴 Sende e-post
-  6. 🔴 Legge inn fødselsdaglisten fra Firebase
+        a) 🔴 Bytter "Lagre" til "Endre" etter å hab valgt "Lagre" andre gang
+  2. 🔴 Vise kart
+  3. 🔴 Sende melding
+  4. 🔴 Sende e-post
+  5. 🔴 Legge inn fødselsdaglisten fra Firebase
 """
 
 var toDo_2 =
@@ -116,7 +114,9 @@ var toDo_3 =
  43.  🟢 Får nå spørsmål om sletting i "Oversikt personer"
          a) 🟢 Benytter nå ActionSheet
  44.  🟢 Formatterer nå telefonnummeret i "InputTextField" med ny parameter "checkPhone"
-
+ 45.  🟢 Skjuler nå "Frisk opp" før en velger "Sted (postnummer)
+         a) 🟢 "Ny person"
+         b) 🟢 "Vedlikehold"
 
 """
 var toDo_4 =
