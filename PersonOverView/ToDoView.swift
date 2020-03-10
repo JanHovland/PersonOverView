@@ -15,10 +15,14 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 Vise kart
-  2. 🔴 Sende melding
-  3. 🔴 Sende e-post
-  4. 🔴 Legge inn fødselsdaglisten fra Firebase
+  1. 🔴 Kan ikke trykke flere ganger på "Lagre" i "Ny person" Sjekk recordID.
+  2. 🔴 Skjule "Frisk opp" før en velger "Sted (postnummer)
+         a) 🔴 "Ny person"
+         b) 🔴 "Vedlikehold"
+  3. 🔴 Vise kart
+  4. 🔴 Sende melding
+  5. 🔴 Sende e-post
+  6. 🔴 Legge inn fødselsdaglisten fra Firebase
 """
 
 var toDo_2 =
