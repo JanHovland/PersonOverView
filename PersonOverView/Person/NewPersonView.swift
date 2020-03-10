@@ -194,7 +194,6 @@ struct NewPersonView: View {
                         CloudKitPerson.doesPersonExist(firstName: self.firstName,
                                                        lastName: self.lastName) { (result) in
                                                         if result == true {
-                                                            self.changeButtonText = false
                                                             self.ModifyNewPersonView(recordID: self.recordID,
                                                                                      firstName: self.firstName,
                                                                                      lastName: self.lastName,
@@ -327,6 +326,7 @@ struct NewPersonView: View {
             personItem.municipalityNumber = municipalityNumber
             personItem.municipality = municipality
             personItem.dateOfBirth = dateOfBirth
+            personItem.dateMonthDay = MonthDay(date: dateOfBirth)
             personItem.gender = gender
             /// Først vises det gamle bildet til personen, så kommer det nye bildet opp
             if image != nil {
