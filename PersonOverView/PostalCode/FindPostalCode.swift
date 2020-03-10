@@ -30,7 +30,8 @@ struct FindPostalCode: View {
     @State private var pickerVisible = false
     @State private var message: String = ""
     @State private var alertIdentifier: AlertID?
-    var defaultWheelPickerItemHeight = 2
+    
+    var defaultWheelPickerItemHeight = 6  /// Ser ikke ut til å ha noen innvirkning
 
     var body: some View {
         VStack {

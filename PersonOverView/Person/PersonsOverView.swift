@@ -73,22 +73,6 @@ struct PersonsOverView: View {
                                               .cancel()
                         ])
                     }
-
-                    ///                    .onDelete { (indexSet) in
-                    //                        guard let recordID = self.persons[indexSet.first!].recordID else { return }
-                    //                        CloudKitPerson.deletePerson(recordID: recordID) { (result) in
-                    //                            switch result {
-                    //                            case .success :
-                    //                                self.message = NSLocalizedString("Successfully deleted a person", comment: "PersonsOverView")
-                    //                                self.alertIdentifier = AlertID(id: .first)
-                    //                            case .failure(let err):
-                    //                                self.message = err.localizedDescription
-                    //                                self.alertIdentifier = AlertID(id: .first)
-                    //                            }
-                    //                        }
-                    //                        /// Sletter den valgte raden
-                    //                        self.persons.remove(atOffsets: indexSet)
-                    //                    }
                 }
                 .listStyle(GroupedListStyle())
             }
@@ -183,6 +167,11 @@ struct ShowPersons: View {
                     .frame(width: 50, height: 50, alignment: .center)
                     .clipShape(Circle())
                     .overlay(Circle().stroke(Color.white, lineWidth: 1))
+            } else {
+                Image(systemName: "person.circle")
+                    .resizable()
+                    .font(.system(size: 16, weight: .ultraLight))
+                    .frame(width: 50, height: 50, alignment: .center)
             }
             VStack (alignment: .leading, spacing: 5) {
                 HStack {

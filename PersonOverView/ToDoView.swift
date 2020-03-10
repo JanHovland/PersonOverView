@@ -15,10 +15,12 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  2. 🔴 Vise kart
-  3. 🔴 Sende melding
-  4. 🔴 Sende e-post
-  5. 🔴 Legge inn fødselsdaglisten fra Firebase
+  1. 🔴 Sjekk sortering (Ågot/Ørjan) i "Oversikt"
+  2. 🔴 Vise alder i "Fødselsdager"
+  3. 🔴 Vise kart
+  4. 🔴 Sende melding
+  5. 🔴 Sende e-post
+  6. 🔴 Legge inn fødselsdaglisten fra Firebase
 """
 
 var toDo_2 =
@@ -119,6 +121,7 @@ var toDo_3 =
          a) 🟢 Bytter "Lagre" til "Endre" etter å ha valgt "Lagre" for andre gang
  47.  🟢 "NewPersonView" : Hvis ikke det er valgt bilde, og trykker "Lagre", så vises det et blankt bilde i "Oversikt"
          a) 🟢 Hvis det er valgt et bilde, vises dette korrekt i "Oversikt"
+ 48.  🟢 Viser nå et blankt bilde i "Oversikt"
 
 """
 var toDo_4 =
