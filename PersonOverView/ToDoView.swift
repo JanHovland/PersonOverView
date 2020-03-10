@@ -15,12 +15,13 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 Sjekk sortering (Ågot/Ørjan) i "Oversikt" (Se Signupfirebase)
-  2. 🔴 Vise alder i "Fødselsdager"
-  3. 🔴 Vise kart
-  4. 🔴 Sende melding
-  5. 🔴 Sende e-post
-  6. 🔴 Legge inn fødselsdaglisten fra Firebase
+  1. 🔴 Legg inn refresh i "Fødselsdager"
+  2. 🔴 Sjekk sortering (Ågot/Ørjan) i "Oversikt" (Se Signupfirebase)
+  3. 🔴 Vise alder i "Fødselsdager"
+  4. 🔴 Vise kart
+  5. 🔴 Sende melding
+  6. 🔴 Sende e-post
+  7. 🔴 Legge inn fødselsdaglisten fra Firebase
 """
 
 var toDo_2 =
