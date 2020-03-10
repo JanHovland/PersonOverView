@@ -15,12 +15,10 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 Kan ikke trykke flere ganger på "Lagre" i "Ny person" Sjekk recordID.
-        a) 🔴 Bytter "Lagre" til "Endre" etter å hab valgt "Lagre" andre gang
-  2. 🔴 Vise kart
-  3. 🔴 Sende melding
-  4. 🔴 Sende e-post
-  5. 🔴 Legge inn fødselsdaglisten fra Firebase
+  1. 🔴 Vise kart
+  2. 🔴 Sende melding
+  3. 🔴 Sende e-post
+  4. 🔴 Legge inn fødselsdaglisten fra Firebase
 """
 
 var toDo_2 =
@@ -117,6 +115,8 @@ var toDo_3 =
  45.  🟢 Skjuler nå "Frisk opp" før en velger "Sted (postnummer)
          a) 🟢 "Ny person"
          b) 🟢 "Vedlikehold"
+ 46.  🟢 Kan nå trykke flere ganger på "Lagre".
+         a) 🟢 Bytter "Lagre" til "Endre" etter å ha valgt "Lagre" for andre gang
 
 """
 var toDo_4 =

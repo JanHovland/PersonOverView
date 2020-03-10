@@ -176,8 +176,6 @@ struct PersonView : View {
                             genders: genders,
                             value: $gender)
             }
-
-
         }
         /// Removes all separators below in the List view
         .listStyle(GroupedListStyle())
@@ -191,19 +189,20 @@ struct PersonView : View {
                     self.municipality = globalMunicipalityName
                 }
 
-                self.ModifyPersonPersonView(recordID: self.recordID,
-                                            firstName: self.firstName,
-                                            lastName: self.lastName,
-                                            personEmail: self.personEmail,
-                                            address: self.address,
-                                            phoneNumber: self.phoneNumber,
-                                            city: self.city,
-                                            cityNumber: self.cityNumber,
-                                            municipalityNumber: self.municipalityNumber,
-                                            municipality: self.municipality,
-                                            dateOfBirth: self.dateOfBirth,
-                                            gender: self.gender,
-                                            image: self.image)
+                self.ModifyPersonView(recordID: self.recordID,
+                                      firstName: self.firstName,
+                                      lastName: self.lastName,
+                                      personEmail: self.personEmail,
+                                      address: self.address,
+                                      phoneNumber: self.phoneNumber,
+                                      city: self.city,
+                                      cityNumber: self.cityNumber,
+                                      municipalityNumber: self.municipalityNumber,
+                                      municipality: self.municipality,
+                                      dateOfBirth: self.dateOfBirth,
+                                      dateMonthDay: MonthDay(date: self.dateOfBirth),
+                                      gender: self.gender,
+                                      image: self.image)
             }, label: {
                 Text(NSLocalizedString("Modify", comment: "PersonView"))
             })
@@ -266,19 +265,20 @@ struct PersonView : View {
 
     }
 
-    func ModifyPersonPersonView(recordID: CKRecord.ID?,
-                                firstName: String,
-                                lastName: String,
-                                personEmail: String,
-                                address: String,
-                                phoneNumber: String,
-                                city: String,
-                                cityNumber: String,
-                                municipalityNumber: String,
-                                municipality: String,
-                                dateOfBirth: Date,
-                                gender: Int,
-                                image: UIImage?) {
+    func ModifyPersonView(recordID: CKRecord.ID?,
+                          firstName: String,
+                          lastName: String,
+                          personEmail: String,
+                          address: String,
+                          phoneNumber: String,
+                          city: String,
+                          cityNumber: String,
+                          municipalityNumber: String,
+                          municipality: String,
+                          dateOfBirth: Date,
+                          dateMonthDay: String,
+                          gender: Int,
+                          image: UIImage?) {
 
         if firstName.count > 0, lastName.count > 0 {
             /// Modify the person in CloudKit
@@ -295,6 +295,7 @@ struct PersonView : View {
             personItem.municipalityNumber = municipalityNumber
             personItem.municipality = municipality
             personItem.dateOfBirth = dateOfBirth
+            personItem.dateMonthDay = dateMonthDay
             personItem.gender = gender
             /// Først vises det gamle bildet til personen, så kommer det nye bildet opp
             if image != nil {

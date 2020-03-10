@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct NewPersonView: View {
 
@@ -15,7 +16,6 @@ struct NewPersonView: View {
     @State private var newPerson = NSLocalizedString("New person", comment: "NewPersonView")
     @State private var showingImagePicker = false
     @State private var findPostalCodeNewPerson = false
-
     @State private var message: String = ""
     @State private var alertIdentifier: AlertID?
     @State private var firstName: String = ""
@@ -31,6 +31,11 @@ struct NewPersonView: View {
     @State private var gender: Int = 0
     @State private var image: UIImage?
     @State private var showRefreshButton = false
+    @State private var changeButtonText = false
+    @State private var recordID: CKRecord.ID?
+
+    var buttonText1 = NSLocalizedString("Modify", comment: "NewPersonView")
+    var buttonText2 = NSLocalizedString("Save", comment: "NewPersonView")
 
     var genders = [NSLocalizedString("Man", comment: "NewPersonView"),
                    NSLocalizedString("Woman", comment: "NewPersonView")]
@@ -189,12 +194,24 @@ struct NewPersonView: View {
                         CloudKitPerson.doesPersonExist(firstName: self.firstName,
                                                        lastName: self.lastName) { (result) in
                                                         if result == true {
-                                                            let person = "'\(self.firstName)" + " \(self.lastName)'"
-                                                            let message1 =  NSLocalizedString("already exists", comment: "NewPersonView")
-                                                            self.message = person + " " + message1
-                                                            self.alertIdentifier = AlertID(id: .first)
+                                                            self.changeButtonText = false
+                                                            self.ModifyNewPersonView(recordID: self.recordID,
+                                                                                     firstName: self.firstName,
+                                                                                     lastName: self.lastName,
+                                                                                     personEmail: self.personEmail,
+                                                                                     address: self.address,
+                                                                                     phoneNumber: self.phoneNumber,
+                                                                                     city: self.city,
+                                                                                     cityNumber: self.cityNumber,
+                                                                                     municipalityNumber: self.municipalityNumber,
+                                                                                     municipality: self.municipality,
+                                                                                     dateOfBirth: self.dateOfBirth,
+                                                                                     dateMonthDay: MonthDay(date: self.dateOfBirth),
+                                                                                     gender: self.gender,
+                                                                                     image: self.image)
                                                         } else {
-                                                            let person = Person(firstName: self.firstName,
+                                                            let person = Person(
+                                                                                firstName: self.firstName,
                                                                                 lastName: self.lastName,
                                                                                 personEmail: self.personEmail,
                                                                                 address: self.address,
@@ -210,6 +227,8 @@ struct NewPersonView: View {
                                                             CloudKitPerson.savePerson(item: person) { (result) in
                                                                 switch result {
                                                                 case .success:
+                                                                    self.changeButtonText = true
+                                                                    self.recordID = person.recordID
                                                                     let person = "'\(self.firstName)" + " \(self.lastName)'"
                                                                     let message1 =  NSLocalizedString("was saved", comment: "NewPersonView")
                                                                     self.message = person + " " + message1
@@ -226,7 +245,7 @@ struct NewPersonView: View {
                         self.alertIdentifier = AlertID(id: .first)
                     }
                 }, label: {
-                    Text(NSLocalizedString("Save", comment: "NewPersonView"))
+                   Text(changeButtonText ? buttonText1 : buttonText2)
                 })
             )}
 
@@ -277,6 +296,61 @@ struct NewPersonView: View {
         )
 
     }
+
+    func ModifyNewPersonView(recordID: CKRecord.ID?,
+                             firstName: String,
+                             lastName: String,
+                             personEmail: String,
+                             address: String,
+                             phoneNumber: String,
+                             city: String,
+                             cityNumber: String,
+                             municipalityNumber: String,
+                             municipality: String,
+                             dateOfBirth: Date,
+                             dateMonthDay: String,
+                             gender: Int,
+                             image: UIImage?) {
+
+        if firstName.count > 0, lastName.count > 0 {
+            /// Modify the person in CloudKit
+            /// Kan ikke bruke person fordi: Kan ikke inneholde @State private var fordi:  'PersonView' initializer is inaccessible due to 'private' protection level
+            var personItem: PersonElement! = PersonElement()
+            personItem.recordID = recordID
+            personItem.firstName = firstName
+            personItem.lastName = lastName
+            personItem.personEmail = personEmail
+            personItem.address = address
+            personItem.phoneNumber = phoneNumber
+            personItem.city = city
+            personItem.cityNumber = cityNumber
+            personItem.municipalityNumber = municipalityNumber
+            personItem.municipality = municipality
+            personItem.dateOfBirth = dateOfBirth
+            personItem.gender = gender
+            /// Først vises det gamle bildet til personen, så kommer det nye bildet opp
+            if image != nil {
+                personItem.image = image
+            }
+            CloudKitPerson.modifyPerson(item: personItem) { (result) in
+            switch result {
+                case .success:
+                    let person = "'\(personItem.firstName)" + " \(personItem.lastName)'"
+                    let message1 =  NSLocalizedString("was modified", comment: "PersonView")
+                    self.message = person + " " + message1
+                    self.alertIdentifier = AlertID(id: .second)
+                case .failure(let err):
+                    self.message = err.localizedDescription
+                    self.alertIdentifier = AlertID(id: .second)
+                }
+            }
+        }
+        else {
+            self.message = NSLocalizedString("First name and last name must both contain a value.", comment: "PersonView")
+            self.alertIdentifier = AlertID(id: .first)
+        }
+    }
+
 
 }
 
