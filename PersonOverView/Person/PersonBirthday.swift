@@ -38,7 +38,16 @@ struct PersonBirthday: View {
                 /// Noen ganger kan det være lurt å legge .id(UUID()) på List for hurtig oppdatering
                 /// .id(UUID())
             }
-                .navigationBarTitle(Text(barTitle)) // , displayMode: .inline)
+            .navigationBarTitle(Text(barTitle)) // , displayMode: .inline)
+            .navigationBarItems(leading:
+                Button(action: {
+                    /// Rutine for å friske opp personoversikten
+                    self.refresh()
+                }, label: {
+                    Text("Refresh")
+                        .foregroundColor(.none)
+                })
+            )
         }
         .onAppear {
             self.refresh()
