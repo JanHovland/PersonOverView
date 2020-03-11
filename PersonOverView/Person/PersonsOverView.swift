@@ -11,6 +11,8 @@ import CloudKit
 
 struct PersonsOverView: View {
 
+    var removeChar: String = "✈️"
+
     /// Skjuler scroll indicators.
     init() {
         UITableView.appearance().showsVerticalScrollIndicator = false
@@ -40,7 +42,7 @@ struct PersonsOverView: View {
                             person in
 
                             NavigationLink(destination: PersonView(person: person)) {
-                                ShowPersons(person: person)
+                                ShowPersons(person: person, removeChar: self.removeChar)
                             }
                             // self.postalCodeSettings.postalName = "Varhaug i Hå kommune"
                     }
@@ -141,6 +143,18 @@ struct PersonsOverView: View {
                 self.persons.append(person)
                 /// Sortering
                 self.persons.sort(by: {$0.firstName < $1.firstName})
+
+//                $0.firstName.localizedCaseInsensitiveCompare($1.firstName) == .orderedAscending
+//
+//               // Must use local sorting of the poststedSectionTitles
+//               let region = NSLocale.current.regionCode?.lowercased() // Returns the local region
+//               let language = Locale(identifier: region!)
+//                let sortedpoststedSection1 = self.persons.sorted {
+//                    $0.compare($1, locale: language) == .orderedAscending
+//     -----<           localizedCaseInsensitiveCompare(_:)
+//
+//               }
+
             case .failure(let err):
                 self.message = err.localizedDescription
                 self.alertIdentifier = AlertID(id: .first)
@@ -157,6 +171,7 @@ struct ShowPersons: View {
         return formatter
     }()
     var person: Person
+    var removeChar: String
     var body: some View {
         HStack(spacing: 10) {
             if person.image != nil {
@@ -173,11 +188,13 @@ struct ShowPersons: View {
             }
             VStack (alignment: .leading, spacing: 5) {
                 HStack {
-                    Text(person.firstName)
-                        .font(.custom("system", size: 19)).bold()
+                    /// Sletter første character i fornavnet dersom den er "✈️" for at 'Å' skal kommer etter 'Ø'
+                    TextDeleteFirstCharacter(firstName : person.firstName, remove: removeChar)
+                        .font(Font.title.weight(.ultraLight))
                     Text(person.lastName)
-                        .font(.custom("system", size: 19)).bold()
+                        .font(Font.body.weight(.ultraLight))
                 }
+                    .font(Font.body.weight(.ultraLight))
                 Text("\(person.dateOfBirth, formatter: Self.taskDateFormat)")
                     .font(.custom("system", size: 17))
                 HStack {
@@ -199,4 +216,15 @@ struct ShowPersons: View {
     }
 }
 
+func TextDeleteFirstCharacter(firstName : String, remove: String) -> some View {
+    let index0 = firstName.index(firstName.startIndex, offsetBy: 0)
+    let index1 = firstName.index(firstName.startIndex, offsetBy: 1)
+    if remove.count > 0 {
+        if firstName[index0...index0] == remove {
+            return Text(firstName[index1...])
+        }
+    }
+
+    return Text(firstName)
+}
 

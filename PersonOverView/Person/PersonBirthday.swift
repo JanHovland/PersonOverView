@@ -11,6 +11,8 @@ import CloudKit
 
 struct PersonBirthday: View {
 
+    var removeChar: String = "✈️"
+
     /// Skjuler scroll indicators.
     init() {
         UITableView.appearance().showsVerticalScrollIndicator = false
@@ -26,7 +28,6 @@ struct PersonBirthday: View {
     var body: some View {
         NavigationView {
             Form {
-                Spacer(minLength: 5)
                 List {
                     ForEach(persons) {
                         person in
@@ -98,6 +99,7 @@ struct PersonBirthday: View {
 struct ShowPersonBirthday: View {
 
     var person: Person
+    var removeChar: String = "✈️"
 
     @State private var sendMail = false
 
@@ -117,7 +119,7 @@ struct ShowPersonBirthday: View {
     static let taskDateFormat: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
-        formatter.dateFormat = " dd.MMMM "
+        formatter.dateFormat = "dd. MMMM"
         return formatter
     }()
 
@@ -158,7 +160,7 @@ struct ShowPersonBirthday: View {
     }
 
     var body: some View {
-        HStack (spacing: 5) {
+        HStack (spacing: 10) {
             if person.image != nil {
                 Image(uiImage: person.image!)
                     .resizable()
@@ -172,15 +174,13 @@ struct ShowPersonBirthday: View {
                     .frame(width: 30, height: 30, alignment: .center)
             }
             Text("\(person.dateOfBirth, formatter: Self.taskDateFormat)")
-                .bold()
                 .background(colour)
-                .font(.custom("Courier", size: 17))
-            Spacer(minLength: 5 )
+                .font(.custom("Andale Mono Normal", size: 16))
             Text(age)
                 .foregroundColor(.accentColor)
-            Spacer(minLength: 5 )
-            Text(person.firstName)
-                .font(Font.system(.callout))
+            TextDeleteFirstCharacter(firstName : person.firstName, remove: removeChar)
+            .font(Font.body.weight(.ultraLight))
+            Spacer(minLength: 5)
             Image("message")
                 .resizable()
                 .frame(width: 30, height: 30, alignment: .leading)

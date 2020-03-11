@@ -15,7 +15,8 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 Sjekk sortering (Ågot/Ørjan) i "Oversikt" (Se Signupfirebase)
+  1. 🔴 Sjekk sortering (Ågot/Ørjan) i "Oversikt" (Se Signupfirebase ser ikke ut til å virke!).
+        Se heller Swift dokumentasjonen "localizedCaseInsensitiveCompare"
   2. 🔴 Vise kart
   3. 🔴 Sende melding
   4. 🔴 Sende e-post
