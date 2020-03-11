@@ -15,12 +15,11 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 Vise alder i "Fødselsdager"
-  2. 🔴 Sjekk sortering (Ågot/Ørjan) i "Oversikt" (Se Signupfirebase)
-  3. 🔴 Vise kart
-  4. 🔴 Sende melding
-  5. 🔴 Sende e-post
-  6. 🔴 Legge inn fødselsdaglisten fra Firebase
+  1. 🔴 Sjekk sortering (Ågot/Ørjan) i "Oversikt" (Se Signupfirebase)
+  2. 🔴 Vise kart
+  3. 🔴 Sende melding
+  4. 🔴 Sende e-post
+  5. 🔴 Legge inn fødselsdaglisten fra Firebase
 """
 
 var toDo_2 =
@@ -123,6 +122,7 @@ var toDo_3 =
          a) 🟢 Hvis det er valgt et bilde, vises dette korrekt i "Oversikt"
  48.  🟢 Viser nå et blankt bilde i "Oversikt"
  49.  🟢 Lagt inn refresh i "Fødselsdager"
+ 50.  🟢 Viser nå alder i "Fødselsdager"
 
 """
 var toDo_4 =
