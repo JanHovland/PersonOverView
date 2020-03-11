@@ -15,8 +15,8 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 Sjekk sortering (Ågot/Ørjan) i "Oversikt" (Se Signupfirebase)
-  2. 🔴 Vise alder i "Fødselsdager"
+  1. 🔴 Vise alder i "Fødselsdager"
+  2. 🔴 Sjekk sortering (Ågot/Ørjan) i "Oversikt" (Se Signupfirebase)
   3. 🔴 Vise kart
   4. 🔴 Sende melding
   5. 🔴 Sende e-post
