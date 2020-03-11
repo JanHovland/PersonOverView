@@ -121,7 +121,23 @@ struct ShowPersonBirthday: View {
         return formatter
     }()
 
-    var farge: Color {
+    var age: String {
+        /// Finner aktuell måned
+        let currentDate = Date()
+        let nameFormatter = DateFormatter()
+        nameFormatter.dateFormat = "yy"
+        let year = Calendar.current.component(.year, from: currentDate)
+
+        /// Finner måned fra personen sin fødselsdato
+        let personDate = person.dateOfBirth
+        let personFormatter = DateFormatter()
+        personFormatter.dateFormat = "yy"
+        let yearPerson = Calendar.current.component(.year, from: personDate)
+
+        return String(year - yearPerson)
+    }
+
+    var colour: Color {
         /// Finner aktuell måned
         let currentDate = Date()
         let nameFormatter = DateFormatter()
@@ -142,7 +158,7 @@ struct ShowPersonBirthday: View {
     }
 
     var body: some View {
-        HStack (spacing: 7) {
+        HStack (spacing: 5) {
             if person.image != nil {
                 Image(uiImage: person.image!)
                     .resizable()
@@ -157,9 +173,12 @@ struct ShowPersonBirthday: View {
             }
             Text("\(person.dateOfBirth, formatter: Self.taskDateFormat)")
                 .bold()
-                .background(farge)
-                .font(.custom("Courier", size: 16))
-            Spacer()
+                .background(colour)
+                .font(.custom("Courier", size: 17))
+            Spacer(minLength: 5 )
+            Text(age)
+                .foregroundColor(.accentColor)
+            Spacer(minLength: 5 )
             Text(person.firstName)
                 .font(Font.system(.callout))
             Image("message")
