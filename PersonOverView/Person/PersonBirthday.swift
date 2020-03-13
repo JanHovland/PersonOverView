@@ -97,7 +97,6 @@ struct PersonBirthday: View {
 struct ShowPersonBirthday: View {
 
     var person: Person
-    var removeChar: String = "✈️"
 
     @State private var sendMail = false
 
