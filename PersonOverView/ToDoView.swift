@@ -11,21 +11,22 @@ import SwiftUI
 var toDo_0 =
 """
 E n d r i n g e r
+
 """
 
 var toDo_1 =
 """
-  1. 🔴 Sjekk sortering (Ågot/Ørjan) i "Oversikt" (Se Signupfirebase ser ikke ut til å virke!).
-        Se heller Swift dokumentasjonen "localizedCaseInsensitiveCompare"
-  2. 🔴 Vise kart
-  3. 🔴 Sende melding
-  4. 🔴 Sende e-post
-  5. 🔴 Legge inn fødselsdaglisten fra Firebase
+  1. 🔴 Vise kart
+  2. 🔴 Sende melding
+  3. 🔴 Sende e-post
+  4. 🔴 Legge inn fødselsdaglisten fra Firebase
+
 """
 
 var toDo_2 =
 """
 F e r d i g
+
 """
 
 var toDo_3 =
@@ -124,33 +125,38 @@ var toDo_3 =
  48.  🟢 Viser nå et blankt bilde i "Oversikt"
  49.  🟢 Lagt inn refresh i "Fødselsdager"
  50.  🟢 Viser nå alder i "Fødselsdager"
-
+ 51.  🟢 Sjekk sortering (Ågot/Ørjan) i "Oversikt"
+         Det viser seg at dersom en setter en emoji som 1. tegn når En legger inn formavn som begynner på "Å".
+         blir sorteringen riktig.
+         a) Lage en func TextDeleteFirstEmoji() som sjekker om første tegn er en emoji og sletter emoji
 """
 var toDo_4 =
 """
 S e n e r e
-"""
 
+"""
 var toDo_5 =
 """
 1. Trykke på bildet istedet for på teksten i "SignUpView.swift"
    ... Bruk: .contextMenu??
-"""
 
+"""
 var toDo_6 =
 """
 K j e n t e   f e i l
+
 """
 
 var toDo_7 =
 """
-1. Når en bytter showPassword, oppdateres ikke "SignInView.swift" automatisk.
-   a) Foreløpig løsning: Skift til "SignUpView.swift" og så
-      tilbake til "SignInView.swift" (implementere refresh)
-2. onAppear virker kun første gang en app kalles,
-   ikke ved retur fra en annen app. (implementere refresh)
-3. Det mangler .keyboadType(.phone).
-   a) Nå brukes default keyboardType
+  1. Når en bytter showPassword, oppdateres ikke "SignInView.swift" automatisk.
+     a) Foreløpig løsning: Skift til "SignUpView.swift" og så
+        tilbake til "SignInView.swift" (implementere refresh)
+  2. onAppear virker kun første gang en app kalles,
+     ikke ved retur fra en annen app. (implementere refresh)
+  3. Det mangler .keyboadType(.phone).
+     a) Nå brukes default keyboardType
+  4. Vanlig sorteing tar ikke hensyn til local region slik den gjør i UIKit.
 
 """
 
@@ -165,29 +171,30 @@ struct ToDoView: View {
             ScrollView (.vertical, showsIndicators: false) {
                 VStack {
                     Text(toDo_0)
-                        .font(.custom("system", size: 17)).bold()
+                        .font(.custom("Andale Mono Normal", size: 20)).bold()
                         .foregroundColor(.accentColor)
-                        .padding()
                     Text(toDo_1)
+                        .font(.custom("Andale Mono Normal", size: 14))
                         .multilineTextAlignment(.leading)
                     Text(toDo_2)
-                        .font(.custom("system", size: 17)).bold()
+                        .font(.custom("Andale Mono Normal", size: 20)).bold()
                         .foregroundColor(.accentColor)
-                        .padding()
                     Text(toDo_3)
+                        .font(.custom("Andale Mono Normal", size: 14))
                         .multilineTextAlignment(.leading)
                     Text(toDo_4)
-                        .font(.custom("system", size: 17)).bold()
+                        .font(.custom("Andale Mono Normal", size: 20)).bold()
                         .foregroundColor(.accentColor)
-                        .padding()
                     Text(toDo_5)
+                        .font(.custom("Andale Mono Normal", size: 14))
                         .multilineTextAlignment(.leading)
                     Text(toDo_6)
-                        .font(.custom("system", size: 17)).bold()
-                        .foregroundColor(.accentColor)
-                        .padding()
+                        .font(.custom("Andale Mono Normal", size: 20)).bold()
+                        .foregroundColor(.red)
                     Text(toDo_7)
+                        .font(.custom("Andale Mono Normal", size: 14))
                         .multilineTextAlignment(.leading)
+                        .foregroundColor(.red)
                 }
             }
             .padding()

@@ -26,6 +26,7 @@ struct PersonView : View {
 
     @State private var recordID: CKRecord.ID?
     @State private var firstName: String = ""
+    @State private var tmpFirstName: String = ""
     @State private var lastName: String = ""
     @State private var personEmail: String = ""
     @State private var address: String = ""
@@ -89,6 +90,7 @@ struct PersonView : View {
                                heading: NSLocalizedString("First name", comment: "PersonView"),
                                placeHolder: NSLocalizedString("Enter your first name", comment: "PersonView"),
                                value: $firstName)
+                    
                     .autocapitalization(.words)
                 InputTextField(checkPhone: false,
                                secure: false,
@@ -189,8 +191,20 @@ struct PersonView : View {
                     self.municipality = globalMunicipalityName
                 }
 
+                self.tmpFirstName = self.firstName
+
+                /// Dersom første tegn i firstName er "Å" legg firstName etter en emoji
+                /// Eks, firstName = "😀" + "Ågot"
+                /// Dersom første tegn er en emoji ikke endre firstName
+
+                let index0 = self.tmpFirstName.index(self.tmpFirstName.startIndex, offsetBy: 0)
+                let firstChar = String(self.tmpFirstName[index0...index0])
+                if firstChar.containsEmoji == false, firstChar.uppercased() == "Å"  {
+                   self.tmpFirstName = "😀" + self.tmpFirstName
+                }
+
                 self.ModifyPersonView(recordID: self.recordID,
-                                      firstName: self.firstName,
+                                      firstName: self.tmpFirstName,
                                       lastName: self.lastName,
                                       personEmail: self.personEmail,
                                       address: self.address,

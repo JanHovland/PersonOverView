@@ -11,8 +11,6 @@ import CloudKit
 
 struct PersonsOverView: View {
 
-    var removeChar: String = "✈️"
-
     /// Skjuler scroll indicators.
     init() {
         UITableView.appearance().showsVerticalScrollIndicator = false
@@ -40,11 +38,9 @@ struct PersonsOverView: View {
                         $0.firstName.localizedStandardContains(self.searchText) ||
                         $0.lastName.localizedStandardContains (self.searchText)    })) {
                             person in
-
                             NavigationLink(destination: PersonView(person: person)) {
-                                ShowPersons(person: person, removeChar: self.removeChar)
+                                ShowPersons(person: person)
                             }
-                            // self.postalCodeSettings.postalName = "Varhaug i Hå kommune"
                     }
                         /// Sletter  valgt person og oppdaterer CliudKit
                         .onDelete { (indexSet) in
@@ -171,7 +167,6 @@ struct ShowPersons: View {
         return formatter
     }()
     var person: Person
-    var removeChar: String
     var body: some View {
         HStack(spacing: 10) {
             if person.image != nil {
@@ -188,8 +183,8 @@ struct ShowPersons: View {
             }
             VStack (alignment: .leading, spacing: 5) {
                 HStack {
-                    /// Sletter første character i fornavnet dersom den er "✈️" for at 'Å' skal kommer etter 'Ø'
-                    TextDeleteFirstCharacter(firstName : person.firstName, remove: removeChar)
+                    /// Sletter første character i fornavnet dersom den er en emoji
+                    TextDeleteFirstEmoji(firstName : person.firstName)
                         .font(Font.title.weight(.ultraLight))
                     Text(person.lastName)
                         .font(Font.body.weight(.ultraLight))
@@ -216,15 +211,38 @@ struct ShowPersons: View {
     }
 }
 
-func TextDeleteFirstCharacter(firstName : String, remove: String) -> some View {
+func TextDeleteFirstEmoji(firstName : String) -> some View {
     let index0 = firstName.index(firstName.startIndex, offsetBy: 0)
     let index1 = firstName.index(firstName.startIndex, offsetBy: 1)
-    if remove.count > 0 {
-        if firstName[index0...index0] == remove {
-            return Text(firstName[index1...])
-        }
+
+    let firstChar = String(firstName[index0...index0])
+
+    if firstChar.containsEmoji  {
+       return Text(firstName[index1...])
     }
 
     return Text(firstName)
+}
+
+/// The simplest, cleanest, and swiftiest way to accomplish this is to simply check the Unicode code points for each character in the string against known emoji and dingbats ranges, like so:
+extension String {
+    var containsEmoji: Bool {
+        for scalar in unicodeScalars {
+            switch scalar.value {
+            case 0x1F600...0x1F64F, // Emoticons
+                 0x1F300...0x1F5FF, // Misc Symbols and Pictographs
+                 0x1F680...0x1F6FF, // Transport and Map
+                 0x2600...0x26FF,   // Misc symbols
+                 0x2700...0x27BF,   // Dingbats
+                 0xFE00...0xFE0F,   // Variation Selectors
+                 0x1F900...0x1F9FF, // Supplemental Symbols and Pictographs
+                 0x1F1E6...0x1F1FF: // Flags
+                return true
+            default:
+                continue
+            }
+        }
+        return false
+    }
 }
 

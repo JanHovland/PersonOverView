@@ -11,8 +11,6 @@ import CloudKit
 
 struct PersonBirthday: View {
 
-    var removeChar: String = "✈️"
-
     /// Skjuler scroll indicators.
     init() {
         UITableView.appearance().showsVerticalScrollIndicator = false
@@ -178,7 +176,7 @@ struct ShowPersonBirthday: View {
                 .font(.custom("Andale Mono Normal", size: 16))
             Text(age)
                 .foregroundColor(.accentColor)
-            TextDeleteFirstCharacter(firstName : person.firstName, remove: removeChar)
+            TextDeleteFirstEmoji(firstName : person.firstName)
             .font(Font.body.weight(.ultraLight))
             Spacer(minLength: 5)
             Image("message")

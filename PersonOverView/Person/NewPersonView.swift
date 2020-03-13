@@ -19,6 +19,7 @@ struct NewPersonView: View {
     @State private var message: String = ""
     @State private var alertIdentifier: AlertID?
     @State private var firstName: String = ""
+    @State private var tmpFirstName: String = ""
     @State private var lastName: String = ""
     @State private var personEmail: String = ""
     @State private var address: String = ""
@@ -209,8 +210,20 @@ struct NewPersonView: View {
                                                                                      gender: self.gender,
                                                                                      image: self.image)
                                                         } else {
+                                                            self.tmpFirstName = self.firstName
+
+                                                            /// Dersom første tegn i firstName er "Å" legg firstName etter en emoji
+                                                            /// Eks, firstName = "😀" + "Ågot"
+                                                            /// Dersom første tegn er en emoji ikke endre firstName
+
+                                                            let index0 = self.tmpFirstName.index(self.tmpFirstName.startIndex, offsetBy: 0)
+                                                            let firstChar = String(self.tmpFirstName[index0...index0])
+                                                            if firstChar.containsEmoji == false, firstChar.uppercased() == "Å"  {
+                                                                self.tmpFirstName = "😀" + self.tmpFirstName
+                                                            }
+
                                                             let person = Person(
-                                                                                firstName: self.firstName,
+                                                                                firstName: self.tmpFirstName,
                                                                                 lastName: self.lastName,
                                                                                 personEmail: self.personEmail,
                                                                                 address: self.address,
