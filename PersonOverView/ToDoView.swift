@@ -16,10 +16,11 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 Vise kart
-  2. 🔴 Sende melding
-  3. 🔴 Sende e-post
-  4. 🔴 Legge inn fødselsdaglisten fra Firebase
+  1. 🔴 Forbedre søking på "Oversikt" med hensyn til tastaturet som er i veien.
+  2. 🔴 Vise kart
+  3. 🔴 Sende melding
+  4. 🔴 Sende e-post
+  5. 🔴 Legge inn fødselsdaglisten fra Firebase
 
 """
 
@@ -128,7 +129,7 @@ var toDo_3 =
  51.  🟢 Sjekk sortering (Ågot/Ørjan) i "Oversikt"
          Det viser seg at dersom en setter en emoji som 1. tegn når En legger inn formavn som begynner på "Å".
          blir sorteringen riktig.
-         a) Lage en func TextDeleteFirstEmoji() som sjekker om første tegn er en emoji og sletter emoji
+         a) Lagd en func TextDeleteFirstEmoji() som sjekker om første tegn er en emoji og viser kun alle tegn etter emojien.
 """
 var toDo_4 =
 """
