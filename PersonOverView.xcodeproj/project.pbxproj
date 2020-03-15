@@ -48,7 +48,7 @@
 		DBB4C62823B6301F0055296B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB4C62723B6301F0055296B /* ImagePicker.swift */; };
 		DBB83D9A23E822CE003AA2C9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DBB83D9823E822CE003AA2C9 /* Localizable.strings */; };
 		DBDA561A23BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */; };
-		DBE58ACF23CF2D5300D3EF1D /* resizedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE58ACE23CF2D5300D3EF1D /* resizedImage.swift */; };
+		DBE58ACF23CF2D5300D3EF1D /* ResizedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE58ACE23CF2D5300D3EF1D /* ResizedImage.swift */; };
 		DBE58AD123CF798000D3EF1D /* DismissingKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE58AD023CF798000D3EF1D /* DismissingKeyboard.swift */; };
 		DBF0397E23E5A50D00230FAA /* NewPersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF0397D23E5A50D00230FAA /* NewPersonView.swift */; };
 		DBFC29C323C48F6C00F2224B /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC29C223C48F6C00F2224B /* SettingView.swift */; };
@@ -103,7 +103,7 @@
 		DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptsToSoftwareKeyboard.swift; sourceTree = "<group>"; };
 		DBDE717223E71A88004F9CA8 /* PersonOverView copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "PersonOverView copy-Info.plist"; path = "/Users/janhovland/Desktop/SwiftUI/PersonOverView/PersonOverView copy-Info.plist"; sourceTree = "<absolute>"; };
 		DBDE717423E72D7A004F9CA8 /* nb-NO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nb-NO"; path = "nb-NO.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		DBE58ACE23CF2D5300D3EF1D /* resizedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resizedImage.swift; sourceTree = "<group>"; };
+		DBE58ACE23CF2D5300D3EF1D /* ResizedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizedImage.swift; sourceTree = "<group>"; };
 		DBE58AD023CF798000D3EF1D /* DismissingKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissingKeyboard.swift; sourceTree = "<group>"; };
 		DBF0397D23E5A50D00230FAA /* NewPersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPersonView.swift; sourceTree = "<group>"; };
 		DBFC29C223C48F6C00F2224B /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -226,7 +226,7 @@
 				DB1FEF922380592F00F8D763 /* InputGender.swift */,
 				DB1FEF90238055FE00F8D763 /* InputTextField.swift */,
 				DB6739CA23AE2B0600EF9ECD /* OutputTextField.swift */,
-				DBE58ACE23CF2D5300D3EF1D /* resizedImage.swift */,
+				DBE58ACE23CF2D5300D3EF1D /* ResizedImage.swift */,
 				DB6739C023AA910E00EF9ECD /* SwiftUIImagePicker.swift */,
 				DB33E13D23F4829C00A95FAA /* SearchBar.swift */,
 				DB4A6CEE2411028600349A51 /* MonthDay.swift */,
@@ -372,7 +372,7 @@
 				DB6B153524066E9500CF87B9 /* PersonBirthday.swift in Sources */,
 				DB6739CB23AE2B0600EF9ECD /* OutputTextField.swift in Sources */,
 				DB1FEF91238055FE00F8D763 /* InputTextField.swift in Sources */,
-				DBE58ACF23CF2D5300D3EF1D /* resizedImage.swift in Sources */,
+				DBE58ACF23CF2D5300D3EF1D /* ResizedImage.swift in Sources */,
 				DB4A8F3523DE264900558788 /* Person.swift in Sources */,
 				DB302B85237EF27400076D10 /* SignInView.swift in Sources */,
 				DB302B83237EF18D00076D10 /* UserElements.swift in Sources */,

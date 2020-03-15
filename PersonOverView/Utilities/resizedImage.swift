@@ -10,7 +10,7 @@ import SwiftUI
 
 /// Image Resizing Techniques
 /// https://nshipster.com/image-resizing/#technique-1-drawing-to-a-uigraphicsimagerenderer
-func resizedImage(at url: URL, for size: CGSize) -> UIImage? {
+func ResizedImage(at url: URL, for size: CGSize) -> UIImage? {
     guard let image = UIImage(contentsOfFile: url.path) else {
         return nil
     }

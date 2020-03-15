@@ -57,7 +57,7 @@ extension ImagePicker {
 
             /// Redusere det valgte bildet  vha. func resizedImage() og original url
             let size = CGSize(width: 40, height: 40)
-            let image = resizedImage(at: urlOld, for: size)
+            let image = ResizedImage(at: urlOld, for: size)
             ImagePicker.shared.image = image
 
             /// Lage ny url
