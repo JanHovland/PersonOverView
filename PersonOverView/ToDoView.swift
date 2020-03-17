@@ -148,7 +148,6 @@ var toDo_5 =
   2.  🔴 Få opp spørsel om lagring etter å ha trykket "Vis persondata" og så return til "Oversikt"
   3.  🔴 Få opp spørsel om lagring etter å ha trykket "Ny person" og så retur til "Oversikt"
 
-
 """
 var toDo_6 =
 """
