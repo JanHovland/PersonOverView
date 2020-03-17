@@ -27,12 +27,12 @@ struct SearchBar: UIViewRepresentable {
         let searchBar = UISearchBar(frame: .zero)
         searchBar.delegate = context.coordinator
         searchBar.placeholder = NSLocalizedString("Search...", comment: "FindPostalCode")
-        searchBar.autocapitalizationType = .none
+        searchBar.autocapitalizationType = .words
+        searchBar.showsCancelButton = true
         return searchBar
     }
     func updateUIView(_ uiView: UISearchBar, context: UIViewRepresentableContext<SearchBar>) {
         uiView.text = text
     }
+
 }
-
-

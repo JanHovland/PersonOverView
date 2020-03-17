@@ -16,11 +16,10 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 Forbedre søking på "Oversikt" med hensyn til tastaturet som er i veien.
-  2. 🔴 Vise kart
-  3. 🔴 Sende melding
-  4. 🔴 Sende e-post
-  5. 🔴 Legge inn fødselsdaglisten fra Firebase
+  1. 🔴 Vise kart
+  2. 🔴 Sende melding
+  3. 🔴 Sende e-post
+  4. 🔴 Legge inn fødselsdaglisten fra Firebase
 
 """
 
@@ -135,6 +134,7 @@ var toDo_3 =
          I tillegg kommer det opp et varsel dersom recordID == nil
  53.  🟢 "Ny person" kan lagre en ny person 2 ganger.
          Løsning: legge inn  self.saveNumber += 1 foran "Lagre"
+ 54.  🟢 Forbedret søking på "Oversikt" med hensyn til tastaturet som er i veien, ved å Legge inn "Avbryt".
 
 """
 var toDo_4 =

@@ -32,6 +32,7 @@ struct PersonsOverView: View {
         NavigationView {
             VStack {
                 SearchBar(text: $searchText)
+                    .keyboardType(.asciiCapable)
                 List  {
                     /// Søker etter personer som inneholder $searchText i for- eller etternavnet
                     ForEach(persons.filter({ self.searchText.isEmpty ||
@@ -125,6 +126,10 @@ struct PersonsOverView: View {
                 }
             }
         )
+        /// Ta bort tastaturet når en klikker utenfor feltet
+        .modifier(DismissingKeyboard())
+        /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
+        .modifier(AdaptsToSoftwareKeyboard())
     }
 
     /// Rutine for å friske opp bildet
