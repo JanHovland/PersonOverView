@@ -16,11 +16,13 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 Forbedre søking på "Oversikt" med hensyn til tastaturet som er i veien.
-  2. 🔴 Vise kart
-  3. 🔴 Sende melding
-  4. 🔴 Sende e-post
-  5. 🔴 Legge inn fødselsdaglisten fra Firebase
+  1. 🔴 "Person" sin "Endre" lagrer ikke endringen !!!
+  2. 🔴 "Ny Person" sjekk mht. "Save2 lagrer ikke endringen !!!
+  3. 🔴 Forbedre søking på "Oversikt" med hensyn til tastaturet som er i veien.
+  4. 🔴 Vise kart
+  5. 🔴 Sende melding
+  6. 🔴 Sende e-post
+  7. 🔴 Legge inn fødselsdaglisten fra Firebase
 
 """
 
@@ -121,6 +123,7 @@ var toDo_3 =
          b) 🟢 "Vedlikehold"
  46.  🟢 Kan nå trykke flere ganger på "Lagre".
          a) 🟢 Bytter "Lagre" til "Endre" etter å ha valgt "Lagre" for andre gang
+               Måtte finne recordID etter å ha lagret en ny person.
  47.  🟢 "NewPersonView" : Hvis ikke det er valgt bilde, og trykker "Lagre", så vises det et blankt bilde i "Oversikt"
          a) 🟢 Hvis det er valgt et bilde, vises dette korrekt i "Oversikt"
  48.  🟢 Viser nå et blankt bilde i "Oversikt"

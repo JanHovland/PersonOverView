@@ -194,34 +194,31 @@ struct NewPersonView: View {
                     if self.firstName.count > 0, self.lastName.count > 0 {
                         CloudKitPerson.doesPersonExist(firstName: self.firstName,
                                                        lastName: self.lastName) { (result) in
-                                                        if result == true {
-                                                            self.ModifyNewPersonView(recordID: self.recordID,
-                                                                                     firstName: self.firstName,
-                                                                                     lastName: self.lastName,
-                                                                                     personEmail: self.personEmail,
-                                                                                     address: self.address,
-                                                                                     phoneNumber: self.phoneNumber,
-                                                                                     city: self.city,
-                                                                                     cityNumber: self.cityNumber,
-                                                                                     municipalityNumber: self.municipalityNumber,
-                                                                                     municipality: self.municipality,
-                                                                                     dateOfBirth: self.dateOfBirth,
-                                                                                     dateMonthDay: MonthDay(date: self.dateOfBirth),
-                                                                                     gender: self.gender,
-                                                                                     image: self.image)
+                                                        if result == true, self.recordID != nil {
+                                                            self.ModifyNewPerson(recordID: self.recordID,
+                                                                                 firstName: self.firstName,
+                                                                                 lastName: self.lastName,
+                                                                                 personEmail: self.personEmail,
+                                                                                 address: self.address,
+                                                                                 phoneNumber: self.phoneNumber,
+                                                                                 city: self.city,
+                                                                                 cityNumber: self.cityNumber,
+                                                                                 municipalityNumber: self.municipalityNumber,
+                                                                                 municipality: self.municipality,
+                                                                                 dateOfBirth: self.dateOfBirth,
+                                                                                 dateMonthDay: MonthDay(date: self.dateOfBirth),
+                                                                                 gender: self.gender,
+                                                                                 image: self.image)
                                                         } else {
                                                             self.tmpFirstName = self.firstName
-
                                                             /// Dersom første tegn i firstName er "Å" legg firstName etter en emoji
                                                             /// Eks, firstName = "😀" + "Ågot"
                                                             /// Dersom første tegn er en emoji ikke endre firstName
-
                                                             let index0 = self.tmpFirstName.index(self.tmpFirstName.startIndex, offsetBy: 0)
                                                             let firstChar = String(self.tmpFirstName[index0...index0])
                                                             if firstChar.containsEmoji == false, firstChar.uppercased() == "Å"  {
                                                                 self.tmpFirstName = "😀" + self.tmpFirstName
                                                             }
-
                                                             let person = Person(
                                                                                 firstName: self.tmpFirstName,
                                                                                 lastName: self.lastName,
@@ -240,14 +237,25 @@ struct NewPersonView: View {
                                                                 switch result {
                                                                 case .success:
                                                                     self.changeButtonText = true
-                                                                    self.recordID = person.recordID
-                                                                    let person = "'\(self.firstName)" + " \(self.lastName)'"
+                                                                    let person1 = "'\(self.firstName)" + " \(self.lastName)'"
                                                                     let message1 =  NSLocalizedString("was saved", comment: "NewPersonView")
-                                                                    self.message = person + " " + message1
+                                                                    self.message = person1 + " " + message1
                                                                     self.alertIdentifier = AlertID(id: .first)
                                                                 case .failure(let err):
                                                                     self.message = err.localizedDescription
                                                                     self.alertIdentifier = AlertID(id: .first)
+                                                                }
+                                                            }
+                                                            /// Finner recordID etter å ha lagret den nye personen
+                                                            let firstName = self.tmpFirstName
+                                                            let lastName = self.lastName
+                                                            let predicate = NSPredicate(format: "firstName == %@ AND lastName = %@", firstName, lastName)
+                                                            CloudKitPerson.fetchPerson(predicate: predicate)  { (result) in
+                                                                switch result {
+                                                                case .success(let person):
+                                                                    self.recordID = person.recordID
+                                                                case .failure(let err):
+                                                                    print(err.localizedDescription)
                                                                 }
                                                             }
                                                         }
@@ -311,20 +319,20 @@ struct NewPersonView: View {
 
     }
 
-    func ModifyNewPersonView(recordID: CKRecord.ID?,
-                             firstName: String,
-                             lastName: String,
-                             personEmail: String,
-                             address: String,
-                             phoneNumber: String,
-                             city: String,
-                             cityNumber: String,
-                             municipalityNumber: String,
-                             municipality: String,
-                             dateOfBirth: Date,
-                             dateMonthDay: String,
-                             gender: Int,
-                             image: UIImage?) {
+    func ModifyNewPerson(recordID: CKRecord.ID?,
+                         firstName: String,
+                         lastName: String,
+                         personEmail: String,
+                         address: String,
+                         phoneNumber: String,
+                         city: String,
+                         cityNumber: String,
+                         municipalityNumber: String,
+                         municipality: String,
+                         dateOfBirth: Date,
+                         dateMonthDay: String,
+                         gender: Int,
+                         image: UIImage?) {
 
         if firstName.count > 0, lastName.count > 0 {
             /// Modify the person in CloudKit

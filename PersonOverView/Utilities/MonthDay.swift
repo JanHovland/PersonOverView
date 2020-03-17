@@ -9,6 +9,8 @@
 import SwiftUI
 
 /// Denne funksjonen tar en Date og returnerer en string med format MMMMdd f.eks 5. mars = 0305
+/// - Parameter date: <#date description#>
+/// - Returns: <#description#>
 func MonthDay(date: Date) -> String {
     let formatter = DateFormatter()
     formatter.dateFormat = "MMMMdd"

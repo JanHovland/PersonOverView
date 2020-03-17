@@ -203,20 +203,20 @@ struct PersonView : View {
                    self.tmpFirstName = "😀" + self.tmpFirstName
                 }
 
-                self.ModifyPersonView(recordID: self.recordID,
-                                      firstName: self.tmpFirstName,
-                                      lastName: self.lastName,
-                                      personEmail: self.personEmail,
-                                      address: self.address,
-                                      phoneNumber: self.phoneNumber,
-                                      city: self.city,
-                                      cityNumber: self.cityNumber,
-                                      municipalityNumber: self.municipalityNumber,
-                                      municipality: self.municipality,
-                                      dateOfBirth: self.dateOfBirth,
-                                      dateMonthDay: MonthDay(date: self.dateOfBirth),
-                                      gender: self.gender,
-                                      image: self.image)
+                self.ModifyPerson(recordID: self.recordID,
+                                  firstName: self.tmpFirstName,
+                                  lastName: self.lastName,
+                                  personEmail: self.personEmail,
+                                  address: self.address,
+                                  phoneNumber: self.phoneNumber,
+                                  city: self.city,
+                                  cityNumber: self.cityNumber,
+                                  municipalityNumber: self.municipalityNumber,
+                                  municipality: self.municipality,
+                                  dateOfBirth: self.dateOfBirth,
+                                  dateMonthDay: MonthDay(date: self.dateOfBirth),
+                                  gender: self.gender,
+                                  image: self.image)
             }, label: {
                 Text(NSLocalizedString("Modify", comment: "PersonView"))
             })
@@ -279,20 +279,20 @@ struct PersonView : View {
 
     }
 
-    func ModifyPersonView(recordID: CKRecord.ID?,
-                          firstName: String,
-                          lastName: String,
-                          personEmail: String,
-                          address: String,
-                          phoneNumber: String,
-                          city: String,
-                          cityNumber: String,
-                          municipalityNumber: String,
-                          municipality: String,
-                          dateOfBirth: Date,
-                          dateMonthDay: String,
-                          gender: Int,
-                          image: UIImage?) {
+    func ModifyPerson(recordID: CKRecord.ID?,
+                      firstName: String,
+                      lastName: String,
+                      personEmail: String,
+                      address: String,
+                      phoneNumber: String,
+                      city: String,
+                      cityNumber: String,
+                      municipalityNumber: String,
+                      municipality: String,
+                      dateOfBirth: Date,
+                      dateMonthDay: String,
+                      gender: Int,
+                      image: UIImage?) {
 
         if firstName.count > 0, lastName.count > 0 {
             /// Modify the person in CloudKit
