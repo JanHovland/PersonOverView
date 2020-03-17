@@ -32,6 +32,9 @@
 /* SignInView */
 "Both email and Password must have a value" = "Både e-post og passord må ha en verdi";
 
+/* NewPersonView */
+"Can not modify this person yet, due to missing value for its recordID.\nPlease try again later..." = "Kan ikke endre denne personen ennå, fordi tilhørende recordID ennå ikke har fått verdi.\n        Prøv igjen senere...";
+
 /* SignUpView
    UserMaintenanceView */
 "Choose Profile Image" = "Velg profilbilde";

@@ -276,7 +276,6 @@ struct PersonView : View {
                 self.alertIdentifier = AlertID(id: .first)
             }
         }
-
     }
 
     func ModifyPerson(recordID: CKRecord.ID?,

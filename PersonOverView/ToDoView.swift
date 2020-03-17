@@ -16,13 +16,11 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 "Person" sin "Endre" lagrer ikke endringen !!!
-  2. 🔴 "Ny Person" sjekk mht. "Save2 lagrer ikke endringen !!!
-  3. 🔴 Forbedre søking på "Oversikt" med hensyn til tastaturet som er i veien.
-  4. 🔴 Vise kart
-  5. 🔴 Sende melding
-  6. 🔴 Sende e-post
-  7. 🔴 Legge inn fødselsdaglisten fra Firebase
+  1. 🔴 Forbedre søking på "Oversikt" med hensyn til tastaturet som er i veien.
+  2. 🔴 Vise kart
+  3. 🔴 Sende melding
+  4. 🔴 Sende e-post
+  5. 🔴 Legge inn fødselsdaglisten fra Firebase
 
 """
 
@@ -133,6 +131,11 @@ var toDo_3 =
          Det viser seg at dersom en setter en emoji som 1. tegn når En legger inn formavn som begynner på "Å".
          blir sorteringen riktig.
          a) Lagd en func TextDeleteFirstEmoji() som sjekker om første tegn er en emoji og viser kun alle tegn etter emojien.
+ 52.  🟢 "Ny Person" Finner nå recordID etter at personen er lagret mha. FetchPerson siden "Lagre" har recordID == nil
+         I tillegg kommer det opp et varsel dersom recordID == nil
+ 53.  🟢 "Ny person" kan lagre en ny person 2 ganger.
+         Løsning: legge inn  self.saveNumber += 1 foran "Lagre"
+
 """
 var toDo_4 =
 """

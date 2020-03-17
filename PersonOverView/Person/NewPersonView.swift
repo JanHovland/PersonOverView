@@ -34,6 +34,7 @@ struct NewPersonView: View {
     @State private var showRefreshButton = false
     @State private var changeButtonText = false
     @State private var recordID: CKRecord.ID?
+    @State private var saveNumber: Int = 0
 
     var buttonText1 = NSLocalizedString("Modify", comment: "NewPersonView")
     var buttonText2 = NSLocalizedString("Save", comment: "NewPersonView")
@@ -194,60 +195,11 @@ struct NewPersonView: View {
                     if self.firstName.count > 0, self.lastName.count > 0 {
                         CloudKitPerson.doesPersonExist(firstName: self.firstName,
                                                        lastName: self.lastName) { (result) in
-                                                        if result == true, self.recordID != nil {
-                                                            self.ModifyNewPerson(recordID: self.recordID,
-                                                                                 firstName: self.firstName,
-                                                                                 lastName: self.lastName,
-                                                                                 personEmail: self.personEmail,
-                                                                                 address: self.address,
-                                                                                 phoneNumber: self.phoneNumber,
-                                                                                 city: self.city,
-                                                                                 cityNumber: self.cityNumber,
-                                                                                 municipalityNumber: self.municipalityNumber,
-                                                                                 municipality: self.municipality,
-                                                                                 dateOfBirth: self.dateOfBirth,
-                                                                                 dateMonthDay: MonthDay(date: self.dateOfBirth),
-                                                                                 gender: self.gender,
-                                                                                 image: self.image)
-                                                        } else {
-                                                            self.tmpFirstName = self.firstName
-                                                            /// Dersom første tegn i firstName er "Å" legg firstName etter en emoji
-                                                            /// Eks, firstName = "😀" + "Ågot"
-                                                            /// Dersom første tegn er en emoji ikke endre firstName
-                                                            let index0 = self.tmpFirstName.index(self.tmpFirstName.startIndex, offsetBy: 0)
-                                                            let firstChar = String(self.tmpFirstName[index0...index0])
-                                                            if firstChar.containsEmoji == false, firstChar.uppercased() == "Å"  {
-                                                                self.tmpFirstName = "😀" + self.tmpFirstName
-                                                            }
-                                                            let person = Person(
-                                                                                firstName: self.tmpFirstName,
-                                                                                lastName: self.lastName,
-                                                                                personEmail: self.personEmail,
-                                                                                address: self.address,
-                                                                                phoneNumber: self.phoneNumber,
-                                                                                cityNumber: self.cityNumber,
-                                                                                city: self.city,
-                                                                                municipalityNumber: self.municipalityNumber,
-                                                                                municipality: self.municipality,
-                                                                                dateOfBirth: self.dateOfBirth,
-                                                                                dateMonthDay: MonthDay(date: self.dateOfBirth),
-                                                                                gender: self.gender,
-                                                                                image: self.image)
-                                                            CloudKitPerson.savePerson(item: person) { (result) in
-                                                                switch result {
-                                                                case .success:
-                                                                    self.changeButtonText = true
-                                                                    let person1 = "'\(self.firstName)" + " \(self.lastName)'"
-                                                                    let message1 =  NSLocalizedString("was saved", comment: "NewPersonView")
-                                                                    self.message = person1 + " " + message1
-                                                                    self.alertIdentifier = AlertID(id: .first)
-                                                                case .failure(let err):
-                                                                    self.message = err.localizedDescription
-                                                                    self.alertIdentifier = AlertID(id: .first)
-                                                                }
-                                                            }
+
+                                                        if result == true {
+
                                                             /// Finner recordID etter å ha lagret den nye personen
-                                                            let firstName = self.tmpFirstName
+                                                            let firstName = self.firstName
                                                             let lastName = self.lastName
                                                             let predicate = NSPredicate(format: "firstName == %@ AND lastName = %@", firstName, lastName)
                                                             CloudKitPerson.fetchPerson(predicate: predicate)  { (result) in
@@ -256,6 +208,66 @@ struct NewPersonView: View {
                                                                     self.recordID = person.recordID
                                                                 case .failure(let err):
                                                                     print(err.localizedDescription)
+                                                                }
+                                                            }
+                                                            if self.recordID != nil {
+                                                                self.ModifyNewPerson(recordID: self.recordID,
+                                                                                     firstName: self.firstName,
+                                                                                     lastName: self.lastName,
+                                                                                     personEmail: self.personEmail,
+                                                                                     address: self.address,
+                                                                                     phoneNumber: self.phoneNumber,
+                                                                                     city: self.city,
+                                                                                     cityNumber: self.cityNumber,
+                                                                                     municipalityNumber: self.municipalityNumber,
+                                                                                     municipality: self.municipality,
+                                                                                     dateOfBirth: self.dateOfBirth,
+                                                                                     dateMonthDay: MonthDay(date: self.dateOfBirth),
+                                                                                     gender: self.gender,
+                                                                                     image: self.image)
+                                                            } else {
+                                                                self.message = NSLocalizedString("Can not modify this person yet, due to missing value for its recordID.\nPlease try again later...", comment: "NewPersonView")
+                                                                self.alertIdentifier = AlertID(id: .third)
+                                                            }
+                                                        } else {
+                                                            self.saveNumber += 1
+                                                            if self.saveNumber == 1 {
+                                                                self.changeButtonText = false
+                                                                self.tmpFirstName = self.firstName
+                                                                /// Dersom første tegn i firstName er "Å" legg firstName etter en emoji
+                                                                /// Eks, firstName = "😀" + "Ågot"
+                                                                /// Dersom første tegn er en emoji ikke endre firstName
+                                                                let index0 = self.tmpFirstName.index(self.tmpFirstName.startIndex, offsetBy: 0)
+                                                                let firstChar = String(self.tmpFirstName[index0...index0])
+                                                                if firstChar.containsEmoji == false, firstChar.uppercased() == "Å"  {
+                                                                    self.tmpFirstName = "😀" + self.tmpFirstName
+                                                                }
+                                                                let person = Person(
+                                                                                    firstName: self.tmpFirstName,
+                                                                                    lastName: self.lastName,
+                                                                                    personEmail: self.personEmail,
+                                                                                    address: self.address,
+                                                                                    phoneNumber: self.phoneNumber,
+                                                                                    cityNumber: self.cityNumber,
+                                                                                    city: self.city,
+                                                                                    municipalityNumber: self.municipalityNumber,
+                                                                                    municipality: self.municipality,
+                                                                                    dateOfBirth: self.dateOfBirth,
+                                                                                    dateMonthDay: MonthDay(date: self.dateOfBirth),
+                                                                                    gender: self.gender,
+                                                                                    image: self.image)
+                                                                CloudKitPerson.savePerson(item: person) { (result) in
+                                                                    switch result {
+                                                                    case .success:
+                                                                        self.changeButtonText = true
+                                                                        let person1 = "'\(self.firstName)" + " \(self.lastName)'"
+                                                                        let message1 =  NSLocalizedString("was saved", comment: "NewPersonView")
+                                                                        self.message = person1 + " " + message1
+                                                                        self.alertIdentifier = AlertID(id: .first)
+                                                                    case .failure(let err):
+                                                                        self.message = err.localizedDescription
+                                                                        self.alertIdentifier = AlertID(id: .first)
+                                                                    }
                                                                 }
                                                             }
                                                         }
@@ -285,6 +297,8 @@ struct NewPersonView: View {
         /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
         .modifier(AdaptsToSoftwareKeyboard())
         .onAppear {
+            /// Skal bare lagre dersom saveNumber ==0
+            self.saveNumber = 0
             /// Skjuler "Refresh" før en har valgt "Sted" (poststed)
             self.showRefreshButton = false
             /// Sletter det sist valgte bildet fra ImagePicker
