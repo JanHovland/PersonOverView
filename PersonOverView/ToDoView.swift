@@ -135,6 +135,8 @@ var toDo_3 =
  53.  🟢 "Ny person" kan lagre en ny person 2 ganger.
          Løsning: legge inn  self.saveNumber += 1 foran "Lagre"
  54.  🟢 Forbedret søking på "Oversikt" med hensyn til tastaturet som er i veien, ved å Legge inn "Avbryt".
+ 55.  🟢 Modify "Person" : Når en trykker på et felt forsvinner alle feltene, bortsett fra fødselsdato og kjønn
+         Feilen kommer fra: .modifier(AdaptsToSoftwareKeyboard()) som jeg kommenterte bort i "PersonView"
 
 """
 var toDo_4 =
@@ -144,9 +146,11 @@ S e n e r e
 """
 var toDo_5 =
 """
-  1.  🔴Trykke på bildet istedet for på teksten i "SignUpView.swift"
-  2.  🔴 Få opp spørsel om lagring etter å ha trykket "Vis persondata" og så return til "Oversikt"
-  3.  🔴 Få opp spørsel om lagring etter å ha trykket "Ny person" og så retur til "Oversikt"
+  1.  🔴 Trykke på bildet istedet for på teksten i "SignUpView.swift"
+  2.  🔴 .onDisappear: Få opp spørsel om lagring etter å ha trykket "Vis persondata" og så return til "Oversikt"
+         a) Dersom en har endret et felt/image og en så trykker "<Oversikt" må det komme spørsmål om lagring
+  3.  🔴 .onDisappear: Få opp spørsel om lagring etter å ha trykket "Ny person" og så retur til "Oversikt"
+         a) Dersom en har endret et felt/image og en så trykker "<Oversikt" må det komme spørsmål om lagring
 
 """
 var toDo_6 =

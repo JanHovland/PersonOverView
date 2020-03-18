@@ -242,8 +242,8 @@ struct PersonView : View {
         }
         /// Ta bort tastaturet når en klikker utenfor feltet
         .modifier(DismissingKeyboard())
-        /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
-        .modifier(AdaptsToSoftwareKeyboard())
+        /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt, men nå krøller feltene seg sammen til en "strek" !!!!!!!!!!!
+        /// .modifier(AdaptsToSoftwareKeyboard())
     }
 
     func ShowPerson() {
