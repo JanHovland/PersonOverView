@@ -1,5 +1,5 @@
 //
-//  PersonCoordinator.swift
+//  Coordinator.swift
 //  PersonOverView
 //
 //  Created by Jan Hovland on 19/03/2020.
