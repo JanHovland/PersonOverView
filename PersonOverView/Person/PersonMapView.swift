@@ -15,7 +15,7 @@ import MapKit
 
 struct PersonMapView: View {
 
-    private var locationManager = LocationManager()
+//     private var locationManager = LocationManager()
 
     var body: some View {
         MapView()

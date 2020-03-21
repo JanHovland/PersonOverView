@@ -12,18 +12,25 @@ import MapKit
 struct MapView: UIViewRepresentable {
 
     func makeUIView(context: Context) -> MKMapView {
-        let map = MKMapView()
-        map.showsUserLocation = true
-        map.delegate = context.coordinator
-        return map
-    }
+        let mapView = MKMapView()
+        mapView.delegate = context.coordinator
 
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
+        let annotation = MKPointAnnotation()
+        annotation.title = "London"
+        annotation.subtitle = "Capital of England"
+        annotation.coordinate = CLLocationCoordinate2D(latitude: 51.5,
+                                                       longitude: 0.13)
+        mapView.addAnnotation(annotation)
+
+        return mapView
     }
 
     func updateUIView(_ uiView: MKMapView, context: UIViewRepresentableContext<MapView>) {
 
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
     }
 }
 

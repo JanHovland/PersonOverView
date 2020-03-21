@@ -7,14 +7,25 @@
 //
 
 import Foundation
+import SwiftUI
 import MapKit
 
-final class Coordinator: NSObject, MKMapViewDelegate {
+class Coordinator: NSObject, MKMapViewDelegate {
 
-    var control: MapView
+    var parent: MapView
 
-    init(_ control: MapView) {
-        self.control = control
+    init(_ parent: MapView) {
+        self.parent = parent
+    }
+
+    func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
+        print(mapView.centerCoordinate)
+    }
+
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: nil)
+        view.canShowCallout = true
+        return view
     }
 
 }
