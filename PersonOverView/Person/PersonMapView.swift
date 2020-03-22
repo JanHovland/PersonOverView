@@ -10,16 +10,20 @@
 // SwiftUI - Maps Integration and Find Nearby Places
 // azamsharp
 
+import Foundation
 import SwiftUI
 import MapKit
 
 struct PersonMapView: View {
 
-    @State private var locationOnMap: String = "Uelandsgata 2 4360 Varhaug"
-    @State private var address: String = "Uelandsgata 2"
-    @State private var subtitle: String = "4360 Varhaug"
+    @State var locationOnMap: String = "Uelandsgata 2 4360 Varhaug"
+    @State var address: String = "Uelandsgata 2"
+    @State var subtitle: String = "4360 Varhaug"
 
     var body: some View {
+        /// Compilerer OK men under kjøring kommer denne feilmeldingen:
+        /// Use of unresolved identifier 'MapView' når MapView ligger i MapView.swift
+        /// OK når struct MapView ligger lokalt
         MapView(locationOnMap: $locationOnMap,
                 address: $address,
                 subtitle: $subtitle)

@@ -6,6 +6,7 @@
 //  Copyright © 2020 Jan Hovland. All rights reserved.
 //
 
+import Foundation
 import SwiftUI
 import MapKit
 
