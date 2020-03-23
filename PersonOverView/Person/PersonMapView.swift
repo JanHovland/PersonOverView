@@ -16,25 +16,25 @@ import MapKit
 
 struct PersonMapView: View {
 
-    @State var locationOnMap: String = "Uelandsgata 2 4360 Varhaug"
-    @State var address: String = "Uelandsgata 2"
-    @State var subtitle: String = "4360 Varhaug"
+    var locationOnMap: String = "Uelandsgata 2 4360 Varhaug"
+    var address: String = "Uelandsgata 2"
+    var subtitle: String = "4360 Varhaug"
 
     var body: some View {
         /// Compilerer OK men under kjøring kommer denne feilmeldingen:
         /// Use of unresolved identifier 'MapView' når MapView ligger i MapView.swift
         /// OK når struct MapView ligger lokalt
-        MapView(locationOnMap: $locationOnMap,
-                address: $address,
-                subtitle: $subtitle)
+        MapView(locationOnMap: locationOnMap,
+                address: address,
+                subtitle: subtitle)
     }
 }
 
 struct MapView: UIViewRepresentable {
 
-    @Binding var locationOnMap: String
-    @Binding var address: String
-    @Binding var subtitle: String
+    var locationOnMap: String
+    var address: String
+    var subtitle: String
 
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
@@ -91,3 +91,4 @@ struct MapView: UIViewRepresentable {
     }
 
 }
+
