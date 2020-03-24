@@ -30,6 +30,9 @@ struct PersonsOverView: View {
     @State private var indexSetDelete = IndexSet()
     @State private var recordID: CKRecord.ID?
 
+    @State private var showMap = false
+
+
 
     var body: some View {
         NavigationView {
@@ -43,33 +46,14 @@ struct PersonsOverView: View {
                         $0.lastName.localizedStandardContains (self.searchText)    })) {
                             person in
                             NavigationLink(destination: PersonView(person: person)) {
-                                VStack(alignment: .leading) {
-                                    ShowPersons(person: person)
-//                                    HStack(alignment: .center, spacing: 42.5) {
-//                                        /// For å få vist iconene uten en space nedenfor dem, måtte jeg legge inn Text("  ")
-//                                        Text("  ")
-//                                        Image("map")
-//                                            .resizable()
-//                                            .frame(width: 46, height: 46, alignment: .center)
-//                                        Image("phone")
-//                                            .resizable()
-//                                            .frame(width: 40, height: 40, alignment: .center)
-//                                        Image("message")
-//                                            .resizable()
-//                                            .frame(width: 40, height: 40, alignment: .center)
-//
-//                                        Image("mail")
-//                                            .resizable()
-//                                            .frame(width: 46, height: 46, alignment: .center)
-//                                    }
-                                }
+                                ShowPersons(person: person)
                             }
                     }
-                        /// Sletter  valgt person og oppdaterer CliudKit
-                        .onDelete { (indexSet) in
-                            self.indexSetDelete = indexSet
-                            self.recordID = self.persons[indexSet.first!].recordID
-                            self.deletePersonActinSheet = true
+                    /// Sletter  valgt person og oppdaterer CliudKit
+                    .onDelete { (indexSet) in
+                        self.indexSetDelete = indexSet
+                        self.recordID = self.persons[indexSet.first!].recordID
+                        self.deletePersonActinSheet = true
                     }
                     .actionSheet(isPresented: $deletePersonActinSheet) {
                         ActionSheet(title: Text(NSLocalizedString("Delete person", comment: "PersonsOverView")),
@@ -164,20 +148,7 @@ struct PersonsOverView: View {
             switch result {
             case .success(let person):
                 self.persons.append(person)
-                /// Sortering
                 self.persons.sort(by: {$0.firstName < $1.firstName})
-
-//                $0.firstName.localizedCaseInsensitiveCompare($1.firstName) == .orderedAscending
-//
-//               // Must use local sorting of the poststedSectionTitles
-//               let region = NSLocale.current.regionCode?.lowercased() // Returns the local region
-//               let language = Locale(identifier: region!)
-//                let sortedpoststedSection1 = self.persons.sorted {
-//                    $0.compare($1, locale: language) == .orderedAscending
-//     -----<           localizedCaseInsensitiveCompare(_:)
-//
-//               }
-
             case .failure(let err):
                 self.message = err.localizedDescription
                 self.alertIdentifier = AlertID(id: .first)
@@ -240,16 +211,39 @@ struct ShowPersons: View {
                 Image("map")
                     .resizable()
                     .frame(width: 46, height: 46, alignment: .center)
+                    .gesture(
+                        TapGesture()
+                            .onEnded({
+                                print("Map tapped")
+                            })
+                    )
                 Image("phone")
                     .resizable()
                     .frame(width: 40, height: 40, alignment: .center)
+                    .gesture(
+                        TapGesture()
+                            .onEnded({
+                                print("Phone tapped")
+                            })
+                    )
                 Image("message")
                     .resizable()
                     .frame(width: 40, height: 40, alignment: .center)
-
+                    .gesture(
+                        TapGesture()
+                            .onEnded({
+                                print("Message tapped")
+                            })
+                    )
                 Image("mail")
                     .resizable()
                     .frame(width: 46, height: 46, alignment: .center)
+                    .gesture(
+                        TapGesture()
+                            .onEnded({
+                                print("Mail tapped")
+                            })
+                    )
             }
 
         }
