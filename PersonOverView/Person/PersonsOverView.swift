@@ -207,12 +207,12 @@ struct ShowPersons: View {
                     .font(.custom("system", size: 17))
                 }
             }
-            HStack(alignment: .center, spacing: 42.5) {
+            HStack(alignment: .center, spacing: 40) {
                 /// For å få vist iconene uten en space nedenfor dem, måtte jeg legge inn Text("  ")
-                Text("  ")
+                Text("      ")
                 Image("map")
                     .resizable()
-                    .frame(width: 46, height: 46, alignment: .center)
+                    .frame(width: 36, height: 36, alignment: .center)
                     .gesture(
                         TapGesture()
                             .onEnded({_ in
@@ -222,7 +222,7 @@ struct ShowPersons: View {
                     )
                 Image("phone")
                     .resizable()
-                    .frame(width: 40, height: 40, alignment: .center)
+                    .frame(width: 30, height: 30, alignment: .center)
                     .gesture(
                         TapGesture()
                             .onEnded({
@@ -231,7 +231,7 @@ struct ShowPersons: View {
                     )
                 Image("message")
                     .resizable()
-                    .frame(width: 40, height: 40, alignment: .center)
+                    .frame(width: 30, height: 30, alignment: .center)
                     .gesture(
                         TapGesture()
                             .onEnded({
@@ -240,7 +240,7 @@ struct ShowPersons: View {
                     )
                 Image("mail")
                     .resizable()
-                    .frame(width: 46, height: 46, alignment: .center)
+                    .frame(width: 36, height: 36, alignment: .center)
                     .gesture(
                         TapGesture()
                             .onEnded({
