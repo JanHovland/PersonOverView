@@ -228,8 +228,14 @@ struct ShowPersons: View {
                     .gesture(
                         TapGesture()
                             .onEnded({_ in
-                                self.makePhoneCall.toggle()
-                            })
+                                /// 1: Eventuelle blanke tegn må fjernes
+                                /// 2: Det ringes ved å kalle UIApplication.shared.open(url)
+                                let prefix = "tel://"
+                                let phoneNumber1 = prefix + self.person.phoneNumber
+                                let phoneNumber = phoneNumber1.replacingOccurrences(of: " ", with: "")
+                                guard let url = URL(string: phoneNumber) else { return }
+                                UIApplication.shared.open(url)
+                        })
                     )
                 Image("message")
                     .resizable()
@@ -257,10 +263,15 @@ struct ShowPersons: View {
                           address: self.person.address,
                           subtitle: self.person.cityNumber + " " + self.person.city)
         }
-        .sheet(isPresented: $makePhoneCall) {
-            PersonPhoneView(phoneNumber: self.person.phoneNumber)
-        }
-        /// Ta bort tastaturet når en klikker utenfor feltet
+//        .sheet(isPresented: $makePhoneCall) {
+//
+//            let prefix = "tel://"
+//            let phoneNumber1 = prefix + self.phoneNumber
+//            let phoneNumber = phoneNumber1.replacingOccurrences(of: " ", with: "")
+//            guard let url = URL(string: phoneNumber) else { return }
+//            UIApplication.shared.open(url)
+//             PersonPhoneView(phoneNumber: self.person.phoneNumber)
+//r        /// Ta bort tastaturet når en klikker utenfor feltet
         .modifier(DismissingKeyboard())
     }
 }
