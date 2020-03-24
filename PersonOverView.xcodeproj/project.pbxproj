@@ -55,6 +55,7 @@
 		DBF1F1182423F24300EE707A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF1F1172423F24300EE707A /* MapView.swift */; };
 		DBF1F11A2423F4F300EE707A /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF1F1192423F4F300EE707A /* Coordinator.swift */; };
 		DBF1F11C2423F85300EE707A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF1F11B2423F85300EE707A /* LocationManager.swift */; };
+		DBF1F11F242A70AD00EE707A /* PersonPhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF1F11E242A70AD00EE707A /* PersonPhoneView.swift */; };
 		DBFC29C323C48F6C00F2224B /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC29C223C48F6C00F2224B /* SettingView.swift */; };
 		DBFC29CB23C5DE8500F2224B /* UserMaintenanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC29CA23C5DE8500F2224B /* UserMaintenanceView.swift */; };
 		DBFC29CF23C74D6900F2224B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFC29CE23C74D6900F2224B /* User.swift */; };
@@ -114,6 +115,7 @@
 		DBF1F1172423F24300EE707A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		DBF1F1192423F4F300EE707A /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		DBF1F11B2423F85300EE707A /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		DBF1F11E242A70AD00EE707A /* PersonPhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPhoneView.swift; sourceTree = "<group>"; };
 		DBFC29C223C48F6C00F2224B /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		DBFC29CA23C5DE8500F2224B /* UserMaintenanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMaintenanceView.swift; sourceTree = "<group>"; };
 		DBFC29CE23C74D6900F2224B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -269,11 +271,12 @@
 			isa = PBXGroup;
 			children = (
 				DBF0397D23E5A50D00230FAA /* NewPersonView.swift */,
+				DB6B153424066E9500CF87B9 /* PersonBirthday.swift */,
 				DBF1F1152423ECF700EE707A /* PersonMapView.swift */,
 				DB302B8A237EF33100076D10 /* PersonView.swift */,
 				DB302B70237EF02300076D10 /* PersonOverView.swift */,
 				DB65AE7B23E1EE2100568032 /* PersonsOverView.swift */,
-				DB6B153424066E9500CF87B9 /* PersonBirthday.swift */,
+				DBF1F11E242A70AD00EE707A /* PersonPhoneView.swift */,
 				DB7027E22406DF3800C94909 /* PersonSendMail.swift */,
 			);
 			path = Person;
@@ -381,6 +384,7 @@
 				DB33E14023F56F5100A95FAA /* PostalCodeSettings.swift in Sources */,
 				DB4A6CEF2411028600349A51 /* MonthDay.swift in Sources */,
 				DB33E13723F09E4B00A95FAA /* CloudKitPostalCode.swift in Sources */,
+				DBF1F11F242A70AD00EE707A /* PersonPhoneView.swift in Sources */,
 				DB302B81237EF16200076D10 /* UserElement.swift in Sources */,
 				DB65AE7C23E1EE2100568032 /* PersonsOverView.swift in Sources */,
 				DB302B8B237EF33100076D10 /* PersonView.swift in Sources */,

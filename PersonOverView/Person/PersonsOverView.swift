@@ -168,6 +168,9 @@ struct ShowPersons: View {
     @State private var address: String = ""
     @State private var subtitle: String = ""
 
+    @State private var makePhoneCall = false
+
+
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
@@ -216,7 +219,6 @@ struct ShowPersons: View {
                     .gesture(
                         TapGesture()
                             .onEnded({_ in
-                                print("Map tapped")
                                 self.showMap.toggle()
                             })
                     )
@@ -225,8 +227,8 @@ struct ShowPersons: View {
                     .frame(width: 30, height: 30, alignment: .center)
                     .gesture(
                         TapGesture()
-                            .onEnded({
-                                print("Phone tapped")
+                            .onEnded({_ in
+                                self.makePhoneCall.toggle()
                             })
                     )
                 Image("message")
@@ -254,6 +256,9 @@ struct ShowPersons: View {
             PersonMapView(locationOnMap: self.person.address + " " + self.person.cityNumber + " " + self.person.city,
                           address: self.person.address,
                           subtitle: self.person.cityNumber + " " + self.person.city)
+        }
+        .sheet(isPresented: $makePhoneCall) {
+            PersonPhoneView(phoneNumber: self.person.phoneNumber)
         }
         /// Ta bort tastaturet når en klikker utenfor feltet
         .modifier(DismissingKeyboard())
