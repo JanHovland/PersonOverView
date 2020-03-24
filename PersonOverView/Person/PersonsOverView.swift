@@ -45,23 +45,23 @@ struct PersonsOverView: View {
                             NavigationLink(destination: PersonView(person: person)) {
                                 VStack(alignment: .leading) {
                                     ShowPersons(person: person)
-                                    HStack(alignment: .center, spacing: 42.5) {
-                                        /// For å få vist iconene uten en space nedenfor dem, måtte jeg legge inn Text("  ")
-                                        Text("  ")
-                                        Image("map")
-                                            .resizable()
-                                            .frame(width: 46, height: 46, alignment: .center)
-                                        Image("phone")
-                                            .resizable()
-                                            .frame(width: 40, height: 40, alignment: .center)
-                                        Image("message")
-                                            .resizable()
-                                            .frame(width: 40, height: 40, alignment: .center)
-
-                                        Image("mail")
-                                            .resizable()
-                                            .frame(width: 46, height: 46, alignment: .center)
-                                    }
+//                                    HStack(alignment: .center, spacing: 42.5) {
+//                                        /// For å få vist iconene uten en space nedenfor dem, måtte jeg legge inn Text("  ")
+//                                        Text("  ")
+//                                        Image("map")
+//                                            .resizable()
+//                                            .frame(width: 46, height: 46, alignment: .center)
+//                                        Image("phone")
+//                                            .resizable()
+//                                            .frame(width: 40, height: 40, alignment: .center)
+//                                        Image("message")
+//                                            .resizable()
+//                                            .frame(width: 40, height: 40, alignment: .center)
+//
+//                                        Image("mail")
+//                                            .resizable()
+//                                            .frame(width: 46, height: 46, alignment: .center)
+//                                    }
                                 }
                             }
                     }
@@ -198,7 +198,7 @@ struct ShowPersons: View {
     }()
     var person: Person
     var body: some View {
-        VStack {
+        VStack (alignment: .leading) {
             HStack {
                 if person.image != nil {
                     Image(uiImage: person.image!)
@@ -234,6 +234,24 @@ struct ShowPersons: View {
                     .font(.custom("system", size: 17))
                 }
             }
+            HStack(alignment: .center, spacing: 42.5) {
+                /// For å få vist iconene uten en space nedenfor dem, måtte jeg legge inn Text("  ")
+                Text("  ")
+                Image("map")
+                    .resizable()
+                    .frame(width: 46, height: 46, alignment: .center)
+                Image("phone")
+                    .resizable()
+                    .frame(width: 40, height: 40, alignment: .center)
+                Image("message")
+                    .resizable()
+                    .frame(width: 40, height: 40, alignment: .center)
+
+                Image("mail")
+                    .resizable()
+                    .frame(width: 46, height: 46, alignment: .center)
+            }
+
         }
         /// Ta bort tastaturet når en klikker utenfor feltet
         .modifier(DismissingKeyboard())
