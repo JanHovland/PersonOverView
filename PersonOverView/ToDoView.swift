@@ -16,8 +16,6 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 Vise kart
-  2. 🔴 Ringe
   1. 🔴 Sende melding
   2. 🔴 Sende e-post
   3. 🔴 Legge inn fødselsdaglisten fra Firebase
