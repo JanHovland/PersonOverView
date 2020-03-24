@@ -30,8 +30,6 @@ struct PersonsOverView: View {
     @State private var indexSetDelete = IndexSet()
     @State private var recordID: CKRecord.ID?
 
-    @State private var showMap = false
-
     var body: some View {
         NavigationView {
             VStack {
@@ -259,24 +257,6 @@ struct ShowPersons: View {
         }
         /// Ta bort tastaturet når en klikker utenfor feltet
         .modifier(DismissingKeyboard())
-        /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt
-        .modifier(AdaptsToSoftwareKeyboard())
-        .overlay(
-            HStack {
-                Spacer()
-                VStack {
-                    Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }, label: {
-                        Image(systemName: "chevron.down.circle.fill")
-                            .font(.largeTitle)
-                            .foregroundColor(.none)
-                    })
-                        .padding(.trailing, 20)
-                        .padding(.top, 70)
-                    Spacer()
-                }
-        })
     }
 }
 

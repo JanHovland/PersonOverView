@@ -29,22 +29,22 @@ struct PersonMapView: View {
         MapView(locationOnMap: locationOnMap,
                 address: address,
                 subtitle: subtitle)
-            .overlay(
-                HStack {
+        .overlay(
+            HStack {
+                Spacer()
+                VStack {
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "chevron.down.circle.fill")
+                            .font(.largeTitle)
+                            .foregroundColor(.none)
+                    })
+                        .padding(.trailing, 20)
+                        .padding(.top, 70)
                     Spacer()
-                    VStack {
-                        Button(action: {
-                            self.presentationMode.wrappedValue.dismiss()
-                        }, label: {
-                            Image(systemName: "chevron.down.circle.fill")
-                                .font(.largeTitle)
-                                .foregroundColor(.none)
-                        })
-                            .padding(.trailing, 20)
-                            .padding(.top, 70)
-                        Spacer()
-                    }
-            })
+                }
+        })
     }
 
 }
