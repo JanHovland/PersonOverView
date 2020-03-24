@@ -17,9 +17,10 @@ E n d r i n g e r
 var toDo_1 =
 """
   1. 🔴 Vise kart
-  2. 🔴 Sende melding
-  3. 🔴 Sende e-post
-  4. 🔴 Legge inn fødselsdaglisten fra Firebase
+  2. 🔴 Ringe
+  1. 🔴 Sende melding
+  2. 🔴 Sende e-post
+  3. 🔴 Legge inn fødselsdaglisten fra Firebase
 
 """
 
@@ -137,6 +138,9 @@ var toDo_3 =
  54.  🟢 Forbedret søking på "Oversikt" med hensyn til tastaturet som er i veien, ved å Legge inn "Avbryt".
  55.  🟢 Modify "Person" : Når en trykker på et felt forsvinner alle feltene, bortsett fra fødselsdato og kjønn
          Feilen kommer fra: .modifier(AdaptsToSoftwareKeyboard()) som jeg kommenterte bort i "PersonView"
+ 56.  🟢 Nå kan kartet vise hvor en person bor
+ 57.  🟢 Nå kan det ringes en person
+
 
 """
 var toDo_4 =
