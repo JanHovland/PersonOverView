@@ -62,6 +62,23 @@ extension TestMessage {
 
         composeVC.mailComposeDelegate = mailComposeDelegate
 
+        /// What does CC mean?
+        /// In email sending, CC is the abbreviation for “carbon copy.” Back in the days before the internet and email, in order to create a copy of the letter you were writing,
+        /// you had to place carbon paper between the paper you were writing on and the paper that was going to be your copy.
+        /// Just as the physical carbon copy above, CC is an easy way of sending copies of an email to other people.
+        /// If you have ever received a CCed email, you’ve probably noticed that it will be addressed to you and a list of other people who have also been CCed.
+
+        /// What does BCC mean?
+        /// BCC stands for blind carbon copy. Just like CC, BCC is a way of sending copies of an email to other people.
+        /// The difference between the two is that, while you can see who else has received the email when CC is used,
+        /// that is not the case with BCC. It is called blind carbon copy  because
+        /// the other recipients won’t be able to see that someone else has been sent a copy of the email.
+
+        /// setToRecipients sjekker om det er angitt en lovlig epost, "jan.hovlandlyse.net" blir vist som blank siden det mangler '@'
+        composeVC.setToRecipients(["jan.hovland@lyse.net"])
+        composeVC.setSubject("Emne")
+        composeVC.setMessageBody("Innhold", isHTML: true)
+
         vc?.present(composeVC, animated: true)
     }
 }
