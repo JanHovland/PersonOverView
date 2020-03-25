@@ -16,7 +16,7 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 Sende melding
+  1. 🔴 Sende melding  https://stackoverflow.com/questions/60014299/sending-sms-programmatically-using-swiftui
   2. 🔴 Sende e-post
   3. 🔴 Legge inn fødselsdaglisten fra Firebase
 
@@ -234,3 +234,85 @@ struct ToDoView: View {
     }
 }
 
+/*
+ import SwiftUI
+ import MessageUI
+ /// Main View
+ struct ContentView: View {
+
+     private let mailComposeDelegate = MailComposerDelegate()
+
+     private let messageComposeDelegate = MessageComposerDelegate()
+
+     var body: some View {
+         VStack {
+             Spacer()
+             Button(action: {
+                 self.presentMailCompose()
+             }) {
+                 Text("email")
+             }
+
+             Spacer()
+
+            Button(action: {
+                self.presentMessageCompose()
+            }) {
+                Text("Message")
+            }
+             Spacer()
+         }
+     }
+ }
+
+ // MARK: The email extension
+
+ extension ContentView {
+
+     private class MailComposerDelegate: NSObject, MFMailComposeViewControllerDelegate {
+         func mailComposeController(_ controller: MFMailComposeViewController,
+                                    didFinishWith result: MFMailComposeResult,
+                                    error: Error?) {
+
+             controller.dismiss(animated: true)
+         }
+     }
+     /// Present an mail compose view controller modally in UIKit environment
+     private func presentMailCompose() {
+         guard MFMailComposeViewController.canSendMail() else {
+             return
+         }
+         let vc = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController
+         let composeVC = MFMailComposeViewController()
+         composeVC.mailComposeDelegate = mailComposeDelegate
+
+         vc?.present(composeVC, animated: true)
+     }
+ }
+
+ // MARK: The message extension
+
+ extension ContentView {
+
+     private class MessageComposerDelegate: NSObject, MFMessageComposeViewControllerDelegate {
+         func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+             // Customize here
+             controller.dismiss(animated: true)
+         }
+     }
+     /// Present an message compose view controller modally in UIKit environment
+     private func presentMessageCompose() {
+         guard MFMessageComposeViewController.canSendText() else {
+             return
+         }
+         let vc = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController
+         let composeVC = MFMessageComposeViewController()
+         composeVC.messageComposeDelegate = messageComposeDelegate
+
+         vc?.present(composeVC, animated: true)
+     }
+ }
+
+
+
+ */
