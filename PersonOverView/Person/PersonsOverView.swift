@@ -20,8 +20,8 @@ struct PersonsOverView: View {
 
     @Environment(\.presentationMode) var presentationMode
 
-    @State private var message: String = ""
     @State private var searchText: String = ""
+    @State private var message: String = ""
     @State private var alertIdentifier: AlertID?
     @State private var persons = [Person]()
     @State private var newPerson = false
@@ -163,13 +163,14 @@ struct ShowPersons: View {
         return formatter
     }()
 
+    @State private var message: String = ""
+    @State private var alertIdentifier: AlertID?
+
     @State private var showMap = false
     @State private var locationOnMap: String = ""
     @State private var address: String = ""
     @State private var subtitle: String = ""
-
     @State private var makePhoneCall = false
-
 
     @Environment(\.presentationMode) var presentationMode
 
@@ -179,23 +180,23 @@ struct ShowPersons: View {
                 if person.image != nil {
                     Image(uiImage: person.image!)
                         .resizable()
-                        .frame(width: 60, height: 60, alignment: .center)
+                        .frame(width: 50, height: 50, alignment: .center)
                         .clipShape(Circle())
                         .overlay(Circle().stroke(Color.white, lineWidth: 1))
                 } else {
                     Image(systemName: "person.circle")
                         .resizable()
                         .font(.system(size: 16, weight: .ultraLight))
-                        .frame(width: 60, height: 60, alignment: .center)
+                        .frame(width: 50, height: 50, alignment: .center)
                 }
                 VStack (alignment: .leading, spacing: 5) {
-                    HStack {
+                    // HStack {
                         /// Sletter første character i fornavnet dersom den er en emoji
                         TextDeleteFirstEmoji(firstName : person.firstName)
                             .font(Font.title.weight(.ultraLight))
                         Text(person.lastName)
                             .font(Font.body.weight(.ultraLight))
-                    }
+                    // }
                     .font(Font.body.weight(.ultraLight))
                     Text("\(person.dateOfBirth, formatter: Self.taskDateFormat)")
                         .font(.custom("system", size: 17))
@@ -212,7 +213,7 @@ struct ShowPersons: View {
             }
             HStack(alignment: .center, spacing: 40) {
                 /// For å få vist iconene uten en space nedenfor dem, måtte jeg legge inn Text("  ")
-                Text("      ")
+                Text("    ")
                 Image("map")
                     .resizable()
                     .frame(width: 36, height: 36, alignment: .center)
@@ -228,13 +229,18 @@ struct ShowPersons: View {
                     .gesture(
                         TapGesture()
                             .onEnded({_ in
-                                /// 1: Eventuelle blanke tegn må fjernes
-                                /// 2: Det ringes ved å kalle UIApplication.shared.open(url)
-                                let prefix = "tel://"
-                                let phoneNumber1 = prefix + self.person.phoneNumber
-                                let phoneNumber = phoneNumber1.replacingOccurrences(of: " ", with: "")
-                                guard let url = URL(string: phoneNumber) else { return }
-                                UIApplication.shared.open(url)
+                                if self.person.phoneNumber.count > 0 {
+                                    /// 1: Eventuelle blanke tegn må fjernes
+                                    /// 2: Det ringes ved å kalle UIApplication.shared.open(url)
+                                    let prefix = "tel://"
+                                    let phoneNumber1 = prefix + self.person.phoneNumber
+                                    let phoneNumber = phoneNumber1.replacingOccurrences(of: " ", with: "")
+                                    guard let url = URL(string: phoneNumber) else { return }
+                                    UIApplication.shared.open(url)
+                                } else {
+                                    self.message = NSLocalizedString("Missing phonenumber", comment: "ShowPersons")
+                                    self.alertIdentifier = AlertID(id: .first)
+                                }
                         })
                     )
                 Image("message")
@@ -263,15 +269,17 @@ struct ShowPersons: View {
                           address: self.person.address,
                           subtitle: self.person.cityNumber + " " + self.person.city)
         }
-//        .sheet(isPresented: $makePhoneCall) {
-//
-//            let prefix = "tel://"
-//            let phoneNumber1 = prefix + self.phoneNumber
-//            let phoneNumber = phoneNumber1.replacingOccurrences(of: " ", with: "")
-//            guard let url = URL(string: phoneNumber) else { return }
-//            UIApplication.shared.open(url)
-//             PersonPhoneView(phoneNumber: self.person.phoneNumber)
-//r        /// Ta bort tastaturet når en klikker utenfor feltet
+        .alert(item: $alertIdentifier) { alert in
+            switch alert.id {
+            case .first:
+                return Alert(title: Text(self.message))
+            case .second:
+                return Alert(title: Text(self.message))
+            case .third:
+                return Alert(title: Text(self.message))
+            }
+        }
+        /// Ta bort tastaturet når en klikker utenfor feltet
         .modifier(DismissingKeyboard())
     }
 }
