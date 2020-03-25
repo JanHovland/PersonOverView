@@ -14,7 +14,8 @@ import SwiftUI
 struct PersonOverView: View {
     // @EnvironmentObject var postalCodeSettings: PostalCodeSettings
     var body: some View {
-        SignInView() // PersonBirthday()  
+        TestMessage(messageRecipients: "40005430",
+                    messageBody: "Gratulerer så mye med \nfødselsdagen Jan 🇳🇴 😀")     // SignInView() // PersonBirthday()
     }
 }
 

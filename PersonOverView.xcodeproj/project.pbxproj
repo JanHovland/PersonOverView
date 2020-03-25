@@ -45,6 +45,7 @@
 		DB6B153524066E9500CF87B9 /* PersonBirthday.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6B153424066E9500CF87B9 /* PersonBirthday.swift */; };
 		DB7027E32406DF3800C94909 /* PersonSendMail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7027E22406DF3800C94909 /* PersonSendMail.swift */; };
 		DB9A4DD923CDE2AE00948B21 /* UserDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9A4DD823CDE2AE00948B21 /* UserDeleteView.swift */; };
+		DB9E4A22242BC0A100C6D085 /* TestMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9E4A21242BC0A100C6D085 /* TestMessage.swift */; };
 		DBB4C62823B6301F0055296B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB4C62723B6301F0055296B /* ImagePicker.swift */; };
 		DBB83D9A23E822CE003AA2C9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DBB83D9823E822CE003AA2C9 /* Localizable.strings */; };
 		DBDA561A23BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */; };
@@ -102,6 +103,7 @@
 		DB6B153424066E9500CF87B9 /* PersonBirthday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonBirthday.swift; sourceTree = "<group>"; };
 		DB7027E22406DF3800C94909 /* PersonSendMail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonSendMail.swift; sourceTree = "<group>"; };
 		DB9A4DD823CDE2AE00948B21 /* UserDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDeleteView.swift; sourceTree = "<group>"; };
+		DB9E4A21242BC0A100C6D085 /* TestMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMessage.swift; sourceTree = "<group>"; };
 		DBB4C62723B6301F0055296B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		DBB83D9923E822CE003AA2C9 /* nb-NO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nb-NO"; path = "nb-NO.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptsToSoftwareKeyboard.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				DB302B70237EF02300076D10 /* PersonOverView.swift */,
 				DB65AE7B23E1EE2100568032 /* PersonsOverView.swift */,
 				DB7027E22406DF3800C94909 /* PersonSendMail.swift */,
+				DB9E4A21242BC0A100C6D085 /* TestMessage.swift */,
 			);
 			path = Person;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				DB46938023B9F0A50060933E /* ToDoView.swift in Sources */,
 				DBF1F11C2423F85300EE707A /* LocationManager.swift in Sources */,
 				DB302B8F237EF43400076D10 /* CloudKitUser.swift in Sources */,
+				DB9E4A22242BC0A100C6D085 /* TestMessage.swift in Sources */,
 				DBF0397E23E5A50D00230FAA /* NewPersonView.swift in Sources */,
 				DB33E13523F0893100A95FAA /* PostalCode.swift in Sources */,
 				DB9A4DD923CDE2AE00948B21 /* UserDeleteView.swift in Sources */,
