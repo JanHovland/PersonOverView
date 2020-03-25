@@ -75,6 +75,7 @@ extension TestMessage {
         /// the other recipients won’t be able to see that someone else has been sent a copy of the email.
 
         /// setToRecipients sjekker om det er angitt en lovlig epost, "jan.hovlandlyse.net" blir vist som blank siden det mangler '@'
+        /// addresses should be specified as per RFC5322
         composeVC.setToRecipients(["jan.hovland@lyse.net"])
         composeVC.setSubject("Emne")
         composeVC.setMessageBody("Innhold", isHTML: true)
