@@ -13,7 +13,7 @@ import MessageUI
 struct TestMessage: View {
 
     var messageRecipients: String
-    var messageBody: String
+    var messageBody: String 
 
     private let mailComposeDelegate = MailComposerDelegate()
 
@@ -31,7 +31,9 @@ struct TestMessage: View {
             Spacer()
 
            Button(action: {
-               self.presentMessageCompose()
+            self.presentMessageCompose(messageRecipients: self.messageRecipients,
+                                       messageBody: self.messageBody)
+
            }) {
                Text("Message")
            }
@@ -109,7 +111,8 @@ extension TestMessage {
         }
     }
     /// Present an message compose view controller modally in UIKit environment
-    private func presentMessageCompose() {
+    private func presentMessageCompose(messageRecipients: String,
+                                       messageBody: String)        {
         guard MFMessageComposeViewController.canSendText() else {
             return
         }
