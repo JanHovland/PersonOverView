@@ -15,8 +15,8 @@ struct TestMessage: View {
     var messageRecipients: String
     var messageBody: String 
 
+    /// Må ligge slik !!!!
     private let mailComposeDelegate = MailComposerDelegate()
-
     private let messageComposeDelegate = MessageComposerDelegate()
 
     var body: some View {
