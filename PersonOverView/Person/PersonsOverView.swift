@@ -248,8 +248,14 @@ struct ShowPersons: View {
                     .frame(width: 30, height: 30, alignment: .center)
                     .gesture(
                         TapGesture()
-                            .onEnded({
+                            .onEnded({ _ in
                                 print("Message tapped")
+                                print("messageRecipients = \(messageRecipients)")
+                                print("messageBody = \(messageBody)")
+                                let phoneNumber = self.person.phoneNumber.replacingOccurrences(of: " ", with: "")
+                                messageRecipients = phoneNumber
+                                messageBody = "Gratulerer så mye med \nfødselsdagen " + self.person.firstName + " 🇳🇴 😀"
+                                // self.presentationMode.wrappedValue.dismiss()
                             })
                     )
                 Image("mail")

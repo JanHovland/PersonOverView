@@ -12,10 +12,25 @@
 import SwiftUI
 
 struct PersonOverView: View {
-    // @EnvironmentObject var postalCodeSettings: PostalCodeSettings
+    @State private var selection = 0
     var body: some View {
-        TestMessage(messageRecipients: "40005430",
-                    messageBody: "Gratulerer så mye med \nfødselsdagen Jan 🇳🇴 😀")     // SignInView() // PersonBirthday()
+        TabView(selection: $selection){
+            SignInView()
+                .tabItem {
+                    VStack {
+                        Text("SignInView")
+                    }
+            }
+            .tag(0)
+            TestMessage()
+                .font(.title)
+                .tabItem {
+                    VStack {
+                        Text("eMail/SMS")
+                    }
+            }
+            .tag(1)
+        }
     }
 }
 

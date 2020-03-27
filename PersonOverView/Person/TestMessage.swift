@@ -9,31 +9,27 @@
 import SwiftUI
 import MessageUI
 
+var messageRecipients: String = ""
+var messageBody: String = ""
+
 /// Main View
 struct TestMessage: View {
-
-    var messageRecipients: String
-    var messageBody: String 
-
+    var window: UIWindow?
     /// Må ligge slik !!!!
     private let mailComposeDelegate = MailComposerDelegate()
     private let messageComposeDelegate = MessageComposerDelegate()
-
     var body: some View {
-        VStack {
+       VStack {
             Spacer()
             Button(action: {
                 self.presentMailCompose()
             }) {
                 Text("email")
             }
-
             Spacer()
-
             Button(action: {
-                self.presentMessageCompose(messageRecipients: self.messageRecipients,
-                                           messageBody: self.messageBody)
-
+                self.presentMessageCompose(messageRecipients: messageRecipients,
+                                           messageBody: messageBody)
             }) {
                 Text("Message")
             }
@@ -45,7 +41,6 @@ struct TestMessage: View {
 // MARK: The email extension
 
 extension TestMessage {
-
     private class MailComposerDelegate: NSObject, MFMailComposeViewControllerDelegate {
         func mailComposeController(_ controller: MFMailComposeViewController,
                                    didFinishWith result: MFMailComposeResult,
@@ -53,11 +48,13 @@ extension TestMessage {
             controller.dismiss(animated: true)
         }
     }
+
     /// Present an mail compose view controller modally in UIKit environment
     private func presentMailCompose() {
         guard MFMailComposeViewController.canSendMail() else {
             return
         }
+
         let vc = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController
 
         let composeVC = MFMailComposeViewController()
@@ -89,23 +86,30 @@ extension TestMessage {
 // MARK: The message extension
 
 extension TestMessage {
-
     private class MessageComposerDelegate: NSObject, MFMessageComposeViewControllerDelegate {
         func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
             switch (result) {
             case .cancelled:
                 print("Message was cancelled")
+                messageRecipients = ""
+                messageBody = ""
                 /// Retur til TestMessage
                 controller.dismiss(animated: true)
             case .failed:
                 print("Message failed")
+                messageRecipients = ""
+                messageBody = ""
                 /// Retur til TestMessage
                 controller.dismiss(animated: true)
             case .sent:
                 print("Message was sent")
+                messageRecipients = ""
+                messageBody = ""
                 /// Retur til TestMessage
                 controller.dismiss(animated: true)
             default:
+                messageRecipients = ""
+                messageBody = ""
                 break
             }
         }
