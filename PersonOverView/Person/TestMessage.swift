@@ -30,13 +30,13 @@ struct TestMessage: View {
 
             Spacer()
 
-           Button(action: {
-            self.presentMessageCompose(messageRecipients: self.messageRecipients,
-                                       messageBody: self.messageBody)
+            Button(action: {
+                self.presentMessageCompose(messageRecipients: self.messageRecipients,
+                                           messageBody: self.messageBody)
 
-           }) {
-               Text("Message")
-           }
+            }) {
+                Text("Message")
+            }
             Spacer()
         }
     }
