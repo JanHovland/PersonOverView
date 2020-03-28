@@ -251,7 +251,8 @@ struct ShowPersons: View {
                                 print("messageBody = \(messageBody)")
                                 let phoneNumber = self.person.phoneNumber.replacingOccurrences(of: " ", with: "")
                                 messageRecipients = phoneNumber
-                                messageBody = "Gratulerer så mye med \nfødselsdagen " + self.person.firstName + " 🇳🇴 😀"
+                                let message = NSLocalizedString("Happy birthday", comment: "ShowPersons")
+                                messageBody = message + " " + self.person.firstName + " 🇳🇴 😀"
                             })
                     )
                 Image("mail")
@@ -262,8 +263,10 @@ struct ShowPersons: View {
                             .onEnded({ _ in
                                 print("Mail tapped")
                                 setToRecipients = self.person.personEmail
-                                setSubject = "Subjectxxxxxxxxx"
-                                setMessageBody = "Bodyyyyyyyyy"
+                                let setSubject1 = NSLocalizedString("Your birthday", comment: "ShowPersons")
+                                let setMessageBody1 = NSLocalizedString("Happy birthday", comment: "ShowPersons")
+                                setSubject = setSubject1
+                                setMessageBody = setMessageBody1 + " " + self.person.firstName + " 🇳🇴 😀"
                             })
                     )
             }

@@ -76,7 +76,8 @@
 "deleted" = "slettet";
 
 /* NewPersonView
-   PersonView */
+   PersonView
+   TestMessage */
 "eMail" = "e-post";
 
 /* SignInView
@@ -144,6 +145,9 @@
    PersonView */
 "Gender" = "Kjønn";
 
+/* ShowPersons */
+"Happy birthday" = "Gratulerer med fødselsdagen";
+
 /* UserDeleteView
    UserMaintenanceView */
 "Hold and release to activate the actions below" = "Trykk hardt og slipp så for å utføre handlingene nedenfor";
@@ -155,6 +159,9 @@
 /* NewPersonView
    PersonView */
 "Man" = "Mann";
+
+/* TestMessage */
+"Message" = "Melding";
 
 /* UserDeleteView
    UserMaintenanceView */
@@ -258,6 +265,9 @@
 /* PersonSendMail */
 "Send eMail" = "Send e-post";
 
+/* TestMessage */
+"Send eMail or SMS" = "Send e-post eller SMS";
+
 /* No comment provided by engineer. */
 "Send eMail to: %@" = "Send e-post til: %@";
 
@@ -334,6 +344,9 @@
 
 /* FindPostalCodeNewPerson */
 "You must enter a city" = "Du må legge inn et sted";
+
+/* ShowPersons */
+"Your birthday" = "Fødselsdagen din";
 
 /* SignInView
    SignUpiew

@@ -25,40 +25,55 @@ struct TestMessage: View {
 
     @Environment(\.presentationMode) var presentationMode
 
+    @State private var navTitle = NSLocalizedString("Send eMail or SMS", comment: "TestMessage")
+
     /// Må ligge slik !!!!
     private let mailComposeDelegate = MailComposerDelegate()
     private let messageComposeDelegate = MessageComposerDelegate()
     var body: some View {
-       VStack {
-            Spacer()
-            Button(action: {
-                self.presentMailCompose(setToRecipients: setToRecipients,
-                                        setSubject: setSubject,
-                                        setMessageBody: setMessageBody)
-            }) {
-                Text("email")
+        NavigationView {
+            VStack {
+                Spacer()
+                Button(action: {
+                    self.presentMailCompose(setToRecipients: setToRecipients,
+                                            setSubject: setSubject,
+                                            setMessageBody: setMessageBody)
+                }) {
+                    HStack {
+                        Image(systemName: "envelope")
+                            .resizable()
+                            .frame(width: 30, height: 30, alignment: .center)
+                        Text(NSLocalizedString("eMail", comment: "TestMessage"))
+                    }
+                }
+                Spacer()
+                Button(action: {
+                    self.presentMessageCompose(messageRecipients: messageRecipients,
+                                               messageBody: messageBody)
+                }) {
+                    HStack {
+                        Image(systemName: " bubble.right")
+                            .resizable()
+                            .frame(width: 30, height: 30, alignment: .center)
+                        Text(NSLocalizedString("Message", comment: "TestMessage"))
+                    }
+                }
+                Spacer()
+                /// Virker ikke, kommer med em feilmelding
+                //            Button(action: {
+                //                self.exitMessage.toggle()
+                //            }) {
+                //                Text("Abort")
+                //            }
+                //            Spacer()
+                /// Virker ikke, kommer med em feilmelding
+                //        .sheet(isPresented: $exitMessage) {
+                //            SignInView()
+                //        }
             }
-            Spacer()
-            Button(action: {
-                self.presentMessageCompose(messageRecipients: messageRecipients,
-                                           messageBody: messageBody)
-            }) {
-                Text("Message")
-            }
-            Spacer()
-              /// Virker ikke, kommer med em feilmelding
-//            Button(action: {
-//                self.exitMessage.toggle()
-//            }) {
-//                Text("Abort")
-//            }
-//            Spacer()
-        }
-        /// Virker ikke, kommer med em feilmelding
-//        .sheet(isPresented: $exitMessage) {
-//            SignInView()
-//        }
 
+            .navigationBarTitle(navTitle)
+        }
     }
 }
 
