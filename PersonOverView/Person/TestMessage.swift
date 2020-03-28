@@ -9,12 +9,22 @@
 import SwiftUI
 import MessageUI
 
+/// Globale variabler for SMS
 var messageRecipients: String = ""
 var messageBody: String = ""
 
+/// Globale variabler for ePost
+var setToRecipients: String = ""
+var setSubject: String = ""
+var setMessageBody: String = ""
+
 /// Main View
 struct TestMessage: View {
-    var window: UIWindow?
+
+    @State private var exitMessage = false
+
+    @Environment(\.presentationMode) var presentationMode
+
     /// Må ligge slik !!!!
     private let mailComposeDelegate = MailComposerDelegate()
     private let messageComposeDelegate = MessageComposerDelegate()
@@ -22,7 +32,9 @@ struct TestMessage: View {
        VStack {
             Spacer()
             Button(action: {
-                self.presentMailCompose()
+                self.presentMailCompose(setToRecipients: setToRecipients,
+                                        setSubject: setSubject,
+                                        setMessageBody: setMessageBody)
             }) {
                 Text("email")
             }
@@ -34,7 +46,19 @@ struct TestMessage: View {
                 Text("Message")
             }
             Spacer()
+              /// Virker ikke, kommer med em feilmelding
+//            Button(action: {
+//                self.exitMessage.toggle()
+//            }) {
+//                Text("Abort")
+//            }
+//            Spacer()
         }
+        /// Virker ikke, kommer med em feilmelding
+//        .sheet(isPresented: $exitMessage) {
+//            SignInView()
+//        }
+
     }
 }
 
@@ -45,12 +69,33 @@ extension TestMessage {
         func mailComposeController(_ controller: MFMailComposeViewController,
                                    didFinishWith result: MFMailComposeResult,
                                    error: Error?) {
-            controller.dismiss(animated: true)
+            switch (result) {
+            case .cancelled:
+                print("eMail was cancelled")
+                clearGlobalMail()
+                /// Retur til TestMessage
+                controller.dismiss(animated: true)
+            case .failed:
+                print("eMail failed")
+                clearGlobalMail()
+                /// Retur til TestMessage
+                controller.dismiss(animated: true)
+            case .sent:
+                print("eMail was sent")
+                clearGlobalMail()
+                /// Retur til TestMessage
+                controller.dismiss(animated: true)
+            default:
+                clearGlobalMail()
+                break
+            }
         }
     }
 
     /// Present an mail compose view controller modally in UIKit environment
-    private func presentMailCompose() {
+    private func presentMailCompose(setToRecipients: String,
+                                    setSubject: String,
+                                    setMessageBody: String) {
         guard MFMailComposeViewController.canSendMail() else {
             return
         }
@@ -75,13 +120,19 @@ extension TestMessage {
 
         /// setToRecipients sjekker om det er angitt en lovlig epost, "jan.hovlandlyse.net" blir vist som blank siden det mangler '@'
         /// addresses should be specified as per RFC5322
-        composeVC.setToRecipients(["jan.hovland@lyse.net"])
-        composeVC.setSubject("Emne")
-        composeVC.setMessageBody("Innhold", isHTML: true)
-
+        composeVC.setToRecipients([setToRecipients])
+        composeVC.setSubject(setSubject)
+        composeVC.setMessageBody(setMessageBody, isHTML: true)
         vc?.present(composeVC, animated: true)
     }
 }
+
+func clearGlobalMail() {
+    setToRecipients = ""
+    setSubject = ""
+    setMessageBody = ""
+}
+
 
 // MARK: The message extension
 
@@ -91,29 +142,26 @@ extension TestMessage {
             switch (result) {
             case .cancelled:
                 print("Message was cancelled")
-                messageRecipients = ""
-                messageBody = ""
+                clearGlobalMessage()
                 /// Retur til TestMessage
                 controller.dismiss(animated: true)
             case .failed:
                 print("Message failed")
-                messageRecipients = ""
-                messageBody = ""
+                clearGlobalMessage()
                 /// Retur til TestMessage
                 controller.dismiss(animated: true)
             case .sent:
                 print("Message was sent")
-                messageRecipients = ""
-                messageBody = ""
+                clearGlobalMessage()
                 /// Retur til TestMessage
                 controller.dismiss(animated: true)
             default:
-                messageRecipients = ""
-                messageBody = ""
+                clearGlobalMessage()
                 break
             }
         }
     }
+    
     /// Present an message compose view controller modally in UIKit environment
     private func presentMessageCompose(messageRecipients: String,
                                        messageBody: String)        {
@@ -131,4 +179,10 @@ extension TestMessage {
         /// Viser bildet for meldingen
         vc?.present(composeVC, animated: true)
     }
+
+}
+
+func clearGlobalMessage() {
+    messageRecipients = ""
+    messageBody = ""
 }

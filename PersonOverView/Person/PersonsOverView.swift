@@ -165,14 +165,11 @@ struct ShowPersons: View {
 
     @State private var message: String = ""
     @State private var alertIdentifier: AlertID?
-
     @State private var showMap = false
     @State private var locationOnMap: String = ""
     @State private var address: String = ""
     @State private var subtitle: String = ""
     @State private var makePhoneCall = false
-
-    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         VStack (alignment: .leading) {
@@ -255,7 +252,6 @@ struct ShowPersons: View {
                                 let phoneNumber = self.person.phoneNumber.replacingOccurrences(of: " ", with: "")
                                 messageRecipients = phoneNumber
                                 messageBody = "Gratulerer så mye med \nfødselsdagen " + self.person.firstName + " 🇳🇴 😀"
-                                // self.presentationMode.wrappedValue.dismiss()
                             })
                     )
                 Image("mail")
@@ -263,8 +259,11 @@ struct ShowPersons: View {
                     .frame(width: 36, height: 36, alignment: .center)
                     .gesture(
                         TapGesture()
-                            .onEnded({
+                            .onEnded({ _ in
                                 print("Mail tapped")
+                                setToRecipients = self.person.personEmail
+                                setSubject = "Subjectxxxxxxxxx"
+                                setMessageBody = "Bodyyyyyyyyy"
                             })
                     )
             }

@@ -151,7 +151,7 @@ struct SignInView : View {
                     .sheet(isPresented: $showToDoView) {
                         ToDoView()
                     }
-                    /// PersonsOverView
+                    // PersonsOverView
                     HStack {
                         Button(action: {
                             if self.user.name.count > 0, self.user.email.count > 0, self.user.password.count > 0 {
