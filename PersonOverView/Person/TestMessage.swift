@@ -52,7 +52,7 @@ struct TestMessage: View {
                                                messageBody: messageBody)
                 }) {
                     HStack {
-                        Image(systemName: " bubble.right")
+                        Image(systemName: "bubble.right")
                             .resizable()
                             .frame(width: 30, height: 30, alignment: .center)
                         Text(NSLocalizedString("Message", comment: "TestMessage"))
@@ -71,7 +71,6 @@ struct TestMessage: View {
                 //            SignInView()
                 //        }
             }
-
             .navigationBarTitle(navTitle)
         }
     }
