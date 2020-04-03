@@ -150,6 +150,8 @@ struct SignInView : View {
                     }
                     .sheet(isPresented: $showToDoView) {
                         ToDoView()
+                        /// TestMessage() kan ikke startes fra .sheet
+                        /// estMessage()
                     }
                     // PersonsOverView
                     HStack {
