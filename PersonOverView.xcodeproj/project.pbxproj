@@ -37,7 +37,7 @@
 		DB4A8F3B23DEE76400558788 /* PersonElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4A8F3A23DEE76400558788 /* PersonElement.swift */; };
 		DB4A8F3E23DEE79200558788 /* PersonElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4A8F3D23DEE79200558788 /* PersonElements.swift */; };
 		DB4A8F4023DEE87B00558788 /* CloudKitPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4A8F3F23DEE87B00558788 /* CloudKitPerson.swift */; };
-		DB6226CA243B21770022F244 /* Create Mac icons.jsx in Resources */ = {isa = PBXBuildFile; fileRef = DB6226C9243B21770022F244 /* Create Mac icons.jsx */; };
+		DB6226CC243B22AF0022F244 /* Create Mac icons.jsx in Resources */ = {isa = PBXBuildFile; fileRef = DB6226CB243B22AE0022F244 /* Create Mac icons.jsx */; };
 		DB65AE7C23E1EE2100568032 /* PersonsOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB65AE7B23E1EE2100568032 /* PersonsOverView.swift */; };
 		DB6739C123AA910E00EF9ECD /* SwiftUIImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6739C023AA910E00EF9ECD /* SwiftUIImagePicker.swift */; };
 		DB6739C423AD46A800EF9ECD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB6739C223AD46A800EF9ECD /* InfoPlist.strings */; };
@@ -96,7 +96,7 @@
 		DB4A8F3A23DEE76400558788 /* PersonElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonElement.swift; sourceTree = "<group>"; };
 		DB4A8F3D23DEE79200558788 /* PersonElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonElements.swift; sourceTree = "<group>"; };
 		DB4A8F3F23DEE87B00558788 /* CloudKitPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitPerson.swift; sourceTree = "<group>"; };
-		DB6226C9243B21770022F244 /* Create Mac icons.jsx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Create Mac icons.jsx"; path = "../../../../../../../Desktop/Create Mac icons.jsx"; sourceTree = "<group>"; };
+		DB6226CB243B22AE0022F244 /* Create Mac icons.jsx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Create Mac icons.jsx"; sourceTree = "<group>"; };
 		DB65AE7B23E1EE2100568032 /* PersonsOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsOverView.swift; sourceTree = "<group>"; };
 		DB6739C023AA910E00EF9ECD /* SwiftUIImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIImagePicker.swift; sourceTree = "<group>"; };
 		DB6739C923AD495500EF9ECD /* nb-NO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nb-NO"; path = "nb-NO.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -161,8 +161,8 @@
 				DB302B72237EF02300076D10 /* Assets.xcassets */,
 				DB302B7A237EF02300076D10 /* Info.plist */,
 				DBB83D9823E822CE003AA2C9 /* Localizable.strings */,
-				DB6226C9243B21770022F244 /* Create Mac icons.jsx */,
 				DB6739C223AD46A800EF9ECD /* InfoPlist.strings */,
+				DB6226CB243B22AE0022F244 /* Create Mac icons.jsx */,
 				DB1FEF8E2380554F00F8D763 /* Launch Screen.storyboard */,
 				DB302B6D237EF02300076D10 /* PersonOverView.xcdatamodeld */,
 				DB302B90237FDD7200076D10 /* PersonOverView.entitlements */,
@@ -357,7 +357,7 @@
 				DB33E13A23F1D5E800A95FAA /* Postnummerregister-ansi.txt in Resources */,
 				DBB83D9A23E822CE003AA2C9 /* Localizable.strings in Resources */,
 				DB302B76237EF02300076D10 /* Preview Assets.xcassets in Resources */,
-				DB6226CA243B21770022F244 /* Create Mac icons.jsx in Resources */,
+				DB6226CC243B22AF0022F244 /* Create Mac icons.jsx in Resources */,
 				DB6739C423AD46A800EF9ECD /* InfoPlist.strings in Resources */,
 				DB1FEF8F2380554F00F8D763 /* Launch Screen.storyboard in Resources */,
 				DB302B73237EF02300076D10 /* Assets.xcassets in Resources */,
