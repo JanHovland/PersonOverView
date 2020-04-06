@@ -10,7 +10,7 @@ import SwiftUI
 import MessageUI
 
 /// Globale variabler for SMS
-var messageRecipients: String = ""
+var messageRecipients: String = "" 
 var messageBody: String = ""
 
 /// Globale variabler for ePost
