@@ -183,7 +183,7 @@ struct ShowPersons: View {
                 } else {
                     Image(systemName: "person.circle")
                         .resizable()
-                        .font(.system(size: 16, weight: .ultraLight))
+                        .font(.system(size: 16, weight: .ultraLight, design: .serif))
                         .frame(width: 50, height: 50, alignment: .center)
                 }
                 VStack (alignment: .leading, spacing: 5) {
