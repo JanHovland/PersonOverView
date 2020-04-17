@@ -146,7 +146,7 @@ struct CloudKitPerson {
             })
         }
     }
-
+    
     // MARK: - fetching from CloudKit
     static func fetchPerson(predicate:  NSPredicate, completion: @escaping (Result<Person, Error>) -> ()) {
         let sort1 = NSSortDescriptor(key: "firstName", ascending: true)
