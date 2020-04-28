@@ -209,8 +209,6 @@ struct ShowPersons: View {
                 }
             }
             HStack(alignment: .center, spacing: 40) {
-                /// For å få vist iconene uten en space nedenfor dem, måtte jeg legge inn Text("  ")
-                Text("    ")
                 Image("map")
                     .resizable()
                     .frame(width: 36, height: 36, alignment: .center)
@@ -270,7 +268,7 @@ struct ShowPersons: View {
                             })
                     )
             }
-
+            .padding(.leading, 57)
         }
         .sheet(isPresented: $showMap) {
             PersonMapView(locationOnMap: self.person.address + " " + self.person.cityNumber + " " + self.person.city,
