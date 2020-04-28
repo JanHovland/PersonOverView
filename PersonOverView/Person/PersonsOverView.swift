@@ -218,7 +218,10 @@ struct ShowPersons: View {
                                 self.showMap.toggle()
                             })
                     )
+                /// Dokumentasjon  Apple URL Scheme Reference
+                /// https://developer.apple.com/library/archive/featuredarticles/iPhoneURLScheme_Reference/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007899-CH1-SW1
                 Image("phone")
+                    /// Formatet er : tel:<phone>
                     .resizable()
                     .frame(width: 30, height: 30, alignment: .center)
                     .gesture(
@@ -227,7 +230,7 @@ struct ShowPersons: View {
                                 if self.person.phoneNumber.count > 0 {
                                     /// 1: Eventuelle blanke tegn må fjernes
                                     /// 2: Det ringes ved å kalle UIApplication.shared.open(url)
-                                    let prefix = "tel://"
+                                    let prefix = "tel:"
                                     let phoneNumber1 = prefix + self.person.phoneNumber
                                     let phoneNumber = phoneNumber1.replacingOccurrences(of: " ", with: "")
                                     guard let url = URL(string: phoneNumber) else { return }
@@ -239,18 +242,45 @@ struct ShowPersons: View {
                         })
                     )
                 Image("message")
+                    /// Formatet er : tel:<phone><&body>
                     .resizable()
                     .frame(width: 30, height: 30, alignment: .center)
                     .gesture(
                         TapGesture()
                             .onEnded({ _ in
-                                print("Message tapped")
-                                print("messageRecipients = \(messageRecipients)")
-                                print("messageBody = \(messageBody)")
-                                let phoneNumber = self.person.phoneNumber.replacingOccurrences(of: " ", with: "")
-                                messageRecipients = phoneNumber
-                                let message = NSLocalizedString("Happy birthday", comment: "ShowPersons")
-                                messageBody = message + " " + self.person.firstName + " 🇳🇴 😀"
+                                if self.person.phoneNumber.count > 0 {
+                                    /// 1: Eventuelle blanke tegn må fjernes
+                                    /// 2: Det ringes ved å kalle UIApplication.shared.open(url)
+                                    let prefix = "sms://"
+                                    let phoneNumber1 = prefix + self.person.phoneNumber
+                                    let phoneNumber = phoneNumber1.replacingOccurrences(of: " ", with: "")
+                                    let greeting = NSLocalizedString("Happy%20birthday%20", comment: "ShowPersons")
+                                    let body = greeting + "%20" + self.person.firstName // + " 🇳🇴 😀"
+//                                     guard let messageUrl = URL(string: phoneNumber + "&body=" + body) else { return }
+//                                     let message = phoneNumber + "&body=" + body
+//                                     guard let messageUrl = URL(string: message) else { return }
+//                                    let messageUrl = URL(string: message)
+//                                    UIApplication.shared.open(messageUrl!, options: [:], completionHandler: nil)
+                                    
+                                    
+                                    if let url = URL(string: phoneNumber + "&body=" + greeting + self.person.firstName + "%20") { // %20 gir linjeskift
+                                        UIApplication.shared.open(url, options: [:])
+                                    }
+                                       
+                                        
+//                                    if let messageUrl = URL(string: url) {
+//                                        UIApplication.shared.open(messageUrl) // , options: [:], completionHandler: nil)
+//                                    }
+                                    
+//                                    // if let messageUrl = URL(string: String(message)) {
+//                                        UIApplication.shared.open(messageUrl, options: [:], completionHandler: nil)
+//                                    // }
+                                    
+                                    
+                                } else {
+                                    self.message = NSLocalizedString("Missing phonenumber", comment: "ShowPersons")
+                                    self.alertIdentifier = AlertID(id: .first)
+                                }
                             })
                     )
                 Image("mail")

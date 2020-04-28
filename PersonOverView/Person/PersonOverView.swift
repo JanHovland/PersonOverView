@@ -22,14 +22,15 @@ struct PersonOverView: View {
                     }
             }
             .tag(0)
-            TestMessage()
-                .font(.title)
-                .tabItem {
-                    VStack {
-                        Text("eMail/SMS")
-                    }
-            }
-            .tag(1)
+            /// Brukes ikke lenger, men sjekk når neste verson av SwiftUI kommer
+//            TestMessage()
+//                .font(.title)
+//                .tabItem {
+//                    VStack {
+//                        Text("eMail/SMS")
+//                    }
+//            }
+//            .tag(1)
         }
     }
 }
