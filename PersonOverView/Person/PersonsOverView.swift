@@ -29,6 +29,7 @@ struct PersonsOverView: View {
     @State private var personsOverview = NSLocalizedString("Persons overview", comment: "PersonsOverView")
     @State private var indexSetDelete = IndexSet()
     @State private var recordID: CKRecord.ID?
+    
 
     var body: some View {
         NavigationView {
@@ -170,6 +171,7 @@ struct ShowPersons: View {
     @State private var address: String = ""
     @State private var subtitle: String = ""
     @State private var makePhoneCall = false
+    @State private var greeting = ""
 
     var body: some View {
         VStack (alignment: .leading) {
@@ -249,34 +251,21 @@ struct ShowPersons: View {
                         TapGesture()
                             .onEnded({ _ in
                                 if self.person.phoneNumber.count > 0 {
-                                    /// 1: Eventuelle blanke tegn må fjernes
-                                    /// 2: Det ringes ved å kalle UIApplication.shared.open(url)
+                                    /// 1: Eventuelle blanke tegn i telefonnummeret må fjernes
+                                    /// 2: Det sendes en SMS  ved å kalle UIApplication.shared.open(url)
                                     let prefix = "sms://"
-                                    let phoneNumber1 = prefix + self.person.phoneNumber
-                                    let phoneNumber = phoneNumber1.replacingOccurrences(of: " ", with: "")
-                                    let greeting = NSLocalizedString("Happy%20birthday%20", comment: "ShowPersons")
-                                    let body = greeting + "%20" + self.person.firstName // + " 🇳🇴 😀"
-//                                     guard let messageUrl = URL(string: phoneNumber + "&body=" + body) else { return }
-//                                     let message = phoneNumber + "&body=" + body
-//                                     guard let messageUrl = URL(string: message) else { return }
-//                                    let messageUrl = URL(string: message)
-//                                    UIApplication.shared.open(messageUrl!, options: [:], completionHandler: nil)
-                                    
-                                    
-                                    if let url = URL(string: phoneNumber + "&body=" + greeting + self.person.firstName + "%20") { // %20 gir linjeskift
+                                    let phoneNumber = self.person.phoneNumber.replacingOccurrences(of: " ", with: "")
+                                    /// Må finne regionen, fordi localization ikke virker når en streng inneholder %20 (mellorom)
+                                    let region = NSLocale.current.regionCode?.lowercased()
+                                    if region == "no" {
+                                        self.greeting = "Gratulerer%20med%20fodselsdagen%20din%20"
+                                    } else {
+                                        self.greeting = "Happy%20birthday%20"
+                                    }
+                                    let message = prefix + phoneNumber + "&body=" + self.greeting + self.person.firstName + "%20"
+                                    if let url = URL(string:  message) {
                                         UIApplication.shared.open(url, options: [:])
                                     }
-                                       
-                                        
-//                                    if let messageUrl = URL(string: url) {
-//                                        UIApplication.shared.open(messageUrl) // , options: [:], completionHandler: nil)
-//                                    }
-                                    
-//                                    // if let messageUrl = URL(string: String(message)) {
-//                                        UIApplication.shared.open(messageUrl, options: [:], completionHandler: nil)
-//                                    // }
-                                    
-                                    
                                 } else {
                                     self.message = NSLocalizedString("Missing phonenumber", comment: "ShowPersons")
                                     self.alertIdentifier = AlertID(id: .first)
