@@ -8,35 +8,38 @@
 
 import SwiftUI
 
-struct PersonSendMail: View {
-
-    var person: Person
-
-    @Environment(\.presentationMode) var presentationMode
-    
-    var body: some View {
-        NavigationView {
-            VStack {
-                Text("Send eMail to: \(person.firstName + " " + person.lastName)")
-            }
-            .navigationBarTitle(NSLocalizedString("Send eMail", comment: "PersonSendMail")) 
+func PersonSendMail(person: Person) {
+    /// Dokumentasjon  Apple URL Scheme Reference
+    /// https://developer.apple.com/library/archive/featuredarticles/iPhoneURLScheme_Reference/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007899-CH1-SW1
+    ///
+    /// Dokumentasjon:
+    /// You can also include a subject field, a message, and multiple recipients in the To, Cc, and Bcc fields. (In iOS, the from attribute is ignored.) The following example shows a mailto URL that includes several different attributes:
+    /// Eksempel:
+    /// mailto:foo@example.com?cc=bar@example.com&subject=Greetings%20from%20Cupertino!&body=Wish%20you%20were%20here!
+    /// cc =         bar@example.com
+    /// subject = Greetings%20from%20Cupertino!
+    /// body =     Wish%20you%20were%20here!
+    var mailSubject = ""
+    var mailBody = ""
+    if person.personEmail.count > 0 {
+        /// 1: Eventuelle blanke tegn i telefonnummeret må fjernes
+        /// 2: Det sendes en SMS  ved å kalle UIApplication.shared.open(url)
+        let prefix = "mailto:"
+        /// Må finne regionen, fordi localization ikke virker når en streng inneholder %20 (mellorom)
+        let region = NSLocale.current.regionCode?.lowercased()
+        if region == "no" {
+            mailSubject = "Gratulerer!" // %20med%20fodselsdagen%20din%20"
+            mailBody = "Gratulerer%20med%20fodselsdagen%20din,%20"
+        } else {
+            mailSubject = "Gratulerer!" // %20med%20fodselsdagen%20din%20"
+            mailBody = "Happy%20birthday,%20"
         }
-        .overlay(
-            HStack {
-                Spacer()
-                VStack {
-                    Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }, label: {
-                        Image(systemName: "chevron.down.circle.fill")
-                            .font(.largeTitle)
-                            .foregroundColor(.none)
-                    })
-                        .padding(.trailing, 20)
-                        .padding(.top, 70)
-                    Spacer()
-                }
-            }
-        )
+        let to = person.personEmail.replacingOccurrences(of: " ", with: "")
+        let message = prefix + to + "?" + "&subject=" + mailSubject + "&body=" + mailBody + person.firstName + "%20"
+        if let url = URL(string:  message) {
+            UIApplication.shared.open(url, options: [:])
+        }
     }
+
 }
+

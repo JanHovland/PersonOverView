@@ -182,12 +182,16 @@ struct ShowPersonBirthday: View {
                 .resizable()
                 .frame(width: 30, height: 30, alignment: .leading)
         }
+        /// Må skrives om:
+            
         .onLongPressGesture {
             self.sendMail.toggle()
         }
-        .sheet(isPresented: $sendMail) {
-            PersonSendMail(person: self.person)
-        }
+        
+        /// PersonSendMail er slettet
+//        .sheet(isPresented: $sendMail) {
+//            // PersonSendMail(person: self.person)
+//        }
     }
 
 }
