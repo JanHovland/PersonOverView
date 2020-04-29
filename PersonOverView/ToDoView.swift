@@ -16,10 +16,8 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 Sende melding  https://stackoverflow.com/questions/60014299/sending-sms-programmatically-using-swiftui
-  2. 🔴 Sende e-post
-  3. 🔴 Problemer med localization (må editere Localizable.strings direkte)
-  4. 🔴 Legge inn fødselsdaglisten fra Firebase
+  1. 🔴 Komprimere "Oversikt"
+  2. 🔴 Problemer med localization (må editere Localizable.strings direkte)
 
 """
 
@@ -139,7 +137,9 @@ var toDo_3 =
          Feilen kommer fra: .modifier(AdaptsToSoftwareKeyboard()) som jeg kommenterte bort i "PersonView"
  56.  🟢 Nå kan kartet vise hvor en person bor
  57.  🟢 Nå kan det ringes en person
-
+ 58.  🔴 Virker ikke ennå, kanskje i neste versjon av SwiftUI: https://stackoverflow.com/questions/60014299/sending-sms-programmatically-using-swiftui
+ 59.  🟢 Sender melding via UIApplication.shared.open(url, options: [:])
+ 60.  🟢 Sender e-post via UIApplication.shared.open(url, options: [:])
 
 """
 var toDo_4 =
