@@ -172,6 +172,8 @@ struct ShowPersons: View {
     @State private var subtitle: String = ""
     @State private var makePhoneCall = false
     @State private var greeting = ""
+    @State private var mailSubject = ""
+    @State private var mailBody = ""
 
     var body: some View {
         VStack (alignment: .leading) {
@@ -272,18 +274,41 @@ struct ShowPersons: View {
                                 }
                             })
                     )
+                    /// Dokumentasjon:
+                    /// You can also include a subject field, a message, and multiple recipients in the To, Cc, and Bcc fields. (In iOS, the from attribute is ignored.) The following example shows a mailto URL that includes several different attributes:
+                    /// Eksempel:
+                    /// mailto:foo@example.com?cc=bar@example.com&subject=Greetings%20from%20Cupertino!&body=Wish%20you%20were%20here!
+                    /// cc =         bar@example.com
+                    /// subject = Greetings%20from%20Cupertino!
+                    /// body =     Wish%20you%20were%20here!
                 Image("mail")
                     .resizable()
                     .frame(width: 36, height: 36, alignment: .center)
                     .gesture(
                         TapGesture()
                             .onEnded({ _ in
-                                print("Mail tapped")
-                                setToRecipients = self.person.personEmail
-                                let setSubject1 = NSLocalizedString("Your birthday", comment: "ShowPersons")
-                                let setMessageBody1 = NSLocalizedString("Happy birthday", comment: "ShowPersons")
-                                setSubject = setSubject1
-                                setMessageBody = setMessageBody1 + " " + self.person.firstName + " 🇳🇴 😀"
+                                if self.person.personEmail.count > 0 {
+                                    /// 1: Eventuelle blanke tegn i telefonnummeret må fjernes
+                                    /// 2: Det sendes en SMS  ved å kalle UIApplication.shared.open(url)
+                                    let prefix = "mailto:"
+                                    /// Må finne regionen, fordi localization ikke virker når en streng inneholder %20 (mellorom)
+                                    let region = NSLocale.current.regionCode?.lowercased()
+                                    if region == "no" {
+                                        self.mailSubject = "Gratulerer!" // %20med%20fodselsdagen%20din%20"
+                                        self.mailBody = "Gratulerer%20med%20fodselsdagen%20din,%20"
+                                    } else {
+                                        self.mailSubject = "Gratulerer!" // %20med%20fodselsdagen%20din%20"
+                                        self.mailBody = "Happy%20birthday,%20"
+                                    }
+                                    let to = self.person.personEmail.replacingOccurrences(of: " ", with: "")
+                                    let message = prefix + to + "?" + "&subject=" + self.mailSubject + "&body=" + self.mailBody + self.person.firstName + "%20"
+                                    if let url = URL(string:  message) {
+                                        UIApplication.shared.open(url, options: [:])
+                                    }
+                                } else {
+                                    self.message = NSLocalizedString("Missing personal email", comment: "ShowPersons")
+                                    self.alertIdentifier = AlertID(id: .first)
+                                }
                             })
                     )
             }

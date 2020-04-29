@@ -14,15 +14,16 @@ import SwiftUI
 struct PersonOverView: View {
     @State private var selection = 0
     var body: some View {
-        TabView(selection: $selection){
-            SignInView()
-                .tabItem {
-                    VStack {
-                        Text("SignInView")
-                    }
-            }
-            .tag(0)
-            /// Brukes ikke lenger, men sjekk når neste verson av SwiftUI kommer
+        SignInView()
+//        TabView(selection: $selection){
+//            SignInView()
+//                .tabItem {
+//                    VStack {
+//                        Text("SignInView")
+//                    }
+//            }
+//            .tag(0)
+//            /// Brukes ikke lenger, men sjekk når neste verson av SwiftUI kommer
 //            TestMessage()
 //                .font(.title)
 //                .tabItem {
@@ -31,7 +32,7 @@ struct PersonOverView: View {
 //                    }
 //            }
 //            .tag(1)
-        }
+//        }
     }
 }
 
