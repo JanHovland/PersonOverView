@@ -354,3 +354,6 @@
    UserMaintenanceView */
 "Your name" = "Navn";
 
+/* ShowPersons */
+
+"Missing personal email" = "Mangler personlig e-post";

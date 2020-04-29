@@ -18,7 +18,8 @@ var toDo_1 =
 """
   1. 🔴 Sende melding  https://stackoverflow.com/questions/60014299/sending-sms-programmatically-using-swiftui
   2. 🔴 Sende e-post
-  3. 🔴 Legge inn fødselsdaglisten fra Firebase
+  3. 🔴 Problemer med localization (må editere Localizable.strings direkte)
+  4. 🔴 Legge inn fødselsdaglisten fra Firebase
 
 """
 

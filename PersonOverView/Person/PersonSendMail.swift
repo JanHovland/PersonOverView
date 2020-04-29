@@ -35,7 +35,16 @@ func PersonSendMail(person: Person) {
             mailBody = "Happy%20birthday,%20"
         }
         let to = person.personEmail.replacingOccurrences(of: " ", with: "")
-        let message = prefix + to + "?" + "&subject=" + mailSubject + "&body=" + mailBody + person.firstName + "%20"
+        let firstName1 = person.firstName.replacingOccurrences(of: " ", with: "%20")
+        let firstName2 = firstName1.replacingOccurrences(of: "😀", with: "")            /// Dette på grunn av sorteringen der Å ikke kommer helt til slutt
+          let firstName3 = firstName2.replacingOccurrences(of: "é", with: "e")
+        let firstName4 = firstName3.replacingOccurrences(of: "æ", with: "a")
+        let firstName5 = firstName4.replacingOccurrences(of: "ø", with: "o")
+        let firstName6 = firstName5.replacingOccurrences(of: "å", with: "a")
+        let firstName7 = firstName6.replacingOccurrences(of: "Æ", with: "A")
+        let firstName8 = firstName7.replacingOccurrences(of: "Ø", with: "O")
+        let firstName = firstName8.replacingOccurrences(of: "Å", with: "A")
+        let message = prefix + to + "?" + "&subject=" + mailSubject + "&body=" + mailBody + firstName + "%20"
         if let url = URL(string:  message) {
             UIApplication.shared.open(url, options: [:])
         }

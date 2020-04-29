@@ -10,19 +10,19 @@ import SwiftUI
 import CloudKit
 
 struct PersonBirthday: View {
-
+    
     /// Skjuler scroll indicators.
     init() {
         UITableView.appearance().showsVerticalScrollIndicator = false
     }
-
+    
     @Environment(\.presentationMode) var presentationMode
-
+    
     @State private var persons = [Person]()
     @State private var message: String = ""
     @State private var alertIdentifier: AlertID?
     let barTitle = NSLocalizedString("Birthday", comment: "PersonBirthday")
-
+    
     var body: some View {
         NavigationView {
             Form {
@@ -37,15 +37,15 @@ struct PersonBirthday: View {
                 /// Noen ganger kan det være lurt å legge .id(UUID()) på List for hurtig oppdatering
                 /// .id(UUID())
             }
-            .navigationBarTitle(Text(barTitle)) // , displayMode: .inline)
-            .navigationBarItems(leading:
-                Button(action: {
-                    /// Rutine for å friske opp personoversikten
-                    self.refresh()
-                }, label: {
-                    Text("Refresh")
-                        .foregroundColor(.none)
-                })
+                .navigationBarTitle(Text(barTitle)) // , displayMode: .inline)
+                .navigationBarItems(leading:
+                    Button(action: {
+                        /// Rutine for å friske opp personoversikten
+                        self.refresh()
+                    }, label: {
+                        Text("Refresh")
+                            .foregroundColor(.none)
+                    })
             )
         }
         .onAppear {
@@ -63,14 +63,14 @@ struct PersonBirthday: View {
                             .foregroundColor(.none)
                     })
                         .padding(.trailing, 28)
-                        .padding(.top, 70) 
+                        .padding(.top, 15) 
                     Spacer()
                 }
             }
         )
-
+        
     }
-
+    
     /// Rutine for å friske opp bildet
     func refresh() {
         /// Sletter alt tidligere innhold i person
@@ -90,16 +90,19 @@ struct PersonBirthday: View {
             }
         }
     }
-
+    
+    
 }
 
 /// Et eget View for å vise person detail view
 struct ShowPersonBirthday: View {
-
+    
     var person: Person
-
+    
+    @State private var message: String = ""
+    @State private var alertIdentifier: AlertID?
     @State private var sendMail = false
-
+    
     /* Dato formateringer:
      Wednesday, Feb 26, 2020            EEEE, MMM d, yyyy
      02/26/2020                         MM/dd/yyyy
@@ -112,50 +115,50 @@ struct ShowPersonBirthday: View {
      26.02.20                           dd.MM.yy
      12:30:24.423                       HH:mm:ss.SSS
      */
-
+    
     static let taskDateFormat: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         formatter.dateFormat = "dd. MMMM"
         return formatter
     }()
-
+    
     var age: String {
         /// Finner aktuell måned
         let currentDate = Date()
         let nameFormatter = DateFormatter()
         nameFormatter.dateFormat = "yy"
         let year = Calendar.current.component(.year, from: currentDate)
-
+        
         /// Finner måned fra personen sin fødselsdato
         let personDate = person.dateOfBirth
         let personFormatter = DateFormatter()
         personFormatter.dateFormat = "yy"
         let yearPerson = Calendar.current.component(.year, from: personDate)
-
+        
         return String(year - yearPerson)
     }
-
+    
     var colour: Color {
         /// Finner aktuell måned
         let currentDate = Date()
         let nameFormatter = DateFormatter()
         nameFormatter.dateFormat = "MMMM"
         let month = Calendar.current.component(.month, from: currentDate)
-
+        
         /// Finner måned fra personen sin fødselsdato
         let personDate = person.dateOfBirth
         let personFormatter = DateFormatter()
         personFormatter.dateFormat = "MMMM"
         let monthPerson = Calendar.current.component(.month, from: personDate)
-
+        
         /// Endrer bakgrunnsfarge dersom personen er født i inneværende måned
         if monthPerson == month {
             return Color(.systemGreen)
         }
         return Color(.clear)
     }
-
+    
     var body: some View {
         HStack (spacing: 10) {
             if person.image != nil {
@@ -176,23 +179,34 @@ struct ShowPersonBirthday: View {
             Text(age)
                 .foregroundColor(.accentColor)
             TextDeleteFirstEmoji(firstName : person.firstName)
-            .font(Font.body.weight(.ultraLight))
+                .font(Font.body.weight(.ultraLight))
             Spacer(minLength: 5)
             Image("message")
+                /// Formatet er : tel:<phone><&body>
                 .resizable()
-                .frame(width: 30, height: 30, alignment: .leading)
+                .frame(width: 30, height: 30, alignment: .center)
+                .gesture(
+                    TapGesture()
+                        .onEnded({ _ in
+                            if self.person.phoneNumber.count > 0 {
+                                PersonSendSMS(person: self.person)
+                            } else {
+                                self.message = NSLocalizedString("Missing phonenumber", comment: "ShowPersons")
+                                self.alertIdentifier = AlertID(id: .first)
+                            }
+                        })
+                )
         }
-        /// Må skrives om:
-            
-        .onLongPressGesture {
-            self.sendMail.toggle()
+        .alert(item: $alertIdentifier) { alert in
+            switch alert.id {
+            case .first:
+                return Alert(title: Text(self.message))
+            case .second:
+                return Alert(title: Text(self.message))
+            case .third:
+                return Alert(title: Text(self.message))
+            }
         }
-        
-        /// PersonSendMail er slettet
-//        .sheet(isPresented: $sendMail) {
-//            // PersonSendMail(person: self.person)
-//        }
     }
-
 }
 
