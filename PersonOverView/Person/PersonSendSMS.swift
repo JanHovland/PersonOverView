@@ -15,7 +15,7 @@ func PersonSendSMS(person: Person) {
     var greeting = ""
     /// 1: Eventuelle blanke tegn i telefonnummeret må fjernes
     /// 2: Det sendes en SMS  ved å kalle UIApplication.shared.open(url)
-    let prefix = "sms://"
+    let prefix = "sms:"
     let phoneNumber = person.phoneNumber.replacingOccurrences(of: " ", with: "")
     print("phoneNumber = \(phoneNumber)")
     /// Må finne regionen, fordi localization ikke virker når en streng inneholder %20 (mellorom)
