@@ -31,6 +31,8 @@
 		DB33E13C23F35E1B00A95FAA /* FindPostalCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB33E13B23F35E1B00A95FAA /* FindPostalCode.swift */; };
 		DB33E13E23F4829C00A95FAA /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB33E13D23F4829C00A95FAA /* SearchBar.swift */; };
 		DB33E14023F56F5100A95FAA /* PostalCodeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB33E13F23F56F5100A95FAA /* PostalCodeSettings.swift */; };
+		DB4466C6245B4418001FAF96 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB4466C4245B4418001FAF96 /* InfoPlist.strings */; };
+		DB4466C9245B4418001FAF96 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB4466C7245B4418001FAF96 /* Localizable.strings */; };
 		DB46938023B9F0A50060933E /* ToDoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB46937F23B9F0A50060933E /* ToDoView.swift */; };
 		DB4A6CEF2411028600349A51 /* MonthDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4A6CEE2411028600349A51 /* MonthDay.swift */; };
 		DB4A6CF12413A2BE00349A51 /* FindPostalCodeNewPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4A6CF02413A2BE00349A51 /* FindPostalCodeNewPerson.swift */; };
@@ -41,7 +43,6 @@
 		DB6226CC243B22AF0022F244 /* Create Mac icons.jsx in Resources */ = {isa = PBXBuildFile; fileRef = DB6226CB243B22AE0022F244 /* Create Mac icons.jsx */; };
 		DB65AE7C23E1EE2100568032 /* PersonsOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB65AE7B23E1EE2100568032 /* PersonsOverView.swift */; };
 		DB6739C123AA910E00EF9ECD /* SwiftUIImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6739C023AA910E00EF9ECD /* SwiftUIImagePicker.swift */; };
-		DB6739C423AD46A800EF9ECD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB6739C223AD46A800EF9ECD /* InfoPlist.strings */; };
 		DB6739CB23AE2B0600EF9ECD /* OutputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6739CA23AE2B0600EF9ECD /* OutputTextField.swift */; };
 		DB691A2023CB31ED004CDBE8 /* CloudKitRecordXXX.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB691A1F23CB31ED004CDBE8 /* CloudKitRecordXXX.swift */; };
 		DB6B153524066E9500CF87B9 /* PersonBirthday.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6B153424066E9500CF87B9 /* PersonBirthday.swift */; };
@@ -49,7 +50,6 @@
 		DB9A4DD923CDE2AE00948B21 /* UserDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9A4DD823CDE2AE00948B21 /* UserDeleteView.swift */; };
 		DB9E4A22242BC0A100C6D085 /* TestMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9E4A21242BC0A100C6D085 /* TestMessage.swift */; };
 		DBB4C62823B6301F0055296B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB4C62723B6301F0055296B /* ImagePicker.swift */; };
-		DBB83D9A23E822CE003AA2C9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DBB83D9823E822CE003AA2C9 /* Localizable.strings */; };
 		DBDA561A23BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */; };
 		DBE58ACF23CF2D5300D3EF1D /* ResizedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE58ACE23CF2D5300D3EF1D /* ResizedImage.swift */; };
 		DBE58AD123CF798000D3EF1D /* DismissingKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE58AD023CF798000D3EF1D /* DismissingKeyboard.swift */; };
@@ -91,6 +91,8 @@
 		DB33E13B23F35E1B00A95FAA /* FindPostalCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPostalCode.swift; sourceTree = "<group>"; };
 		DB33E13D23F4829C00A95FAA /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		DB33E13F23F56F5100A95FAA /* PostalCodeSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostalCodeSettings.swift; sourceTree = "<group>"; };
+		DB4466C5245B4418001FAF96 /* nb-NO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nb-NO"; path = "nb-NO.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		DB4466C8245B4418001FAF96 /* nb-NO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nb-NO"; path = "nb-NO.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		DB46937F23B9F0A50060933E /* ToDoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoView.swift; sourceTree = "<group>"; };
 		DB4A6CEE2411028600349A51 /* MonthDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthDay.swift; sourceTree = "<group>"; };
 		DB4A6CF02413A2BE00349A51 /* FindPostalCodeNewPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPostalCodeNewPerson.swift; sourceTree = "<group>"; };
@@ -101,7 +103,6 @@
 		DB6226CB243B22AE0022F244 /* Create Mac icons.jsx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Create Mac icons.jsx"; sourceTree = "<group>"; };
 		DB65AE7B23E1EE2100568032 /* PersonsOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsOverView.swift; sourceTree = "<group>"; };
 		DB6739C023AA910E00EF9ECD /* SwiftUIImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIImagePicker.swift; sourceTree = "<group>"; };
-		DB6739C923AD495500EF9ECD /* nb-NO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nb-NO"; path = "nb-NO.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		DB6739CA23AE2B0600EF9ECD /* OutputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputTextField.swift; sourceTree = "<group>"; };
 		DB691A1F23CB31ED004CDBE8 /* CloudKitRecordXXX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitRecordXXX.swift; sourceTree = "<group>"; };
 		DB6B153424066E9500CF87B9 /* PersonBirthday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonBirthday.swift; sourceTree = "<group>"; };
@@ -109,10 +110,8 @@
 		DB9A4DD823CDE2AE00948B21 /* UserDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDeleteView.swift; sourceTree = "<group>"; };
 		DB9E4A21242BC0A100C6D085 /* TestMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMessage.swift; sourceTree = "<group>"; };
 		DBB4C62723B6301F0055296B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		DBB83D9923E822CE003AA2C9 /* nb-NO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nb-NO"; path = "nb-NO.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptsToSoftwareKeyboard.swift; sourceTree = "<group>"; };
 		DBDE717223E71A88004F9CA8 /* PersonOverView copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "PersonOverView copy-Info.plist"; path = "/Users/janhovland/Desktop/SwiftUI/PersonOverView/PersonOverView copy-Info.plist"; sourceTree = "<absolute>"; };
-		DBDE717423E72D7A004F9CA8 /* nb-NO */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nb-NO"; path = "nb-NO.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		DBE58ACE23CF2D5300D3EF1D /* ResizedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizedImage.swift; sourceTree = "<group>"; };
 		DBE58AD023CF798000D3EF1D /* DismissingKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissingKeyboard.swift; sourceTree = "<group>"; };
 		DBF0397D23E5A50D00230FAA /* NewPersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPersonView.swift; sourceTree = "<group>"; };
@@ -144,7 +143,6 @@
 				DB302B67237EF02300076D10 /* Products */,
 				DB302B91237FDD8600076D10 /* Frameworks */,
 				DBDE717223E71A88004F9CA8 /* PersonOverView copy-Info.plist */,
-				DBDE717323E72D7A004F9CA8 /* Localizable.strings */,
 			);
 			sourceTree = "<group>";
 		};
@@ -162,8 +160,8 @@
 				DB302B69237EF02300076D10 /* AppDelegate.swift */,
 				DB302B72237EF02300076D10 /* Assets.xcassets */,
 				DB302B7A237EF02300076D10 /* Info.plist */,
-				DBB83D9823E822CE003AA2C9 /* Localizable.strings */,
-				DB6739C223AD46A800EF9ECD /* InfoPlist.strings */,
+				DB4466C7245B4418001FAF96 /* Localizable.strings */,
+				DB4466C4245B4418001FAF96 /* InfoPlist.strings */,
 				DB6226CB243B22AE0022F244 /* Create Mac icons.jsx */,
 				DB1FEF8E2380554F00F8D763 /* Launch Screen.storyboard */,
 				DB302B6D237EF02300076D10 /* PersonOverView.xcdatamodeld */,
@@ -358,10 +356,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB33E13A23F1D5E800A95FAA /* Postnummerregister-ansi.txt in Resources */,
-				DBB83D9A23E822CE003AA2C9 /* Localizable.strings in Resources */,
+				DB4466C6245B4418001FAF96 /* InfoPlist.strings in Resources */,
 				DB302B76237EF02300076D10 /* Preview Assets.xcassets in Resources */,
+				DB4466C9245B4418001FAF96 /* Localizable.strings in Resources */,
 				DB6226CC243B22AF0022F244 /* Create Mac icons.jsx in Resources */,
-				DB6739C423AD46A800EF9ECD /* InfoPlist.strings in Resources */,
 				DB1FEF8F2380554F00F8D763 /* Launch Screen.storyboard in Resources */,
 				DB302B73237EF02300076D10 /* Assets.xcassets in Resources */,
 			);
@@ -426,26 +424,18 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		DB6739C223AD46A800EF9ECD /* InfoPlist.strings */ = {
+		DB4466C4245B4418001FAF96 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DB6739C923AD495500EF9ECD /* nb-NO */,
+				DB4466C5245B4418001FAF96 /* nb-NO */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		DBB83D9823E822CE003AA2C9 /* Localizable.strings */ = {
+		DB4466C7245B4418001FAF96 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DBB83D9923E822CE003AA2C9 /* nb-NO */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		DBDE717323E72D7A004F9CA8 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DBDE717423E72D7A004F9CA8 /* nb-NO */,
+				DB4466C8245B4418001FAF96 /* nb-NO */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -504,7 +494,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -559,7 +549,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

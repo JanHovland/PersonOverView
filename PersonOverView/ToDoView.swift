@@ -18,6 +18,8 @@ var toDo_1 =
 """
   1. 🔴 Komprimere "Oversikt"
   2. 🔴 Problemer med localization (må editere Localizable.strings direkte)
+        - https://stackoverflow.com/questions/40809842/empty-localizable-strings-after-importing-xliff-file-using-xcode-8-1
+        - https://www.raywenderlich.com/2438-internationalization-tutorial-for-ios-2014-edition
 
 """
 

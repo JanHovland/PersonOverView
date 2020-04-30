@@ -1,5 +1,5 @@
 /* No comment provided by engineer. */
-"Add" = "Ny person";
+"Add" = "Ny person ";
 
 /* SignUpView */
 "Added new user:" = "Ny bruker er registrert:";
@@ -75,6 +75,9 @@
 /* UserDeleteView */
 "deleted" = "slettet";
 
+/* No comment provided by engineer. */
+"email" = "e-post";
+
 /* NewPersonView
    PersonView
    TestMessage */
@@ -139,14 +142,11 @@
 
 /* NewPersonView
    PersonView */
-"First name and last name must both contain a value." = "For- og etternavn må begge ha verdier.";
+"First name and last name must both contain a value." = "For- og etternavn må begge ha verdier. ";
 
 /* NewPersonView
    PersonView */
 "Gender" = "Kjønn";
-
-/* ShowPersons */
-"Happy birthday" = "Gratulerer med fødselsdagen";
 
 /* UserDeleteView
    UserMaintenanceView */
@@ -166,6 +166,9 @@
 /* UserDeleteView
    UserMaintenanceView */
 "Missing parameters" = "Manglende parametere";
+
+/* ShowPersons */
+"Missing personal email" = "Mangler e-post adresse";
 
 /* ShowPersons */
 "Missing phonenumber" = "Mangler telefonnummer";
@@ -262,14 +265,8 @@
 /* No comment provided by engineer. */
 "Select postalcode" = "Velg postnummer";
 
-/* PersonSendMail */
-"Send eMail" = "Send e-post";
-
 /* TestMessage */
 "Send eMail or SMS" = "Send e-post eller SMS";
-
-/* No comment provided by engineer. */
-"Send eMail to: %@" = "Send e-post til: %@";
 
 /* SettingView
    SignInView */
@@ -345,15 +342,9 @@
 /* FindPostalCodeNewPerson */
 "You must enter a city" = "Du må legge inn et sted";
 
-/* ShowPersons */
-"Your birthday" = "Fødselsdagen din";
-
 /* SignInView
    SignUpiew
    UserDeleteView
    UserMaintenanceView */
 "Your name" = "Navn";
 
-/* ShowPersons */
-
-"Missing personal email" = "Mangler personlig e-post";
