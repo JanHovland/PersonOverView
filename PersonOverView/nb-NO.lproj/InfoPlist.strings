@@ -2,7 +2,7 @@
 "CFBundleName" = "Personer";
 
 /* Privacy - Location Always and When In Use Usage Description */
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "Denne appen krever din plassering ";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Denne appen krever din plassering";
 
 /* Privacy - Location When In Use Usage Description */
 "NSLocationWhenInUseUsageDescription" = "Denne appen krever din posisjon";
