@@ -23,6 +23,12 @@ struct SettingView: View {
                     Toggle(isOn: $showPassword) {
                         Text(NSLocalizedString("Show password", comment: "SettingView"))
                     }
+                    .gesture(
+                        TapGesture()
+                            .onEnded({ _ in
+                                UserDefaults.standard.set(!self.showPassword, forKey: "showPassword")
+                            })
+                    )
                 }
                 Section(header: Text(NSLocalizedString("PostalCode", comment: "SettingView"))) {
                     Button(
@@ -43,19 +49,12 @@ struct SettingView: View {
                     )
                 }
             }
-            .navigationBarTitle(NSLocalizedString("Settings", comment: "SettingView"))
-            .navigationBarItems(trailing:
-                Button(action: {
-                    UserDefaults.standard.set(self.showPassword, forKey: "showPassword")
-                    self.message = NSLocalizedString("Saved the setting", comment: "SettingView")
-                    self.alertIdentifier = AlertID(id: .first)
-                }, label: {
-                    Text("Save")
-                        .foregroundColor(.none)
-                })
-            )}
+//            .navigationBarTitle("Settings")
+            /// displayMode gir overskrift med små tegn:
+            .navigationBarTitle("Settings", displayMode: .inline)
             .onAppear {
                 self.showPassword = UserDefaults.standard.bool(forKey: "showPassword")
+            }
         }
         .overlay(
             HStack {
@@ -69,7 +68,9 @@ struct SettingView: View {
                             .foregroundColor(.none)
                     })
                         .padding(.trailing, 20)
-                        .padding(.top, 70)
+//                         .padding(.top, 70)
+                        /// Med displayMode
+                        .padding(.top, 15)
                     Spacer()
                 }
             }

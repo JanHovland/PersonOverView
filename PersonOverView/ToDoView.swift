@@ -16,7 +16,8 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 Legge inn i "Innstillinger"
+  1. 🔴 Lagre direkte når noe endres i Instillinger (Passord)
+  2. 🔴 Legge inn i "Innstillinger"
         - SMS
         - e-post
 
