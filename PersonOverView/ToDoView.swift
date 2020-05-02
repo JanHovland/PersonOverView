@@ -16,8 +16,7 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 Lagre direkte når noe endres i Instillinger (Passord)
-  2. 🔴 Legge inn i "Innstillinger"
+  1. 🔴 Legge inn i "Innstillinger"
         - SMS
         - e-post
 
@@ -142,6 +141,7 @@ var toDo_3 =
  58.  🔴 Virker ikke ennå, kanskje i neste versjon av SwiftUI: https://stackoverflow.com/questions/60014299/sending-sms-programmatically-using-swiftui
  59.  🟢 Sender melding via UIApplication.shared.open(url, options: [:])
  60.  🟢 Sender e-post via UIApplication.shared.open(url, options: [:])
+ 61.  🟢 Endre slik at "Vis passord" oppdateres ved tap gesture, og passord i "Innlogging Cloudkit" oppdaters umiddelbart.
 
 """
 var toDo_4 =
