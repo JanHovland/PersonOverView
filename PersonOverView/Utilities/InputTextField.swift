@@ -9,8 +9,7 @@ import SwiftUI
 
 struct InputTextField: View {
 
-    @State private var showPassword: Bool = false
-
+    var showPassword: Bool
     var checkPhone: Bool
     var secure: Bool
     var heading: String
@@ -54,9 +53,9 @@ struct InputTextField: View {
                 }
             }
         }
-        .onAppear {
-            self.showPassword = UserDefaults.standard.bool(forKey: "showPassword")
-        }
+//        .onAppear {
+//            showPassword = UserDefaults.standard.bool(forKey: "showPassword")
+//        }
     }
 
     func formatPhone(phone: String) {

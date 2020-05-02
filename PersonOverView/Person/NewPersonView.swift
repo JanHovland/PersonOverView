@@ -83,44 +83,51 @@ struct NewPersonView: View {
                     self.image = image
                 }
                 Form {
-                    InputTextField(checkPhone: false,
+                    InputTextField(showPassword: UserDefaults.standard.bool(forKey: "showPassword"),
+                                   checkPhone: false,
                                    secure: false,
                                    heading: NSLocalizedString("First name", comment: "NewPersonView"),
                                    placeHolder: NSLocalizedString("Enter your first name", comment: "NewPersonView"),
                                    value: $firstName)
                         .autocapitalization(.words)
-                    InputTextField(checkPhone: false,
+                    InputTextField(showPassword: UserDefaults.standard.bool(forKey: "showPassword"),
+                                   checkPhone: false,
                                    secure: false,
                                    heading: NSLocalizedString("Last name", comment: "NewPersonView"),
                                    placeHolder: NSLocalizedString("Enter your last name", comment: "NewPersonView"),
                                    value: $lastName)
                         .autocapitalization(.words)
-                    InputTextField(checkPhone: false,
+                    InputTextField(showPassword: UserDefaults.standard.bool(forKey: "showPassword"),
+                                   checkPhone: false,
                                    secure: false,
                                    heading: NSLocalizedString("eMail", comment: "NewPersonView"),
                                    placeHolder: NSLocalizedString("Enter your email address", comment: "NewPersonView"),
                                    value: $personEmail)
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
-                    InputTextField(checkPhone: false,
+                    InputTextField(showPassword: UserDefaults.standard.bool(forKey: "showPassword"),
+                                   checkPhone: false,
                                    secure: false,
                                    heading: NSLocalizedString("Address", comment: "NewPersonView"),
                                    placeHolder: NSLocalizedString("Enter your address", comment: "NewPersonView"),
                                    value: $address)
                         .autocapitalization(.words)
-                    InputTextField(checkPhone: true,
+                    InputTextField(showPassword: UserDefaults.standard.bool(forKey: "showPassword"),
+                                   checkPhone: true,
                                    secure: false,
                                    heading: NSLocalizedString("Phone Number", comment: "NewPersonView"),
                                    placeHolder: NSLocalizedString("Enter your phone number", comment: "NewPersonView"),
                                    value: $phoneNumber)
                     HStack (alignment: .center, spacing: 0) {
-                        InputTextField(checkPhone: false,
+                        InputTextField(showPassword: UserDefaults.standard.bool(forKey: "showPassword"),
+                                       checkPhone: false,
                                        secure: false,
                                        heading: NSLocalizedString("Postalcode", comment: "NewPersonView"),
                                        placeHolder: NSLocalizedString("Enter number", comment: "NewPersonView"),
                                        value: $cityNumber)
                             .keyboardType(.numberPad)
-                        InputTextField(checkPhone: false,
+                        InputTextField(showPassword: UserDefaults.standard.bool(forKey: "showPassword"),
+                                       checkPhone: false,
                                        secure: false,
                                        heading: NSLocalizedString("City", comment: "NewPersonView"),
                                        placeHolder: NSLocalizedString("Enter city", comment: "NewPersonView"),
@@ -145,13 +152,15 @@ struct NewPersonView: View {
                             }
                     }
                     HStack (alignment: .center, spacing: 0) {
-                        InputTextField(checkPhone: false,
+                        InputTextField(showPassword: UserDefaults.standard.bool(forKey: "showPassword"),
+                                       checkPhone: false,
                                        secure: false,
                                        heading: NSLocalizedString("Municipality number", comment: "NewPersonView"),
                                        placeHolder: NSLocalizedString("Enter number", comment: "NewPersonView"),
                                        value: $municipalityNumber)
                             .keyboardType(.numberPad)
-                        InputTextField(checkPhone: false,
+                        InputTextField(showPassword: UserDefaults.standard.bool(forKey: "showPassword"),
+                                       checkPhone: false,
                                        secure: false,
                                        heading: NSLocalizedString("Municipality", comment: "NewPersonView"),
                                        placeHolder: NSLocalizedString("Enter municipality", comment: "NewPersonView"),

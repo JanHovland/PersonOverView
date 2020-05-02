@@ -56,14 +56,16 @@ struct SignUpView : View {
                 }
                 Spacer(minLength: 56)
                 VStack {
-                    InputTextField(checkPhone: false,
+                    InputTextField(showPassword: UserDefaults.standard.bool(forKey: "showPassword"),
+                                   checkPhone: false,
                                    secure: false,
                                    heading: NSLocalizedString("Your name", comment: "SignUpiew"),
                                    placeHolder: NSLocalizedString("Enter your name", comment: "SignUpView"),
                                    value: $userItem.name)
                         .autocapitalization(.words)
                     Spacer(minLength: 20)
-                    InputTextField(checkPhone: false,
+                    InputTextField(showPassword: UserDefaults.standard.bool(forKey: "showPassword"),
+                                   checkPhone: false,
                                    secure: false,
                                    heading: NSLocalizedString("eMail address", comment: "SignUpView"),
                                    placeHolder: NSLocalizedString("Enter your email address", comment: "SignUpView"),
@@ -71,7 +73,8 @@ struct SignUpView : View {
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
                     Spacer(minLength: 20)
-                    InputTextField(checkPhone: false,
+                    InputTextField(showPassword: UserDefaults.standard.bool(forKey: "showPassword"),
+                                   checkPhone: false,
                                    secure: true,
                                    heading: NSLocalizedString("Password", comment: "SignUpView"),
                                    placeHolder: NSLocalizedString("Enter your password", comment: "SignUpView"),

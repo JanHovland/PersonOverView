@@ -43,20 +43,23 @@ struct UserMaintenanceView: View {
             .padding(.bottom)
             VStack {
                 List {
-                    InputTextField(checkPhone: false,
+                    InputTextField(showPassword: UserDefaults.standard.bool(forKey: "showPassword"),
+                                   checkPhone: false,
                                    secure: false,
                                    heading: NSLocalizedString("Your name", comment: "UserMaintenanceView"),
                                    placeHolder: NSLocalizedString("Enter your name", comment: "UserMaintenanceView"),
                                    value: $user.name)
                         .autocapitalization(.words)
-                    InputTextField(checkPhone: false,
+                    InputTextField(showPassword: UserDefaults.standard.bool(forKey: "showPassword"),
+                                   checkPhone: false,
                                    secure: false,
                                    heading: NSLocalizedString("eMail address", comment: "UserMaintenanceView"),
                                    placeHolder: NSLocalizedString("Enter your email address", comment: "UserMaintenanceView"),
                                    value: $user.email)
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
-                    InputTextField(checkPhone: false,
+                    InputTextField(showPassword: UserDefaults.standard.bool(forKey: "showPassword"),
+                                   checkPhone: false,
                                    secure: true,
                                    heading: NSLocalizedString("Password", comment: "UserMaintenanceView"),
                                    placeHolder: NSLocalizedString("Enter your password", comment: "UserMaintenanceView"),
