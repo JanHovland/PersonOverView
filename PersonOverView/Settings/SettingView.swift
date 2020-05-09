@@ -7,74 +7,33 @@
 //
 
 import SwiftUI
+import Combine
 
 struct SettingView: View {
     
-    enum SMSChoiseType: Int, CaseIterable {
-        case disableSMS = 0
-        case enableSMS = 1
-        
-        init(type: Int) {
-            switch type {
-            case 0: self = .disableSMS
-            case 1: self = .enableSMS
-            default: self = .disableSMS
-            }
-        }
-        
-        var text: String {
-            switch self {
-            case .disableSMS: return NSLocalizedString("Disable SMS", comment: "SettingView")
-            case .enableSMS: return NSLocalizedString("Enable SMS", comment: "SettingView")
-            }
-        }
-        
-    }
+    private var SMSChoiseType = [NSLocalizedString("Disable SMS", comment: "SettingView"),
+                                 NSLocalizedString("Enable SMS", comment: "SettingView")
+    ]
     
-    final class SMSChoiseStore {
-        var defaults: UserDefaults
-
-        init(defaults: UserDefaults = .standard) {
-            self.defaults = defaults
-            defaults.register(defaults: [
-                "view.SettingView.SMSChoise" : 0
-            ])
-        }
-
-        var SMSChoise: SMSChoiseType {
-            get {
-                SMSChoiseType(type: defaults.integer(forKey: "view.SettingView.SMSChoise"))
-            }
-            set {
-                defaults.set(newValue.rawValue, forKey: "view.SettingView.SMSChoise")
-            }
-
-       }
-    }
+    @State private var selectedOptionSMS = 0
     
-    @State private var selectedChoiseSMS = SMSChoiseType.disableSMS
-    
-    @Environment(\.presentationMode) var presentationMode   
+    @Environment(\.presentationMode) var presentationMode
     
     @State private var showPassword: Bool = true
     @State private var message: String = ""
     @State private var alertIdentifier: AlertID?
     
-    // @State  var smsChoiseStore: SMSChoiseStore
+    @ObservedObject var settingsStore: SettingsStore = SettingsStore()
     
     var body: some View {
         NavigationView {
             Form {
                 Section(header: Text(NSLocalizedString("Password", comment: "SettingView"))) {
-                    Toggle(isOn: $showPassword) {
-                        Text(NSLocalizedString("Show password", comment: "SettingView"))
+                    VStack {
+                        Toggle(isOn: $settingsStore.showPasswordActivate) {
+                            Text(NSLocalizedString("Show password", comment: "SettingView"))
+                        }
                     }
-                    .gesture(
-                        TapGesture()
-                            .onEnded({ _ in
-                                UserDefaults.standard.set(!self.showPassword, forKey: "showPassword")
-                            })
-                    )
                 }
                 Section(header: Text(NSLocalizedString("PostalCode", comment: "SettingView"))) {
                     Button(
@@ -96,31 +55,19 @@ struct SettingView: View {
                 }
                 
                 Section(header: Text(NSLocalizedString("SMS", comment: "SettingView"))) {
-                    
-                    Picker(selection: $selectedChoiseSMS, label: Text("Select SMS option")) {
-                        ForEach(SMSChoiseType.allCases, id: \.self) {
-                            SMSChoiseType in
-                            Text(SMSChoiseType.text)
+                    VStack {
+                        Picker(selection: $selectedOptionSMS, label: Text("Select SMS option")) {
+                            ForEach(0 ..< SMSChoiseType.count) {
+                                Text(self.SMSChoiseType[$0])
+                            }
                         }
-                        // print(SMSChoiseType.id)
                     }
-//                    .gesture(
-//                        TapGesture()
-//                            .onEnded({ _ in
-//                                UserDefaults.standard.set(self.selectedChoiseSMS, forKey: "showPassword")
-//                                let a = self.selectedChoiseSMS
-//                                print(a)
-//                            })
-//                    )
                 }
+                
             }
-            /// .navigationBarTitle("Settings")
-            /// displayMode gir overskrift med små tegn:
-            .navigationBarTitle("Settings", displayMode: .inline)
-            .onAppear {
-                self.showPassword = UserDefaults.standard.bool(forKey: "showPassword")
-//               self.selectedChoiseSMS = self.smsChoiseStore.SMSChoise
-            }
+                /// .navigationBarTitle("Settings")
+                /// displayMode gir overskrift med små tegn:
+                .navigationBarTitle("Settings", displayMode: .inline)
         }
         .overlay(
             HStack {
@@ -141,28 +88,28 @@ struct SettingView: View {
                 }
             }
         )
-        .alert(item: $alertIdentifier) { alert in
-            switch alert.id {
-            case .first:
-                return Alert(title: Text(self.message))
-            case .second:
-                return Alert(title: Text(NSLocalizedString("Delete PostalCode", comment: "SettingView")),
-                             message: Text(NSLocalizedString("Are you sure you want to delete PostalCode?", comment: "SettingView")),
-                             primaryButton: .destructive(Text(NSLocalizedString("Yes", comment: "SettingView")),
-                                                         action: {
-                                                            CloudKitPostalCode.deleteAllPostalCode()
-                             }),
-                             secondaryButton: .cancel(Text(NSLocalizedString("No", comment: "SettingView"))))
-            case .third:
-                return Alert(title: Text(NSLocalizedString("Save PostalCode", comment: "SettingView")),
-                             message: Text(NSLocalizedString("Are you sure you want to save PostalCodes?", comment: "SettingView")),
-                             primaryButton: .destructive(Text(NSLocalizedString("Yes", comment: "SettingView")),
-                                                         action: {
-                                                            // self.testSave()
-                                                            self.UpdatePostalCodeFromCSV()
-                             }),
-                             secondaryButton: .cancel(Text(NSLocalizedString("No", comment: "SettingView"))))
-            }
+            .alert(item: $alertIdentifier) { alert in
+                switch alert.id {
+                case .first:
+                    return Alert(title: Text(self.message))
+                case .second:
+                    return Alert(title: Text(NSLocalizedString("Delete PostalCode", comment: "SettingView")),
+                                 message: Text(NSLocalizedString("Are you sure you want to delete PostalCode?", comment: "SettingView")),
+                                 primaryButton: .destructive(Text(NSLocalizedString("Yes", comment: "SettingView")),
+                                                             action: {
+                                                                CloudKitPostalCode.deleteAllPostalCode()
+                                 }),
+                                 secondaryButton: .cancel(Text(NSLocalizedString("No", comment: "SettingView"))))
+                case .third:
+                    return Alert(title: Text(NSLocalizedString("Save PostalCode", comment: "SettingView")),
+                                 message: Text(NSLocalizedString("Are you sure you want to save PostalCodes?", comment: "SettingView")),
+                                 primaryButton: .destructive(Text(NSLocalizedString("Yes", comment: "SettingView")),
+                                                             action: {
+                                                                // self.testSave()
+                                                                self.UpdatePostalCodeFromCSV()
+                                 }),
+                                 secondaryButton: .cancel(Text(NSLocalizedString("No", comment: "SettingView"))))
+                }
         }
     }
     
@@ -244,3 +191,20 @@ struct SettingView: View {
     }
 }
 
+final class SettingsStore: ObservableObject {
+    let showPasswordIsActivate = PassthroughSubject<Void, Never>()
+    var showPasswordActivate: Bool = UserDefaults.showPassword {
+        willSet {
+            UserDefaults.showPassword = newValue
+            showPasswordIsActivate.send()
+        }
+    }
+}
+
+extension UserDefaults {
+    static var showPassword: Bool {
+        get { return UserDefaults.standard.bool(forKey: "showPassword") }
+        set { UserDefaults.standard.set(newValue, forKey: "showPassword") }
+    }
+    
+}

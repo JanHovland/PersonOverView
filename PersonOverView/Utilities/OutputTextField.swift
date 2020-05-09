@@ -14,7 +14,7 @@ struct OutputTextField: View {
     @Environment(\.presentationMode) var presentationMode
 
     @State private var showPassword: Bool = false
-    @State         var secureValue: String = ""
+    @State private var secureValue: String = ""
 
     var secure: Bool
     var heading: String

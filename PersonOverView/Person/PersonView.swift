@@ -159,13 +159,6 @@ struct PersonView : View {
                     InputTextField(showPassword: UserDefaults.standard.bool(forKey: "showPassword"),
                                    checkPhone: false,
                                    secure: false,
-                                   heading: NSLocalizedString("Municipality number", comment: "PersonView"),
-                                   placeHolder: NSLocalizedString("Enter number", comment: "PersonView"),
-                                   value: $municipalityNumber)
-                        .keyboardType(.numberPad)
-                    InputTextField(showPassword: UserDefaults.standard.bool(forKey: "showPassword"),
-                                   checkPhone: false,
-                                   secure: false,
                                    heading: NSLocalizedString("Municipality", comment: "PersonView"),
                                    placeHolder: NSLocalizedString("Enter municipality", comment: "PersonView"),
                                    value: $municipality)

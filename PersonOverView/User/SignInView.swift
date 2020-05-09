@@ -226,6 +226,7 @@ struct SignInView : View {
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
                     Spacer(minLength: 20)
+//                    InputTextField(showPassword: UserDefaults.standard.bool(forKey: "showPassword"),
                     InputTextField(showPassword: UserDefaults.standard.bool(forKey: "showPassword"),
                                    checkPhone: false,
                                    secure: true,

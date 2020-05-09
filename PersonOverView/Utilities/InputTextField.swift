@@ -53,9 +53,6 @@ struct InputTextField: View {
                 }
             }
         }
-//        .onAppear {
-//            showPassword = UserDefaults.standard.bool(forKey: "showPassword")
-//        }
     }
 
     func formatPhone(phone: String) {
