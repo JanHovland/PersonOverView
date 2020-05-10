@@ -163,15 +163,14 @@
 			children = (
 				DB302B69237EF02300076D10 /* AppDelegate.swift */,
 				DB302B72237EF02300076D10 /* Assets.xcassets */,
-				DB302B7A237EF02300076D10 /* Info.plist */,
-				DB4466C7245B4418001FAF96 /* Localizable.strings */,
-				DB4466C4245B4418001FAF96 /* InfoPlist.strings */,
 				DB6226CB243B22AE0022F244 /* Create Mac icons.jsx */,
+				DB302B7A237EF02300076D10 /* Info.plist */,
+				DB4466C4245B4418001FAF96 /* InfoPlist.strings */,
 				DB1FEF8E2380554F00F8D763 /* Launch Screen.storyboard */,
+				DB4466C7245B4418001FAF96 /* Localizable.strings */,
 				DB302B6D237EF02300076D10 /* PersonOverView.xcdatamodeld */,
 				DB302B90237FDD7200076D10 /* PersonOverView.entitlements */,
 				DB302B6B237EF02300076D10 /* SceneDelegate.swift */,
-				DB46937F23B9F0A50060933E /* ToDoView.swift */,
 				DBF1F11D24240A2D00EE707A /* Map */,
 				DB4A8F3723DEDC8D00558788 /* CloudKit */,
 				DB4A8F3323DE260700558788 /* Model */,
@@ -181,6 +180,7 @@
 				DB4A8F3823DEDDA100558788 /* User */,
 				DB4A8F3623DEDC1C00558788 /* Utilities */,
 				DB302B74237EF02300076D10 /* Preview Content */,
+				DBB234DC246870480053FFB8 /* ToDo */,
 			);
 			path = PersonOverView;
 			sourceTree = "<group>";
@@ -248,8 +248,8 @@
 				DB6739C023AA910E00EF9ECD /* SwiftUIImagePicker.swift */,
 				DB33E13D23F4829C00A95FAA /* SearchBar.swift */,
 				DB4A6CEE2411028600349A51 /* MonthDay.swift */,
-				DBB234D824685FAF0053FFB8 /* SendSMS.swift */,
 				DBB234DA24686C520053FFB8 /* SendEmail.swift */,
+				DBB234D824685FAF0053FFB8 /* SendSMS.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -290,6 +290,14 @@
 				DB9E4A21242BC0A100C6D085 /* TestMessage.swift */,
 			);
 			path = Person;
+			sourceTree = "<group>";
+		};
+		DBB234DC246870480053FFB8 /* ToDo */ = {
+			isa = PBXGroup;
+			children = (
+				DB46937F23B9F0A50060933E /* ToDoView.swift */,
+			);
+			path = ToDo;
 			sourceTree = "<group>";
 		};
 		DBF1F11D24240A2D00EE707A /* Map */ = {
