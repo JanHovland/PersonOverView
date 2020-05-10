@@ -1,0 +1,6 @@
+/* Bundle name */
+"CFBundleName" = "PersonOverView";
+/* Privacy - Location Always and When In Use Usage Description */
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "This app requires your location ";
+/* Privacy - Location When In Use Usage Description */
+"NSLocationWhenInUseUsageDescription" = "This app requires your location";

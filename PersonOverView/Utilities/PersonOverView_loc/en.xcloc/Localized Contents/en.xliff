@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="PersonOverView/en.lproj/InfoPlist.strings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11N605f"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>PersonOverView</source>
+        <target>PersonOverView</target>
+        <note>Bundle name</note>
+      </trans-unit>
+      <trans-unit id="NSLocationAlwaysAndWhenInUseUsageDescription" xml:space="preserve">
+        <source>This app requires your location </source>
+        <target>This app requires your location </target>
+        <note>Privacy - Location Always and When In Use Usage Description</note>
+      </trans-unit>
+      <trans-unit id="NSLocationWhenInUseUsageDescription" xml:space="preserve">
+        <source>This app requires your location</source>
+        <target>This app requires your location</target>
+        <note>Privacy - Location When In Use Usage Description</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="PersonOverView/en.lproj/Localizable.strings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11N605f"/>
+    </header>
+    <body>
+      <trans-unit id="%@" xml:space="preserve">
+        <source>%@</source>
+        <target>%@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Abort" xml:space="preserve">
+        <source>Abort</source>
+        <target>Abort</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Add" xml:space="preserve">
+        <source>Add</source>
+        <target>Add</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Added new user:" xml:space="preserve">
+        <source>Added new user:</source>
+        <target>Added new user:</target>
+        <note>SignUpView</note>
+      </trans-unit>
+      <trans-unit id="Address" xml:space="preserve">
+        <source>Address</source>
+        <target>Address</target>
+        <note>NewPersonView
+   PersonView</note>
+      </trans-unit>
+      <trans-unit id="Are you sure you want to delete PostalCode?" xml:space="preserve">
+        <source>Are you sure you want to delete PostalCode?</source>
+        <target>Are you sure you want to delete PostalCode?</target>
+        <note>SettingView</note>
+      </trans-unit>
+      <trans-unit id="Are you sure you want to delete this person?" xml:space="preserve">
+        <source>Are you sure you want to delete this person?</source>
+        <target>Are you sure you want to delete this person?</target>
+        <note>PersonsOverView</note>
+      </trans-unit>
+      <trans-unit id="Are you sure you want to delete this user?" xml:space="preserve">
+        <source>Are you sure you want to delete this user?</source>
+        <target>Are you sure you want to delete this user?</target>
+        <note>UserDeleteView</note>
+      </trans-unit>
+      <trans-unit id="Are you sure you want to save PostalCodes?" xml:space="preserve">
+        <source>Are you sure you want to save PostalCodes?</source>
+        <target>Are you sure you want to save PostalCodes?</target>
+        <note>SettingView</note>
+      </trans-unit>
+      <trans-unit id="Are you sure you want to update this user?" xml:space="preserve">
+        <source>Are you sure you want to update this user?</source>
+        <target>Are you sure you want to update this user?</target>
+        <note>UserDeleteView</note>
+      </trans-unit>
+      <trans-unit id="Birthday" xml:space="preserve">
+        <source>Birthday</source>
+        <target>Birthday</target>
+        <note>PersonBirthday</note>
+      </trans-unit>
+      <trans-unit id="Both email and Password must have a value" xml:space="preserve">
+        <source>Both email and Password must have a value</source>
+        <target>Both email and Password must have a value</target>
+        <note>SignInView</note>
+      </trans-unit>
+      <trans-unit id="Can not modify this person yet, due to missing value for its recordID.&#10;Please try again later..." xml:space="preserve">
+        <source>Can not modify this person yet, due to missing value for its recordID.
+Please try again later...</source>
+        <target>Can not modify this person yet, due to missing value for its recordID.
+Please try again later...</target>
+        <note>NewPersonView</note>
+      </trans-unit>
+      <trans-unit id="Choose Profile Image" xml:space="preserve">
+        <source>Choose Profile Image</source>
+        <target>Choose Profile Image</target>
+        <note>SignUpView
+   UserMaintenanceView</note>
+      </trans-unit>
+      <trans-unit id="City" xml:space="preserve">
+        <source>City</source>
+        <target>City</target>
+        <note>NewPersonView
+   PersonView</note>
+      </trans-unit>
+      <trans-unit id="Create a new account?" xml:space="preserve">
+        <source>Create a new account?</source>
+        <target>Create a new account?</target>
+        <note>SignInView</note>
+      </trans-unit>
+      <trans-unit id="Date of birth" xml:space="preserve">
+        <source>Date of birth</source>
+        <target>Date of birth</target>
+        <note>NewPersonView
+   PersonView</note>
+      </trans-unit>
+      <trans-unit id="Delete PostalCode" xml:space="preserve">
+        <source>Delete PostalCode</source>
+        <target>Delete PostalCode</target>
+        <note>SettingView</note>
+      </trans-unit>
+      <trans-unit id="Delete PostalCode (100 at a time)" xml:space="preserve">
+        <source>Delete PostalCode (100 at a time)</source>
+        <target>Delete PostalCode (100 at a time)</target>
+        <note>SettingView</note>
+      </trans-unit>
+      <trans-unit id="Delete an user" xml:space="preserve">
+        <source>Delete an user</source>
+        <target>Delete an user</target>
+        <note>SignInView
+   UserDeleteView</note>
+      </trans-unit>
+      <trans-unit id="Delete person" xml:space="preserve">
+        <source>Delete person</source>
+        <target>Delete person</target>
+        <note>PersonsOverView</note>
+      </trans-unit>
+      <trans-unit id="Delete this person" xml:space="preserve">
+        <source>Delete this person</source>
+        <target>Delete this person</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Delete this user" xml:space="preserve">
+        <source>Delete this user</source>
+        <target>Delete this user</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Delete user" xml:space="preserve">
+        <source>Delete user</source>
+        <target>Delete user</target>
+        <note>UserDeleteView</note>
+      </trans-unit>
+      <trans-unit id="EMAIL" xml:space="preserve">
+        <source>EMAIL</source>
+        <target>EMAIL</target>
+        <note>SettingView</note>
+      </trans-unit>
+      <trans-unit id="EMAIL option" xml:space="preserve">
+        <source>EMAIL option</source>
+        <target>EMAIL option</target>
+        <note>SettingView</note>
+      </trans-unit>
+      <trans-unit id="Enter city" xml:space="preserve">
+        <source>Enter city</source>
+        <target>Enter city</target>
+        <note>NewPersonView
+   PersonView</note>
+      </trans-unit>
+      <trans-unit id="Enter municipality" xml:space="preserve">
+        <source>Enter municipality</source>
+        <target>Enter municipality</target>
+        <note>NewPersonView
+   PersonView</note>
+      </trans-unit>
+      <trans-unit id="Enter number" xml:space="preserve">
+        <source>Enter number</source>
+        <target>Enter number</target>
+        <note>NewPersonView
+   PersonView</note>
+      </trans-unit>
+      <trans-unit id="Enter your address" xml:space="preserve">
+        <source>Enter your address</source>
+        <target>Enter your address</target>
+        <note>NewPersonView
+   v</note>
+      </trans-unit>
+      <trans-unit id="Enter your email address" xml:space="preserve">
+        <source>Enter your email address</source>
+        <target>Enter your email address</target>
+        <note>NewPersonView
+   PersonView
+   SignInView
+   SignUpView
+   UserMaintenanceView</note>
+      </trans-unit>
+      <trans-unit id="Enter your first name" xml:space="preserve">
+        <source>Enter your first name</source>
+        <target>Enter your first name</target>
+        <note>NewPersonView
+   PersonView</note>
+      </trans-unit>
+      <trans-unit id="Enter your last name" xml:space="preserve">
+        <source>Enter your last name</source>
+        <target>Enter your last name</target>
+        <note>NewPersonView
+   PersonView</note>
+      </trans-unit>
+      <trans-unit id="Enter your name" xml:space="preserve">
+        <source>Enter your name</source>
+        <target>Enter your name</target>
+        <note>SignUpView
+   UserMaintenanceView</note>
+      </trans-unit>
+      <trans-unit id="Enter your password" xml:space="preserve">
+        <source>Enter your password</source>
+        <target>Enter your password</target>
+        <note>SignInView
+   SignUpView
+   UserMaintenanceView</note>
+      </trans-unit>
+      <trans-unit id="Enter your phone number" xml:space="preserve">
+        <source>Enter your phone number</source>
+        <target>Enter your phone number</target>
+        <note>NewPersonView
+   PersonView</note>
+      </trans-unit>
+      <trans-unit id="Exit" xml:space="preserve">
+        <source>Exit</source>
+        <target>Exit</target>
+        <note>SignInView</note>
+      </trans-unit>
+      <trans-unit id="First name" xml:space="preserve">
+        <source>First name</source>
+        <target>First name</target>
+        <note>NewPersonView
+   PersonView</note>
+      </trans-unit>
+      <trans-unit id="First name and last name must both contain a value." xml:space="preserve">
+        <source>First name and last name must both contain a value.</source>
+        <target>First name and last name must both contain a value.</target>
+        <note>NewPersonView
+   PersonView</note>
+      </trans-unit>
+      <trans-unit id="Gender" xml:space="preserve">
+        <source>Gender</source>
+        <target>Gender</target>
+        <note>NewPersonView
+   PersonView</note>
+      </trans-unit>
+      <trans-unit id="Hold and release to activate the actions below" xml:space="preserve">
+        <source>Hold and release to activate the actions below</source>
+        <target>Hold and release to activate the actions below</target>
+        <note>UserDeleteView
+   UserMaintenanceView</note>
+      </trans-unit>
+      <trans-unit id="Last name" xml:space="preserve">
+        <source>Last name</source>
+        <target>Last name</target>
+        <note>NewPersonView
+   PersonView</note>
+      </trans-unit>
+      <trans-unit id="Man" xml:space="preserve">
+        <source>Man</source>
+        <target>Man</target>
+        <note>NewPersonView
+   PersonView</note>
+      </trans-unit>
+      <trans-unit id="Message" xml:space="preserve">
+        <source>Message</source>
+        <target>Message</target>
+        <note>TestMessage</note>
+      </trans-unit>
+      <trans-unit id="Missing parameters" xml:space="preserve">
+        <source>Missing parameters</source>
+        <target>Missing parameters</target>
+        <note>UserDeleteView
+   UserMaintenanceView</note>
+      </trans-unit>
+      <trans-unit id="Missing personal email" xml:space="preserve">
+        <source>Missing personal email</source>
+        <target>Missing personal email</target>
+        <note>ShowPersons</note>
+      </trans-unit>
+      <trans-unit id="Missing phonenumber" xml:space="preserve">
+        <source>Missing phonenumber</source>
+        <target>Missing phonenumber</target>
+        <note>ShowPersons</note>
+      </trans-unit>
+      <trans-unit id="Modify" xml:space="preserve">
+        <source>Modify</source>
+        <target>Modify</target>
+        <note>NewPersonView
+   PersonView</note>
+      </trans-unit>
+      <trans-unit id="Modify user" xml:space="preserve">
+        <source>Modify user</source>
+        <target>Modify user</target>
+        <note>UserMaintenanceView</note>
+      </trans-unit>
+      <trans-unit id="Municipality" xml:space="preserve">
+        <source>Municipality</source>
+        <target>Municipality</target>
+        <note>NewPersonView
+   PersonView</note>
+      </trans-unit>
+      <trans-unit id="Municipality number" xml:space="preserve">
+        <source>Municipality number</source>
+        <target>Municipality number</target>
+        <note>NewPersonView</note>
+      </trans-unit>
+      <trans-unit id="Name, eMail and Password must have a value" xml:space="preserve">
+        <source>Name, eMail and Password must have a value</source>
+        <target>Name, eMail and Password must have a value</target>
+        <note>SignInView</note>
+      </trans-unit>
+      <trans-unit id="Name, eMail or Password must all contain a value." xml:space="preserve">
+        <source>Name, eMail or Password must all contain a value.</source>
+        <target>Name, eMail or Password must all contain a value.</target>
+        <note>SignUpView</note>
+      </trans-unit>
+      <trans-unit id="New person" xml:space="preserve">
+        <source>New person</source>
+        <target>New person</target>
+        <note>NewPersonView</note>
+      </trans-unit>
+      <trans-unit id="New user" xml:space="preserve">
+        <source>New user</source>
+        <target>New user</target>
+        <note>SignInView</note>
+      </trans-unit>
+      <trans-unit id="No" xml:space="preserve">
+        <source>No</source>
+        <target>No</target>
+        <note>PersonsOverView
+   SettingView
+   UserDeleteView
+   UserMaintenanceView</note>
+      </trans-unit>
+      <trans-unit id="Options Menu" xml:space="preserve">
+        <source>Options Menu</source>
+        <target>Options Menu</target>
+        <note>SignInView</note>
+      </trans-unit>
+      <trans-unit id="PASSWORD" xml:space="preserve">
+        <source>PASSWORD</source>
+        <target>PASSWORD</target>
+        <note>SettingView</note>
+      </trans-unit>
+      <trans-unit id="POSTALCODE" xml:space="preserve">
+        <source>POSTALCODE</source>
+        <target>POSTALCODE</target>
+        <note>SettingView</note>
+      </trans-unit>
+      <trans-unit id="Password" xml:space="preserve">
+        <source>Password</source>
+        <target>Password</target>
+        <note>SignInView
+   SignUpView
+   UserDeleteView
+   UserMaintenanceView</note>
+      </trans-unit>
+      <trans-unit id="Person overview" xml:space="preserve">
+        <source>Person overview</source>
+        <target>Person overview</target>
+        <note>NewPersonView</note>
+      </trans-unit>
+      <trans-unit id="PersonBirthday" xml:space="preserve">
+        <source>PersonBirthday</source>
+        <target>PersonBirthday</target>
+        <note>SignInView</note>
+      </trans-unit>
+      <trans-unit id="Persons overview" xml:space="preserve">
+        <source>Persons overview</source>
+        <target>Persons overview</target>
+        <note>PersonsOverView</note>
+      </trans-unit>
+      <trans-unit id="PersonsOverview" xml:space="preserve">
+        <source>PersonsOverview</source>
+        <target>PersonsOverview</target>
+        <note>SignInView</note>
+      </trans-unit>
+      <trans-unit id="Phone Number" xml:space="preserve">
+        <source>Phone Number</source>
+        <target>Phone Number</target>
+        <note>NewPersonView
+   PersonView</note>
+      </trans-unit>
+      <trans-unit id="Postalcode" xml:space="preserve">
+        <source>Postalcode</source>
+        <target>Postalcode</target>
+        <note>NewPersonView
+   PersonView</note>
+      </trans-unit>
+      <trans-unit id="Profile Image" xml:space="preserve">
+        <source>Profile Image</source>
+        <target>Profile Image</target>
+        <note>NewPersonView
+   PersonView</note>
+      </trans-unit>
+      <trans-unit id="Records deleted:" xml:space="preserve">
+        <source>Records deleted:</source>
+        <target>Records deleted:</target>
+        <note>SettingView</note>
+      </trans-unit>
+      <trans-unit id="Refresh" xml:space="preserve">
+        <source>Refresh</source>
+        <target>Refresh</target>
+        <note>NewPersonView
+   PersonView</note>
+      </trans-unit>
+      <trans-unit id="SMS" xml:space="preserve">
+        <source>SMS</source>
+        <target>SMS</target>
+        <note>SettingView</note>
+      </trans-unit>
+      <trans-unit id="SMS option" xml:space="preserve">
+        <source>SMS option</source>
+        <target>SMS option</target>
+        <note>SettingView</note>
+      </trans-unit>
+      <trans-unit id="Save" xml:space="preserve">
+        <source>Save</source>
+        <target>Save</target>
+        <note>NewPersonView</note>
+      </trans-unit>
+      <trans-unit id="Save PostalCode" xml:space="preserve">
+        <source>Save PostalCode</source>
+        <target>Save PostalCode</target>
+        <note>SettingView</note>
+      </trans-unit>
+      <trans-unit id="Search..." xml:space="preserve">
+        <source>Search...</source>
+        <target>Search...</target>
+        <note>FindPostalCode</note>
+      </trans-unit>
+      <trans-unit id="Select postalcode" xml:space="preserve">
+        <source>Select postalcode</source>
+        <target>Select postalcode</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Send SMS" xml:space="preserve">
+        <source>Send SMS</source>
+        <target>Send SMS</target>
+        <note>SettingView</note>
+      </trans-unit>
+      <trans-unit id="Send eMail or SMS" xml:space="preserve">
+        <source>Send eMail or SMS</source>
+        <target>Send eMail or SMS</target>
+        <note>TestMessage</note>
+      </trans-unit>
+      <trans-unit id="Settings" xml:space="preserve">
+        <source>Settings</source>
+        <target>Settings</target>
+        <note>SignInView</note>
+      </trans-unit>
+      <trans-unit id="Show password" xml:space="preserve">
+        <source>Show password</source>
+        <target>Show password</target>
+        <note>SettingView</note>
+      </trans-unit>
+      <trans-unit id="Sign In" xml:space="preserve">
+        <source>Sign In</source>
+        <target>Sign In</target>
+        <note>SignInView</note>
+      </trans-unit>
+      <trans-unit id="Sign Up CloudKit" xml:space="preserve">
+        <source>Sign Up CloudKit</source>
+        <target>Sign Up CloudKit</target>
+        <note>SignUpView</note>
+      </trans-unit>
+      <trans-unit id="Sign in CloudKit" xml:space="preserve">
+        <source>Sign in CloudKit</source>
+        <target>Sign in CloudKit</target>
+        <note>SignInView</note>
+      </trans-unit>
+      <trans-unit id="Sign up" xml:space="preserve">
+        <source>Sign up</source>
+        <target>Sign up</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="SignInView" xml:space="preserve">
+        <source>SignInView</source>
+        <target>SignInView</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Successfully deleted a person" xml:space="preserve">
+        <source>Successfully deleted a person</source>
+        <target>Successfully deleted a person</target>
+        <note>PersonsOverView</note>
+      </trans-unit>
+      <trans-unit id="Successfully modified this user" xml:space="preserve">
+        <source>Successfully modified this user</source>
+        <target>Successfully modified this user</target>
+        <note>UserMaintenanceView</note>
+      </trans-unit>
+      <trans-unit id="The user:" xml:space="preserve">
+        <source>The user:</source>
+        <target>The user:</target>
+        <note>SignUpView</note>
+      </trans-unit>
+      <trans-unit id="To do" xml:space="preserve">
+        <source>To do</source>
+        <target>To do</target>
+        <note>SignInView
+   ToDoView</note>
+      </trans-unit>
+      <trans-unit id="Unknown email or password:" xml:space="preserve">
+        <source>Unknown email or password:</source>
+        <target>Unknown email or password:</target>
+        <note>SignInView
+   UserDeleteView</note>
+      </trans-unit>
+      <trans-unit id="Update an user" xml:space="preserve">
+        <source>Update an user</source>
+        <target>Update an user</target>
+        <note>UserMaintenanceView</note>
+      </trans-unit>
+      <trans-unit id="Update this user" xml:space="preserve">
+        <source>Update this user</source>
+        <target>Update this user</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="User" xml:space="preserve">
+        <source>User</source>
+        <target>User</target>
+        <note>UserDeleteView</note>
+      </trans-unit>
+      <trans-unit id="User maintenance" xml:space="preserve">
+        <source>User maintenance</source>
+        <target>User maintenance</target>
+        <note>SignInView
+   UserMaintenanceView</note>
+      </trans-unit>
+      <trans-unit id="Woman" xml:space="preserve">
+        <source>Woman</source>
+        <target>Woman</target>
+        <note>NewPersonView
+   PersonView</note>
+      </trans-unit>
+      <trans-unit id="Yes" xml:space="preserve">
+        <source>Yes</source>
+        <target>Yes</target>
+        <note>SettingView</note>
+      </trans-unit>
+      <trans-unit id="You must activate the SMS option" xml:space="preserve">
+        <source>You must activate the SMS option</source>
+        <target>You must activate the SMS option</target>
+        <note>NewPersonView</note>
+      </trans-unit>
+      <trans-unit id="You must enter a city" xml:space="preserve">
+        <source>You must enter a city</source>
+        <target>You must enter a city</target>
+        <note>FindPostalCodeNewPerson</note>
+      </trans-unit>
+      <trans-unit id="Your name" xml:space="preserve">
+        <source>Your name</source>
+        <target>Your name</target>
+        <note>SignInView
+   SignUpiew
+   UserDeleteView
+   UserMaintenanceView</note>
+      </trans-unit>
+      <trans-unit id="already exists" xml:space="preserve">
+        <source>already exists</source>
+        <target>already exists</target>
+        <note>SignUpView</note>
+      </trans-unit>
+      <trans-unit id="deleted" xml:space="preserve">
+        <source>deleted</source>
+        <target>deleted</target>
+        <note>UserDeleteView</note>
+      </trans-unit>
+      <trans-unit id="eMail" xml:space="preserve">
+        <source>eMail</source>
+        <target>eMail</target>
+        <note>NewPersonView
+   PersonView
+   TestMessage</note>
+      </trans-unit>
+      <trans-unit id="eMail address" xml:space="preserve">
+        <source>eMail address</source>
+        <target>eMail address</target>
+        <note>SignInView
+   SignUpView
+   UserDeleteView
+   UserMaintenanceView</note>
+      </trans-unit>
+      <trans-unit id="eMail/SMS" xml:space="preserve">
+        <source>eMail/SMS</source>
+        <target>eMail/SMS</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="email" xml:space="preserve">
+        <source>email</source>
+        <target>email</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="was modified" xml:space="preserve">
+        <source>was modified</source>
+        <target>was modified</target>
+        <note>PersonView</note>
+      </trans-unit>
+      <trans-unit id="was saved" xml:space="preserve">
+        <source>was saved</source>
+        <target>was saved</target>
+        <note>NewPersonView</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

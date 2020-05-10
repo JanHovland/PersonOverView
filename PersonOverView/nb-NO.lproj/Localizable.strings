@@ -269,6 +269,9 @@
 /* TestMessage */
 "Send eMail or SMS" = "Send e-post eller SMS";
 
+/* SettingView */
+"Send SMS" = "Send SMS";
+
 /* SignInView */
 "Settings" = "Innstillinger";
 
@@ -335,6 +338,9 @@
 
 /* SettingView */
 "Yes" = "Ja";
+
+/* NewPersonView */
+"You must activate the SMS option" = "Du må aktivere sending av SMS";
 
 /* FindPostalCodeNewPerson */
 "You must enter a city" = "Du må legge inn et sted";
