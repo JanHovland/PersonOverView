@@ -21,12 +21,6 @@ enum eMailOptions: String, CaseIterable {
 
 struct SettingView: View {
     
-    private var SMSChoiseType = [NSLocalizedString("Disable SMS", comment: "SettingView"),
-                                 NSLocalizedString("Enable SMS", comment: "SettingView")
-    ]
-    
-    @State private var selectedOptionSMS = 0
-    
     @Environment(\.presentationMode) var presentationMode
     
     @State private var showPassword: Bool = true
@@ -34,6 +28,7 @@ struct SettingView: View {
     @State private var alertIdentifier: AlertID?
     
     @ObservedObject var settingsStore: SettingsStore = SettingsStore()
+    
     @State var smsChoises: [smsOptions] = [.deaktivert, .aktivert]
     @State var eMailChoises: [eMailOptions] = [.deaktivert, .aktivert]
 
@@ -68,7 +63,7 @@ struct SettingView: View {
                 
                 Section(header: Text(NSLocalizedString("SMS", comment: "SettingView"))) {
                     VStack {
-                        Picker("SMS option", selection: self.$settingsStore.smsOptionSelected) {
+                        Picker(NSLocalizedString("SMS option", comment: "SettingView"), selection: self.$settingsStore.smsOptionSelected) {
                             ForEach(self.smsChoises, id: \.self) { option in
                                 Text(option.rawValue).tag(option)
                             }
@@ -78,7 +73,7 @@ struct SettingView: View {
                 
                 Section(header: Text(NSLocalizedString("EMAIL", comment: "SettingView"))) {
                     VStack {
-                        Picker("Email option", selection: self.$settingsStore.eMailOptionSelected) {
+                        Picker(NSLocalizedString("EMAIL option", comment: "SettingView"), selection: self.$settingsStore.eMailOptionSelected) {
                             ForEach(self.eMailChoises, id: \.self) { option in
                                 Text(option.rawValue).tag(option)
                             }

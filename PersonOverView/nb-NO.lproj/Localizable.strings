@@ -75,9 +75,6 @@
 /* UserDeleteView */
 "deleted" = "slettet";
 
-/* SettingView */
-"Disable SMS" = "Deaktiver SMS";
-
 /* No comment provided by engineer. */
 "email" = "e-post";
 
@@ -93,7 +90,7 @@
 "eMail address" = "e-post";
 
 /* SettingView */
-"Enable SMS" = "Aktiver SMS";
+"EMAIL option" = "e-post alternativ";
 
 /* NewPersonView
    PersonView */
@@ -168,9 +165,6 @@
 
 /* TestMessage */
 "Message" = "Melding";
-
-/* SettingView */
-"MESSAGE" = "Melding";
 
 /* UserDeleteView
    UserMaintenanceView */
@@ -295,6 +289,9 @@
 
 /* SettingView */
 "SMS" = "SMS";
+
+/* SettingView */
+"SMS option" = "SMS alternativ";
 
 /* PersonsOverView */
 "Successfully deleted a person" = "En person ble slettet";
