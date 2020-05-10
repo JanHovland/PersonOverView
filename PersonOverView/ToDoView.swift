@@ -16,10 +16,8 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 Legge inn i "Innstillinger"
-        - SMS
-        - e-post
-
+  1. 🔴 ...
+ 
 """
 
 var toDo_2 =
@@ -142,7 +140,9 @@ var toDo_3 =
  59.  🟢 Sender melding via UIApplication.shared.open(url, options: [:])
  60.  🟢 Sender e-post via UIApplication.shared.open(url, options: [:])
  61.  🟢 Endre slik at "Vis passord" oppdateres ved tap gesture, og passord i "Innlogging Cloudkit" oppdaters umiddelbart.
-
+ 62.  🟢 Legge inn SMS i "Innstillinger"
+ 63.  🟢 Legge inn e-post i "Innstillinger"
+   
 """
 var toDo_4 =
 """
