@@ -8,15 +8,21 @@
 
 import SwiftUI
 
-func SendSMS() {
+func SendSMS() -> Bool  {
     /// Dokumentasjon  Apple URL Scheme Reference
     /// https://developer.apple.com/library/archive/featuredarticles/iPhoneURLScheme_Reference/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007899-CH1-SW1
 
     let prefix = "sms:"
     let message = prefix
-    if let url = URL(string:  message) {
-        UIApplication.shared.open(url, options: [:])
+    if UserDefaults.standard.string(forKey: "smsOptionSelected")! == "Aktivert" {
+        if let url = URL(string:  message) {
+            UIApplication.shared.open(url, options: [:])
+        }
+    } else {
+        return false
     }
-    
+   
+    return true
+
 }
 

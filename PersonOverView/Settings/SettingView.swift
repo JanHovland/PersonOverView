@@ -68,7 +68,11 @@ struct SettingView: View {
                         }
                     }
                     Button(action: {
-                        SendSMS()
+                        let value = SendSMS()
+                        if value == false {
+                            self.message = NSLocalizedString("You must activate the SMS option", comment: "NewPersonView")
+                            self.alertIdentifier = AlertID(id: .first)
+                        }
                     }, label: {
                         Text(NSLocalizedString("Send SMS", comment: "SettingView"))
                     })
