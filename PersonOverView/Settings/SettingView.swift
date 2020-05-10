@@ -31,7 +31,7 @@ struct SettingView: View {
     
     @State var smsChoises: [smsOptions] = [.deaktivert, .aktivert]
     @State var eMailChoises: [eMailOptions] = [.deaktivert, .aktivert]
-
+    
     var body: some View {
         NavigationView {
             Form {
@@ -62,13 +62,16 @@ struct SettingView: View {
                 }
                 
                 Section(header: Text(NSLocalizedString("SMS", comment: "SettingView"))) {
-                    VStack {
-                        Picker(NSLocalizedString("SMS option", comment: "SettingView"), selection: self.$settingsStore.smsOptionSelected) {
-                            ForEach(self.smsChoises, id: \.self) { option in
-                                Text(option.rawValue).tag(option)
-                            }
+                    Picker(NSLocalizedString("SMS option", comment: "SettingView"), selection: self.$settingsStore.smsOptionSelected) {
+                        ForEach(self.smsChoises, id: \.self) { option in
+                            Text(option.rawValue).tag(option)
                         }
                     }
+                    Button(action: {
+                        SendSMS()
+                    }, label: {
+                        Text(NSLocalizedString("Send SMS", comment: "SettingView"))
+                    })
                 }
                 
                 Section(header: Text(NSLocalizedString("EMAIL", comment: "SettingView"))) {
@@ -82,9 +85,9 @@ struct SettingView: View {
                 }
                 
             }
-                /// .navigationBarTitle("Settings")
-                /// displayMode gir overskrift med små tegn:
-                .navigationBarTitle("Settings", displayMode: .inline)
+            /// .navigationBarTitle("Settings")
+            /// displayMode gir overskrift med små tegn:
+            .navigationBarTitle("Settings", displayMode: .inline)
         }
         .overlay(
             HStack {
@@ -105,28 +108,28 @@ struct SettingView: View {
                 }
             }
         )
-            .alert(item: $alertIdentifier) { alert in
-                switch alert.id {
-                case .first:
-                    return Alert(title: Text(self.message))
-                case .second:
-                    return Alert(title: Text(NSLocalizedString("Delete PostalCode", comment: "SettingView")),
-                                 message: Text(NSLocalizedString("Are you sure you want to delete PostalCode?", comment: "SettingView")),
-                                 primaryButton: .destructive(Text(NSLocalizedString("Yes", comment: "SettingView")),
-                                                             action: {
-                                                                CloudKitPostalCode.deleteAllPostalCode()
-                                 }),
-                                 secondaryButton: .cancel(Text(NSLocalizedString("No", comment: "SettingView"))))
-                case .third:
-                    return Alert(title: Text(NSLocalizedString("Save PostalCode", comment: "SettingView")),
-                                 message: Text(NSLocalizedString("Are you sure you want to save PostalCodes?", comment: "SettingView")),
-                                 primaryButton: .destructive(Text(NSLocalizedString("Yes", comment: "SettingView")),
-                                                             action: {
-                                                                // self.testSave()
-                                                                self.UpdatePostalCodeFromCSV()
-                                 }),
-                                 secondaryButton: .cancel(Text(NSLocalizedString("No", comment: "SettingView"))))
-                }
+        .alert(item: $alertIdentifier) { alert in
+            switch alert.id {
+            case .first:
+                return Alert(title: Text(self.message))
+            case .second:
+                return Alert(title: Text(NSLocalizedString("Delete PostalCode", comment: "SettingView")),
+                             message: Text(NSLocalizedString("Are you sure you want to delete PostalCode?", comment: "SettingView")),
+                             primaryButton: .destructive(Text(NSLocalizedString("Yes", comment: "SettingView")),
+                                                         action: {
+                                                            CloudKitPostalCode.deleteAllPostalCode()
+                             }),
+                             secondaryButton: .cancel(Text(NSLocalizedString("No", comment: "SettingView"))))
+            case .third:
+                return Alert(title: Text(NSLocalizedString("Save PostalCode", comment: "SettingView")),
+                             message: Text(NSLocalizedString("Are you sure you want to save PostalCodes?", comment: "SettingView")),
+                             primaryButton: .destructive(Text(NSLocalizedString("Yes", comment: "SettingView")),
+                                                         action: {
+                                                            // self.testSave()
+                                                            self.UpdatePostalCodeFromCSV()
+                             }),
+                             secondaryButton: .cancel(Text(NSLocalizedString("No", comment: "SettingView"))))
+            }
         }
     }
     
