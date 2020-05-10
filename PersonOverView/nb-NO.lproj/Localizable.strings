@@ -75,6 +75,9 @@
 /* UserDeleteView */
 "deleted" = "slettet";
 
+/* SettingView */
+"Disable SMS" = "Deaktiver SMS";
+
 /* No comment provided by engineer. */
 "email" = "e-post";
 
@@ -88,6 +91,9 @@
    UserDeleteView
    UserMaintenanceView */
 "eMail address" = "e-post";
+
+/* SettingView */
+"Enable SMS" = "Aktiver SMS";
 
 /* NewPersonView
    PersonView */
@@ -163,6 +169,9 @@
 /* TestMessage */
 "Message" = "Melding";
 
+/* SettingView */
+"MESSAGE" = "Melding";
+
 /* UserDeleteView
    UserMaintenanceView */
 "Missing parameters" = "Manglende parametere";
@@ -184,8 +193,7 @@
    PersonView */
 "Municipality" = "Kommune";
 
-/* NewPersonView
-   PersonView */
+/* NewPersonView */
 "Municipality number" = "Kommune nummer";
 
 /* SignInView */
@@ -209,12 +217,14 @@
 /* SignInView */
 "Options Menu" = "Meny valg";
 
-/* SettingView
-   SignInView
+/* SignInView
    SignUpView
    UserDeleteView
    UserMaintenanceView */
 "Password" = "Passord";
+
+/* SettingView */
+"PASSWORD" = "PASSORD";
 
 /* NewPersonView */
 "Person overview" = "Oversikt";
@@ -237,7 +247,7 @@
 "Postalcode" = "Postnummer";
 
 /* SettingView */
-"PostalCode" = "Poststed";
+"POSTALCODE" = "POSTNUMMER";
 
 /* NewPersonView
    PersonView */
@@ -256,9 +266,6 @@
 /* SettingView */
 "Save PostalCode" = "Lagre postnummer";
 
-/* SettingView */
-"Saved the setting" = "Innstillingene er nå oppdatert";
-
 /* FindPostalCode */
 "Search..." = "Søk...";
 
@@ -268,18 +275,8 @@
 /* TestMessage */
 "Send eMail or SMS" = "Send e-post eller SMS";
 
-/* SettingView
-   SignInView */
+/* SignInView */
 "Settings" = "Innstillinger";
-
-/* No comment provided by engineer. */
-"Show Action Sheet" = "Vis handlingsark";
-
-/* No comment provided by engineer. */
-"Show Alert" = "Vis varsel";
-
-/* No comment provided by engineer. */
-"Show Modal" = "Vis modal";
 
 /* SettingView */
 "Show password" = "Vis passord";
@@ -295,6 +292,9 @@
 
 /* SignUpView */
 "Sign Up CloudKit" = "Ny bruker CloudKit";
+
+/* SettingView */
+"SMS" = "SMS";
 
 /* PersonsOverView */
 "Successfully deleted a person" = "En person ble slettet";

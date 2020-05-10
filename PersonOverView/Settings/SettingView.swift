@@ -9,6 +9,16 @@
 import SwiftUI
 import Combine
 
+enum smsOptions: String, CaseIterable {
+    case deaktivert = "Deaktivert"
+    case aktivert = "Aktivert"
+}
+
+enum eMailOptions: String, CaseIterable {
+    case deaktivert = "Deaktivert"
+    case aktivert = "Aktivert"
+}
+
 struct SettingView: View {
     
     private var SMSChoiseType = [NSLocalizedString("Disable SMS", comment: "SettingView"),
@@ -24,18 +34,20 @@ struct SettingView: View {
     @State private var alertIdentifier: AlertID?
     
     @ObservedObject var settingsStore: SettingsStore = SettingsStore()
-    
+    @State var smsChoises: [smsOptions] = [.deaktivert, .aktivert]
+    @State var eMailChoises: [eMailOptions] = [.deaktivert, .aktivert]
+
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text(NSLocalizedString("Password", comment: "SettingView"))) {
+                Section(header: Text(NSLocalizedString("PASSWORD", comment: "SettingView"))) {
                     VStack {
                         Toggle(isOn: $settingsStore.showPasswordActivate) {
                             Text(NSLocalizedString("Show password", comment: "SettingView"))
                         }
                     }
                 }
-                Section(header: Text(NSLocalizedString("PostalCode", comment: "SettingView"))) {
+                Section(header: Text(NSLocalizedString("POSTALCODE", comment: "SettingView"))) {
                     Button(
                         action: {
                             self.alertIdentifier = AlertID(id: .second)
@@ -56,9 +68,19 @@ struct SettingView: View {
                 
                 Section(header: Text(NSLocalizedString("SMS", comment: "SettingView"))) {
                     VStack {
-                        Picker(selection: $selectedOptionSMS, label: Text("Select SMS option")) {
-                            ForEach(0 ..< SMSChoiseType.count) {
-                                Text(self.SMSChoiseType[$0])
+                        Picker("SMS option", selection: self.$settingsStore.smsOptionSelected) {
+                            ForEach(self.smsChoises, id: \.self) { option in
+                                Text(option.rawValue).tag(option)
+                            }
+                        }
+                    }
+                }
+                
+                Section(header: Text(NSLocalizedString("EMAIL", comment: "SettingView"))) {
+                    VStack {
+                        Picker("Email option", selection: self.$settingsStore.eMailOptionSelected) {
+                            ForEach(self.eMailChoises, id: \.self) { option in
+                                Text(option.rawValue).tag(option)
                             }
                         }
                     }
@@ -192,19 +214,67 @@ struct SettingView: View {
 }
 
 final class SettingsStore: ObservableObject {
+    
     let showPasswordIsActivate = PassthroughSubject<Void, Never>()
+    
     var showPasswordActivate: Bool = UserDefaults.showPassword {
         willSet {
             UserDefaults.showPassword = newValue
             showPasswordIsActivate.send()
         }
     }
+    
+    let smsOption = PassthroughSubject<Void, Never>()
+    
+    var smsOptionSelected: smsOptions = UserDefaults.smsOption {
+        willSet {
+            UserDefaults.smsOption = newValue
+            smsOption.send()
+        }
+    }
+    
+    let eMailOption = PassthroughSubject<Void, Never>()
+    
+    var eMailOptionSelected: eMailOptions = UserDefaults.eMailOption {
+        willSet {
+            UserDefaults.eMailOption = newValue
+            eMailOption.send()
+        }
+    }
 }
 
 extension UserDefaults {
+    
     static var showPassword: Bool {
         get { return UserDefaults.standard.bool(forKey: "showPassword") }
         set { UserDefaults.standard.set(newValue, forKey: "showPassword") }
     }
     
+    static var smsOption: smsOptions {
+        
+        get {
+            if let smsOptionValue = UserDefaults.standard.string(forKey: "smsOptionSelected"),
+                let type = smsOptions(rawValue: smsOptionValue) {
+                return type
+            } else {
+                return smsOptions(rawValue: "Deaktivert")!
+            }
+        }
+        
+        set { UserDefaults.standard.set(newValue.rawValue, forKey: "smsOptionSelected") }
+    }
+    
+    static var eMailOption: eMailOptions {
+        
+        get {
+            if let eMailOptionValue = UserDefaults.standard.string(forKey: "eMailOptionSelected"),
+                let type = eMailOptions(rawValue: eMailOptionValue) {
+                return type
+            } else {
+                return eMailOptions(rawValue: "Deaktivert")!
+            }
+        }
+        
+        set { UserDefaults.standard.set(newValue.rawValue, forKey: "eMailOptionSelected") }
+    }
 }
