@@ -83,6 +83,9 @@
    TestMessage */
 "eMail" = "e-post";
 
+/* SettingView */
+"EMAIL" = "E-POST";
+
 /* SignInView
    SignUpView
    UserDeleteView
@@ -266,11 +269,14 @@
 /* No comment provided by engineer. */
 "Select postalcode" = "Velg postnummer";
 
+/* SettingView */
+"Send Email" = "Sende e-post";
+
 /* TestMessage */
 "Send eMail or SMS" = "Send e-post eller SMS";
 
 /* SettingView */
-"Send SMS" = "Send SMS";
+"Send SMS" = "Sende SMS";
 
 /* SignInView */
 "Settings" = "Innstillinger";
@@ -339,7 +345,10 @@
 /* SettingView */
 "Yes" = "Ja";
 
-/* NewPersonView */
+/* SettingView */
+"You must activate the Email option" = "Du må aktivere sending av e-post";
+
+/* SettingView */
 "You must activate the SMS option" = "Du må aktivere sending av SMS";
 
 /* FindPostalCodeNewPerson */

@@ -70,7 +70,7 @@ struct SettingView: View {
                     Button(action: {
                         let value = SendSMS()
                         if value == false {
-                            self.message = NSLocalizedString("You must activate the SMS option", comment: "NewPersonView")
+                            self.message = NSLocalizedString("You must activate the SMS option", comment: "SettingView")
                             self.alertIdentifier = AlertID(id: .first)
                         }
                     }, label: {
@@ -79,15 +79,21 @@ struct SettingView: View {
                 }
                 
                 Section(header: Text(NSLocalizedString("EMAIL", comment: "SettingView"))) {
-                    VStack {
-                        Picker(NSLocalizedString("EMAIL option", comment: "SettingView"), selection: self.$settingsStore.eMailOptionSelected) {
-                            ForEach(self.eMailChoises, id: \.self) { option in
-                                Text(option.rawValue).tag(option)
-                            }
+                    Picker(NSLocalizedString("EMAIL option", comment: "SettingView"), selection: self.$settingsStore.eMailOptionSelected) {
+                        ForEach(self.eMailChoises, id: \.self) { option in
+                            Text(option.rawValue).tag(option)
                         }
                     }
+                    Button(action: {
+                        let value = SendEmail()
+                        if value == false {
+                            self.message = NSLocalizedString("You must activate the Email option", comment: "SettingView")
+                            self.alertIdentifier = AlertID(id: .first)
+                        }
+                    }, label: {
+                        Text(NSLocalizedString("Send Email", comment: "SettingView"))
+                    })
                 }
-                
             }
             /// .navigationBarTitle("Settings")
             /// displayMode gir overskrift med små tegn:

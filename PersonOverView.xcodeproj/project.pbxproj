@@ -50,6 +50,7 @@
 		DB9A4DD923CDE2AE00948B21 /* UserDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9A4DD823CDE2AE00948B21 /* UserDeleteView.swift */; };
 		DB9E4A22242BC0A100C6D085 /* TestMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9E4A21242BC0A100C6D085 /* TestMessage.swift */; };
 		DBB234D924685FAF0053FFB8 /* SendSMS.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB234D824685FAF0053FFB8 /* SendSMS.swift */; };
+		DBB234DB24686C520053FFB8 /* SendEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB234DA24686C520053FFB8 /* SendEmail.swift */; };
 		DBB4C62823B6301F0055296B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB4C62723B6301F0055296B /* ImagePicker.swift */; };
 		DBDA561A23BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */; };
 		DBE58ACF23CF2D5300D3EF1D /* ResizedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE58ACE23CF2D5300D3EF1D /* ResizedImage.swift */; };
@@ -111,6 +112,7 @@
 		DB9A4DD823CDE2AE00948B21 /* UserDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDeleteView.swift; sourceTree = "<group>"; };
 		DB9E4A21242BC0A100C6D085 /* TestMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMessage.swift; sourceTree = "<group>"; };
 		DBB234D824685FAF0053FFB8 /* SendSMS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendSMS.swift; sourceTree = "<group>"; };
+		DBB234DA24686C520053FFB8 /* SendEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendEmail.swift; sourceTree = "<group>"; };
 		DBB4C62723B6301F0055296B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		DBDA561923BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptsToSoftwareKeyboard.swift; sourceTree = "<group>"; };
 		DBDE717223E71A88004F9CA8 /* PersonOverView copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "PersonOverView copy-Info.plist"; path = "/Users/janhovland/Desktop/SwiftUI/PersonOverView/PersonOverView copy-Info.plist"; sourceTree = "<absolute>"; };
@@ -247,6 +249,7 @@
 				DB33E13D23F4829C00A95FAA /* SearchBar.swift */,
 				DB4A6CEE2411028600349A51 /* MonthDay.swift */,
 				DBB234D824685FAF0053FFB8 /* SendSMS.swift */,
+				DBB234DA24686C520053FFB8 /* SendEmail.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				DB302B6A237EF02300076D10 /* AppDelegate.swift in Sources */,
 				DBB4C62823B6301F0055296B /* ImagePicker.swift in Sources */,
 				DB33E13E23F4829C00A95FAA /* SearchBar.swift in Sources */,
+				DBB234DB24686C520053FFB8 /* SendEmail.swift in Sources */,
 				DBF1F1162423ECF700EE707A /* PersonMapView.swift in Sources */,
 				DB4A8F4023DEE87B00558788 /* CloudKitPerson.swift in Sources */,
 				DB302B71237EF02300076D10 /* PersonOverView.swift in Sources */,
