@@ -16,8 +16,11 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 ...
- 
+  1. 🔴 Legge inn passord-icon + Passord
+  2. 🔴 Legge inn Tekstmedling-icon + Tekstmelding
+  3. 🔴 Legge inn e-post-icon + e-post
+  4. 🔴 Legge inn Postnummer-icon + Postnummer
+
 """
 
 var toDo_2 =
