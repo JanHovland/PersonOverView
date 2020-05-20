@@ -37,9 +37,9 @@ struct SettingView: View {
             Form {
                 VStack {
                     HStack {
-                        Image("phone")
+                        Image("switch")
                             .resizable()
-                            .frame(width: 30, height: 30)
+                            .frame(width: 50, height: 50)
                         Text("PASSWORD")
                     }
                     .onTapGesture {
@@ -51,13 +51,30 @@ struct SettingView: View {
                 }
                 
                 VStack {
-                    Text("POSTALCODE")
+                    HStack {
+                        Image("postalCode")
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                        Text("POSTALCODE")
+                    }
                 }
+                
                 VStack {
-                    Text("SMS")
+                    HStack {
+                        Image("message")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                        Text("SMS")
+                    }
                 }
+                
                 VStack {
-                    Text("EMAIL")
+                    HStack {
+                        Image("mail")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                        Text("EMAIL")
+                    }
                 }
             }
                 
