@@ -39,7 +39,7 @@ struct SettingView: View {
                     HStack {
                         Image("switch")
                             .resizable()
-                            .frame(width: 50, height: 50)
+                            .frame(width: 40, height: 50)
                         Text("PASSWORD")
                     }
                     .onTapGesture {
@@ -54,7 +54,7 @@ struct SettingView: View {
                     HStack {
                         Image("postalCode")
                             .resizable()
-                            .frame(width: 50, height: 50)
+                            .frame(width: 40, height: 50)
                         Text("POSTALCODE")
                     }
                 }
