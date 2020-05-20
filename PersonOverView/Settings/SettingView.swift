@@ -23,7 +23,7 @@ struct SettingView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
-    @State private var showPassword: Bool = true
+    @State private var showPassword: Bool = false
     @State private var message: String = ""
     @State private var alertIdentifier: AlertID?
     
@@ -35,69 +35,90 @@ struct SettingView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text(NSLocalizedString("PASSWORD", comment: "SettingView"))) {
-                    VStack {
-                        Toggle(isOn: $settingsStore.showPasswordActivate) {
-                            Text(NSLocalizedString("Show password", comment: "SettingView"))
-                        }
+                VStack {
+                    Button("PASSWORD") {
+                        self.showPassword.toggle()
                     }
                 }
-                Section(header: Text(NSLocalizedString("POSTALCODE", comment: "SettingView"))) {
-                    Button(
-                        action: {
-                            self.alertIdentifier = AlertID(id: .second)
-                    },
-                        label: {
-                            Text(NSLocalizedString("Delete PostalCode (100 at a time)", comment: "SettingView")
-                            )}
-                    )
-                    Button(
-                        action: {
-                            self.alertIdentifier = AlertID(id: .third)
-                    },
-                        label: {
-                            Text(NSLocalizedString("Save PostalCode", comment: "SettingView")
-                            )}
-                    )
+                .sheet(isPresented: $showPassword) {
+                    Password()
                 }
                 
-                Section(header: Text(NSLocalizedString("SMS", comment: "SettingView"))) {
-                    Picker(NSLocalizedString("SMS option", comment: "SettingView"), selection: self.$settingsStore.smsOptionSelected) {
-                        ForEach(self.smsChoises, id: \.self) { option in
-                            Text(option.rawValue).tag(option)
-                        }
-                    }
-                    Button(action: {
-                        let value = SendSMS()
-                        if value == false {
-                            self.message = NSLocalizedString("You must activate the SMS option", comment: "SettingView")
-                            self.alertIdentifier = AlertID(id: .first)
-                        }
-                    }, label: {
-                        Text(NSLocalizedString("Send SMS", comment: "SettingView"))
-                    })
+                VStack {
+                    Text("POSTALCODE")
                 }
-                
-                Section(header: Text(NSLocalizedString("EMAIL", comment: "SettingView"))) {
-                    Picker(NSLocalizedString("EMAIL option", comment: "SettingView"), selection: self.$settingsStore.eMailOptionSelected) {
-                        ForEach(self.eMailChoises, id: \.self) { option in
-                            Text(option.rawValue).tag(option)
-                        }
-                    }
-                    Button(action: {
-                        let value = SendEmail()
-                        if value == false {
-                            self.message = NSLocalizedString("You must activate the Email option", comment: "SettingView")
-                            self.alertIdentifier = AlertID(id: .first)
-                        }
-                    }, label: {
-                        Text(NSLocalizedString("Send Email", comment: "SettingView"))
-                    })
+                VStack {
+                    Text("SMS")
+                }
+                VStack {
+                    Text("EMAIL")
                 }
             }
-            /// .navigationBarTitle("Settings")
-            /// displayMode gir overskrift med små tegn:
-            .navigationBarTitle("Settings", displayMode: .inline)
+                
+                //            Form {
+                //                Section(header: Text(NSLocalizedString("PASSWORD", comment: "SettingView"))) {
+                //                    VStack {
+                //                        Toggle(isOn: $settingsStore.showPasswordActivate) {
+                //                            Text(NSLocalizedString("Show password", comment: "SettingView"))
+                //                        }
+                //                    }
+                //                }
+                //                Section(header: Text(NSLocalizedString("POSTALCODE", comment: "SettingView"))) {
+                //                    Button(
+                //                        action: {
+                //                            self.alertIdentifier = AlertID(id: .second)
+                //                    },
+                //                        label: {
+                //                            Text(NSLocalizedString("Delete PostalCode (100 at a time)", comment: "SettingView")
+                //                            )}
+                //                    )
+                //                    Button(
+                //                        action: {
+                //                            self.alertIdentifier = AlertID(id: .third)
+                //                    },
+                //                        label: {
+                //                            Text(NSLocalizedString("Save PostalCode", comment: "SettingView")
+                //                            )}
+                //                    )
+                //                }
+                //
+                //                Section(header: Text(NSLocalizedString("SMS", comment: "SettingView"))) {
+                //                    Picker(NSLocalizedString("SMS option", comment: "SettingView"), selection: self.$settingsStore.smsOptionSelected) {
+                //                        ForEach(self.smsChoises, id: \.self) { option in
+                //                            Text(option.rawValue).tag(option)
+                //                        }
+                //                    }
+                //                    Button(action: {
+                //                        let value = SendSMS()
+                //                        if value == false {
+                //                            self.message = NSLocalizedString("You must activate the SMS option", comment: "SettingView")
+                //                            self.alertIdentifier = AlertID(id: .first)
+                //                        }
+                //                    }, label: {
+                //                        Text(NSLocalizedString("Send SMS", comment: "SettingView"))
+                //                    })
+                //                }
+                //
+                //                Section(header: Text(NSLocalizedString("EMAIL", comment: "SettingView"))) {
+                //                    Picker(NSLocalizedString("EMAIL option", comment: "SettingView"), selection: self.$settingsStore.eMailOptionSelected) {
+                //                        ForEach(self.eMailChoises, id: \.self) { option in
+                //                            Text(option.rawValue).tag(option)
+                //                        }
+                //                    }
+                //                    Button(action: {
+                //                        let value = SendEmail()
+                //                        if value == false {
+                //                            self.message = NSLocalizedString("You must activate the Email option", comment: "SettingView")
+                //                            self.alertIdentifier = AlertID(id: .first)
+                //                        }
+                //                    }, label: {
+                //                        Text(NSLocalizedString("Send Email", comment: "SettingView"))
+                //                    })
+                //                }
+                //            }
+                /// .navigationBarTitle("Settings")
+                /// displayMode gir overskrift med små tegn:
+                .navigationBarTitle("Settings") // , displayMode: .inline)
         }
         .overlay(
             HStack {
@@ -111,9 +132,7 @@ struct SettingView: View {
                             .foregroundColor(.none)
                     })
                         .padding(.trailing, 20)
-                        /// .padding(.top, 70)
-                        /// Med displayMode
-                        .padding(.top, 15)
+                        .padding(.top, 60)
                     Spacer()
                 }
             }
@@ -140,6 +159,43 @@ struct SettingView: View {
                              }),
                              secondaryButton: .cancel(Text(NSLocalizedString("No", comment: "SettingView"))))
             }
+        }
+        
+    }
+    
+    struct Password: View {
+        @ObservedObject var settingsStore: SettingsStore = SettingsStore()
+        @Environment(\.presentationMode) var presentationMode
+        var body: some View {
+            NavigationView {
+                VStack {
+                    Toggle(isOn: $settingsStore.showPasswordActivate) {
+                        Text(NSLocalizedString("Show password", comment: "SettingView"))
+                        
+                    }
+                    Spacer()
+                }
+                .padding()
+                .navigationBarTitle("Passord")
+            }
+            .overlay(
+                HStack {
+                    Spacer()
+                    VStack {
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }, label: {
+                            Image(systemName: "chevron.down.circle.fill")
+                                .font(.largeTitle)
+                                .foregroundColor(.none)
+                        })
+                            .padding(.trailing, 20)
+                            .padding(.top, 70)
+                        Spacer()
+                    }
+                    
+                }
+            )
         }
     }
     
