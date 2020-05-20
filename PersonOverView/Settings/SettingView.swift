@@ -36,7 +36,13 @@ struct SettingView: View {
         NavigationView {
             Form {
                 VStack {
-                    Button("PASSWORD") {
+                    HStack {
+                        Image("phone")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                        Text("PASSWORD")
+                    }
+                    .onTapGesture {
                         self.showPassword.toggle()
                     }
                 }
@@ -131,8 +137,8 @@ struct SettingView: View {
                             .font(.largeTitle)
                             .foregroundColor(.none)
                     })
-                        .padding(.trailing, 20)
-                        .padding(.top, 60)
+                    .padding(.trailing, 20)
+                    .padding(.top, 60)
                     Spacer()
                 }
             }
@@ -154,7 +160,6 @@ struct SettingView: View {
                              message: Text(NSLocalizedString("Are you sure you want to save PostalCodes?", comment: "SettingView")),
                              primaryButton: .destructive(Text(NSLocalizedString("Yes", comment: "SettingView")),
                                                          action: {
-                                                            // self.testSave()
                                                             self.UpdatePostalCodeFromCSV()
                              }),
                              secondaryButton: .cancel(Text(NSLocalizedString("No", comment: "SettingView"))))
@@ -171,7 +176,6 @@ struct SettingView: View {
                 VStack {
                     Toggle(isOn: $settingsStore.showPasswordActivate) {
                         Text(NSLocalizedString("Show password", comment: "SettingView"))
-                        
                     }
                     Spacer()
                 }
