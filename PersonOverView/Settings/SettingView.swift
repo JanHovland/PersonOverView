@@ -174,7 +174,7 @@ struct SettingView: View {
                 Spacer()
             }
             .padding()
-            .navigationBarTitle("Passord")
+            .navigationBarTitle("Password", displayMode: .inline)
         }
     }
 
@@ -199,7 +199,7 @@ struct SettingView: View {
                 Spacer()
             }
             .foregroundColor(.accentColor)
-            .navigationBarTitle("Postal Code")
+            .navigationBarTitle("Postal Code", displayMode: .inline)
         }
     }
     
