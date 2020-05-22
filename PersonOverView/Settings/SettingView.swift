@@ -53,17 +53,25 @@ struct SettingView: View {
                         Text("POSTALCODE")
                     }
                 }
-              
-//                VStack {
-//                    HStack {
-//                        Image("postalCode")
-//                            .resizable()
-//                            .frame(width: 40, height: 50)
-//                        Text("POSTALCODE")
-//                    }
-//                }
+
                 /// Sende teksmelding
-                VStack {
+                NavigationLink(destination: EMail(eMailChoises: eMailChoises,
+                                                  alertIdentifier: $alertIdentifier,
+                                                  message: $message,
+                                                  settingsStore: settingsStore)) {
+                    HStack {
+                        Image("mail")
+                            .resizable()
+                            .frame(width: 40, height: 50)
+                        Text("EMAIL")
+                    }
+                }
+           
+                /// Sende e-post
+                NavigationLink(destination: Message(smsChoises: smsChoises,
+                                                    alertIdentifier: $alertIdentifier,
+                                                    message: $message,
+                                                    settingsStore: settingsStore)) {
                     HStack {
                         Image("message")
                             .resizable()
@@ -71,54 +79,8 @@ struct SettingView: View {
                         Text("SMS")
                     }
                 }
-                /// Sende e-post
-                VStack {
-                    HStack {
-                        Image("mail")
-                            .resizable()
-                            .frame(width: 40, height: 40)
-                        Text("EMAIL")
-                    }
-                }
             }
-                
-                //                Section(header: Text(NSLocalizedString("SMS", comment: "SettingView"))) {
-                //                    Picker(NSLocalizedString("SMS option", comment: "SettingView"), selection: self.$settingsStore.smsOptionSelected) {
-                //                        ForEach(self.smsChoises, id: \.self) { option in
-                //                            Text(option.rawValue).tag(option)
-                //                        }
-                //                    }
-                //                    Button(action: {
-                //                        let value = SendSMS()
-                //                        if value == false {
-                //                            self.message = NSLocalizedString("You must activate the SMS option", comment: "SettingView")
-                //                            self.alertIdentifier = AlertID(id: .first)
-                //                        }
-                //                    }, label: {
-                //                        Text(NSLocalizedString("Send SMS", comment: "SettingView"))
-                //                    })
-                //                }
-                //
-                //                Section(header: Text(NSLocalizedString("EMAIL", comment: "SettingView"))) {
-                //                    Picker(NSLocalizedString("EMAIL option", comment: "SettingView"), selection: self.$settingsStore.eMailOptionSelected) {
-                //                        ForEach(self.eMailChoises, id: \.self) { option in
-                //                            Text(option.rawValue).tag(option)
-                //                        }
-                //                    }
-                //                    Button(action: {
-                //                        let value = SendEmail()
-                //                        if value == false {
-                //                            self.message = NSLocalizedString("You must activate the Email option", comment: "SettingView")
-                //                            self.alertIdentifier = AlertID(id: .first)
-                //                        }
-                //                    }, label: {
-                //                        Text(NSLocalizedString("Send Email", comment: "SettingView"))
-                //                    })
-                //                }
-                //            }
-                /// .navigationBarTitle("Settings")
-                /// displayMode gir overskrift med små tegn:
-                .navigationBarTitle("Settings") // , displayMode: .inline)
+                .navigationBarTitle("Settings", displayMode: .inline)
         }
         .overlay(
             HStack {
@@ -132,7 +94,7 @@ struct SettingView: View {
                             .foregroundColor(.none)
                     })
                     .padding(.trailing, 20)
-                    .padding(.top, 55)
+                    .padding(.top, 15)
                     Spacer()
                 }
             }
@@ -171,9 +133,11 @@ struct SettingView: View {
                 Toggle(isOn: $settingsStore.showPasswordActivate) {
                     Text(NSLocalizedString("Show password", comment: "SettingView"))
                 }
+                .padding(.top, 40)
                 Spacer()
             }
             .padding()
+            .foregroundColor(.accentColor)
             .navigationBarTitle("Password", displayMode: .inline)
         }
     }
@@ -185,7 +149,7 @@ struct SettingView: View {
         var body: some View {
             VStack (alignment: .leading){
                 Text(NSLocalizedString("Delete PostalCode (100 at a time)", comment: "SettingView"))
-                    .padding(.top, 30)
+                    .padding(.top, 60)
                     .padding(.leading, -80)
                     .onTapGesture {
                         self.alertIdentifier  = AlertID(id: .second)
@@ -203,6 +167,63 @@ struct SettingView: View {
         }
     }
     
+    struct Message: View {
+        var smsChoises: [smsOptions] = [.deaktivert, .aktivert]
+        @Binding var alertIdentifier: AlertID?
+        @Binding var message: String
+        @ObservedObject var settingsStore: SettingsStore = SettingsStore()
+        var body: some View {
+            VStack {
+                Form {
+                    Picker(NSLocalizedString("SMS option", comment: "SettingView"), selection: self.$settingsStore.smsOptionSelected) {
+                        ForEach(self.smsChoises, id: \.self) { option in
+                            Text(option.rawValue).tag(option)
+                        }
+                    }
+                    Button(action: {
+                        let value = SendSMS()
+                        if value == false {
+                            self.message = NSLocalizedString("You must activate the SMS option", comment: "SettingView")
+                            self.alertIdentifier = AlertID(id: .first)
+                        }
+                    }, label: {
+                        Text(NSLocalizedString("Send SMS", comment: "SettingView"))
+                    })
+                }
+                Spacer()
+            }
+        }
+    }
+    
+    struct EMail: View {
+        var eMailChoises: [eMailOptions] = [.deaktivert, .aktivert]
+        @Binding var alertIdentifier: AlertID?
+        @Binding var message: String
+        @ObservedObject var settingsStore: SettingsStore = SettingsStore()
+        
+        var body: some View {
+            VStack {
+                Form {
+                    Picker(NSLocalizedString("EMAIL option", comment: "SettingView"), selection: self.$settingsStore.eMailOptionSelected) {
+                        ForEach(self.eMailChoises, id: \.self) { option in
+                            Text(option.rawValue).tag(option)
+                        }
+                    }
+                    Button(action: {
+                        let value = SendEmail()
+                        if value == false {
+                            self.message = NSLocalizedString("You must activate the Email option", comment: "SettingView")
+                            self.alertIdentifier = AlertID(id: .first)
+                        }
+                    }, label: {
+                        Text(NSLocalizedString("Send Email", comment: "SettingView"))
+                    })
+                }
+                Spacer()
+            }
+        }
+    }
+        
     func parseCSV (contentsOfURL: URL,
                    encoding: String.Encoding,
                    delimiter: String) -> [(PostalCode)]? {
