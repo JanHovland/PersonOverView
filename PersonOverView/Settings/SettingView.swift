@@ -34,23 +34,18 @@ struct SettingView: View {
     
     var body: some View {
         NavigationView {
-            Form {
-                VStack {
+           Form {
+                /// Vis passord av/på
+                NavigationLink(destination: Password()) {
                     HStack {
                         Image("switch")
                             .resizable()
                             .frame(width: 40, height: 50)
                         Text("PASSWORD")
                     }
-                    .onTapGesture {
-                        self.showPassword.toggle()
-                    }
                 }
-                .sheet(isPresented: $showPassword) {
-                    Password()
-                }
-                
-                VStack {
+                /// Oppdatere postnummer
+                NavigationLink(destination: PostalCodeUpdate(alertIdentifier: $alertIdentifier)) {
                     HStack {
                         Image("postalCode")
                             .resizable()
@@ -58,7 +53,16 @@ struct SettingView: View {
                         Text("POSTALCODE")
                     }
                 }
-                
+              
+//                VStack {
+//                    HStack {
+//                        Image("postalCode")
+//                            .resizable()
+//                            .frame(width: 40, height: 50)
+//                        Text("POSTALCODE")
+//                    }
+//                }
+                /// Sende teksmelding
                 VStack {
                     HStack {
                         Image("message")
@@ -67,7 +71,7 @@ struct SettingView: View {
                         Text("SMS")
                     }
                 }
-                
+                /// Sende e-post
                 VStack {
                     HStack {
                         Image("mail")
@@ -78,33 +82,6 @@ struct SettingView: View {
                 }
             }
                 
-                //            Form {
-                //                Section(header: Text(NSLocalizedString("PASSWORD", comment: "SettingView"))) {
-                //                    VStack {
-                //                        Toggle(isOn: $settingsStore.showPasswordActivate) {
-                //                            Text(NSLocalizedString("Show password", comment: "SettingView"))
-                //                        }
-                //                    }
-                //                }
-                //                Section(header: Text(NSLocalizedString("POSTALCODE", comment: "SettingView"))) {
-                //                    Button(
-                //                        action: {
-                //                            self.alertIdentifier = AlertID(id: .second)
-                //                    },
-                //                        label: {
-                //                            Text(NSLocalizedString("Delete PostalCode (100 at a time)", comment: "SettingView")
-                //                            )}
-                //                    )
-                //                    Button(
-                //                        action: {
-                //                            self.alertIdentifier = AlertID(id: .third)
-                //                    },
-                //                        label: {
-                //                            Text(NSLocalizedString("Save PostalCode", comment: "SettingView")
-                //                            )}
-                //                    )
-                //                }
-                //
                 //                Section(header: Text(NSLocalizedString("SMS", comment: "SettingView"))) {
                 //                    Picker(NSLocalizedString("SMS option", comment: "SettingView"), selection: self.$settingsStore.smsOptionSelected) {
                 //                        ForEach(self.smsChoises, id: \.self) { option in
@@ -155,11 +132,12 @@ struct SettingView: View {
                             .foregroundColor(.none)
                     })
                     .padding(.trailing, 20)
-                    .padding(.top, 60)
+                    .padding(.top, 55)
                     Spacer()
                 }
             }
         )
+
         .alert(item: $alertIdentifier) { alert in
             switch alert.id {
             case .first:
@@ -189,34 +167,39 @@ struct SettingView: View {
         @ObservedObject var settingsStore: SettingsStore = SettingsStore()
         @Environment(\.presentationMode) var presentationMode
         var body: some View {
-            NavigationView {
-                VStack {
-                    Toggle(isOn: $settingsStore.showPasswordActivate) {
-                        Text(NSLocalizedString("Show password", comment: "SettingView"))
-                    }
-                    Spacer()
+            VStack {
+                Toggle(isOn: $settingsStore.showPasswordActivate) {
+                    Text(NSLocalizedString("Show password", comment: "SettingView"))
                 }
-                .padding()
-                .navigationBarTitle("Passord")
+                Spacer()
             }
-            .overlay(
-                HStack {
-                    Spacer()
-                    VStack {
-                        Button(action: {
-                            self.presentationMode.wrappedValue.dismiss()
-                        }, label: {
-                            Image(systemName: "chevron.down.circle.fill")
-                                .font(.largeTitle)
-                                .foregroundColor(.none)
-                        })
-                            .padding(.trailing, 20)
-                            .padding(.top, 70)
-                        Spacer()
+            .padding()
+            .navigationBarTitle("Passord")
+        }
+    }
+
+    struct PostalCodeUpdate: View {
+        @Binding var alertIdentifier: AlertID?
+        @ObservedObject var settingsStore: SettingsStore = SettingsStore()
+        @Environment(\.presentationMode) var presentationMode
+        var body: some View {
+            VStack (alignment: .leading){
+                Text(NSLocalizedString("Delete PostalCode (100 at a time)", comment: "SettingView"))
+                    .padding(.top, 30)
+                    .padding(.leading, -80)
+                    .onTapGesture {
+                        self.alertIdentifier  = AlertID(id: .second)
                     }
-                    
-                }
-            )
+                Text(NSLocalizedString("Save PostalCode", comment: "SettingView"))
+                    .padding(.top, 20)
+                    .padding(.leading, -80)
+                    .onTapGesture {
+                        self.alertIdentifier  = AlertID(id: .third)
+                    }
+                Spacer()
+            }
+            .foregroundColor(.accentColor)
+            .navigationBarTitle("Postal Code")
         }
     }
     

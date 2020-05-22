@@ -14,7 +14,7 @@ import SwiftUI
 struct PersonOverView: View {
     @State private var selection = 0
     var body: some View {
-        SettingView() // SignInView()
+        SettingView() // SignInView()  
 //        TabView(selection: $selection){
 //            SignInView()
 //                .tabItem {
