@@ -41,16 +41,17 @@ struct SettingView: View {
                         Image("switch")
                             .resizable()
                             .frame(width: 40, height: 50)
-                        Text("PASSWORD")
+                        Text(NSLocalizedString("Password", comment: "SettingView"))
                     }
                 }
+                
                 /// Oppdatere postnummer
                 NavigationLink(destination: PostalCodeUpdate(alertIdentifier: $alertIdentifier)) {
                     HStack {
                         Image("postalCode")
                             .resizable()
                             .frame(width: 40, height: 50)
-                        Text("POSTALCODE")
+                        Text("Postalcode")
                     }
                 }
 
@@ -63,7 +64,7 @@ struct SettingView: View {
                         Image("mail")
                             .resizable()
                             .frame(width: 40, height: 50)
-                        Text("EMAIL")
+                        Text("Email")
                     }
                 }
            
@@ -75,12 +76,12 @@ struct SettingView: View {
                     HStack {
                         Image("message")
                             .resizable()
-                            .frame(width: 40, height: 40)
+                            .frame(width: 33, height: 33)
                         Text("SMS")
                     }
                 }
             }
-                .navigationBarTitle("Settings", displayMode: .inline)
+            .navigationBarTitle("Settings", displayMode: .inline)
         }
         .overlay(
             HStack {
@@ -129,16 +130,15 @@ struct SettingView: View {
         @ObservedObject var settingsStore: SettingsStore = SettingsStore()
         @Environment(\.presentationMode) var presentationMode
         var body: some View {
-            VStack {
-                Toggle(isOn: $settingsStore.showPasswordActivate) {
-                    Text(NSLocalizedString("Show password", comment: "SettingView"))
+            Form {
+                Section(header: Text(NSLocalizedString("PASSWORD", comment: "SettingView")),
+                        footer: Text(NSLocalizedString("Choose to show or hide the password", comment: "SettingView"))) {
+                            Toggle(isOn: $settingsStore.showPasswordActivate) {
+                                Text(NSLocalizedString("Show password", comment: "SettingView"))
+                            }
                 }
-                .padding(.top, 40)
-                Spacer()
             }
-            .padding()
-            .foregroundColor(.accentColor)
-            .navigationBarTitle("Password", displayMode: .inline)
+            .navigationBarTitle(Text(NSLocalizedString("Password", comment: "SettingView")), displayMode: .inline)
         }
     }
 
