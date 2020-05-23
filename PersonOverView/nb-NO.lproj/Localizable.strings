@@ -39,6 +39,9 @@
    UserMaintenanceView */
 "Choose Profile Image" = "Velg profilbilde";
 
+/* SettingView */
+"Choose to show or hide the password" = "Velg å vise eller skjule passordet";
+
 /* NewPersonView
    PersonView */
 "City" = "Sted";
@@ -82,9 +85,6 @@
    PersonView
    TestMessage */
 "eMail" = "e-post";
-
-/* SettingView */
-"EMAIL" = "E-POST";
 
 /* SignInView
    SignUpView
@@ -214,7 +214,8 @@
 /* SignInView */
 "Options Menu" = "Meny valg";
 
-/* SignInView
+/* SettingView
+   SignInView
    SignUpView
    UserDeleteView
    UserMaintenanceView */
@@ -242,9 +243,6 @@
 /* NewPersonView
    PersonView */
 "Postalcode" = "Postnummer";
-
-/* SettingView */
-"POSTALCODE" = "POSTNUMMER";
 
 /* NewPersonView
    PersonView */
@@ -296,7 +294,7 @@
 /* SignUpView */
 "Sign Up CloudKit" = "Ny bruker CloudKit";
 
-/* SettingView */
+/* No comment provided by engineer. */
 "SMS" = "SMS";
 
 /* SettingView */

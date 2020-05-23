@@ -40,7 +40,7 @@ struct SettingView: View {
                     HStack {
                         Image("switch")
                             .resizable()
-                            .frame(width: 40, height: 50)
+                            .frame(width: 35, height: 43)
                         Text(NSLocalizedString("Password", comment: "SettingView"))
                     }
                 }
@@ -50,7 +50,7 @@ struct SettingView: View {
                     HStack {
                         Image("postalCode")
                             .resizable()
-                            .frame(width: 40, height: 50)
+                            .frame(width: 35, height: 45)
                         Text("Postalcode")
                     }
                 }
@@ -63,7 +63,7 @@ struct SettingView: View {
                     HStack {
                         Image("mail")
                             .resizable()
-                            .frame(width: 40, height: 50)
+                            .frame(width: 35, height: 35)
                         Text("Email")
                     }
                 }
@@ -73,12 +73,13 @@ struct SettingView: View {
                                                     alertIdentifier: $alertIdentifier,
                                                     message: $message,
                                                     settingsStore: settingsStore)) {
-                    HStack {
+                    HStack(alignment: .center, spacing: 10) {
                         Image("message")
                             .resizable()
-                            .frame(width: 33, height: 33)
+                            .frame(width: 29, height: 29)
                         Text("SMS")
                     }
+                    .padding(.leading, 3)
                 }
             }
             .navigationBarTitle("Settings", displayMode: .inline)
