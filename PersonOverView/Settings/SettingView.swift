@@ -148,23 +148,23 @@ struct SettingView: View {
         @ObservedObject var settingsStore: SettingsStore = SettingsStore()
         @Environment(\.presentationMode) var presentationMode
         var body: some View {
-            VStack (alignment: .leading){
-                Text(NSLocalizedString("Delete PostalCode (100 at a time)", comment: "SettingView"))
-                    .padding(.top, 60)
-                    .padding(.leading, -80)
-                    .onTapGesture {
-                        self.alertIdentifier  = AlertID(id: .second)
+            Form {
+                Section(header: Text(NSLocalizedString("POSTALCODE", comment: "SettingView")),
+                        footer: Text(NSLocalizedString("Select either delete or update the Postalcode", comment: "SettingView"))) {
+                    Text(NSLocalizedString("Delete PostalCode (100 at a time)", comment: "SettingView"))
+                        .onTapGesture {
+                            self.alertIdentifier  = AlertID(id: .second)
                     }
-                Text(NSLocalizedString("Save PostalCode", comment: "SettingView"))
-                    .padding(.top, 20)
-                    .padding(.leading, -80)
-                    .onTapGesture {
-                        self.alertIdentifier  = AlertID(id: .third)
+                    .foregroundColor(.accentColor)
+                    
+                    Text(NSLocalizedString("Save PostalCode", comment: "SettingView"))
+                        .onTapGesture {
+                            self.alertIdentifier  = AlertID(id: .third)
                     }
-                Spacer()
+                    .foregroundColor(.accentColor)
+                }
             }
-            .foregroundColor(.accentColor)
-            .navigationBarTitle("Postal Code", displayMode: .inline)
+            .navigationBarTitle(Text(NSLocalizedString("Postal Code", comment: "SettingView")), displayMode: .inline)
         }
     }
     

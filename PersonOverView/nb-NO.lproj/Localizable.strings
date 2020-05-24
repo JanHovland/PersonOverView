@@ -64,7 +64,7 @@
 "Delete PostalCode" = "Slett PostalCode";
 
 /* SettingView */
-"Delete PostalCode (100 at a time)" = "Slett PostalCode (100 om gangen)";
+"Delete PostalCode (100 at a time)" = "Slett postnummer (100 om gangen)";
 
 /* No comment provided by engineer. */
 "Delete this person" = "Slett denne personen";
@@ -240,9 +240,15 @@
    PersonView */
 "Phone Number" = "Telefonnummer";
 
+/* SettingView */
+"Postal Code" = "Postnummer";
+
 /* NewPersonView
    PersonView */
 "Postalcode" = "Postnummer";
+
+/* SettingView */
+"POSTALCODE" = "POSTNUMMER";
 
 /* NewPersonView
    PersonView */
@@ -264,6 +270,9 @@
 /* FindPostalCode */
 "Search..." = "Søk...";
 
+/* SettingView */
+"Select either delete or update the Postalcode" = "Velg enten å slette eller oppdatere postnummer";
+
 /* No comment provided by engineer. */
 "Select postalcode" = "Velg postnummer";
 
@@ -280,7 +289,7 @@
 "Settings" = "Innstillinger";
 
 /* SettingView */
-"Show password" = "Vis passord";
+"Show password" = "Vis passordet";
 
 /* SignInView */
 "Sign In" = "Logg inn";
