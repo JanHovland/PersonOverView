@@ -16,10 +16,8 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 Legge inn passord-icon + Passord
-  2. 🔴 Legge inn Tekstmedling-icon + Tekstmelding
-  3. 🔴 Legge inn e-post-icon + e-post
-  4. 🔴 Legge inn Postnummer-icon + Postnummer
+  1. 🔴 Når en endrer på "Oversikt", endrer et felt og så
+        trykker "<Oversikt" kommer det ikke et spørsel om å lagring.
 
 """
 
@@ -145,6 +143,10 @@ var toDo_3 =
  61.  🟢 Endre slik at "Vis passord" oppdateres ved tap gesture, og passord i "Innlogging Cloudkit" oppdaters umiddelbart.
  62.  🟢 Legge inn SMS i "Innstillinger"
  63.  🟢 Legge inn e-post i "Innstillinger"
+ 64.  🟢 Legge inn passord-icon + Passord
+ 65.  🟢 Legge inn Tekstmedling-icon + Tekstmelding i Innstillinger
+ 66.  🟢 Legge inn e-post-icon + e-post i Innstillinger
+ 67.  🟢 Legge inn Postnummer-icon + Postnummer i Innstillinger
    
 """
 var toDo_4 =
@@ -169,14 +171,11 @@ K j e n t e   f e i l
 
 var toDo_7 =
 """
-  1. Når en bytter showPassword, oppdateres ikke "SignInView.swift" automatisk.
-     a) Foreløpig løsning: Skift til "SignUpView.swift" og så
-        tilbake til "SignInView.swift" (implementere refresh)
-  2. onAppear virker kun første gang en app kalles,
+  1 onAppear virker kun første gang en app kalles,
      ikke ved retur fra en annen app. (implementere refresh)
-  3. Det mangler .keyboadType(.phone).
+  2. Det mangler .keyboadType(.phone).
      a) Nå brukes default keyboardType
-  4. Vanlig sorteing tar ikke hensyn til local region slik den gjør i UIKit.
+  3. Vanlig sorteing tar ikke hensyn til local region slik den gjør i UIKit.
 
 """
 
@@ -194,31 +193,31 @@ struct ToDoView: View {
                         .font(.custom("Andale Mono Normal", size: 20)).bold()
                         .foregroundColor(.accentColor)
                     Text(toDo_1)
-                        .font(.custom("Andale Mono Normal", size: 14))
+                        .font(.custom("Andale Mono Normal", size: 17))
                         .multilineTextAlignment(.leading)
                     Text(toDo_2)
                         .font(.custom("Andale Mono Normal", size: 20)).bold()
                         .foregroundColor(.accentColor)
                     Text(toDo_3)
-                        .font(.custom("Andale Mono Normal", size: 14))
+                        .font(.custom("Andale Mono Normal", size: 17))
                         .multilineTextAlignment(.leading)
                     Text(toDo_4)
                         .font(.custom("Andale Mono Normal", size: 20)).bold()
                         .foregroundColor(.accentColor)
                     Text(toDo_5)
-                        .font(.custom("Andale Mono Normal", size: 14))
+                        .font(.custom("Andale Mono Normal", size: 17))
                         .multilineTextAlignment(.leading)
                     Text(toDo_6)
                         .font(.custom("Andale Mono Normal", size: 20)).bold()
                         .foregroundColor(.red)
                     Text(toDo_7)
-                        .font(.custom("Andale Mono Normal", size: 14))
+                        .font(.custom("Andale Mono Normal", size: 17))
                         .multilineTextAlignment(.leading)
                         .foregroundColor(.red)
                 }
             }
             .padding()
-            .navigationBarTitle(NSLocalizedString(toDo, comment: "ToDoView"))
+            .navigationBarTitle(Text(NSLocalizedString("toDo", comment: "toDo")), displayMode: .inline)
         }
         .overlay(
             HStack {
@@ -232,7 +231,7 @@ struct ToDoView: View {
                             .foregroundColor(.none)
                     })
                         .padding(.trailing, 20)
-                        .padding(.top, 70)
+                        .padding(.top, 15)
                     Spacer()
                 }
             }

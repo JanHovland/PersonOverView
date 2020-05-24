@@ -332,6 +332,9 @@
    ToDoView */
 "To do" = "Oppgaver";
 
+/* ToDoView */
+"toDo" = "Oppgaver";
+
 /* SignInView
    UserDeleteView */
 "Unknown email or password:" = "Ukjent e-post eller passord:";
