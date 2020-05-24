@@ -156,7 +156,6 @@ struct SettingView: View {
                             self.alertIdentifier  = AlertID(id: .second)
                     }
                     .foregroundColor(.accentColor)
-                    
                     Text(NSLocalizedString("Save PostalCode", comment: "SettingView"))
                         .onTapGesture {
                             self.alertIdentifier  = AlertID(id: .third)
@@ -165,34 +164,6 @@ struct SettingView: View {
                 }
             }
             .navigationBarTitle(Text(NSLocalizedString("Postal Code", comment: "SettingView")), displayMode: .inline)
-        }
-    }
-    
-    struct Message: View {
-        var smsChoises: [smsOptions] = [.deaktivert, .aktivert]
-        @Binding var alertIdentifier: AlertID?
-        @Binding var message: String
-        @ObservedObject var settingsStore: SettingsStore = SettingsStore()
-        var body: some View {
-            VStack {
-                Form {
-                    Picker(NSLocalizedString("SMS option", comment: "SettingView"), selection: self.$settingsStore.smsOptionSelected) {
-                        ForEach(self.smsChoises, id: \.self) { option in
-                            Text(option.rawValue).tag(option)
-                        }
-                    }
-                    Button(action: {
-                        let value = SendSMS()
-                        if value == false {
-                            self.message = NSLocalizedString("You must activate the SMS option", comment: "SettingView")
-                            self.alertIdentifier = AlertID(id: .first)
-                        }
-                    }, label: {
-                        Text(NSLocalizedString("Send SMS", comment: "SettingView"))
-                    })
-                }
-                Spacer()
-            }
         }
     }
     
@@ -225,6 +196,35 @@ struct SettingView: View {
         }
     }
         
+    struct Message: View {
+        var smsChoises: [smsOptions] = [.deaktivert, .aktivert]
+        @Binding var alertIdentifier: AlertID?
+        @Binding var message: String
+        @ObservedObject var settingsStore: SettingsStore = SettingsStore()
+        var body: some View {
+            Form {
+                Section(header: Text(NSLocalizedString("MESSAGE", comment: "SettingView")),
+                        footer: Text(NSLocalizedString("You must activate the message in order to send a message", comment: "SettingView"))) {
+                    Picker(NSLocalizedString("Message option", comment: "SettingView"), selection: self.$settingsStore.smsOptionSelected) {
+                        ForEach(self.smsChoises, id: \.self) { option in
+                            Text(option.rawValue).tag(option)
+                        }
+                    }
+                    Button(action: {
+                        let value = SendSMS()
+                        if value == false {
+                            self.message = NSLocalizedString("You must activate the message option", comment: "SettingView")
+                            self.alertIdentifier = AlertID(id: .first)
+                        }
+                    }, label: {
+                        Text(NSLocalizedString("Send Message", comment: "SettingView"))
+                    })
+                }
+                .navigationBarTitle(Text(NSLocalizedString("Message", comment: "SettingView")), displayMode: .inline)
+            }
+        }
+    }
+    
     func parseCSV (contentsOfURL: URL,
                    encoding: String.Encoding,
                    delimiter: String) -> [(PostalCode)]? {

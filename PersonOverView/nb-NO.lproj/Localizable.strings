@@ -166,8 +166,15 @@
    PersonView */
 "Man" = "Mann";
 
-/* TestMessage */
+/* SettingView
+   TestMessage */
 "Message" = "Melding";
+
+/* SettingView */
+"MESSAGE" = "MELDING";
+
+/* SettingView */
+"Message option" = "Meldingsalternativer";
 
 /* UserDeleteView
    UserMaintenanceView */
@@ -283,7 +290,7 @@
 "Send eMail or SMS" = "Send e-post eller SMS";
 
 /* SettingView */
-"Send SMS" = "Sende SMS";
+"Send Message" = "Send melding";
 
 /* SignInView */
 "Settings" = "Innstillinger";
@@ -304,10 +311,7 @@
 "Sign Up CloudKit" = "Ny bruker CloudKit";
 
 /* No comment provided by engineer. */
-"SMS" = "SMS";
-
-/* SettingView */
-"SMS option" = "SMS alternativ";
+"SMS" = "Melding";
 
 /* PersonsOverView */
 "Successfully deleted a person" = "En person ble slettet";
@@ -356,7 +360,10 @@
 "You must activate the Email option" = "Du må aktivere sending av e-post";
 
 /* SettingView */
-"You must activate the SMS option" = "Du må aktivere sending av SMS";
+"You must activate the message in order to send a message" = "Du må aktivere melding for å kunne sende meldinger";
+
+/* SettingView */
+"You must activate the message option" = "Du må aktivere meldingsalternativet";
 
 /* FindPostalCodeNewPerson */
 "You must enter a city" = "Du må legge inn et sted";
