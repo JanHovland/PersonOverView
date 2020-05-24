@@ -174,9 +174,10 @@ struct SettingView: View {
         @ObservedObject var settingsStore: SettingsStore = SettingsStore()
         
         var body: some View {
-            VStack {
-                Form {
-                    Picker(NSLocalizedString("EMAIL option", comment: "SettingView"), selection: self.$settingsStore.eMailOptionSelected) {
+            Form {
+                Section(header: Text(NSLocalizedString("EMAIL", comment: "SettingView")),
+                        footer: Text(NSLocalizedString("You must activate the email in order to send an email", comment: "SettingView"))) {
+                    Picker(NSLocalizedString("Email option", comment: "SettingView"), selection: self.$settingsStore.eMailOptionSelected) {
                         ForEach(self.eMailChoises, id: \.self) { option in
                             Text(option.rawValue).tag(option)
                         }
@@ -191,7 +192,7 @@ struct SettingView: View {
                         Text(NSLocalizedString("Send Email", comment: "SettingView"))
                     })
                 }
-                Spacer()
+                .navigationBarTitle(Text(NSLocalizedString("Email", comment: "SettingView")), displayMode: .inline)
             }
         }
     }

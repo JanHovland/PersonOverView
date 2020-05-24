@@ -86,6 +86,12 @@
    TestMessage */
 "eMail" = "e-post";
 
+/* SettingView */
+"Email" = "e-post";
+
+/* SettingView */
+"EMAIL" = "E-POST";
+
 /* SignInView
    SignUpView
    UserDeleteView
@@ -93,7 +99,7 @@
 "eMail address" = "e-post";
 
 /* SettingView */
-"EMAIL option" = "e-post alternativ";
+"Email option" = "e-post alternativer";
 
 /* NewPersonView
    PersonView */
@@ -284,7 +290,7 @@
 "Select postalcode" = "Velg postnummer";
 
 /* SettingView */
-"Send Email" = "Sende e-post";
+"Send Email" = "Send e-post";
 
 /* TestMessage */
 "Send eMail or SMS" = "Send e-post eller SMS";
@@ -355,6 +361,9 @@
 
 /* SettingView */
 "Yes" = "Ja";
+
+/* SettingView */
+"You must activate the email in order to send an email" = "Du må aktivere e-post for å kunne sende e-post";
 
 /* SettingView */
 "You must activate the Email option" = "Du må aktivere sending av e-post";
