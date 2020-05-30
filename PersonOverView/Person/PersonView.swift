@@ -13,6 +13,8 @@
 import SwiftUI
 import CloudKit
 
+/// Global variabel
+
 struct PersonView : View {
 
     var person: Person
@@ -246,6 +248,81 @@ struct PersonView : View {
         .modifier(DismissingKeyboard())
         /// Flytte opp feltene slik at keyboard ikke skjuler aktuelt felt, men nå krøller feltene seg sammen til en "strek" !!!!!!!!!!!
         /// .modifier(AdaptsToSoftwareKeyboard())
+        .onDisappear {
+            
+            /// https://forums.developer.apple.com/thread/124618
+            /*
+                I think the WWDC talk was Combine In Practice, but that example used UIKit.
+
+                The thing to remember is that in SwiftUI, views are a function of state, nothing more. Your state is what drives everything—you can't get things from a View instance, you have to bind the view to some state, then use the state to influence your decisions. In keeping with that, you would bind your text field to some state and then use that state in your view rendering code.
+
+                For your simple example, you could set your text field to just use the `input` variable directly to display what's being typed. If you specifically want to assign the final result to a different variable, you can use the `onCommit` handler to do that. Meanwhile, the `onEditingChanged` handler isn't referring to 'the user edited the field so its value changed', it means 'the "isEditing" property of the text field has changed' — it hands you a Bool telling you whether it's now editing or not.
+
+                A version of your simple example that does exactly what you describe appears below; note the use of a third state variable used to determine whether to print "You are typing:" or "You typed:" based on the `isEditing` property of the text field:
+
+            import SwiftUI
+              
+            struct ContentView: View {
+                @State var output: String = ""
+                @State var input: String = ""
+                @State var typing = false
+                var body: some View {
+                    VStack {
+                        if !typing {
+                            if !output.isEmpty {
+                                Text("You typed: \(output)")
+                            }
+                        } else if !input.isEmpty {
+                            Text("You are typing: \(input)")
+                        }
+                        TextField("", text: $input, onEditingChanged: {
+                            self.typing = $0
+                        }, onCommit: {
+                            self.output = self.input
+                        })
+                        .background(Color.green.opacity(0.2))
+                    }
+                }
+            }
+
+            */
+            
+            /// https://stackoverflow.com/questions/60691335/how-to-detect-what-changed-a-published-value-in-swiftui
+            /// Lagrer alltid ved retur til oversikt
+            /// Legg merke til at det ikke kommer noen melding om at persondata er modifisert, dataene blir lun oppdatert i CloudKit
+            if globalCityNumber.count > 0, globalMunicipalityNumber.count > 0, globalMunicipalityName.count > 0 {
+                self.cityNumber = globalCityNumber
+                self.municipalityNumber = globalMunicipalityNumber
+                self.municipality = globalMunicipalityName
+            }
+            
+            self.tmpFirstName = self.firstName
+            
+            /// Dersom første tegn i firstName er "Å" legg firstName etter en emoji
+            /// Eks, firstName = "😀" + "Ågot"
+            /// Dersom første tegn er en emoji ikke endre firstName
+            
+            let index0 = self.tmpFirstName.index(self.tmpFirstName.startIndex, offsetBy: 0)
+            let firstChar = String(self.tmpFirstName[index0...index0])
+            if firstChar.containsEmoji == false, firstChar.uppercased() == "Å"  {
+                self.tmpFirstName = "😀" + self.tmpFirstName
+            }
+            
+            self.ModifyPerson(recordID: self.recordID,
+                              firstName: self.tmpFirstName,
+                              lastName: self.lastName,
+                              personEmail: self.personEmail,
+                              address: self.address,
+                              phoneNumber: self.phoneNumber,
+                              city: self.city,
+                              cityNumber: self.cityNumber,
+                              municipalityNumber: self.municipalityNumber,
+                              municipality: self.municipality,
+                              dateOfBirth: self.dateOfBirth,
+                              dateMonthDay: MonthDay(date: self.dateOfBirth),
+                              gender: self.gender,
+                              image: self.image)
+        }
     }
 
     func ShowPerson() {
