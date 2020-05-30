@@ -63,7 +63,7 @@ struct PersonBirthday: View {
                             .foregroundColor(.none)
                     })
                         .padding(.trailing, 28)
-                        .padding(.top, 15) 
+                        .padding(.top, 70) 
                     Spacer()
                 }
             }
