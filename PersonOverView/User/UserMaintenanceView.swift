@@ -102,8 +102,8 @@ struct UserMaintenanceView: View {
         .onAppear {
             let email = self.user.email
             CloudKitUser.doesUserExist(email: self.user.email, password: self.user.password) { (result) in
-                if result == false {
-                    self.message = NSLocalizedString("Unknown email or password:", comment: "SignInView")
+                if result != "OK" {
+                    self.message = result
                     self.alertIdentifier = AlertID(id: .first)
                 } else {
                     let predicate = NSPredicate(format: "email == %@", email)
@@ -115,6 +115,11 @@ struct UserMaintenanceView: View {
                             }
                         case .failure(let err):
                             self.message = err.localizedDescription
+                            if self.message.contains("authentication token") {
+                                self.message = NSLocalizedString("Couldn't get an authentication token", comment: "SignInView")
+                            } else {
+                                self.message = err.localizedDescription
+                            }
                             self.alertIdentifier = AlertID(id: .first)
                         }
                     }

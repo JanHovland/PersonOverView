@@ -89,7 +89,7 @@ struct SignUpView : View {
                         if self.userItem.name.count > 0, self.userItem.email.count > 0, self.userItem.password.count > 0 {
                             CloudKitUser.doesUserExist(email: self.userItem.email,
                                                        password: self.userItem.password) { (result) in
-                                                        if result == false {
+                                                        if result == "OK" {
                                                             CloudKitUser.saveUser(item: self.userItem) { (result) in
                                                                 switch result {
                                                                 case .success:
@@ -104,6 +104,11 @@ struct SignUpView : View {
                                                                     self.alertIdentifier = AlertID(id: .first)
                                                                 case .failure(let err):
                                                                     self.message = err.localizedDescription
+                                                                    if self.message.contains("authentication token") {
+                                                                        self.message = NSLocalizedString("Couldn't get an authentication token", comment: "SignInView")
+                                                                    } else {
+                                                                        self.message = err.localizedDescription
+                                                                    }
                                                                     self.alertIdentifier = AlertID(id: .first)
                                                                 }
                                                             }

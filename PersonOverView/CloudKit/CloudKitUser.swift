@@ -73,8 +73,8 @@ struct CloudKitUser {
     // MARK: - check if the user record exists
     static func doesUserExist(email: String,
                               password: String,
-                              completion: @escaping (Bool) -> ()) {
-        var result = false
+                              completion: @escaping (String) -> ()) {
+        var result = "OK"
         let predicate = NSPredicate(format: "email == %@ AND password = %@", email, password)
         let query = CKQuery(recordType: RecordType.User, predicate: predicate)
         DispatchQueue.main.async {
@@ -83,8 +83,11 @@ struct CloudKitUser {
                 DispatchQueue.main.async {
                     if results != nil {
                         if results!.count >= 1 {
-                            result = true
+                            result = "OK"
                         }
+                    } else {
+                        let description = "\(String(describing: er))"
+                        result = NSLocalizedString(description, comment: "CloudKitUser")
                     }
                     completion(result)
                 }

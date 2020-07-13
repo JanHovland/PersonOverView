@@ -47,6 +47,9 @@
 "City" = "Sted";
 
 /* SignInView */
+"Couldn't get an authentication token" = "Du må logge inn på din iCloud konto";
+
+/* SignInView */
 "Create a new account?" = "Opprett ny bruker?";
 
 /* NewPersonView
@@ -332,12 +335,8 @@
    ToDoView */
 "To do" = "Oppgaver";
 
-/* ToDoView */
+/* toDo */
 "toDo" = "Oppgaver";
-
-/* SignInView
-   UserDeleteView */
-"Unknown email or password:" = "Ukjent e-post eller passord:";
 
 /* UserMaintenanceView */
 "Update an user" = "Oppdater en bruker";

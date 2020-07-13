@@ -31,7 +31,7 @@ struct SignInView : View {
     @State private var showOptionMenu = false
     @State private var showSignUpView = false
     @State private var alertIdentifier: AlertID?
-
+    
     var body: some View {
         ScrollView (.vertical, showsIndicators: false) {
             VStack {
@@ -247,9 +247,12 @@ struct SignInView : View {
                             /// Check different predicates at :   https://nspredicate.xyz
                             /// %@ : an object (eg: String, date etc), whereas %i will be substituted with an integer.
                             let predicate = NSPredicate(format: "email == %@", email)
+                            
+                            /// Logged into iCloud?
+                            
                             CloudKitUser.doesUserExist(email: self.user.email, password: self.user.password) { (result) in
-                                if result == false {
-                                    self.message = NSLocalizedString("Unknown email or password:", comment: "SignInView")
+                                if result != "OK" {
+                                    self.message = result
                                     self.alertIdentifier = AlertID(id: .first)
                                 } else {
                                     CloudKitUser.fetchUser(predicate: predicate) { (result) in
@@ -268,6 +271,11 @@ struct SignInView : View {
                                             self.showOptionMenu = true
                                         case .failure(let err):
                                             self.message = err.localizedDescription
+                                            if self.message.contains("authentication token") {
+                                                self.message = NSLocalizedString("Couldn't get an authentication token", comment: "SignInView")
+                                            } else {
+                                                self.message = err.localizedDescription
+                                            }
                                             self.alertIdentifier = AlertID(id: .first)
                                         }
                                     }
