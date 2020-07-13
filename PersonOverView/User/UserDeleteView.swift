@@ -80,9 +80,9 @@ struct UserDeleteView: View {
         .onAppear {
             let email = self.user.email
             CloudKitUser.doesUserExist(email: self.user.email, password: self.user.password) { (result) in
-                if result != "true" {
-                    self.message = NSLocalizedString(result, comment: "UserDeleteView")
-                    self.alertIdentifier = AlertID(id: .first)
+                if result != "OK" {
+                    //                    self.message = NSLocalizedString(result, comment: "UserDeleteView")
+                    //                    self.alertIdentifier = AlertID(id: .first)
                 } else {
                     let predicate = NSPredicate(format: "email == %@", email)
                     CloudKitUser.fetchUser(predicate: predicate) { (result) in
