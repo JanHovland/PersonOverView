@@ -47,7 +47,7 @@
 "City" = "Sted";
 
 /* SignInView */
-"Couldn't get an authentication token" = "Du må logge inn på din iCloud konto";
+"Couldn't get an authentication token" = "Logg inn på din iCloud konto.";
 
 /* SignInView */
 "Create a new account?" = "Opprett ny bruker?";
@@ -330,6 +330,9 @@
 
 /* SignUpView */
 "The user:" = "Brukeren:";
+
+/* SignInView */
+"This request requires an authenticated account" = "Påloggingen krever en autentisert konto. Logg inn på din iCloud konto.";
 
 /* SignInView
    ToDoView */
