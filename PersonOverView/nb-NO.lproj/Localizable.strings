@@ -331,6 +331,9 @@
 /* SignUpView */
 "The user:" = "Brukeren:";
 
+/* CloudKitUser */
+"This email and password doesn't belong to a registered user" = "Denne e-postadressen og passordet tilhører ikke en registrert bruker.";
+
 /* SignInView */
 "This request requires an authenticated account" = "Påloggingen krever en autentisert konto. Logg inn på din iCloud konto.";
 

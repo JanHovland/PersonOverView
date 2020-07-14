@@ -78,16 +78,22 @@ struct CloudKitUser {
         let predicate = NSPredicate(format: "email == %@ AND password = %@", email, password)
         let query = CKQuery(recordType: RecordType.User, predicate: predicate)
         DispatchQueue.main.async {
-             /// inZoneWith: nil : Specify nil to search the default zone of the database.
-             CKContainer.default().privateCloudDatabase.perform(query, inZoneWith: nil, completionHandler: { (results, er) in
+            /// inZoneWith: nil : Specify nil to search the default zone of the database.
+            CKContainer.default().privateCloudDatabase.perform(query, inZoneWith: nil, completionHandler: { (results, er) in
                 DispatchQueue.main.async {
-                    if results != nil {
-                        if results!.count >= 1 {
-                            result = "OK"
+                    let description = "\(String(describing: er))"
+                    if description != "nil" {
+                        if description.contains("authentication token") {
+                            result = NSLocalizedString("Couldn't get an authentication token", comment: "SignInView")
+                        } else if description.contains("authenticated account") {
+                            result = NSLocalizedString("This request requires an authenticated account", comment: "SignInView")
                         }
                     } else {
-                        let description = "\(String(describing: er))"
-                        result = NSLocalizedString(description, comment: "CloudKitUser")
+                        if results?.count == 0 {
+                            result = NSLocalizedString("This email and password doesn't belong to a registered user", comment: "CloudKitUser")
+                        } else {
+                            result = "OK"
+                        }
                     }
                     completion(result)
                 }

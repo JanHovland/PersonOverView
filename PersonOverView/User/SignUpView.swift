@@ -89,13 +89,14 @@ struct SignUpView : View {
                         if self.userItem.name.count > 0, self.userItem.email.count > 0, self.userItem.password.count > 0 {
                             CloudKitUser.doesUserExist(email: self.userItem.email,
                                                        password: self.userItem.password) { (result) in
-                                                        if result == "OK" {
+                                                        if result != "OK" {
                                                             CloudKitUser.saveUser(item: self.userItem) { (result) in
                                                                 switch result {
                                                                 case .success:
                                                                     let message1 = NSLocalizedString("Added new user:", comment: "SignUpView")
                                                                     /// Slette feltene
                                                                     self.message = message1 + " '\(self.userItem.name)'"
+                                                                    /// Hvorfor selttes navn, e-post, passord og bildet ?
                                                                     self.userItem.name = ""
                                                                     self.userItem.email = ""
                                                                     self.userItem.password = ""
@@ -104,13 +105,6 @@ struct SignUpView : View {
                                                                     self.alertIdentifier = AlertID(id: .first)
                                                                 case .failure(let err):
                                                                     self.message = err.localizedDescription
-                                                                    if self.message.contains("authentication token") {
-                                                                        self.message = NSLocalizedString("Couldn't get an authentication token", comment: "SignInView")
-                                                                    } else if self.message.contains("authenticated account") {
-                                                                        self.message = NSLocalizedString("This request requires an authenticated account", comment: "SignInView")
-                                                                    } else {
-                                                                        self.message = err.localizedDescription
-                                                                    }
                                                                     self.alertIdentifier = AlertID(id: .first)
                                                                 }
                                                             }

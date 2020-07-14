@@ -93,13 +93,6 @@ struct UserDeleteView: View {
                             }
                         case .failure(let err):
                             self.message = err.localizedDescription
-                            if self.message.contains("authentication token") {
-                                self.message = NSLocalizedString("Couldn't get an authentication token", comment: "SignInView")
-                            } else if self.message.contains("authenticated account") {
-                                self.message = NSLocalizedString("This request requires an authenticated account", comment: "SignInView")
-                            } else {
-                                self.message = err.localizedDescription
-                            }
                             self.alertIdentifier = AlertID(id: .first)
                         }
                     }

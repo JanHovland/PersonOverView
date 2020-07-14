@@ -16,7 +16,8 @@ E n d r i n g e r
 
 var toDo_1 =
 """
-  1. 🔴 Når en endrer på "Oversikt", endrer et felt og så
+  1. 🔴 Legg inn oversikt over "Brukerne"
+  2. 🔴 Når en endrer på "Oversikt", endrer et felt og så
         trykker "<Oversikt" kommer det ikke et spørsel om å lagring.
 
 """
