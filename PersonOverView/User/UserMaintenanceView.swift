@@ -79,10 +79,10 @@ struct UserMaintenanceView: View {
                     }
                     .foregroundColor(.blue)
                     HStack {
-                        Button(NSLocalizedString("Modify user", comment: "UserMaintenanceView")) {
+                        Button(NSLocalizedString("Save the changes", comment: "UserMaintenanceView")) {
                             self.maintenanceActionSheet.toggle()
                         }
-                        Image(systemName: "square.and.pencil")
+                        Image(systemName: "folder.badge.person.crop")
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                     .foregroundColor(.blue)
