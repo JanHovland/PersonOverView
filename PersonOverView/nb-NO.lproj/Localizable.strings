@@ -47,7 +47,7 @@
 "City" = "Sted";
 
 /* SignInView */
-"Couldn't get an authentication token" = "Logg inn på din iCloud konto.";
+"Couldn't get an authentication token" = "Du må Logge inn på iCloud kontoen din.";
 
 /* SignInView */
 "Create a new account?" = "Opprett ny bruker?";
@@ -332,7 +332,7 @@
 "The user:" = "Brukeren:";
 
 /* CloudKitUser */
-"This email and password doesn't belong to a registered user" = "Denne e-postadressen og passordet tilhører ikke en registrert bruker.";
+"This email and password doesn't belong to a registered user" = "Kombinasjonen av denne e-postadressen og dette passordet tilhører ikke en registrert bruker.";
 
 /* SignInView */
 "This request requires an authenticated account" = "Påloggingen krever en autentisert konto. Logg inn på din iCloud konto.";

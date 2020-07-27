@@ -88,14 +88,15 @@ struct CloudKitUser {
                         } else if description.contains("authenticated account") {
                             result = NSLocalizedString("This request requires an authenticated account", comment: "SignInView")
                         }
+                        completion(result)
                     } else {
                         if results?.count == 0 {
                             result = NSLocalizedString("This email and password doesn't belong to a registered user", comment: "CloudKitUser")
                         } else {
                             result = "OK"
                         }
+                        completion(result)
                     }
-                    completion(result)
                 }
             })
         }
