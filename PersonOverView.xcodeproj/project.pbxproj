@@ -12,6 +12,7 @@
 		DB1FEF91238055FE00F8D763 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1FEF90238055FE00F8D763 /* InputTextField.swift */; };
 		DB1FEF932380592F00F8D763 /* InputGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1FEF922380592F00F8D763 /* InputGender.swift */; };
 		DB28D73B23D615E900CF6915 /* AlertID.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB28D73A23D615E900CF6915 /* AlertID.swift */; };
+		DB2E9DF524D01C610046162B /* UserOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2E9DF424D01C610046162B /* UserOverView.swift */; };
 		DB302B6A237EF02300076D10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B69237EF02300076D10 /* AppDelegate.swift */; };
 		DB302B6C237EF02300076D10 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B6B237EF02300076D10 /* SceneDelegate.swift */; };
 		DB302B6F237EF02300076D10 /* PersonOverView.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB302B6D237EF02300076D10 /* PersonOverView.xcdatamodeld */; };
@@ -71,6 +72,7 @@
 		DB1FEF90238055FE00F8D763 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
 		DB1FEF922380592F00F8D763 /* InputGender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputGender.swift; sourceTree = "<group>"; };
 		DB28D73A23D615E900CF6915 /* AlertID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertID.swift; sourceTree = "<group>"; };
+		DB2E9DF424D01C610046162B /* UserOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOverView.swift; sourceTree = "<group>"; };
 		DB302B66237EF02300076D10 /* PersonOverView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonOverView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB302B69237EF02300076D10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB302B6B237EF02300076D10 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				DB302B86237EF2A700076D10 /* SignUpView.swift */,
 				DB9A4DD823CDE2AE00948B21 /* UserDeleteView.swift */,
 				DBFC29CA23C5DE8500F2224B /* UserMaintenanceView.swift */,
+				DB2E9DF424D01C610046162B /* UserOverView.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				DB302B6A237EF02300076D10 /* AppDelegate.swift in Sources */,
 				DBB4C62823B6301F0055296B /* ImagePicker.swift in Sources */,
 				DB33E13E23F4829C00A95FAA /* SearchBar.swift in Sources */,
+				DB2E9DF524D01C610046162B /* UserOverView.swift in Sources */,
 				DBB234DB24686C520053FFB8 /* SendEmail.swift in Sources */,
 				DBF1F1162423ECF700EE707A /* PersonMapView.swift in Sources */,
 				DB4A8F4023DEE87B00558788 /* CloudKitPerson.swift in Sources */,

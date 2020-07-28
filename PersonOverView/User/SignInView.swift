@@ -30,6 +30,7 @@ struct SignInView : View {
     @State private var showPersonBirthday: Bool = false
     @State private var showOptionMenu = false
     @State private var showSignUpView = false
+    @State private var showUserOverView = false
     @State private var alertIdentifier: AlertID?
     
     var body: some View {
@@ -195,6 +196,22 @@ struct SignInView : View {
                     .sheet(isPresented: $showPersonBirthday) {
                         PersonBirthday()
                     }
+                    /// User overview
+                    HStack {
+                        Button(action: {
+                                self.showUserOverView.toggle()
+                        }, label: {
+                            Text(NSLocalizedString("User overview", comment: "SignInView"))
+                            Image(systemName: "rectangle.stack.person.crop")
+                                .font(Font.system(.headline).weight(.thin))
+
+                        })
+                    }
+                    .sheet(isPresented: $showUserOverView) {
+                        /// må kalles på denne måten for å kunne benytte flere environmentObject
+                        UserOverView() // .environmentObject(self.user)
+                    }
+                        
                     /// Uten padding blir noe av visningen kuttet bort
                     .padding()
                     /// Brukes for å få med "Image(systemName: "chevron.down")"
@@ -226,7 +243,6 @@ struct SignInView : View {
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
                     Spacer(minLength: 20)
-//                    InputTextField(showPassword: UserDefaults.standard.bool(forKey: "showPassword"),
                     InputTextField(showPassword: UserDefaults.standard.bool(forKey: "showPassword"),
                                    checkPhone: false,
                                    secure: true,

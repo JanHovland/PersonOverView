@@ -26,6 +26,7 @@ struct PersonBirthday: View {
     var body: some View {
         NavigationView {
             Form {
+                
                 List {
                     ForEach(persons) {
                         person in

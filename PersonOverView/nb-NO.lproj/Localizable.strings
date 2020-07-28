@@ -357,6 +357,9 @@
    UserMaintenanceView */
 "User maintenance" = "Bruker vedlikehold";
 
+/* SignInView */
+"User overview" = "Brukeroversikt";
+
 /* PersonView */
 "was modified" = "ble endret";
 

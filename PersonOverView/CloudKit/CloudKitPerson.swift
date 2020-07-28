@@ -167,7 +167,7 @@ struct CloudKitPerson {
                                  "dateMonthDay",
                                  "gender",
                                  "image"]
-        operation.resultsLimit = 50
+        operation.resultsLimit = 500
         operation.recordFetchedBlock = { record in
             DispatchQueue.main.async {
                 let recordID = record.recordID
