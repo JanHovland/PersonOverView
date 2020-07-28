@@ -196,12 +196,12 @@ struct SignInView : View {
                     .sheet(isPresented: $showPersonBirthday) {
                         PersonBirthday()
                     }
-                    /// User overview
+                    /// Account overview
                     HStack {
                         Button(action: {
                                 self.showUserOverView.toggle()
                         }, label: {
-                            Text(NSLocalizedString("User overview", comment: "SignInView"))
+                            Text(NSLocalizedString("Account overview", comment: "SignInView"))
                             Image(systemName: "rectangle.stack.person.crop")
                                 .font(Font.system(.headline).weight(.thin))
 

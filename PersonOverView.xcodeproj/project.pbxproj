@@ -13,6 +13,8 @@
 		DB1FEF932380592F00F8D763 /* InputGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1FEF922380592F00F8D763 /* InputGender.swift */; };
 		DB28D73B23D615E900CF6915 /* AlertID.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB28D73A23D615E900CF6915 /* AlertID.swift */; };
 		DB2E9DF524D01C610046162B /* UserOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2E9DF424D01C610046162B /* UserOverView.swift */; };
+		DB2E9DF724D08F2E0046162B /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2E9DF624D08F2E0046162B /* Account.swift */; };
+		DB2E9DF924D0907E0046162B /* CloudKitAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2E9DF824D0907E0046162B /* CloudKitAccount.swift */; };
 		DB302B6A237EF02300076D10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B69237EF02300076D10 /* AppDelegate.swift */; };
 		DB302B6C237EF02300076D10 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB302B6B237EF02300076D10 /* SceneDelegate.swift */; };
 		DB302B6F237EF02300076D10 /* PersonOverView.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB302B6D237EF02300076D10 /* PersonOverView.xcdatamodeld */; };
@@ -73,6 +75,8 @@
 		DB1FEF922380592F00F8D763 /* InputGender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputGender.swift; sourceTree = "<group>"; };
 		DB28D73A23D615E900CF6915 /* AlertID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertID.swift; sourceTree = "<group>"; };
 		DB2E9DF424D01C610046162B /* UserOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOverView.swift; sourceTree = "<group>"; };
+		DB2E9DF624D08F2E0046162B /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		DB2E9DF824D0907E0046162B /* CloudKitAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitAccount.swift; sourceTree = "<group>"; };
 		DB302B66237EF02300076D10 /* PersonOverView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonOverView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB302B69237EF02300076D10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB302B6B237EF02300076D10 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 				DBFC29CE23C74D6900F2224B /* User.swift */,
 				DB302B80237EF16200076D10 /* UserElement.swift */,
 				DB302B82237EF18D00076D10 /* UserElements.swift */,
+				DB2E9DF624D08F2E0046162B /* Account.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -263,6 +268,7 @@
 				DB302B8E237EF43400076D10 /* CloudKitUser.swift */,
 				DB4A8F3F23DEE87B00558788 /* CloudKitPerson.swift */,
 				DB33E13623F09E4B00A95FAA /* CloudKitPostalCode.swift */,
+				DB2E9DF824D0907E0046162B /* CloudKitAccount.swift */,
 			);
 			path = CloudKit;
 			sourceTree = "<group>";
@@ -391,6 +397,7 @@
 			files = (
 				DB4A6CF12413A2BE00349A51 /* FindPostalCodeNewPerson.swift in Sources */,
 				DBDA561A23BF5B1C00A44D11 /* AdaptsToSoftwareKeyboard.swift in Sources */,
+				DB2E9DF924D0907E0046162B /* CloudKitAccount.swift in Sources */,
 				DBE58AD123CF798000D3EF1D /* DismissingKeyboard.swift in Sources */,
 				DB302B6F237EF02300076D10 /* PersonOverView.xcdatamodeld in Sources */,
 				DB4A8F3E23DEE79200558788 /* PersonElements.swift in Sources */,
@@ -434,6 +441,7 @@
 				DB9E4A22242BC0A100C6D085 /* TestMessage.swift in Sources */,
 				DBF0397E23E5A50D00230FAA /* NewPersonView.swift in Sources */,
 				DB33E13523F0893100A95FAA /* PostalCode.swift in Sources */,
+				DB2E9DF724D08F2E0046162B /* Account.swift in Sources */,
 				DB9A4DD923CDE2AE00948B21 /* UserDeleteView.swift in Sources */,
 				DBFC29CB23C5DE8500F2224B /* UserMaintenanceView.swift in Sources */,
 				DB6739C123AA910E00EF9ECD /* SwiftUIImagePicker.swift in Sources */,

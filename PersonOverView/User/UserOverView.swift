@@ -17,25 +17,34 @@ struct UserOverView: View {
     }
 
     @Environment(\.presentationMode) var presentationMode
-    
-    @State private var users = [UserElement]()
+
+    @State private var accounts = [Account]()
     @State private var message: String = ""
     @State private var alertIdentifier: AlertID?
-    let barTitle = NSLocalizedString("User overview", comment: "UserOverView")
+    let barTitle = NSLocalizedString("Account overview", comment: "UserOverView")
 
     var body: some View {
         NavigationView {
-            
             Form {
-                
                 List {
-                    ForEach(users) {
-                        user in
-                        Text(user.name)
-//                        userElement in
-//                        NavigationLink(destination: PersonView(person: person)) {
-//                            ShowPersonBirthday(person: person)
-//                        }
+                    ForEach(accounts) {
+                        account in
+                        HStack {
+                            if account.image != nil {
+                                Image(uiImage: account.image!)
+                                    .resizable()
+                                    .frame(width: 30, height: 30, alignment: .center)
+                                    .clipShape(Circle())
+                                    .overlay(Circle().stroke(Color.white, lineWidth: 1))
+                            } else {
+                                Image(systemName: "person.circle")
+                                    .resizable()
+                                    .font(.system(size: 16, weight: .ultraLight))
+                                    .frame(width: 30, height: 30, alignment: .center)
+                            }
+                            Text(account.name)
+                            Text(account.email)
+                        }
                     }
                 }
                 /// Noen ganger kan det være lurt å legge .id(UUID()) på List for hurtig oppdatering
@@ -55,7 +64,7 @@ struct UserOverView: View {
         .onAppear {
             self.refresh()
         }
-
+            
             
         .overlay(
             HStack {
@@ -68,8 +77,8 @@ struct UserOverView: View {
                             .font(.largeTitle)
                             .foregroundColor(.none)
                     })
-                    .padding(.trailing, 20)
-                    .padding(.top, 70)
+                        .padding(.trailing, 20)
+                        .padding(.top, 70)
                     Spacer()
                 }
             }
@@ -79,19 +88,19 @@ struct UserOverView: View {
     /// Rutine for å friske opp bildet
     func refresh() {
         /// Sletter alt tidligere innhold i person
-        self.users.removeAll()
+        self.accounts.removeAll()
         /// Fetch all persons from CloudKit
         let predicate = NSPredicate(value: true)
-        CloudKitUser.fetchUser(predicate: predicate)  { (result) in
+        CloudKitAccount.fetchAccount(predicate: predicate)  { (result) in
             switch result {
-            case .success(let user):
-                self.users.append(user)
-                self.users.sort(by: {$0.name < $1.name})
+            case .success(let account):
+                self.accounts.append(account)
+                self.accounts.sort(by: {$0.name > $1.name})
             case .failure(let err):
                 self.message = err.localizedDescription
                 self.alertIdentifier = AlertID(id: .first)
             }
         }
     }
-
+    
 }

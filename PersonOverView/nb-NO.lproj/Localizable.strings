@@ -1,3 +1,7 @@
+/* SignInView
+   UserOverView */
+"Account overview" = "Kontoer";
+
 /* No comment provided by engineer. */
 "Add" = "Ny person ";
 
@@ -247,7 +251,7 @@
 "Persons overview" = "Oversikt";
 
 /* SignInView */
-"PersonsOverview" = "Oversikt personer";
+"PersonsOverview" = "Personer";
 
 /* NewPersonView
    PersonView */
@@ -356,9 +360,6 @@
 /* SignInView
    UserMaintenanceView */
 "User maintenance" = "Bruker vedlikehold";
-
-/* SignInView */
-"User overview" = "Brukeroversikt";
 
 /* PersonView */
 "was modified" = "ble endret";
