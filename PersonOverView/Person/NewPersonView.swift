@@ -13,7 +13,7 @@ struct NewPersonView: View {
 
     @Environment(\.presentationMode) var presentationMode
 
-    @State private var newPerson = NSLocalizedString("New person", comment: "NewPersonView")
+    @State private var     newPerson = NSLocalizedString("New person", comment: "NewPersonView")
     @State private var showingImagePicker = false
     @State private var findPostalCodeNewPerson = false
     @State private var message: String = ""
